@@ -1,7 +1,7 @@
 @import "./reset.css";
 
 /* mixin */
-@mixin list_a {
+@mixin list-a {
   display: inline-block;
   margin-right: 10px;
 }
@@ -59,7 +59,7 @@ body {
       color: map-get($map: $color, $key: font-light-color);
       font-size: map-get($map: $fontSize, $key: font-extra-small);
 
-      .banner_left {
+      .banner-left {
         display: flex;
         gap: 15px;
 
@@ -69,26 +69,26 @@ body {
         }
       }
 
-      .banner_right {
+      .banner-right {
         display: flex;
         gap: 20px;
       }
     }
   }
 
-  #header_item {
-    .header_item {
+  #header-item {
+    .header-item {
       padding: 25px 0;
       display: flex;
       flex-direction: column;
       gap: 20px;
 
-      .header_top {
+      .header-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        .search_box {
+        .search-box {
           form {
             position: relative;
 
@@ -124,7 +124,7 @@ body {
         .wrapper {
           position: relative;
 
-          .popular_searchedWord {
+          .popular-searchedWord {
             position: relative;
             width: 193px;
             height: 24px;
@@ -147,12 +147,12 @@ body {
               }
 
               a span {
-                @include list_a;
+                @include list-a;
               }
             }
           }
 
-          .list_btn {
+          .list-btn {
             position: absolute;
             top: 50%;
             right: 0;
@@ -186,18 +186,18 @@ body {
               padding-top: 20px;
 
               a span {
-                @include list_a;
+                @include list-a;
               }
             }
           }
         }
       }
 
-      .header_bottom {
+      .header-bottom {
         display: flex;
         justify-content: space-between;
 
-        .header_bottom_left {
+        .header-bottom-left {
           display: flex;
           gap: 40px;
 
@@ -224,7 +224,7 @@ body {
           }
         }
 
-        .header_bottom_right {
+        .header-bottom-right {
           display: flex;
           align-items: center;
           .lnb {
