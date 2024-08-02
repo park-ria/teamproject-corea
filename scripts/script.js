@@ -91,3 +91,11 @@ items.forEach((item) => {
     interval = setInterval(rollingCB, 3000);
   });
 });
+
+// iframe
+function calcHeight() {
+  const theHeight =
+    document.querySelector("#contentFrame").contentWindow.document.body
+      .scrollHeight;
+  document.querySelector("#contentFrame").height = theHeight;
+}
