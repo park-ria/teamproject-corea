@@ -1,4 +1,4 @@
-@import "./reset.scss";
+@import "./reset.css";
 
 /* mixin */
 @mixin list_a {
@@ -32,7 +32,6 @@ $fontSize: (
 }
 
 body {
-  height: 200vh;
 }
 
 /* Header */
