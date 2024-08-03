@@ -1,0 +1,687 @@
+@import "./reset.scss", "./common.scss";
+
+/* variables */
+$color: (
+    main-color: #0DCC5A,
+    bg-dark-color: #3A3A3A,
+    bg-light-color: #FFFFFF,
+    font-dark-color: #111111,
+    font-dark-gray: #6D6D6D,
+    font-light-gray: #DCDCDC,
+    font-light-color: #ffffff,
+    bar-linear-gradient: linear-gradient(to right, #0DCB5B, #08B980, #02A1AF),
+);
+
+
+/* mixin */
+@mixin list-a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@mixin item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .item-img {
+        cursor: pointer;
+    }
+
+    .item-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .item-name {
+            width: 180px;
+            font-size: map-get($map: $fontSize, $key: font-samll);
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .item-price {
+            font-size: map-get($map: $fontSize, $key: font-large);
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    padding-top: 80px;
+    margin-bottom: 200px;
+
+    .inner {
+        
+        .main {
+            display: flex;
+            gap: 80px;
+
+            .main-img {
+                position: sticky;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 702px;
+
+                .img-wrapper {
+                    margin-bottom: 30px;
+                    border-radius: 16px;
+                    overflow: hidden;
+                }
+
+                .img-icons{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 15px;
+                    border: 1px solid map-get($map: $color, $key: font-light-gray);
+                    border-radius: 5px;
+                    font-size: map-get($map: $fontSize, $key: font-medium);
+                    line-height: 18px;
+                    font-weight: 500;
+                    
+                    a {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        i {
+                            color: map-get($map: $color, $key: font-dark-gray);
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 1px;
+                            height: 20px;
+                            background: map-get($map: $color, $key: font-light-gray);
+                        
+                        }
+                        &:nth-child(1):before {
+                            right: -50%;
+                        }
+                        &:nth-child(2):before {
+                            right: -65%;
+                        }
+                        &:nth-child(3):before {
+                            right: -70%;
+                        }
+                        &:nth-child(4):before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .main-desc {
+                width: 100%;
+                .desc-heading { 
+                    margin-bottom: 30px;
+
+                    .heading-category {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        font-size: map-get($map: $fontSize, $key: font-samll);
+                        margin-bottom: 15px;
+                        
+                        i {
+                            color: map-get($map: $color, $key: font-dark-gray);
+                        }
+
+                        span:nth-child(1),
+                        span:nth-child(2) {
+                            color: map-get($map: $color, $key: font-dark-gray);
+                        }
+                    }
+                    
+                    .heading-name {
+                        display: inline-block;
+                        font-size: 24px;
+                        line-height: 24px;
+                        margin-bottom: 15px;
+                    }
+
+                    .heading-price {
+                        font-size: 26px;
+                        line-height: 26px;
+                        margin-bottom: 15px;
+                    }
+
+                    .heading-timeinfo {
+                        
+                        span {
+                            font-size: map-get($map: $fontSize, $key: font-extra-small);
+                            margin-right: 5px;
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 50%;
+                                right: -5px;
+                                width: 2px;
+                                height: 2px;
+                                background: #111111;
+                                border-radius: 50%;
+                            }
+                        }
+
+                    }
+                }
+
+                .desc-user {
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: 40px;
+
+                    .user-img {
+                        width: 60px;
+                        height: 60px;
+                        cursor: pointer;
+                    }
+
+                    .user-info {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 100%;
+                        
+                        .user-id {
+                            font-size: map-get($map: $fontSize, $key: font-large);
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+
+                        .user-detail {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+
+                            .detail-barBox{
+                                display: flex;
+                                align-items: end;
+                                gap: 10px;
+
+                                span {
+                                    font-size: 10px;
+                                    color: map-get($map: $color, $key: font-dark-gray);
+                                }
+    
+                                .detail-bar {
+                                    width: 350px;
+                                    height: 15px;
+                                    background: #F1F4F6;
+                                    border-radius: 20px;
+                                    overflow: hidden;
+                                    position: relative;
+
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 27%;
+                                        height: 100%;
+                                        background: map-get($map: $color, $key: bar-linear-gradient);
+                                        border-radius: 20px;
+                                    }
+                                }
+                            }
+
+                            .detail-value {
+                                display: flex;
+                                align-items: end;
+                                font-size: map-get($map: $fontSize, $key: font-extra-small);
+                                color: map-get($map: $color, $key: font-dark-gray);
+
+                                span {
+                                    font-size: 22px;
+                                    line-height: 22px;
+                                    color: map-get($map: $color, $key: font-dark-color);
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .desc-conditions {
+                    display: flex;
+                    align-items: center;
+                    height: 90px;
+                    border: 1px solid map-get($map: $color, $key: font-light-gray);
+                    border-radius: 4px;
+                    margin-bottom: 35px;
+
+                    .conditions-box {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        width: 25%;
+                        text-align: center;
+                        position: relative;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            width: 1px;
+                            height: 20px;
+                            background: map-get($map: $color, $key: font-light-gray);
+                        }
+
+                        &:last-child::before {
+                            display: none;
+                        }
+
+                        span:nth-child(1) {
+                            font-size: 11px;
+                            color: map-get($map: $color, $key: font-dark-gray);
+                        }
+                        span:nth-child(2) {
+                            font-size: map-get($map: $fontSize, $key: font-samll);
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .desc-map {
+                    margin-bottom: 40px;
+                    .map-title {
+                        font-size: map-get($map: $fontSize, $key: font-samll);
+                        color: map-get($map: $color, $key: font-dark-gray);
+                        font-weight: normal;
+                        position: relative;
+                        padding-left: 15px;
+                        margin-bottom: 10px;
+    
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: 2px;
+                            transform: translateY(-50%);
+                            width: 4px;
+                            height: 4px;
+                            background: map-get($map: $color, $key: font-dark-gray);
+                            border-radius: 50%;
+    
+                        }
+                    }
+                    .map-area {
+                        display: inline-block;
+                        color: map-get($map: $color, $key: font-dark-gray);
+                        margin-bottom: 30px;
+
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                    #map {
+                        width: 600px;
+                        height: 140px;
+                        border: 1px solid map-get($map: $color, $key: font-light-gray);
+                    }
+                }
+    
+                .desc-btns {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 100px;
+    
+                    button {
+                        width: 290px;
+                        height: 60px;
+                        border-radius: 5px;
+                        border: 0;
+                        font-size: map-get($map: $fontSize, $key: font-extra-large);
+                        color: map-get($map: $color, $key: font-light-color);
+                        box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+                        cursor: pointer;
+    
+                        &.chat {
+                            background: map-get($map: $color, $key: main-color);
+                        }
+                        &.trade {
+                            background: map-get($map: $color, $key: font-light-gray);
+                        }
+                    }
+                }
+
+                .desc-itemInfo {
+                    margin-bottom: 85px;
+
+                    .itemIfo-heading {
+                        margin-bottom: 40px;
+
+                        h3 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                            margin-bottom: 32px;
+                        }
+                        .bar {
+                            border: none;
+                            border-bottom: 1px solid map-get($map: $color, $key: font-light-gray);
+                        }
+                    }
+
+                    .itemIfo-detail {
+
+                        p {
+                            width: 50%;
+                            font-size: map-get($map: $fontSize, $key: font-samll);
+                            text-align: justify;
+                            line-height: 59px;
+                            margin-bottom: 45px;
+                        }
+
+                        h6 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-small);
+                            color: map-get($map: $color, $key: font-dark-gray);
+                            font-weight: 300;
+                            margin-bottom: 10px;
+                        }
+                        .relatedWords {
+                            display: flex;
+                            gap: 25px;
+
+                            span {
+                                padding: 10px 15px;
+                                background: map-get($map: $color, $key: font-light-gray);
+                                font-size: 11px;
+                                font-weight: 500;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .desc-store {
+                    margin-bottom: 20px;
+                    
+                    .store-heading{
+                        margin-bottom: 30px; 
+
+                        h3 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                            margin-bottom: 32px;
+    
+                            i {
+                                font-size: map-get($map: $fontSize, $key: font-large);
+                                margin-left: 20px;
+                            }
+                        }
+                        .bar {
+                            border: none;
+                            border-bottom: 1px solid map-get($map: $color, $key: font-light-gray);
+                        }
+                    }
+
+                    .store-info {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        margin-bottom: 40px;
+
+                        .info-img {
+                            width:  60px;
+                            height: 60px;
+                            cursor: pointer;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .info-box {
+                            height: 60px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+
+                            .box-name {
+                                display: flex;
+                                align-items: center;
+                                gap: 25px;
+                                cursor: pointer;
+
+                                .name {
+                                    font-size: map-get($map: $fontSize, $key: font-large);
+                                    font-weight: 600;
+                                }
+                                
+                                .certi {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 3px;
+
+                                    span {
+                                        font-size: 10px;
+                                        margin-right: 3px;
+                                    }
+
+                                    .certi-check {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 14px;
+                                        height: 14px;
+                                        background: map-get($map: $color, $key: main-color);
+                                        border-radius: 3px;
+
+                                        i {
+                                            font-size: 13px;
+                                            color: map-get($map: $color, $key: font-light-color);
+                                        }
+                                    }
+                                    
+                                }
+                            }
+
+                            a {
+                                width: 55px;
+                                font-size: 10px;
+                                font-weight: 500;
+                                padding: 7px 10px;
+                                color: map-get($map: $color, $key: font-light-color);
+                                background: map-get($map: $color, $key: main-color);
+                                border-radius: 5px;
+                                box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+                            }
+                        }
+                    }
+
+                    .store-btns{
+                        margin-bottom: 35px;
+                        ul {
+                            display: flex;
+                            justify-content: space-between;
+
+                            li {
+                                position: relative;
+                            
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    bottom: -5px;
+                                    left: 0;
+                                    width: 0%;
+                                    height: 2px;
+                                    background: map-get($map: $color, $key: main-color);
+                                    transition: all 0.3s;
+                                    font-weight: 500;
+                                }
+
+                                &.active::before {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    .store-contents {
+                        position: relative;
+                        height: 240px;                        
+
+                        & > div {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                        }
+
+                        .selling-items {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .item-info {
+                                @include item-info;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+
+        }
+    }
+}
+
+#event {
+    margin-bottom: 200px;
+    .event {
+        padding: 30px 0;
+
+        .event-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+
+            h3 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            a {
+                font-size: map-get($map: $fontSize, $key: font-samll);
+                color: map-get($map: $color, $key: font-light-gray);
+
+                span {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .event-slider {
+            padding: 30px 0;
+
+            .slide-wrapper {
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+                height: 155px;
+                margin-bottom: 30px;
+                
+                .slide {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    & div {
+                        border: 1px solid map-get($map: $color, $key: font-light-gray);
+                        border-radius: 10px;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .pagers {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+
+                .pager {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: map-get($map: $color, $key: font-light-gray);
+
+                    &.active {
+                        background-color: map-get($map: $color, $key: main-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+#recommendation {
+    .recommendation {
+        display: flex;
+        flex-direction: column;
+        gap: 120px;
+        .related {
+            
+            h3 {
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+                font-weight: bold;
+                margin-bottom: 40px;
+            }
+
+            .related-items {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .item-info {
+                    @include item-info;
+                }
+            }
+        }
+        .recent {
+            
+            h3 {
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+                font-weight: bold;
+                margin-bottom: 40px;
+            }
+
+            .recent-items {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .item-info {
+                    @include item-info;
+                }
+            }
+        }
+
+    }
+}
