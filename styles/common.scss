@@ -31,7 +31,7 @@ $fontSize: (
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 body {
-  font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: map-get($color, main-font-color);
 }
@@ -267,7 +267,7 @@ body {
   }
 }
 
-// contentFrame
+// contentFrames
 .container {
   width: 100%;
   margin-top: 185px;
@@ -278,18 +278,3 @@ body {
 }
 
 // Footer
-
-// responsive
-@media screen and (max-width: 1280px) {
-  .inner {
-    width: 100%;
-    padding: 0 10px;
-  }
-}
-@media screen and (max-width: 840px) {
-}
-@media screen and (max-width: 450px) {
-  :root {
-    font-size: 8px;
-  }
-}
