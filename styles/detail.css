@@ -301,6 +301,7 @@ body {
   margin-bottom: 200px;
 }
 #main .inner .main {
+  position: relative;
   display: flex;
   gap: 80px;
 }

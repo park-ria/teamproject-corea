@@ -4,11 +4,11 @@ let currentIndex = 0;
 const moveSlide = (num) => {
     const imgWrapper = document.querySelector(".img-wrapper");
     const slideWidth = document.querySelector(".img-slide").offsetWidth;
-
+    
     imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`
     currentIndex = num;
     pagerActive();
-
+    
     pagers.forEach((pager) => {
         pager.classList.remove("active");
     });
