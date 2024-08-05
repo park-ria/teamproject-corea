@@ -1,17 +1,51 @@
-@import "./reset.css";
-@import "./common.css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-@media screen and (max-width: 1280px) {
-  .inner {
-    width: 100%;
-    padding: 0 10px;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@media screen and (max-width: 450px) {
-  :root {
-    font-size: 8px;
-  }
+
+ul,
+li {
+  list-style: none;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: none;
+  padding-left: 10px;
+  transition: all 0.3s;
+}
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+input::placeholder {
+  opacity: 1;
+  transition: all 0.3s;
+}
+input:focus {
+  outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
+}
+input:focus::placeholder {
+  opacity: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
+}
+
 :root {
   font-size: 10px;
 }
@@ -92,6 +126,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -226,6 +263,33 @@ body {
   border: none;
 }
 
+@media screen and (max-width: 1280px) {
+  .inner {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+  :root {
+    font-size: 8px;
+  }
+}
+:root {
+  font-size: 10px;
+}
+
+body {
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.inner {
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
+
 html,
 body {
   width: 100%;
@@ -269,23 +333,111 @@ body * {
   font-weight: 400;
 }
 
+#main-slide {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
 #main-slide .mainSlideWrapper {
-  width: 100%;
+  width: 3860px;
   display: flex;
   justify-content: center;
   gap: 10px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #main-slide .mainSlideWrapper a {
+  position: relative;
   width: 420px;
   height: 420px;
   display: flex;
   align-items: flex-end;
+  background: url("../images/main-slide02.png") center/cover no-repeat;
+}
+#main-slide .mainSlideWrapper a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+#main-slide .mainSlideWrapper a.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  -webkit-backdrop-filter: blur(0);
+          backdrop-filter: blur(0);
 }
 #main-slide .mainSlideWrapper a .main-slide-desc {
   margin: 0 0 30px 30px;
 }
 #main-slide .mainSlideWrapper a .main-slide-desc h2 {
   margin-bottom: 10px;
+  letter-spacing: 0;
+}
+#main-slide .main-slide-arrows {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  margin-bottom: 10px;
+}
+#main-slide .main-slide-arrows button {
+  position: absolute;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.6);
+}
+#main-slide .main-slide-arrows button.mainSlidePrev {
+  left: 0;
+}
+#main-slide .main-slide-arrows button.mainSlideNext {
+  right: 0;
+}
+#main-slide .main-slide-arrows button i {
+  font-size: 2.8rem;
+}
+#main-slide .main-slide-btns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+#main-slide .main-slide-btns .mainSlidePager {
+  width: 180px;
+  height: 15px;
+  background: #dcdcdc;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 10px;
+}
+#main-slide .main-slide-btns .mainSlidePager span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33.3333333333%;
+  height: 100%;
+  background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
+  transition: all 0.3s;
+}
+#main-slide .main-slide-btns button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+}
+#main-slide .main-slide-btns button i {
+  font-size: 1.6rem;
+  color: #6d6d6d;
 }
 
 #best-ranking {
@@ -304,6 +456,7 @@ body * {
 #best-ranking .ranking-content .ranking-slide li {
   width: 241px;
   height: 386px;
+  position: relative;
 }
 #best-ranking .ranking-content .ranking-slide li a .ranking-img {
   width: 241px;
@@ -311,7 +464,15 @@ body * {
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 15px;
+  background: url("../images/best-ranking01.png") center/cover no-repeat;
 }
 #best-ranking .ranking-content .ranking-slide li a .ranking-desc {
   padding: 10px 14px;
+}
+#best-ranking .ranking-content .ranking-slide li::before {
+  content: "\f02e";
+  font-family: "fontawesome";
+  position: absolute;
+  top: 10%;
+  right: 0;
 }
