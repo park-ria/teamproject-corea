@@ -1,4 +1,6 @@
 // Img-slider
+let currentIndex = 0;
+
 const moveSlide = (num) => {
     const imgWrapper = document.querySelector(".img-wrapper");
     const slideWidth = document.querySelector(".img-slide").offsetWidth;
@@ -6,11 +8,14 @@ const moveSlide = (num) => {
     imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`
     currentIndex = num;
     pagerActive();
+
+    pagers.forEach((pager) => {
+        pager.classList.remove("active");
+    });
+    pagers[currentIndex].classList.add("active");
 };
 
 const slideCount = document.querySelectorAll(".img-slide").length;
-
-let currentIndex = 0;
 
 const moveLeft = () => {
     let prevIndex = (currentIndex - 1) % slideCount;
@@ -22,7 +27,7 @@ const moveRight = () => {
     let nextIndex = (currentIndex + 1) % slideCount;
     if(currentIndex === slideCount - 1) nextIndex = 0;
     moveSlide(nextIndex);
-}
+};
 
 const imgPrev = document.querySelector(".img-prev");
 const imgNext = document.querySelector(".img-next");
@@ -32,18 +37,22 @@ imgNext.addEventListener("click", moveRight);
 
 const pagers = document.querySelectorAll(".img-pager");
 
-pagers.forEach((pager, index) => {
-    pager.addEventListener("click", () => {
-        moveSlide(index);
-        pagerActive();
+const clickPagers = () => {
+    pagers.forEach((pager, index) => {
+        pager.addEventListener("click", () => {
+            moveSlide(index);
+            pagerActive();
+        });
     });
-});
+};
+
+clickPagers();
 
 const pagerActive = () => {
-    pagers.forEach((item) => {
-        item.addEventListener("click", function() {
+    pagers.forEach((pager) => {
+        pager.addEventListener("click", function() {
             pagers.forEach((sibling) => {
-                if(sibling !== item) {
+                if(sibling !== pager) {
                     sibling.classList.remove("active");
                 }
             });
