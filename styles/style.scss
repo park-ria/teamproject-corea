@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  background: map-get($color, bg-light-color);
 
   #banner.ban {
     height: 33px;

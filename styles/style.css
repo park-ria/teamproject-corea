@@ -66,6 +66,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  background: #fff;
 }
 #header #banner.ban {
   height: 33px;
