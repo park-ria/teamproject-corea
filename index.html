@@ -5,110 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- fontawesome -->
-    <script
-      src="https://kit.fontawesome.com/09d57ad258.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/09d57ad258.js"crossorigin="anonymous"></script>
     <!-- custom css & js -->
-    <script defer src="./scripts/script.js"></script>
     <link rel="stylesheet" href="./styles/style.css" />
+    <script defer src="./scripts/script.js"></script>
   </head>
   <body>
-    <header id="header">
-      <div id="banner" class="ban">
-        <div class="inner">
-          <div class="banner">
-            <div class="banner_left">
-              <a class="appDownload" href="#none">
-                <img src="./images/appicon.jpg" alt="appicon" />
-                <span>앱 다운로드</span>
-              </a>
-              <a class="favorites" href="#none">
-                <img src="./images/favorites.jpg" alt="favorites" />
-                <span>즐겨찾기</span>
-              </a>
-            </div>
-            <div class="banner_right">
-              <a href="#none">로그인</a>
-              <a href="#none">회원가입</a>
-              <a href="#none">마이페이지</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="header_item">
-        <div class="inner">
-          <div class="header_item">
-            <div class="header_top">
-              <h1 id="logo">
-                <a href="#none">
-                  <img src="./images/logo.png" alt="logo" />
+    <div class="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <a class="appDownload" href="#none">
+                  <img src="./images/appicon.jpg" alt="appicon" />
+                  <span>앱 다운로드</span>
                 </a>
-              </h1>
-              <div class="search_box">
-                <form action="https://localhost:3000" method="get">
-                  <label for="search"></label>
-                  <input
-                    type="text"
-                    name="search"
-                    id="search"
-                    placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
-                  />
-                  <button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </form>
+                <a class="favorites" href="#none">
+                  <img src="./images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </a>
               </div>
-              <div class="wrapper">
-                <div class="popular_searchedWord">
-                  <ul></ul>
-                </div>
-                <a href="#none" class="list_btn"
-                  ><i class="fa-solid fa-chevron-down"></i
-                ></a>
-                <ul class="list"></ul>
-              </div>
-            </div>
-            <div class="header_bottom">
-              <nav class="header_bottom_left">
-                <div class="barmenu">
-                  <i class="fa-solid fa-bars"></i><span>카테고리</span>
-                </div>
-                <ul class="gnb">
-                  <li><a href="#none">중고경매</a></li>
-                  <li><a href="#none">내 주변 매물</a></li>
-                  <li><a href="#none">사기조회</a></li>
-                  <li><a href="#none">시세조회</a></li>
-                  <li><a href="#none">이벤트</a></li>
-                  <li><a href="#none">제휴혜택</a></li>
-                </ul>
-              </nav>
-              <div class="header_bottom_right">
-                <ul class="lnb">
-                  <li>
-                    <a href="#none">
-                      <img src="./images/chat.png" alt="chat" />채팅하기</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#none">
-                      <img src="./images/sell.png" alt="sell" />판매하기</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#none">
-                      <img src="./images/heart.png" alt="heart" />찜한상품</a
-                    >
-                  </li>
-                </ul>
+              <div class="banner-right">
+                <a href="#none">로그인</a>
+                <a href="#none">회원가입</a>
+                <a href="#none">마이페이지</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <main class="container">
-      <iframe id="contentFrame" src="./pages/home.html"></iframe>
-    </main>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="#none">
+                    <img src="./images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form action="https://localhost:3000" method="get">
+                    <label for="search"></label>
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                    />
+                    <button>
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="#none">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="#none">
+                        <img src="./images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="./images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="./images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="container">
+        <iframe
+          width="100%"
+          onLoad="calcHeight();"
+          height="200"
+          scrolling="no"
+          id="contentFrame"
+          src="./pages/home.html"
+        ></iframe>
+      </main>
+      <!-- footer 자리 입니다! -->
+    </div>
   </body>
 </html>
