@@ -1,7 +1,7 @@
 @import "./style.scss", "./common.scss";
 
 // $home-color: (
-//   badge-best: linear-gradient(to bottom, #a2dcff, #0095ee),
+//   badge-best: linear-gradient(to bottom, #7BCEFF, #0095EE),
 //   badge-new: #fff,
 // );
 
@@ -13,9 +13,16 @@
   font-weight: normal;
   font-style: normal;
 }
+// @font-face {
+//   font-family: "yg-jalnan";
+//   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+//     format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+// }
 @font-face {
-  font-family: "yg-jalnan";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+  font-family: "SBAggroB";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
@@ -27,7 +34,7 @@
   top: 50%;
   right: 15%;
   transform: translateY(-50%);
-  font: 400 1.3rem/1 "yg-jalnan";
+  font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: map-get($color, bg-light-color);
   text-shadow: 0 0 1px map-get($color, main-font-color);
@@ -35,7 +42,7 @@
 
 @mixin badgeType {
   position: absolute;
-  top: 10%;
+  top: 5%;
   right: -3%;
   width: 46px;
   height: 26px;
@@ -84,22 +91,15 @@ body * {
   }
 }
 .desc-title {
-  font-size: 1.6rem;
-  font-weight: 400;
-}
-.desc-title {
-  font-size: 1.6rem;
-  font-weight: 400;
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
 }
 .desc-price {
   display: block;
-  font-size: 1.8rem;
-  font-weight: 700;
   margin: 10px 0;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
 }
-.desc-title {
-  font-size: 1.6rem;
-  font-weight: 400;
+.desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
 }
 
 // main-slide
@@ -107,78 +107,72 @@ body * {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  position: relative;
-  .mainSlideWrapper {
-    width: 3860px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    a {
-      position: relative;
-      width: 420px;
-      height: 420px;
+  gap: 10px;
+  article {
+    position: relative;
+    height: 420px;
+    .mainSlideWrapper {
+      width: 3860px;
       display: flex;
-      align-items: flex-end;
-      background: url("../images/main-slide02.png") center/cover no-repeat;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: #000, $alpha: 0.1);
-        backdrop-filter: blur(10px);
-      }
-      &.active::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        backdrop-filter: blur(0);
-      }
-      .main-slide-desc {
-        margin: 0 0 30px 30px;
-        color: map-get($color, bg-light-color);
-        h2 {
-          margin-bottom: 10px;
-          font: 400 3rem/1.4 "JalnanGothic";
-          letter-spacing: 0;
+      justify-content: center;
+      gap: 10px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      a {
+        position: relative;
+        width: 420px;
+        height: 420px;
+        display: flex;
+        align-items: flex-end;
+        background: url("../images/main-slide02.png") center/cover no-repeat;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: rgba($color: #000, $alpha: 0.1);
+          backdrop-filter: blur(10px);
         }
-        p {
-          font-size: 1.6rem;
-          i {
-            margin-left: 10px;
+        &.active::before {
+          display: none;
+        }
+        .main-slide-desc {
+          margin: 0 0 30px 30px;
+          color: map-get($color, bg-light-color);
+          h2 {
+            margin-bottom: 10px;
+            font: 400 3rem/1.4 "JalnanGothic";
+            letter-spacing: 0;
+          }
+          p {
+            font-size: 1.6rem;
+            i {
+              margin-left: 10px;
+            }
           }
         }
       }
     }
-  }
-  .main-slide-arrows {
-    width: 100%;
-    height: 420px;
-    position: relative;
-    margin-bottom: 10px;
-    // z-index: -1;
-    button {
-      position: absolute;
-      top: 50%;
-      width: 58px;
-      height: 58px;
-      transform: translateY(-50%);
-      background: rgba($color: #fff, $alpha: 0.6);
-      cursor: pointer;
-      &.mainSlidePrev {
-        left: 0;
-      }
-      &.mainSlideNext {
-        right: 0;
-      }
-      i {
-        font-size: 2.8rem;
+    .main-slide-arrows {
+      button {
+        position: absolute;
+        top: 50%;
+        width: 58px;
+        height: 58px;
+        background: rgba($color: #fff, $alpha: 0.6);
+        &.mainSlidePrev {
+          left: calc(50% - 1280px / 2);
+          transform: translate(0, -50%);
+        }
+        &.mainSlideNext {
+          left: calc(50% + 1280px / 2);
+          transform: translate(-100%, -50%);
+        }
+        i {
+          font-size: 2.8rem;
+        }
       }
     }
   }
@@ -209,7 +203,6 @@ body * {
       width: 30px;
       height: 30px;
       border: 1px solid map-get($color, bg-light-gray);
-      cursor: pointer;
       i {
         font-size: 1.6rem;
         color: map-get($color, bg-dark-gray);
@@ -229,28 +222,74 @@ body * {
       margin-bottom: 30px;
     }
     .ranking-slide {
+      position: relative;
       display: flex;
-      justify-content: space-between;
-      li {
-        width: 241px;
-        height: 386px;
-        position: relative;
-        a {
-          .ranking-img {
-            width: 241px;
-            height: 236px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            background: url("../images/best-ranking01.png") center/cover
-              no-repeat;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      .rankingslideWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        li {
+          width: 241px;
+          // height: 386px;
+          display: flex;
+          position: relative;
+          a {
+            .ranking-img {
+              width: 241px;
+              height: 236px;
+              border-radius: 10px;
+              overflow: hidden;
+              margin-bottom: 15px;
+              background: url("../images/best-ranking01.png") center/cover
+                no-repeat;
+            }
+            .ranking-desc {
+              padding: 10px 14px;
+            }
           }
-          .ranking-desc {
-            padding: 10px 14px;
+          .badge {
+            @include badgeType;
           }
         }
-        .badge {
-          @include badgeType;
+      }
+      .ranking-slide-btns {
+        button {
+          position: absolute;
+          top: 27%;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: map-get($color, bg-light-color);
+          box-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.2);
+          i {
+            font-size: 2rem;
+            color: map-get($color, bg-dark-gray);
+          }
+          &.rankingSlidePrev {
+            left: 0;
+            transform: translateX(-50%);
+          }
+          &.rankingSlideNext {
+            right: 0;
+            transform: translateX(50%);
+          }
+        }
+        .ranking-slide-pager {
+          display: flex;
+          gap: 8px;
+          span {
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background: map-get($color, bg-light-gray);
+            &.active {
+              width: 40px;
+              background: map-get($color, bg-main-color);
+            }
+          }
         }
       }
     }
@@ -273,16 +312,24 @@ body * {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      font-family: "JalnanGothic";
+      font-family: "SBAggroB";
       letter-spacing: 0;
+      color: map-get($color, bg-light-color);
+      span {
+        font-size: 2.2rem;
+      }
       h2 {
-        color: map-get($color, bg-light-color);
         font-size: 6rem;
-        // text-shadow: 0 0 4px #0051b1, 0 0 6px #0051b1, 0 0 8px #0051b1;
-        -webkit-text-stroke: 1px #0051b1;
-        b {
-          color: #fce44a;
-        }
+      }
+      strong {
+        font-size: 6rem;
+        color: #fce44a;
+      }
+      p {
+        font-size: 2.4rem;
+      }
+      b {
+        color: #fce44a;
       }
     }
   }
