@@ -1,48 +1,16 @@
-@import "./reset.scss";
+@import "./reset.scss", "./common.scss";
 
-/* mixin */
-@mixin list_a {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-/* variables */
-$color: (
-  main-color: #0dcc5a,
-  bg-dark-color: #3a3a3a,
-  bg-light-color: #ffffff,
-  font-dark-color: #111111,
-  font-dark-gray: #6d6d6d,
-  font-light-color: #ffffff,
-);
-
-$fontSize: (
-  font-extra-small: 12px,
-  font-samll: 14px,
-  font-medium: 16px,
-  font-large: 18px,
-  font-extra-large: 20px,
-);
-
-/* common */
-.inner {
-  width: 1280px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-body {
-  height: 200vh;
-}
-
-/* Header */
+// Header
 #header {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  background: map-get($color, bg-light-color);
 
   #banner.ban {
     height: 33px;
-    background: map-get($map: $color, $key: bg-dark-color);
+    background: map-get($color, bg-dark-color);
     opacity: 1;
     transition: all 0.3s;
 
@@ -60,39 +28,46 @@ body {
       color: map-get($map: $color, $key: font-light-color);
       font-size: map-get($map: $fontSize, $key: font-extra-small);
 
-      .banner_left {
+      .banner-left {
         display: flex;
         gap: 15px;
 
         a {
           display: flex;
           gap: 5px;
+          span {
+            color: map-get($color, bg-light-color);
+          }
         }
       }
 
-      .banner_right {
+      .banner-right {
         display: flex;
         gap: 20px;
+        a {
+          color: map-get($color, bg-light-color);
+        }
       }
     }
   }
 
-  #header_item {
-    .header_item {
+  #header-item {
+    .header-item {
       padding: 25px 0;
       display: flex;
       flex-direction: column;
       gap: 20px;
 
-      .header_top {
+      .header-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        .search_box {
+        .search-box {
           form {
             position: relative;
-
+            border: 1px solid map-get($color, bg-dark-gray);
+            border-radius: 50px;
             input[type="text"] {
               width: 550px;
               height: 40px;
@@ -115,8 +90,8 @@ body {
               height: 30px;
               border-radius: 50px;
               border: none;
-              background-color: map-get($map: $color, $key: main-color);
-              color: map-get($map: $color, $key: font-light-color);
+              background-color: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
               cursor: pointer;
             }
           }
@@ -125,7 +100,7 @@ body {
         .wrapper {
           position: relative;
 
-          .popular_searchedWord {
+          .popular-searchedWord {
             position: relative;
             width: 193px;
             height: 24px;
@@ -148,12 +123,12 @@ body {
               }
 
               a span {
-                @include list_a;
+                @include list-a;
               }
             }
           }
 
-          .list_btn {
+          .list-btn {
             position: absolute;
             top: 50%;
             right: 0;
@@ -187,18 +162,18 @@ body {
               padding-top: 20px;
 
               a span {
-                @include list_a;
+                @include list-a;
               }
             }
           }
         }
       }
 
-      .header_bottom {
+      .header-bottom {
         display: flex;
         justify-content: space-between;
 
-        .header_bottom_left {
+        .header-bottom-left {
           display: flex;
           gap: 40px;
 
@@ -208,8 +183,8 @@ body {
             align-items: center;
             gap: 5px;
             padding: 8px 10px;
-            background: map-get($map: $color, $key: main-color);
-            color: map-get($map: $color, $key: font-light-color);
+            background: map-get($map: $color, $key: bg-main-color);
+            color: map-get($map: $color, $key: bg-light-color);
             border-radius: 5px;
             cursor: pointer;
 
@@ -222,10 +197,13 @@ body {
             display: flex;
             align-items: center;
             gap: 30px;
+            a {
+              font-size: 1.6rem;
+            }
           }
         }
 
-        .header_bottom_right {
+        .header-bottom-right {
           display: flex;
           align-items: center;
           .lnb {
@@ -247,12 +225,31 @@ body {
   }
 }
 
-/* contentFrame */
+// contentFrames
 .container {
   width: 100%;
+  margin-top: 185px;
   #contentFrame {
     width: 100%;
     border: none;
-    margin-top: 200px;
+  }
+}
+
+// Footer
+
+// responsive
+@media screen and (max-width: 1280px) {
+  .inner {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+}
+
+@media screen and (max-width: 450px) {
+  :root {
+    font-size: 8px;
   }
 }
