@@ -1,0 +1,101 @@
+@import "./style.scss", "./common.scss";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/*body * {
+  border: 1px solid rgba($color: #f00, $alpha: 0.1);
+}*/
+
+.wishlist {
+  width: 100%;
+  //margin-top: 70px;
+  .wishlist-tabs {
+    width: 100%;
+    .wishlist-tab {
+      display: flex;
+      align-items: center;
+      & > span {
+        width: 200px;
+        height: 50px;
+        border-bottom: 1px solid map-get($color, main-font-color);
+        &:first-child {
+          border-radius: 8px 0 0 0;
+        }
+        &:nth-child(3) {
+          border-radius: 0 8px 0 0;
+        }
+        &:last-child {
+          flex: 1;
+        }
+        &.wishlist-tab-button-group {
+          text-align: center;
+          font-size: map-get($fontSize, font-medium);
+          line-height: 50px;
+          border: 1px solid map-get($color, bg-light-gray);
+          border-bottom: 1px solid map-get($color, main-font-color);
+          background: #fafafa;
+          color: map-get($color, bg-dark-gray);
+          &.active {
+            background: map-get($color, bg-light-color);
+            font-weight: 600;
+            color: map-get($color, main-font-color);
+            border: 1px solid map-get($color, main-font-color);
+            border-bottom: 1px solid #fff;
+            .wishlistTabCount {
+              color: map-get($color, bg-main-color);
+            }
+          }
+          .wishlistTabButton {
+            display: inline-block;
+            width: inherit;
+            height: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .wish-items-content {
+    width: 100%;
+    margin-top: 30px;
+    .wish-items-content-upper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .wish-items-delete-selection {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        #deleteSeletionButton {
+          border: 1px solid map-get($color, main-font-color);
+          border-radius: 2px;
+          padding: 3px 5px;
+          cursor: pointer;
+        }
+      }
+    }
+    .wish-items-sorting-wrapper {
+      .sorting-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        li {
+          font-size: map-get($fontSize, font-extra-small);
+          a {
+            font-size: map-get($fontSize, font-samll);
+            color: map-get($color, bg-dark-gray);
+            &.active {
+              font-weight: 600;
+              color: map-get($color, main-font-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
