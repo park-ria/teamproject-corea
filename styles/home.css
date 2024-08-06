@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -121,6 +129,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -304,31 +315,6 @@ body * {
   border: 1px solid rgba(255, 0, 0, 0.1);
 }
 
-.section-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: -2px;
-}
-
-.view-more a {
-  font-size: 1.2rem;
-  color: #6d6d6d;
-}
-
-.desc-title {
-  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
-}
-
-.desc-price {
-  display: block;
-  margin: 10px 0;
-  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-}
-
-.desc-info {
-  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-}
-
 #main-slide {
   display: flex;
   justify-content: center;
@@ -363,7 +349,8 @@ body * {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -444,6 +431,15 @@ body * {
   align-items: center;
   margin-bottom: 30px;
 }
+#best-ranking .ranking-content .ranking-heading .section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+#best-ranking .ranking-content .ranking-heading .view-more a {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
 #best-ranking .ranking-content .ranking-slide {
   position: relative;
   display: flex;
@@ -451,41 +447,56 @@ body * {
   align-items: center;
   gap: 30px;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper {
+#best-ranking .ranking-content .ranking-slide .slideWrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li {
   width: 241px;
   display: flex;
   position: relative;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li a .ranking-img {
-  width: 241px;
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a {
+  width: 100%;
+  height: 100%;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-img {
+  width: 100%;
   height: 236px;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 15px;
-  background: url("../images/best-ranking01.png") center/cover no-repeat;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li a .ranking-desc {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc {
   padding: 10px 14px;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price {
+  display: block;
+  margin: 10px 0;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
   position: absolute;
   top: 5%;
   right: -3%;
   width: 46px;
   height: 26px;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-best {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best {
   background: url("../images/badge-best.png") center/contain no-repeat;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-best::before {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
   top: 50%;
-  right: 15%;
+  right: 10%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -493,13 +504,13 @@ body * {
   text-shadow: 0 0 1px #111;
   content: "인기";
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-new {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new {
   background: url("../images/badge-new.png") center/contain no-repeat;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-new::before {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
   top: 50%;
-  right: 15%;
+  right: 10%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -507,13 +518,13 @@ body * {
   text-shadow: 0 0 1px #111;
   content: "신규";
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-auction {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction {
   background: url("../images/badge-auction.png") center/contain no-repeat;
 }
-#best-ranking .ranking-content .ranking-slide .rankingslideWrapper li .badge.badge-auction::before {
+#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
   top: 50%;
-  right: 15%;
+  right: 10%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -521,7 +532,7 @@ body * {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns button {
+#best-ranking .ranking-content .ranking-slide .slide-btns button {
   position: absolute;
   top: 27%;
   width: 40px;
@@ -530,29 +541,29 @@ body * {
   background: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns button i {
+#best-ranking .ranking-content .ranking-slide .slide-btns button i {
   font-size: 2rem;
   color: #6d6d6d;
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns button.rankingSlidePrev {
+#best-ranking .ranking-content .ranking-slide .slide-btns button.SlidePrev {
   left: 0;
   transform: translateX(-50%);
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns button.rankingSlideNext {
+#best-ranking .ranking-content .ranking-slide .slide-btns button.SlideNext {
   right: 0;
   transform: translateX(50%);
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns .ranking-slide-pager {
+#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager {
   display: flex;
   gap: 8px;
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns .ranking-slide-pager span {
+#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager span {
   width: 10px;
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
 }
-#best-ranking .ranking-content .ranking-slide .ranking-slide-btns .ranking-slide-pager span.active {
+#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager span.active {
   width: 40px;
   background: #0dcc5a;
 }
@@ -563,12 +574,17 @@ body * {
 #auction .auction-banner {
   width: 100%;
   height: 400px;
-  background: url("../images/main-auction-banner.png") center/cover no-repeat;
+  background: linear-gradient(to bottom, #7bceff, #0095ee);
+}
+#auction .auction-banner .banner-content {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
-#auction .auction-banner .auction-banner-desc {
+#auction .auction-banner .banner-content .banner-desc {
   position: absolute;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
   height: 250px;
   display: flex;
@@ -578,19 +594,31 @@ body * {
   letter-spacing: 0;
   color: #fff;
 }
-#auction .auction-banner .auction-banner-desc span {
+#auction .auction-banner .banner-content .banner-desc span {
   font-size: 2.2rem;
 }
-#auction .auction-banner .auction-banner-desc h2 {
+#auction .auction-banner .banner-content .banner-desc h2 {
   font-size: 6rem;
 }
-#auction .auction-banner .auction-banner-desc strong {
+#auction .auction-banner .banner-content .banner-desc strong {
   font-size: 6rem;
   color: #fce44a;
 }
-#auction .auction-banner .auction-banner-desc p {
+#auction .auction-banner .banner-content .banner-desc p {
   font-size: 2.4rem;
 }
-#auction .auction-banner .auction-banner-desc b {
+#auction .auction-banner .banner-content .banner-desc b {
   color: #fce44a;
+}
+#auction .auction-banner .banner-content .banner-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+#auction .auction-banner .banner-content .banner-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

@@ -29,10 +29,113 @@
 }
 
 // mix-in
+@mixin sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  .section-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .view-more {
+    a {
+      font-size: 1.2rem;
+      color: map-get($color, bg-dark-gray);
+    }
+  }
+}
+
+@mixin productSlide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  .slideWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    li {
+      width: 241px;
+      display: flex;
+      position: relative;
+      a {
+        width: 100%;
+        height: 100%;
+        .slide-img {
+          width: 100%;
+          height: 236px;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 15px;
+          // background: url("../images/best-ranking01.png") center/cover no-repeat;
+        }
+        .slide-desc {
+          padding: 10px 14px;
+          .desc-title {
+            font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+          }
+          .desc-price {
+            display: block;
+            margin: 10px 0;
+            font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+          }
+          .desc-info {
+            font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+          }
+        }
+      }
+      .badge {
+        @include badgeType;
+      }
+    }
+  }
+  .slide-btns {
+    button {
+      position: absolute;
+      top: 27%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: map-get($color, bg-light-color);
+      box-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.2);
+      i {
+        font-size: 2rem;
+        color: map-get($color, bg-dark-gray);
+      }
+      &.SlidePrev {
+        left: 0;
+        transform: translateX(-50%);
+      }
+      &.SlideNext {
+        right: 0;
+        transform: translateX(50%);
+      }
+    }
+    .slide-pager {
+      display: flex;
+      gap: 8px;
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: map-get($color, bg-light-gray);
+        &.active {
+          width: 40px;
+          background: map-get($color, bg-main-color);
+        }
+      }
+    }
+  }
+}
+
 @mixin badgeText {
   position: absolute;
   top: 50%;
-  right: 15%;
+  right: 10%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -77,29 +180,6 @@ body {
 
 body * {
   border: 1px solid rgba($color: #f00, $alpha: 0.1);
-}
-
-.section-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  letter-spacing: -2px;
-}
-.view-more {
-  a {
-    font-size: 1.2rem;
-    color: map-get($color, bg-dark-gray);
-  }
-}
-.desc-title {
-  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
-}
-.desc-price {
-  display: block;
-  margin: 10px 0;
-  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-}
-.desc-info {
-  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
 }
 
 // main-slide
@@ -216,82 +296,10 @@ body * {
   padding: 100px 0;
   .ranking-content {
     .ranking-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
+      @include sectionHeading;
     }
     .ranking-slide {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      .rankingslideWrapper {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        li {
-          width: 241px;
-          // height: 386px;
-          display: flex;
-          position: relative;
-          a {
-            .ranking-img {
-              width: 241px;
-              height: 236px;
-              border-radius: 10px;
-              overflow: hidden;
-              margin-bottom: 15px;
-              background: url("../images/best-ranking01.png") center/cover
-                no-repeat;
-            }
-            .ranking-desc {
-              padding: 10px 14px;
-            }
-          }
-          .badge {
-            @include badgeType;
-          }
-        }
-      }
-      .ranking-slide-btns {
-        button {
-          position: absolute;
-          top: 27%;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: map-get($color, bg-light-color);
-          box-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.2);
-          i {
-            font-size: 2rem;
-            color: map-get($color, bg-dark-gray);
-          }
-          &.rankingSlidePrev {
-            left: 0;
-            transform: translateX(-50%);
-          }
-          &.rankingSlideNext {
-            right: 0;
-            transform: translateX(50%);
-          }
-        }
-        .ranking-slide-pager {
-          display: flex;
-          gap: 8px;
-          span {
-            width: 10px;
-            height: 10px;
-            border-radius: 10px;
-            background: map-get($color, bg-light-gray);
-            &.active {
-              width: 40px;
-              background: map-get($color, bg-main-color);
-            }
-          }
-        }
-      }
+      @include productSlide;
     }
   }
 }
@@ -302,34 +310,65 @@ body * {
   .auction-banner {
     width: 100%;
     height: 400px;
-    background: url("../images/main-auction-banner.png") center/cover no-repeat;
-    position: relative;
-    .auction-banner-desc {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      font-family: "SBAggroB";
-      letter-spacing: 0;
-      color: map-get($color, bg-light-color);
-      span {
-        font-size: 2.2rem;
+    // background: url("../images/main-auction-banner.png") center/cover no-repeat;
+    background: linear-gradient(to bottom, #7bceff, #0095ee);
+    .banner-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .banner-desc {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: "SBAggroB";
+        letter-spacing: 0;
+        color: map-get($color, bg-light-color);
+        // position: relative;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   left: -50%;
+        //   bottom: 0;
+        //   width: 100%;
+        //   height: 100%;
+        //   z-index: -1;
+        //   background: url("../images/auction-banner02.png") center/cover
+        //     no-repeat;
+        // }
+        span {
+          font-size: 2.2rem;
+        }
+        h2 {
+          font-size: 6rem;
+          // text-shadow: -1px 0px #0051b1, 0px 1px #0051b1, 1px 0px #0051b1,
+          //   0px -1px #0051b1;
+        }
+        strong {
+          font-size: 6rem;
+          color: #fce44a;
+        }
+        p {
+          font-size: 2.4rem;
+        }
+        b {
+          color: #fce44a;
+        }
       }
-      h2 {
-        font-size: 6rem;
-      }
-      strong {
-        font-size: 6rem;
-        color: #fce44a;
-      }
-      p {
-        font-size: 2.4rem;
-      }
-      b {
-        color: #fce44a;
+      .banner-img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
