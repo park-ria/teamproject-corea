@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- custom css & js -->
     <link rel="stylesheet" href="../styles/wishlist.css" />
+    <script defer src="../scripts/wishlist.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -12,34 +13,32 @@
       <div class="inner">
         <article class="wishlist-tabs">
           <div class="wishlist-tab">
-            <span class="wishlist-tab-button-group active">
-              <a class="wishlistTabButton" href="#" data-tab-name="wish-item">
-                찜 <span class="wishlistTabCount wishItems">6</span>
-              </a>
-            </span>
-            <span class="wishlist-tab-button-group">
-              <a
-                class="wishlistTabButton"
-                href="#"
-                data-tab-name="favorite-stores"
-              >
-                관심 상점 <span class="wishlistTabCount favoriteStores">5</span>
-              </a>
-            </span>
-            <span class="wishlist-tab-button-group">
-              <a
-                class="wishlistTabButton"
-                href="#"
-                data-tab-name="favorite-brands"
-              >
-                관심 브랜드
-                <span class="wishlistTabCount favoriteBrands">3</span>
-              </a>
-            </span>
+            <a
+              class="wishlistTabButton active"
+              href="#"
+              data-tab-name="wish-items"
+            >
+              찜 <span class="wishlistTabCount wishItems">6</span>
+            </a>
+            <a
+              class="wishlistTabButton"
+              href="#"
+              data-tab-name="favorite-stores"
+            >
+              관심 상점 <span class="wishlistTabCount favoriteStores">5</span>
+            </a>
+            <a
+              class="wishlistTabButton"
+              href="#"
+              data-tab-name="favorite-brands"
+            >
+              관심 브랜드
+              <span class="wishlistTabCount favoriteBrands">3</span>
+            </a>
             <span></span>
           </div>
         </article>
-        <article class="wish-items-content">
+        <article class="wishlistContent wish-items-content">
           <div class="wish-items-content-upper">
             <span class="wish-items-delete-selection">
               <input type="checkbox" name="allSelection" id="allSelection" />
@@ -66,12 +65,12 @@
             </span>
           </div>
         </article>
-        <!-- <article class="favorite-stores-content">
+        <article class="wishlistContent favorite-stores-content">
           <h3>관심상점</h3>
         </article>
-        <article class="favorite-brands-content">
+        <article class="wishlistContent favorite-brands-content">
           <h3>관심브랜드</h3>
-        </article> -->
+        </article>
       </div>
     </section>
   </body>
