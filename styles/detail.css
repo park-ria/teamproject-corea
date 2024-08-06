@@ -201,7 +201,6 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 1.4rem;
   margin-bottom: 15px;
 }
 #main .inner .main .main-desc .desc-heading .heading-category i {
@@ -338,14 +337,12 @@ body {
   color: #6d6d6d;
 }
 #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(2) {
-  font-size: 1.4rem;
   font-weight: 600;
 }
 #main .inner .main .main-desc .desc-map {
   margin-bottom: 40px;
 }
 #main .inner .main .main-desc .desc-map .map-title {
-  font-size: 1.4rem;
   color: #6d6d6d;
   font-weight: normal;
   position: relative;
@@ -413,7 +410,6 @@ body {
 }
 #main .inner .main .main-desc .desc-itemInfo .itemIfo-detail p {
   width: 50%;
-  font-size: 1.4rem;
   text-align: justify;
   line-height: 59px;
   margin-bottom: 45px;
@@ -571,7 +567,6 @@ body {
 }
 #main .inner .main .main-desc .desc-store .store-contents .selling-items .item-info .item-detail .item-name {
   width: 180px;
-  font-size: 1.4rem;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
@@ -600,7 +595,6 @@ body {
   font-weight: bold;
 }
 #event .event .event-heading a {
-  font-size: 1.4rem;
   color: #DCDCDC;
 }
 #event .event .event-heading a span {
@@ -681,7 +675,6 @@ body {
 }
 #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-detail .item-name {
   width: 180px;
-  font-size: 1.4rem;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
@@ -746,7 +739,6 @@ body {
 }
 #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-detail .item-name {
   width: 180px;
-  font-size: 1.4rem;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
