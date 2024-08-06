@@ -87,7 +87,7 @@ body {
           li {
             font-size: map-get($fontSize, font-extra-small);
             a {
-              font-size: map-get($fontSize, font-samll);
+              font-size: map-get($fontSize, font-small);
               color: map-get($color, bg-dark-gray);
               &.active {
                 font-weight: 600;
