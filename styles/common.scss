@@ -1,0 +1,46 @@
+// mixin
+@mixin list-a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+// variables
+:root {
+  font-size: 10px;
+}
+
+$main-width: 1280px;
+
+$color: (
+  bg-main-color: #0dcc5a,
+  bg-dark-color: #3a3a3a,
+  bg-light-color: #fff,
+  bg-dark-gray: #6d6d6d,
+  bg-light-gray: #dcdcdc,
+  main-font-color: #111,
+  bar-linear-gradient: linear-gradient(to right, #0dcb5b, #08b980, #02a1af),
+);
+
+$fontSize: (
+  font-extra-small: 1.2rem,
+  font-samll: 1.4rem,
+  font-medium: 1.6rem,
+  font-large: 1.8rem,
+  font-extra-large: 2rem,
+);
+
+// font
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+body {
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+  letter-spacing: -1px;
+  color: map-get($color, main-font-color);
+}
+
+// layout
+.inner {
+  width: $main-width;
+  height: 100%;
+  margin: 0 auto;
+}

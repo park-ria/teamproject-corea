@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: none;
+  padding-left: 10px;
+  transition: all 0.3s;
+}
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+input::placeholder {
+  opacity: 1;
+  transition: all 0.3s;
+}
+input:focus {
+  outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
+}
+input:focus::placeholder {
+  opacity: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.inner {
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
