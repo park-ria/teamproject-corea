@@ -265,10 +265,88 @@ body {
   border: none;
 }
 
+footer {
+  background: #3a3a3a;
+  color: #fff;
+}
+footer .inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  height: 404px;
+}
+footer .inner .footer-upper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+footer .inner .footer-upper .footer-upper-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
+  display: flex;
+  gap: 20px;
+}
+footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-style: normal;
+}
+footer .inner .footer-lower {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+footer .inner .footer-lower .footer-lower-logo {
+  width: 180px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+footer .inner .footer-lower .footer-lower-logo i {
+  font-size: 15px;
+}
+
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
     padding: 0 10px;
+  }
+}
+@media screen and (max-width: 840px) {
+  footer .inner .footer-upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 20px;
+  }
+  footer .inner .footer-upper .footer-upper-info {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  footer .inner .footer-lower {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
   }
 }
 @media screen and (max-width: 450px) {

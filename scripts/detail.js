@@ -2,7 +2,8 @@ const JoonggoInfo = ("../db.json");
 
 fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
 
-    JoongoData.data.forEach((data) => {
+    console.log(JoongoData.detail);
+    JoongoData.detail.forEach((data) => {
         const imgWrapper = document.querySelector(".img-wrapper");
         const imgPagers = document.querySelector(".img-pagers");
 
@@ -21,7 +22,6 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
 
         pager.classList.add("img-pager", "pager");
         imgPagers.appendChild(pager);
-        cosol
     })
 });
 

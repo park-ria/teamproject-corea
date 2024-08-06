@@ -93,9 +93,10 @@ items.forEach((item) => {
 });
 
 // iframe
-function calcHeight() {
-  const theHeight =
-    document.querySelector("#contentFrame").contentWindow.document.body
-      .scrollHeight;
-  document.querySelector("#contentFrame").height = theHeight;
+function resizeIframe(iframe) {
+  var doc = iframe.contentDocument || iframe.contentWindow.document;
+  var height = doc.documentElement.scrollHeight || doc.body.scrollHeight;
+  iframe.style.height = height + 'px';
+  var wrapper = document.getElementById('wrapper');
+  wrapper.style.height = height + 'px';
 }
