@@ -437,6 +437,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
 }
 .wishlist .wishlistContent.wish-items-content .wish-items-content-upper .wish-items-delete-selection {
   display: flex;

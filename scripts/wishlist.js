@@ -2,17 +2,21 @@
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
 wishlistTabButton.forEach((btn) => {
   btn.addEventListener("click", function () {
+    const wishlistContent = document.querySelectorAll(".wishlistContent");
     const target = document.querySelector(
       `.${this.getAttribute("data-tab-name")}-content`
     );
-    const wishlistContent = document.querySelectorAll(".wishlistContent");
 
+    // 탭 버튼 초기화 및 가상클래스 적용
+    wishlistTabButton.forEach((sibling) => {
+      if (sibling !== this) sibling.classList.remove("active");
+    });
+    this.classList.add("active");
+
+    // 탭 내용 초기화 및 가상클래스 적용
     wishlistContent.forEach((item) => {
       if (item !== target) item.style.display = "none";
     });
-
-    console.log(this);
-    this.classList.add("active");
     target.style.display = "block";
   });
 });
