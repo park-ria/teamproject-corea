@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: map-get($map: $color, $key: bg-light-color);
+  background: map-get($color, bg-light-color);
 
   #banner.ban {
     height: 33px;
@@ -236,6 +236,55 @@
 }
 
 // Footer
+footer {
+  background: #3a3a3a;
+  color: #fff;
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    height: 404px;
+    .footer-upper {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      .footer-upper-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .footer-company-guide ul {
+          display: flex;
+          gap: 20px;
+        }
+        .footer-company-info ul {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          font-style: normal;
+        }
+      }
+    }
+    .footer-lower {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      .footer-lower-logo {
+        width: 180px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        i {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
 
 // responsive
 @media screen and (max-width: 1280px) {
@@ -246,10 +295,43 @@
 }
 
 @media screen and (max-width: 840px) {
+  // footer
+  footer {
+    .inner {
+      .footer-upper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: 20px;
+        .footer-upper-info {
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          .footer-company-guide ul {
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+      }
+      .footer-lower {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 450px) {
   :root {
     font-size: 8px;
   }
+
 }
+
