@@ -93,9 +93,17 @@ items.forEach((item) => {
 });
 
 // iframe
+// function calcHeight() {
+//   const theHeight =
+//     document.querySelector("#contentFrame").contentWindow.document.body
+//       .scrollHeight;
+//   document.querySelector("#contentFrame").height = theHeight;
+// }
+
 function calcHeight() {
   const theHeight =
     document.querySelector("#contentFrame").contentWindow.document.body
       .scrollHeight;
-  document.querySelector("#contentFrame").height = theHeight;
+  document.querySelector("#contentFrame").height = theHeight+100;
+  console.log(theHeight+100);
 }
