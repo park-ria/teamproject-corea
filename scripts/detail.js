@@ -2,27 +2,92 @@ const JoonggoInfo = ("../db.json");
 
 fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
 
-    console.log(JoongoData.detail);
-    JoongoData.detail.forEach((data) => {
-        const imgWrapper = document.querySelector(".img-wrapper");
-        const imgPagers = document.querySelector(".img-pagers");
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const name = params.get("name");
 
-        // create Img-slider
-        const li = document.createElement("li"); 
-        const img = document.createElement("img");
-        const  pager = document.createElement("div");
-        const src = document.createAttribute("src");
+    const product = JoongoData.data.find((product) => 
+    product.category === category && product.name === name
+    )
+        
+    if(product) {
 
-        src.value = data.detail.url_list;
-        img.setAttributeNode = src;
-        li.appendChild(img);
-        li.className = "img-slide";
-        imgWrapper.appendChild(li);
+        // Making Img-slider
+        product.detail.url_list.forEach((slide) => {
+            const imgWrapper = document.querySelector(".img-wrapper");
+            const imgPagers = document.querySelector(".img-pagers");
+    
+            const li = document.createElement("li"); 
+            const img = document.createElement("img");
+            const  pager = document.createElement("div");
+            const src = document.createAttribute("src");
+    
+            src.value = data.detail.url_list;
+    
+            img.setAttributeNode(src);
+            li.appendChild(img);
+            li.className = "img-slide";
+            imgWrapper.appendChild(li);
+    
+    
+            pager.classList.add("img-pager", "pager");
+            imgPagers.appendChild(pager);
+        });
 
+        //Making Heading-category
+        product.page_path.forEach((path, index) => {
 
-        pager.classList.add("img-pager", "pager");
-        imgPagers.appendChild(pager);
-    })
+            const headingCategory = document.querySelector(".heading-category");
+            const span = document.createElement("span");
+
+            if(index !== product.page_path.length - 1) {
+                span.innerHTML = `${product.page_path[index]}<i class="fa-solid fa-chevron-right"></i>`;
+            } else {
+                span.innerHTML = product.page_path[index];
+            };
+            headingCategory.appendChild(span);
+        });
+
+        //Making Heading-name
+        const headingName = document.querySelector(".heading-name");
+        headingName.innerText = product.title;
+
+        //Making Heading-price
+        const headingPrice = document.querySelector(".heading-price");
+        headingPrice.innerText = product.price;
+
+        //Making Heading-timeinfo
+        const headingTimeinfo = document.querySelector(".heading-timeinfo");
+        headingTimeinfo.innerText = product.sub_data;
+
+        // Making Desc-conditions
+        const conditionsBox = document.querySelector(".desc-conditions");
+
+        conditionsBox.innerHTM = 
+        `
+        <div class="conditions-box">
+            <span>제품상태</span>
+            <span>${product.status}</span>
+        </div>
+        <div class="conditions-box">
+            <span>거래방식</span>
+            <span>${product.transaction_method}</span>
+        </div>
+        <div class="conditions-box">
+            <span>배송비</span>
+            <span>${product.delivery_charged}</span>
+        </div>
+        <div class="conditions-box">
+            <span>안전거래</span>
+            <span>${product.safe_transaction}</span>
+        </div>
+        `;
+
+        // Making Map-area
+        const mapArea = document.querySelector(".desc-map");
+        mapArea.innerText = `- ${product.point}`;
+    }
+        
 });
 
 // Img-slider
