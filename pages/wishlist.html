@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- custom css & js -->
+    <link rel="stylesheet" href="../styles/wishlist.css" />
+    <script defer src="../scripts/wishlist.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="wishlist">
+      <div class="inner">
+        <article class="wishlist-tabs">
+          <div class="wishlist-tab">
+            <a
+              class="wishlistTabButton active"
+              href="#"
+              data-tab-name="wish-items"
+            >
+              찜 <span class="wishlistTabCount wishItems">6</span>
+            </a>
+            <a
+              class="wishlistTabButton"
+              href="#"
+              data-tab-name="favorite-stores"
+            >
+              관심 상점 <span class="wishlistTabCount favoriteStores">5</span>
+            </a>
+            <a
+              class="wishlistTabButton"
+              href="#"
+              data-tab-name="favorite-brands"
+            >
+              관심 브랜드
+              <span class="wishlistTabCount favoriteBrands">3</span>
+            </a>
+            <span></span>
+          </div>
+        </article>
+        <article class="wishlistContent wish-items-content">
+          <div class="wish-items-content-upper">
+            <span class="wish-items-delete-selection">
+              <input type="checkbox" name="allSelection" id="allSelection" />
+              <button id="deleteSeletionButton">선택삭제</button>
+            </span>
+            <span class="wish-items-sorting-wrapper">
+              <ul class="sorting-group">
+                <li>
+                  <a href="#" class="active">최신순</a>
+                </li>
+                <li>|</li>
+                <li>
+                  <a href="#">인기순</a>
+                </li>
+                <li>|</li>
+                <li>
+                  <a href="#">저가순</a>
+                </li>
+                <li>|</li>
+                <li>
+                  <a href="#">고가순</a>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </article>
+        <article class="wishlistContent favorite-stores-content">
+          <h3>관심상점</h3>
+        </article>
+        <article class="wishlistContent favorite-brands-content">
+          <h3>관심브랜드</h3>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
