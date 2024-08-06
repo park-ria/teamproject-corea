@@ -34,7 +34,7 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
             imgPagers.appendChild(pager);
         });
 
-        //Making Heading-category
+        // Making Heading-category
         product.page_path.forEach((path, index) => {
 
             const headingCategory = document.querySelector(".heading-category");
@@ -48,17 +48,30 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
             headingCategory.appendChild(span);
         });
 
-        //Making Heading-name
+        // Making Heading-name
         const headingName = document.querySelector(".heading-name");
         headingName.innerText = product.title;
 
-        //Making Heading-price
+        // Making Heading-price
         const headingPrice = document.querySelector(".heading-price");
         headingPrice.innerText = product.price;
 
-        //Making Heading-timeinfo
+        // Making Heading-timeinfo
         const headingTimeinfo = document.querySelector(".heading-timeinfo");
         headingTimeinfo.innerText = product.sub_data;
+
+        // Making User-img
+        const userImg = document.querySelector(".user-img");
+        const img = document.createElement("img");
+        const src = document.createAttribute("src")
+
+        src.value = product.product_img_path;
+        img.setAttributeNode(src);
+        userImg.appendChild(img);
+
+        // Making User-id 
+        const userId = document.querySelector(".user-id");
+        userId.innerText = product.product_store;
 
         // Making Desc-conditions
         const conditionsBox = document.querySelector(".desc-conditions");
