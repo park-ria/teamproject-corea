@@ -207,9 +207,13 @@ body {
   height: 100%;
 }
 
-body * {
-  background: rgba($color: rgb(248, 187, 187), $alpha: 0.1);
-}
+// .wrapper {
+//   transform: none;
+// }
+
+// body * {
+//   background: rgba($color: rgb(248, 187, 187), $alpha: 0.1);
+// }
 
 // main-slide
 #main-slide {
@@ -512,6 +516,68 @@ body * {
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+  }
+}
+// safeserviceModal
+#safeserviceModal {
+  width: 80%;
+  // height: 80vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: map-get($color, bg-light-color);
+  padding: 100px 0 0;
+  border-radius: 30px;
+  overflow: hidden;
+  .modal-title {
+    margin-bottom: 50px;
+    padding: 0 50px;
+    h2 {
+      font: 400 2.4rem/1.2 "GmarketSansBold";
+      margin-bottom: 10px;
+    }
+    p {
+      color: map-get($color, bg-dark-gray);
+      font-size: 2rem;
+      margin: 5px 0;
+    }
+  }
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      .modal-img {
+        width: 50%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: map-get($color, bg-light-gray);
+        img {
+          height: 50%;
+        }
+      }
+      .modal-desc {
+        width: 50%;
+        padding: 0 50px;
+        h5 {
+          font: 700 2rem/1.2 "Noto Sans KR", sans-serif;
+          margin-bottom: 20px;
+        }
+        p {
+          font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+          em {
+            font-style: normal;
+            color: map-get($color, bg-main-color);
+          }
+        }
+      }
+      &.reverse {
+        flex-direction: row-reverse;
+        text-align: end;
       }
     }
   }

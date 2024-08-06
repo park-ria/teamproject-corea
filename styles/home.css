@@ -306,10 +306,6 @@ body {
   height: 100%;
 }
 
-body * {
-  background: rgba(248, 187, 187, 0.1);
-}
-
 #main-slide {
   display: flex;
   justify-content: center;
@@ -1032,4 +1028,63 @@ body * {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+#safeserviceModal {
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 100px 0 0;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#safeserviceModal .modal-title {
+  margin-bottom: 50px;
+  padding: 0 50px;
+}
+#safeserviceModal .modal-title h2 {
+  font: 400 2.4rem/1.2 "GmarketSansBold";
+  margin-bottom: 10px;
+}
+#safeserviceModal .modal-title p {
+  color: #6d6d6d;
+  font-size: 2rem;
+  margin: 5px 0;
+}
+#safeserviceModal ul li {
+  display: flex;
+  align-items: center;
+}
+#safeserviceModal ul li .modal-img {
+  width: 50%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #dcdcdc;
+}
+#safeserviceModal ul li .modal-img img {
+  height: 50%;
+}
+#safeserviceModal ul li .modal-desc {
+  width: 50%;
+  padding: 0 50px;
+}
+#safeserviceModal ul li .modal-desc h5 {
+  font: 700 2rem/1.2 "Noto Sans KR", sans-serif;
+  margin-bottom: 20px;
+}
+#safeserviceModal ul li .modal-desc p {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+}
+#safeserviceModal ul li .modal-desc p em {
+  font-style: normal;
+  color: #0dcc5a;
+}
+#safeserviceModal ul li.reverse {
+  flex-direction: row-reverse;
+  text-align: end;
 }
