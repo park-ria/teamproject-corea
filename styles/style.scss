@@ -6,6 +6,8 @@
   top: 0;
   left: 0;
   width: 100%;
+  background: map-get($color, bg-light-color);
+
 
   #banner.ban {
     height: 33px;
@@ -251,4 +253,8 @@
   :root {
     font-size: 8px;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 897290cad58edaf08e0e0bf1372b99d1e74dccb3

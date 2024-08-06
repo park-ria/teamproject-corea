@@ -1,10 +1,289 @@
 @import "./style.scss", "./common.scss";
 
-// 본인 페이지에만 들어가는 변수입니다.
+// $home-color: (
+//   badge-best: linear-gradient(to bottom, #a2dcff, #0095ee),
+//   badge-new: #fff,
+// );
 
-//본인 페이지에 꼭 넣어야돼요!
+// font
+@font-face {
+  font-family: "JalnanGothic";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// mix-in
+@mixin badgeText {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "yg-jalnan";
+  letter-spacing: 0;
+  color: map-get($color, bg-light-color);
+  text-shadow: 0 0 1px map-get($color, main-font-color);
+}
+
+@mixin badgeType {
+  position: absolute;
+  top: 10%;
+  right: -3%;
+  width: 46px;
+  height: 26px;
+  &.badge-best {
+    background: url("../images/badge-best.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "인기";
+    }
+  }
+  &.badge-new {
+    background: url("../images/badge-new.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "신규";
+    }
+  }
+  &.badge-auction {
+    background: url("../images/badge-auction.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "경매";
+    }
+  }
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
+}
+
+body * {
+  border: 1px solid rgba($color: #f00, $alpha: 0.1);
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.view-more {
+  a {
+    font-size: 1.2rem;
+    color: map-get($color, bg-dark-gray);
+  }
+}
+.desc-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.desc-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.desc-price {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.desc-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+// main-slide
+#main-slide {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  .mainSlideWrapper {
+    width: 3860px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    a {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      display: flex;
+      align-items: flex-end;
+      background: url("../images/main-slide02.png") center/cover no-repeat;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000, $alpha: 0.1);
+        backdrop-filter: blur(10px);
+      }
+      &.active::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        backdrop-filter: blur(0);
+      }
+      .main-slide-desc {
+        margin: 0 0 30px 30px;
+        color: map-get($color, bg-light-color);
+        h2 {
+          margin-bottom: 10px;
+          font: 400 3rem/1.4 "JalnanGothic";
+          letter-spacing: 0;
+        }
+        p {
+          font-size: 1.6rem;
+          i {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  .main-slide-arrows {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    margin-bottom: 10px;
+    // z-index: -1;
+    button {
+      position: absolute;
+      top: 50%;
+      width: 58px;
+      height: 58px;
+      transform: translateY(-50%);
+      background: rgba($color: #fff, $alpha: 0.6);
+      cursor: pointer;
+      &.mainSlidePrev {
+        left: 0;
+      }
+      &.mainSlideNext {
+        right: 0;
+      }
+      i {
+        font-size: 2.8rem;
+      }
+    }
+  }
+  .main-slide-btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    .mainSlidePager {
+      width: 180px;
+      height: 15px;
+      background: map-get($color, bg-light-gray);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      margin-right: 10px;
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% / 3);
+        height: 100%;
+        background: map-get($color, bar-linear-gradient);
+        transition: all 0.3s;
+      }
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid map-get($color, bg-light-gray);
+      cursor: pointer;
+      i {
+        font-size: 1.6rem;
+        color: map-get($color, bg-dark-gray);
+      }
+    }
+  }
+}
+
+// best-ranking
+#best-ranking {
+  padding: 100px 0;
+  .ranking-content {
+    .ranking-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .ranking-slide {
+      display: flex;
+      justify-content: space-between;
+      li {
+        width: 241px;
+        height: 386px;
+        position: relative;
+        a {
+          .ranking-img {
+            width: 241px;
+            height: 236px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: url("../images/best-ranking01.png") center/cover
+              no-repeat;
+          }
+          .ranking-desc {
+            padding: 10px 14px;
+          }
+        }
+        .badge {
+          @include badgeType;
+        }
+      }
+    }
+  }
+}
+
+// auction
+#auction {
+  padding: 100px 0;
+  .auction-banner {
+    width: 100%;
+    height: 400px;
+    background: url("../images/main-auction-banner.png") center/cover no-repeat;
+    position: relative;
+    .auction-banner-desc {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: "JalnanGothic";
+      letter-spacing: 0;
+      h2 {
+        color: map-get($color, bg-light-color);
+        font-size: 6rem;
+        // text-shadow: 0 0 4px #0051b1, 0 0 6px #0051b1, 0 0 8px #0051b1;
+        -webkit-text-stroke: 1px #0051b1;
+        b {
+          color: #fce44a;
+        }
+      }
+    }
+  }
 }
