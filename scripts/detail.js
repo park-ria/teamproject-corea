@@ -2,27 +2,41 @@ const JoonggoInfo = ("../db.json");
 
 fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
 
-    console.log(JoongoData.detail);
-    JoongoData.detail.forEach((data) => {
-        const imgWrapper = document.querySelector(".img-wrapper");
-        const imgPagers = document.querySelector(".img-pagers");
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const name = params.get("name");
 
-        // create Img-slider
-        const li = document.createElement("li"); 
-        const img = document.createElement("img");
-        const  pager = document.createElement("div");
-        const src = document.createAttribute("src");
+    const product = JoongoData.data.find((product) => 
+    product.category === category && product.name === name
+    )
+        
+    if(product) {
+        // making Img-slider
+        product.detail.url_list.forEach((slide) => {
+            const imgWrapper = document.querySelector(".img-wrapper");
+            const imgPagers = document.querySelector(".img-pagers");
+    
+            // create Img-slider
+            const li = document.createElement("li"); 
+            const img = document.createElement("img");
+            const  pager = document.createElement("div");
+            const src = document.createAttribute("src");
+    
+            src.value = data.detail.url_list;
+    
+            // img.setAttributeNode(src);
+            li.appendChild(img);
+            li.className = "img-slide";
+            imgWrapper.appendChild(li);
+    
+    
+            pager.classList.add("img-pager", "pager");
+            imgPagers.appendChild(pager);
 
-        src.value = data.detail.url_list;
-        img.setAttributeNode = src;
-        li.appendChild(img);
-        li.className = "img-slide";
-        imgWrapper.appendChild(li);
 
-
-        pager.classList.add("img-pager", "pager");
-        imgPagers.appendChild(pager);
-    })
+        });
+    }
+        
 });
 
 // Img-slider
