@@ -1,3 +1,30 @@
+const JoonggoInfo = ("../db.json");
+
+fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
+
+    console.log(JoongoData.detail);
+    JoongoData.detail.forEach((data) => {
+        const imgWrapper = document.querySelector(".img-wrapper");
+        const imgPagers = document.querySelector(".img-pagers");
+
+        // create Img-slider
+        const li = document.createElement("li"); 
+        const img = document.createElement("img");
+        const  pager = document.createElement("div");
+        const src = document.createAttribute("src");
+
+        src.value = data.detail.url_list;
+        img.setAttributeNode = src;
+        li.appendChild(img);
+        li.className = "img-slide";
+        imgWrapper.appendChild(li);
+
+
+        pager.classList.add("img-pager", "pager");
+        imgPagers.appendChild(pager);
+    })
+});
+
 // Img-slider
 let currentIndex = 0;
 
@@ -8,12 +35,8 @@ const moveSlide = (num) => {
     imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`
     currentIndex = num;
     pagerActive();
-    
-    pagers.forEach((pager) => {
-        pager.classList.remove("active");
-    });
-    pagers[currentIndex].classList.add("active");
 };
+
 
 const slideCount = document.querySelectorAll(".img-slide").length;
 
@@ -58,7 +81,9 @@ const pagerActive = () => {
             });
             this.classList.add("active");
         });
+        pager.classList.remove("active");
     });
+    pagers[currentIndex].classList.add("active");
 };
 
 
