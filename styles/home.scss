@@ -1,9 +1,8 @@
 @import "./style.scss", "./common.scss";
 
-// $home-color: (
-//   badge-best: linear-gradient(to bottom, #7BCEFF, #0095EE),
-//   badge-new: #fff,
-// );
+$home-color: (
+  bg-sub-color: #0095ee,
+);
 
 // font
 @font-face {
@@ -53,28 +52,30 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  height: 406px;
+  // overflow: hidden;
   .slideWrapper {
-    width: 100%;
+    position: absolute;
+    left: 0;
     display: flex;
-    justify-content: space-between;
-    overflow: hidden;
+    gap: 20px;
     li {
-      width: 241px;
-      display: flex;
       position: relative;
       a {
-        width: 100%;
-        height: 100%;
+        width: 240px;
+        height: 376px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .slide-img {
           width: 100%;
-          height: 236px;
+          height: 241px;
           border-radius: 10px;
           overflow: hidden;
-          margin-bottom: 15px;
           // background: url("../images/best-ranking01.png") center/cover no-repeat;
         }
         .slide-desc {
-          padding: 10px 14px;
+          padding: 0 14px 14px;
           .desc-title {
             font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
           }
@@ -82,6 +83,15 @@
             display: block;
             margin: 10px 0;
             font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+            .current {
+              font-size: 1.2rem;
+              letter-spacing: 0;
+              color: map-get($home-color, bg-sub-color);
+            }
+            .fixed {
+              font-size: 1.2rem;
+              text-decoration: line-through;
+            }
           }
           .desc-info {
             font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
@@ -93,40 +103,51 @@
       }
     }
   }
-  .slide-btns {
-    button {
-      position: absolute;
-      top: 27%;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: map-get($color, bg-light-color);
-      box-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.2);
-      i {
-        font-size: 2rem;
-        color: map-get($color, bg-dark-gray);
-      }
-      &.SlidePrev {
-        left: 0;
-        transform: translateX(-50%);
-      }
-      &.SlideNext {
-        right: 0;
-        transform: translateX(50%);
+}
+
+@mixin SlideBtns {
+  button {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: map-get($color, bg-light-color);
+    box-shadow: 0 5px 10px rgba($color: #000, $alpha: 0.3);
+    transition: all 0.3s;
+    i {
+      font-size: 2rem;
+      color: map-get($color, bg-dark-gray);
+    }
+    &.slidePrev {
+      left: 0;
+      transform: translateX(-50%);
+      &:hover {
+        transform: translate(-50%, 5%);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
       }
     }
-    .slide-pager {
-      display: flex;
-      gap: 8px;
-      span {
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
-        background: map-get($color, bg-light-gray);
-        &.active {
-          width: 40px;
-          background: map-get($color, bg-main-color);
-        }
+    &.slideNext {
+      right: 0;
+      transform: translateX(50%);
+      &:hover {
+        transform: translate(50%, 5%);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+  }
+  .slidePager {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background: map-get($color, bg-light-gray);
+      &.active {
+        width: 40px;
+        background: map-get($color, bg-main-color);
       }
     }
   }
@@ -135,7 +156,7 @@
 @mixin badgeText {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -179,7 +200,7 @@ body {
 }
 
 body * {
-  border: 1px solid rgba($color: #f00, $alpha: 0.1);
+  background: rgba($color: rgb(248, 187, 187), $alpha: 0.1);
 }
 
 // main-slide
@@ -192,14 +213,14 @@ body * {
     position: relative;
     height: 420px;
     .mainSlideWrapper {
-      width: 3860px;
+      // width: 3860px;
       display: flex;
       justify-content: center;
       gap: 10px;
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: calc(50% - 1280px / 2);
+      // transform: translateX(-50%);
       a {
         position: relative;
         width: 420px;
@@ -295,11 +316,18 @@ body * {
 #best-ranking {
   padding: 100px 0;
   .ranking-content {
+    position: relative;
     .ranking-heading {
       @include sectionHeading;
     }
     .ranking-slide {
       @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
+    .slide-btns {
+      @include SlideBtns;
     }
   }
 }
@@ -370,6 +398,21 @@ body * {
           object-fit: cover;
         }
       }
+    }
+  }
+  .auction-content {
+    position: relative;
+    .auction-heading {
+      @include sectionHeading;
+    }
+    .auction-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/auction01.png") center/cover no-repeat;
+      }
+    }
+    .slide-btns {
+      @include SlideBtns;
     }
   }
 }

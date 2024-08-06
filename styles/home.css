@@ -312,7 +312,7 @@ body {
 }
 
 body * {
-  border: 1px solid rgba(255, 0, 0, 0.1);
+  background: rgba(248, 187, 187, 0.1);
 }
 
 #main-slide {
@@ -326,14 +326,12 @@ body * {
   height: 420px;
 }
 #main-slide article .mainSlideWrapper {
-  width: 3860px;
   display: flex;
   justify-content: center;
   gap: 10px;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 640px);
 }
 #main-slide article .mainSlideWrapper a {
   position: relative;
@@ -425,6 +423,9 @@ body * {
 #best-ranking {
   padding: 100px 0;
 }
+#best-ranking .ranking-content {
+  position: relative;
+}
 #best-ranking .ranking-content .ranking-heading {
   display: flex;
   justify-content: space-between;
@@ -446,31 +447,32 @@ body * {
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  height: 406px;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper {
-  width: 100%;
+  position: absolute;
+  left: 0;
   display: flex;
-  justify-content: space-between;
-  overflow: hidden;
+  gap: 20px;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li {
-  width: 241px;
-  display: flex;
   position: relative;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a {
-  width: 100%;
-  height: 100%;
+  width: 240px;
+  height: 376px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-img {
   width: 100%;
-  height: 236px;
+  height: 241px;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 15px;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc {
-  padding: 10px 14px;
+  padding: 0 14px 14px;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
@@ -479,6 +481,15 @@ body * {
   display: block;
   margin: 10px 0;
   font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price .current {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #0095ee;
+}
+#best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price .fixed {
+  font-size: 1.2rem;
+  text-decoration: line-through;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-info {
   font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
@@ -496,7 +507,7 @@ body * {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -510,7 +521,7 @@ body * {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -524,7 +535,7 @@ body * {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -532,38 +543,51 @@ body * {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns button {
+#best-ranking .ranking-content .ranking-slide .slide-img {
+  background: url("../images/best-ranking01.png") center/cover no-repeat;
+}
+#best-ranking .ranking-content .slide-btns button {
   position: absolute;
-  top: 27%;
+  top: 35%;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns button i {
+#best-ranking .ranking-content .slide-btns button i {
   font-size: 2rem;
   color: #6d6d6d;
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns button.SlidePrev {
+#best-ranking .ranking-content .slide-btns button.slidePrev {
   left: 0;
   transform: translateX(-50%);
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns button.SlideNext {
+#best-ranking .ranking-content .slide-btns button.slidePrev:hover {
+  transform: translate(-50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#best-ranking .ranking-content .slide-btns button.slideNext {
   right: 0;
   transform: translateX(50%);
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager {
+#best-ranking .ranking-content .slide-btns button.slideNext:hover {
+  transform: translate(50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#best-ranking .ranking-content .slide-btns .slidePager {
   display: flex;
+  justify-content: center;
   gap: 8px;
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager span {
+#best-ranking .ranking-content .slide-btns .slidePager span {
   width: 10px;
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
 }
-#best-ranking .ranking-content .ranking-slide .slide-btns .slide-pager span.active {
+#best-ranking .ranking-content .slide-btns .slidePager span.active {
   width: 40px;
   background: #0dcc5a;
 }
@@ -621,4 +645,172 @@ body * {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+#auction .auction-content {
+  position: relative;
+}
+#auction .auction-content .auction-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#auction .auction-content .auction-heading .section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+#auction .auction-content .auction-heading .view-more a {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+#auction .auction-content .auction-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 406px;
+}
+#auction .auction-content .auction-slide .slideWrapper {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 20px;
+}
+#auction .auction-content .auction-slide .slideWrapper li {
+  position: relative;
+}
+#auction .auction-content .auction-slide .slideWrapper li a {
+  width: 240px;
+  height: 376px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-img {
+  width: 100%;
+  height: 241px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc {
+  padding: 0 14px 14px;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price {
+  display: block;
+  margin: 10px 0;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price .current {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #0095ee;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price .fixed {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+#auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge {
+  position: absolute;
+  top: 5%;
+  right: -3%;
+  width: 46px;
+  height: 26px;
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-best {
+  background: url("../images/badge-best.png") center/contain no-repeat;
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "인기";
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-new {
+  background: url("../images/badge-new.png") center/contain no-repeat;
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "신규";
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction {
+  background: url("../images/badge-auction.png") center/contain no-repeat;
+}
+#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "경매";
+}
+#auction .auction-content .auction-slide .slide-img {
+  background: url("../images/auction01.png") center/cover no-repeat;
+}
+#auction .auction-content .slide-btns button {
+  position: absolute;
+  top: 35%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+#auction .auction-content .slide-btns button i {
+  font-size: 2rem;
+  color: #6d6d6d;
+}
+#auction .auction-content .slide-btns button.slidePrev {
+  left: 0;
+  transform: translateX(-50%);
+}
+#auction .auction-content .slide-btns button.slidePrev:hover {
+  transform: translate(-50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#auction .auction-content .slide-btns button.slideNext {
+  right: 0;
+  transform: translateX(50%);
+}
+#auction .auction-content .slide-btns button.slideNext:hover {
+  transform: translate(50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#auction .auction-content .slide-btns .slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+#auction .auction-content .slide-btns .slidePager span {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #dcdcdc;
+}
+#auction .auction-content .slide-btns .slidePager span.active {
+  width: 40px;
+  background: #0dcc5a;
 }
