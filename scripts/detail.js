@@ -11,12 +11,12 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
     )
         
     if(product) {
-        // making Img-slider
+
+        // Making Img-slider
         product.detail.url_list.forEach((slide) => {
             const imgWrapper = document.querySelector(".img-wrapper");
             const imgPagers = document.querySelector(".img-pagers");
     
-            // create Img-slider
             const li = document.createElement("li"); 
             const img = document.createElement("img");
             const  pager = document.createElement("div");
@@ -24,7 +24,7 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
     
             src.value = data.detail.url_list;
     
-            // img.setAttributeNode(src);
+            img.setAttributeNode(src);
             li.appendChild(img);
             li.className = "img-slide";
             imgWrapper.appendChild(li);
@@ -32,9 +32,60 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
     
             pager.classList.add("img-pager", "pager");
             imgPagers.appendChild(pager);
-
-
         });
+
+        //Making Heading-category
+        product.page_path.forEach((path, index) => {
+
+            const headingCategory = document.querySelector(".heading-category");
+            const span = document.createElement("span");
+
+            if(index !== product.page_path.length - 1) {
+                span.innerHTML = `${product.page_path[index]}<i class="fa-solid fa-chevron-right"></i>`;
+            } else {
+                span.innerHTML = product.page_path[index];
+            };
+            headingCategory.appendChild(span);
+        });
+
+        //Making Heading-name
+        const headingName = document.querySelector(".heading-name");
+        headingName.innerText = product.title;
+
+        //Making Heading-price
+        const headingPrice = document.querySelector(".heading-price");
+        headingPrice.innerText = product.price;
+
+        //Making Heading-timeinfo
+        const headingTimeinfo = document.querySelector(".heading-timeinfo");
+        headingTimeinfo.innerText = product.sub_data;
+
+        // Making Desc-conditions
+        const conditionsBox = document.querySelector(".desc-conditions");
+
+        conditionsBox.innerHTM = 
+        `
+        <div class="conditions-box">
+            <span>제품상태</span>
+            <span>${product.status}</span>
+        </div>
+        <div class="conditions-box">
+            <span>거래방식</span>
+            <span>${product.transaction_method}</span>
+        </div>
+        <div class="conditions-box">
+            <span>배송비</span>
+            <span>${product.delivery_charged}</span>
+        </div>
+        <div class="conditions-box">
+            <span>안전거래</span>
+            <span>${product.safe_transaction}</span>
+        </div>
+        `;
+
+        // Making Map-area
+        const mapArea = document.querySelector(".desc-map");
+        mapArea.innerText = `- ${product.point}`;
     }
         
 });
