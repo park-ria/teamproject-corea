@@ -26,6 +26,13 @@ $home-color: (
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 // mix-in
 @mixin sectionHeading {
@@ -53,7 +60,7 @@ $home-color: (
   align-items: center;
   gap: 30px;
   height: 406px;
-  // overflow: hidden;
+  overflow: hidden;
   .slideWrapper {
     position: absolute;
     left: 0;
@@ -105,7 +112,7 @@ $home-color: (
   }
 }
 
-@mixin SlideBtns {
+@mixin slideBtns {
   button {
     position: absolute;
     top: 35%;
@@ -136,19 +143,20 @@ $home-color: (
       }
     }
   }
-  .slidePager {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    span {
-      width: 10px;
-      height: 10px;
-      border-radius: 10px;
-      background: map-get($color, bg-light-gray);
-      &.active {
-        width: 40px;
-        background: map-get($color, bg-main-color);
-      }
+}
+
+@mixin slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: map-get($color, bg-light-gray);
+    &.active {
+      width: 40px;
+      background: map-get($color, bg-main-color);
     }
   }
 }
@@ -167,7 +175,7 @@ $home-color: (
 @mixin badgeType {
   position: absolute;
   top: 5%;
-  right: -3%;
+  right: -2%;
   width: 46px;
   height: 26px;
   &.badge-best {
@@ -327,19 +335,22 @@ body * {
       }
     }
     .slide-btns {
-      @include SlideBtns;
+      @include slideBtns;
+      .slidePager {
+        @include slidePager;
+      }
     }
   }
 }
 
 // auction
 #auction {
-  padding: 100px 0;
+  padding-bottom: 100px;
   .auction-banner {
     width: 100%;
     height: 400px;
-    // background: url("../images/main-auction-banner.png") center/cover no-repeat;
     background: linear-gradient(to bottom, #7bceff, #0095ee);
+    margin-bottom: 30px;
     .banner-content {
       width: 100%;
       height: 100%;
@@ -412,7 +423,96 @@ body * {
       }
     }
     .slide-btns {
-      @include SlideBtns;
+      @include slideBtns;
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
+}
+
+// weekly-item
+
+// event
+#event {
+  padding: 50px 0;
+  .event-content {
+    .event-heading {
+      @include sectionHeading;
+      margin-bottom: 30px;
+    }
+    .event-slide {
+      ul {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 20px;
+        a {
+          display: inline-block;
+          width: 410px;
+          height: 155px;
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 10px;
+          background: url("../images/event-banner01.png") center/cover no-repeat;
+        }
+      }
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
+}
+
+// recommended
+#recommended {
+  padding: 50px 0 100px;
+  .recommended-content {
+    .recommended-heading {
+      @include sectionHeading;
+    }
+    .recommended-slide {
+      @include productSlide;
+    }
+    .slidePager {
+      @include slidePager;
+    }
+  }
+}
+
+// safe-service
+#safe-service {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(to right, #696a6c, #e1e2e4);
+  .safe-service-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .safe-service-desc {
+      color: map-get($color, bg-light-color);
+      h2 {
+        font-family: "GmarketSansBold";
+        font-size: 4.5rem;
+      }
+      span {
+        display: block;
+        font-size: 2rem;
+        margin: 20px 0 30px;
+      }
+      p {
+        font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+      }
+    }
+    .safe-service-banner {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 220px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }

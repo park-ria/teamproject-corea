@@ -22,20 +22,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -129,9 +121,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -305,6 +294,12 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body {
   width: 100%;
@@ -347,8 +342,7 @@ body * {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -448,6 +442,7 @@ body * {
   align-items: center;
   gap: 30px;
   height: 406px;
+  overflow: hidden;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper {
   position: absolute;
@@ -497,7 +492,7 @@ body * {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
   position: absolute;
   top: 5%;
-  right: -3%;
+  right: -2%;
   width: 46px;
   height: 26px;
 }
@@ -593,12 +588,13 @@ body * {
 }
 
 #auction {
-  padding: 100px 0;
+  padding-bottom: 100px;
 }
 #auction .auction-banner {
   width: 100%;
   height: 400px;
   background: linear-gradient(to bottom, #7bceff, #0095ee);
+  margin-bottom: 30px;
 }
 #auction .auction-banner .banner-content {
   width: 100%;
@@ -643,8 +639,7 @@ body * {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #auction .auction-content {
   position: relative;
@@ -671,6 +666,7 @@ body * {
   align-items: center;
   gap: 30px;
   height: 406px;
+  overflow: hidden;
 }
 #auction .auction-content .auction-slide .slideWrapper {
   position: absolute;
@@ -720,7 +716,7 @@ body * {
 #auction .auction-content .auction-slide .slideWrapper li .badge {
   position: absolute;
   top: 5%;
-  right: -3%;
+  right: -2%;
   width: 46px;
   height: 26px;
 }
@@ -813,4 +809,227 @@ body * {
 #auction .auction-content .slide-btns .slidePager span.active {
   width: 40px;
   background: #0dcc5a;
+}
+
+#event {
+  padding: 50px 0;
+}
+#event .event-content .event-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-bottom: 30px;
+}
+#event .event-content .event-heading .section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+#event .event-content .event-heading .view-more a {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+#event .event-content .event-slide ul {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+#event .event-content .event-slide ul a {
+  display: inline-block;
+  width: 410px;
+  height: 155px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: url("../images/event-banner01.png") center/cover no-repeat;
+}
+#event .event-content .event-slide .slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+#event .event-content .event-slide .slidePager span {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #dcdcdc;
+}
+#event .event-content .event-slide .slidePager span.active {
+  width: 40px;
+  background: #0dcc5a;
+}
+
+#recommended {
+  padding: 50px 0 100px;
+}
+#recommended .recommended-content .recommended-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#recommended .recommended-content .recommended-heading .section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+#recommended .recommended-content .recommended-heading .view-more a {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+#recommended .recommended-content .recommended-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 406px;
+  overflow: hidden;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 20px;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li {
+  position: relative;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a {
+  width: 240px;
+  height: 376px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-img {
+  width: 100%;
+  height: 241px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc {
+  padding: 0 14px 14px;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price {
+  display: block;
+  margin: 10px 0;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price .current {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #0095ee;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price .fixed {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge {
+  position: absolute;
+  top: 5%;
+  right: -2%;
+  width: 46px;
+  height: 26px;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best {
+  background: url("../images/badge-best.png") center/contain no-repeat;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "인기";
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new {
+  background: url("../images/badge-new.png") center/contain no-repeat;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "신규";
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction {
+  background: url("../images/badge-auction.png") center/contain no-repeat;
+}
+#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "경매";
+}
+#recommended .recommended-content .slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+#recommended .recommended-content .slidePager span {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #dcdcdc;
+}
+#recommended .recommended-content .slidePager span.active {
+  width: 40px;
+  background: #0dcc5a;
+}
+
+#safe-service {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(to right, #696a6c, #e1e2e4);
+}
+#safe-service .safe-service-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#safe-service .safe-service-content .safe-service-desc {
+  color: #fff;
+}
+#safe-service .safe-service-content .safe-service-desc h2 {
+  font-family: "GmarketSansBold";
+  font-size: 4.5rem;
+}
+#safe-service .safe-service-content .safe-service-desc span {
+  display: block;
+  font-size: 2rem;
+  margin: 20px 0 30px;
+}
+#safe-service .safe-service-content .safe-service-desc p {
+  font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+}
+#safe-service .safe-service-content .safe-service-banner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 220px;
+}
+#safe-service .safe-service-content .safe-service-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
