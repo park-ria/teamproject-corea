@@ -18,5 +18,6 @@ wishlistTabButton.forEach((btn) => {
       if (item !== target) item.style.display = "none";
     });
     target.style.display = "block";
+    //max-height + opacity + overflow:hidden
   });
 });

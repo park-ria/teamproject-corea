@@ -27,6 +27,7 @@ body {
       width: 200px;
       height: 50px;
       border: 1px solid map-get($color, bg-light-gray);
+      border-right: none;
       border-bottom: 1px solid map-get($color, main-font-color);
       font-size: map-get($fontSize, font-medium);
       line-height: 50px;
@@ -37,6 +38,7 @@ body {
       }
       &:nth-child(3) {
         border-radius: 0 8px 0 0;
+        border-right: 1px solid map-get($color, bg-light-gray);
       }
       &.active {
         background: map-get($color, bg-light-color);
@@ -97,6 +99,141 @@ body {
             &.active {
               font-weight: 600;
               color: map-get($color, main-font-color);
+            }
+          }
+        }
+      }
+    }
+  }
+  .wish-items-content-detail {
+    width: 100%;
+    .wishItemList {
+      li {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 1px solid map-get($color, bg-light-gray);
+        .wishItem {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          .wishItemImgWrapper {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            img {
+              width: inherit;
+              height: inherit;
+              object-fit: cover;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+            .wishHeart {
+              position: absolute;
+              top: 8px;
+              right: 8px;
+              .fa-solid {
+                color: crimson;
+                font-size: map-get($fontSize, font-medium);
+              }
+            }
+          }
+          .wishItemDescGroup {
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            .wishItemDesc {
+              height: 80px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .wishItemInfo {
+                width: 700px;
+                display: flex;
+                justify-content: space-between;
+                .wishItemTitleBox {
+                  width: 300px;
+                  height: 80px;
+                  .wishItemSellerName {
+                    font-size: map-get($fontSize, font-small);
+                    color: map-get($color, bg-dark-gray);
+                  }
+                  .wishItemName {
+                    margin-top: 10px;
+                    font-size: map-get($fontSize, font-medium);
+                    color: map-get($color, main-font-color);
+                  }
+                }
+                .wishItemPriceBox {
+                  display: flex;
+                  align-items: center;
+                  gap: 94px;
+                  .wishItemPrice {
+                    font-size: map-get($fontSize, font-extra-small);
+                    b {
+                      font-size: map-get($fontSize, font-large);
+                    }
+                  }
+                }
+                .wishItemShippingInfo {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 10px;
+                  font-size: map-get($fontSize, font-small);
+                }
+              }
+              .wishItemButtons {
+                a {
+                  display: inline-block;
+                  padding: 15px;
+                  margin-right: 10px;
+                  background: map-get($color, main-font-color);
+                  border-radius: 5px;
+                  color: map-get($color, bg-light-color);
+                  font-size: map-get($fontSize, font-medium);
+                  &.wishItemChatButton {
+                    background: map-get($color, bg-main-color);
+                  }
+                  &.wishItemProposalButton {
+                    display: none;
+                  }
+                }
+                .wishItemXButton {
+                  width: 24px;
+                  height: 24px;
+                  padding: 0;
+                  margin-right: 0;
+                  margin-left: 10px;
+                  text-align: center;
+                  line-height: 24px;
+                  background: transparent;
+                  .fa-xmark {
+                    color: map-get($color, bg-light-gray);
+                    font-size: map-get($fontSize, font-large);
+                  }
+                }
+              }
+            }
+            .wishItemLower {
+              display: flex;
+              gap: 10px;
+              font-size: map-get($fontSize, font-extra-small);
+              color: map-get($color, bg-dark-gray);
+              & > p {
+                width: 50px;
+              }
+              .wishItemCount {
+                display: flex;
+                gap: 10px;
+              }
             }
           }
         }

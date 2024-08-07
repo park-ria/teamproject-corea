@@ -397,6 +397,7 @@ body {
   width: 200px;
   height: 50px;
   border: 1px solid #dcdcdc;
+  border-right: none;
   border-bottom: 1px solid #111;
   font-size: 1.6rem;
   line-height: 50px;
@@ -408,6 +409,7 @@ body {
 }
 .wishlist-tabs .wishlist-tab .wishlistTabButton:nth-child(3) {
   border-radius: 0 8px 0 0;
+  border-right: 1px solid #dcdcdc;
 }
 .wishlist-tabs .wishlist-tab .wishlistTabButton.active {
   background: #fff;
@@ -469,4 +471,136 @@ body {
 .wishlistContent.wish-items-content .wish-items-sorting-wrapper .sorting-group li a.active {
   font-weight: 600;
   color: #111;
+}
+.wishlistContent .wish-items-content-detail {
+  width: 100%;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper img {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-solid {
+  color: crimson;
+  font-size: 1.6rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox {
+  width: 300px;
+  height: 80px;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+  font-size: 1.4rem;
+  color: #6d6d6d;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemName {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: #111;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox {
+  display: flex;
+  align-items: center;
+  gap: 94px;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPrice {
+  font-size: 1.2rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPrice b {
+  font-size: 1.8rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemShippingInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a {
+  display: inline-block;
+  padding: 15px;
+  margin-right: 10px;
+  background: #111;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
+  background: #0dcc5a;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemProposalButton {
+  display: none;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons .wishItemXButton {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin-right: 0;
+  margin-left: 10px;
+  text-align: center;
+  line-height: 24px;
+  background: transparent;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons .wishItemXButton .fa-xmark {
+  color: #dcdcdc;
+  font-size: 1.8rem;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower {
+  display: flex;
+  gap: 10px;
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower > p {
+  width: 50px;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower .wishItemCount {
+  display: flex;
+  gap: 10px;
 }
