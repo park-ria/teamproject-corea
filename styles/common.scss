@@ -5,7 +5,7 @@
 }
 
 // variables
-:root {
+html {
   font-size: 10px;
 }
 
@@ -13,6 +13,7 @@ $main-width: 1280px;
 
 $color: (
   bg-main-color: #0dcc5a,
+  bg-sub-color: #0095ee,
   bg-dark-color: #3a3a3a,
   bg-light-color: #fff,
   bg-dark-gray: #6d6d6d,

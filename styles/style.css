@@ -46,7 +46,7 @@ button {
   font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
 }
 
-:root {
+html {
   font-size: 10px;
 }
 
@@ -349,7 +349,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
 }
 @media screen and (max-width: 450px) {
-  :root {
+  html {
     font-size: 8px;
   }
 }
