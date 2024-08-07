@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- kakao map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed955883bdeb93c8aa0f484b6ecbd506"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/09d57ad258.js" crossorigin="anonymous"></script>
+    <!-- custom css & js -->
+    <script defer src="../scripts/detail.js"></script>
+    <link rel="stylesheet" href="../styles/detail.css">
+</head>
+<body>
+    <div id="bottom-memu">
+        <div class="inner">
+            <div class="bottom-mmenu">
+                <a href="#none" class="heart-btn"><i class="fa-regular fa-heart"></i></a>
+                <div class="btns">
+                    <a href="#none" class="chat-btn">채팅하기</a>
+                    <a href="#none" class="trade-btn">안전거래</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main -->
+    <section id="main">
+        <div class="inner">
+            <div class="main">
+                <div class="main-img">
+                    <div class="img-slider">
+                        <ul class="img-wrapper">
+                            <!-- <li class="img-slide">
+                                <img src="../images/detail/main-img.png" alt="main-img">
+                            </li>
+                            <li class="img-slide">
+                                <img src="../images/detail/main-img.png" alt="main-img">
+                            </li>
+                            <li class="img-slide">
+                                <img src="../images/detail/main-img.png" alt="main-img">
+                            </li>
+                            <li class="img-slide">
+                                <img src="../images/detail/main-img.png" alt="main-img">
+                            </li>
+                            <li class="img-slide">
+                                <img src="../images/detail/main-img.png" alt="main-img">
+                            </li> -->
+                        </ul>
+                        <div class="img-pagers">
+                            <!-- <div class="img-pager pager active"></div>
+                            <div class="img-pager pager"></div>
+                            <div class="img-pager pager"></div>
+                            <div class="img-pager pager"></div>
+                            <div class="img-pager pager"></div> -->
+                        </div>
+                        <div class="img-prev btn"><i class="fa-solid fa-chevron-left"></i></div>
+                        <div class="img-next btn"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                    <div class="img-icons">
+                        <a href="#none"><span>찜한 목록</span><i class="fa-regular fa-heart"></i></a>
+                        <a href="#none"><span>팔로우</span><i class="fa-solid fa-plus"></i></a>
+                        <a href="#none"><span>공유</span><i class="fa-regular fa-share-from-square"></i></a>
+                        <a href="#none"><span>신고</span><i class="fa-regular fa-bell"></i></a>
+                    </div>
+                </div>
+                <div class="main-desc">
+                    <div class="desc-heading">
+                        <div class="heading-category">
+                            <!-- <span>홈</span><i class="fa-solid fa-chevron-right"></i> <span>수입명품</span><i class="fa-solid fa-chevron-right"></i><span>기타 수입명품</span> -->
+                        </div>
+                        <span class="heading-name">
+                            <!-- 루이비통 나일론 트랙수트 -->
+                        </span>
+                        <h3 class="heading-price">
+                            <!-- 200,000원 -->
+                        </h3>
+                        <div class="heading-timeinfo">
+                            <!-- <span>1 일전</span>
+                            <span>조회 7</span>
+                            <span>관심 7</span> -->
+                        </div>
+                    </div>
+                    <div class="desc-user">
+                        <div class="user-img">
+                            <img src="../images/detail/user-img.png" alt="user">
+                        </div>
+                        <div class="user-info">
+                            <h3 class="user-id">코드 분쇄기</h3>
+                            <div class="user-detail">
+                                <div class="detail-barBox">
+                                    <span>거래순환률</span>
+                                    <div class="detail-bar"></div>
+                                </div>
+                                <div class="detail-value">
+                                    <span>27</span>
+                                    /100
+                                    <img src="../images/detail/circulater.png" alt="circulater">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc-conditions">
+                        <!-- <div class="conditions-box">
+                            <span>제품상태</span>
+                            <span>새상품</span>
+                        </div>
+                        <div class="conditions-box">
+                            <span>거래방식</span>
+                            <span>직거래,택배</span>
+                        </div>
+                        <div class="conditions-box">
+                            <span>배송비</span>
+                            <span>별도</span>
+                        </div>
+                        <div class="conditions-box">
+                            <span>안전거래</span>
+                            <span>미사용</span>
+                        </div> -->
+                    </div>
+                    <div class="desc-map">
+                        <h3 class="map-title">거래희망지역</h3>
+                        <span class="map-area"></span>
+                        <div id="map"></div>
+                    </div>
+                    <div class="desc-btns">
+                        <button class="chat">채팅하기</button>
+                        <button class="trade">거래하기</button>
+                    </div>
+                    <div class="desc-itemInfo">
+                        <div class="itemIfo-heading">
+                            <h3>상품 정보</h3>
+                            <hr class="bar">
+                        </div>
+                        <div class="itemIfo-detail">
+                            <p>
+                                안에 반팔티입고 걸치기 좋은 가벼운 자켓이구요
+                                안에 메쉬로 되어있어서 통기성도 좋습니다
+                                모델 사진처럼 입으면 봄에 예쁘고 시선가긴 합니다ㅎ
+                                1~2번입고 드라이클리닝하고 넣어놔서 새거나 다름없습니다
+                                사이즈 m이고 100~105정도 될거같습니다
+                            </p>
+                            <h6>연관 검색어</h6>
+                            <div class="relatedWords">
+                                <span>#루이비통</span>
+                                <span>#트랙수트</span>
+                                <span>#메쉬</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc-store">
+                        <div class="store-heading">
+                            <h3>가게 정보<i class="fa-solid fa-chevron-right"></i></h3>
+                            <hr class="bar">
+                        </div>
+                        <div class="store-info">
+                            <div class="info-img">
+                                <img src="../images/detail/user-img.png" alt="storeimage">
+                            </div>
+                            <div class="info-box">
+                                <div class="box-name">
+                                    <span class="name">코드분쇄기</span>
+                                    <div class="certi">
+                                        <span>본인인증 완료 </span>
+                                        <div class="certi-check"><i class="fa-regular fa-square-check"></i></div>
+                                    </div>
+                                </div>
+                                <a href="#none">팔로우 +</a>
+                            </div>
+                        </div>
+                        <div class="store-btns">
+                            <ul>
+                                <li class="active"><a href="#none">판매중</a></li>
+                                <li><a href="#none">판매완료</a></li>
+                                <li><a href="#none">거래후기</a></li>
+                            </ul>
+                        </div>
+                        <div class="store-contents">
+                            <div class="selling-items">
+                                <div class="item-info">
+                                <div class="item-img">
+                                    <img src="../images/detail/store-selling1.jpg" alt="selling1">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">폴로 블랙와치 카라티</span>
+                                    <span class="item-price">50,000원</span>
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div class="item-img">
+                                    <img src="../images/detail/store-selling2.jpg" alt="selling2">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">지방시 맨투맨</span>
+                                    <span class="item-price">150,000원</span>
+                                </div>
+                            </div>
+                            <div class="item-info">
+                                <div class="item-img">
+                                    <img src="../images/detail/store-selling3.jpg" alt="selling3">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">지방시 맨투맨</span>
+                                    <span class="item-price">150,000원</span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="selling-items">
+                                <div class="item-info">
+                                    <div class="item-img">
+                                        <img src="../images/detail/store-selling1.jpg" alt="selling1">
+                                    </div>
+                                    <div class="item-detail">
+                                        <span class="item-name">폴로 블랙와치 카라티</span>
+                                        <span class="item-price">50,000원</span>
+                                    </div>
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-img">
+                                        <img src="../images/detail/store-selling2.jpg" alt="selling2">
+                                    </div>
+                                    <div class="item-detail">
+                                        <span class="item-name">지방시 맨투맨</span>
+                                        <span class="item-price">150,000원</span>
+                                    </div>
+                                </div>
+                                <div class="item-info">
+                                    <div class="item-img">
+                                        <img src="../images/detail/store-selling3.jpg" alt="selling3">
+                                    </div>
+                                    <div class="item-detail">
+                                        <span class="item-name">지방시 맨투맨</span>
+                                        <span class="item-price">150,000원</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="event">
+        <div class="inner">
+            <div class="event">
+                <article class="event-heading">
+                    <h3>이벤트 / 제휴할인 안내</h3>
+                    <a href="#none">
+                        <span>전체보기</span>
+                        <i class="fa-solid fa-chevron-right"></i> 
+                    </a>
+                </article>
+                <article class="event-slider">
+                    <ul class="slide-wrapper">
+                        <li class="slide">
+                            <div>
+                                <img src="../images/detail/event-slide1.jpg" alt="event1">
+                            </div>
+                            <div>
+                                <img src="../images/detail/event-slide2.jpg" alt="event2">
+                            </div>
+                            <div>
+                                <img src="../images/detail/event-slide3.jpg" alt="event3">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="../images/detail/event-slide1.jpg" alt="event1">
+                            </div>
+                            <div>
+                                <img src="../images/detail/event-slide2.jpg" alt="event2">
+                            </div>
+                            <div>
+                                <img src="../images/detail/event-slide3.jpg" alt="event3">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pagers">
+                        <span class="pager active"></span>
+                        <span class="pager"></span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="recommendation">
+        <div class="inner">
+            <div class="recommendation">
+                <article class="related">
+                    <h3>연관상품</h3>
+                    <div class="related-slider">
+                        <ul class="related-wrapper">
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related1.jpg" alt="related1">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">루이비통 인따르시아 레인보우 반팔</span>
+                                    <span class="item-price">785,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related2.jpg" alt="related2">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">루비통 종이가방과 케이스</span>
+                                    <span class="item-price">45,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related3.jpg" alt="related3">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">루이비통 자물쇠</span>
+                                    <span class="item-price">20,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related4.jpg" alt="related4">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">쇼핑백***에르메스, 루이비통</span>
+                                    <span class="item-price">6,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related5.jpg" alt="related5">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">정품 루이비통 종이가방</span>
+                                    <span class="item-price">25,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/related6.jpg" alt="related6">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">루이비통 조예뮐릿 지갑</span>
+                                    <span class="item-price">198,000원</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="related-prev btn"><i class="fa-solid fa-chevron-left"></i></div>
+                        <div class="related-next btn"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </article>
+                <article class="recent">
+                    <h3>최근 찾아본 상품</h3>
+                    <div class="recent-slider">
+                        <ul class="recent-wrapper">
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent1.jpg" alt="recent1">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">이세이미야케 바오바오 토트백</span>
+                                    <span class="item-price">520,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent2.jpg" alt="recent2">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">고야드 지갑</span>
+                                    <span class="item-price">480,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent3.jpg" alt="recent3">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name"> 코치 크로스백</span>
+                                    <span class="item-price">220,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent4.jpg" alt="recent4">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">구찌 미니백</span>
+                                    <span class="item-price">770,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent5.jpg" alt="recent5">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">발렌티노 아코디언 지갑</span>
+                                    <span class="item-price">320,000원</span>
+                                </div>
+                            </li>
+                            <li class="item-slide">
+                                <div class="item-img">
+                                    <img src="../images/detail/recent6.jpg" alt="recent6">
+                                </div>
+                                <div class="item-detail">
+                                    <span class="item-name">샤넬 크로스백</span>
+                                    <span class="item-price">5,200,000원</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="recent-prev btn"><i class="fa-solid fa-chevron-left"></i></div>
+                        <div class="recent-next btn"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </article>
+            </div>
+        </div>    
+    </section>
+</body>
+</html>
