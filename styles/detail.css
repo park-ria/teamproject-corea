@@ -533,7 +533,7 @@ body {
   background: #0dcc5a;
   transition: all 0.3s;
 }
-#main .inner .main .main-desc .desc-store .store-btns ul li.active::before {
+#main .inner .main .main-desc .desc-store .store-btns ul li:hover::before {
   width: 100%;
 }
 #main .inner .main .main-desc .desc-store .store-contents {
@@ -545,6 +545,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  opacity: 0;
+}
+#main .inner .main .main-desc .desc-store .store-contents > div.active {
+  opacity: 1;
 }
 #main .inner .main .main-desc .desc-store .store-contents .selling-items {
   width: 100%;

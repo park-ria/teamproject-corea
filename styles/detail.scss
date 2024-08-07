@@ -609,7 +609,7 @@ body {
                                     transition: all 0.3s;
                                 }
 
-                                &.active::before {
+                                &:hover::before {
                                     width: 100%;
                                 }
                             }
@@ -625,6 +625,11 @@ body {
                             top: 0;
                             left: 0;
                             width: 100%;
+                            opacity: 0;
+                            
+                            &.active {
+                                opacity: 1;
+                            }
                         }
 
                         .selling-items {
