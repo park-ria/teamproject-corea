@@ -15,9 +15,11 @@ wishlistTabButton.forEach((btn) => {
 
     // 탭 내용 초기화 및 가상클래스 적용
     wishlistContent.forEach((item) => {
-      if (item !== target) item.style.display = "none";
+      if (item !== target) item.classList.remove("active");
+      //item.style.display = "none";
     });
-    target.style.display = "block";
+    //target.style.display = "block";
+    target.classList.add("active");
     //max-height + opacity + overflow:hidden
   });
 });

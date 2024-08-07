@@ -62,11 +62,17 @@ body {
 
 /* wishlist content */
 .wishlistContent {
-  display: none;
+  //display: none;
   width: 100%;
+  max-height: 50px;
   margin-top: 30px;
+  opacity: 0;
+  transition: all 0.3s;
+  &.active {
+    opacity: 1;
+  }
   &.wish-items-content {
-    display: block;
+    //display: block;
     .wish-items-content-upper {
       display: flex;
       justify-content: space-between;
@@ -165,20 +171,37 @@ body {
                     color: map-get($color, bg-dark-gray);
                   }
                   .wishItemName {
+                    width: 100%;
                     margin-top: 10px;
+                    line-height: 25px;
                     font-size: map-get($fontSize, font-medium);
                     color: map-get($color, main-font-color);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
+                    -webkit-box-orient: vertical;
                   }
                 }
                 .wishItemPriceBox {
                   display: flex;
                   align-items: center;
-                  gap: 94px;
+                  gap: 10px;
                   .wishItemPrice {
                     font-size: map-get($fontSize, font-extra-small);
                     b {
                       font-size: map-get($fontSize, font-large);
                     }
+                  }
+                  .pay {
+                    width: 35px;
+                    height: 20px;
+                    background: map-get($color, bg-main-color);
+                    border-radius: 3px;
+                    font-size: map-get($fontSize, font-small);
+                    color: map-get($color, bg-light-color);
+                    letter-spacing: normal;
+                    text-align: center;
                   }
                 }
                 .wishItemShippingInfo {
@@ -193,8 +216,8 @@ body {
               .wishItemButtons {
                 a {
                   display: inline-block;
-                  padding: 15px;
-                  margin-right: 10px;
+                  padding: 15px 20px;
+                  margin-right: 20px;
                   background: map-get($color, main-font-color);
                   border-radius: 5px;
                   color: map-get($color, bg-light-color);
@@ -205,19 +228,19 @@ body {
                   &.wishItemProposalButton {
                     display: none;
                   }
-                }
-                .wishItemXButton {
-                  width: 24px;
-                  height: 24px;
-                  padding: 0;
-                  margin-right: 0;
-                  margin-left: 10px;
-                  text-align: center;
-                  line-height: 24px;
-                  background: transparent;
-                  .fa-xmark {
-                    color: map-get($color, bg-light-gray);
-                    font-size: map-get($fontSize, font-large);
+                  &.wishItemXButton {
+                    width: 24px;
+                    height: 24px;
+                    padding: 0;
+                    margin-right: 0;
+                    margin-left: 10px;
+                    text-align: center;
+                    line-height: 24px;
+                    background: transparent;
+                    .fa-xmark {
+                      color: map-get($color, bg-light-gray);
+                      font-size: map-get($fontSize, font-large);
+                    }
                   }
                 }
               }
