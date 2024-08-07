@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -121,6 +129,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -338,7 +349,8 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -635,7 +647,8 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #auction .auction-content {
   position: relative;
@@ -976,6 +989,9 @@ body {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
+#recommended .recommended-content .recommended-slide .slide-img {
+  background: url("../images/best-ranking01.png") center/cover no-repeat;
+}
 #recommended .recommended-content .slidePager {
   display: flex;
   justify-content: center;
@@ -1027,64 +1043,80 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #safeserviceModal {
-  width: 80%;
   position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#safeserviceModal .modal-frame {
+  width: 80%;
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 100px 0 0;
-  border-radius: 30px;
-  overflow: hidden;
 }
-#safeserviceModal .modal-title {
-  margin-bottom: 50px;
+#safeserviceModal .modal-frame .modal-title {
+  margin: 100px 0;
   padding: 0 50px;
 }
-#safeserviceModal .modal-title h2 {
+#safeserviceModal .modal-frame .modal-title h2 {
   font: 400 2.4rem/1.2 "GmarketSansBold";
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
-#safeserviceModal .modal-title p {
+#safeserviceModal .modal-frame .modal-title p {
   color: #6d6d6d;
   font-size: 2rem;
-  margin: 5px 0;
+  margin: 8px 0;
 }
-#safeserviceModal ul li {
+#safeserviceModal .modal-frame ul li {
   display: flex;
   align-items: center;
 }
-#safeserviceModal ul li .modal-img {
+#safeserviceModal .modal-frame ul li .modal-img {
   width: 50%;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #dcdcdc;
+  background: #f3f3f3;
 }
-#safeserviceModal ul li .modal-img img {
+#safeserviceModal .modal-frame ul li .modal-img img {
   height: 50%;
 }
-#safeserviceModal ul li .modal-desc {
+#safeserviceModal .modal-frame ul li .modal-desc {
   width: 50%;
   padding: 0 50px;
 }
-#safeserviceModal ul li .modal-desc h5 {
+#safeserviceModal .modal-frame ul li .modal-desc h5 {
   font: 700 2rem/1.2 "Noto Sans KR", sans-serif;
   margin-bottom: 20px;
 }
-#safeserviceModal ul li .modal-desc p {
+#safeserviceModal .modal-frame ul li .modal-desc p {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
 }
-#safeserviceModal ul li .modal-desc p em {
+#safeserviceModal .modal-frame ul li .modal-desc p em {
   font-style: normal;
   color: #0dcc5a;
 }
-#safeserviceModal ul li.reverse {
+#safeserviceModal .modal-frame ul li.reverse {
   flex-direction: row-reverse;
   text-align: end;
+}
+#safeserviceModal .dark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
 }
