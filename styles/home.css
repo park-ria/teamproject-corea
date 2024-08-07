@@ -22,20 +22,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -129,9 +121,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -393,6 +382,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 #main-slide {
@@ -427,8 +417,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -725,8 +714,7 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #auction .auction-content {
   position: relative;
@@ -1125,80 +1113,96 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #safeserviceModal {
   position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
   left: 0;
-}
-#safeserviceModal .modal-frame {
-  width: 80%;
+  bottom: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 80vh;
   background: #fff;
-  border-radius: 30px;
-  overflow: hidden;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.6);
+  border-radius: 50px 50px 0 0;
+  opacity: 0;
+  transition: all 0.5s;
 }
-#safeserviceModal .modal-frame .modal-title {
-  margin: 100px 0;
-  padding: 0 50px;
-}
-#safeserviceModal .modal-frame .modal-title h2 {
-  font: 400 2.4rem/1.2 "GmarketSansBold";
-  margin-bottom: 20px;
-}
-#safeserviceModal .modal-frame .modal-title p {
-  color: #6d6d6d;
-  font-size: 2rem;
-  margin: 8px 0;
-}
-#safeserviceModal .modal-frame ul li {
-  display: flex;
-  align-items: center;
-}
-#safeserviceModal .modal-frame ul li .modal-img {
-  width: 50%;
-  height: 200px;
+#safeserviceModal .modal-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f3f3f3;
+  height: 100%;
 }
-#safeserviceModal .modal-frame ul li .modal-img img {
-  height: 50%;
-}
-#safeserviceModal .modal-frame ul li .modal-desc {
+#safeserviceModal .modal-content .modal-title {
   width: 50%;
-  padding: 0 50px;
+  height: 100%;
+  text-align: end;
+  background: #eee;
+  padding-top: 230px;
+  padding-right: 100px;
+  position: relative;
 }
-#safeserviceModal .modal-frame ul li .modal-desc h5 {
-  font: 700 2rem/1.2 "Noto Sans KR", sans-serif;
-  margin-bottom: 20px;
+#safeserviceModal .modal-content .modal-title h2 {
+  font: 400 3rem/1.2 "GmarketSansBold";
+  margin-bottom: 30px;
 }
-#safeserviceModal .modal-frame ul li .modal-desc p {
-  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+#safeserviceModal .modal-content .modal-title p {
+  color: #6d6d6d;
+  font-size: 2rem;
+  margin: 10px 0;
 }
-#safeserviceModal .modal-frame ul li .modal-desc p em {
+#safeserviceModal .modal-content ul {
+  width: 50%;
+  padding-left: 50px;
+}
+#safeserviceModal .modal-content ul li {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+#safeserviceModal .modal-content ul li .modal-img {
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#safeserviceModal .modal-content ul li .modal-img img {
+  width: 100%;
+  height: 100%;
+}
+#safeserviceModal .modal-content ul li .modal-desc {
+  width: 300px;
+}
+#safeserviceModal .modal-content ul li .modal-desc h5 {
+  font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
+  margin-bottom: 10px;
+}
+#safeserviceModal .modal-content ul li .modal-desc p {
+  font: 400 1.4rem/1.4 "Noto Sans KR", sans-serif;
+}
+#safeserviceModal .modal-content ul li .modal-desc p em {
   font-style: normal;
   color: #0dcc5a;
 }
-#safeserviceModal .modal-frame ul li.reverse {
-  flex-direction: row-reverse;
-  text-align: end;
+#safeserviceModal .modal-content ul li:nth-child(2) .modal-img img {
+  width: 80%;
 }
-#safeserviceModal .dark {
-  width: 100%;
-  height: 100%;
+#safeserviceModal .closeBtn {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: -1;
+  top: 5%;
+  right: 4%;
+  padding: 5px;
+  color: #6d6d6d;
+  font-size: 2.6rem;
+  transition: all 0.3s;
+}
+#safeserviceModal .closeBtn:hover {
+  color: #111;
+}
+#safeserviceModal.active {
+  transform: translateY(0);
+  opacity: 1;
 }
