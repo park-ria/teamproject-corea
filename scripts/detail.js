@@ -130,7 +130,7 @@ fetch(JoonggoInfo).then((response) => response.json()).then((JoongoData) => {
         const itemInfos = document.querySelectorAll(".item-info");
         console.log(itemInfos)
         itemInfos.forEach((item) => {
-            item.innerHTML = ``
+            item.innerHTML = ``;
         });
     }
 });
@@ -222,7 +222,6 @@ marker.setMap(map);
 
 // store-btns 클릭시 store-contents opacity 변화
 const storeBtns = document.querySelectorAll(".store-btns ul li");
-
 const storeContents = document.querySelectorAll(".store-contents > div");
 
 storeBtns.forEach((btn, index) => {
