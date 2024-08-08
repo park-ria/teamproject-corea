@@ -8,12 +8,10 @@ fetch(joonggoInfo)
     const id = params.get("id");
 
     const product = joongoData.data.find((product) => product.id === id);
-    //console.log(product);
 
     if (product) {
       // Making Img-slider
-      product.detail.url_list.forEach((slide) => {
-        console.log(slide);
+      product.detail.url_list.forEach((slide, index) => {
         const imgWrapper = document.querySelector(".img-wrapper");
         const imgPagers = document.querySelector(".img-pagers");
 
@@ -30,18 +28,86 @@ fetch(joonggoInfo)
         imgWrapper.appendChild(li);
 
         pager.classList.add("img-pager", "pager");
+        if (index === 0) {
+          pager.classList.add("active");
+        }
         imgPagers.appendChild(pager);
       });
 
+      // // Img-slider
+      let currentIndex = 0;
+
+      const moveSlide = (num) => {
+        const imgWrapper = document.querySelector(".img-wrapper");
+        const slideWidth = document.querySelector(".img-slide").offsetWidth;
+
+        imgWrapper.style.width = slideWidth * slideCount;
+        console.log((imgWrapper.style.width = slideWidth * slideCount));
+
+        imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`;
+        currentIndex = num;
+        pagerActive();
+      };
+
+      const slideCount = document.querySelectorAll(".img-slide").length;
+
+      const moveLeft = () => {
+        let prevIndex = (currentIndex - 1) % slideCount;
+        if (currentIndex === 0) prevIndex = slideCount - 1;
+        moveSlide(prevIndex);
+      };
+
+      const moveRight = () => {
+        let nextIndex = (currentIndex + 1) % slideCount;
+        if (currentIndex === slideCount - 1) nextIndex = 0;
+        moveSlide(nextIndex);
+      };
+
+      const imgPrev = document.querySelector(".img-prev");
+      const imgNext = document.querySelector(".img-next");
+
+      imgPrev.addEventListener("click", moveLeft);
+      imgNext.addEventListener("click", moveRight);
+
+      const pagers = document.querySelectorAll(".img-pager");
+
+      const clickPagers = () => {
+        pagers.forEach((pager, index) => {
+          pager.addEventListener("click", () => {
+            moveSlide(index);
+            pagerActive();
+          });
+        });
+      };
+
+      clickPagers();
+
+      const pagerActive = () => {
+        pagers.forEach((pager) => {
+          pager.addEventListener("click", function () {
+            pagers.forEach((sibling) => {
+              if (sibling !== pager) {
+                sibling.classList.remove("active");
+              }
+            });
+            this.classList.add("active");
+          });
+          pager.classList.remove("active");
+        });
+        pagers[currentIndex].classList.add("active");
+      };
+
+      
       // Making Heading-category
-      product.page_path.forEach((path, index) => {
+      product.detail.page_path.forEach((path, index) => {
+
         const headingCategory = document.querySelector(".heading-category");
         const span = document.createElement("span");
 
-        if (index !== product.page_path.length - 1) {
-          span.innerHTML = `${product.page_path[index]}<i class="fa-solid fa-chevron-right"></i>`;
+        if (index !== product.detail.page_path.length - 1) {
+          span.innerHTML = `${product.detail.page_path[index]} <i class="fa-solid fa-chevron-right"></i>`;
         } else {
-          span.innerHTML = product.page_path[index];
+          span.innerHTML = product.detail.page_path[index];
         }
         headingCategory.appendChild(span);
       });
@@ -56,51 +122,51 @@ fetch(joonggoInfo)
 
       // Making Heading-timeinfo
       const headingTimeinfo = document.querySelector(".heading-timeinfo");
-      headingTimeinfo.innerText = product.sub_data;
+      headingTimeinfo.innerText = product.detail.sub_data;
 
       // Making User-img
       const userImg = document.querySelector(".user-img");
       const userImgTag = document.createElement("img");
       const userImgSrc = document.createAttribute("src");
 
-      userImgSrc.value = product.product_img_path;
+      userImgSrc.value = `../${product.detail.product_img_path}`;
       userImgTag.setAttributeNode(userImgSrc);
       userImg.appendChild(userImgTag);
 
       // Making User-id
       const userId = document.querySelector(".user-id");
-      userId.innerText = product.product_store;
+      userId.innerText = product.detail.product_store;
 
       // Making Desc-conditions
       const conditionsBox = document.querySelector(".desc-conditions");
 
-      conditionsBox.innerHTM = `
+      conditionsBox.innerHTML = `
         <div class="conditions-box">
             <span>제품상태</span>
-            <span>${product.status}</span>
+            <span>${product.detail.status}</span>
         </div>
         <div class="conditions-box">
             <span>거래방식</span>
-            <span>${product.transaction_method}</span>
+            <span>${product.detail.transaction_method}</span>
         </div>
         <div class="conditions-box">
             <span>배송비</span>
-            <span>${product.delivery_charged}</span>
+            <span>${product.detail.delivery_charged}</span>
         </div>
         <div class="conditions-box">
             <span>안전거래</span>
-            <span>${product.safe_transaction}</span>
+            <span>${product.detail.safe_transaction}</span>
         </div>
         `;
 
       // Making Map-area
       const mapArea = document.querySelector(".desc-map");
-      mapArea.innerText = `- ${product.point}`;
+      mapArea.innerText = `- ${product.detail.point}`;
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
       itemIfoDetail.innerHTML = `
-        <p>${product.product_description}</p>
+        <p>${product.detail.product_description}</p>
         <h6>연관 검색어</h6>
         <div class="relatedWords">
             <span>#루이비통</span>
@@ -114,81 +180,21 @@ fetch(joonggoInfo)
       const storeImgTag = document.createElement("img");
       const storeImgSrc = document.createAttribute("src");
 
-      storeImgSrc.value = product.product_img_path;
+      storeImgSrc.value = `../${product.detail.product_img_path}`;
       storeImgTag.setAttributeNode(storeImgSrc);
       storeImg.appendChild(storeImgTag);
 
       // Making Store-name
       const storeName = document.querySelector(".name");
-      storeName.innerText = product.product_store;
+      storeName.innerText = product.detail.product_store;
 
       // Making Item-info
       const itemInfos = document.querySelectorAll(".item-info");
-      console.log(itemInfos);
       itemInfos.forEach((item) => {
         item.innerHTML = ``;
       });
     }
   });
-// Img-slider
-let currentIndex = 0;
-
-const moveSlide = (num) => {
-  const imgWrapper = document.querySelector(".img-wrapper");
-  const slideWidth = document.querySelector(".img-slide").offsetWidth;
-
-  imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`;
-  currentIndex = num;
-  pagerActive();
-};
-
-const slideCount = document.querySelectorAll(".img-slide").length;
-
-const moveLeft = () => {
-  let prevIndex = (currentIndex - 1) % slideCount;
-  if (currentIndex === 0) prevIndex = slideCount - 1;
-  moveSlide(prevIndex);
-};
-
-const moveRight = () => {
-  let nextIndex = (currentIndex + 1) % slideCount;
-  if (currentIndex === slideCount - 1) nextIndex = 0;
-  moveSlide(nextIndex);
-};
-
-const imgPrev = document.querySelector(".img-prev");
-const imgNext = document.querySelector(".img-next");
-
-imgPrev.addEventListener("click", moveLeft);
-imgNext.addEventListener("click", moveRight);
-
-const pagers = document.querySelectorAll(".img-pager");
-
-const clickPagers = () => {
-  pagers.forEach((pager, index) => {
-    pager.addEventListener("click", () => {
-      moveSlide(index);
-      pagerActive();
-    });
-  });
-};
-
-clickPagers();
-
-const pagerActive = () => {
-  pagers.forEach((pager) => {
-    pager.addEventListener("click", function () {
-      pagers.forEach((sibling) => {
-        if (sibling !== pager) {
-          sibling.classList.remove("active");
-        }
-      });
-      this.classList.add("active");
-    });
-    pager.classList.remove("active");
-  });
-  pagers[currentIndex].classList.add("active");
-};
 
 // Map API
 const mapContainer = document.getElementById("map"), // 지도를 표시할 div
