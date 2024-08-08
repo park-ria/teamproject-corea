@@ -1,5 +1,8 @@
 @import "./common.scss";
 
+// variables
+$home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
+
 // font
 @font-face {
   font-family: "JalnanGothic";
@@ -79,26 +82,7 @@
         }
         .slide-desc {
           padding: 0 14px 14px;
-          .desc-title {
-            font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
-          }
-          .desc-price {
-            display: block;
-            margin: 10px 0;
-            font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-            .current {
-              font-size: 1.2rem;
-              letter-spacing: 0;
-              color: map-get($color, bg-sub-color);
-            }
-            .fixed {
-              font-size: 1.2rem;
-              text-decoration: line-through;
-            }
-          }
-          .desc-info {
-            font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-          }
+          @include productDesc;
         }
       }
       .badge {
@@ -150,10 +134,38 @@
     height: 10px;
     border-radius: 10px;
     background: map-get($color, bg-light-gray);
-    &.active {
-      width: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
       background: map-get($color, bg-main-color);
     }
+    &.active {
+      width: 40px;
+      background: $home-gradient;
+    }
+  }
+}
+
+@mixin productDesc {
+  .desc-title {
+    font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  }
+  .desc-price {
+    display: block;
+    margin: 10px 0 20px;
+    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+    .current {
+      font-size: 1.2rem;
+      letter-spacing: 0;
+      color: map-get($color, bg-sub-color);
+    }
+    .fixed {
+      font-size: 1.2rem;
+      text-decoration: line-through;
+    }
+  }
+  .desc-info {
+    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
   }
 }
 
@@ -174,6 +186,7 @@
   right: -2%;
   width: 46px;
   height: 26px;
+  cursor: pointer;
   &.badge-best {
     background: url("../images/badge-best.png") center/contain no-repeat;
     &::before {
@@ -248,7 +261,7 @@ body {
         }
         .main-slide-desc {
           margin: 0 0 30px 30px;
-          // color: map-get($color, bg-light-color);
+          color: map-get($color, bg-light-color);
           h2 {
             margin-bottom: 10px;
             font: 400 3rem/1.4 "JalnanGothic";
@@ -280,6 +293,8 @@ body {
         }
         i {
           font-size: 2.8rem;
+        }
+        &:hover {
         }
       }
     }
@@ -440,10 +455,47 @@ body {
     .weekly-item-tabmenu {
       .tab-menu {
         display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
         li {
           padding: 8px 10px;
+          background: map-get($color, bg-light-color);
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 10px;
+          font-size: 1.6rem;
+          cursor: pointer;
+          transition: all 0.3s;
           &.active {
+            color: map-get($color, bg-light-color);
             background: map-get($color, bg-main-color);
+            border: 1px solid transparent;
+          }
+        }
+      }
+      .tab-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        li {
+          width: calc((100% - 70px) / 3);
+          height: 150px;
+          a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            .tab-content-img {
+              width: 150px;
+              height: 100%;
+              border-radius: 10px;
+              background: url("../images/tab-content01.png") center/cover
+                no-repeat;
+            }
+            .tab-content-desc {
+              width: calc(100% - 150px);
+              padding: 10px 10px 10px 20px;
+              @include productDesc;
+            }
           }
         }
       }
@@ -484,6 +536,7 @@ body {
 #recommended {
   padding: 50px 0 100px;
   .recommended-content {
+    position: relative;
     .recommended-heading {
       @include sectionHeading;
     }
@@ -493,8 +546,11 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    .slidePager {
-      @include slidePager;
+    .slide-btns {
+      @include slideBtns;
+      .slidePager {
+        @include slidePager;
+      }
     }
   }
 }
@@ -504,6 +560,7 @@ body {
   width: 100%;
   height: 400px;
   background: linear-gradient(to right, #696a6c, #e1e2e4);
+  cursor: pointer;
   .safe-service-content {
     height: 100%;
     display: flex;
@@ -549,6 +606,7 @@ body {
   background: map-get($color, bg-light-color);
   box-shadow: 0 0 200px rgba($color: #000, $alpha: 0.6);
   border-radius: 50px 50px 0 0;
+  overflow: hidden;
   opacity: 0;
   transition: all 0.5s;
   .modal-content {
@@ -557,59 +615,67 @@ body {
     align-items: center;
     // gap: 100px;
     height: 100%;
-    .modal-title {
+    & > div {
       width: 50%;
       height: 100%;
-      text-align: end;
+      display: flex;
+      align-items: center;
+      padding: 100px;
+    }
+    .modal-left {
+      justify-content: end;
       background: #eee;
-      padding-top: 230px;
-      padding-right: 100px;
-      position: relative;
-      h2 {
-        font: 400 3rem/1.2 "GmarketSansBold";
-        margin-bottom: 30px;
-      }
-      p {
-        color: map-get($color, bg-dark-gray);
-        font-size: 2rem;
-        margin: 10px 0;
+      .modal-title {
+        text-align: end;
+        position: relative;
+        h2 {
+          font: 400 3rem/1.2 "GmarketSansBold";
+          margin-bottom: 30px;
+        }
+        p {
+          color: map-get($color, bg-dark-gray);
+          font-size: 2rem;
+          margin: 10px 0;
+        }
       }
     }
-    ul {
-      width: 50%;
-      padding-left: 50px;
-      li {
-        height: 160px;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        .modal-img {
-          width: 160px;
+    .modal-right {
+      justify-content: flex-start;
+      background: map-get($color, bg-light-color);
+      ul {
+        li {
+          height: 160px;
           display: flex;
-          justify-content: center;
           align-items: center;
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .modal-desc {
-          width: 300px;
-          h5 {
-            font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
-            margin-bottom: 10px;
-          }
-          p {
-            font: 400 1.4rem/1.4 "Noto Sans KR", sans-serif;
-            em {
-              font-style: normal;
-              color: map-get($color, bg-main-color);
+          gap: 30px;
+          .modal-img {
+            width: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 100%;
+              height: 100%;
             }
           }
-        }
-        &:nth-child(2) {
-          .modal-img img {
-            width: 80%;
+          .modal-desc {
+            width: 300px;
+            h5 {
+              font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
+              margin-bottom: 10px;
+            }
+            p {
+              font: 400 1.4rem/1.4 "Noto Sans KR", sans-serif;
+              em {
+                font-style: normal;
+                color: map-get($color, bg-main-color);
+              }
+            }
+          }
+          &:nth-child(2) {
+            .modal-img img {
+              width: 80%;
+            }
           }
         }
       }

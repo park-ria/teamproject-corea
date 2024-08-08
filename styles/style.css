@@ -416,6 +416,7 @@ body {
 }
 #main-slide article .mainSlideWrapper a .main-slide-desc {
   margin: 0 0 30px 30px;
+  color: #fff;
 }
 #main-slide article .mainSlideWrapper a .main-slide-desc h2 {
   margin-bottom: 10px;
@@ -540,7 +541,7 @@ body {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price .current {
@@ -561,6 +562,7 @@ body {
   right: -2%;
   width: 46px;
   height: 26px;
+  cursor: pointer;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best {
   background: url("../images/badge-best.png") center/contain no-repeat;
@@ -647,10 +649,15 @@ body {
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#best-ranking .ranking-content .slide-btns .slidePager span:hover {
+  background: #0dcc5a;
 }
 #best-ranking .ranking-content .slide-btns .slidePager span.active {
   width: 40px;
-  background: #0dcc5a;
+  background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
 #auction {
@@ -765,7 +772,7 @@ body {
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price .current {
@@ -786,6 +793,7 @@ body {
   right: -2%;
   width: 46px;
   height: 26px;
+  cursor: pointer;
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best {
   background: url("../images/badge-best.png") center/contain no-repeat;
@@ -872,10 +880,15 @@ body {
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#auction .auction-content .slide-btns .slidePager span:hover {
+  background: #0dcc5a;
 }
 #auction .auction-content .slide-btns .slidePager span.active {
   width: 40px;
-  background: #0dcc5a;
+  background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
 #weekly-item .weekly-item-content {
@@ -898,12 +911,67 @@ body {
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu {
   display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li {
   padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li.active {
+  color: #fff;
   background: #0dcc5a;
+  border: 1px solid transparent;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
+  width: calc((100% - 70px) / 3);
+  height: 150px;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+  width: 150px;
+  height: 100%;
+  border-radius: 10px;
+  background: url("../images/tab-content01.png") center/cover no-repeat;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
+  width: calc(100% - 150px);
+  padding: 10px 10px 10px 20px;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
+  display: block;
+  margin: 10px 0 20px;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price .current {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #0095ee;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price .fixed {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
 }
 
 #event {
@@ -948,14 +1016,22 @@ body {
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#event .event-content .event-slide .slidePager span:hover {
+  background: #0dcc5a;
 }
 #event .event-content .event-slide .slidePager span.active {
   width: 40px;
-  background: #0dcc5a;
+  background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
 #recommended {
   padding: 50px 0 100px;
+}
+#recommended .recommended-content {
+  position: relative;
 }
 #recommended .recommended-content .recommended-heading {
   display: flex;
@@ -1011,7 +1087,7 @@ body {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price .current {
@@ -1032,6 +1108,7 @@ body {
   right: -2%;
   width: 46px;
   height: 26px;
+  cursor: pointer;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best {
   background: url("../images/badge-best.png") center/contain no-repeat;
@@ -1078,26 +1155,62 @@ body {
 #recommended .recommended-content .recommended-slide .slide-img {
   background: url("../images/best-ranking01.png") center/cover no-repeat;
 }
-#recommended .recommended-content .slidePager {
+#recommended .recommended-content .slide-btns button {
+  position: absolute;
+  top: 35%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+#recommended .recommended-content .slide-btns button i {
+  font-size: 2rem;
+  color: #6d6d6d;
+}
+#recommended .recommended-content .slide-btns button.slidePrev {
+  left: 0;
+  transform: translateX(-50%);
+}
+#recommended .recommended-content .slide-btns button.slidePrev:hover {
+  transform: translate(-50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#recommended .recommended-content .slide-btns button.slideNext {
+  right: 0;
+  transform: translateX(50%);
+}
+#recommended .recommended-content .slide-btns button.slideNext:hover {
+  transform: translate(50%, 5%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+#recommended .recommended-content .slide-btns .slidePager {
   display: flex;
   justify-content: center;
   gap: 8px;
 }
-#recommended .recommended-content .slidePager span {
+#recommended .recommended-content .slide-btns .slidePager span {
   width: 10px;
   height: 10px;
   border-radius: 10px;
   background: #dcdcdc;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-#recommended .recommended-content .slidePager span.active {
-  width: 40px;
+#recommended .recommended-content .slide-btns .slidePager span:hover {
   background: #0dcc5a;
+}
+#recommended .recommended-content .slide-btns .slidePager span.active {
+  width: 40px;
+  background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
 #safe-service {
   width: 100%;
   height: 400px;
   background: linear-gradient(to right, #696a6c, #e1e2e4);
+  cursor: pointer;
 }
 #safe-service .safe-service-content {
   height: 100%;
@@ -1143,6 +1256,7 @@ body {
   background: #fff;
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.6);
   border-radius: 50px 50px 0 0;
+  overflow: hidden;
   opacity: 0;
   transition: all 0.5s;
 }
@@ -1152,59 +1266,65 @@ body {
   align-items: center;
   height: 100%;
 }
-#safeserviceModal .modal-content .modal-title {
+#safeserviceModal .modal-content > div {
   width: 50%;
   height: 100%;
-  text-align: end;
+  display: flex;
+  align-items: center;
+  padding: 100px;
+}
+#safeserviceModal .modal-content .modal-left {
+  justify-content: end;
   background: #eee;
-  padding-top: 230px;
-  padding-right: 100px;
+}
+#safeserviceModal .modal-content .modal-left .modal-title {
+  text-align: end;
   position: relative;
 }
-#safeserviceModal .modal-content .modal-title h2 {
+#safeserviceModal .modal-content .modal-left .modal-title h2 {
   font: 400 3rem/1.2 "GmarketSansBold";
   margin-bottom: 30px;
 }
-#safeserviceModal .modal-content .modal-title p {
+#safeserviceModal .modal-content .modal-left .modal-title p {
   color: #6d6d6d;
   font-size: 2rem;
   margin: 10px 0;
 }
-#safeserviceModal .modal-content ul {
-  width: 50%;
-  padding-left: 50px;
+#safeserviceModal .modal-content .modal-right {
+  justify-content: flex-start;
+  background: #fff;
 }
-#safeserviceModal .modal-content ul li {
+#safeserviceModal .modal-content .modal-right ul li {
   height: 160px;
   display: flex;
   align-items: center;
   gap: 30px;
 }
-#safeserviceModal .modal-content ul li .modal-img {
+#safeserviceModal .modal-content .modal-right ul li .modal-img {
   width: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#safeserviceModal .modal-content ul li .modal-img img {
+#safeserviceModal .modal-content .modal-right ul li .modal-img img {
   width: 100%;
   height: 100%;
 }
-#safeserviceModal .modal-content ul li .modal-desc {
+#safeserviceModal .modal-content .modal-right ul li .modal-desc {
   width: 300px;
 }
-#safeserviceModal .modal-content ul li .modal-desc h5 {
+#safeserviceModal .modal-content .modal-right ul li .modal-desc h5 {
   font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
   margin-bottom: 10px;
 }
-#safeserviceModal .modal-content ul li .modal-desc p {
+#safeserviceModal .modal-content .modal-right ul li .modal-desc p {
   font: 400 1.4rem/1.4 "Noto Sans KR", sans-serif;
 }
-#safeserviceModal .modal-content ul li .modal-desc p em {
+#safeserviceModal .modal-content .modal-right ul li .modal-desc p em {
   font-style: normal;
   color: #0dcc5a;
 }
-#safeserviceModal .modal-content ul li:nth-child(2) .modal-img img {
+#safeserviceModal .modal-content .modal-right ul li:nth-child(2) .modal-img img {
   width: 80%;
 }
 #safeserviceModal .closeBtn {
