@@ -1,0 +1,1093 @@
+@import "./reset.scss", "./common.scss";
+
+/* variables */
+$color: (
+    bg-main-color: #0dcc5a,
+    bg-dark-color: #3a3a3a,
+    bg-light-color: #fff,
+    bg-dark-gray: #6d6d6d,
+    bg-light-gray: #DCDCDC,
+    main-font-color: #111,
+    bar-linear-gradient: linear-gradient(to right, #0DCB5B, #08B980, #02A1AF),
+);
+
+
+
+/* mixin */
+@mixin list-a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@mixin item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .item-img {
+        cursor: pointer;
+    }
+
+    .item-detail {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .item-name {
+            width: 180px;
+            font-size: map-get($map: $fontSize, $key: font-samll);
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .item-price {
+            font-size: map-get($map: $fontSize, $key: font-large);
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+@mixin slider-btns {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba($color: #000000, $alpha: 0.2);
+    transition: all 0.3s;
+    color: map-get($map: $color, $key: bg-light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: map-get($map: $fontSize, $key: font-large);
+    cursor: pointer;
+    
+    &:first-child {
+        left: 0;
+    }
+    &:last-child {
+        right: 0;
+    }
+    &:hover {
+        background: rgba($color: #fff, $alpha: 0.7);
+        color: map-get($map: $color, $key: main-font-color);
+    }
+}
+@mixin pagers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .pager {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: map-get($map: $color, $key: bg-light-gray);
+        cursor: pointer;
+
+        &.active {
+            background-color: map-get($map: $color, $key: bg-main-color);
+        }
+    }
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+// bottom-mmenu
+#bottom-memu {
+    width: 100%;
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    .bottom-mmenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// main
+#main {
+    padding-top: 80px;
+    margin-bottom: 200px;
+
+    .inner {
+        
+        .main {
+            display: flex;
+            gap: 80px;
+
+            .main-img {
+                position: sticky;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 702px;
+
+                .img-slider {
+                    width: 100%;
+                    position: relative;
+                    margin-bottom: 30px;
+                    border-radius: 16px;
+                    overflow: hidden;
+
+                    .img-wrapper {
+                        width: 500%;
+                        display: flex;
+                        transition: all 0.3s;
+                        
+                        .img-slide {
+                            width: 100%;
+                            height: 100%;
+                            cursor: pointer;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+
+                    .img-pagers {
+                        position: absolute;
+                        bottom: 4%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        @include pagers;
+                    }
+
+                    .btn {
+                        @include slider-btns;
+                    }
+
+
+                }
+
+                .img-icons{
+                    display: flex;
+                    justify-content: flex-start;
+                    width: 100%;
+                    padding: 15px 0;
+                    border: 1px solid map-get($map: $color, $key: bg-light-gray);
+                    border-radius: 5px;
+                    font-size: map-get($map: $fontSize, $key: font-medium);
+                    line-height: 18px;
+                    font-weight: 500;
+                    
+                    a {
+                        width: 25%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-right: 1px solid map-get($map: $color, $key: bg-light-gray) ;
+
+                        i {
+                            color: map-get($map: $color, $key: bg-dark-gray);
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                        }
+
+                        &:last-child {
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+
+            .main-desc {
+                width: 100%;
+                .desc-heading { 
+                    margin-bottom: 30px;
+
+                    .heading-category {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        font-size: map-get($map: $fontSize, $key: font-samll);
+                        margin-bottom: 15px;
+                        
+                        i {
+                            color: map-get($map: $color, $key: bg-dark-gray);
+                        }
+
+                        span:nth-child(1),
+                        span:nth-child(2) {
+                            color: map-get($map: $color, $key: bg-dark-gray);
+                        }
+                    }
+                    
+                    .heading-name {
+                        display: inline-block;
+                        font-size: 24px;
+                        line-height: 24px;
+                        margin-bottom: 15px;
+                    }
+
+                    .heading-price {
+                        font-size: 26px;
+                        line-height: 26px;
+                        margin-bottom: 15px;
+                    }
+
+                    .heading-timeinfo {
+                        
+                        span {
+                            font-size: map-get($map: $fontSize, $key: font-extra-small);
+                            margin-right: 5px;
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 50%;
+                                right: -5px;
+                                width: 2px;
+                                height: 2px;
+                                background: #111111;
+                                border-radius: 50%;
+                            }
+                        }
+
+                    }
+                }
+
+                .desc-user {
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: 40px;
+
+                    .user-img {
+                        width: 60px;
+                        height: 60px;
+                        cursor: pointer;
+                    }
+
+                    .user-info {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 100%;
+                        
+                        .user-id {
+                            font-size: map-get($map: $fontSize, $key: font-large);
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+
+                        .user-detail {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+
+                            .detail-barBox{
+                                width: 100%;
+                                display: flex;
+                                align-items: end;
+                                gap: 10px;
+
+                                span {
+                                    font-size: 10px;
+                                    color: map-get($map: $color, $key: bg-dark-gray);
+                                }
+    
+                                .detail-bar {
+                                    width: 80%;
+                                    height: 15px;
+                                    background: #F1F4F6;
+                                    border-radius: 20px;
+                                    overflow: hidden;
+                                    position: relative;
+
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 27%;
+                                        height: 100%;
+                                        background: map-get($map: $color, $key: bar-linear-gradient);
+                                        border-radius: 20px;
+                                    }
+                                }
+                            }
+
+                            .detail-value {
+                                display: flex;
+                                align-items: end;
+                                font-size: map-get($map: $fontSize, $key: font-extra-small);
+                                color: map-get($map: $color, $key: bg-dark-gray);
+
+                                span {
+                                    font-size: 22px;
+                                    line-height: 22px;
+                                    color: map-get($map: $color, $key:  main-font-color);
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .desc-conditions {
+                    display: flex;
+                    align-items: center;
+                    height: 90px;
+                    border: 1px solid map-get($map: $color, $key: bg-light-gray);
+                    border-radius: 4px;
+                    margin-bottom: 35px;
+
+                    .conditions-box {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        width: 25%;
+                        text-align: center;
+                        position: relative;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            transform: translateY(-50%);
+                            width: 1px;
+                            height: 20px;
+                            background: map-get($map: $color, $key: bg-light-gray);
+                        }
+
+                        &:last-child::before {
+                            display: none;
+                        }
+
+                        span:nth-child(1) {
+                            font-size: 11px;
+                            color: map-get($map: $color, $key: bg-dark-gray);
+                        }
+                        span:nth-child(2) {
+                            font-size: map-get($map: $fontSize, $key: font-samll);
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .desc-map {
+                    margin-bottom: 40px;
+                    .map-title {
+                        font-size: map-get($map: $fontSize, $key: font-samll);
+                        color: map-get($map: $color, $key: bg-dark-gray);
+                        font-weight: normal;
+                        position: relative;
+                        padding-left: 15px;
+                        margin-bottom: 10px;
+    
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: 2px;
+                            transform: translateY(-50%);
+                            width: 4px;
+                            height: 4px;
+                            background: map-get($map: $color, $key: bg-dark-gray);
+                            border-radius: 50%;
+    
+                        }
+                    }
+                    .map-area {
+                        display: inline-block;
+                        color: map-get($map: $color, $key: bg-dark-gray);
+                        margin-bottom: 30px;
+
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                    #map {
+                        width: 100%;
+                        height: 140px;
+                        border: 1px solid map-get($map: $color, $key: bg-light-gray);
+                    }
+                }
+    
+                .desc-btns {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 100px;
+    
+                    button {
+                        width: 48.5%;
+                        // width: 290px;
+                        height: 60px;
+                        border-radius: 5px;
+                        border: 0;
+                        font-size: map-get($map: $fontSize, $key: font-extra-large);
+                        color: map-get($map: $color, $key: bg-light-color);
+                        box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+                        cursor: pointer;
+    
+                        &.chat {
+                            background: map-get($map: $color, $key: bg-main-color);
+                        }
+                        &.trade {
+                            background: map-get($map: $color, $key: bg-light-gray);
+                        }
+                    }
+                }
+
+                .desc-itemInfo {
+                    margin-bottom: 85px;
+
+                    .itemIfo-heading {
+                        margin-bottom: 40px;
+
+                        h3 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                            margin-bottom: 32px;
+                        }
+                        .bar {
+                            border: none;
+                            border-bottom: 1px solid map-get($map: $color, $key: bg-light-gray);
+                        }
+                    }
+
+                    .itemIfo-detail {
+
+                        p {
+                            width: 50%;
+                            font-size: map-get($map: $fontSize, $key: font-samll);
+                            text-align: justify;
+                            line-height: 59px;
+                            margin-bottom: 45px;
+                        }
+
+                        h6 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-small);
+                            color: map-get($map: $color, $key: bg-dark-gray);
+                            font-weight: 300;
+                            margin-bottom: 10px;
+                        }
+                        .relatedWords {
+                            display: flex;
+                            gap: 25px;
+
+                            span {
+                                padding: 10px 15px;
+                                background: map-get($map: $color, $key: bg-light-gray);
+                                font-size: 11px;
+                                font-weight: 500;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .desc-store {
+                    margin-bottom: 20px;
+                    
+                    .store-heading{
+                        margin-bottom: 30px; 
+
+                        h3 {
+                            font-size: map-get($map: $fontSize, $key: font-extra-large);
+                            margin-bottom: 32px;
+    
+                            i {
+                                font-size: map-get($map: $fontSize, $key: font-large);
+                                margin-left: 20px;
+                            }
+                        }
+                        .bar {
+                            border: none;
+                            border-bottom: 1px solid map-get($map: $color, $key: bg-light-gray);
+                        }
+                    }
+
+                    .store-info {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        margin-bottom: 40px;
+
+                        .info-img {
+                            width:  60px;
+                            height: 60px;
+                            cursor: pointer;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .info-box {
+                            height: 60px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+
+                            .box-name {
+                                display: flex;
+                                align-items: center;
+                                gap: 25px;
+                                cursor: pointer;
+
+                                .name {
+                                    font-size: map-get($map: $fontSize, $key: font-large);
+                                    font-weight: 600;
+                                }
+                                
+                                .certi {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 3px;
+
+                                    span {
+                                        font-size: 10px;
+                                        margin-right: 3px;
+                                    }
+
+                                    .certi-check {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 14px;
+                                        height: 14px;
+                                        background: map-get($map: $color, $key: bg-main-color);
+                                        border-radius: 3px;
+
+                                        i {
+                                            font-size: 13px;
+                                            color: map-get($map: $color, $key: bg-light-color);
+                                        }
+                                    }
+                                    
+                                }
+                            }
+
+                            a {
+                                width: 55px;
+                                font-size: 10px;
+                                font-weight: 500;
+                                padding: 8px 10px;
+                                color: map-get($map: $color, $key: bg-light-color);
+                                background: map-get($map: $color, $key: bg-main-color);
+                                border-radius: 5px;
+                                box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+                            }
+                        }
+                    }
+
+                    .store-btns{
+                        margin-bottom: 35px;
+                        ul {
+                            display: flex;
+                            justify-content: space-between;
+
+                            li {
+                                position: relative;
+                            
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    bottom: -5px;
+                                    left: 0;
+                                    width: 0%;
+                                    height: 2px;
+                                    background: map-get($map: $color, $key: bg-main-color);
+                                    transition: all 0.3s;
+                                }
+
+                                &.active::before {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    .store-contents {
+                        position: relative;
+                        height: 240px;                        
+
+                        & > div {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                        }
+
+                        .selling-items {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .item-info {
+                                @include item-info;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+
+        }
+    }
+}
+
+// event
+#event {
+    margin-bottom: 200px;
+    .event {
+        padding: 30px 0;
+
+        .event-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+
+            h3 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+            a {
+                font-size: map-get($map: $fontSize, $key: font-samll);
+                color: map-get($map: $color, $key: bg-light-gray);
+
+                span {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .event-slider {
+            padding: 30px 0;
+
+            .slide-wrapper {
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+                height: 155px;
+                margin-bottom: 30px;
+                
+                .slide {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    cursor: pointer;
+
+                    & div {
+                        border: 1px solid map-get($map: $color, $key: bg-light-gray);
+                        border-radius: 10px;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .pagers {
+                @include pagers;
+            }
+        }
+    }
+}
+
+// recommendation
+#recommendation {
+    .recommendation {
+        display: flex;
+        flex-direction: column;
+        gap: 120px;
+        .related {
+            
+            h3 {
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+                font-weight: bold;
+                margin-bottom: 40px;
+            }
+
+            .related-slider {
+                position: relative;
+
+                .related-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    .item-slide {
+                        @include item-info;
+                    }
+                }
+    
+                .btn {
+                    @include slider-btns;
+                }                    
+            }
+        }
+        .recent {
+            
+            h3 {
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+                font-weight: bold;
+                margin-bottom: 40px;
+            }
+
+            .recent-slider {
+                position: relative;
+
+                .recent-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    .item-slide {
+                        @include item-info;
+                    }
+                }
+
+                .btn {
+                    @include slider-btns;
+                }   
+            }
+
+        }
+
+    }
+}
+
+// responsive
+@media screen and (max-width: 1280px) {
+    .inner {
+    width: 100%;
+    padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    
+    // // main
+    #main {
+        margin-bottom: 150px;
+        .inner {
+
+            .main {
+                flex-direction: column;
+                .main-img {
+                    position: static;
+                    height: 100%;
+                }
+    
+                .main-desc {
+                    .desc-heading {
+                        margin-bottom: 40px;
+                        .heading-price {
+                            margin-bottom: 20px;
+                        }
+                    }
+    
+                    .desc-user {
+                        margin-bottom: 50px;
+                        .user-info {
+                            .user-detail {
+                                .detail-barBox {
+                                    gap: 30px;
+                                    .detail-bar {
+                                        width: 80%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    .desc-conditions {
+                        margin-bottom: 50px;
+                    }
+    
+                    .desc-map {
+                        margin-bottom: 60px;
+                        .map-area {
+                            margin-bottom: 60px;
+                        }
+                    }
+    
+                    .desc-btns {
+                        button {
+                            width: 48%;
+                        }
+                    }
+
+                    .desc-store {
+                        .store-info {
+                            .info-box {
+                                width: 100%;
+                                flex-direction: row;
+
+                                a {
+                                    height: 25px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // event
+    #event {
+        margin-bottom: 150px;
+        .event {
+            .event-slider {
+                .slide-wrapper {
+                    .slide {
+                        gap: 3%;
+
+                        & div:last-child {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // recommendation
+    #recommendation {
+        .recommendation {
+            gap: 100px;
+            .related {
+                
+                .related-slider {
+                    .related-wrapper {
+                        .item-slide {
+                            &:nth-child(4),
+                            &:nth-child(5),
+                            &:nth-child(6) {
+                                display: none
+                            }
+                        }
+                    }
+                }
+            }
+            .recent {
+                .recent-slider {
+                    .recent-wrapper {
+                        .item-slide {
+                            &:nth-child(4),
+                            &:nth-child(5),
+                            &:nth-child(6) {
+                                display: none
+                            }
+                        }
+                    }
+                }
+    
+            }
+    
+        }
+    }
+    
+}
+
+@media screen and (max-width: 450px) {
+    :root {
+        font-size: 8px;
+    }
+
+    //bottom-menu
+    #bottom-memu {
+        display: block;
+
+        .bottom-mmenu {
+            display: flex;
+            gap: 5%;
+            height: 60px;
+            background: map-get($map: $color, $key: bg-light-color);
+            font-size: map-get($map: $fontSize, $key: font-large);
+
+            .heart-btn {
+                width: 10%;
+                text-align: center;
+                font-size: 26px;
+                color: map-get($map: $color, $key: bg-light-gray);
+            }
+
+            .btns {
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+                gap: 5%;
+
+                a {
+                    width: 50%;
+                    padding: 13px 0;
+                    text-align: center;
+                    color: map-get($map: $color, $key: bg-light-color);
+                    box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+                    border-radius: 3px;
+
+                    &.chat-btn {
+                        background: map-get($map: $color, $key: bg-main-color);
+                    }
+                    &.trade-btn {
+                        background: map-get($map: $color, $key: bg-light-gray);
+                    }
+                }
+            }
+        }
+    }
+
+    // // main
+    #main {
+        margin-bottom: 150px;
+        .inner {
+
+            .main {
+                gap: 40px;
+                
+                .main-img {
+                    .img-icons {
+                        a {
+                            span {
+                                display: none;
+                            }
+
+                            i {
+                                font-size: map-get($map: $fontSize, $key: font-extra-large);
+                            }
+                        }
+                    }
+                }
+
+                .main-desc {
+    
+                    .desc-user {
+                        .user-info {
+                            .user-detail {
+                                .detail-barBox {
+                                    gap: 20px;
+                                    .detail-bar {
+                                        width: 70%;
+                                        height: 12px;
+                                    }
+                                }
+
+                                .detail-value {
+                                    font-size: map-get($map: $fontSize, $key: font-large);
+                                }
+                            }
+                        }
+                    }
+                    
+                    .desc-conditions {
+                        .conditions-box {
+                            gap: 8px;
+                            
+                            span:nth-child(1) {
+                                font-size: 9px;
+                            }
+                        }
+                    }
+    
+                    .desc-btns {
+                        button {
+                            width: 48%;
+                        }
+                    }
+
+                    .desc-itemInfo {
+                        .itemIfo-detail {
+                            h6 {
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+
+                    .desc-store {
+                        .store-contents {
+                            .selling-items {
+                                .item-info {
+                                    &:nth-child(3) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // event
+    #event {
+        margin-bottom: 150px;
+        .event {
+            .event-slider {
+                .slide-wrapper {
+                    .slide {
+                        gap: none;
+
+                        & div:nth-child(2) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // recommendation
+    #recommendation {
+        .recommendation {
+            gap: 100px;
+            .related {
+                
+                .related-slider {
+                    .related-wrapper {
+                        .item-slide {
+                            &:nth-child(3),
+                            &:nth-child(4),
+                            &:nth-child(5),
+                            &:nth-child(6) {
+                                display: none
+                            }
+                        }
+                    }
+                }
+            }
+            .recent {
+                .recent-slider {
+                    .recent-wrapper {
+                        .item-slide {
+                            &:nth-child(3),
+                            &:nth-child(4),
+                            &:nth-child(5),
+                            &:nth-child(6) {
+                                display: none
+                            }
+                        }
+                    }
+                }
+    
+            }
+    
+        }
+    }
+}

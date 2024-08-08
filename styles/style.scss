@@ -1,255 +1,634 @@
-@import "./reset.scss", "./common.scss";
+@import "./common.scss";
 
-// Header
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: map-get($color, bg-light-color);
+// font
+@font-face {
+  font-family: "JalnanGothic";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// @font-face {
+//   font-family: "yg-jalnan";
+//   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+//     format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+// }
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-  #banner.ban {
-    height: 33px;
-    background: map-get($color, bg-dark-color);
-    opacity: 1;
+// mix-in
+@mixin sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  .section-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .view-more {
+    a {
+      font-size: 1.2rem;
+      color: map-get($color, bg-dark-gray);
+    }
+  }
+}
+
+@mixin productSlide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 406px;
+  overflow: hidden;
+  .slideWrapper {
+    position: absolute;
+    left: 0;
+    display: flex;
+    gap: 20px;
+    li {
+      position: relative;
+      a {
+        width: 240px;
+        height: 376px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .slide-img {
+          width: 100%;
+          height: 241px;
+          border-radius: 10px;
+          overflow: hidden;
+          // background: url("../images/best-ranking01.png") center/cover no-repeat;
+        }
+        .slide-desc {
+          padding: 0 14px 14px;
+          .desc-title {
+            font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+          }
+          .desc-price {
+            display: block;
+            margin: 10px 0;
+            font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+            .current {
+              font-size: 1.2rem;
+              letter-spacing: 0;
+              color: map-get($color, bg-sub-color);
+            }
+            .fixed {
+              font-size: 1.2rem;
+              text-decoration: line-through;
+            }
+          }
+          .desc-info {
+            font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+          }
+        }
+      }
+      .badge {
+        @include badgeType;
+      }
+    }
+  }
+}
+
+@mixin slideBtns {
+  button {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: map-get($color, bg-light-color);
+    box-shadow: 0 5px 10px rgba($color: #000, $alpha: 0.3);
     transition: all 0.3s;
+    i {
+      font-size: 2rem;
+      color: map-get($color, bg-dark-gray);
+    }
+    &.slidePrev {
+      left: 0;
+      transform: translateX(-50%);
+      &:hover {
+        transform: translate(-50%, 5%);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.slideNext {
+      right: 0;
+      transform: translateX(50%);
+      &:hover {
+        transform: translate(50%, 5%);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+  }
+}
 
+@mixin slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: map-get($color, bg-light-gray);
     &.active {
-      background: map-get($map: $color, $key: bg-light-color);
-      opacity: 0;
-      height: 0;
-    }
-
-    .banner {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: map-get($map: $color, $key: font-light-color);
-      font-size: map-get($map: $fontSize, $key: font-extra-small);
-
-      .banner-left {
-        display: flex;
-        gap: 15px;
-
-        a {
-          display: flex;
-          gap: 5px;
-          span {
-            color: map-get($color, bg-light-color);
-          }
-        }
-      }
-
-      .banner-right {
-        display: flex;
-        gap: 20px;
-        a {
-          color: map-get($color, bg-light-color);
-        }
-      }
-    }
-  }
-
-  #header-item {
-    .header-item {
-      padding: 25px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .header-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .search-box {
-          form {
-            position: relative;
-            border: 1px solid map-get($color, bg-dark-gray);
-            border-radius: 50px;
-            input[type="text"] {
-              width: 550px;
-              height: 40px;
-              border-radius: 50px;
-              padding-left: 20px;
-              padding-right: 10px;
-
-              &::placeholder {
-                font-size: map-get($map: $fontSize, $key: font-extra-small);
-                color: map-get($map: $color, $key: font-dark-gray);
-              }
-            }
-
-            button {
-              position: absolute;
-              top: 50%;
-              right: 6px;
-              transform: translateY(-50%);
-              width: 30px;
-              height: 30px;
-              border-radius: 50px;
-              border: none;
-              background-color: map-get($map: $color, $key: bg-main-color);
-              color: map-get($map: $color, $key: bg-light-color);
-              cursor: pointer;
-            }
-          }
-        }
-
-        .wrapper {
-          position: relative;
-
-          .popular-searchedWord {
-            position: relative;
-            width: 193px;
-            height: 24px;
-            overflow: hidden;
-
-            li {
-              position: absolute;
-              top: -24px;
-              left: 0;
-              &.prev {
-                top: -24px;
-                transition: top 0.5s;
-              }
-              &.current {
-                top: 0;
-                transition: top 0.5s;
-              }
-              &.next {
-                top: 24px;
-              }
-
-              a span {
-                @include list-a;
-              }
-            }
-          }
-
-          .list-btn {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%) rotate(0);
-            color: map-get($map: $color, $key: font-dark-gray);
-            transition: all 0.3s;
-
-            &.active {
-              transform: translateY(-50%) rotate(180deg);
-            }
-          }
-
-          .list {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 0;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            transition: all 0.5s;
-            overflow: hidden;
-
-            &.active {
-              height: 350px;
-              background: map-get($map: $color, $key: bg-light-color);
-            }
-
-            li {
-              padding-top: 20px;
-
-              a span {
-                @include list-a;
-              }
-            }
-          }
-        }
-      }
-
-      .header-bottom {
-        display: flex;
-        justify-content: space-between;
-
-        .header-bottom-left {
-          display: flex;
-          gap: 40px;
-
-          .barmenu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            padding: 8px 10px;
-            background: map-get($map: $color, $key: bg-main-color);
-            color: map-get($map: $color, $key: bg-light-color);
-            border-radius: 5px;
-            cursor: pointer;
-
-            i {
-              font-size: 24px;
-            }
-          }
-
-          .gnb {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            a {
-              font-size: 1.6rem;
-            }
-          }
-        }
-
-        .header-bottom-right {
-          display: flex;
-          align-items: center;
-          .lnb {
-            display: flex;
-            gap: 12px;
-
-            li a {
-              display: flex;
-              align-items: center;
-
-              img {
-                margin-right: 4px;
-              }
-            }
-          }
-        }
-      }
+      width: 40px;
+      background: map-get($color, bg-main-color);
     }
   }
 }
 
-// contentFrames
-.container {
+@mixin badgeText {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: map-get($color, bg-light-color);
+  text-shadow: 0 0 1px map-get($color, main-font-color);
+}
+
+@mixin badgeType {
+  position: absolute;
+  top: 5%;
+  right: -2%;
+  width: 46px;
+  height: 26px;
+  &.badge-best {
+    background: url("../images/badge-best.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "인기";
+    }
+  }
+  &.badge-new {
+    background: url("../images/badge-new.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "신규";
+    }
+  }
+  &.badge-auction {
+    background: url("../images/badge-auction.png") center/contain no-repeat;
+    &::before {
+      @include badgeText;
+      content: "경매";
+    }
+  }
+}
+
+html,
+body {
   width: 100%;
-  margin-top: 185px;
-  #contentFrame {
-    width: 100%;
-    border: none;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+// .wrapper {
+//   transform: none;
+// }
+
+// body * {
+//   background: rgba($color: rgb(248, 187, 187), $alpha: 0.1);
+// }
+
+// main-slide
+#main-slide {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  article {
+    position: relative;
+    height: 420px;
+    .mainSlideWrapper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1280px / 2);
+      a {
+        position: relative;
+        width: 420px;
+        height: 420px;
+        display: flex;
+        align-items: flex-end;
+        background: url("../images/main-slide02.png") center/cover no-repeat;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: rgba($color: #000, $alpha: 0.1);
+          backdrop-filter: blur(10px);
+        }
+        &.active::before {
+          display: none;
+        }
+        .main-slide-desc {
+          margin: 0 0 30px 30px;
+          // color: map-get($color, bg-light-color);
+          h2 {
+            margin-bottom: 10px;
+            font: 400 3rem/1.4 "JalnanGothic";
+            letter-spacing: 0;
+          }
+          p {
+            font-size: 1.6rem;
+            i {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+    .main-slide-arrows {
+      button {
+        position: absolute;
+        top: 50%;
+        width: 58px;
+        height: 58px;
+        background: rgba($color: #fff, $alpha: 0.6);
+        &.mainSlidePrev {
+          left: calc(50% - 1280px / 2);
+          transform: translate(0, -50%);
+        }
+        &.mainSlideNext {
+          left: calc(50% + 1280px / 2);
+          transform: translate(-100%, -50%);
+        }
+        i {
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
+  .main-slide-btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    .mainSlidePager {
+      width: 180px;
+      height: 15px;
+      background: map-get($color, bg-light-gray);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      margin-right: 10px;
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% / 3);
+        height: 100%;
+        background: map-get($color, bar-linear-gradient);
+        transition: all 0.3s;
+      }
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid map-get($color, bg-light-gray);
+      i {
+        font-size: 1.6rem;
+        color: map-get($color, bg-dark-gray);
+      }
+    }
   }
 }
 
-// Footer
-
-// responsive
-@media screen and (max-width: 1280px) {
-  .inner {
-    width: 100%;
-    padding: 0 10px;
+// best-ranking
+#best-ranking {
+  padding: 100px 0;
+  .ranking-content {
+    position: relative;
+    .ranking-heading {
+      @include sectionHeading;
+    }
+    .ranking-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
+    .slide-btns {
+      @include slideBtns;
+      .slidePager {
+        @include slidePager;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 840px) {
+// auction
+#auction {
+  padding-bottom: 100px;
+  .auction-banner {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(to bottom, #7bceff, #0095ee);
+    margin-bottom: 30px;
+    .banner-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .banner-desc {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: "SBAggroB";
+        letter-spacing: 0;
+        color: map-get($color, bg-light-color);
+        // position: relative;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   left: -50%;
+        //   bottom: 0;
+        //   width: 100%;
+        //   height: 100%;
+        //   z-index: -1;
+        //   background: url("../images/auction-banner02.png") center/cover
+        //     no-repeat;
+        // }
+        span {
+          font-size: 2.2rem;
+        }
+        h2 {
+          font-size: 6rem;
+          // text-shadow: -1px 0px #0051b1, 0px 1px #0051b1, 1px 0px #0051b1,
+          //   0px -1px #0051b1;
+        }
+        strong {
+          font-size: 6rem;
+          color: #fce44a;
+        }
+        p {
+          font-size: 2.4rem;
+        }
+        b {
+          color: #fce44a;
+        }
+      }
+      .banner-img {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  .auction-content {
+    position: relative;
+    .auction-heading {
+      @include sectionHeading;
+    }
+    .auction-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/auction01.png") center/cover no-repeat;
+      }
+    }
+    .slide-btns {
+      @include slideBtns;
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
 }
 
-@media screen and (max-width: 450px) {
-  :root {
-    font-size: 8px;
+// weekly-item
+#weekly-item {
+  .weekly-item-content {
+    padding: 50px 0;
+    .weekly-item-heading {
+      @include sectionHeading;
+    }
+    .weekly-item-tabmenu {
+      .tab-menu {
+        display: flex;
+        li {
+          padding: 8px 10px;
+          &.active {
+            background: map-get($color, bg-main-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+// event
+#event {
+  padding: 50px 0;
+  .event-content {
+    .event-heading {
+      @include sectionHeading;
+      margin-bottom: 30px;
+    }
+    .event-slide {
+      ul {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 20px;
+        a {
+          display: inline-block;
+          width: 410px;
+          height: 155px;
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 10px;
+          background: url("../images/event-banner01.png") center/cover no-repeat;
+        }
+      }
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
+}
+
+// recommended
+#recommended {
+  padding: 50px 0 100px;
+  .recommended-content {
+    .recommended-heading {
+      @include sectionHeading;
+    }
+    .recommended-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
+    .slidePager {
+      @include slidePager;
+    }
+  }
+}
+
+// safe-service
+#safe-service {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(to right, #696a6c, #e1e2e4);
+  .safe-service-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .safe-service-desc {
+      color: map-get($color, bg-light-color);
+      h2 {
+        font-family: "GmarketSansBold";
+        font-size: 4.5rem;
+      }
+      span {
+        display: block;
+        font-size: 2rem;
+        margin: 20px 0 30px;
+      }
+      p {
+        font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+      }
+    }
+    .safe-service-banner {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 220px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// safeserviceModal
+#safeserviceModal {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 70vh;
+  background: map-get($color, bg-light-color);
+  box-shadow: 0 0 200px rgba($color: #000, $alpha: 0.6);
+  border-radius: 50px 50px 0 0;
+  opacity: 0;
+  transition: all 0.5s;
+  .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // gap: 100px;
+    height: 100%;
+    .modal-title {
+      width: 50%;
+      height: 100%;
+      text-align: end;
+      background: #eee;
+      padding-top: 230px;
+      padding-right: 100px;
+      position: relative;
+      h2 {
+        font: 400 3rem/1.2 "GmarketSansBold";
+        margin-bottom: 30px;
+      }
+      p {
+        color: map-get($color, bg-dark-gray);
+        font-size: 2rem;
+        margin: 10px 0;
+      }
+    }
+    ul {
+      width: 50%;
+      padding-left: 50px;
+      li {
+        height: 160px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        .modal-img {
+          width: 160px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .modal-desc {
+          width: 300px;
+          h5 {
+            font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
+            margin-bottom: 10px;
+          }
+          p {
+            font: 400 1.4rem/1.4 "Noto Sans KR", sans-serif;
+            em {
+              font-style: normal;
+              color: map-get($color, bg-main-color);
+            }
+          }
+        }
+        &:nth-child(2) {
+          .modal-img img {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+  .closeBtn {
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    padding: 5px;
+    color: map-get($color, bg-dark-gray);
+    font-size: 2.6rem;
+    transition: all 0.3s;
+    &:hover {
+      color: map-get($color, main-font-color);
+    }
+  }
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
