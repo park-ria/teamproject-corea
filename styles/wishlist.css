@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -44,10 +43,11 @@ input:focus::placeholder {
 button {
   background: transparent;
   border: none;
+  cursor: pointer;
   font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
 }
 
-:root {
+html {
   font-size: 10px;
 }
 
@@ -69,6 +69,7 @@ body {
   left: 0;
   width: 100%;
   background: #fff;
+  z-index: 100;
 }
 #header #banner.ban {
   height: 33px;
@@ -260,10 +261,6 @@ body {
   width: 100%;
   margin-top: 185px;
 }
-.container #contentFrame {
-  width: 100%;
-  border: none;
-}
 
 footer {
   background: #3a3a3a;
@@ -350,26 +347,10 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
 }
 @media screen and (max-width: 450px) {
-  :root {
+  html {
     font-size: 8px;
   }
 }
-:root {
-  font-size: 10px;
-}
-
-body {
-  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
-  letter-spacing: -1px;
-  color: #111;
-}
-
-.inner {
-  width: 1280px;
-  height: 100%;
-  margin: 0 auto;
-}
-
 /* wishlist */
 .wishlist {
   width: 100%;
@@ -497,6 +478,27 @@ body {
   top: 0;
   left: 0;
 }
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter .soldOutFilterTxt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+}
 .wishlistContent .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart {
   position: absolute;
   top: 8px;
@@ -617,6 +619,9 @@ body {
 }
 .wishlistContent .wish-items-content-detail .wishItemList li.soldOut {
   color: #dcdcdc;
+}
+.wishlistContent .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemImgWrapper .soldOutFilter {
+  opacity: 1;
 }
 .wishlistContent .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox p {
   color: #dcdcdc;

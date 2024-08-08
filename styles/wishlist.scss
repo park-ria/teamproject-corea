@@ -1,4 +1,4 @@
-@import "./style.scss", "./common.scss";
+@import "./common.scss";
 
 /* wishlist */
 .wishlist {
@@ -109,7 +109,6 @@
         align-items: center;
         gap: 20px;
         border-bottom: 1px solid map-get($color, bg-light-gray);
-
         .wishItem {
           width: 100%;
           display: flex;
@@ -126,6 +125,27 @@
               position: absolute;
               top: 0;
               left: 0;
+            }
+            .soldOutFilter {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(0, 0, 0, 0.7);
+              opacity: 0;
+              .soldOutFilterTxt {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border: 1px solid map-get($color, bg-light-color);
+                border-radius: 40px;
+              }
             }
             .wishHeart {
               position: absolute;
@@ -252,20 +272,27 @@
 
         &.soldOut {
           color: map-get($color, bg-light-gray);
-          .wishItem .wishItemDescGroup {
-            .wishItemDesc {
-              .wishItemInfo {
-                .wishItemTitleBox p {
-                  color: map-get($color, bg-light-gray);
-                }
-              }
-              .wishItemButtons {
-                a {
-                }
+          .wishItem {
+            .wishItemImgWrapper {
+              .soldOutFilter {
+                opacity: 1;
               }
             }
-            .wishItemLower {
-              color: map-get($color, bg-light-gray);
+            .wishItemDescGroup {
+              .wishItemDesc {
+                .wishItemInfo {
+                  .wishItemTitleBox p {
+                    color: map-get($color, bg-light-gray);
+                  }
+                }
+                .wishItemButtons {
+                  a {
+                  }
+                }
+              }
+              .wishItemLower {
+                color: map-get($color, bg-light-gray);
+              }
             }
           }
         }
