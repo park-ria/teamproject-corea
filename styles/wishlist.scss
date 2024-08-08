@@ -78,224 +78,377 @@
           cursor: pointer;
         }
       }
+      .wish-items-sorting-wrapper {
+        .sorting-group {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          li {
+            font-size: map-get($fontSize, font-extra-small);
+            a {
+              font-size: map-get($fontSize, font-small);
+              color: map-get($color, bg-dark-gray);
+              &.active {
+                font-weight: 600;
+                color: map-get($color, main-font-color);
+              }
+            }
+          }
+        }
+      }
     }
-    .wish-items-sorting-wrapper {
-      .sorting-group {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
+    .wish-items-content-detail {
+      width: 100%;
+      .wishItemList {
         li {
-          font-size: map-get($fontSize, font-extra-small);
-          a {
-            font-size: map-get($fontSize, font-small);
-            color: map-get($color, bg-dark-gray);
-            &.active {
-              font-weight: 600;
-              color: map-get($color, main-font-color);
+          width: 100%;
+          height: 200px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          border-bottom: 1px solid map-get($color, bg-light-gray);
+          .wishItem {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            .wishItemImgWrapper {
+              width: 100px;
+              height: 100px;
+              position: relative;
+              img {
+                width: inherit;
+                height: inherit;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+              .soldOutFilter {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                .soldOutFilterTxt {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 70px;
+                  height: 70px;
+                  border: 1px solid map-get($color, bg-light-color);
+                  border-radius: 50%;
+                  font-size: map-get($fontSize, font-medium);
+                  line-height: 20px;
+                }
+              }
+              .wishHeart {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                .fa-solid {
+                  color: crimson;
+                  font-size: map-get($fontSize, font-medium);
+                }
+              }
+            }
+            .wishItemDescGroup {
+              height: 100px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              flex: 1;
+              .wishItemDesc {
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .wishItemInfo {
+                  width: 700px;
+                  display: flex;
+                  justify-content: space-between;
+                  .wishItemTitleBox {
+                    width: 300px;
+                    height: 80px;
+                    .wishItemSellerName {
+                      font-size: map-get($fontSize, font-small);
+                      color: map-get($color, bg-dark-gray);
+                    }
+                    .wishItemName {
+                      width: 100%;
+                      margin-top: 10px;
+                      line-height: 25px;
+                      font-size: map-get($fontSize, font-medium);
+                      color: map-get($color, main-font-color);
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
+                      -webkit-box-orient: vertical;
+                    }
+                  }
+                  .wishItemPriceBox {
+                    width: 130px;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 10px;
+                    .wishItemPrice {
+                      font-size: map-get($fontSize, font-extra-small);
+                      b {
+                        font-size: map-get($fontSize, font-large);
+                      }
+                    }
+                    .pay {
+                      width: 35px;
+                      height: 20px;
+                      background: map-get($color, bg-main-color);
+                      border-radius: 3px;
+                      font-size: map-get($fontSize, font-small);
+                      color: map-get($color, bg-light-color);
+                      letter-spacing: normal;
+                      text-align: center;
+                    }
+                  }
+                  .wishItemShippingInfo {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: map-get($fontSize, font-small);
+                  }
+                }
+                .wishItemButtons {
+                  a {
+                    display: inline-block;
+                    padding: 15px 20px;
+                    margin-right: 20px;
+                    background: map-get($color, main-font-color);
+                    border-radius: 5px;
+                    color: map-get($color, bg-light-color);
+                    font-size: map-get($fontSize, font-medium);
+                    &.wishItemChatButton {
+                      background: map-get($color, bg-main-color);
+                    }
+                    &.wishItemProposalButton {
+                      display: none;
+                    }
+                    &.wishItemXButton {
+                      width: 24px;
+                      height: 24px;
+                      padding: 0;
+                      margin-right: 0;
+                      margin-left: 10px;
+                      text-align: center;
+                      line-height: 24px;
+                      background: transparent;
+                      .fa-xmark {
+                        color: map-get($color, bg-light-gray);
+                        font-size: map-get($fontSize, font-large);
+                      }
+                    }
+                  }
+                }
+              }
+              .wishItemLower {
+                display: flex;
+                gap: 10px;
+                font-size: map-get($fontSize, font-extra-small);
+                color: map-get($color, bg-dark-gray);
+                & > p {
+                  width: 50px;
+                }
+                .wishItemCount {
+                  display: flex;
+                  gap: 10px;
+                }
+              }
+            }
+          }
+
+          &.soldOut {
+            color: map-get($color, bg-light-gray);
+            .wishItem {
+              .wishItemImgWrapper {
+                .soldOutFilter {
+                  opacity: 1;
+                }
+              }
+              .wishItemDescGroup {
+                .wishItemDesc {
+                  .wishItemInfo {
+                    .wishItemTitleBox p {
+                      color: map-get($color, bg-light-gray);
+                    }
+                    .wishItemPriceBox > .pay {
+                      background: map-get($color, bg-light-gray);
+                    }
+                  }
+                  .wishItemButtons {
+                    a:not(.wishItemXButton) {
+                      background: map-get($color, bg-light-gray);
+                    }
+                  }
+                }
+                .wishItemLower {
+                  color: map-get($color, bg-light-gray);
+                }
+              }
             }
           }
         }
       }
     }
   }
-  .wish-items-content-detail {
-    width: 100%;
-    .wishItemList {
-      li {
-        width: 100%;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        border-bottom: 1px solid map-get($color, bg-light-gray);
-        .wishItem {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 30px;
-          .wishItemImgWrapper {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            img {
-              width: inherit;
-              height: inherit;
-              object-fit: cover;
-              position: absolute;
-              top: 0;
-              left: 0;
-            }
-            .soldOutFilter {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: rgba(0, 0, 0, 0.7);
-              opacity: 0;
-              .soldOutFilterTxt {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 80px;
-                height: 80px;
-                border: 1px solid map-get($color, bg-light-color);
-                border-radius: 40px;
-              }
-            }
-            .wishHeart {
-              position: absolute;
-              top: 8px;
-              right: 8px;
-              .fa-solid {
-                color: crimson;
-                font-size: map-get($fontSize, font-medium);
-              }
-            }
-          }
-          .wishItemDescGroup {
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1;
-            .wishItemDesc {
-              height: 80px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              .wishItemInfo {
-                width: 700px;
-                display: flex;
-                justify-content: space-between;
-                .wishItemTitleBox {
-                  width: 300px;
-                  height: 80px;
-                  .wishItemSellerName {
-                    font-size: map-get($fontSize, font-small);
-                    color: map-get($color, bg-dark-gray);
-                  }
-                  .wishItemName {
-                    width: 100%;
-                    margin-top: 10px;
-                    line-height: 25px;
-                    font-size: map-get($fontSize, font-medium);
-                    color: map-get($color, main-font-color);
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
-                    -webkit-box-orient: vertical;
-                  }
-                }
-                .wishItemPriceBox {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  .wishItemPrice {
-                    font-size: map-get($fontSize, font-extra-small);
-                    b {
-                      font-size: map-get($fontSize, font-large);
-                    }
-                  }
-                  .pay {
-                    width: 35px;
-                    height: 20px;
-                    background: map-get($color, bg-main-color);
-                    border-radius: 3px;
-                    font-size: map-get($fontSize, font-small);
-                    color: map-get($color, bg-light-color);
-                    letter-spacing: normal;
-                    text-align: center;
-                  }
-                }
-                .wishItemShippingInfo {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                  gap: 10px;
-                  font-size: map-get($fontSize, font-small);
-                }
-              }
-              .wishItemButtons {
-                a {
-                  display: inline-block;
-                  padding: 15px 20px;
-                  margin-right: 20px;
-                  background: map-get($color, main-font-color);
-                  border-radius: 5px;
-                  color: map-get($color, bg-light-color);
-                  font-size: map-get($fontSize, font-medium);
-                  &.wishItemChatButton {
-                    background: map-get($color, bg-main-color);
-                  }
-                  &.wishItemProposalButton {
-                    display: none;
-                  }
-                  &.wishItemXButton {
-                    width: 24px;
-                    height: 24px;
-                    padding: 0;
-                    margin-right: 0;
-                    margin-left: 10px;
-                    text-align: center;
-                    line-height: 24px;
-                    background: transparent;
-                    .fa-xmark {
-                      color: map-get($color, bg-light-gray);
-                      font-size: map-get($fontSize, font-large);
-                    }
-                  }
-                }
-              }
-            }
-            .wishItemLower {
-              display: flex;
-              gap: 10px;
-              font-size: map-get($fontSize, font-extra-small);
-              color: map-get($color, bg-dark-gray);
-              & > p {
-                width: 50px;
-              }
-              .wishItemCount {
-                display: flex;
-                gap: 10px;
-              }
-            }
-          }
-        }
+}
 
-        &.soldOut {
-          color: map-get($color, bg-light-gray);
-          .wishItem {
-            .wishItemImgWrapper {
-              .soldOutFilter {
-                opacity: 1;
-              }
-            }
-            .wishItemDescGroup {
-              .wishItemDesc {
-                .wishItemInfo {
-                  .wishItemTitleBox p {
-                    color: map-get($color, bg-light-gray);
+@media screen and (max-width: 840px) {
+  /* wishlist */
+  .wishlist {
+    width: 100%;
+  }
+
+  /* wishlist tabs*/
+  .wishlist-tabs {
+    width: 100%;
+  }
+
+  /* wishlist content */
+  .wishlistContent {
+    width: 100%;
+    &.wish-items-content {
+      .wish-items-content-detail {
+        width: 100%;
+        .wishItemList {
+          li {
+            width: 100%;
+            .wishItem {
+              width: 100%;
+              .wishItemImgWrapper {
+                width: 150px;
+                height: 150px;
+                .soldOutFilter {
+                  /*position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background: rgba(0, 0, 0, 0.7);
+                  opacity: 0;*/
+                  .soldOutFilterTxt {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    font-size: map-get($fontSize, font-medium);
+                    line-height: 20px;
                   }
                 }
-                .wishItemButtons {
-                  a {
+              }
+              .wishItemDescGroup {
+                width: 606px;
+                height: 150px;
+                .wishItemDesc {
+                  width: 100%;
+                  height: 130px;
+                  .wishItemInfo {
+                    width: 360px;
+                    flex-direction: column;
+                    .wishItemTitleBox {
+                      width: 100%;
+                    }
+                    .wishItemPriceBox {
+                    }
+                    .wishItemShippingInfo {
+                      flex-direction: row;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 10px;
+                    }
+                  }
+                  .wishItemButtons {
+                    a {
+                      display: inline-block;
+                      padding: 15px 20px;
+                      margin-right: 20px;
+                      background: map-get($color, main-font-color);
+                      border-radius: 5px;
+                      color: map-get($color, bg-light-color);
+                      font-size: map-get($fontSize, font-medium);
+                      &.wishItemChatButton {
+                        background: map-get($color, bg-main-color);
+                      }
+                      &.wishItemProposalButton {
+                        display: none;
+                      }
+                      &.wishItemXButton {
+                        width: 24px;
+                        height: 24px;
+                        padding: 0;
+                        margin-right: 0;
+                        margin-left: 10px;
+                        text-align: center;
+                        line-height: 24px;
+                        background: transparent;
+                        .fa-xmark {
+                          color: map-get($color, bg-light-gray);
+                          font-size: map-get($fontSize, font-large);
+                        }
+                      }
+                    }
                   }
                 }
-              }
-              .wishItemLower {
-                color: map-get($color, bg-light-gray);
+                .wishItemLower {
+                  display: flex;
+                  gap: 10px;
+                  font-size: map-get($fontSize, font-extra-small);
+                  color: map-get($color, bg-dark-gray);
+                  & > p {
+                    width: 50px;
+                  }
+                  .wishItemCount {
+                    display: flex;
+                    gap: 10px;
+                  }
+                }
               }
             }
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* wishlist */
+  .wishlist {
+    width: 100%;
+  }
+
+  /* wishlist tabs*/
+  .wishlist-tabs {
+    width: 100%;
+    .wishlist-tab {
+      .wishlistTabButton {
+        background: #fafafa;
+        width: 200px;
+        height: 50px;
+        font-size: map-get($fontSize, font-medium);
+        line-height: 50px;
+      }
+      & > span {
+        width: 200px;
+        height: 50px;
       }
     }
   }
