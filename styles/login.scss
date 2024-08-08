@@ -1,0 +1,71 @@
+@import "./reset.scss", "./common.scss";
+
+$color-border: #eee;
+
+.inner {
+  width: 450px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 20px;
+  .login-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    .login-main-ttl {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      img {
+        width: 200px;
+        height: 40px;
+      }
+      .login-main-ttl-sub {
+        color: darkgray;
+      }
+    }
+    form ul {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      gap: 20px;
+      li {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 300px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          font-size: 1.4rem;
+          color: #ddd;
+          border: 1px solid #000;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .login-another {
+    width: 400px;
+    height: 200px;
+    border: none;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+    .login-another-ttl {
+      display: flex;
+      justify-content: center;
+      padding-top: 25px;
+    }
+  }
+  .login-footer {
+    padding: 20px;
+    line-height: 2;
+    text-align: center;
+  }
+}

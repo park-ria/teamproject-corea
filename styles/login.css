@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: none;
+  padding-left: 10px;
+  transition: all 0.3s;
+}
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+input::placeholder {
+  opacity: 1;
+  transition: all 0.3s;
+}
+input:focus {
+  outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
+}
+input:focus::placeholder {
+  opacity: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
+}
+
+:root {
+  font-size: 10px;
+}
+
+body {
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.inner {
+  width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.inner {
+  width: 450px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 20px;
+}
+.inner .login-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.inner .login-main .login-main-ttl {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.inner .login-main .login-main-ttl img {
+  width: 200px;
+  height: 40px;
+}
+.inner .login-main .login-main-ttl .login-main-ttl-sub {
+  color: darkgray;
+}
+.inner .login-main form ul {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  gap: 20px;
+}
+.inner .login-main form ul li {
+  display: flex;
+  justify-content: space-between;
+}
+.inner .login-main form ul li input {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  color: #ddd;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+.inner .login-another {
+  width: 400px;
+  height: 200px;
+  border: none;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+.inner .login-another .login-another-ttl {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+.inner .login-footer {
+  padding: 20px;
+  line-height: 2;
+  text-align: center;
+}
