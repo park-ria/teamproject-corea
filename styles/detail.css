@@ -42,10 +42,11 @@ input:focus::placeholder {
 button {
   background: transparent;
   border: none;
+  cursor: pointer;
   font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
 }
 
-:root {
+html {
   font-size: 10px;
 }
 
