@@ -20,6 +20,5 @@ wishlistTabButton.forEach((btn) => {
     });
     //target.style.display = "block";
     target.classList.add("active");
-    //max-height + opacity + overflow:hidden
   });
 });

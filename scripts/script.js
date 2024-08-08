@@ -91,12 +91,3 @@ items.forEach((item) => {
     interval = setInterval(rollingCB, 3000);
   });
 });
-
-// iframe
-function resizeIframe(iframe) {
-  var doc = iframe.contentDocument || iframe.contentWindow.document;
-  var height = doc.documentElement.scrollHeight || doc.body.scrollHeight;
-  iframe.style.height = height + 'px';
-  var wrapper = document.getElementById('wrapper');
-  wrapper.style.height = height + 'px';
-}
