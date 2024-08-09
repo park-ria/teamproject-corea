@@ -1,7 +1,7 @@
 // safeserviceModal
-const safeService = document.querySelector("#safe-service");
+const modalBtn = document.querySelector("#modalBtn");
 
-safeService.addEventListener("click", () => {
+modalBtn.addEventListener("click", () => {
   const safeserviceModal = document.querySelector("#safeserviceModal");
   const closeBtn = safeserviceModal.querySelector(".closeBtn");
 

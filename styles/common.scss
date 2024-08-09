@@ -339,6 +339,10 @@ footer {
 }
 
 @media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
+  }
+
   // footer
   footer {
     .inner {
@@ -373,7 +377,4 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
-  }
 }

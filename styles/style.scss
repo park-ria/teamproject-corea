@@ -36,6 +36,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     font-size: 2.4rem;
     font-weight: 700;
     letter-spacing: -2px;
+    cursor: default;
   }
   .view-more {
     a {
@@ -71,7 +72,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           height: 241px;
           border-radius: 10px;
           overflow: hidden;
-          // background: url("../images/best-ranking01.png") center/cover no-repeat;
         }
         .slide-desc {
           padding: 0 14px 14px;
@@ -226,7 +226,7 @@ body {
       gap: 10px;
       position: absolute;
       top: 0;
-      left: calc(50% - 1280px / 2);
+      left: calc(50% - 1280px / 2 - 1290px);
       a {
         position: relative;
         width: 420px;
@@ -361,12 +361,11 @@ body {
     .banner-content {
       width: 100%;
       height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: relative;
       .banner-desc {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
         width: 40%;
         height: 100%;
         display: flex;
@@ -376,18 +375,8 @@ body {
         font-family: "SBAggroB";
         letter-spacing: 0;
         color: map-get($color, bg-light-color);
-        z-index: 3;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: -15%;
-          width: 110%;
-          height: 100%;
-          background: #0051b1;
-          z-index: -1;
-          transform: translateY(-50%) skew(-25deg);
-        }
+        z-index: 0;
+        cursor: default;
         span {
           font-size: 2rem;
         }
@@ -409,16 +398,24 @@ body {
         }
       }
       .banner-img {
-        position: absolute;
-        right: 0;
-        bottom: 0;
         height: 100%;
-        z-index: 2;
+        position: relative;
+        z-index: 1;
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        width: 40%;
+        height: 100%;
+        background: #0051b1;
+        transform: translateY(-50%) skew(-25deg);
       }
     }
   }
@@ -556,7 +553,7 @@ body {
   width: 100%;
   height: 400px;
   background: linear-gradient(to right, #696a6c, #e1e2e4);
-  cursor: pointer;
+  cursor: default;
   .safe-service-content {
     height: 100%;
     display: flex;
@@ -571,10 +568,23 @@ body {
       span {
         display: block;
         font-size: 2rem;
-        margin: 20px 0 30px;
+        margin: 20px 0;
       }
       p {
         font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+        margin: 20px 0;
+      }
+      #modalBtn {
+        position: relative;
+        padding: 18px 32px;
+        font-size: 1.8rem;
+        border-radius: 8px;
+        background: #141414;
+        color: map-get($color, bg-light-color);
+        transition: all 0.3s;
+        &:hover {
+          background: map-get($color, bg-sub-color);
+        }
       }
     }
     .safe-service-banner {
@@ -609,7 +619,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    // gap: 100px;
     height: 100%;
     & > div {
       width: 50%;
@@ -739,10 +748,241 @@ body {
       }
     }
   }
+
+  // best-ranking
+  #best-ranking {
+    .ranking-content {
+      .slide-btns {
+        @include slideBtns;
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // auction
+  #auction {
+    .auction-banner {
+      .banner-content {
+        align-items: flex-end;
+        .banner-desc {
+          width: 45%;
+          span {
+            font-size: 1.6rem;
+          }
+          h2 {
+            font-size: 3.2rem;
+          }
+          strong {
+            font-size: 3.2rem;
+            margin: 10px 0;
+          }
+          p {
+            font-size: 2rem;
+          }
+        }
+        .banner-img {
+          height: 80%;
+        }
+      }
+    }
+    .auction-content {
+      .slide-btns {
+        @include slideBtns;
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // weekly-item
+  #weekly-item {
+    .weekly-item-content {
+      .weekly-item-tabmenu {
+        .tab-content {
+          justify-content: center;
+          gap: 20px;
+          li {
+            width: calc((100% - 20px) / 2);
+          }
+        }
+      }
+    }
+  }
+
+  // event
+  #event {
+    .event-content {
+      .event-slide {
+        ul {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  // recommended
+  #recommended {
+    .recommended-content {
+      .slide-btns {
+        @include slideBtns;
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // safe-service
+  #safe-service {
+    height: 350px;
+    .safe-service-content {
+      .safe-service-desc {
+        position: relative;
+        z-index: 1;
+        h2 {
+          font-size: 3rem;
+        }
+        span {
+          font-size: 1.4rem;
+        }
+        p {
+          font: 600 2.2rem/1.3 "Noto Sans KR", sans-serif;
+          text-shadow: 0 0 10px map-get($color, main-font-color);
+        }
+        #modalBtn {
+          padding: 12px 26px;
+          font-size: 1.6rem;
+          border-radius: 5px;
+        }
+      }
+      .safe-service-banner {
+        height: 180px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 840px) {
+  // auction
+  #auction {
+    .auction-banner {
+      height: auto;
+      .banner-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding-top: 5%;
+        .banner-desc {
+          width: 100%;
+          align-items: center;
+          text-align: center;
+        }
+        .banner-img {
+          width: 60%;
+          height: auto;
+        }
+        &::before {
+          width: 70%;
+          left: 50%;
+          transform: translate(-50%, -50%) skew(-25deg);
+        }
+      }
+    }
+    .auction-content {
+      .slide-btns {
+        @include slideBtns;
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // weekly-item
+  #weekly-item {
+    .weekly-item-content {
+      .weekly-item-tabmenu {
+        .tab-content {
+          justify-content: center;
+          gap: 20px;
+          li {
+            height: 100px;
+            a {
+              .tab-content-img {
+                width: 100px;
+              }
+              .tab-content-desc {
+                width: calc(100% - 100px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 450px) {
+  // weekly-item
+  #weekly-item {
+    .weekly-item-content {
+      .weekly-item-tabmenu {
+        .tab-content {
+          flex-direction: column;
+          justify-content: center;
+          gap: 20px;
+          li {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
