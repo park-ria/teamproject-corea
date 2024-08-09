@@ -1,4 +1,4 @@
-@import "./reset.scss", "./common.scss";
+@import "./common.scss";
 
 /* variables */
 $color: (
@@ -25,7 +25,17 @@ $color: (
     gap: 15px;
 
     .item-img {
+        width: 180px;
+        height: 169px;
+        border-radius: 6px;
+        overflow: hidden;
         cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     .item-detail {
@@ -118,7 +128,7 @@ body {
 
 // main
 #main {
-    padding-top: 80px;
+    padding-top: 185px;
     margin-bottom: 200px;
 
     .inner {
@@ -129,9 +139,9 @@ body {
 
             .main-img {
                 position: sticky;
-                top: 0;
+                top: 185px;
                 left: 0;
-                width: 100%;
+                width: 600px;
                 height: 702px;
 
                 .img-slider {
@@ -142,18 +152,18 @@ body {
                     overflow: hidden;
 
                     .img-wrapper {
-                        width: 500%;
                         display: flex;
                         transition: all 0.3s;
                         
                         .img-slide {
-                            width: 100%;
-                            height: 100%;
+                            width: 600px;
+                            height: 600px;
                             cursor: pointer;
 
                             img {
-                                width: 100%;
+                                width: 600px;
                                 height: 100%;
+                                object-fit: cover;
                             }
                         }
                     }
@@ -216,14 +226,17 @@ body {
                         font-size: map-get($map: $fontSize, $key: font-samll);
                         margin-bottom: 15px;
                         
-                        i {
+                        span:nth-child(1),
+                        span:nth-child(2), 
+                        span:nth-child(3) {
                             color: map-get($map: $color, $key: bg-dark-gray);
+                        }
+                        span:nth-child(3) {
+                            display: flex;
+                            justify-content: center;
+                            align-items: flex-start;
                         }
 
-                        span:nth-child(1),
-                        span:nth-child(2) {
-                            color: map-get($map: $color, $key: bg-dark-gray);
-                        }
                     }
                     
                     .heading-name {
@@ -240,24 +253,7 @@ body {
                     }
 
                     .heading-timeinfo {
-                        
-                        span {
-                            font-size: map-get($map: $fontSize, $key: font-extra-small);
-                            margin-right: 5px;
-                            position: relative;
-
-                            &::before {
-                                content: "";
-                                position: absolute;
-                                top: 50%;
-                                right: -5px;
-                                width: 2px;
-                                height: 2px;
-                                background: #111111;
-                                border-radius: 50%;
-                            }
-                        }
-
+                        font-size: map-get($map: $fontSize, $key: font-extra-small);
                     }
                 }
 
@@ -269,14 +265,21 @@ body {
                     .user-img {
                         width: 60px;
                         height: 60px;
+                        border-radius: 50%;
+                        overflow: hidden;
                         cursor: pointer;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
 
                     .user-info {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-                        width: 100%;
+                        width: calc(100% - 60px);
                         
                         .user-id {
                             font-size: map-get($map: $fontSize, $key: font-large);
@@ -285,12 +288,12 @@ body {
                         }
 
                         .user-detail {
-                            width: 100%;
                             display: flex;
                             justify-content: space-between;
                             align-items: end;
 
                             .detail-barBox{
+                                white-space: nowrap;
                                 width: 100%;
                                 display: flex;
                                 align-items: end;
@@ -464,10 +467,10 @@ body {
                     .itemIfo-detail {
 
                         p {
-                            width: 50%;
+                            width: 100%;
                             font-size: map-get($map: $fontSize, $key: font-samll);
                             text-align: justify;
-                            line-height: 59px;
+                            line-height: 50px;
                             margin-bottom: 45px;
                         }
 
@@ -523,6 +526,8 @@ body {
                         .info-img {
                             width:  60px;
                             height: 60px;
+                            border-radius: 50%;
+                            overflow: hidden;
                             cursor: pointer;
 
                             img {
@@ -609,7 +614,7 @@ body {
                                     transition: all 0.3s;
                                 }
 
-                                &.active::before {
+                                &:hover::before {
                                     width: 100%;
                                 }
                             }
@@ -625,6 +630,11 @@ body {
                             top: 0;
                             left: 0;
                             width: 100%;
+                            opacity: 0;
+                            
+                            &.active {
+                                opacity: 1;
+                            }
                         }
 
                         .selling-items {
