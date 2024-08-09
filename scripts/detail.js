@@ -97,10 +97,8 @@ fetch(joonggoInfo)
         pagers[currentIndex].classList.add("active");
       };
 
-      
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
-
         const headingCategory = document.querySelector(".heading-category");
         const span = document.createElement("span");
 
@@ -189,10 +187,30 @@ fetch(joonggoInfo)
       storeName.innerText = product.detail.product_store;
 
       // Making Item-info
+      const productItemInfos = product.detail.product_img_etc;
+      console.log(productItemInfos);
       const itemInfos = document.querySelectorAll(".item-info");
-      itemInfos.forEach((item) => {
-        item.innerHTML = ``;
-      });
+      const sellingItems = document.querySelector(".selling-items");
+
+      //console.log(itemInfos);
+      //itemInfos.forEach((item) => {
+      for (let i = 0; i < productItemInfos.length; i++) {
+        //productItemInfos.forEach((productItemInfo) => {
+        sellingItems.innerHTML += 
+          `
+          <div class="item-info">
+          <div class="item-img">
+          <img src="../${productItemInfos[i].image_url}">
+          </div>
+          <div class="item-detail">
+          <span class="item-name">${productItemInfos[i].name}</span>
+          <span class="item-price">${productItemInfos[i].price}</span>
+          </div>
+          </div>
+          `;
+        //});
+      }
+      //});
     }
   });
 

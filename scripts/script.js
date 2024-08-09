@@ -24,7 +24,7 @@ fetch(JoonggoInfo)
       
       rankingSlides.forEach((rankingSlide) => {
         rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(179612232)}`;
+          const url = `pages/detail.html?id=${encodeURIComponent(179611819)}`;
           window.location.href = url;
         });
       })
