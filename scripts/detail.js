@@ -161,7 +161,7 @@ fetch(joonggoInfo)
 
       // Making Map-area
       const mapArea = document.querySelector(".desc-map");
-      mapArea.innerText = `- ${product.detail.point}`;
+      mapArea.innerText = `- ${product.point}`;
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -190,8 +190,21 @@ fetch(joonggoInfo)
 
       // Making Item-info
       const itemInfos = document.querySelectorAll(".item-info");
+      
       itemInfos.forEach((item) => {
-        item.innerHTML = ``;
+        product.detail.product_img_etc.forEach((img) => {
+            console.log(img.image_url)
+            item.innerHTML = 
+            `
+            <div class="item-img">
+                <img src="../${img.image_url}">
+            </div>
+            <div class="item-detail">
+                <span class="item-name">${img.name}</span>
+                <span class="item-price">${img.price}</span>
+            </div>
+            `;
+        })
       });
     }
   });
