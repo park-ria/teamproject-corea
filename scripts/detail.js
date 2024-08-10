@@ -97,10 +97,8 @@ fetch(joonggoInfo)
         pagers[currentIndex].classList.add("active");
       };
 
-      
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
-
         const headingCategory = document.querySelector(".heading-category");
         const span = document.createElement("span");
 
@@ -160,8 +158,8 @@ fetch(joonggoInfo)
         `;
 
       // Making Map-area
-      const mapArea = document.querySelector(".desc-map");
-      mapArea.innerText = `- ${product.point}`;
+      const mapArea = document.querySelector(".map-area");
+      mapArea.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${product.point}`;
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -189,23 +187,23 @@ fetch(joonggoInfo)
       storeName.innerText = product.detail.product_store;
 
       // Making Item-info
-      const itemInfos = document.querySelectorAll(".item-info");
-      
-      itemInfos.forEach((item) => {
-        product.detail.product_img_etc.forEach((img) => {
-            console.log(img.image_url)
-            item.innerHTML = 
-            `
-            <div class="item-img">
-                <img src="../${img.image_url}">
-            </div>
-            <div class="item-detail">
-                <span class="item-name">${img.name}</span>
-                <span class="item-price">${img.price}</span>
-            </div>
-            `;
-        })
-      });
+      const productItemInfos = product.detail.product_img_etc;
+      const itemsWrapper = document.querySelector(".items-wrapper");
+
+      for (let i = 0; i < productItemInfos.length; i++) {
+        itemsWrapper.innerHTML += 
+          `
+            <li class="item-info">
+              <div class="item-img">
+                <img src="../${productItemInfos[i].image_url}">
+              </div>
+              <div class="item-detail">
+                <span class="item-name">${productItemInfos[i].name}</span>
+                <span class="item-price">${productItemInfos[i].price}</span>
+              </div>
+            </li>
+          `;
+      }
     }
   });
 
@@ -233,11 +231,17 @@ marker.setMap(map);
 // marker.setMap(null);
 
 // store-btns 클릭시 store-contents opacity 변화
-const storeBtns = document.querySelectorAll(".store-btns ul li");
+const storeBtns = document.querySelectorAll(".store-btns button");
 const storeContents = document.querySelectorAll(".store-contents > div");
 
 storeBtns.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", function() {
+    storeBtns.forEach((sibling) => {
+      if(sibling !== btn) {
+        sibling.classList.remove("active");
+      }
+    });
+    this.classList.add("active");
     storeContents.forEach((content) => {
       content.classList.remove("active");
     });

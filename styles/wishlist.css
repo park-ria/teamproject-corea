@@ -241,6 +241,7 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
   font-size: 1.6rem;
+  font-weight: 500;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
@@ -1465,6 +1466,7 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
   font-size: 1.6rem;
+  font-weight: 500;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
