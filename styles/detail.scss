@@ -306,16 +306,16 @@ body {
                                     overflow: hidden;
                                     position: relative;
 
-                                    &::before {
-                                        content: "";
+                                    .filling-bar {
                                         position: absolute;
                                         top: 0;
                                         left: 0;
-                                        width: 27%;
+                                        width: 0;
                                         height: 100%;
                                         background: map-get($map: $color, $key: bar-linear-gradient);
                                         border-radius: 20px;
                                         box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.5);
+                                        transition: all 0.5s;
                                     }
                                 }
                             }
@@ -419,14 +419,19 @@ body {
                         border: 0;
                         font-size: map-get($map: $fontSize, $key: font-large);
                         color: map-get($map: $color, $key: bg-light-color);
-                        box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+                        transition: all 0.3s;
                         cursor: pointer;
-    
+                        
                         &.chat {
                             background: map-get($map: $color, $key: bg-main-color);
                         }
                         &.trade {
                             background: map-get($map: $color, $key: bg-dark-color);
+                        }
+                        
+                        &:hover {
+                            box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+                            font-weight: bold;
                         }
                     }
                 }
@@ -640,7 +645,7 @@ body {
                                 margin-bottom: 30px;
                             }
 
-                            ul {
+                            .reviews-box {
                                 width: 100%;
                                 display: flex;
                                 flex-direction: column;

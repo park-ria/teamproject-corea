@@ -42,7 +42,6 @@ fetch(joonggoInfo)
         const slideWidth = document.querySelector(".img-slide").offsetWidth;
 
         imgWrapper.style.width = slideWidth * slideCount;
-        console.log((imgWrapper.style.width = slideWidth * slideCount));
 
         imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`;
         currentIndex = num;
@@ -135,27 +134,63 @@ fetch(joonggoInfo)
       const userId = document.querySelector(".user-id");
       userId.innerText = product.detail.product_store;
 
-      // Making Desc-conditions
-      const conditionsBox = document.querySelector(".desc-conditions");
+      // Filling Detail-bar
+      const fillingBar = document.querySelector(".filling-bar");
 
-      conditionsBox.innerHTML = `
-        <div class="conditions-box">
-            <span>제품상태</span>
-            <span>${product.detail.status}</span>
+      fillingBar.animate([
+        {
+          width: 0
+        },
+        {
+          width: "26%"
+        }
+      ], {
+        duration: 500,
+        fill: 'both'
+      })
+      // Numbering Detail-value
+      let number = 0;
+      
+      const startNumbering = () => {
+        const percentage = document.querySelector(".percentage");
+        number++;
+        percentage.innerText = number;
+
+        if (number < 27) {
+          setTimeout(startNumbering, 20);
+        } 
+      };
+
+      startNumbering();
+
+      // Making Desc-conditions
+      const descConditions = document.querySelector(".desc-conditions");
+      
+      descConditions.innerHTML = `
+      <div class="conditions-box">
+      <span>제품상태</span>
+      <span class="condition">${product.detail.status}</span>
+      </div>
+      <div class="conditions-box">
+      <span>거래방식</span>
+      <span class="condition">${product.detail.transaction_method}</span>
+      </div>
+      <div class="conditions-box">
+      <span>배송비</span>
+      <span class="condition">${product.detail.delivery_charged}</span>
         </div>
         <div class="conditions-box">
-            <span>거래방식</span>
-            <span>${product.detail.transaction_method}</span>
-        </div>
-        <div class="conditions-box">
-            <span>배송비</span>
-            <span>${product.detail.delivery_charged}</span>
-        </div>
-        <div class="conditions-box">
-            <span>안전거래</span>
-            <span>${product.detail.safe_transaction}</span>
+        <span>안전거래</span>
+        <span class="condition">${product.detail.safe_transaction}</span>
         </div>
         `;
+        
+        const conditions = document.querySelectorAll(".condition");
+        conditions.forEach((condition) => {
+          if (condition.innerText === "undefined") {
+            condition.innerText = "-";
+        }
+      });
 
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
@@ -204,6 +239,17 @@ fetch(joonggoInfo)
             </li>
           `;
       }
+
+      // Making Reviews
+      const reviewsBox = document.querySelector(".reviews-box");
+
+      reviewsBox.innerHTML = 
+      `
+        <li>친절/매너가 좋아요.<span><i class="fa-regular fa-user"></i>51</span></li>
+        <li>응답이 빨라요.<span><i class="fa-regular fa-user"></i>26</span></li>
+        <li>상품 상태가 좋아요.<span><i class="fa-regular fa-user"></i>38</span></li>
+        <li>택배 거래가 수월했어요.(포장, 협조적)<span><i class="fa-regular fa-user"></i>17</span></li>
+      `;
     }
   });
 
@@ -230,11 +276,10 @@ marker.setMap(map);
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);
 
-// store-btns 클릭시 store-contents opacity 변화
+// Store-btns active 
 const storeBtns = document.querySelectorAll(".store-btns button");
-const storeContents = document.querySelectorAll(".store-contents > div");
 
-storeBtns.forEach((btn, index) => {
+storeBtns.forEach((btn) => {
   btn.addEventListener("click", function() {
     storeBtns.forEach((sibling) => {
       if(sibling !== btn) {
@@ -242,9 +287,17 @@ storeBtns.forEach((btn, index) => {
       }
     });
     this.classList.add("active");
+  });
+});
+
+// Store-contents active
+const storeContents = document.querySelectorAll(".store-contents > div");
+
+storeBtns.forEach((button, index) => {
+  button.addEventListener("click", () => {
     storeContents.forEach((content) => {
       content.classList.remove("active");
     });
-    storeContents[index].classList.add("active");
+  storeContents[index].classList.add("active");
   });
 });

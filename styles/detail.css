@@ -569,16 +569,16 @@ body {
   overflow: hidden;
   position: relative;
 }
-#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar::before {
-  content: "";
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar .filling-bar {
   position: absolute;
   top: 0;
   left: 0;
-  width: 27%;
+  width: 0;
   height: 100%;
   background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
 }
 #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-value {
   display: flex;
@@ -666,7 +666,7 @@ body {
   border: 0;
   font-size: 1.8rem;
   color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
   cursor: pointer;
 }
 #main .inner .main .main-desc .desc-btns button.chat {
@@ -674,6 +674,10 @@ body {
 }
 #main .inner .main .main-desc .desc-btns button.trade {
   background: #3a3a3a;
+}
+#main .inner .main .main-desc .desc-btns button:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 #main .inner .main .main-desc .desc-itemInfo {
   margin-bottom: 85px;
@@ -886,13 +890,13 @@ body {
 #main .inner .main .main-desc .desc-store .store-contents .reviews h3 {
   margin-bottom: 30px;
 }
-#main .inner .main .main-desc .desc-store .store-contents .reviews ul {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-#main .inner .main .main-desc .desc-store .store-contents .reviews ul li {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -900,10 +904,10 @@ body {
   background: #dcdcdc;
   border-radius: 7px;
 }
-#main .inner .main .main-desc .desc-store .store-contents .reviews ul li span {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span {
   color: #6d6d6d;
 }
-#main .inner .main .main-desc .desc-store .store-contents .reviews ul li span i {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span i {
   margin-right: 10px;
 }
 
