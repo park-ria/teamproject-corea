@@ -23,17 +23,21 @@ wishlistTabButton.forEach((btn) => {
   });
 });
 
-/*document.querySelector(".wishItemWrap").addEventListener("click", function () {
-  console.log(this);
+document.querySelectorAll(".wishItemViewMore").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log(this);
+  });
 });
-
 document.querySelectorAll(".wishHeart").forEach((item) => {
   item.addEventListener("click", function (e) {
+    e.preventDefault();
     console.log(this);
   });
 });
 document.querySelectorAll(".wishItemChatButton").forEach((item) => {
   item.addEventListener("click", function () {
+    e.preventDefault();
     console.log(this);
   });
-});*/
+});

@@ -491,7 +491,11 @@ footer .inner .footer-lower .footer-lower-logo i {
   height: 100px;
   position: relative;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper img {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore {
+  width: inherit;
+  height: inherit;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
   width: inherit;
   height: inherit;
   -o-object-fit: cover;
@@ -546,20 +550,22 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   justify-content: space-between;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore {
   flex: 3;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
   height: 100%;
   display: flex;
   justify-content: space-between;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
   flex: 1;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
   font-size: 1.4rem;
   color: #6d6d6d;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemName {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
   width: 100%;
   margin-top: 10px;
   line-height: 25px;
@@ -571,25 +577,25 @@ footer .inner .footer-lower .footer-lower-logo i {
   -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
   -webkit-box-orient: vertical;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
   flex: 1.5;
   display: flex;
   justify-content: space-around;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
   width: 135px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice {
   font-size: 1.2rem;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
   font-size: 1.8rem;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
   width: 35px;
   height: 20px;
   background: #0dcc5a;
@@ -599,7 +605,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   letter-spacing: normal;
   text-align: center;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1082,43 +1088,46 @@ footer .inner .footer-lower .footer-lower-logo i {
     flex-wrap: wrap;
     align-items: flex-start;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore {
+    width: 100%;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
     width: 100%;
     height: auto;
     min-height: 100px;
     flex-direction: column;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
     flex: 0;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
     font-size: 1.2rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemName {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
     width: 90%;
     margin-top: 5px;
     font-size: 1.4rem;
     line-height: 18px;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
     flex: 1;
     min-width: 200px;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 5px;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
     width: auto;
     justify-content: flex-start;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
     font-size: 1.6rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
     height: 16px;
     font-size: 1.2rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -1269,6 +1278,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   .wish-items-content.active {
     margin-top: 0;
   }
+  .wish-items-content .wish-items-content-upper .wish-items-delete-selection {
+    opacity: 0;
+  }
   .wish-items-content .wish-items-content-detail {
     width: 100%;
   }
@@ -1288,8 +1300,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
     width: 100%;
-    height: 250px;
+    height: 280px;
     flex-direction: column;
+    gap: 10px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
     width: 180px;
@@ -1311,39 +1324,39 @@ footer .inner .footer-lower .footer-lower-logo i {
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
     width: 100%;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
     min-height: 0;
     gap: 10px;
     align-items: center;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
     width: -moz-fit-content;
     width: fit-content;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
     width: -moz-fit-content;
     width: fit-content;
     font-size: 1.4rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox .wishItemName {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
     width: -moz-fit-content;
     width: fit-content;
     font-size: 1.6rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
     width: 100%;
     min-width: 0;
     justify-content: center;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
     font-size: 1.8rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
     height: 20px;
     font-size: 1.4rem;
     line-height: 15px;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
     display: none;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons {

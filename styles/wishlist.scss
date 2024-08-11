@@ -171,13 +171,17 @@
             width: 100px;
             height: 100px;
             position: relative;
-            img {
+            .wishItemViewMore {
               width: inherit;
               height: inherit;
-              object-fit: cover;
-              position: absolute;
-              top: 0;
-              left: 0;
+              img {
+                width: inherit;
+                height: inherit;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
             }
             .soldOutFilter {
               position: absolute;
@@ -224,64 +228,66 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
-              .wishItemInfo {
+              .wishItemViewMore {
                 flex: 3;
-                height: 100%;
-                display: flex;
-                justify-content: space-between;
-                .wishItemTitleBox {
-                  flex: 1;
-                  .wishItemSellerName {
-                    font-size: map-get($fontSize, font-small);
-                    color: map-get($color, bg-dark-gray);
-                  }
-                  .wishItemName {
-                    width: 100%;
-                    margin-top: 10px;
-                    line-height: 25px;
-                    font-size: map-get($fontSize, font-medium);
-                    color: map-get($color, main-font-color);
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
-                    -webkit-box-orient: vertical;
-                  }
-                }
-                .wishItemPriceBox {
-                  flex: 1.5;
+                .wishItemInfo {
+                  height: 100%;
                   display: flex;
-                  justify-content: space-around;
-                  .wishItemPriceInfo {
-                    width: 135px;
+                  justify-content: space-between;
+                  .wishItemTitleBox {
+                    flex: 1;
+                    .wishItemSellerName {
+                      font-size: map-get($fontSize, font-small);
+                      color: map-get($color, bg-dark-gray);
+                    }
+                    .wishItemName {
+                      width: 100%;
+                      margin-top: 10px;
+                      line-height: 25px;
+                      font-size: map-get($fontSize, font-medium);
+                      color: map-get($color, main-font-color);
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
+                      -webkit-box-orient: vertical;
+                    }
+                  }
+                  .wishItemPriceBox {
+                    flex: 1.5;
                     display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    gap: 10px;
-                    .wishItemPrice {
-                      font-size: map-get($fontSize, font-extra-small);
-                      b {
-                        font-size: map-get($fontSize, font-large);
+                    justify-content: space-around;
+                    .wishItemPriceInfo {
+                      width: 135px;
+                      display: flex;
+                      justify-content: flex-end;
+                      align-items: center;
+                      gap: 10px;
+                      .wishItemPrice {
+                        font-size: map-get($fontSize, font-extra-small);
+                        b {
+                          font-size: map-get($fontSize, font-large);
+                        }
+                      }
+                      .pay {
+                        width: 35px;
+                        height: 20px;
+                        background: map-get($color, bg-main-color);
+                        border-radius: 3px;
+                        font-size: map-get($fontSize, font-small);
+                        color: map-get($color, bg-light-color);
+                        letter-spacing: normal;
+                        text-align: center;
                       }
                     }
-                    .pay {
-                      width: 35px;
-                      height: 20px;
-                      background: map-get($color, bg-main-color);
-                      border-radius: 3px;
+                    .wishItemShippingInfo {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 10px;
                       font-size: map-get($fontSize, font-small);
-                      color: map-get($color, bg-light-color);
-                      letter-spacing: normal;
-                      text-align: center;
                     }
-                  }
-                  .wishItemShippingInfo {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10px;
-                    font-size: map-get($fontSize, font-small);
                   }
                 }
               }
@@ -698,48 +704,51 @@
                 width: 100%;
                 flex-wrap: wrap;
                 align-items: flex-start;
-                .wishItemInfo {
+                .wishItemViewMore {
                   width: 100%;
-                  height: auto;
-                  min-height: 100px;
-                  flex-direction: column;
-                  .wishItemTitleBox {
-                    flex: 0;
-                    .wishItemSellerName {
-                      font-size: map-get($fontSize, font-extra-small);
-                    }
-                    .wishItemName {
-                      width: 90%;
-                      margin-top: 5px;
-                      font-size: map-get($fontSize, font-small);
-                      line-height: 18px;
-                    }
-                  }
-                  .wishItemPriceBox {
-                    flex: 1;
-                    min-width: 200px;
-                    justify-content: flex-start;
-                    flex-wrap: wrap;
-                    gap: 5px;
-                    .wishItemPriceInfo {
-                      width: auto;
-                      justify-content: flex-start;
-                      .wishItemPrice {
-                        b {
-                          font-size: map-get($fontSize, font-medium);
-                        }
-                      }
-                      .pay {
-                        height: 16px;
+                  .wishItemInfo {
+                    width: 100%;
+                    height: auto;
+                    min-height: 100px;
+                    flex-direction: column;
+                    .wishItemTitleBox {
+                      flex: 0;
+                      .wishItemSellerName {
                         font-size: map-get($fontSize, font-extra-small);
                       }
+                      .wishItemName {
+                        width: 90%;
+                        margin-top: 5px;
+                        font-size: map-get($fontSize, font-small);
+                        line-height: 18px;
+                      }
                     }
-                    .wishItemShippingInfo {
-                      flex-direction: row;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 10px;
-                      font-size: map-get($fontSize, font-small);
+                    .wishItemPriceBox {
+                      flex: 1;
+                      min-width: 200px;
+                      justify-content: flex-start;
+                      flex-wrap: wrap;
+                      gap: 5px;
+                      .wishItemPriceInfo {
+                        width: auto;
+                        justify-content: flex-start;
+                        .wishItemPrice {
+                          b {
+                            font-size: map-get($fontSize, font-medium);
+                          }
+                        }
+                        .pay {
+                          height: 16px;
+                          font-size: map-get($fontSize, font-extra-small);
+                        }
+                      }
+                      .wishItemShippingInfo {
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: map-get($fontSize, font-small);
+                      }
                     }
                   }
                 }
@@ -942,6 +951,11 @@
     &.active {
       margin-top: 0;
     }
+    .wish-items-content-upper {
+      .wish-items-delete-selection {
+        opacity: 0;
+      }
+    }
     .wish-items-content-detail {
       width: 100%;
       .wishItemList {
@@ -958,8 +972,9 @@
           }
           .wishItem {
             width: 100%;
-            height: 250px;
+            height: 280px;
             flex-direction: column;
+            gap: 10px;
             .wishItemImgWrapper {
               width: 180px;
               height: 180px;
@@ -982,41 +997,43 @@
             .wishItemDescGroup {
               width: 100%;
               .wishItemDesc {
-                .wishItemInfo {
-                  min-height: 0;
-                  gap: 10px;
-                  align-items: center;
-                  .wishItemTitleBox {
-                    width: fit-content;
-                    .wishItemSellerName {
-                      //width: 100%;
+                .wishItemViewMore {
+                  .wishItemInfo {
+                    min-height: 0;
+                    gap: 10px;
+                    align-items: center;
+                    .wishItemTitleBox {
                       width: fit-content;
-                      font-size: map-get($fontSize, font-small);
+                      .wishItemSellerName {
+                        //width: 100%;
+                        width: fit-content;
+                        font-size: map-get($fontSize, font-small);
+                      }
+                      .wishItemName {
+                        //width: 100%;
+                        width: fit-content;
+                        font-size: map-get($fontSize, font-medium);
+                      }
                     }
-                    .wishItemName {
-                      //width: 100%;
-                      width: fit-content;
-                      font-size: map-get($fontSize, font-medium);
-                    }
-                  }
-                  .wishItemPriceBox {
-                    width: 100%;
-                    min-width: 0;
-                    justify-content: center;
-                    .wishItemPriceInfo {
-                      .wishItemPrice {
-                        b {
-                          font-size: map-get($fontSize, font-large);
+                    .wishItemPriceBox {
+                      width: 100%;
+                      min-width: 0;
+                      justify-content: center;
+                      .wishItemPriceInfo {
+                        .wishItemPrice {
+                          b {
+                            font-size: map-get($fontSize, font-large);
+                          }
+                        }
+                        .pay {
+                          height: 20px;
+                          font-size: map-get($fontSize, font-small);
+                          line-height: 15px;
                         }
                       }
-                      .pay {
-                        height: 20px;
-                        font-size: map-get($fontSize, font-small);
-                        line-height: 15px;
+                      .wishItemShippingInfo {
+                        display: none;
                       }
-                    }
-                    .wishItemShippingInfo {
-                      display: none;
                     }
                   }
                 }
