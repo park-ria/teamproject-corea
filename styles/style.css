@@ -21,20 +21,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -129,9 +121,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -406,8 +395,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -546,6 +534,14 @@ body {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  width: 100%;
+  height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -563,6 +559,10 @@ body {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-info {
   font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
   position: absolute;
@@ -693,6 +693,7 @@ body {
   font-family: "SBAggroB";
   letter-spacing: 0;
   color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 0;
   cursor: default;
 }
@@ -701,12 +702,10 @@ body {
 }
 #auction .auction-banner .banner-content .banner-desc h2 {
   font-size: 5rem;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 #auction .auction-banner .banner-content .banner-desc strong {
   font-size: 5rem;
   color: #fce44a;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   margin: 10px 0;
 }
 #auction .auction-banner .banner-content .banner-desc p {
@@ -723,8 +722,7 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -733,7 +731,7 @@ body {
   left: 0%;
   width: 40%;
   height: 100%;
-  background: #0051b1;
+  background: linear-gradient(to bottom, #005ac8, #044ba2);
   transform: translateY(-50%) skew(-25deg);
 }
 #auction .auction-content {
@@ -791,6 +789,14 @@ body {
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  width: 100%;
+  height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -808,6 +814,10 @@ body {
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-info {
   font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge {
   position: absolute;
@@ -978,6 +988,14 @@ body {
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  width: 100%;
+  height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
   display: block;
@@ -995,6 +1013,10 @@ body {
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-info {
   font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #event .event-content .event-heading {
@@ -1106,6 +1128,14 @@ body {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  width: 100%;
+  height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -1123,6 +1153,10 @@ body {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-info {
   font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge {
   position: absolute;
@@ -1272,13 +1306,12 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
-  height: 220px;
+  width: 60%;
 }
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1293,6 +1326,7 @@ body {
   border-radius: 50px 50px 0 0;
   overflow: hidden;
   opacity: 0;
+  z-index: 2;
   transition: all 0.5s;
 }
 #safeserviceModal .modal-content {
@@ -1471,7 +1505,7 @@ body {
     font-size: 3.2rem;
   }
   #auction .auction-banner .banner-content .banner-desc strong {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     margin: 10px 0;
   }
   #auction .auction-banner .banner-content .banner-desc p {
@@ -1524,10 +1558,10 @@ body {
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
-    width: calc((100% - 20px) / 2);
+    width: calc((100% - 10px) / 2);
   }
   #event .event-content .event-slide ul {
     justify-content: center;
@@ -1577,9 +1611,13 @@ body {
   #safe-service {
     height: 350px;
   }
+  #safe-service .safe-service-content {
+    align-items: flex-start;
+  }
   #safe-service .safe-service-content .safe-service-desc {
     position: relative;
     z-index: 1;
+    padding-top: 5%;
   }
   #safe-service .safe-service-content .safe-service-desc h2 {
     font-size: 3rem;
@@ -1589,18 +1627,23 @@ body {
   }
   #safe-service .safe-service-content .safe-service-desc p {
     font: 600 2.2rem/1.3 "Noto Sans KR", sans-serif;
-    text-shadow: 0 0 10px #111;
   }
   #safe-service .safe-service-content .safe-service-desc #modalBtn {
     padding: 12px 26px;
     font-size: 1.6rem;
     border-radius: 5px;
   }
-  #safe-service .safe-service-content .safe-service-banner {
-    height: 180px;
-  }
 }
 @media screen and (max-width: 840px) {
+  #best-ranking .ranking-content .ranking-slide {
+    height: 396px;
+  }
+  #best-ranking .ranking-content .ranking-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
+  }
   #auction .auction-banner {
     height: auto;
   }
@@ -1623,6 +1666,15 @@ body {
     width: 70%;
     left: 50%;
     transform: translate(-50%, -50%) skew(-25deg);
+  }
+  #auction .auction-content .auction-slide {
+    height: 396px;
+  }
+  #auction .auction-content .auction-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
   }
   #auction .auction-content .slide-btns button {
     position: absolute;
@@ -1666,9 +1718,12 @@ body {
   #auction .auction-content .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
   }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
     justify-content: center;
-    gap: 20px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
     height: 100px;
@@ -1678,15 +1733,129 @@ body {
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
     width: calc(100% - 100px);
+    padding: 5px 10px;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
+    height: 36px;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
+    margin: 5px 0 10px;
+  }
+  #event .event-content .event-slide ul a {
+    width: 300px;
+    height: 100px;
+  }
+  #recommended .recommended-content .recommended-slide {
+    height: 396px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
+  }
+  #safe-service {
+    height: auto;
+  }
+  #safe-service .safe-service-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  #safe-service .safe-service-content .safe-service-desc {
+    padding-top: 50px;
+    text-align: center;
+  }
+  #safe-service .safe-service-content .safe-service-desc span {
+    margin: 10px 0;
+  }
+  #safe-service .safe-service-content .safe-service-desc p {
+    margin: 10px 0;
+  }
+  #safe-service .safe-service-content .safe-service-banner {
+    position: static;
+    width: 100%;
+  }
+  #safeserviceModal {
+    height: 80vh;
+  }
+  #safeserviceModal .modal-content {
+    flex-direction: column;
+  }
+  #safeserviceModal .modal-content > div {
+    width: 100%;
+    height: 50%;
+    padding: 20px;
+  }
+  #safeserviceModal .modal-content s .modal-left {
+    justify-content: center;
+  }
+  #safeserviceModal .modal-content s .modal-left .modal-title {
+    text-align: center;
+  }
+  #safeserviceModal .modal-content s .modal-left .modal-title h2 {
+    font: 400 2.4rem/1.3 "Noto Sans KR", sans-serif;
+    margin-bottom: 20px;
+  }
+  #safeserviceModal .modal-content s .modal-left .modal-title p {
+    font-size: 1.6rem;
+    margin: 10px 0;
+  }
+  #safeserviceModal .modal-content s .modal-left .modal-title h6 {
+    font: 400 3.2rem/1.2 "GmarketSansBold";
+    margin-top: 20px;
+  }
+  #safeserviceModal .modal-content s .modal-left .modal-point {
+    top: 50%;
+    left: 10%;
+    width: 20%;
+    transform: translateY(-50%);
+  }
+  #safeserviceModal .modal-content .modal-right {
+    justify-content: center;
+  }
+  #safeserviceModal .modal-content .modal-right ul li {
+    height: 76px;
+    margin: 5px 0;
+  }
+  #safeserviceModal .modal-content .modal-right ul li .modal-img {
+    width: 120px;
+  }
+  #safeserviceModal .modal-content .modal-right ul li .modal-desc {
+    width: 100%;
+  }
+  #safeserviceModal .modal-content .modal-right ul li:nth-child(2) .modal-img img {
+    width: 70%;
+  }
+  #safeserviceModal .closeBtn {
+    color: #fff;
+  }
+  #safeserviceModal .closeBtn:hover {
+    color: #0dcc5a;
   }
 }
 @media screen and (max-width: 450px) {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
     width: 100%;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a {
+    justify-content: center;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+    width: 100px;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
+    width: calc(90% - 100px);
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
+    height: 36px;
+  }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
+    margin: 5px 0 10px;
   }
 }
