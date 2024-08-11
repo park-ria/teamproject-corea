@@ -22,3 +22,18 @@ wishlistTabButton.forEach((btn) => {
     target.classList.add("active");
   });
 });
+
+/*document.querySelector(".wishItemWrap").addEventListener("click", function () {
+  console.log(this);
+});
+
+document.querySelectorAll(".wishHeart").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    console.log(this);
+  });
+});
+document.querySelectorAll(".wishItemChatButton").forEach((item) => {
+  item.addEventListener("click", function () {
+    console.log(this);
+  });
+});*/
