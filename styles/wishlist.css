@@ -365,7 +365,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 /* wishlist */
 .wishlist {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 250px;
   overflow: hidden;
 }
 
@@ -470,7 +470,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .wish-items-content .wish-items-content-detail .wishItemList li {
   width: 100%;
-  padding: 20px 0;
+  padding: 50px 0;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -478,15 +478,15 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
   width: 100%;
-  height: 100px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   position: relative;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore {
@@ -536,7 +536,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
   flex: 1;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -621,7 +621,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button {
   display: inline-block;
   width: 30%;
-  min-width: 60px;
+  min-width: 75px;
   padding: 15px 0;
   background: #111;
   border-radius: 5px;
@@ -667,13 +667,13 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemImgWrapper .soldOutFilter {
   opacity: 1;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemTitleBox p {
+.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox p {
   color: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemInfo .wishItemPriceBox .wishItemPriceInfo > .pay {
+.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo > .pay {
   background: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:not(.wishItemXButton) {
+.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button:not(.wishItemXButton) {
   background: #dcdcdc;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemLower {
