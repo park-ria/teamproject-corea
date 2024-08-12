@@ -390,6 +390,7 @@ body {
         text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
         z-index: 0;
         cursor: default;
+        margin-left: 50px;
         span {
           font-size: 2rem;
         }
@@ -595,7 +596,8 @@ body {
         color: map-get($color, bg-light-color);
         transition: all 0.3s;
         &:hover {
-          background: map-get($color, bg-sub-color);
+          // background: map-get($color, bg-sub-color);
+          background: #268cfb;
         }
       }
     }
@@ -944,6 +946,7 @@ body {
           width: 100%;
           align-items: center;
           text-align: center;
+          margin-left: 0;
         }
         .banner-img {
           width: 60%;

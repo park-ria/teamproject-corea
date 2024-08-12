@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -122,6 +130,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -396,7 +407,8 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -723,7 +735,8 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -1312,7 +1325,8 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1506,7 +1520,7 @@ body {
     font-size: 3.2rem;
   }
   #auction .auction-banner .banner-content .banner-desc strong {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     margin: 10px 0;
   }
   #auction .auction-banner .banner-content .banner-desc p {
@@ -1636,6 +1650,15 @@ body {
   }
 }
 @media screen and (max-width: 840px) {
+  #best-ranking .ranking-content .ranking-slide {
+    height: 396px;
+  }
+  #best-ranking .ranking-content .ranking-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
+  }
   #auction .auction-banner {
     height: auto;
   }
@@ -1658,6 +1681,12 @@ body {
     width: 70%;
     left: 50%;
     transform: translate(-50%, -50%) skew(-25deg);
+  }
+  #auction .auction-content .auction-slide {
+    height: 396px;
+  }
+  #auction .auction-content .auction-slide .slideWrapper li a {
+    height: 366px;
   }
   #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
     height: 36px;
@@ -1730,6 +1759,15 @@ body {
   #event .event-content .event-slide ul a {
     width: 300px;
     height: 100px;
+  }
+  #recommended .recommended-content .recommended-slide {
+    height: 396px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
   }
   #safe-service {
     height: auto;
@@ -1857,12 +1895,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -1957,6 +2003,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
