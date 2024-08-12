@@ -327,10 +327,13 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
 @media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
+  }
   footer .inner .footer-upper {
     display: flex;
     flex-direction: column;
@@ -356,11 +359,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-items: center;
     text-align: center;
     gap: 20px;
-  }
-}
-@media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
   }
 }
 /* variable */
@@ -1076,7 +1074,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter .soldOutFilterTxt {
     width: 100px;
     height: 100px;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     line-height: 30px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
