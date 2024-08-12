@@ -257,6 +257,24 @@ body {
   margin-right: 4px;
 }
 
+#mobile-menu {
+  display: none;
+  background: #fff;
+}
+#mobile-menu .mobile-menu {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#mobile-menu .mobile-menu .menu-box {
+  display: flex;
+  gap: 15px;
+}
+#mobile-menu .mobile-menu .menu-box a {
+  font-size: 20px;
+}
+
 .container {
   width: 100%;
   margin-top: 185px;
@@ -319,6 +337,12 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
 }
 @media screen and (max-width: 840px) {
+  #header {
+    display: none;
+  }
+  #mobile-menu {
+    display: block;
+  }
   footer .inner .footer-upper {
     display: flex;
     flex-direction: column;
@@ -386,12 +410,12 @@ body {
   top: 185px;
   left: 0;
   width: 600px;
-  height: 702px;
+  height: 725px;
 }
 #main .inner .main .main-img .img-slider {
   width: 100%;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -521,7 +545,7 @@ body {
 #main .inner .main .main-desc .desc-user {
   display: flex;
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 #main .inner .main .main-desc .desc-user .user-img {
   width: 60px;
@@ -598,7 +622,7 @@ body {
   height: 90px;
   border: 1px solid #dcdcdc;
   border-radius: 4px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 #main .inner .main .main-desc .desc-conditions .conditions-box {
   display: flex;
@@ -644,7 +668,7 @@ body {
   background: #dcdcdc;
   border-radius: 3px;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 42px;
 }
 #main .inner .main .main-desc .desc-map .map-area i {
   margin-right: 5px;
@@ -1149,6 +1173,9 @@ body {
   }
 }
 @media screen and (max-width: 850px) {
+  #header {
+    display: none;
+  }
   #main {
     margin-bottom: 150px;
   }

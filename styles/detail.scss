@@ -136,12 +136,12 @@ body {
                 top: 185px;
                 left: 0;
                 width: 600px;
-                height: 702px;
+                height: 725px;
 
                 .img-slider {
                     width: 100%;
                     position: relative;
-                    margin-bottom: 30px;
+                    margin-bottom: 50px;
                     border-radius: 16px;
                     overflow: hidden;
 
@@ -254,7 +254,7 @@ body {
                 .desc-user {
                     display: flex;
                     gap: 15px;
-                    margin-bottom: 40px;
+                    margin-bottom: 30px;
 
                     .user-img {
                         width: 60px;
@@ -343,7 +343,7 @@ body {
                     height: 90px;
                     border: 1px solid map-get($map: $color, $key: bg-light-gray);
                     border-radius: 4px;
-                    margin-bottom: 35px;
+                    margin-bottom: 30px;
 
                     .conditions-box {
                         display: flex;
@@ -394,7 +394,7 @@ body {
                         background: map-get($map: $color, $key: bg-light-gray);
                         border-radius: 3px;
                         padding: 10px;
-                        margin-bottom: 50px;
+                        margin-bottom: 42px;
 
                         i {
                             margin-right: 5px;
@@ -626,6 +626,7 @@ body {
                         }
 
                         .selling-items {
+
                             overflow: hidden;
                             .items-wrapper {
                                 width: 100%;
@@ -813,7 +814,11 @@ body {
 }
 
 @media screen and (max-width: 850px) {
-    
+    // header
+    #header {
+        display: none;
+    }
+
     // // main
     #main {
         margin-bottom: 150px;
