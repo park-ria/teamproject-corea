@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -122,6 +130,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -396,7 +407,8 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 #main-slide article .mainSlideWrapper a.active::before {
   display: none;
@@ -625,7 +637,7 @@ body {
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
 }
 #best-ranking .ranking-content .slide-btns button i {
@@ -638,7 +650,7 @@ body {
 }
 #best-ranking .ranking-content .slide-btns button.slidePrev:hover {
   transform: translate(-50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #best-ranking .ranking-content .slide-btns button.slideNext {
   right: 0;
@@ -646,7 +658,7 @@ body {
 }
 #best-ranking .ranking-content .slide-btns button.slideNext:hover {
   transform: translate(50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #best-ranking .ranking-content .slide-btns .slidePager {
   display: flex;
@@ -724,7 +736,8 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -881,7 +894,7 @@ body {
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
 }
 #auction .auction-content .slide-btns button i {
@@ -894,7 +907,7 @@ body {
 }
 #auction .auction-content .slide-btns button.slidePrev:hover {
   transform: translate(-50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #auction .auction-content .slide-btns button.slideNext {
   right: 0;
@@ -902,7 +915,7 @@ body {
 }
 #auction .auction-content .slide-btns button.slideNext:hover {
   transform: translate(50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #auction .auction-content .slide-btns .slidePager {
   display: flex;
@@ -1220,7 +1233,7 @@ body {
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
 }
 #recommended .recommended-content .slide-btns button i {
@@ -1233,7 +1246,7 @@ body {
 }
 #recommended .recommended-content .slide-btns button.slidePrev:hover {
   transform: translate(-50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #recommended .recommended-content .slide-btns button.slideNext {
   right: 0;
@@ -1241,7 +1254,7 @@ body {
 }
 #recommended .recommended-content .slide-btns button.slideNext:hover {
   transform: translate(50%, 5%);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 #recommended .recommended-content .slide-btns .slidePager {
   display: flex;
@@ -1313,7 +1326,8 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1330,6 +1344,15 @@ body {
   opacity: 0;
   z-index: 2;
   transition: all 0.5s;
+}
+#safeserviceModal .back {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.2);
+  filter: blur(1);
 }
 #safeserviceModal .modal-content {
   display: flex;
@@ -1459,7 +1482,7 @@ body {
     height: 40px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
   }
   #best-ranking .ranking-content .slide-btns button i {
@@ -1472,7 +1495,7 @@ body {
   }
   #best-ranking .ranking-content .slide-btns button.slidePrev:hover {
     transform: translate(-50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #best-ranking .ranking-content .slide-btns button.slideNext {
     right: 0;
@@ -1480,7 +1503,7 @@ body {
   }
   #best-ranking .ranking-content .slide-btns button.slideNext:hover {
     transform: translate(50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #best-ranking .ranking-content .slide-btns button.slidePrev {
     transform: translateX(0);
@@ -1501,13 +1524,13 @@ body {
     width: 45%;
   }
   #auction .auction-banner .banner-content .banner-desc span {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   #auction .auction-banner .banner-content .banner-desc h2 {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
   }
   #auction .auction-banner .banner-content .banner-desc strong {
-    font-size: 3.8rem;
+    font-size: 4rem;
     margin: 10px 0;
   }
   #auction .auction-banner .banner-content .banner-desc p {
@@ -1523,7 +1546,7 @@ body {
     height: 40px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
   }
   #auction .auction-content .slide-btns button i {
@@ -1536,7 +1559,7 @@ body {
   }
   #auction .auction-content .slide-btns button.slidePrev:hover {
     transform: translate(-50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #auction .auction-content .slide-btns button.slideNext {
     right: 0;
@@ -1544,7 +1567,7 @@ body {
   }
   #auction .auction-content .slide-btns button.slideNext:hover {
     transform: translate(50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #auction .auction-content .slide-btns button.slidePrev {
     transform: translateX(0);
@@ -1575,7 +1598,7 @@ body {
     height: 40px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
   }
   #recommended .recommended-content .slide-btns button i {
@@ -1588,7 +1611,7 @@ body {
   }
   #recommended .recommended-content .slide-btns button.slidePrev:hover {
     transform: translate(-50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #recommended .recommended-content .slide-btns button.slideNext {
     right: 0;
@@ -1596,7 +1619,7 @@ body {
   }
   #recommended .recommended-content .slide-btns button.slideNext:hover {
     transform: translate(50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #recommended .recommended-content .slide-btns button.slidePrev {
     transform: translateX(0);
@@ -1635,6 +1658,38 @@ body {
     font-size: 1.6rem;
     border-radius: 5px;
   }
+  #safeserviceModal .modal-content > div {
+    padding: 30px;
+  }
+  #safeserviceModal .modal-content .modal-left .modal-title h2 {
+    font: 400 2.2rem/1.3 "Noto Sans KR", sans-serif;
+    margin-bottom: 20px;
+  }
+  #safeserviceModal .modal-content .modal-left .modal-title p {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+  #safeserviceModal .modal-content .modal-left .modal-title h6 {
+    font: 400 3.3rem/1.2 "GmarketSansBold";
+    margin-top: 20px;
+  }
+  #safeserviceModal .modal-content .modal-left .modal-point {
+    top: 40%;
+    width: 30%;
+    transform: translateY(-50%);
+  }
+  #safeserviceModal .modal-content .modal-right ul li {
+    gap: 10px;
+  }
+  #safeserviceModal .modal-content .modal-right ul li .modal-img {
+    width: 140px;
+  }
+  #safeserviceModal .modal-content .modal-right ul li .modal-desc {
+    width: 100%;
+  }
+  #safeserviceModal .modal-content .modal-right ul li:nth-child(2) .modal-img img {
+    width: 70%;
+  }
 }
 @media screen and (max-width: 840px) {
   #best-ranking .ranking-content .ranking-slide {
@@ -1652,7 +1707,6 @@ body {
   #auction .auction-banner .banner-content {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     padding-top: 5%;
   }
   #auction .auction-banner .banner-content .banner-desc {
@@ -1661,8 +1715,21 @@ body {
     text-align: center;
     margin-left: 0;
   }
+  #auction .auction-banner .banner-content .banner-desc span {
+    font-size: 2.2rem;
+  }
+  #auction .auction-banner .banner-content .banner-desc h2 {
+    font-size: 4rem;
+  }
+  #auction .auction-banner .banner-content .banner-desc strong {
+    font-size: 4.4rem;
+    margin: 10px 0;
+  }
+  #auction .auction-banner .banner-content .banner-desc p {
+    font-size: 2.2rem;
+  }
   #auction .auction-banner .banner-content .banner-img {
-    width: 60%;
+    width: 50%;
     height: auto;
   }
   #auction .auction-banner .banner-content::before {
@@ -1686,7 +1753,7 @@ body {
     height: 40px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
   }
   #auction .auction-content .slide-btns button i {
@@ -1699,7 +1766,7 @@ body {
   }
   #auction .auction-content .slide-btns button.slidePrev:hover {
     transform: translate(-50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #auction .auction-content .slide-btns button.slideNext {
     right: 0;
@@ -1707,7 +1774,7 @@ body {
   }
   #auction .auction-content .slide-btns button.slideNext:hover {
     transform: translate(50%, 5%);
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   #auction .auction-content .slide-btns button.slidePrev {
     transform: translateX(0);
@@ -1773,7 +1840,7 @@ body {
     margin: 10px 0;
   }
   #safe-service .safe-service-content .safe-service-desc p {
-    margin: 10px 0;
+    margin: 15px 0;
   }
   #safe-service .safe-service-content .safe-service-banner {
     position: static;
@@ -1790,25 +1857,25 @@ body {
     height: 50%;
     padding: 20px;
   }
-  #safeserviceModal .modal-content s .modal-left {
+  #safeserviceModal .modal-content .modal-left {
     justify-content: center;
   }
-  #safeserviceModal .modal-content s .modal-left .modal-title {
+  #safeserviceModal .modal-content .modal-left .modal-title {
     text-align: center;
   }
-  #safeserviceModal .modal-content s .modal-left .modal-title h2 {
+  #safeserviceModal .modal-content .modal-left .modal-title h2 {
     font: 400 2.4rem/1.3 "Noto Sans KR", sans-serif;
     margin-bottom: 20px;
   }
-  #safeserviceModal .modal-content s .modal-left .modal-title p {
+  #safeserviceModal .modal-content .modal-left .modal-title p {
     font-size: 1.6rem;
     margin: 10px 0;
   }
-  #safeserviceModal .modal-content s .modal-left .modal-title h6 {
+  #safeserviceModal .modal-content .modal-left .modal-title h6 {
     font: 400 3.2rem/1.2 "GmarketSansBold";
     margin-top: 20px;
   }
-  #safeserviceModal .modal-content s .modal-left .modal-point {
+  #safeserviceModal .modal-content .modal-left .modal-point {
     top: 50%;
     left: 10%;
     width: 20%;
@@ -1818,7 +1885,7 @@ body {
     justify-content: center;
   }
   #safeserviceModal .modal-content .modal-right ul li {
-    height: 76px;
+    height: 90px;
     margin: 5px 0;
   }
   #safeserviceModal .modal-content .modal-right ul li .modal-img {
@@ -1883,12 +1950,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -1983,6 +2058,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;

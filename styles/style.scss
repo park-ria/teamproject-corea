@@ -350,7 +350,7 @@ body {
     .ranking-slide {
       @include productSlide;
       .slide-img {
-        background: url("../images/best-ranking01.png") center/cover no-repeat;
+        // background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
     .slide-btns {
@@ -635,6 +635,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
+    z-index: 2;
     & > div {
       width: 50%;
       height: 100%;
