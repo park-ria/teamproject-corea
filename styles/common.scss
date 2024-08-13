@@ -277,20 +277,22 @@ body {
 // mobile-menu
 #mobile-menu {
   display: none;
+
   background: map-get($map: $color, $key: bg-light-color);
   .mobile-menu {
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      .menu-box {
-          display: flex;
-          gap: 15px;
-          a {
-              font-size: 20px;
-          }
+    .menu-box {
+      display: flex;
+      gap: 15px;
+      a {
+        font-size: 20px;
       }
+    }
   }
 }
 
@@ -359,7 +361,11 @@ footer {
   }
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 850px) {
+  .inner {
+    padding: 0 30px;
+  }
+
   // header
   #header {
     display: none;
@@ -368,6 +374,14 @@ footer {
   // mobile-menu
   #mobile-menu {
     display: block;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    .mobile-menu{
+      width: 100%;
+    }
   }
 
   // footer
@@ -406,5 +420,8 @@ footer {
 @media screen and (max-width: 450px) {
   html {
     font-size: 8px;
+  }
+  .inner {
+    padding: 0 20px;
   }
 }
