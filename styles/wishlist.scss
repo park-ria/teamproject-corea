@@ -178,9 +178,9 @@
                 width: inherit;
                 height: inherit;
                 object-fit: cover;
-                position: absolute;
-                top: 0;
-                left: 0;
+                // position: absolute;
+                // top: 0;
+                // left: 0;
               }
             }
             .soldOutFilter {
@@ -198,12 +198,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 70px;
-                height: 70px;
+                width: 100px;
+                height: 100px;
                 border: 1px solid map-get($color, bg-light-color);
                 border-radius: 50%;
-                font-size: map-get($fontSize, font-medium);
-                line-height: 20px;
+                font-size: 2.5rem;
+                line-height: 30px;
               }
             }
             .wishHeart {
@@ -212,7 +212,7 @@
               right: 8px;
               .fa-solid {
                 color: crimson;
-                font-size: map-get($fontSize, font-medium);
+                font-size: 20px;
               }
             }
           }
@@ -222,7 +222,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 10px;
+            gap: 20px;
             .wishItemDesc {
               height: 100%;
               display: flex;
@@ -285,7 +285,7 @@
                       flex-direction: column;
                       justify-content: center;
                       align-items: center;
-                      gap: 10px;
+                      gap: 20px;
                       font-size: map-get($fontSize, font-small);
                     }
                   }
@@ -296,10 +296,10 @@
                 justify-content: flex-end;
                 align-items: center;
                 flex: 1;
-                gap: 15px;
+                gap: 20px;
                 button {
                   display: inline-block;
-                  width: 30%;
+                  width: 50%;
                   min-width: 75px;
                   padding: 15px 0;
                   background: map-get($color, main-font-color);
@@ -654,6 +654,11 @@
 }
 
 @media screen and (max-width: 840px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
+
   /* wishlist */
   .wishlist {
     width: 100%;
@@ -687,18 +692,6 @@
           .wishItem {
             width: 100%;
             height: 150px;
-            .wishItemImgWrapper {
-              width: 150px;
-              height: 150px;
-              .soldOutFilter {
-                .soldOutFilterTxt {
-                  width: 100px;
-                  height: 100px;
-                  font-size: 2.5rem;
-                  line-height: 30px;
-                }
-              }
-            }
             .wishItemDescGroup {
               flex: 1;
               gap: 5px;
@@ -758,6 +751,7 @@
                   width: 100%;
                   justify-content: flex-start;
                   align-self: center;
+                  gap: 10px;
                   button {
                     width: 80px;
                     padding: 10px 0;
