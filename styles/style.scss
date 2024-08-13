@@ -153,7 +153,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
   .desc-price {
     display: block;
-    margin: 10px 0 20px;
+    margin: 10px 0 15px;
     font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
     .current {
       font-size: 1.2rem;
@@ -171,6 +171,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    color: map-get($color, bg-dark-gray);
   }
 }
 
@@ -349,9 +350,6 @@ body {
     }
     .ranking-slide {
       @include productSlide;
-      .slide-img {
-        // background: url("../images/best-ranking01.png") center/cover no-repeat;
-      }
     }
     .slide-btns {
       @include slideBtns;
@@ -734,6 +732,7 @@ body {
     color: map-get($color, bg-dark-gray);
     font-size: 2.6rem;
     transition: all 0.3s;
+    z-index: 2;
     &:hover {
       color: map-get($color, main-font-color);
     }
@@ -1234,9 +1233,6 @@ body {
                 width: calc(90% - 100px);
                 .desc-title {
                   height: 36px;
-                }
-                .desc-price {
-                  margin: 5px 0 10px;
                 }
               }
             }
