@@ -1,20 +1,81 @@
 // safeserviceModal
 const modalBtn = document.querySelector("#modalBtn");
+const closeItems = document.querySelectorAll(".closeBtn, .modal-back");
 
 modalBtn.addEventListener("click", () => {
   const safeserviceModal = document.querySelector("#safeserviceModal");
-  const closeBtn = safeserviceModal.querySelector(".closeBtn");
 
   safeserviceModal.classList.add("active");
+  closeItems[1].classList.add("active");
+});
 
-  closeBtn.addEventListener("click", () => {
+closeItems.forEach((item) => {
+  item.addEventListener("click", () => {
     safeserviceModal.classList.remove("active");
+    closeItems[1].classList.remove("active");
   });
 });
+
+const mainSlideInfo = "../mainslide.json";
+fetch(mainSlideInfo)
+  .then((response) => response.json())
+  .then((mainSlideData) => {
+    mainSlideData.data.forEach((slide) => {
+      const mainSlideUl = document.querySelector(".mainSlideWrapper");
+      const liItem = document.createElement("li");
+      const aTag = document.createElement("a");
+      const slideDesc = document.createElement("div");
+
+      aTag.setAttribute("href", "#none");
+      aTag.style.background = `url(../images/${slide.img}) center/cover no-repeat`;
+      slideDesc.className = "main-slide-desc";
+
+      const desc = `
+                    <h2>
+                    ${slide.title}
+                    </h2>
+                    <p>
+                     ${slide.sub}
+                      <i class="fa-solid fa-angle-right"></i>
+                    </p>
+      `;
+
+      slideDesc.innerHTML = desc;
+      aTag.appendChild(slideDesc);
+      liItem.appendChild(aTag);
+      mainSlideUl.appendChild(liItem);
+    });
+  })
+  .catch((error) => {
+    alert(error);
+  });
 
 // Testin moving to detail.html
 const joonggoInfo = "../db.json";
 const rankingSlides = document.querySelectorAll(".slideWrapper > li");
+
+const addProduct = (product, liItem, aTag, slideImg, slideDesc) => {
+  slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
+
+  const desc = `
+              <h4 class="desc-title">
+                ${product.title}
+              </h4>
+              <strong class="desc-price">
+                ${product.price}
+              </strong>
+              <p class="desc-info">
+                <span class="desc-time">${product.time}</span>
+                <span class="desc-place">
+                ${product.point ? " | " + product.point : ""}
+                </span>
+              </p>
+        `;
+
+  slideDesc.innerHTML = desc;
+  aTag.append(slideImg, slideDesc);
+  liItem.appendChild(aTag);
+};
 
 fetch(joonggoInfo)
   .then((response) => response.json())
@@ -24,82 +85,22 @@ fetch(joonggoInfo)
       const aTag = document.createElement("a");
       const slideImg = document.createElement("div");
       const slideDesc = document.createElement("div");
+
       slideImg.className = "slide-img";
       slideDesc.className = "slide-desc";
       aTag.setAttribute("href", "#none");
 
+      //here
+
       if (index < 8) {
-        const bestRankingUl = document.querySelector(".bestRankingUl");
-
-        slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
-
-        let desc = `
-                    <h4 class="desc-title">
-                      ${product.title}
-                    </h4>
-                    <strong class="desc-price">
-                      ${product.price}
-                    </strong>
-                    <p class="desc-info">
-                      <span class="desc-time">${product.time}</span>
-                      <span class="desc-place">
-                      ${product.point ? " | " + product.point : ""}
-                      </span>
-                    </p>
-              `;
-
-        slideDesc.innerHTML = desc;
-        aTag.append(slideImg, slideDesc);
-        liItem.appendChild(aTag);
-        bestRankingUl.appendChild(liItem);
-      } else if (8 <= index < 14) {
-        const auctionUl = document.querySelector(".auctionUl");
-
-        slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
-
-        const desc = `
-                    <h4 class="desc-title">
-                      ${product.title}
-                    </h4>
-                    <strong class="desc-price">
-                      ${product.price}
-                    </strong>
-                    <p class="desc-info">
-                      <span class="desc-time">${product.time}</span>
-                      <span class="desc-place">
-                      ${product.point ? " | " + product.point : ""}
-                      </span>
-                    </p>
-              `;
-
-        slideDesc.innerHTML = desc;
-        aTag.append(slideImg, slideDesc);
-        liItem.appendChild(aTag);
-        auctionUl.appendChild(liItem);
-      } else if (14 <= index < 20) {
-        const recommendedUl = document.querySelector(".recommendedUl");
-
-        slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
-
-        const desc = `
-                    <h4 class="desc-title">
-                      ${product.title}
-                    </h4>
-                    <strong class="desc-price">
-                      ${product.price}
-                    </strong>
-                    <p class="desc-info">
-                      <span class="desc-time">${product.time}</span>
-                      <span class="desc-place">
-                      ${product.point ? " | " + product.point : ""}
-                      </span>
-                    </p>
-              `;
-
-        slideDesc.innerHTML = desc;
-        aTag.append(slideImg, slideDesc);
-        liItem.appendChild(aTag);
-        recommendedUl.appendChild(liItem);
+        addProduct(product, liItem, aTag, slideImg, slideDesc);
+        document.querySelector(".bestRankingUl").appendChild(liItem);
+      } else if (index < 14) {
+        addProduct(product, liItem, aTag, slideImg, slideDesc);
+        document.querySelector(".auctionUl").appendChild(liItem);
+      } else if (index < 22) {
+        addProduct(product, liItem, aTag, slideImg, slideDesc);
+        document.querySelector(".recommendedUl").appendChild(liItem);
       }
 
       // 동훈님
@@ -110,77 +111,4 @@ fetch(joonggoInfo)
         });
       });
     });
-
-    //console.log(joongoData.data);
-    // joongoData.data.forEach((product, index) => {
-    //   // best-ranking
-    //   if (index < 8) {
-    //     const bestRankingUl = document.querySelector(".bestRankingUl");
-    //     // const li = document.createElement("li");
-    //     // const aTag = document.createElement("a");
-    //     // const slideImg = document.createElement("div");
-    //     // slideImg.className = "slide-img";
-    //     // slideImg.style.background = `url("../${product.image_path}") center/cover no-repeat`;
-    //     // li.appendChild(aTag).appendChild(slideImg);
-    //     // const slideDesc = `
-    //     //               <div class="slide-desc">
-    //     //                 <h4 class="desc-title">
-    //     //                   고사양 컴퓨터 라이젠 5900x x570 rtx3080
-    //     //                 </h4>
-    //     //                 <strong class="desc-price">880,000원</strong>
-    //     //                 <p class="desc-info">
-    //     //                   <span class="desc-time">26분 전</span>
-    //     //                   <span class="desc-place"> | 고척제1동 </span>
-    //     //                 </p>
-    //     //               </div>
-    //     // `;
-    //     //aTag.innerHTML += slideDesc;
-    //     //bestRankingUl.appendChild(li);
-    //     /*const li = `
-    //       <li>
-    //         <a href="#none">
-    //           <div class="slide-img" style="background:url('../${
-    //             product.image_path
-    //           }') center/cover no-repeat"></div>
-    //           <div class="slide-desc">
-    //             <h4 class="desc-title">
-    //               ${product.title}
-    //             </h4>
-    //             <strong class="desc-price">${product.price}</strong>
-    //             <p class="desc-info">
-    //               <span class="desc-time">${product.time}</span>
-    //               <span class="desc-place">
-    //              ${product.point ? " | " + product.point : ""}
-    //               </span>
-    //             </p>
-    //           </div>
-    //         </a>
-    //         <span class="badge badge-best"></span>
-    //       </li>
-    //     `;*/
-    //     let li = `
-    //       <li>
-    //         <a href="#none">
-    //           <div class="slide-img" style="background:url('../${product.image_path}') center/cover no-repeat"></div>
-    //           <div class="slide-desc">
-    //             <h4 class="desc-title">
-    //               ${product.title}
-    //             </h4>
-    //             <strong class="desc-price">${product.price}</strong>
-    //             <p class="desc-info">
-    //               <span class="desc-time">${product.time}</span>
-    //               `;
-    //     if (product.point) {
-    //       li += `<span class="desc-place"> | ${product.point}</span>`;
-    //     }
-    //     li += `
-    //             </p>
-    //           </div>
-    //         </a>
-    //         <span class="badge badge-best"></span>
-    //       </li>
-    //       `;
-    //     bestRankingUl.innerHTML += li;
-    //   }
-    // });
   });
