@@ -263,6 +263,7 @@ body {
   background: #fff;
 }
 #mobile-menu .mobile-menu {
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -337,15 +338,23 @@ footer .inner .footer-lower .footer-lower-logo i {
     padding: 0 10px;
   }
 }
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 850px) {
+  .inner {
+    padding: 0 30px;
+  }
   #header {
     display: none;
   }
   #mobile-menu {
     display: block;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
+  }
+  #mobile-menu .mobile-menu {
+    width: 100%;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -377,6 +386,9 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 450px) {
   html {
     font-size: 8px;
+  }
+  .inner {
+    padding: 0 20px;
   }
 }
 @font-face {

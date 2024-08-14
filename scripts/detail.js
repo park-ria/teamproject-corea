@@ -16,13 +16,15 @@ fetch(joonggoInfo)
         const imgPagers = document.querySelector(".img-pagers");
 
         const li = document.createElement("li");
-        const img = document.createElement("img");
+        //const img = document.createElement("img");
+        const img = document.createElement("span");
         const pager = document.createElement("div");
         const src = document.createAttribute("src");
 
         src.value = `../${slide}`;
 
-        img.setAttributeNode(src);
+        //img.setAttributeNode(src);
+        img.style = `display:inline-block;width:600px;height:600px;background:url(../${slide}) center/cover no-repeat`;
         li.appendChild(img);
         li.className = "img-slide";
         imgWrapper.appendChild(li);
@@ -37,13 +39,13 @@ fetch(joonggoInfo)
       // // Img-slider
       let currentIndex = 0;
 
+      const imgWrapper = document.querySelector(".img-wrapper");
       const moveSlide = (num) => {
-        const imgWrapper = document.querySelector(".img-wrapper");
+        console.log(num);
         const slideWidth = document.querySelector(".img-slide").offsetWidth;
-
         imgWrapper.style.width = slideWidth * slideCount;
-
-        imgWrapper.style.transform = `translateX(-${slideWidth * num}px)`;
+        console.log(slideWidth * -num);
+        imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
         currentIndex = num;
         pagerActive();
       };
@@ -53,12 +55,18 @@ fetch(joonggoInfo)
       const moveLeft = () => {
         let prevIndex = (currentIndex - 1) % slideCount;
         if (currentIndex === 0) prevIndex = slideCount - 1;
+        // if (currentIndex === 0) {
+        //   imgPrev.style = "pointer-events: none; background: #eee;";
+        // };
         moveSlide(prevIndex);
       };
 
       const moveRight = () => {
         let nextIndex = (currentIndex + 1) % slideCount;
         if (currentIndex === slideCount - 1) nextIndex = 0;
+        // if (currentIndex === slideCount - 1) {
+        //   imgNext.style = "pointer-events: none; background: #eee;";
+        // }
         moveSlide(nextIndex);
       };
 
@@ -93,8 +101,50 @@ fetch(joonggoInfo)
           });
           pager.classList.remove("active");
         });
+
         pagers[currentIndex].classList.add("active");
       };
+
+      // 마우스 드래그 이벤트
+      let startPoint = 0;
+      let endPoint = 0;
+
+      // PC 드래그 이벤트
+      imgWrapper.addEventListener("mousedown", (e) => {
+        //console.log(e);
+        imgWrapper.style.cursor = "grabbing";
+        startPoint = e.pageX; // 마우스 드래그 시작 위치 저장
+      });
+
+      imgWrapper.addEventListener("mouseup", (e) => {
+        imgWrapper.style.cursor = "grab";
+        //console.log("mouseup", e.pageX);
+        endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
+        if (startPoint < endPoint) {
+          // 마우스가 오른쪽으로 드래그 된 경우
+          moveSlide((currentIndex + 1) * -1);
+        } else if (startPoint > endPoint) {
+          // 마우스가 왼쪽으로 드래그 된 경우
+          moveSlide((currentIndex - 1) * -1);
+        }
+      });
+
+      // 모바일 터치 이벤트 (스와이프)
+      imgWrapper.addEventListener("touchstart", (e) => {
+        //console.log("touchstart", e.touches[0].pageX);
+        startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
+      });
+      imgWrapper.addEventListener("touchend", (e) => {
+        //console.log("touchend", e.changedTouches[0].pageX);
+        endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
+        if (startPoint < endPoint) {
+          // 오른쪽으로 스와이프 된 경우
+          moveSlide(currentIndex + 1);
+        } else if (startPoint > endPoint) {
+          // 왼쪽으로 스와이프 된 경우
+          moveSlide(currentIndex - 1);
+        }
+      });
 
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
@@ -137,20 +187,23 @@ fetch(joonggoInfo)
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
 
-      fillingBar.animate([
+      fillingBar.animate(
+        [
+          {
+            width: 0,
+          },
+          {
+            width: "26%",
+          },
+        ],
         {
-          width: 0
-        },
-        {
-          width: "26%"
+          duration: 500,
+          fill: "both",
         }
-      ], {
-        duration: 500,
-        fill: 'both'
-      })
+      );
       // Numbering Detail-value
       let number = 0;
-      
+
       const startNumbering = () => {
         const percentage = document.querySelector(".percentage");
         number++;
@@ -158,14 +211,14 @@ fetch(joonggoInfo)
 
         if (number < 27) {
           setTimeout(startNumbering, 20);
-        } 
+        }
       };
 
       startNumbering();
 
       // Making Desc-conditions
       const descConditions = document.querySelector(".desc-conditions");
-      
+
       descConditions.innerHTML = `
       <div class="conditions-box">
       <span>제품상태</span>
@@ -184,11 +237,11 @@ fetch(joonggoInfo)
         <span class="condition">${product.detail.safe_transaction}</span>
         </div>
         `;
-        
-        const conditions = document.querySelectorAll(".condition");
-        conditions.forEach((condition) => {
-          if (condition.innerText === "undefined") {
-            condition.innerText = "-";
+
+      const conditions = document.querySelectorAll(".condition");
+      conditions.forEach((condition) => {
+        if (condition.innerText === "undefined") {
+          condition.innerText = "-";
         }
       });
 
@@ -226,8 +279,7 @@ fetch(joonggoInfo)
       const itemsWrapper = document.querySelector(".items-wrapper");
 
       for (let i = 0; i < productItemInfos.length; i++) {
-        itemsWrapper.innerHTML += 
-          `
+        itemsWrapper.innerHTML += `
             <li class="item-info">
               <div class="item-img">
                 <img src="../${productItemInfos[i].image_url}">
@@ -243,8 +295,7 @@ fetch(joonggoInfo)
       // Making Reviews
       const reviewsBox = document.querySelector(".reviews-box");
 
-      reviewsBox.innerHTML = 
-      `
+      reviewsBox.innerHTML = `
         <li>친절/매너가 좋아요.<span><i class="fa-regular fa-user"></i>51</span></li>
         <li>응답이 빨라요.<span><i class="fa-regular fa-user"></i>26</span></li>
         <li>상품 상태가 좋아요.<span><i class="fa-regular fa-user"></i>38</span></li>
@@ -276,13 +327,13 @@ marker.setMap(map);
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);
 
-// Store-btns active 
+// Store-btns active
 const storeBtns = document.querySelectorAll(".store-btns button");
 
 storeBtns.forEach((btn) => {
-  btn.addEventListener("click", function() {
+  btn.addEventListener("click", function () {
     storeBtns.forEach((sibling) => {
-      if(sibling !== btn) {
+      if (sibling !== btn) {
         sibling.classList.remove("active");
       }
     });
@@ -298,6 +349,6 @@ storeBtns.forEach((button, index) => {
     storeContents.forEach((content) => {
       content.classList.remove("active");
     });
-  storeContents[index].classList.add("active");
+    storeContents[index].classList.add("active");
   });
 });
