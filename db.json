@@ -1979,5 +1979,52 @@
         ]
       }
     }
+  ],
+  "mainSlide": [
+    {
+      "title": "페이코 결제 시 \n 4만원 즉시할인!",
+      "sub": "지금 결제하고 할인 받기",
+      "img": "main-slide01.jpg"
+    },
+    {
+      "title": "LUCKY DRAW \n 행운을 잡아라!",
+      "sub": "참여하고 Npay 받기",
+      "img": "main-slide02.jpg"
+    },
+    {
+      "title": "8월 출석체크 \n 매일매일 혜택받자!",
+      "sub": "즉시 에코마일 받기",
+      "img": "main-slide03.jpg"
+    },
+    {
+      "title": "중고나라와 함께 \n 매출성장을 이루세요",
+      "sub": "중고나라 셀러 지원 센터",
+      "img": "main-slide04.jpg"
+    },
+    {
+      "title": "첫 결제 \n 수수료 무료!",
+      "sub": "할인 받으러 가기",
+      "img": "main-slide05.jpg"
+    },
+    {
+      "title": "중고나라가 알려주는 \n 사기 예방 tip!",
+      "sub": "주요 사기 패턴 확인하기",
+      "img": "main-slide06.jpg"
+    },
+    {
+      "title": "스타벅스 쿠폰 \n 최저가로 구매하기",
+      "sub": "J쿠폰 바로가기",
+      "img": "main-slide07.jpg"
+    },
+    {
+      "title": "실비보험도 \n 내 입맛대로!",
+      "sub": "보험료·혜택·브랜드 쏙쏙",
+      "img": "main-slide08.jpg"
+    },
+    {
+      "title": "인터넷+TV+유심 \n 결합하면 95만원",
+      "sub": "지금만 가능한 통 큰 혜택",
+      "img": "main-slide09.jpg"
+    }
   ]
 }

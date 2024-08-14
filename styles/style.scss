@@ -132,7 +132,11 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     &:hover {
       background: map-get($color, bg-main-color);
     }
-    &.active {
+    // &.active {
+    //   width: 40px;
+    //   background: $home-gradient;
+    // }
+    &:first-child {
       width: 40px;
       background: $home-gradient;
     }
@@ -260,7 +264,7 @@ body {
         }
         .main-slide-desc {
           margin: 0 0 30px 30px;
-          color: map-get($color, bg-light-color);
+          color: map-get($color, bg-slight-color);
           // color: map-get($color, bg-dark-gray);
           h2 {
             height: 84px;

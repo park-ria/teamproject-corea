@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": "179612232",
+      "title": "기아타이거즈 춘식이팝니다",
+      "price": "55,000원",
+      "point": "",
+      "time": "2분 전",
+      "pay_flag": 0,
+      "image_path": "images/product/product_179612232/1722950241284_000_e6tRH_main.jpg",
+      "detail": {
+        "url_list": [
+          "images/product/product_179612232/1722950241284_000_e6tRH_main.jpg",
+          "images/product/product_179612232/1722950241285_001_HGwyD.jpg",
+          "images/product/product_179612232/1722950241285_002_JkGO3.jpg"
+        ],
+        "page_path": ["홈", "반려동물/취미", "키덜트"],
+        "sub_data": "2분 전 · 조회 3 · 채팅 0 · 찜 0",
+        "status": "중고",
+        "transaction_method": "직거래,택배",
+        "delivery_charge": "별도",
+        "safe_transaction": "미사용",
+        "product_description": "※ 카페 상품 게시글은 자동으로 중고나라 앱/사이트에 노출합니다. 노출을 원하지 않으실 경우 고객센터로 문의 바랍니다. \n※ 등록한 게시글이 회원의 신고를 받거나 이상거래로 모니터링 될 경우 중고나라 사기통합조회 DB로 수집/활용될 수 있습니다. \n─────────────────── \n📢 제목에 \"제조사/ 브랜드 명\"과 \"상품명”를 넣어 작성하면, 보다 빠른 판매가 가능합니다!  \n📢 게시글 작성 시 배송 방법에 “직거래”와 “내 위치” 설정할 경우, 보다 빠른 판매가 가능합니다! \n새것과 완전 동일합니다.\n작거래 및 택배거래원합니다.",
+        "product_store": "중고나라#93139...",
+        "product_img_path": "images/product/product_179612232/profile_f.png",
+        "product_store_confidence_index": "304"
+      }
+    }
+  ]
+}

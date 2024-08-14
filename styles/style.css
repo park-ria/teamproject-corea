@@ -411,7 +411,6 @@ body {
 }
 #main-slide article .mainSlideWrapper a .main-slide-desc {
   margin: 0 0 30px 30px;
-  color: #fff;
 }
 #main-slide article .mainSlideWrapper a .main-slide-desc h2 {
   height: 84px;
@@ -671,7 +670,7 @@ body {
 #best-ranking .ranking-content .slide-btns .slidePager span:hover {
   background: #0dcc5a;
 }
-#best-ranking .ranking-content .slide-btns .slidePager span.active {
+#best-ranking .ranking-content .slide-btns .slidePager span:first-child {
   width: 40px;
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
@@ -929,7 +928,7 @@ body {
 #auction .auction-content .slide-btns .slidePager span:hover {
   background: #0dcc5a;
 }
-#auction .auction-content .slide-btns .slidePager span.active {
+#auction .auction-content .slide-btns .slidePager span:first-child {
   width: 40px;
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
@@ -1077,7 +1076,7 @@ body {
 #event .event-content .event-slide .slidePager span:hover {
   background: #0dcc5a;
 }
-#event .event-content .event-slide .slidePager span.active {
+#event .event-content .event-slide .slidePager span:first-child {
   width: 40px;
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
@@ -1270,7 +1269,7 @@ body {
 #recommended .recommended-content .slide-btns .slidePager span:hover {
   background: #0dcc5a;
 }
-#recommended .recommended-content .slide-btns .slidePager span.active {
+#recommended .recommended-content .slide-btns .slidePager span:first-child {
   width: 40px;
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }

@@ -16,11 +16,58 @@ closeItems.forEach((item) => {
   });
 });
 
-const mainSlideInfo = "../mainslide.json";
-fetch(mainSlideInfo)
+// Testin moving to detail.html
+const joonggoInfo = "../db.json";
+const rankingSlides = document.querySelectorAll(".slideWrapper > li");
+
+// add main slide item
+
+// add product slide item
+const addProduct = (product, index, ul) => {
+  const ulItems = document.querySelector(ul);
+  const liItem = document.createElement("li");
+  const aTag = document.createElement("a");
+  const slideImg = document.createElement("div");
+  const slideDesc = document.createElement("div");
+
+  slideImg.className = "slide-img";
+  slideDesc.className = "slide-desc";
+  aTag.setAttribute("href", "#none");
+
+  slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
+
+  const desc = `
+              <h4 class="desc-title">
+                ${product.title}
+              </h4>
+              <strong class="desc-price">
+                ${product.price}
+              </strong>
+              <p class="desc-info">
+                <span class="desc-time">${product.time}</span>
+                <span class="desc-place">
+                ${product.point ? " | " + product.point : ""}
+                </span>
+              </p>
+        `;
+
+  slideDesc.innerHTML = desc;
+  aTag.append(slideImg, slideDesc);
+  liItem.appendChild(aTag);
+  ulItems.appendChild(liItem);
+
+  // 페이저 생성
+  const slidePager =
+    ulItems.parentElement.nextElementSibling.querySelector(".slidePager");
+  const spanTag = document.createElement("span");
+  slidePager.appendChild(spanTag);
+};
+
+fetch(joonggoInfo)
   .then((response) => response.json())
-  .then((mainSlideData) => {
-    mainSlideData.data.forEach((slide) => {
+  .then((joongoData) => {
+    // mainSlide
+    joongoData.mainSlide.forEach((slide) => {
       const mainSlideUl = document.querySelector(".mainSlideWrapper");
       const liItem = document.createElement("li");
       const aTag = document.createElement("a");
@@ -45,62 +92,16 @@ fetch(mainSlideInfo)
       liItem.appendChild(aTag);
       mainSlideUl.appendChild(liItem);
     });
-  })
-  .catch((error) => {
-    alert(error);
-  });
 
-// Testin moving to detail.html
-const joonggoInfo = "../db.json";
-const rankingSlides = document.querySelectorAll(".slideWrapper > li");
-
-const addProduct = (product, liItem, aTag, slideImg, slideDesc) => {
-  slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
-
-  const desc = `
-              <h4 class="desc-title">
-                ${product.title}
-              </h4>
-              <strong class="desc-price">
-                ${product.price}
-              </strong>
-              <p class="desc-info">
-                <span class="desc-time">${product.time}</span>
-                <span class="desc-place">
-                ${product.point ? " | " + product.point : ""}
-                </span>
-              </p>
-        `;
-
-  slideDesc.innerHTML = desc;
-  aTag.append(slideImg, slideDesc);
-  liItem.appendChild(aTag);
-};
-
-fetch(joonggoInfo)
-  .then((response) => response.json())
-  .then((joongoData) => {
+    // data
     joongoData.data.forEach((product, index) => {
-      const liItem = document.createElement("li");
-      const aTag = document.createElement("a");
-      const slideImg = document.createElement("div");
-      const slideDesc = document.createElement("div");
-
-      slideImg.className = "slide-img";
-      slideDesc.className = "slide-desc";
-      aTag.setAttribute("href", "#none");
-
-      //here
-
+      // add product slide
       if (index < 8) {
-        addProduct(product, liItem, aTag, slideImg, slideDesc);
-        document.querySelector(".bestRankingUl").appendChild(liItem);
+        addProduct(product, index, ".bestRankingUl");
       } else if (index < 14) {
-        addProduct(product, liItem, aTag, slideImg, slideDesc);
-        document.querySelector(".auctionUl").appendChild(liItem);
+        addProduct(product, index, ".auctionUl");
       } else if (index < 22) {
-        addProduct(product, liItem, aTag, slideImg, slideDesc);
-        document.querySelector(".recommendedUl").appendChild(liItem);
+        addProduct(product, index, ".recommendedUl");
       }
 
       // 동훈님
