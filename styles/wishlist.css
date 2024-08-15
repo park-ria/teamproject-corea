@@ -629,9 +629,6 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemChatButton {
   background: #0dcc5a;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemProposalButton {
-  display: none;
-}
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton {
   width: 24px;
   min-width: 24px;

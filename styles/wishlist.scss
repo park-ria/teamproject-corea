@@ -178,9 +178,6 @@
                 width: inherit;
                 height: inherit;
                 object-fit: cover;
-                // position: absolute;
-                // top: 0;
-                // left: 0;
               }
             }
             .soldOutFilter {
@@ -309,9 +306,6 @@
                   text-align: center;
                   &.wishItemChatButton {
                     background: map-get($color, bg-main-color);
-                  }
-                  &.wishItemProposalButton {
-                    display: none;
                   }
                   &.wishItemXButton {
                     width: 24px;
