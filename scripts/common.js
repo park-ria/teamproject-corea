@@ -91,3 +91,73 @@ items.forEach((item) => {
     interval = setInterval(rollingCB, 3000);
   });
 });
+
+// Footer category-list
+const categoryUl = document.querySelector(".category-list");
+const categoryBtn = document.querySelector(".footer-upper-ctg button");
+const categoryList = [
+  "전체",
+  "수입명품",
+  "패션의류",
+  "패션잡화",
+  "뷰티",
+  "출산/유아동",
+  "모바일/태블릿",
+  "가전제품",
+  "노트북/PC",
+  "카메라/캠코더",
+  "가구/인테리어",
+  "리빙/생활",
+  "게임",
+  "반려동물/취미",
+  "도서/음반/문구",
+  "티켓/쿠폰",
+  "스포츠",
+  "레저/여행",
+  "오토바이",
+  "공구/산업용품",
+  "무료나눔",
+  "중고차",
+];
+
+categoryList.forEach((item) => {
+  const liItem = document.createElement("li");
+  const aTag = document.createElement("a");
+  aTag.innerText = item;
+  liItem.appendChild(aTag);
+  categoryUl.appendChild(liItem);
+});
+
+categoryBtn.addEventListener("click", function () {
+  this.classList.toggle("active");
+  categoryUl.classList.toggle("active");
+});
+
+// FAQ - accordion event
+const faqContents = document.querySelectorAll(".faq .content");
+const faqTitles = document.querySelectorAll(".faq .title");
+
+faqContents[0].classList.add("active");
+faqTitles.forEach((title) => {
+  title.addEventListener("click", () => {
+    faqContents.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    faqTitles.forEach((otherTitle) => {
+      if (otherTitle !== title) {
+        otherTitle.classList.remove("active");
+      }
+    });
+
+    let content = title.nextElementSibling;
+
+    if (title.classList.contains("active")) {
+      title.classList.remove("active");
+      content.classList.remove("active");
+    } else {
+      title.classList.add("active");
+      content.classList.add("active");
+    }
+  });
+});

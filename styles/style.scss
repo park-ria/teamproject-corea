@@ -25,6 +25,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 // mix-in
 @mixin sectionHeading {
@@ -230,6 +237,7 @@ body {
 // main
 // main-slide
 #main-slide {
+  // display: none;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -243,7 +251,7 @@ body {
       gap: 10px;
       position: absolute;
       top: 0;
-      left: calc(50% - 1280px / 2 - 1290px);
+      left: calc(50% - 1280px / 2);
       a {
         position: relative;
         width: 420px;
@@ -256,7 +264,7 @@ body {
           position: absolute;
           width: 100%;
           height: 100%;
-          background: rgba($color: #000, $alpha: 0.1);
+          // background: rgba($color: #000, $alpha: 0.1);
           // backdrop-filter: blur(10px);
         }
         &.active::before {
@@ -264,8 +272,8 @@ body {
         }
         .main-slide-desc {
           margin: 0 0 30px 30px;
-          color: map-get($color, bg-slight-color);
-          // color: map-get($color, bg-dark-gray);
+          color: map-get($color, bg-light-color);
+          text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
           h2 {
             height: 84px;
             margin-bottom: 10px;
@@ -273,10 +281,10 @@ body {
             letter-spacing: 0;
           }
           p {
-            font-size: 1.6rem;
-            i {
-              margin-left: 10px;
-            }
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font: 400 1.8rem/1.4 "GmarketSansMedium";
           }
         }
       }
@@ -348,6 +356,7 @@ body {
 
 // best-ranking
 #best-ranking {
+  // display: none;
   padding: 150px 0;
   .ranking-content {
     position: relative;
@@ -368,6 +377,7 @@ body {
 
 // auction
 #auction {
+  // display: none;
   .auction-banner {
     width: 100%;
     height: 400px;
@@ -401,14 +411,16 @@ body {
         h2 {
           font-size: 5rem;
         }
-        strong {
-          font-size: 5rem;
-          color: #fce44a;
-
+        .timeEvent {
           margin: 10px 0;
+          span {
+            font-size: 5rem;
+            color: #fce44a;
+          }
         }
         p {
           font-size: 2.4rem;
+          font-family: "GmarketSansMedium";
         }
         b {
           color: #fce44a;
@@ -458,6 +470,7 @@ body {
 
 // weekly-item
 #weekly-item {
+  // display: none;
   .weekly-item-content {
     padding: 150px 0;
     .weekly-item-heading {
@@ -532,7 +545,7 @@ body {
           height: 155px;
           border: 1px solid map-get($color, bg-light-gray);
           border-radius: 10px;
-          background: url("../images/event-banner01.png") center/cover no-repeat;
+          // background: url("../images/event-banner01.png") center/cover no-repeat;
         }
       }
       .slidePager {
@@ -579,16 +592,15 @@ body {
     .safe-service-desc {
       color: map-get($color, bg-light-color);
       h2 {
-        font-family: "GmarketSansBold";
-        font-size: 4.5rem;
+        font: 400 4.5rem/1 "GmarketSansBold";
+        margin-bottom: 10px;
       }
       span {
         display: block;
-        font-size: 2rem;
-        margin: 20px 0;
+        font-size: 1.8rem;
       }
       p {
-        font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+        font: 400 2.4rem/1.3 "GmarketSansMedium";
         margin: 20px 0;
       }
       #modalBtn {
@@ -628,7 +640,6 @@ body {
   width: 100%;
   height: 70vh;
   background: map-get($color, bg-light-color);
-  box-shadow: 0 0 200px rgba($color: #000, $alpha: 0.6);
   border-radius: 50px 50px 0 0;
   overflow: hidden;
   opacity: 1;
@@ -710,7 +721,7 @@ body {
           .modal-desc {
             width: 300px;
             h5 {
-              font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
+              font: 400 1.8rem/1 "GmarketSansMedium";
               margin-bottom: 10px;
             }
             p {
@@ -752,16 +763,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 0;
-  background: rgba($color: #fff, $alpha: 0.1);
-  backdrop-filter: blur(1px);
+  background: rgba($color: #000, $alpha: 0.2);
+  backdrop-filter: blur(2px);
   opacity: 0;
   z-index: 0;
   transition: all 0.5s;
   &.active {
     opacity: 1;
-    width: 100%;
     height: 100vh;
   }
 }
@@ -824,9 +834,11 @@ body {
           h2 {
             font-size: 3.6rem;
           }
-          strong {
-            font-size: 4rem;
-            margin: 10px 0;
+          .timeEvent {
+            span {
+              font-size: 4rem;
+              margin: 10px 0;
+            }
           }
           p {
             font-size: 2rem;
@@ -923,7 +935,7 @@ body {
           font-size: 1.4rem;
         }
         p {
-          font: 600 2.2rem/1.3 "Noto Sans KR", sans-serif;
+          font: 400 2.2rem/1.3 "GmarketSansMedium";
         }
         #modalBtn {
           padding: 12px 26px;
@@ -1024,9 +1036,11 @@ body {
           h2 {
             font-size: 4rem;
           }
-          strong {
-            font-size: 4.4rem;
-            margin: 10px 0;
+          .timeEvent {
+            span {
+              font-size: 4.4rem;
+              margin: 10px 0;
+            }
           }
           p {
             font-size: 2.2rem;

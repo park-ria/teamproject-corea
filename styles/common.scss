@@ -273,7 +273,7 @@ body {
   }
 }
 
-// contents
+// Contents
 .container {
   width: 100%;
   margin-top: 185px;
@@ -283,12 +283,12 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
+  padding: 50px 0 70px;
   .inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 30px;
-    height: 404px;
     .footer-upper {
       display: flex;
       justify-content: space-between;
@@ -300,12 +300,56 @@ footer {
         .footer-company-guide ul {
           display: flex;
           gap: 20px;
+          a {
+            font-weight: 700;
+          }
         }
         .footer-company-info ul {
           display: flex;
           flex-direction: column;
           gap: 10px;
           font-style: normal;
+        }
+      }
+      .footer-upper-ctg {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+        button {
+          position: relative;
+          font-size: 1.6rem;
+          color: map-get($color, bg-light-color);
+          i {
+            color: map-get($color, bg-light-color);
+            transition: all 0.3s;
+          }
+          &.active {
+            i {
+              transform: translateY(-15%) rotate(180deg);
+            }
+          }
+        }
+        .category-list {
+          width: 580px;
+          max-height: 0px;
+          overflow: hidden;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 15px;
+          border: 1px solid map-get($color, bg-dark-gray);
+          background: #4a4a4a;
+          opacity: 0;
+          transition: all 0.3s;
+          li {
+            width: calc((100% - 50px) / 6);
+            text-align: center;
+          }
+          &.active {
+            max-height: 119px;
+            opacity: 1;
+          }
         }
       }
     }
@@ -330,22 +374,125 @@ footer {
   }
 }
 
+// FAQ
+.faq {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  h1 {
+    font-size: 2.6rem;
+  }
+  .accordion {
+    width: 900px;
+    padding: 50px 0;
+    border-top: 1px solid map-get($color, bg-dark-color);
+    .title {
+      position: relative;
+      padding: 20px;
+      border-bottom: 1px solid map-get($color, bg-light-gray);
+      cursor: pointer;
+      transition: all 0.3s;
+      &::after {
+        content: "\2b";
+        font-family: "fontawesome";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        transition: all 0.3s;
+      }
+      &.active {
+        box-shadow: 0 0 5px map-get($color, bg-light-gray);
+        &::after {
+          content: "\2b";
+          font-family: "fontawesome";
+          transform: translateY(-50%) rotate(45deg);
+        }
+      }
+      p {
+        font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+      }
+    }
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0 20px;
+      background: #eee;
+      transition: all 0.3s;
+      p {
+        font: 400 1.4rem/1.5 "Noto Sans KR", sans-serif;
+        b {
+          color: map-get($color, bg-dark-gray);
+        }
+      }
+      &.active {
+        padding: 20px;
+        max-height: revert;
+        opacity: 1;
+      }
+    }
+  }
+}
+
 // responsive
 @media screen and (max-width: 1280px) {
+  // common
   .inner {
     width: 100%;
-    padding: 0 2%;
+    padding: 0 28px;
+  }
+
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-info {
+          .footer-company-guide ul {
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 10px;
+          }
+        }
+        .footer-upper-ctg {
+          .category-list {
+            width: 340px;
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 215px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // FAQ
+  .faq {
+    .accordion {
+      width: 100%;
+    }
   }
 }
 
 @media screen and (max-width: 840px) {
+  // common
   html {
     font-size: 8px;
   }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
 
-  // footer
+  // Footer
   footer {
     .inner {
+      gap: 10px;
       .footer-upper {
         display: flex;
         flex-direction: column;
@@ -363,6 +510,18 @@ footer {
             justify-content: center;
           }
         }
+        .footer-upper-ctg {
+          align-items: center;
+          .category-list {
+            width: 100%;
+            li {
+              width: calc((100% - 40px) / 5);
+            }
+            &.active {
+              max-height: 200px;
+            }
+          }
+        }
       }
       .footer-lower {
         display: flex;
@@ -377,4 +536,21 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-ctg {
+          .category-list {
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 179px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
