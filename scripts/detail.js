@@ -40,14 +40,13 @@ fetch(joonggoInfo)
       let currentIndex = 0;
 
       const imgWrapper = document.querySelector(".img-wrapper");
+
       const moveSlide = (num) => {
-        console.log(num);
-        const slideWidth = document.querySelector(".img-slide").offsetWidth;
-        imgWrapper.style.width = slideWidth * slideCount;
-        console.log(slideWidth * -num);
-        imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
-        currentIndex = num;
-        pagerActive();
+          const slideWidth = document.querySelector(".img-slide").offsetWidth;
+          imgWrapper.style.width = slideWidth * slideCount;
+          imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
+          currentIndex = num;
+          pagerActive();
       };
 
       const slideCount = document.querySelectorAll(".img-slide").length;
@@ -57,7 +56,9 @@ fetch(joonggoInfo)
         if (currentIndex === 0) prevIndex = slideCount - 1;
         // if (currentIndex === 0) {
         //   imgPrev.style = "pointer-events: none; background: #eee;";
-        // };
+        // } else {
+        //   imgPrev.style = "pointer-events: auto; background: rgba(0, 0, 0, 0.2);";
+        // }
         moveSlide(prevIndex);
       };
 
@@ -65,7 +66,10 @@ fetch(joonggoInfo)
         let nextIndex = (currentIndex + 1) % slideCount;
         if (currentIndex === slideCount - 1) nextIndex = 0;
         // if (currentIndex === slideCount - 1) {
+        //   nextIndex = slideCount - 1;
         //   imgNext.style = "pointer-events: none; background: #eee;";
+        // } else {
+        //   imgNext.style = "pointer-events: auto; background: rgba(0, 0, 0, 0.2);";
         // }
         moveSlide(nextIndex);
       };
@@ -122,10 +126,14 @@ fetch(joonggoInfo)
         endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
         if (startPoint < endPoint) {
           // 마우스가 오른쪽으로 드래그 된 경우
-          moveSlide((currentIndex + 1) * -1);
+          console.log(currentIndex);
+          moveSlide(currentIndex - 1);
         } else if (startPoint > endPoint) {
           // 마우스가 왼쪽으로 드래그 된 경우
-          moveSlide((currentIndex - 1) * -1);
+          if(currentIndex === 0) {
+            imgWrapper.style.cursor = ""
+          }
+          moveSlide(currentIndex + 1);
         }
       });
 
@@ -133,6 +141,7 @@ fetch(joonggoInfo)
       imgWrapper.addEventListener("touchstart", (e) => {
         //console.log("touchstart", e.touches[0].pageX);
         startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
+        console.log(imgWrapper.pageX);
       });
       imgWrapper.addEventListener("touchend", (e) => {
         //console.log("touchend", e.changedTouches[0].pageX);
