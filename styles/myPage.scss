@@ -44,7 +44,7 @@ $bg-main-color: #0dcc5a;
           justify-content: center;
           align-items: center;
           .stck-100 {
-            width: 80%;
+            width: 325px;
             height: 15px;
             background: #f1f4f6;
             border-radius: 20px;
@@ -52,6 +52,11 @@ $bg-main-color: #0dcc5a;
             position: relative;
 
             .stck-user {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 0;
+              height: 100%;
               background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
               border-radius: 20px;
               box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);

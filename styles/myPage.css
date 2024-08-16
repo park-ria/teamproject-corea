@@ -308,6 +308,18 @@ body {
   margin-top: 185px;
 }
 
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: #0dcc5a;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: normal;
+  text-align: center;
+}
+
 footer {
   background: #3a3a3a;
   color: #fff;
@@ -361,10 +373,13 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
 @media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
+  }
   footer .inner .footer-upper {
     display: flex;
     flex-direction: column;
@@ -390,11 +405,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-items: center;
     text-align: center;
     gap: 20px;
-  }
-}
-@media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
   }
 }
 /* variable */
@@ -438,7 +448,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
 }
 .inner .container .mypage .mypage-desc .mypage-desc-stck .stck-100 {
-  width: 80%;
+  width: 325px;
   height: 15px;
   background: #f1f4f6;
   border-radius: 20px;
@@ -446,6 +456,11 @@ footer .inner .footer-lower .footer-lower-logo i {
   position: relative;
 }
 .inner .container .mypage .mypage-desc .mypage-desc-stck .stck-100 .stck-user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);

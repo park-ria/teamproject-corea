@@ -1,7 +1,7 @@
 // safeserviceModal
-const safeService = document.querySelector("#safe-service");
+const modalBtn = document.querySelector("#modalBtn");
 
-safeService.addEventListener("click", () => {
+modalBtn.addEventListener("click", () => {
   const safeserviceModal = document.querySelector("#safeserviceModal");
   const closeBtn = safeserviceModal.querySelector(".closeBtn");
 
@@ -11,3 +11,20 @@ safeService.addEventListener("click", () => {
     safeserviceModal.classList.remove("active");
   });
 });
+
+// Testin moving to detail.html
+const JoonggoInfo = "../db.json";
+const rankingSlides = document.querySelectorAll(".slideWrapper > li");
+
+fetch(JoonggoInfo)
+  .then((response) => response.json())
+  .then((JoongoData) => {
+    JoongoData.data.forEach((product) => {
+      rankingSlides.forEach((rankingSlide) => {
+        rankingSlide.addEventListener("click", () => {
+          const url = `pages/detail.html?id=${encodeURIComponent(179612232)}`;
+          window.location.href = url;
+        });
+      });
+    });
+  });
