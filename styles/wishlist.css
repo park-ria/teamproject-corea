@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -122,6 +130,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -342,68 +353,6 @@ footer .inner .footer-lower .footer-lower-logo {
 }
 footer .inner .footer-lower .footer-lower-logo i {
   font-size: 15px;
-}
-
-.faq {
-  padding: 100px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-.faq h1 {
-  font-size: 2.6rem;
-}
-.faq .accordion {
-  width: 900px;
-  padding: 50px 0;
-  border-top: 1px solid #3a3a3a;
-}
-.faq .accordion .title {
-  position: relative;
-  padding: 20px;
-  border-bottom: 1px solid #dcdcdc;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.faq .accordion .title::after {
-  content: "+";
-  font-family: "fontawesome";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  transition: all 0.3s;
-}
-.faq .accordion .title.active {
-  box-shadow: 0 0 5px #dcdcdc;
-}
-.faq .accordion .title.active::after {
-  content: "+";
-  font-family: "fontawesome";
-  transform: translateY(-50%) rotate(45deg);
-}
-.faq .accordion .title p {
-  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-}
-.faq .accordion .content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding: 0 20px;
-  background: #eee;
-  transition: all 0.3s;
-}
-.faq .accordion .content p {
-  font: 400 1.4rem/1.5 "Noto Sans KR", sans-serif;
-}
-.faq .accordion .content p b {
-  color: #6d6d6d;
-}
-.faq .accordion .content.active {
-  padding: 20px;
-  max-height: revert;
-  opacity: 1;
 }
 
 @media screen and (max-width: 1280px) {
@@ -878,7 +827,8 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -1194,6 +1144,9 @@ body {
   font-size: 1.2rem;
   color: #6d6d6d;
 }
+#event .event-content .event-slide {
+  overflow: hidden;
+}
 #event .event-content .event-slide ul {
   display: flex;
   gap: 25px;
@@ -1468,7 +1421,8 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1602,7 +1556,8 @@ body {
   width: 100%;
   height: 0;
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   opacity: 0;
   z-index: 0;
   transition: all 0.5s;
@@ -2098,12 +2053,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -2198,6 +2161,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -2418,68 +2384,6 @@ footer .inner .footer-lower .footer-lower-logo {
 }
 footer .inner .footer-lower .footer-lower-logo i {
   font-size: 15px;
-}
-
-.faq {
-  padding: 100px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-.faq h1 {
-  font-size: 2.6rem;
-}
-.faq .accordion {
-  width: 900px;
-  padding: 50px 0;
-  border-top: 1px solid #3a3a3a;
-}
-.faq .accordion .title {
-  position: relative;
-  padding: 20px;
-  border-bottom: 1px solid #dcdcdc;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.faq .accordion .title::after {
-  content: "+";
-  font-family: "fontawesome";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  transition: all 0.3s;
-}
-.faq .accordion .title.active {
-  box-shadow: 0 0 5px #dcdcdc;
-}
-.faq .accordion .title.active::after {
-  content: "+";
-  font-family: "fontawesome";
-  transform: translateY(-50%) rotate(45deg);
-}
-.faq .accordion .title p {
-  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-}
-.faq .accordion .content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding: 0 20px;
-  background: #eee;
-  transition: all 0.3s;
-}
-.faq .accordion .content p {
-  font: 400 1.4rem/1.5 "Noto Sans KR", sans-serif;
-}
-.faq .accordion .content p b {
-  color: #6d6d6d;
-}
-.faq .accordion .content.active {
-  padding: 20px;
-  max-height: revert;
-  opacity: 1;
 }
 
 @media screen and (max-width: 1280px) {

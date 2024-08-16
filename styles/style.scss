@@ -535,9 +535,10 @@ body {
       margin-bottom: 30px;
     }
     .event-slide {
+      overflow: hidden;
       ul {
         display: flex;
-        gap: 25px;
+        gap: 20px;
         margin-bottom: 20px;
         a {
           display: inline-block;

@@ -34,7 +34,7 @@ const addMainSlide = (slide, index) => {
 
   const desc = `
                 <h2>
-                ${slide.title === "\n" ? "<br/>" : slide.title}
+                ${slide.title}
                 </h2>
                 <p>
                   ${slide.sub}
@@ -46,8 +46,6 @@ const addMainSlide = (slide, index) => {
   aTag.appendChild(slideDesc);
   liItem.appendChild(aTag);
   mainSlideUl.appendChild(liItem);
-
-  mainSlide();
 };
 
 // mainSlide
@@ -59,7 +57,6 @@ const mainSlide = () => {
   const slideWidth = 420;
   const slideMargin = 10;
   const slideCount = mainSlide.length;
-  // console.log(slideCount);
 
   let currentIdx = 0;
 
@@ -81,10 +78,15 @@ const mainSlide = () => {
       const cloneSlide = mainSlide[i].cloneNode(true);
       cloneSlide.classList.add("clone");
       mainSlideUl.prepend(cloneSlide);
-      // console.log(slideCount);
     }
+    for (let i = slideCount - 1; i >= 0; i--) {
+      const cloneSlide = mainSlide[i].cloneNode(true);
+      cloneSlide.classList.add("clone");
+      mainSlideUl.prepend(cloneSlide);
+    }
+    updateWidth();
+    setInitialPos();
   };
-  // makeClone();
 };
 
 // add product slide item
@@ -131,10 +133,13 @@ const addProduct = (product, index, ul) => {
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
-    // mainSlide
+    // mainSlide add
     joongoData.mainSlide.forEach((slide, index) => {
       addMainSlide(slide, index);
     });
+
+    // mainSlide run
+    mainSlide();
 
     // data
     joongoData.data.forEach((product, index) => {
@@ -159,7 +164,7 @@ fetch(joonggoInfo)
 
 // event slide
 const eventSlideUl = document.querySelector(".event-slide ul");
-const eventImg = [
+const eventImgs = [
   "images/event-banner01.png",
   "images/event-banner02.png",
   "images/event-banner03.png",
@@ -167,16 +172,16 @@ const eventImg = [
   "images/event-banner05.png",
   "images/event-banner06.png",
 ];
-eventImg.forEach((item) => {
+eventImgs.forEach((img) => {
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
-  aTag.style.background = `url(../${item}) center/cover no-repeat`;
+  aTag.style.background = `url(../${img}) center/cover no-repeat`;
   liItem.appendChild(aTag);
   eventSlideUl.appendChild(liItem);
 });
 
 const listClientWidth = eventSlideUl.clientWidth;
-const listScrollWidth = eventSlideUl.clientWidth - 200;
+const listScrollWidth = eventSlideUl.clientWidth + 1280;
 
 let startX = 0;
 let nowX = 0;
