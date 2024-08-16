@@ -1,3 +1,8 @@
+// 탭 버튼에 카운트 삽입
+let wishItemArr = ["179612232", "179612037", "179611921"];
+const wishItems = document.querySelector(".wishItems");
+wishItems.innerText = wishItemArr.length;
+
 // 탭 버튼 클릭 이벤트
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
 wishlistTabButton.forEach((btn) => {
@@ -16,20 +21,15 @@ wishlistTabButton.forEach((btn) => {
     // 탭 내용 초기화 및 가상클래스 적용
     wishlistContent.forEach((item) => {
       if (item !== target) item.classList.remove("active");
-      //item.style.display = "none";
     });
-    //target.style.display = "block";
     target.classList.add("active");
   });
 });
 
-let wishItemArr = [];
-
-// 데이터 추가
-fetch("../db.json")
-  .then((response) => response.json())
-  .then((jsonData) => {
-    jsonData.data.forEach((product, index) => {
+// Putting Items in the wishItemList
+const addItemsInTheWishItemList = (product, index) => {
+  wishItemArr.forEach((arr) => {
+    if (arr === product.id) {
       document.querySelector(".wishItemList").innerHTML += `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
@@ -116,7 +116,17 @@ fetch("../db.json")
           </div>
         </div>
       </li>
-      `;
+    `;
+    }
+  });
+};
+
+// 데이터 추가
+fetch("../db.json")
+  .then((response) => response.json())
+  .then((jsonData) => {
+    jsonData.data.forEach((product, index) => {
+      addItemsInTheWishItemList(product, index);
     });
   });
 
