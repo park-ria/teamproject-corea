@@ -1,97 +1,1110 @@
-@import "./style.scss", "./common.scss";
+@import "./common.scss";
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-/*body * {
-  border: 1px solid rgba($color: #f00, $alpha: 0.1);
-}*/
-
-.wishlist {
-  width: 100%;
-  margin-top: 50px;
-  .wishlist-tabs {
-    width: 100%;
-    .wishlist-tab {
-      display: flex;
-      align-items: center;
-      .wishlistTabButton {
-        background: #fafafa;
-        width: 200px;
-        height: 50px;
-        border: 1px solid map-get($color, bg-light-gray);
-        border-bottom: 1px solid map-get($color, main-font-color);
-        font-size: map-get($fontSize, font-medium);
-        line-height: 50px;
-        color: map-get($color, bg-dark-gray);
+/* variable */
+@mixin pagination-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  .pagerButtons {
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 27px;
+    transition: all 0.3s;
+    &:hover {
+      color: map-get($color, bg-dark-color);
+    }
+  }
+  .pager {
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+    li {
+      a {
+        width: 25px;
+        height: 25px;
         text-align: center;
-        &:first-child {
-          border-radius: 8px 0 0 0;
+        line-height: 25px;
+        transition: all 0.3s;
+        &:hover {
+          color: map-get($color, bg-dark-color);
+          font-weight: 700;
         }
-        &:nth-child(3) {
-          border-radius: 0 8px 0 0;
-        }
-        /*&:last-child {
-          flex: 1;
-        }*/
         &.active {
-          background: map-get($color, bg-light-color);
-          border: 1px solid map-get($color, main-font-color);
-          border-bottom: 1px solid #fff;
-          font-weight: 600;
-          color: map-get($color, main-font-color);
-          .wishlistTabCount {
-            color: map-get($color, bg-main-color);
-          }
+          display: inline-block;
+          font-weight: 500;
+          color: map-get($color, bg-light-color);
+          background: map-get($color, bg-main-color);
+          border-radius: 50%;
         }
-      }
-      & > span {
-        flex: 1;
-        width: 200px;
-        height: 50px;
-        border-bottom: 1px solid map-get($color, main-font-color);
       }
     }
   }
-  .wishlistContent {
-    display: none;
-    width: 100%;
+}
+
+/* wishlist */
+.wishlist {
+  width: 100%;
+  margin-top: 250px;
+  overflow: hidden;
+}
+
+/* wishlist tabs*/
+.wishlist-tabs {
+  width: 100%;
+  .wishlist-tab {
+    display: flex;
+    align-items: center;
+    .wishlistTabButton {
+      background: #fafafa;
+      width: 200px;
+      height: 50px;
+      border: 1px solid map-get($color, bg-light-gray);
+      border-right: none;
+      border-bottom: 1px solid map-get($color, main-font-color);
+      font-size: map-get($fontSize, font-medium);
+      line-height: 50px;
+      color: map-get($color, bg-dark-gray);
+      text-align: center;
+      &:first-child {
+        border-radius: 8px 0 0 0;
+      }
+      &:nth-child(3) {
+        border-radius: 0 8px 0 0;
+        border-right: 1px solid map-get($color, bg-light-gray);
+      }
+      &.active {
+        background: map-get($color, bg-light-color);
+        border: 1px solid map-get($color, main-font-color);
+        border-bottom: 1px solid #fff;
+        font-weight: 600;
+        color: map-get($color, main-font-color);
+        .wishlistTabCount {
+          color: map-get($color, bg-main-color);
+        }
+      }
+    }
+    & > span {
+      flex: 1;
+      width: 200px;
+      height: 50px;
+      border-bottom: 1px solid map-get($color, main-font-color);
+    }
+  }
+}
+
+/* wishlistContent */
+.wishlistContent {
+  width: 100%;
+  height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+  &.active {
+    height: auto;
+    min-height: 340px;
     margin-top: 30px;
-    &.wish-items-content {
-      display: block;
-      .wish-items-content-upper {
+    opacity: 1;
+  }
+}
+
+/* wish-items-content */
+.wish-items-content {
+  .wish-items-content-upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid map-get($color, bg-light-gray);
+    .wish-items-delete-selection {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      #deleteSeletionButton {
+        border: 1px solid map-get($color, main-font-color);
+        border-radius: 2px;
+        padding: 3px 5px;
+        cursor: pointer;
+      }
+    }
+    .wish-items-sorting-wrapper {
+      .sorting-group {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        .wish-items-delete-selection {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          #deleteSeletionButton {
-            border: 1px solid map-get($color, main-font-color);
-            border-radius: 2px;
-            padding: 3px 5px;
-            cursor: pointer;
+        gap: 10px;
+        li {
+          font-size: map-get($fontSize, font-extra-small);
+          a {
+            font-size: map-get($fontSize, font-small);
+            color: map-get($color, bg-dark-gray);
+            &.active {
+              font-weight: 600;
+              color: map-get($color, main-font-color);
+            }
           }
         }
       }
-      .wish-items-sorting-wrapper {
-        .sorting-group {
+    }
+  }
+  .wish-items-content-detail {
+    width: 100%;
+    .wishItemList {
+      li {
+        width: 100%;
+        padding: 50px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 1px solid map-get($color, bg-light-gray);
+        .wishItem {
+          width: 100%;
+          height: 150px;
           display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 20px;
+          .wishItemImgWrapper {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            .wishItemViewMore {
+              width: inherit;
+              height: inherit;
+              img {
+                width: inherit;
+                height: inherit;
+                object-fit: cover;
+              }
+            }
+            .soldOutFilter {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: inherit;
+              height: inherit;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(0, 0, 0, 0.7);
+              opacity: 0;
+              .soldOutFilterTxt {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                height: 100px;
+                border: 1px solid map-get($color, bg-light-color);
+                border-radius: 50%;
+                font-size: 2.5rem;
+                line-height: 30px;
+              }
+            }
+            .wishHeart {
+              position: absolute;
+              top: 8px;
+              right: 8px;
+              .fa-solid {
+                color: crimson;
+                font-size: 20px;
+              }
+            }
+          }
+          .wishItemDescGroup {
+            flex: 1;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+            .wishItemDesc {
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .wishItemViewMore {
+                flex: 3;
+                .wishItemInfo {
+                  height: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  .wishItemTitleBox {
+                    flex: 1;
+                    .wishItemSellerName {
+                      font-size: map-get($fontSize, font-small);
+                      color: map-get($color, bg-dark-gray);
+                    }
+                    .wishItemName {
+                      width: 100%;
+                      margin-top: 10px;
+                      line-height: 25px;
+                      font-size: map-get($fontSize, font-medium);
+                      color: map-get($color, main-font-color);
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
+                      -webkit-box-orient: vertical;
+                    }
+                  }
+                  .wishItemPriceBox {
+                    flex: 1.5;
+                    display: flex;
+                    justify-content: space-around;
+                    .wishItemPriceInfo {
+                      width: 135px;
+                      display: flex;
+                      justify-content: flex-end;
+                      align-items: center;
+                      gap: 10px;
+                      .wishItemPrice {
+                        font-size: map-get($fontSize, font-extra-small);
+                        b {
+                          font-size: map-get($fontSize, font-large);
+                        }
+                      }
+                      .pay {
+                        width: 35px;
+                        height: 20px;
+                        background: map-get($color, bg-main-color);
+                        border-radius: 3px;
+                        font-size: map-get($fontSize, font-small);
+                        color: map-get($color, bg-light-color);
+                        letter-spacing: normal;
+                        text-align: center;
+                      }
+                    }
+                    .wishItemShippingInfo {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 20px;
+                      font-size: map-get($fontSize, font-small);
+                    }
+                  }
+                }
+              }
+              .wishItemButtons {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                flex: 1;
+                gap: 20px;
+                button {
+                  display: inline-block;
+                  width: 50%;
+                  min-width: 75px;
+                  padding: 15px 0;
+                  background: map-get($color, main-font-color);
+                  border-radius: 5px;
+                  color: map-get($color, bg-light-color);
+                  font-size: map-get($fontSize, font-medium);
+                  text-align: center;
+                  &.wishItemChatButton {
+                    background: map-get($color, bg-main-color);
+                  }
+                  &.wishItemXButton {
+                    width: 24px;
+                    min-width: 24px;
+                    height: 24px;
+                    padding: 0;
+                    text-align: center;
+                    line-height: 24px;
+                    background: transparent;
+                    .fa-xmark {
+                      color: map-get($color, bg-light-gray);
+                      font-size: map-get($fontSize, font-large);
+                    }
+                  }
+                }
+              }
+            }
+            .wishItemLower {
+              display: flex;
+              gap: 10px;
+              font-size: map-get($fontSize, font-extra-small);
+              color: map-get($color, bg-dark-gray);
+              & > p {
+                width: 50px;
+              }
+              .wishItemCount {
+                display: flex;
+                gap: 10px;
+              }
+            }
+          }
+        }
+
+        &.soldOut {
+          color: map-get($color, bg-light-gray);
+          .wishItem {
+            .wishItemImgWrapper {
+              .soldOutFilter {
+                opacity: 1;
+              }
+            }
+            .wishItemDescGroup {
+              .wishItemDesc {
+                .wishItemViewMore {
+                  .wishItemInfo {
+                    .wishItemTitleBox p {
+                      color: map-get($color, bg-light-gray);
+                    }
+                    .wishItemPriceBox .wishItemPriceInfo > .pay {
+                      background: map-get($color, bg-light-gray);
+                    }
+                  }
+                }
+                .wishItemButtons {
+                  button:not(.wishItemXButton) {
+                    background: map-get($color, bg-light-gray);
+                  }
+                }
+              }
+              .wishItemLower {
+                color: map-get($color, bg-light-gray);
+              }
+            }
+          }
+        }
+      }
+    }
+    .wishItemPagination {
+      @include pagination-style;
+    }
+  }
+}
+
+/* favorite stores content */
+.favorite-stores-content {
+  .favoriteStoresGroup {
+    .favoriteStoresWrap {
+      & > li {
+        width: 100%;
+        padding: 30px 0;
+        border-bottom: 1px solid map-get($color, bg-light-gray);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &:first-child {
+          padding-top: 0;
+        }
+        .favorite-store-info {
+          width: 240px;
+          height: 240px;
+          padding: 15px;
+          background: map-get($color, main-font-color);
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: 10px;
-          li {
-            font-size: map-get($fontSize, font-extra-small);
-            a {
-              font-size: map-get($fontSize, font-small);
-              color: map-get($color, bg-dark-gray);
-              &.active {
-                font-weight: 600;
-                color: map-get($color, main-font-color);
+          .favorite-store-shopkeeper {
+            width: 100%;
+            text-align: center;
+            .favoriteStoresTitle {
+              img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 50%;
+              }
+              & > p {
+                width: 100%;
+                margin-top: 10px;
+                font-size: map-get($fontSize, font-medium);
+                color: map-get($color, bg-light-color);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+          }
+          .favorite-store-score {
+            width: 100%;
+            color: map-get($color, bg-light-color);
+            .store-score-desc {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-end;
+              .store-score-title {
+                font-size: 1rem;
+              }
+              .store-score-value {
+                display: flex;
+                align-items: flex-end;
+                font-size: 0.8rem;
+                letter-spacing: normal;
+                b {
+                  font-size: map-get($fontSize, font-extra-small);
+                }
+                img {
+                  width: 13px;
+                  height: 13px;
+                  margin-left: 5px;
+                  object-fit: cover;
+                }
+              }
+            }
+            .detail-bar {
+              width: 100%;
+              height: 8px;
+              margin-top: 5px;
+              background: map-get($color, bg-light-gray);
+              border-radius: 4px;
+              position: relative;
+              overflow: hidden;
+              &::before {
+                content: attr(data-score);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 27%;
+                height: inherit;
+                background: linear-gradient(
+                  to right,
+                  #0dcb5b,
+                  #08b980,
+                  #02a1af
+                );
+                border-radius: 4px;
+              }
+            }
+          }
+          .favorite-store-follower {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .favorite-store-follower-box {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              li {
+                color: map-get($color, bg-light-color);
+                font-size: 1rem;
+                span {
+                  &:not(.follower-box-title) {
+                    letter-spacing: normal;
+                  }
+                }
+              }
+            }
+            .followButton {
+              .fa-solid {
+                font-size: map-get($fontSize, font-medium);
+                color: map-get($color, bg-light-color);
+              }
+            }
+          }
+        }
+        .favorite-store-products-box {
+          flex: 1;
+          height: 240px;
+          overflow: hidden;
+          .favorite-store-products {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            & > li {
+              & > a {
+                display: inline-block;
+                width: 240px;
+                height: 240px;
+                .favoriteStoreProductImg {
+                  display: inline-block;
+                  width: inherit;
+                  height: inherit;
+                  background: url("../images/product/product_176041447/1722945954090b3F_0Pa0e.jpg")
+                    center/cover no-repeat;
+                  border-radius: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .favoriteStoresPagination {
+    @include pagination-style;
+  }
+}
+
+/* favorite brands content */
+.favorite-brands-content {
+  .favoriteBrandsGroup {
+    .favoriteBrandsWrap {
+      & > li {
+        width: 100%;
+        padding: 30px 0;
+        border-bottom: 1px solid map-get($color, bg-light-gray);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &:first-child {
+          padding-top: 0;
+        }
+        .favorite-brand-info {
+          width: 240px;
+          height: 240px;
+          padding: 15px;
+          background: map-get($color, main-font-color);
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          .favorite-brand-shopkeeper {
+            width: 100%;
+            text-align: center;
+            .favoriteBrandsTitle {
+              display: inline-block;
+              width: 100%;
+              height: fit-content;
+              img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 50%;
+              }
+              & > p {
+                width: 100%;
+                margin-top: 10px;
+                font-size: map-get($fontSize, font-medium);
+                color: map-get($color, bg-light-color);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+            .favorite-brand-follower-box {
+              margin-top: 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5px;
+              li {
+                color: map-get($color, bg-light-color);
+                font-size: 1rem;
+                span {
+                  &:not(.follower-box-title) {
+                    letter-spacing: normal;
+                  }
+                }
+              }
+            }
+          }
+          .favorite-brand-follow-button {
+            align-self: flex-end;
+            .followButton {
+              .fa-solid {
+                font-size: map-get($fontSize, font-medium);
+                color: map-get($color, bg-light-color);
+              }
+            }
+          }
+        }
+        .favorite-brand-products-box {
+          flex: 1;
+          height: 240px;
+          overflow: hidden;
+          .favorite-brand-products {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            & > li {
+              & > a {
+                display: inline-block;
+                width: 240px;
+                height: 240px;
+                .favoriteBrandProductImg {
+                  display: inline-block;
+                  width: inherit;
+                  height: inherit;
+                  background: url("https://img2.joongna.com/media/original/2024/08/10/1723275807508LJn_0Zh9h.jpg?impolicy=resizeWatermark3&isSecret=false")
+                    center/cover no-repeat;
+                  border-radius: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .favoriteBrandsPagination {
+    @include pagination-style;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
+
+  /* wishlist */
+  .wishlist {
+    width: 100%;
+  }
+
+  /* wishlist tabs*/
+  .wishlist-tabs {
+    width: 100%;
+    .wishlist-tab {
+      width: 100%;
+      .wishlistTabButton {
+        flex: 1;
+      }
+    }
+  }
+
+  /* wishlistContent */
+  .wishlistContent {
+    width: 100%;
+  }
+
+  /* wish-items-content */
+  .wish-items-content {
+    .wish-items-content-detail {
+      width: 100%;
+      .wishItemList {
+        width: 100%;
+        li {
+          width: 100%;
+          gap: 10px;
+          .wishItem {
+            width: 100%;
+            height: 150px;
+            .wishItemDescGroup {
+              flex: 1;
+              gap: 5px;
+              .wishItemDesc {
+                width: 100%;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                .wishItemViewMore {
+                  width: 100%;
+                  .wishItemInfo {
+                    width: 100%;
+                    height: auto;
+                    min-height: 100px;
+                    flex-direction: column;
+                    .wishItemTitleBox {
+                      flex: 0;
+                      .wishItemSellerName {
+                        font-size: map-get($fontSize, font-extra-small);
+                      }
+                      .wishItemName {
+                        width: 90%;
+                        margin-top: 5px;
+                        font-size: map-get($fontSize, font-small);
+                        line-height: 18px;
+                      }
+                    }
+                    .wishItemPriceBox {
+                      flex: 1;
+                      min-width: 200px;
+                      justify-content: flex-start;
+                      flex-wrap: wrap;
+                      gap: 5px;
+                      .wishItemPriceInfo {
+                        width: auto;
+                        justify-content: flex-start;
+                        .wishItemPrice {
+                          b {
+                            font-size: map-get($fontSize, font-medium);
+                          }
+                        }
+                        .pay {
+                          height: 16px;
+                          font-size: map-get($fontSize, font-extra-small);
+                        }
+                      }
+                      .wishItemShippingInfo {
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: map-get($fontSize, font-small);
+                      }
+                    }
+                  }
+                }
+                .wishItemButtons {
+                  width: 100%;
+                  justify-content: flex-start;
+                  align-self: center;
+                  gap: 10px;
+                  button {
+                    width: 80px;
+                    padding: 10px 0;
+                    font-size: map-get($fontSize, font-small);
+                    &.wishItemXButton {
+                      //display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* favorite stores content */
+  .favorite-stores-content {
+    .favoriteStoresGroup {
+      .favoriteStoresWrap {
+        li {
+          flex-direction: column;
+          gap: 10px;
+          .favorite-store-info {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-radius: 0;
+            .favorite-store-shopkeeper {
+              width: auto;
+              max-width: 130px;
+              .favoriteStoresTitle {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10px;
+                img {
+                  width: 35px;
+                  height: 35px;
+                }
+                & > p {
+                  margin-top: 0;
+                  width: fit-content;
+                }
+              }
+            }
+            .favorite-store-score {
+              width: 30%;
+              .store-score-desc {
+                .store-score-title {
+                  //font-size: 10px;
+                }
+                .store-score-value {
+                  //font-size: 8px;
+                  b {
+                    //font-size: 12px;
+                  }
+                }
+              }
+            }
+            .favorite-store-follower {
+              width: auto;
+              gap: 10px;
+              .favorite-store-follower-box {
+                li {
+                  //font-size: 10px;
+                }
+              }
+            }
+          }
+          .favorite-store-products-box {
+            width: 100%;
+            .favorite-store-products {
+              flex-wrap: nowrap;
+              gap: 10px;
+              & > li {
+                & > a {
+                  .favoriteStoreProductImg {
+                    border-radius: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* favorite brands content */
+  .favorite-brands-content {
+    .favoriteBrandsGroup {
+      .favoriteBrandsWrap {
+        li {
+          flex-direction: column;
+          gap: 10px;
+          .favorite-brand-info {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-radius: 0;
+            .favorite-brand-shopkeeper {
+              width: 90%;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 10px;
+              flex-wrap: wrap;
+              .favoriteBrandsTitle {
+                width: auto;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                img {
+                  width: 35px;
+                  height: 35px;
+                }
+                & > p {
+                  margin-top: 0;
+                  width: fit-content;
+                  max-width: 180px;
+                  //font-size: 14px;
+                }
+              }
+              .favorite-brand-follower-box {
+                margin-top: 0;
+                width: auto;
+                min-width: 53px;
+                li {
+                  //font-size: 10px;
+                }
+              }
+            }
+            .favorite-brand-follow-button {
+              align-self: center;
+            }
+          }
+          .favorite-brand-products-box {
+            width: 100%;
+            .favorite-brand-products {
+              flex-wrap: nowrap;
+              gap: 10px;
+              & > li {
+                & > a {
+                  .favoriteBrandProductImg {
+                    border-radius: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* wishlist */
+  .wishlist {
+    width: 100%;
+  }
+
+  /* wishlist tabs*/
+  .wishlist-tabs {
+    width: 100%;
+    .wishlist-tab {
+      width: 100%;
+      .wishlistTabButton {
+        flex: 1;
+      }
+      & > span {
+        flex: 0;
+      }
+    }
+  }
+
+  /* wishlistContent */
+  .wishlistContent {
+    width: 100%;
+  }
+
+  /* wish-items-content */
+  .wish-items-content {
+    &.active {
+      margin-top: 0;
+    }
+    .wish-items-content-upper {
+      .wish-items-delete-selection {
+        opacity: 0;
+      }
+    }
+    .wish-items-content-detail {
+      width: 100%;
+      .wishItemList {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        li {
+          width: 180px;
+          border-bottom: none;
+          input[type="checkbox"] {
+            display: none;
+          }
+          .wishItem {
+            width: 100%;
+            height: 280px;
+            flex-direction: column;
+            gap: 10px;
+            .wishItemImgWrapper {
+              width: 180px;
+              height: 180px;
+              .wishHeart {
+                top: 10px;
+                right: 13px;
+                .fa-solid {
+                  font-size: 22px;
+                }
+              }
+              .soldOutFilter {
+                .soldOutFilterTxt {
+                  width: 120px;
+                  height: 120px;
+                  font-size: 3rem;
+                  line-height: 30px;
+                }
+              }
+            }
+            .wishItemDescGroup {
+              width: 100%;
+              .wishItemDesc {
+                .wishItemViewMore {
+                  .wishItemInfo {
+                    min-height: 0;
+                    gap: 10px;
+                    align-items: center;
+                    .wishItemTitleBox {
+                      width: fit-content;
+                      .wishItemSellerName {
+                        //width: 100%;
+                        width: fit-content;
+                        font-size: map-get($fontSize, font-small);
+                      }
+                      .wishItemName {
+                        //width: 100%;
+                        width: fit-content;
+                        font-size: map-get($fontSize, font-medium);
+                      }
+                    }
+                    .wishItemPriceBox {
+                      width: 100%;
+                      min-width: 0;
+                      justify-content: center;
+                      .wishItemPriceInfo {
+                        .wishItemPrice {
+                          b {
+                            font-size: map-get($fontSize, font-large);
+                          }
+                        }
+                        .pay {
+                          height: 20px;
+                          font-size: map-get($fontSize, font-small);
+                          line-height: 15px;
+                        }
+                      }
+                      .wishItemShippingInfo {
+                        display: none;
+                      }
+                    }
+                  }
+                }
+                .wishItemButtons {
+                  display: none;
+                }
+              }
+              .wishItemLower {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* favorite stores content */
+  .favorite-stores-content {
+    .favoriteStoresGroup {
+      .favoriteStoresWrap {
+        li {
+          .favorite-store-info {
+            width: 100%;
+            .favorite-store-shopkeeper {
+              width: auto;
+              max-width: 110px;
+              .favoriteStoresTitle {
+                & > p {
+                  font-size: map-get($fontSize, font-small);
+                }
+              }
+            }
+            .favorite-store-score {
+              width: auto;
+              min-width: 100px;
+            }
+            .favorite-store-follower {
+              width: auto;
+            }
+          }
+          .favorite-store-products-box {
+            width: 100%;
+            height: 180px;
+            .favorite-store-products {
+              flex-wrap: nowrap;
+              gap: 10px;
+              & > li {
+                & > a {
+                  width: 180px;
+                  height: 180px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* favorite brands content */
+  .favorite-brands-content {
+    .favoriteBrandsGroup {
+      .favoriteBrandsWrap {
+        li {
+          .favorite-brand-info {
+            .favorite-brand-follower {
+              width: 90px;
+            }
+          }
+          .favorite-brand-products-box {
+            width: 100%;
+            height: 180px;
+            .favorite-brand-products {
+              flex-wrap: nowrap;
+              gap: 10px;
+              & > li {
+                & > a {
+                  width: 180px;
+                  height: 180px;
+                }
               }
             }
           }

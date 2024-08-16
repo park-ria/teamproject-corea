@@ -279,6 +279,19 @@ body {
   margin-top: 185px;
 }
 
+// pay
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: map-get($color, bg-main-color);
+  border-radius: 3px;
+  font-size: map-get($fontSize, font-small);
+  color: map-get($color, bg-light-color);
+  letter-spacing: normal;
+  text-align: center;
+}
+
 // Footer
 footer {
   background: #3a3a3a;
@@ -334,11 +347,15 @@ footer {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
 
 @media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
+  }
+
   // footer
   footer {
     .inner {
@@ -373,7 +390,4 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
-  }
 }
