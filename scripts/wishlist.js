@@ -1,9 +1,9 @@
-// 탭 버튼에 카운트 삽입
+// insert a count into the tab button
 let wishItemArr = ["179612232", "179612037", "179611921"];
 const wishItems = document.querySelector(".wishItems");
 wishItems.innerText = wishItemArr.length;
 
-// 탭 버튼 클릭 이벤트
+// tab button click event
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
 wishlistTabButton.forEach((btn) => {
   btn.addEventListener("click", function () {
@@ -12,13 +12,13 @@ wishlistTabButton.forEach((btn) => {
       `.${this.getAttribute("data-tab-name")}-content`
     );
 
-    // 탭 버튼 초기화 및 가상클래스 적용
+    // Initialize tab buttons and apply virtual class
     wishlistTabButton.forEach((sibling) => {
       if (sibling !== this) sibling.classList.remove("active");
     });
     this.classList.add("active");
 
-    // 탭 내용 초기화 및 가상클래스 적용
+    // Initialize tab contents and apply virtual class
     wishlistContent.forEach((item) => {
       if (item !== target) item.classList.remove("active");
     });
@@ -26,7 +26,7 @@ wishlistTabButton.forEach((btn) => {
   });
 });
 
-// Putting Items in the wishItemList
+// putting items in the wishItemList
 const addItemsInTheWishItemList = (product, index) => {
   wishItemArr.forEach((arr) => {
     if (arr === product.id) {
@@ -121,16 +121,45 @@ const addItemsInTheWishItemList = (product, index) => {
   });
 };
 
-// 데이터 추가
+// all select Event
+const wishItemChkEvnt = () => {
+  const allCheck = document.querySelector("#allSelection");
+  const checkWishItem = document.querySelectorAll(
+    "input[name='checkWishItem']"
+  );
+
+  allCheck.addEventListener("click", function () {
+    const isChecked = this.checked;
+    checkWishItem.forEach((checkbox) => {
+      checkbox.checked = isChecked;
+    });
+  });
+
+  checkWishItem.forEach((checkbox) => {
+    checkbox.addEventListener("click", function () {
+      const checkCount = document.querySelectorAll(
+        "input[name='checkWishItem']:checked"
+      ).length;
+      if (checkWishItem.length === checkCount) allCheck.checked = true;
+      else allCheck.checked = false;
+    });
+  });
+};
+
+// push the db.json data
 fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
     jsonData.data.forEach((product, index) => {
+      // putting items in the wishItemList
       addItemsInTheWishItemList(product, index);
     });
+
+    // all select event
+    wishItemChkEvnt();
   });
 
-// 버튼 이벤트
+// button event
 document.querySelectorAll(".wishItemViewMore").forEach((item) => {
   item.addEventListener("click", function (e) {
     e.preventDefault();
