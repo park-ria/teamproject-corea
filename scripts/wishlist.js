@@ -1,7 +1,5 @@
-console.log(new Date());
-
 // insert a count into the tab button
-let wishItemArr = ["179116921", "180090396", "161607280"];
+let wishItemArr = ["162953544", "180090396", "49050246"];
 const wishItems = document.querySelector(".wishItems");
 wishItems.innerText = wishItemArr.length;
 
