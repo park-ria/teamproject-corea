@@ -20,20 +20,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -128,9 +120,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -259,6 +248,18 @@ body {
 .container {
   width: 100%;
   margin-top: 185px;
+}
+
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: #0dcc5a;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: normal;
+  text-align: center;
 }
 
 footer {
@@ -490,8 +491,7 @@ body {
 #main .inner .main .main-img .img-slider .img-wrapper .img-slide img {
   width: 600px;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #main .inner .main .main-img .img-slider .img-pagers {
   position: absolute;
@@ -944,8 +944,7 @@ body {
 #main .inner .main .main-desc .desc-store .store-contents .selling-items .item-info .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #main .inner .main .main-desc .desc-store .store-contents .selling-items .item-info .item-detail {
   display: flex;
@@ -1062,8 +1061,7 @@ body {
 #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-detail {
   display: flex;
@@ -1136,8 +1134,7 @@ body {
 #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-detail {
   display: flex;
