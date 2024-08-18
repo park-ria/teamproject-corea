@@ -196,8 +196,7 @@ fetch(joonggoInfo)
       //itemInfos.forEach((item) => {
       for (let i = 0; i < productItemInfos.length; i++) {
         //productItemInfos.forEach((productItemInfo) => {
-        sellingItems.innerHTML += 
-          `
+        sellingItems.innerHTML += `
           <div class="item-info">
           <div class="item-img">
           <img src="../${productItemInfos[i].image_url}">
