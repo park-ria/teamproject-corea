@@ -702,13 +702,14 @@ body {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 gap: 15px;
 
                 li {
                   display: flex;
                   justify-content: space-between;
                   padding: 10px;
-                  font-size: map-get($map: $fontSize, $key: font-extra-small);
+                  font-size: map-get($map: $fontSize, $key: font-small);
                   background: map-get($map: $color, $key: bg-light-gray);
                   border-radius: 7px;
                   span {
@@ -716,6 +717,14 @@ body {
                     i {
                       margin-right: 10px;
                     }
+                  }
+
+                  &.no-review {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: map-get($map: $fontSize, $key: font-small);
                   }
                 }
               }

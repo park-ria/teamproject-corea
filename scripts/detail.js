@@ -112,7 +112,6 @@ fetch(joonggoInfo)
         imgWrapper.style.cursor = "grab";
         //console.log("mouseup", e.pageX);
         endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
-        console.log(currentIndex);
 
         if (startPoint < endPoint) {
           // 마우스가 오른쪽으로 드래그 된 경우
@@ -189,6 +188,8 @@ fetch(joonggoInfo)
 
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
+      const barNum = product.detail.product_store_confidence_index;
+      barRate = Math.floor(barNum / 10);
 
       fillingBar.animate(
         [
@@ -196,7 +197,7 @@ fetch(joonggoInfo)
             width: 0,
           },
           {
-            width: "26%",
+            width: `${barRate}%`,
           },
         ],
         {
@@ -213,8 +214,8 @@ fetch(joonggoInfo)
         number++;
         percentage.innerText = number;
 
-        if (number < 27) {
-          setTimeout(startNumbering, 20);
+        if (number < barRate) {
+          setTimeout(startNumbering, 5);
         }
       };
 
@@ -381,17 +382,26 @@ fetch(joonggoInfo)
 
       // Making Reviews
       const reviewsBox = document.querySelector(".reviews-box");
+      const reviews = product.review.review_title;
+      
+      if(reviews.length === 0) {
+        reviewsBox.innerHTML += 
+        `
+        <li class="no-review">아직 구매자로부터 받은 후기가 없습니다.</li>
+        `;
+      } else {
+        for(let i = 0; i < reviews.length; i++) {
+          reviewsBox.innerHTML += 
+          `
+          <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
+          `;
+        }
+      
+      }
 
-      reviewsBox.innerHTML = `
-        <li>친절/매너가 좋아요.<span><i class="fa-regular fa-user"></i>51</span></li>
-        <li>응답이 빨라요.<span><i class="fa-regular fa-user"></i>26</span></li>
-        <li>상품 상태가 좋아요.<span><i class="fa-regular fa-user"></i>38</span></li>
-        <li>택배 거래가 수월했어요.(포장, 협조적)<span><i class="fa-regular fa-user"></i>17</span></li>
-      `;
 
       // Making Recommandtion's Items
       const RecommendWrappers = document.querySelectorAll(".recommend-wrapper");
-      console.log(RecommendWrappers);
 
     }
   });

@@ -769,35 +769,62 @@ const categoryData = {
   ]
 }
 
+
+
+
 const barMenu = document.querySelector(".barmenu");
 const mainCategory = document.querySelector(".main-category");
 
 barMenu.addEventListener("moseover", () => {
-
+  
 });
 
 categoryData.data.forEach((data) => {
-  mainCategory.innerHTML += 
-  `
-  <li>
-      <a href="#">${data.main}</a>
-      <ul class="sub-category1">
-      </ul>
-      </li>
-      `;
+  const mainA = document.createElement("a");
+  const mainLi = document.createElement("li");
+  const subUl = document.createElement("ul");
+  
+  mainA.innerText = data.main;
+  mainLi.appendChild(mainA);
+  subUl.className = "sub-category1";
+  
+  
   data.sub.forEach((sub) => {
-    const sub1 = document.querySelector(".sub-category1");
-    console.log(sub);
-    sub1.innerHTML += 
-    `
-    <li>
-        <a href="#">${sub.title}</a>
-        <ul class="sub-category2">
-        </ul>
-    </li>
-    `;
-
+    const subA = document.createElement("a");
+    const subLi = document.createElement("li");
+    const lastUl = document.createElement("ul");
+    
+    subA.innerText = sub.title;
+    
+    console.log(sub.list);
+    sub.list.forEach((list) => {
+      const listA = document.createElement("a");
+      const listLi = document.createElement("li");
+  
+      listA.innerText = list;
+      listLi.appendChild(listA);
+      lastUl.appendChild(listLi);
+    });
 
   });
+
 });
+
+// categoryData.data.forEach((data, index) => {
+//   console.log(data.sub);
+//     mainCategory.innerHTML += 
+//     `
+//     <li>
+//       <a href="#">${data.main}</a>
+//       <ul class="sub-category1">
+//         <li>
+//           <a href="#">${data.sub.title}</a>
+//           <ul class="sub-category2">
+//           </ul>
+//         </li>
+//       </ul>
+//     </li>
+//     `;
+
+// });
 

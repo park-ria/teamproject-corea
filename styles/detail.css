@@ -281,6 +281,18 @@ body {
   margin-top: 185px;
 }
 
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: #0dcc5a;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: normal;
+  text-align: center;
+}
+
 footer {
   background: #3a3a3a;
   color: #fff;
@@ -334,26 +346,12 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
-@media screen and (max-width: 850px) {
-  .inner {
-    padding: 0 30px;
-  }
-  #header {
-    display: none;
-  }
-  #mobile-menu {
-    display: block;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
-  #mobile-menu .mobile-menu {
-    width: 100%;
+@media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -380,14 +378,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-items: center;
     text-align: center;
     gap: 20px;
-  }
-}
-@media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
-  }
-  .inner {
-    padding: 0 20px;
   }
 }
 /* mixin */
@@ -971,13 +961,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
 }
 #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   background: #dcdcdc;
   border-radius: 7px;
 }
@@ -986,6 +977,13 @@ body {
 }
 #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span i {
   margin-right: 10px;
+}
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li.no-review {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
 }
 
 #event {
