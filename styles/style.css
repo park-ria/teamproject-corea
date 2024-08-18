@@ -483,7 +483,7 @@ body {
   gap: 10px;
   position: absolute;
   top: 0;
-  left: calc(50% - 640px);
+  left: calc(50% - 640px + 10px);
 }
 #main-slide article .mainSlideWrapper a {
   position: relative;
@@ -518,6 +518,9 @@ body {
   gap: 5px;
   font: 400 1.8rem/1.4 "GmarketSansMedium";
 }
+#main-slide article .mainSlideWrapper.animated {
+  transition: all 0.5s ease-out;
+}
 #main-slide article .main-slide-arrows button {
   position: absolute;
   top: 50%;
@@ -527,11 +530,11 @@ body {
   transition: all 0.3s;
 }
 #main-slide article .main-slide-arrows button.mainSlidePrev {
-  left: calc(50% - 640px);
+  left: calc(50% - 640px + 10px);
   transform: translate(0, -50%);
 }
 #main-slide article .main-slide-arrows button.mainSlideNext {
-  left: calc(50% + 640px);
+  left: calc(50% + 640px + 10px);
   transform: translate(-100%, -50%);
 }
 #main-slide article .main-slide-arrows button i {
@@ -564,7 +567,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 33.3333333333%;
   height: 100%;
   background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
   transition: all 0.3s;
@@ -578,8 +580,21 @@ body {
   font-size: 1.6rem;
   color: #6d6d6d;
 }
+#main-slide .main-slide-btns button.mainSlidePause {
+  display: block;
+}
+#main-slide .main-slide-btns button.mainSlidePause.active {
+  display: none;
+}
+#main-slide .main-slide-btns button.mainSlidePlay {
+  display: none;
+}
+#main-slide .main-slide-btns button.mainSlidePlay.active {
+  display: block;
+}
 
 #best-ranking {
+  display: none;
   padding: 150px 0;
 }
 #best-ranking .ranking-content {
@@ -807,8 +822,6 @@ body {
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent {
   margin: 10px 0;
-}
-#auction .auction-banner .banner-content .banner-desc .timeEvent span {
   font-size: 5rem;
   color: #fce44a;
 }
@@ -1434,7 +1447,7 @@ body {
   border-radius: 50px 50px 0 0;
   overflow: hidden;
   opacity: 1;
-  z-index: 2;
+  z-index: 1;
   transition: all 0.5s;
 }
 #safeserviceModal .modal-content {
@@ -1442,8 +1455,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  position: relative;
-  z-index: 3;
 }
 #safeserviceModal .modal-content > div {
   width: 50%;
@@ -1454,13 +1465,10 @@ body {
 }
 #safeserviceModal .modal-content .modal-left {
   justify-content: end;
-  background: #2d2d2d;
-  position: relative;
+  background: #2d2d2d url("../images/safe-service-modal-point.png") 20% 20%/30% no-repeat;
 }
 #safeserviceModal .modal-content .modal-left .modal-title {
   text-align: end;
-  position: relative;
-  z-index: 1;
 }
 #safeserviceModal .modal-content .modal-left .modal-title h2 {
   font: 400 3rem/1.3 "Noto Sans KR", sans-serif;
@@ -1480,17 +1488,6 @@ body {
   color: #0dcc5a;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   margin-top: 40px;
-}
-#safeserviceModal .modal-content .modal-left .modal-point {
-  position: absolute;
-  top: 10%;
-  left: 15%;
-  width: 30%;
-}
-#safeserviceModal .modal-content .modal-left .modal-point img {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0;
 }
 #safeserviceModal .modal-content .modal-right {
   justify-content: flex-start;
@@ -1537,7 +1534,7 @@ body {
   color: #6d6d6d;
   font-size: 2.6rem;
   transition: all 0.3s;
-  z-index: 4;
+  z-index: 1;
 }
 #safeserviceModal .closeBtn:hover {
   color: #111;
@@ -1556,7 +1553,7 @@ body {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(2px);
   opacity: 0;
-  z-index: 0;
+  cursor: pointer;
   transition: all 0.5s;
 }
 .modal-back.active {
@@ -1632,7 +1629,7 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 3.6rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
+  #auction .auction-banner .banner-content .banner-desc .timeEvent {
     font-size: 4rem;
     margin: 10px 0;
   }
@@ -1764,6 +1761,9 @@ body {
   #safeserviceModal .modal-content > div {
     padding: 30px;
   }
+  #safeserviceModal .modal-content .modal-left {
+    background: #2d2d2d url("../images/safe-service-modal-point.png") 5% 50%/25% no-repeat;
+  }
   #safeserviceModal .modal-content .modal-left .modal-title h2 {
     font: 400 2.2rem/1.3 "Noto Sans KR", sans-serif;
     margin-bottom: 20px;
@@ -1775,11 +1775,6 @@ body {
   #safeserviceModal .modal-content .modal-left .modal-title h6 {
     font: 400 3.3rem/1.2 "GmarketSansBold";
     margin-top: 20px;
-  }
-  #safeserviceModal .modal-content .modal-left .modal-point {
-    top: 40%;
-    width: 30%;
-    transform: translateY(-50%);
   }
   #safeserviceModal .modal-content .modal-right ul li {
     gap: 10px;
@@ -1824,7 +1819,7 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 4rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
+  #auction .auction-banner .banner-content .banner-desc .timeEvent {
     font-size: 4.4rem;
     margin: 10px 0;
   }
@@ -1977,12 +1972,6 @@ body {
   #safeserviceModal .modal-content .modal-left .modal-title h6 {
     font: 400 3.2rem/1.2 "GmarketSansBold";
     margin-top: 20px;
-  }
-  #safeserviceModal .modal-content .modal-left .modal-point {
-    top: 50%;
-    left: 10%;
-    width: 20%;
-    transform: translateY(-50%);
   }
   #safeserviceModal .modal-content .modal-right {
     justify-content: center;

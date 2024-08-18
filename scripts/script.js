@@ -1,21 +1,3 @@
-// safeserviceModal
-const modalBtn = document.querySelector("#modalBtn");
-const closeItems = document.querySelectorAll(".closeBtn, .modal-back");
-
-modalBtn.addEventListener("click", () => {
-  const safeserviceModal = document.querySelector("#safeserviceModal");
-
-  safeserviceModal.classList.add("active");
-  closeItems[1].classList.add("active");
-});
-
-closeItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    safeserviceModal.classList.remove("active");
-    closeItems[1].classList.remove("active");
-  });
-});
-
 // Testin moving to detail.html
 const joonggoInfo = "../db.json";
 const rankingSlides = document.querySelectorAll(".slideWrapper > li");
@@ -50,13 +32,18 @@ const addMainSlide = (slide, index) => {
 
 // mainSlide
 const mainSlide = () => {
-  const preBtn = document.querySelector(".mainSlidePrev");
-  const nextBtn = document.querySelector(".mainSlideNext");
+  const pagers = document.querySelector(".mainSlidePager");
+
+  const preBtns = document.querySelectorAll(".mainSlidePrev");
+  const nextBtns = document.querySelectorAll(".mainSlideNext");
+  const pauseBtn = document.querySelector(".mainSlidePause");
+  const playBtn = document.querySelector(".mainSlidePlay");
 
   const mainSlide = document.querySelectorAll(".mainSlideWrapper li");
   const slideWidth = 420;
   const slideMargin = 10;
   const slideCount = mainSlide.length;
+  const cloneCount = 3;
 
   let currentIdx = 0;
 
@@ -66,6 +53,7 @@ const mainSlide = () => {
     const newWidth = `
     ${(slideWidth + slideMargin) * newSlideCount - slideMargin}px
     `;
+    mainSlideUl.style.width = newWidth;
   };
 
   const setInitialPos = () => {
@@ -77,7 +65,7 @@ const mainSlide = () => {
     for (let i = 0; i < slideCount; i++) {
       const cloneSlide = mainSlide[i].cloneNode(true);
       cloneSlide.classList.add("clone");
-      mainSlideUl.prepend(cloneSlide);
+      mainSlideUl.appendChild(cloneSlide);
     }
     for (let i = slideCount - 1; i >= 0; i--) {
       const cloneSlide = mainSlide[i].cloneNode(true);
@@ -86,7 +74,139 @@ const mainSlide = () => {
     }
     updateWidth();
     setInitialPos();
+    setTimeout(() => {
+      mainSlideUl.classList.add("animated");
+    }, 100);
   };
+  makeClone();
+
+  const moveSlide = (num) => {
+    const moveSlideCount = 3;
+
+    mainSlideUl.style.left = `${
+      -num * (slideWidth + slideMargin) * moveSlideCount
+    }px`;
+
+    currentIdx = num;
+    // console.log(currentIdx, slideCount);
+
+    if (
+      currentIdx === slideCount / moveSlideCount ||
+      currentIdx === -cloneCount / moveSlideCount
+    ) {
+      setTimeout(() => {
+        mainSlideUl.classList.remove("animated");
+        mainSlideUl.style.left =
+          num > 0
+            ? "0px"
+            : `${
+                -(slideCount + num * moveSlideCount) *
+                (slideWidth + slideMargin)
+              }px`;
+        currentIdx = num > 0 ? 0 : 2;
+      }, 500);
+      setTimeout(() => {
+        mainSlideUl.classList.add("animated");
+      }, 600);
+    }
+    // const pager = pagers.querySelector("span");
+    // console.log(num);
+    // if (num === -1) pager.style.width = `calc(100% / 3 * 3)`;
+    // else if (num === 1) pager.style.width = ` calc(100% / 3 * 2)`;
+    // else if (num === 0) pager.style.width = `calc(100% / 3 * 1)`;
+    // else pager.style.width = `calc(100%  / 3 * ${num})`;
+  };
+
+  preBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      moveSlide(currentIdx - 1);
+    });
+  });
+  nextBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      moveSlide(currentIdx + 1);
+    });
+  });
+
+  // let timer = undefined;
+
+  // const autoSlide = () => {
+  //   if (timer === undefined) {
+  //     timer = setInterval(() => {
+  //       moveSlide(currentIdx + 1);
+  //     }, 3000);
+  //   }
+  // };
+  // autoSlide();
+
+  // const stopSlide = () => {
+  //   clearInterval(timer);
+  //   timer = undefined;
+  // };
+
+  // mainSlideUl.addEventListener("mouseenter", () => {
+  //   stopSlide();
+  // });
+  // mainSlideUl.addEventListener("mouseleave", () => {
+  //   autoSlide();
+  // });
+  // preBtns.forEach((btn) => {
+  //   btn.addEventListener("mouseenter", () => {
+  //     stopSlide();
+  //   });
+  // });
+  // preBtns.forEach((btn) => {
+  //   btn.addEventListener("mouseleave", () => {
+  //     autoSlide();
+  //   });
+  // });
+  // nextBtns.forEach((btn) => {
+  //   btn.addEventListener("mouseenter", () => {
+  //     stopSlide();
+  //   });
+  // });
+  // nextBtns.forEach((btn) => {
+  //   btn.addEventListener("mouseleave", () => {
+  //     autoSlide();
+  //   });
+  // });
+  // pauseBtn.addEventListener("click", function () {
+  //   stopSlide();
+  //   playBtn.classList.add("active");
+  //   this.classList.add("active");
+  // });
+  // playBtn.addEventListener("click", function () {
+  //   autoSlide();
+  //   pauseBtn.classList.remove("active");
+  //   this.classList.remove("active");
+  // });
+
+  // mouse drag event
+  let startPoint = 0;
+  let endPoint = 0;
+
+  mainSlideUl.addEventListener("mousedown", function (e) {
+    this.style.cursor = "grabbing";
+    startPoint = e.pageX;
+    // console.log(startPoint);
+  });
+
+  mainSlideUl.addEventListener("mouseup", function (e) {
+    this.style.cursor = "grab";
+    endPoint = e.pageX;
+    if (startPoint < endPoint) moveSlide(currentIdx - 1);
+    else if (startPoint > endPoint) moveSlide(currentIdx + 1);
+  });
+
+  // mobile touch event
+  mainSlideUl.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+  });
+  mainSlideUl.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint) moveSlide(currentIdx - 1);
+    else if (startPoint > endPoint) moveSlide(currentIdx + 1);
+  });
 };
 
 // add product slide item
@@ -130,6 +250,9 @@ const addProduct = (product, index, ul) => {
   slidePager.appendChild(spanTag);
 };
 
+// productSlide
+const productSlide = () => {};
+
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
@@ -161,6 +284,31 @@ fetch(joonggoInfo)
       });
     });
   });
+
+// auction
+const timeEvent = () => {
+  const time = document.querySelector(".timeEvent");
+
+  const today = new Date();
+
+  const dDay = new Date(2024, 7, 20, 18, 0);
+  // dDay.setDate(today.getDate() + 1);
+
+  const resultDay = dDay.getTime() - today.getTime();
+
+  // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
+  let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
+  let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
+  let resultSeconds = Math.floor((resultDay / 1000) % 60);
+
+  resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
+  resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
+  resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
+
+  time.innerText = `${resultHours} : ${resultMinutes} : ${resultSeconds}`;
+};
+timeEvent();
+// setInterval(timeEvent, 1000);
 
 // event slide
 const eventSlideUl = document.querySelector(".event-slide ul");
@@ -243,3 +391,21 @@ const onscrollStart = (e) => {
 
 eventSlideUl.addEventListener("touchstart", onscrollStart);
 eventSlideUl.addEventListener("mousedown", onscrollStart);
+
+// safeserviceModal
+const modalBtn = document.querySelector("#modalBtn");
+const closeItems = document.querySelectorAll(".closeBtn, .modal-back");
+
+modalBtn.addEventListener("click", () => {
+  const safeserviceModal = document.querySelector("#safeserviceModal");
+
+  safeserviceModal.classList.add("active");
+  closeItems[1].classList.add("active");
+});
+
+closeItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    safeserviceModal.classList.remove("active");
+    closeItems[1].classList.remove("active");
+  });
+});
