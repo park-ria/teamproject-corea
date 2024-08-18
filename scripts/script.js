@@ -19,10 +19,10 @@ const rankingSlides = document.querySelectorAll(".slideWrapper > li");
 fetch(JoonggoInfo)
   .then((response) => response.json())
   .then((JoongoData) => {
-    JoongoData.data.forEach((product) => {
+    JoongoData.product.forEach((product) => {
       rankingSlides.forEach((rankingSlide) => {
         rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(26346141)}`;
+          const url = `pages/detail.html?id=${encodeURIComponent(181171036)}`;
           window.location.href = url;
         });
       });

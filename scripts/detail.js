@@ -7,7 +7,7 @@ fetch(joonggoInfo)
     const title = params.get("title");
     const id = params.get("id");
 
-    const product = joongoData.data.find((product) => product.id === id);
+    const product = joongoData.product.find((product) => product.id === id);
 
     if (product) {
       // Making Img-slider
@@ -115,14 +115,14 @@ fetch(joonggoInfo)
 
         if (startPoint < endPoint) {
           // 마우스가 오른쪽으로 드래그 된 경우
+          let prevIndex = (currentIndex - 1) % slideCount;
+          if (currentIndex === 0) prevIndex = slideCount - 1;
+          moveSlide(prevIndex);
+        } else if (startPoint > endPoint) {
+          // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
           moveSlide(nextIndex);
-        } else if (startPoint > endPoint) {
-          // 마우스가 왼쪽으로 드래그 된 경우
-        let prevIndex = (currentIndex - 1) % slideCount;
-        if (currentIndex === 0) prevIndex = slideCount - 1;
-          moveSlide(prevIndex);
         }
       });
 
@@ -138,13 +138,13 @@ fetch(joonggoInfo)
         endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
         if (startPoint < endPoint) {
           // 오른쪽으로 스와이프 된 경우
+          let prevIndex = (currentIndex - 1) % slideCount;
+          if (currentIndex === 0) prevIndex = slideCount - 1;
+          moveSlide(prevIndex);
+        } else if (startPoint > endPoint) {
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
           moveSlide(nextIndex);
-        } else if (startPoint > endPoint) {
-          let prevIndex = (currentIndex - 1) % slideCount;
-          if (currentIndex === 0) prevIndex = slideCount - 1;
-            moveSlide(prevIndex);
         }
       });
 
@@ -178,13 +178,16 @@ fetch(joonggoInfo)
       const userImgTag = document.createElement("img");
       const userImgSrc = document.createAttribute("src");
 
-      userImgSrc.value = `../${product.detail.product_img_path}`;
+      const store = joongoData.store.find(
+        (item) => item.store_name === product.detail.store_name
+      );
+      userImgSrc.value = `../${store.info.product_img_path}`;
       userImgTag.setAttributeNode(userImgSrc);
       userImg.appendChild(userImgTag);
 
       // Making User-id
       const userId = document.querySelector(".user-id");
-      userId.innerText = product.detail.product_store;
+      userId.innerText = product.detail.store_name;
 
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
@@ -252,7 +255,8 @@ fetch(joonggoInfo)
 
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
-      mapArea.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${product.point}`;
+      mapArea.innerText = `${product.point === "" ? "-" : product.point}`;
+
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -271,29 +275,29 @@ fetch(joonggoInfo)
       const storeImgTag = document.createElement("img");
       const storeImgSrc = document.createAttribute("src");
 
-      storeImgSrc.value = `../${product.detail.product_img_path}`;
+      storeImgSrc.value = `../${store.info.product_img_path}`;
       storeImgTag.setAttributeNode(storeImgSrc);
       storeImg.appendChild(storeImgTag);
 
       // Making Store-name
       const storeName = document.querySelector(".name");
-      storeName.innerText = product.detail.product_store;
+      storeName.innerText = product.detail.store_name;
 
       // Making Item-info
-      const productItemInfos = product.detail.product_img_etc;
+      const productItemInfos = store.info.product_img_etc;
       const itemsWrapper = document.querySelector(".items-wrapper");
 
       for (let i = 0; i < productItemInfos.length; i++) {
         itemsWrapper.innerHTML += `
-            <li class="item-info">
-              <div class="item-img">
-                <img src="../${productItemInfos[i].image_url}">
-              </div>
-              <div class="item-detail">
-                <span class="item-name">${productItemInfos[i].name}</span>
-                <span class="item-price">${productItemInfos[i].price}</span>
-              </div>
-            </li>
+          <li class="item-info">
+            <div class="item-img">
+              <img src="../${productItemInfos[i].image_url}">
+            </div>
+            <div class="item-detail">
+              <span class="item-name">${productItemInfos[i].name}</span>
+              <span class="item-price">${productItemInfos[i].price}</span>
+            </div>
+          </li>
           `;
       }
 
@@ -382,8 +386,8 @@ fetch(joonggoInfo)
 
       // Making Reviews
       const reviewsBox = document.querySelector(".reviews-box");
-      const reviews = product.review.review_title;
-      
+      const reviews = store.review.review_title;
+
       if(reviews.length === 0) {
         reviewsBox.innerHTML += 
         `
@@ -396,12 +400,7 @@ fetch(joonggoInfo)
           <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
           `;
         }
-      
       }
-
-
-      // Making Recommandtion's Items
-      const RecommendWrappers = document.querySelectorAll(".recommend-wrapper");
 
     }
   });

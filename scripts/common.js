@@ -771,60 +771,45 @@ const categoryData = {
 
 
 
-
 const barMenu = document.querySelector(".barmenu");
-const mainCategory = document.querySelector(".main-category");
-
 barMenu.addEventListener("moseover", () => {
   
 });
 
-categoryData.data.forEach((data) => {
+categoryData.data.forEach((mainCategory) => {
+  const main = document.querySelector(".main-category");
+
   const mainA = document.createElement("a");
   const mainLi = document.createElement("li");
   const subUl = document.createElement("ul");
   
-  mainA.innerText = data.main;
+  mainA.innerText = mainCategory.main;
   mainLi.appendChild(mainA);
   subUl.className = "sub-category1";
   
   
-  data.sub.forEach((sub) => {
+  mainCategory.sub.forEach((subCategory) => {
     const subA = document.createElement("a");
     const subLi = document.createElement("li");
     const lastUl = document.createElement("ul");
     
-    subA.innerText = sub.title;
+    subA.innerText = subCategory.title;
+    subLi.appendChild(subA);
+    lastUl.className = "sub-category2";
     
-    console.log(sub.list);
-    sub.list.forEach((list) => {
-      const listA = document.createElement("a");
-      const listLi = document.createElement("li");
+    // console.log(subCategory.list);
+    // subCategory.list.forEach((list) => {
+    //   const listA = document.createElement("a");
+    //   const listLi = document.createElement("li");
   
-      listA.innerText = list;
-      listLi.appendChild(listA);
-      lastUl.appendChild(listLi);
-    });
-
+    //   listA.innerText = list;
+    //   listLi.appendChild(listA);
+    //   lastUl.appendChild(listLi);
+    // });
+    // subLi.appendChild(lastUl);
+    subUl.appendChild(subLi);
   });
-
+  mainLi.appendChild(subUl);
+  main.appendChild(mainLi);
 });
-
-// categoryData.data.forEach((data, index) => {
-//   console.log(data.sub);
-//     mainCategory.innerHTML += 
-//     `
-//     <li>
-//       <a href="#">${data.main}</a>
-//       <ul class="sub-category1">
-//         <li>
-//           <a href="#">${data.sub.title}</a>
-//           <ul class="sub-category2">
-//           </ul>
-//         </li>
-//       </ul>
-//     </li>
-//     `;
-
-// });
 
