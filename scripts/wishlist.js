@@ -1,5 +1,6 @@
 // insert a count into the tab button
-let wishItemArr = ["162953544", "180090396", "49050246"];
+let wishItemArr = ["180005660", "180494166", "181233459"];
+let favoriteStoresArr = [];
 const wishItems = document.querySelector(".wishItems");
 wishItems.innerText = wishItemArr.length;
 
@@ -53,7 +54,7 @@ const addItemsInTheWishItemList = (product, index) => {
                 <span class="wishItemInfo">
                   <span class="wishItemTitleBox">
                     <p class="wishItemSellerName">${
-                      product.detail.product_store
+                      product.detail.store_name
                     }</p>
                     <p class="wishItemName">
                       ${product.title}
@@ -150,9 +151,84 @@ const wishItemChkEvnt = () => {
 fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
-    jsonData.data.forEach((product, index) => {
+    jsonData.product.forEach((product, index) => {
       // putting items in the wishItemList
       addItemsInTheWishItemList(product, index);
+
+      document.querySelector(".favoriteStoresWrap").innerHTML += `
+        <li>
+          <div class="favorite-store-info">
+            <div class="favorite-store-shopkeeper">
+              <a href="#" class="favoriteStoresTitle">
+                <img
+                  src="../images/product/product_180005660/1717928279012QGN_ZlFJQ.jpg"
+                  alt="store-photo"
+                />
+                <p>중고대대왕중고대대왕중고대대왕중고대대왕</p>
+              </a>
+            </div>
+            <div class="favorite-store-score">
+              <span class="store-score-desc">
+                <span class="store-score-title">거래순환률</span>
+                <span class="store-score-value">
+                  <b>27</b>
+                  /100
+                  <img
+                    src="../images/detail/circulater.png"
+                    alt="circulater"
+                  />
+                </span>
+              </span>
+              <div class="detail-bar"></div>
+            </div>
+            <div class="favorite-store-follower">
+              <ul class="favorite-store-follower-box">
+                <li>
+                  <span class="follower-box-title">상품</span>
+                  <span class="amountOfProducts">999</span>
+                </li>
+                <li>|</li>
+                <li>
+                  <span class="follower-box-title">팔로워</span>
+                  <span class="numberOfFollowers">555</span>
+                </li>
+              </ul>
+              <a href="#" class="followButton">
+                <i class="fa-solid fa-bookmark"></i>
+              </a>
+            </div>
+          </div>
+          <div class="favorite-store-products-box">
+            <ul class="favorite-store-products">
+              <li>
+                <a href="#">
+                  <span class="favoriteStoreProductImg"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="favoriteStoreProductImg"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="favoriteStoreProductImg"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="favoriteStoreProductImg"></span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="favoriteStoreProductImg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      `;
     });
 
     // all select event
