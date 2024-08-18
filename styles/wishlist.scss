@@ -460,20 +460,16 @@
               border-radius: 4px;
               position: relative;
               overflow: hidden;
-              &::before {
-                content: attr(data-score);
+              .filling-bar {
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 27%;
-                height: inherit;
-                background: linear-gradient(
-                  to right,
-                  #0dcb5b,
-                  #08b980,
-                  #02a1af
-                );
-                border-radius: 4px;
+                width: attr(data-score);
+                height: 100%;
+                background: map-get($map: $color, $key: bar-linear-gradient);
+                border-radius: 20px;
+                box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.5);
+                transition: all 0.5s;
               }
             }
           }
@@ -512,7 +508,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
             & > li {
               & > a {
                 display: inline-block;
@@ -522,8 +517,6 @@
                   display: inline-block;
                   width: inherit;
                   height: inherit;
-                  background: url("../images/product/product_180005660/1717928279012QGN_ZlFJQ.jpg")
-                    center/cover no-repeat;
                   border-radius: 10px;
                 }
               }
@@ -621,7 +614,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
             & > li {
               & > a {
                 display: inline-block;
@@ -631,8 +623,6 @@
                   display: inline-block;
                   width: inherit;
                   height: inherit;
-                  background: url("https://img2.joongna.com/media/original/2024/08/10/1723275807508LJn_0Zh9h.jpg?impolicy=resizeWatermark3&isSecret=false")
-                    center/cover no-repeat;
                   border-radius: 10px;
                 }
               }
@@ -823,7 +813,6 @@
           .favorite-store-products-box {
             width: 100%;
             .favorite-store-products {
-              flex-wrap: nowrap;
               gap: 10px;
               & > li {
                 & > a {
@@ -894,7 +883,6 @@
           .favorite-brand-products-box {
             width: 100%;
             .favorite-brand-products {
-              flex-wrap: nowrap;
               gap: 10px;
               & > li {
                 & > a {
@@ -1069,7 +1057,6 @@
             width: 100%;
             height: 180px;
             .favorite-store-products {
-              flex-wrap: nowrap;
               gap: 10px;
               & > li {
                 & > a {
@@ -1098,7 +1085,6 @@
             width: 100%;
             height: 180px;
             .favorite-brand-products {
-              flex-wrap: nowrap;
               gap: 10px;
               & > li {
                 & > a {

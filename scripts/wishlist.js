@@ -1,8 +1,6 @@
-// insert a count into the tab button
-let wishItemArr = ["180005660", "180494166", "181233459"];
-let favoriteStoresArr = [];
-const wishItems = document.querySelector(".wishItems");
-wishItems.innerText = wishItemArr.length;
+let wishItemArr;
+let favoriteStoresArr;
+let favoriteBrandsArr;
 
 // tab button click event
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
@@ -31,14 +29,16 @@ wishlistTabButton.forEach((btn) => {
 const addItemsInTheWishItemList = (product, index) => {
   wishItemArr.forEach((arr) => {
     if (arr === product.id) {
-      document.querySelector(".wishItemList").innerHTML += `
+      const li = `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
           index + 1
         }" value="wishItem${index + 1}" />
         <div class="wishItem">
           <div class="wishItemImgWrapper">
-            <a href="#" class="wishItemViewMore">
+            <a href="/pages/detail.html?id=${
+              product.id
+            }" class="wishItemViewMore">
               <img
                 src="../${product.image_path}"
                 alt="product_image"
@@ -50,7 +50,9 @@ const addItemsInTheWishItemList = (product, index) => {
           </div>
           <div class="wishItemDescGroup">
             <div class="wishItemDesc">
-              <a href="#" class="wishItemViewMore">
+              <a href="/pages/detail.html?id=${
+                product.id
+              }" class="wishItemViewMore">
                 <span class="wishItemInfo">
                   <span class="wishItemTitleBox">
                     <p class="wishItemSellerName">${
@@ -117,7 +119,10 @@ const addItemsInTheWishItemList = (product, index) => {
           </div>
         </div>
       </li>
-    `;
+      `;
+      document
+        .querySelector(".wishItemList")
+        .insertAdjacentHTML("beforeend", li);
     }
   });
 };
@@ -147,31 +152,30 @@ const wishItemChkEvnt = () => {
   });
 };
 
-// push the db.json data
-fetch("../db.json")
-  .then((response) => response.json())
-  .then((jsonData) => {
-    jsonData.product.forEach((product, index) => {
-      // putting items in the wishItemList
-      addItemsInTheWishItemList(product, index);
-
-      document.querySelector(".favoriteStoresWrap").innerHTML += `
+// putting items in the favoriteStores
+const addItemsInTheFavoriteStores = (store) => {
+  favoriteStoresArr.forEach((arr) => {
+    if (arr === store.store_name) {
+      let li = `
         <li>
           <div class="favorite-store-info">
             <div class="favorite-store-shopkeeper">
-              <a href="#" class="favoriteStoresTitle">
+              <a href="/pages/mypage.html?id=${
+                store.store_name
+              }" class="favoriteStoresTitle">
                 <img
-                  src="../images/product/product_180005660/1717928279012QGN_ZlFJQ.jpg"
-                  alt="store-photo"
+                  src="../${store.info.product_img_path}"
                 />
-                <p>중고대대왕중고대대왕중고대대왕중고대대왕</p>
+                <p>${store.store_name}</p>
               </a>
             </div>
             <div class="favorite-store-score">
               <span class="store-score-desc">
                 <span class="store-score-title">거래순환률</span>
                 <span class="store-score-value">
-                  <b>27</b>
+                  <b>${Math.ceil(
+                    store.info.product_store_confidence_index / 10
+                  )}</b>
                   /100
                   <img
                     src="../images/detail/circulater.png"
@@ -179,18 +183,26 @@ fetch("../db.json")
                   />
                 </span>
               </span>
-              <div class="detail-bar"></div>
+              <div class="detail-bar">
+                  <div class="filling-bar" style="width:${Math.ceil(
+                    store.info.product_store_confidence_index / 10
+                  )}%"></div>
+              </div>
             </div>
             <div class="favorite-store-follower">
               <ul class="favorite-store-follower-box">
                 <li>
-                  <span class="follower-box-title">상품</span>
-                  <span class="amountOfProducts">999</span>
+                  <span class="follower-box-title">안전거래</span>
+                  <span class="amountOfProducts">${
+                    store.info.product_store_safe_deal
+                  }</span>
                 </li>
                 <li>|</li>
                 <li>
                   <span class="follower-box-title">팔로워</span>
-                  <span class="numberOfFollowers">555</span>
+                  <span class="numberOfFollowers">${
+                    store.info.product_store_follower
+                  }</span>
                 </li>
               </ul>
               <a href="#" class="followButton">
@@ -199,40 +211,130 @@ fetch("../db.json")
             </div>
           </div>
           <div class="favorite-store-products-box">
-            <ul class="favorite-store-products">
-              <li>
-                <a href="#">
-                  <span class="favoriteStoreProductImg"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="favoriteStoreProductImg"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="favoriteStoreProductImg"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="favoriteStoreProductImg"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="favoriteStoreProductImg"></span>
-                </a>
-              </li>
+            <ul class="favorite-store-products">`;
+      store.info.product_img_etc.forEach((img) => {
+        li += `
+          <li>
+            <a href="#">
+              <span class="favoriteStoreProductImg" style="background:url('../${img.image_url}') center/cover no-repeat"></span>
+            </a>
+          </li>
+        `;
+      });
+      li += `
             </ul>
           </div>
         </li>
       `;
+      document
+        .querySelector(".favoriteStoresWrap")
+        .insertAdjacentHTML("beforeend", li);
+    }
+  });
+};
+
+// putting items in the favoriteBrands
+const addItemsInTheFavoriteBrands = () => {
+  // making favoriteBrands li
+  favoriteBrandsArr.forEach((arr) => {
+    let li = `
+        <li>
+          <div class="favorite-brand-info">
+            <div class="favorite-brand-shopkeeper">
+              <a href="#" class="favoriteBrandsTitle">
+                <img
+                  src="../${arr.img}"
+                  alt="store-photo"
+                />
+                <p>
+                  ${arr.brand}
+                </p>
+              </a>
+              <ul class="favorite-brand-follower-box">
+                <li>
+                  <span class="follower-box-title titleEng"
+                    >${arr.brandEng}</span
+                  >
+                </li>
+                <li>|</li>
+                <li>
+                  <span class="follower-box-title">상품</span>
+                  <span class="amountOfProducts">${arr.count}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="favorite-brand-follow-button">
+              <a href="#" class="followButton">
+                <i class="fa-solid fa-bookmark"></i>
+              </a>
+            </div>
+          </div>
+          <div class="favorite-brand-products-box">
+            <ul class="favorite-brand-products">`;
+
+    arr.products.forEach((product) => {
+      li += `
+              <li>
+                <a href="/pages/detail.html?id=${product.id}">
+                  <span class="favoriteBrandProductImg" style="background:url('../${product.image_path}') center/cover no-repeat"></span>
+                </a>
+              </li>`;
     });
+
+    li += `
+            </ul>
+          </div>
+        </li>
+      `;
+
+    document
+      .querySelector(".favoriteBrandsWrap")
+      .insertAdjacentHTML("beforeend", li);
+  });
+};
+
+// push the db.json data
+fetch("../db.json")
+  .then((response) => response.json())
+  .then((jsonData) => {
+    // insert a count into the tab button
+    wishItemArr = jsonData.wishlist.wishItemArr;
+    favoriteStoresArr = jsonData.wishlist.favoriteStoresArr;
+    favoriteBrandsArr = jsonData.wishlist.favoriteBrandsArr;
+
+    document.querySelector(".wishItems").innerText = wishItemArr.length;
+    document.querySelector(".favoriteStores").innerText =
+      favoriteStoresArr.length;
+    document.querySelector(".favoriteBrands").innerText =
+      favoriteBrandsArr.length;
+
+    jsonData.product.forEach((product, index) => {
+      // putting items in the wishItemList
+      addItemsInTheWishItemList(product, index);
+
+      // put data into favoriteBrandsArr
+      favoriteBrandsArr.forEach((arr) => {
+        if (product.title.includes(arr.brand)) {
+          arr.products.push({
+            id: product.id,
+            image_path: product.image_path,
+          });
+
+          arr.count += 1;
+        }
+      });
+    });
+
+    // putting items in the favoriteBrands
+    addItemsInTheFavoriteBrands();
 
     // all select event
     wishItemChkEvnt();
+
+    jsonData.store.forEach((store) => {
+      // putting items in the favoriteStores
+      addItemsInTheFavoriteStores(store);
+    });
   });
 
 // button event
