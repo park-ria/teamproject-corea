@@ -662,12 +662,9 @@ const categoryData = {
   ],
 };
 
-const barMenu = document.querySelector(".barmenu");
-barMenu.addEventListener("moseover", () => {});
+const main = document.querySelector(".main-category");
 
 categoryData.data.forEach((mainCategory) => {
-  const main = document.querySelector(".main-category");
-
   const mainA = document.createElement("a");
   const mainLi = document.createElement("li");
   const subUl = document.createElement("ul");
@@ -701,4 +698,43 @@ categoryData.data.forEach((mainCategory) => {
   });
   mainLi.appendChild(subUl);
   // main.appendChild(mainLi);
+});
+
+// Barmenu mouseover
+const barMenu = document.querySelector(".barmenu");
+
+barMenu.addEventListener("mouseover", () => {
+  main.classList.add("active");
+});
+
+main.addEventListener("mouseleave", () => {
+  main.classList.remove("active");
+});
+
+// Main-category mouseover
+const mains = document.querySelectorAll(".main-category > li");
+
+mains.forEach((main) => {
+  main.addEventListener("mouseover", (e) => {
+    e.target.querySelector(".sub-category1").classList.add("active");
+  });
+
+  main.addEventListener("mouseleave", (e) => {
+    e.target.querySelector(".sub-category1").classList.remove("active");
+  });
+});
+
+// Sub-categroy mouseover
+const subs = document.querySelectorAll(".sub-category1 > li");
+
+subs.forEach((sub) => {
+  sub.addEventListener("mouseover", (e) => {
+    if (e.target.querySelector(".sub-category2 > li")) {
+      e.target.querySelector(".sub-category2").classList.add("active");
+    }
+  });
+
+  sub.addEventListener("mouseleave", (e) => {
+    e.target.querySelector(".sub-category2").classList.remove("active");
+  });
 });
