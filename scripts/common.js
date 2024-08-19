@@ -687,6 +687,7 @@ categoryData.data.forEach((mainCategory) => {
 
     if (subCategory.list) {
       subCategory.list.forEach((list) => {
+        //console.log(list);
         const listA = document.createElement("a");
         const listLi = document.createElement("li");
 
@@ -695,10 +696,9 @@ categoryData.data.forEach((mainCategory) => {
         lastUl.appendChild(listLi);
       });
     }
-
     subLi.appendChild(lastUl);
     subUl.appendChild(subLi);
   });
   mainLi.appendChild(subUl);
-  main.appendChild(mainLi);
+  // main.appendChild(mainLi);
 });

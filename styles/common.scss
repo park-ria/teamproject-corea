@@ -247,7 +247,6 @@ body {
             gap: 30px;
             a {
               font-size: 1.6rem;
-              font-weight: 500;
             }
           }
         }
@@ -274,29 +273,7 @@ body {
   }
 }
 
-// mobile-menu
-#mobile-menu {
-  display: none;
-
-  background: map-get($map: $color, $key: bg-light-color);
-  .mobile-menu {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .menu-box {
-      display: flex;
-      gap: 15px;
-      a {
-        font-size: 20px;
-      }
-    }
-  }
-}
-
-// contents
+// Contents
 .container {
   width: 100%;
   margin-top: 185px;
@@ -319,12 +296,12 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
+  padding: 50px 0 70px;
   .inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 30px;
-    height: 404px;
     .footer-upper {
       display: flex;
       justify-content: space-between;
@@ -336,12 +313,56 @@ footer {
         .footer-company-guide ul {
           display: flex;
           gap: 20px;
+          a {
+            font-weight: 700;
+          }
         }
         .footer-company-info ul {
           display: flex;
           flex-direction: column;
           gap: 10px;
           font-style: normal;
+        }
+      }
+      .footer-upper-ctg {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+        button {
+          position: relative;
+          font-size: 1.6rem;
+          color: map-get($color, bg-light-color);
+          i {
+            color: map-get($color, bg-light-color);
+            transition: all 0.3s;
+          }
+          &.active {
+            i {
+              transform: translateY(-15%) rotate(180deg);
+            }
+          }
+        }
+        .category-list {
+          width: 580px;
+          max-height: 0px;
+          overflow: hidden;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 15px;
+          border: 1px solid map-get($color, bg-dark-gray);
+          background: #4a4a4a;
+          opacity: 0;
+          transition: all 0.3s;
+          li {
+            width: calc((100% - 50px) / 6);
+            text-align: center;
+          }
+          &.active {
+            max-height: 119px;
+            opacity: 1;
+          }
         }
       }
     }
@@ -368,20 +389,60 @@ footer {
 
 // responsive
 @media screen and (max-width: 1280px) {
+  // common
   .inner {
     width: 100%;
-    padding: 0 2%;
+    padding: 0 28px;
+  }
+
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-info {
+          .footer-company-guide ul {
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 10px;
+          }
+        }
+        .footer-upper-ctg {
+          .category-list {
+            width: 340px;
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 215px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // FAQ
+  .faq {
+    .accordion {
+      width: 100%;
+    }
   }
 }
 
 @media screen and (max-width: 840px) {
+  // common
   html {
     font-size: 8px;
   }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
 
-  // footer
+  // Footer
   footer {
     .inner {
+      gap: 10px;
       .footer-upper {
         display: flex;
         flex-direction: column;
@@ -399,6 +460,18 @@ footer {
             justify-content: center;
           }
         }
+        .footer-upper-ctg {
+          align-items: center;
+          .category-list {
+            width: 100%;
+            li {
+              width: calc((100% - 40px) / 5);
+            }
+            &.active {
+              max-height: 200px;
+            }
+          }
+        }
       }
       .footer-lower {
         display: flex;
@@ -413,4 +486,21 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-ctg {
+          .category-list {
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 179px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
