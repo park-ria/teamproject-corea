@@ -22,7 +22,7 @@ fetch(JoonggoInfo)
     JoongoData.product.forEach((product) => {
       rankingSlides.forEach((rankingSlide) => {
         rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(181171036)}`;
+          const url = `pages/detail.html?id=${encodeURIComponent(19370577)}`;
           window.location.href = url;
         });
       });

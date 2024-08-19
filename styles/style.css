@@ -354,6 +354,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   html {
     font-size: 8px;
   }
+  #mobile-menu {
+    display: block;
+  }
   footer .inner .footer-upper {
     display: flex;
     flex-direction: column;
@@ -379,6 +382,12 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-items: center;
     text-align: center;
     gap: 20px;
+  }
+}
+@media screen and (max-width: 450px) {
+  #mobile-menu .mobile-menu a img {
+    width: 115px;
+    height: 22px;
   }
 }
 @font-face {
