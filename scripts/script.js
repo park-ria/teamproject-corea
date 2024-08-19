@@ -262,7 +262,7 @@ fetch(joonggoInfo)
     mainSlide();
 
     // data
-    joongoData.data.forEach((product, index) => {
+    joongoData.product.forEach((product, index) => {
       // add product slide
       if (index < 8) {
         addProduct(product, index, ".bestRankingUl");

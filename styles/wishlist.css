@@ -240,6 +240,7 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
   font-size: 1.6rem;
+  font-weight: 500;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
@@ -255,6 +256,25 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
+}
+
+#mobile-menu {
+  display: none;
+  background: #fff;
+}
+#mobile-menu .mobile-menu {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#mobile-menu .mobile-menu .menu-box {
+  display: flex;
+  gap: 15px;
+}
+#mobile-menu .mobile-menu .menu-box a {
+  font-size: 20px;
 }
 
 .container {
@@ -882,15 +902,16 @@ footer .inner .footer-lower .footer-lower-logo i {
   position: relative;
   overflow: hidden;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar::before {
-  content: attr(data-score);
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar .filling-bar {
   position: absolute;
   top: 0;
   left: 0;
-  width: 27%;
-  height: inherit;
+  width: attr(data-score);
+  height: 100%;
   background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
-  border-radius: 4px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
   width: 100%;
@@ -923,7 +944,6 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
   display: inline-block;
@@ -934,7 +954,6 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: inherit;
   height: inherit;
-  background: url("../images/product/product_26346141/1613374713839ey7_wdx8R.jpg") center/cover no-repeat;
   border-radius: 10px;
 }
 .favorite-stores-content .favoriteStoresPagination {
@@ -1058,7 +1077,6 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
   display: inline-block;
@@ -1069,7 +1087,6 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: inherit;
   height: inherit;
-  background: url("https://img2.joongna.com/media/original/2024/08/10/1723275807508LJn_0Zh9h.jpg?impolicy=resizeWatermark3&isSecret=false") center/cover no-repeat;
   border-radius: 10px;
 }
 .favorite-brands-content .favoriteBrandsPagination {
@@ -1261,7 +1278,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 100%;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-products-box .favorite-store-products {
-    flex-wrap: nowrap;
     gap: 10px;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg {
@@ -1318,7 +1334,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 100%;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap li .favorite-brand-products-box .favorite-brand-products {
-    flex-wrap: nowrap;
     gap: 10px;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg {
@@ -1461,7 +1476,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     height: 180px;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-products-box .favorite-store-products {
-    flex-wrap: nowrap;
     gap: 10px;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-products-box .favorite-store-products > li > a {
@@ -1477,7 +1491,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     height: 180px;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap li .favorite-brand-products-box .favorite-brand-products {
-    flex-wrap: nowrap;
     gap: 10px;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap li .favorite-brand-products-box .favorite-brand-products > li > a {

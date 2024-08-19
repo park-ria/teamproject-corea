@@ -605,7 +605,6 @@ body {
 }
 
 #best-ranking {
-  display: none;
   padding: 150px 0;
 }
 #best-ranking .ranking-content {
