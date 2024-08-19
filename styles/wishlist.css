@@ -698,6 +698,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   justify-content: center;
   align-items: center;
   color: #aaa;
+  margin: 30px 0 100px;
 }
 .wish-items-content .wish-items-content-detail .wishItemPagination .pagerButtons {
   width: 30px;
@@ -875,6 +876,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   justify-content: center;
   align-items: center;
   color: #aaa;
+  margin: 30px 0 100px;
 }
 .favorite-stores-content .favoriteStoresPagination .pagerButtons {
   width: 30px;
@@ -970,7 +972,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li {
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li span:not(.follower-box-title) {
   letter-spacing: normal;
@@ -1008,6 +1010,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   justify-content: center;
   align-items: center;
   color: #aaa;
+  margin: 30px 0 100px;
 }
 .favorite-brands-content .favoriteBrandsPagination .pagerButtons {
   width: 30px;
