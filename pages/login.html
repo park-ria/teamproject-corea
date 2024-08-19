@@ -123,11 +123,11 @@
 
             <div class="login-main">
               <div class="login-main-npt">
-                <form action="http://127.0.0.1:5500" method="get">
+                <form action="http://127.0.0.1:5502" method="get">
                   <ul>
                     <li>
                       <input
-                        type="text"
+                        type="email"
                         id="userId"
                         placeholder="아이디를 입력하세요"
                       />
@@ -139,13 +139,12 @@
                         placeholder="비밀번호를 입력하세요"
                       />
                     </li>
+                    <div class="login-main-checkbox">
+                      <input type="checkbox" id="checkbox" />로그인상태 유지하기
+                    </div>
+                    <input type="submit" id="login-button" value="로그인" />
                   </ul>
                 </form>
-                <div class="login-main-checkbox">
-                  <input type="checkbox" id="checkbox" />로그인상태 유지하기
-                  <!-- <input type="checkbox" id="checkbox" />아이디 유지하기 -->
-                </div>
-                <input type="submit" id="login-button" value="로그인" />
               </div>
               <div class="login-main-srt">
                 <ul>
