@@ -482,11 +482,13 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 #main-slide article {
   position: relative;
   height: 420px;
+  width: 1280px;
 }
 #main-slide article .mainSlideWrapper {
   display: flex;
@@ -494,36 +496,36 @@ body {
   gap: 10px;
   position: absolute;
   top: 0;
-  left: calc(50% - 640px + 10px);
+  left: 0;
 }
-#main-slide article .mainSlideWrapper a {
+#main-slide article .mainSlideWrapper span {
   position: relative;
   width: 420px;
   height: 420px;
   display: flex;
   align-items: flex-end;
 }
-#main-slide article .mainSlideWrapper a::before {
+#main-slide article .mainSlideWrapper span::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
 }
-#main-slide article .mainSlideWrapper a.active::before {
+#main-slide article .mainSlideWrapper span.active::before {
   display: none;
 }
-#main-slide article .mainSlideWrapper a .main-slide-desc {
+#main-slide article .mainSlideWrapper span .main-slide-desc {
   margin: 0 0 30px 30px;
   color: #fff;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
-#main-slide article .mainSlideWrapper a .main-slide-desc h2 {
+#main-slide article .mainSlideWrapper span .main-slide-desc h2 {
   height: 84px;
   margin-bottom: 10px;
   font: 400 3rem/1.4 "JalnanGothic";
   letter-spacing: 0;
 }
-#main-slide article .mainSlideWrapper a .main-slide-desc p {
+#main-slide article .mainSlideWrapper span .main-slide-desc p {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -541,12 +543,12 @@ body {
   transition: all 0.3s;
 }
 #main-slide article .main-slide-arrows button.mainSlidePrev {
-  left: calc(50% - 640px + 10px);
+  left: 0;
   transform: translate(0, -50%);
 }
 #main-slide article .main-slide-arrows button.mainSlideNext {
-  left: calc(50% + 640px + 10px);
-  transform: translate(-100%, -50%);
+  right: 0;
+  transform: translate(0, -50%);
 }
 #main-slide article .main-slide-arrows button i {
   font-size: 2.8rem;
@@ -578,6 +580,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  width: 33.3333333333%;
   height: 100%;
   background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
   transition: all 0.3s;
@@ -1092,7 +1095,7 @@ body {
   border: 1px solid transparent;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 35px;
 }
@@ -1110,7 +1113,6 @@ body {
   width: 150px;
   height: 100%;
   border-radius: 10px;
-  background: url("../images/tab-content01.png") center/cover no-repeat;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
   width: calc(100% - 150px);
@@ -1148,6 +1150,9 @@ body {
   white-space: nowrap;
   overflow: hidden;
   color: #6d6d6d;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content.active {
+  display: flex;
 }
 
 #event .event-content .event-heading {
