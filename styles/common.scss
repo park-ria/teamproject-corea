@@ -247,6 +247,7 @@ body {
             gap: 30px;
             a {
               font-size: 1.6rem;
+              font-weight: 500;
             }
           }
         }
@@ -268,6 +269,28 @@ body {
             }
           }
         }
+      }
+    }
+  }
+}
+
+// mobile-menu
+#mobile-menu {
+  display: none;
+
+  background: map-get($map: $color, $key: bg-light-color);
+  .mobile-menu {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu-box {
+      display: flex;
+      gap: 15px;
+      a {
+        font-size: 20px;
       }
     }
   }
