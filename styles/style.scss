@@ -241,18 +241,21 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   article {
     position: relative;
     height: 420px;
+    width: 1280px;
     .mainSlideWrapper {
       display: flex;
       justify-content: center;
       gap: 10px;
       position: absolute;
       top: 0;
-      left: calc(50% - 1280px / 2 + 10px);
-      a {
+      //left: calc(50% - 1280px / 2 + 10px);
+      left: 0;
+      span {
         position: relative;
         width: 420px;
         height: 420px;
@@ -301,12 +304,12 @@ body {
         background: rgba($color: #fff, $alpha: 0.6);
         transition: all 0.3s;
         &.mainSlidePrev {
-          left: calc(50% - 1280px / 2 + 10px);
+          left: 0;
           transform: translate(0, -50%);
         }
         &.mainSlideNext {
-          left: calc(50% + 1280px / 2 + 10px);
-          transform: translate(-100%, -50%);
+          right: 0;
+          transform: translate(0, -50%);
         }
         i {
           font-size: 2.8rem;
@@ -339,7 +342,7 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        // width: calc(100% / 3);
+        width: calc(100% / 3);
         height: 100%;
         background: map-get($color, bar-linear-gradient);
         transition: all 0.3s;
@@ -510,7 +513,7 @@ body {
         }
       }
       .tab-content {
-        display: flex;
+        display: none;
         flex-wrap: wrap;
         gap: 35px;
         li {
@@ -534,6 +537,9 @@ body {
               @include productDesc;
             }
           }
+        }
+        &.active {
+          display: flex;
         }
       }
     }
