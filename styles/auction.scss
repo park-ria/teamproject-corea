@@ -1,0 +1,104 @@
+@import "./common.scss", "./style.scss";
+
+#best-auction {
+  padding: 0 0 100px;
+  .best-auction-content {
+    .section-title {
+      @include sectionTitle;
+      margin-bottom: 20px;
+    }
+    .best-auction-slide {
+      ul {
+        display: flex;
+        gap: 25px;
+        li {
+          a {
+            width: 410px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .slide-img {
+              width: 100%;
+              height: 236px;
+              background: url("../images/auction01.png") center/cover no-repeat;
+              border-radius: 10px;
+              position: relative;
+              .timeEvent {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 8px 12px;
+                border-radius: 8px;
+                background: map-get($color, bg-sub-color);
+                .clock {
+                  position: relative;
+                  width: 28px;
+                  height: 28px;
+                  background: url("../images/clock.svg") center/contain
+                    no-repeat;
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -70%);
+                    transform-origin: center;
+                    width: 2px;
+                    height: 8px;
+                    background: map-get($color, bg-light-color);
+                    // animation: clock 2s linear infinite;
+                  }
+                }
+                span {
+                  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+                  color: map-get($color, bg-light-color);
+                }
+              }
+            }
+            .slide-desc {
+              @include productDesc;
+              .desc-title {
+                height: 23px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes clock {
+  0% {
+    transform: translate(-50%, -70%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+
+#product-list {
+  .sorting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    li {
+      font-size: 1.8rem;
+      position: relative;
+      &::after {
+        content: "|";
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        transform: translateY(-50%);
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

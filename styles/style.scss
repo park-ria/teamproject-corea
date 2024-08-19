@@ -40,10 +40,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   align-items: center;
   margin-bottom: 30px;
   .section-title {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -2px;
-    cursor: default;
+    @include sectionTitle;
   }
   .view-more {
     a {
@@ -51,6 +48,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       color: map-get($color, bg-dark-gray);
     }
   }
+}
+
+@mixin sectionTitle {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  cursor: default;
 }
 
 @mixin productSlide {
@@ -426,7 +430,8 @@ body {
         h2 {
           font-size: 5rem;
         }
-        .timeEvent {
+        .timeEvent,
+        strong {
           margin: 10px 0;
           font-size: 5rem;
           color: #fce44a;
@@ -434,9 +439,9 @@ body {
         p {
           font-size: 2.4rem;
           font-family: "GmarketSansMedium";
-        }
-        b {
-          color: #fce44a;
+          b {
+            color: #fce44a;
+          }
         }
       }
       .banner-img {
