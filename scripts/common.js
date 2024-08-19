@@ -685,22 +685,20 @@ categoryData.data.forEach((mainCategory) => {
     subLi.appendChild(subA);
     lastUl.className = "sub-category2";
 
+    if (subCategory.list) {
+      subCategory.list.forEach((list) => {
+        //console.log(list);
+        const listA = document.createElement("a");
+        const listLi = document.createElement("li");
 
-    subCategory.list.forEach((item)=>{
-      console.log(item);
-    });
-    subCategory.list.forEach((list) => {
-      //console.log(list);
-      const listA = document.createElement("a");
-      const listLi = document.createElement("li");
-
-      listA.innerText = list;
-      listLi.appendChild(listA);
-      lastUl.appendChild(listLi);
-    });
+        listA.innerText = list;
+        listLi.appendChild(listA);
+        lastUl.appendChild(listLi);
+      });
+    }
     subLi.appendChild(lastUl);
     subUl.appendChild(subLi);
   });
   mainLi.appendChild(subUl);
-  main.appendChild(mainLi);
+  // main.appendChild(mainLi);
 });
