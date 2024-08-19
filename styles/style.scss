@@ -273,6 +273,7 @@ body {
           margin: 0 0 30px 30px;
           color: map-get($color, bg-light-color);
           text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
+          // display: none;
           h2 {
             height: 84px;
             margin-bottom: 10px;

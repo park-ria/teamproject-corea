@@ -62,12 +62,12 @@ const mainSlide = () => {
   };
 
   const makeClone = () => {
-    for (let i = 0; i < slideCount; i++) {
+    for (let i = 0; i < cloneCount; i++) {
       const cloneSlide = mainSlide[i].cloneNode(true);
       cloneSlide.classList.add("clone");
       mainSlideUl.appendChild(cloneSlide);
     }
-    for (let i = slideCount - 1; i >= 0; i--) {
+    for (let i = slideCount - 1; i >= slideCount - cloneCount; i--) {
       const cloneSlide = mainSlide[i].cloneNode(true);
       cloneSlide.classList.add("clone");
       mainSlideUl.prepend(cloneSlide);
@@ -90,10 +90,7 @@ const mainSlide = () => {
     currentIdx = num;
     // console.log(currentIdx, slideCount);
 
-    if (
-      currentIdx === slideCount / moveSlideCount ||
-      currentIdx === -cloneCount / moveSlideCount
-    ) {
+    if (currentIdx === slideCount / moveSlideCount || currentIdx === -1) {
       setTimeout(() => {
         mainSlideUl.classList.remove("animated");
         mainSlideUl.style.left =
@@ -109,12 +106,12 @@ const mainSlide = () => {
         mainSlideUl.classList.add("animated");
       }, 600);
     }
-    // const pager = pagers.querySelector("span");
-    // console.log(num);
-    // if (num === -1) pager.style.width = `calc(100% / 3 * 3)`;
-    // else if (num === 1) pager.style.width = ` calc(100% / 3 * 2)`;
-    // else if (num === 0) pager.style.width = `calc(100% / 3 * 1)`;
-    // else pager.style.width = `calc(100%  / 3 * ${num})`;
+    const pager = pagers.querySelector("span");
+    console.log(num);
+    if (num === -1) pager.style.width = `calc(100% / 3 * 3)`;
+    else if (num === 1) pager.style.width = ` calc(100% / 3 * 2)`;
+    else if (num === 0) pager.style.width = `calc(100% / 3 * 1)`;
+    else pager.style.width = `calc(100%  / 3 * ${num})`;
   };
 
   preBtns.forEach((btn) => {
@@ -288,10 +285,11 @@ fetch(joonggoInfo)
 // auction
 const timeEvent = () => {
   const time = document.querySelector(".timeEvent");
+  const spanTag = document.createElement("span");
 
   const today = new Date();
 
-  const dDay = new Date(2024, 7, 20, 18, 0);
+  const dDay = new Date(2024, 7, 22, 18, 0);
   // dDay.setDate(today.getDate() + 1);
 
   const resultDay = dDay.getTime() - today.getTime();
@@ -305,7 +303,12 @@ const timeEvent = () => {
   resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
   resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
 
-  time.innerText = `${resultHours} : ${resultMinutes} : ${resultSeconds}`;
+  const hours = (spanTag.innerText = resultHours);
+  const minutes = (spanTag.innerText = `: ${resultMinutes} :`);
+  const seconds = (spanTag.innerText = resultSeconds);
+
+  // time.innerText = `${resultHours} : ${resultMinutes} : ${resultSeconds}`;
+  time.append(hours, minutes, seconds);
 };
 timeEvent();
 // setInterval(timeEvent, 1000);

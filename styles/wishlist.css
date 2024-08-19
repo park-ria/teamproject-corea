@@ -21,12 +21,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -121,6 +129,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -571,7 +582,8 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
   width: inherit;
   height: inherit;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter {
   position: absolute;
@@ -819,7 +831,8 @@ footer .inner .footer-lower .footer-lower-logo i {
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
@@ -857,7 +870,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   width: 13px;
   height: 13px;
   margin-left: 5px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar {
   width: 100%;
@@ -995,12 +1009,14 @@ footer .inner .footer-lower .footer-lower-logo i {
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle {
   display: inline-block;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
@@ -1231,6 +1247,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
     margin-top: 0;
+    width: -moz-fit-content;
     width: fit-content;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap li .favorite-store-info .favorite-store-score {
@@ -1285,6 +1302,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
     margin-top: 0;
+    width: -moz-fit-content;
     width: fit-content;
     max-width: 180px;
   }
@@ -1385,13 +1403,16 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-items: center;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
+    width: -moz-fit-content;
     width: fit-content;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 1.4rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 1.6rem;
   }
