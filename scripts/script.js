@@ -7,10 +7,11 @@ const mainSlideUl = document.querySelector(".mainSlideWrapper");
 // add main slide item
 const addMainSlide = (slide, index) => {
   const liItem = document.createElement("li");
-  const aTag = document.createElement("a");
+  //const aTag = document.createElement("a");
+  const aTag = document.createElement("span");
   const slideDesc = document.createElement("div");
 
-  aTag.setAttribute("href", "#none");
+  //aTag.setAttribute("href", "#none");
   aTag.style.background = `url(../images/${slide.img}) center/cover no-repeat`;
   slideDesc.className = "main-slide-desc";
 
@@ -57,7 +58,7 @@ const mainSlide = () => {
   };
 
   const setInitialPos = () => {
-    const initialTranslateValue = -(slideWidth + slideMargin) * slideCount;
+    const initialTranslateValue = -(slideWidth + slideMargin) * cloneCount;
     mainSlideUl.style.transform = `translateX(${initialTranslateValue}px)`;
   };
 
@@ -88,7 +89,6 @@ const mainSlide = () => {
     }px`;
 
     currentIdx = num;
-    // console.log(currentIdx, slideCount);
 
     if (currentIdx === slideCount / moveSlideCount || currentIdx === -1) {
       setTimeout(() => {
@@ -107,11 +107,11 @@ const mainSlide = () => {
       }, 600);
     }
     const pager = pagers.querySelector("span");
-    console.log(num);
-    if (num === -1) pager.style.width = `calc(100% / 3 * 3)`;
-    else if (num === 1) pager.style.width = ` calc(100% / 3 * 2)`;
-    else if (num === 0) pager.style.width = `calc(100% / 3 * 1)`;
-    else pager.style.width = `calc(100%  / 3 * ${num})`;
+    console.log(currentIdx);
+    if (currentIdx === 0 || currentIdx === 3)
+      pager.style.width = `calc(100% / 3)`;
+    else if (currentIdx === 1) pager.style.width = `calc(100% / 3 * 2)`;
+    else if (currentIdx === 2 || currentIdx === -1) pager.style.width = `100%`;
   };
 
   preBtns.forEach((btn) => {
@@ -216,7 +216,7 @@ const addProduct = (product, index, ul) => {
 
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", "#none");
+  aTag.setAttribute("href", `../pages/detail.html?id=${product.id}`);
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
@@ -272,13 +272,8 @@ fetch(joonggoInfo)
         addProduct(product, index, ".recommendedUl");
       }
 
-      // 동훈님
-      rankingSlides.forEach((rankingSlide) => {
-        rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(179612232)}`;
-          window.location.href = url;
-        });
-      });
+      // tab-content
+      const tabContent = document.querySelectorAll(".tab-content");
     });
   });
 
@@ -312,6 +307,23 @@ const timeEvent = () => {
 };
 timeEvent();
 // setInterval(timeEvent, 1000);
+
+// tab-menu click event
+const tabMenu = document.querySelectorAll(".tab-menu li");
+tabMenu.forEach((li) => {
+  li.addEventListener("click", (item) => {
+    tabMenu.forEach((sibiling) => {
+      if (sibiling === item.target) item.target.classList.add("active");
+      else sibiling.classList.remove("active");
+    });
+
+    document.querySelectorAll(".tab-content").forEach((content) => {
+      content.classList.remove("active");
+    });
+    const target = item.target.getAttribute("data-tab");
+    document.querySelector(`.${target}`).classList.add("active");
+  });
+});
 
 // event slide
 const eventSlideUl = document.querySelector(".event-slide ul");

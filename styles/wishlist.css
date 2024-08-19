@@ -240,7 +240,6 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
   font-size: 1.6rem;
-  font-weight: 500;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
@@ -256,25 +255,6 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
-}
-
-#mobile-menu {
-  display: none;
-  background: #fff;
-}
-#mobile-menu .mobile-menu {
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#mobile-menu .mobile-menu .menu-box {
-  display: flex;
-  gap: 15px;
-}
-#mobile-menu .mobile-menu .menu-box a {
-  font-size: 20px;
 }
 
 .container {
