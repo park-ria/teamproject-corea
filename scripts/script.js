@@ -44,7 +44,7 @@ const mainSlide = () => {
   const slideWidth = 420;
   const slideMargin = 10;
   const slideCount = mainSlide.length;
-  const cloneCount = 3;
+  const cloneCount = 4;
 
   let currentIdx = 0;
 
@@ -107,7 +107,6 @@ const mainSlide = () => {
       }, 600);
     }
     const pager = pagers.querySelector("span");
-    console.log(currentIdx);
     if (currentIdx === 0 || currentIdx === 3)
       pager.style.width = `calc(100% / 3)`;
     else if (currentIdx === 1) pager.style.width = `calc(100% / 3 * 2)`;
@@ -216,7 +215,7 @@ const addProduct = (product, index, ul) => {
 
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", `../pages/detail.html?id=${product.id}`);
+  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
@@ -274,6 +273,36 @@ fetch(joonggoInfo)
 
       // tab-content
       const tabContent = document.querySelectorAll(".tab-content");
+      tabContent.forEach((content) => {
+        if (
+          content.querySelectorAll("li").length < 6 &&
+          content.getAttribute("data-tab") === product.detail.page_path[1]
+        ) {
+          let li = `
+            <li>
+              <a href="/pages/detail.html?id=${product.id}">
+                <div class="tab-content-img" style="background:url('../${
+                  product.image_path
+                }') center/cover
+                no-repeat"></div>
+                <div class="tab-content-desc">
+                  <h4 class="desc-title">
+                    ${product.title}
+                  </h4>
+                  <strong class="desc-price">${product.price}</strong>
+                  <p class="desc-info">
+                    <span class="desc-time">${product.time}</span>
+                    <span class="desc-place">${
+                      product.point ? " | " + product.point : ""
+                    }</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+          `;
+          content.insertAdjacentHTML("beforeend", li);
+        }
+      });
     });
   });
 
@@ -320,8 +349,10 @@ tabMenu.forEach((li) => {
     document.querySelectorAll(".tab-content").forEach((content) => {
       content.classList.remove("active");
     });
-    const target = item.target.getAttribute("data-tab");
-    document.querySelector(`.${target}`).classList.add("active");
+    console.log(item.target.innerText);
+    document
+      .querySelector(`ul[data-tab="${item.target.innerText}"]`)
+      .classList.add("active");
   });
 });
 
