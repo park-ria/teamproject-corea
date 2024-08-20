@@ -1,7 +1,19 @@
 @import "./common.scss", "./style.scss";
 
+// mix-in
+@mixin verticalBar {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  background: map-get($color, bg-dark-gray);
+  transition: all 0.3s;
+}
+
 #best-auction {
-  padding: 0 0 100px;
   .best-auction-content {
     .section-title {
       @include sectionTitle;
@@ -67,6 +79,8 @@
           }
         }
       }
+      .slide-btns {
+      }
     }
   }
 }
@@ -80,24 +94,55 @@
 }
 
 #product-list {
+  padding: 100px 0;
   .sorting {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    padding-bottom: 30px;
     li {
       font-size: 1.8rem;
       position: relative;
+      color: map-get($color, bg-dark-gray);
       &::after {
-        content: "|";
-        position: absolute;
-        top: 50%;
-        right: -5px;
-        transform: translateY(-50%);
+        @include verticalBar;
       }
       &:last-child {
         &::after {
           display: none;
         }
+      }
+      &.active {
+        font-weight: 700;
+      }
+    }
+  }
+  .product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    li {
+      position: relative;
+      a {
+        width: 240px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .slide-img {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px;
+          overflow: hidden;
+          background: url("../images/auction01.png") center/cover no-repeat;
+        }
+        .slide-desc {
+          padding: 0 14px 14px;
+          @include productDesc;
+        }
+      }
+      .badge {
+        @include badgeType;
       }
     }
   }
