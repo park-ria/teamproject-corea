@@ -208,9 +208,10 @@
               position: absolute;
               top: 8px;
               right: 8px;
-              .fa-solid {
+              .fa-heart {
                 color: crimson;
                 font-size: 20px;
+                transition: all 0.5s;
               }
             }
           }
@@ -931,6 +932,7 @@
       margin-top: 0;
     }
     .wish-items-content-upper {
+      margin-bottom: 50px;
       .wish-items-delete-selection {
         opacity: 0;
       }
@@ -944,7 +946,8 @@
         justify-content: space-between;
         align-items: center;
         li {
-          width: 180px;
+          width: 175px;
+          padding: 0 0 50px;
           border-bottom: none;
           input[type="checkbox"] {
             display: none;
@@ -955,12 +958,12 @@
             flex-direction: column;
             gap: 10px;
             .wishItemImgWrapper {
-              width: 180px;
-              height: 180px;
+              width: 175px;
+              height: 175px;
               .wishHeart {
                 top: 10px;
                 right: 13px;
-                .fa-solid {
+                .fa-heart {
                   font-size: 22px;
                 }
               }
@@ -984,12 +987,10 @@
                     .wishItemTitleBox {
                       width: fit-content;
                       .wishItemSellerName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-small);
                       }
                       .wishItemName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-medium);
                       }
@@ -997,7 +998,6 @@
                     .wishItemPriceBox {
                       width: 100%;
                       min-width: 0;
-                      justify-content: center;
                       .wishItemPriceInfo {
                         .wishItemPrice {
                           b {
@@ -1022,10 +1022,16 @@
               }
               .wishItemLower {
                 display: none;
+                .page {
+                  margin: 0 20px;
+                }
               }
             }
           }
         }
+      }
+      .wishItemPagination {
+        margin: 0 0 100px;
       }
     }
   }
