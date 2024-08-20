@@ -3,13 +3,13 @@
 // mix-in
 @mixin verticalBar {
   content: "";
-  width: 1px;
+  width: 2px;
   height: 100%;
   position: absolute;
   top: 50%;
   right: -10px;
   transform: translateY(-50%);
-  background: map-get($color, bg-dark-gray);
+  background: map-get($color, bg-light-gray);
   transition: all 0.3s;
 }
 
@@ -20,9 +20,14 @@
       margin-bottom: 20px;
     }
     .best-auction-slide {
+      height: 340px;
+      position: relative;
       ul {
         display: flex;
         gap: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
         li {
           a {
             width: 410px;
@@ -47,21 +52,22 @@
                 background: map-get($color, bg-sub-color);
                 .clock {
                   position: relative;
-                  width: 28px;
-                  height: 28px;
+                  width: 30px;
+                  height: 30px;
                   background: url("../images/clock.svg") center/contain
                     no-repeat;
-                  &::after {
+                  animation: vibration 0.2s linear infinite;
+                  &::before {
                     content: "";
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -70%);
-                    transform-origin: center;
+                    transform-origin: bottom center;
                     width: 2px;
-                    height: 8px;
+                    height: 7px;
                     background: map-get($color, bg-light-color);
-                    // animation: clock 2s linear infinite;
+                    animation: clock 3s linear infinite;
                   }
                 }
                 span {
@@ -74,12 +80,21 @@
               @include productDesc;
               .desc-title {
                 height: 23px;
+                line-clamp: 1;
+                -webkit-line-clamp: 1;
               }
             }
           }
         }
       }
       .slide-btns {
+        @include slideBtns;
+        button {
+          top: 30%;
+        }
+        .slidePager {
+          @include slidePager;
+        }
       }
     }
   }
@@ -92,18 +107,26 @@
     transform: translate(-50%, -70%) rotate(360deg);
   }
 }
+@keyframes vibration {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
 
 #product-list {
-  padding: 100px 0;
+  padding: 100px 0 150px;
   .sorting {
     display: flex;
     align-items: center;
     gap: 20px;
-    padding-bottom: 30px;
     li {
       font-size: 1.8rem;
       position: relative;
       color: map-get($color, bg-dark-gray);
+      cursor: pointer;
       &::after {
         @include verticalBar;
       }
@@ -113,7 +136,7 @@
         }
       }
       &.active {
-        font-weight: 700;
+        font-weight: 900;
       }
     }
   }
@@ -122,6 +145,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    padding: 30px 0;
     li {
       position: relative;
       a {
@@ -137,12 +161,148 @@
           background: url("../images/auction01.png") center/cover no-repeat;
         }
         .slide-desc {
-          padding: 0 14px 14px;
+          padding: 0 14px 20px;
           @include productDesc;
+          .desc-title {
+            height: 23px;
+            line-clamp: 1;
+            -webkit-line-clamp: 1;
+          }
         }
       }
       .badge {
         @include badgeType;
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid map-get($color, bg-light-gray);
+      i {
+        font-size: 1.6rem;
+        color: map-get($color, bg-dark-gray);
+      }
+      &.mainSlidePause {
+        display: block;
+        &.active {
+          display: none;
+        }
+      }
+      &.mainSlidePlay {
+        display: none;
+        &.active {
+          display: block;
+        }
+      }
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      li {
+        font-size: 1.6rem;
+        position: relative;
+        color: map-get($color, bg-dark-gray);
+        cursor: pointer;
+        &::after {
+          @include verticalBar;
+          right: -12px;
+        }
+        &:last-child {
+          &::after {
+            display: none;
+            right: -12px;
+          }
+        }
+        &.active {
+          font-weight: 900;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 840px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        ul {
+          li {
+            a {
+              width: 300px;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              .slide-img {
+                height: 200px;
+                .timeEvent {
+                  padding: 5px 10px;
+                  .clock {
+                    width: 25px;
+                    height: 25px;
+                  }
+                }
+              }
+              .slide-desc {
+                @include productDesc;
+                .desc-title {
+                  height: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #product-list {
+    .product {
+      li {
+        a {
+          width: 180px;
+          .slide-img {
+            height: 180px;
+          }
+          .slide-desc {
+            .desc-title {
+              height: 18px;
+            }
+          }
+        }
+        .badge {
+          width: 40px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #product-list {
+    .product {
+      li {
+        a {
+          width: 150px;
+          .slide-img {
+            height: 150px;
+          }
+          .slide-desc {
+            padding: 0 0 20px;
+            .desc-title {
+              height: 18px;
+            }
+          }
+        }
       }
     }
   }
