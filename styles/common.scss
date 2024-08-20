@@ -150,30 +150,43 @@ body {
 
           .popular-searchedWord {
             position: relative;
-            width: 193px;
+            width: 250px;
             height: 24px;
             overflow: hidden;
+            ul {
+              width: 100%;
+              height: 24px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
 
-            li {
-              position: absolute;
-              top: -24px;
-              left: 0;
-              &.prev {
+              li {
+                position: absolute;
                 top: -24px;
-                transition: top 0.5s;
-              }
-              &.current {
-                top: 0;
-                transition: top 0.5s;
-              }
-              &.next {
-                top: 24px;
-              }
+                left: 0;
+                width: 100%;
+                height: 24px;
+                padding-left: 20px;
+                line-height: 24px;
 
-              a span {
-                @include list-a;
+                &.prev {
+                  top: -24px;
+                  transition: top 0.5s;
+                }
+                &.current {
+                  top: 0;
+                  transition: top 0.5s;
+                }
+                &.next {
+                  top: 24px;
+                }
+  
+                a span {
+                  @include list-a;
+                }
               }
             }
+
           }
 
           .list-btn {
@@ -199,15 +212,17 @@ body {
             flex-direction: column;
             text-align: left;
             transition: all 0.5s;
+            border-left: 1px solid map-get($map: $color, $key: bg-dark-gray);
             overflow: hidden;
 
             &.active {
-              height: 350px;
+              height: 452px;
               background: map-get($map: $color, $key: bg-light-color);
             }
 
             li {
-              padding-top: 20px;
+              padding-top: 40px;
+              padding-left: 20px;
 
               a span {
                 @include list-a;

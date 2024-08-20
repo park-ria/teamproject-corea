@@ -171,7 +171,7 @@ body {
 }
 #header #header-item .header-item .header-top .wrapper .popular-searchedWord {
   position: relative;
-  width: 193px;
+  width: 250px;
   height: 24px;
   overflow: hidden;
 }
@@ -185,6 +185,10 @@ body {
   position: absolute;
   top: -24px;
   left: 0;
+  width: 100%;
+  height: 24px;
+  padding-left: 20px;
+  line-height: 24px;
 }
 #header
   #header-item
@@ -247,14 +251,16 @@ body {
   flex-direction: column;
   text-align: left;
   transition: all 0.5s;
+  border-left: 1px solid #6d6d6d;
   overflow: hidden;
 }
 #header #header-item .header-item .header-top .wrapper .list.active {
-  height: 350px;
+  height: 452px;
   background: #fff;
 }
 #header #header-item .header-item .header-top .wrapper .list li {
-  padding-top: 20px;
+  padding-top: 40px;
+  padding-left: 20px;
 }
 #header #header-item .header-item .header-top .wrapper .list li a span {
   display: inline-block;
@@ -716,9 +722,6 @@ body {
 #main .inner .main .main-img .img-icons a:last-child {
   border-right: none;
 }
-#main .inner .main .main-desc {
-  width: 100%;
-}
 #main .inner .main .main-desc .desc-heading {
   margin-bottom: 30px;
 }
@@ -879,6 +882,7 @@ body {
   font-weight: 600;
 }
 #main .inner .main .main-desc .desc-conditions {
+  width: 600px;
   display: flex;
   align-items: center;
   height: 90px;
@@ -1714,12 +1718,13 @@ body {
     display: none;
   }
   #main {
-    padding-top: 90px;
+    padding-top: 40px;
     margin-bottom: 150px;
   }
   #main .inner .main {
     flex-direction: column;
     align-items: center;
+    gap: 35px;
   }
   #main .inner .main .main-img {
     position: static;
@@ -1731,8 +1736,8 @@ body {
     height: 100%;
   }
   #main .inner .main .main-img .img-slider .img-wrapper .img-slide img {
-    width: 820px;
-    height: 820px;
+    width: 800px;
+    height: 800px;
   }
   #main .inner .main .main-img .img-icons {
     padding: 17px 0;
@@ -1768,6 +1773,7 @@ body {
     width: 80%;
   }
   #main .inner .main .main-desc .desc-conditions {
+    width: 100%;
     margin-bottom: 50px;
   }
   #main .inner .main .main-desc .desc-map {
@@ -1933,9 +1939,9 @@ body {
     margin-bottom: 150px;
   }
   #main .inner .main {
-    gap: 40px;
     justify-content: center;
     align-items: center;
+    gap: 45px;
   }
   #main .inner .main .main-img {
     width: 100%;
@@ -2006,6 +2012,15 @@ body {
     .conditions-box
     span:nth-child(1) {
     font-size: 9px;
+  }
+  #main
+    .inner
+    .main
+    .main-desc
+    .desc-conditions
+    .conditions-box
+    span:nth-child(2) {
+    font-size: 10px;
   }
   #main .inner .main .main-desc .desc-btns {
     display: none;
