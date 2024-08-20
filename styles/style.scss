@@ -367,7 +367,7 @@ body {
     width: calc(50% - 650px);
     height: 420px;
     background: rgba($color: #fff, $alpha: 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
     z-index: 1;
   }
   &::after {
@@ -378,7 +378,7 @@ body {
     width: calc(50% - 650px);
     height: 420px;
     background: rgba($color: #fff, $alpha: 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
     z-index: 1;
   }
 }
