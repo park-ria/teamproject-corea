@@ -787,7 +787,6 @@ body {
   width: 100%;
   height: 400px;
   background: linear-gradient(to bottom, #7bceff, #0095ee);
-  margin-bottom: 80px;
   overflow: hidden;
 }
 #auction .auction-banner .banner-content {
@@ -854,6 +853,7 @@ body {
 }
 #auction .auction-content {
   position: relative;
+  margin-top: 80px;
 }
 #auction .auction-content .auction-heading {
   display: flex;

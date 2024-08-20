@@ -14,13 +14,16 @@
 }
 
 #best-auction {
+  background: #f9f9f9;
+  border-bottom: 1px solid map-get($color, bg-light-gray);
+  padding: 80px 0;
   .best-auction-content {
     .section-title {
       @include sectionTitle;
       margin-bottom: 20px;
     }
     .best-auction-slide {
-      height: 340px;
+      height: 360px;
       position: relative;
       ul {
         display: flex;
@@ -34,11 +37,14 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px map-get($color, bg-light-gray);
+            background: map-get($color, bg-light-color);
+            overflow: hidden;
             .slide-img {
               width: 100%;
               height: 236px;
               background: url("../images/auction01.png") center/cover no-repeat;
-              border-radius: 10px;
               position: relative;
               .timeEvent {
                 position: absolute;
@@ -47,7 +53,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
-                padding: 8px 12px;
+                padding: 6px 12px;
                 border-radius: 8px;
                 background: map-get($color, bg-sub-color);
                 .clock {
@@ -77,6 +83,7 @@
               }
             }
             .slide-desc {
+              padding: 0 14px 20px;
               @include productDesc;
               .desc-title {
                 height: 23px;
@@ -90,7 +97,7 @@
       .slide-btns {
         @include slideBtns;
         button {
-          top: 30%;
+          top: 45%;
         }
         .slidePager {
           @include slidePager;
@@ -235,6 +242,7 @@
   #best-auction {
     .best-auction-content {
       .best-auction-slide {
+        height: 310px;
         ul {
           li {
             a {
@@ -245,7 +253,7 @@
               .slide-img {
                 height: 200px;
                 .timeEvent {
-                  padding: 5px 10px;
+                  padding: 4px 10px;
                   .clock {
                     width: 25px;
                     height: 25px;
@@ -299,7 +307,9 @@
           .slide-desc {
             padding: 0 0 20px;
             .desc-title {
-              height: 18px;
+              height: 34px;
+              line-clamp: 2;
+              -webkit-line-clamp: 2;
             }
           }
         }
