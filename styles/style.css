@@ -484,6 +484,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  position: relative;
 }
 #main-slide article {
   position: relative;
@@ -504,15 +505,6 @@ body {
   height: 420px;
   display: flex;
   align-items: flex-end;
-}
-#main-slide article .mainSlideWrapper span::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-#main-slide article .mainSlideWrapper span.active::before {
-  display: none;
 }
 #main-slide article .mainSlideWrapper span .main-slide-desc {
   margin: 0 0 30px 30px;
@@ -544,11 +536,11 @@ body {
 }
 #main-slide article .main-slide-arrows button.mainSlidePrev {
   left: 0;
-  transform: translate(0, -50%);
+  transform: translateY(-50%);
 }
 #main-slide article .main-slide-arrows button.mainSlideNext {
   right: 0;
-  transform: translate(0, -50%);
+  transform: translateY(-50%);
 }
 #main-slide article .main-slide-arrows button i {
   font-size: 2.8rem;
@@ -606,6 +598,30 @@ body {
 #main-slide .main-slide-btns button.mainSlidePlay.active {
   display: block;
 }
+#main-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(50% - 650px);
+  height: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 1;
+}
+#main-slide::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(50% - 650px);
+  height: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 1;
+}
 
 #best-ranking {
   padding: 150px 0;
@@ -656,7 +672,7 @@ body {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-img {
   width: 100%;
-  height: 241px;
+  height: 240px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -833,10 +849,21 @@ body {
 #auction .auction-banner .banner-content .banner-desc h2 {
   font-size: 5rem;
 }
-#auction .auction-banner .banner-content .banner-desc .timeEvent {
+#auction .auction-banner .banner-content .banner-desc .timeEvent span {
+  position: relative;
   margin: 10px 0;
   font-size: 5rem;
   color: #fce44a;
+  transition: all 0.3s;
+}
+#auction .auction-banner .banner-content .banner-desc .timeEvent span::after {
+  content: " : ";
+}
+#auction .auction-banner .banner-content .banner-desc .timeEvent span:last-child::after {
+  content: "";
+}
+#auction .auction-banner .banner-content .banner-desc .timeEvent span.active {
+  top: 0;
 }
 #auction .auction-banner .banner-content .banner-desc p {
   font-size: 2.4rem;
@@ -863,7 +890,7 @@ body {
   left: 0%;
   width: 40%;
   height: 100%;
-  background: linear-gradient(to bottom, #005ac8, #044ba2);
+  background: linear-gradient(to bottom, #005ac8, #064a9e);
   transform: translateY(-50%) skew(-25deg);
 }
 #auction .auction-content {
@@ -912,7 +939,7 @@ body {
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-img {
   width: 100%;
-  height: 241px;
+  height: 240px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1257,7 +1284,7 @@ body {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-img {
   width: 100%;
-  height: 241px;
+  height: 240px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1585,13 +1612,10 @@ body {
     height: 40px;
   }
   #main-slide article .main-slide-arrows button.mainSlidePrev {
-    left: 2%;
+    display: none;
   }
   #main-slide article .main-slide-arrows button.mainSlideNext {
-    left: 98%;
-  }
-  #main-slide article .main-slide-arrows button i {
-    font-size: 2rem;
+    display: none;
   }
   #best-ranking .ranking-content .slide-btns button {
     position: absolute;
@@ -1647,7 +1671,7 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 3.6rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent {
+  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
     font-size: 4rem;
     margin: 10px 0;
   }
@@ -1837,7 +1861,7 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 4rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent {
+  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
     font-size: 4.4rem;
     margin: 10px 0;
   }

@@ -309,7 +309,9 @@ fetch(joonggoInfo)
 // auction
 const timeEvent = () => {
   const time = document.querySelector(".timeEvent");
-  const spanTag = document.createElement("span");
+  const spanHours = document.createElement("span");
+  const spanMinutes = document.createElement("span");
+  const spanSeconds = document.createElement("span");
 
   const today = new Date();
 
@@ -327,12 +329,11 @@ const timeEvent = () => {
   resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
   resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
 
-  const hours = (spanTag.innerText = resultHours);
-  const minutes = (spanTag.innerText = `: ${resultMinutes} :`);
-  const seconds = (spanTag.innerText = resultSeconds);
+  spanHours.innerText = resultHours;
+  spanMinutes.innerText = resultMinutes;
+  spanSeconds.innerText = resultSeconds;
 
-  // time.innerText = `${resultHours} : ${resultMinutes} : ${resultSeconds}`;
-  time.append(hours, minutes, seconds);
+  time.append(spanHours, spanMinutes, spanSeconds);
 };
 timeEvent();
 // setInterval(timeEvent, 1000);
@@ -340,18 +341,19 @@ timeEvent();
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");
 tabMenu.forEach((li) => {
-  li.addEventListener("click", (item) => {
+  li.addEventListener("click", (e) => {
+    const tabContents = document.querySelectorAll(".tab-content");
     tabMenu.forEach((sibiling) => {
-      if (sibiling === item.target) item.target.classList.add("active");
+      if (sibiling === e.target) e.target.classList.add("active");
       else sibiling.classList.remove("active");
     });
 
-    document.querySelectorAll(".tab-content").forEach((content) => {
+    tabContents.forEach((content) => {
       content.classList.remove("active");
     });
-    console.log(item.target.innerText);
+
     document
-      .querySelector(`ul[data-tab="${item.target.innerText}"]`)
+      .querySelector(`ul[data-tab="${e.target.dataset.tab}"]`)
       .classList.add("active");
   });
 });
