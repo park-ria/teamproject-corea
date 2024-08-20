@@ -153,27 +153,38 @@ body {
 }
 #header #header-item .header-item .header-top .wrapper .popular-searchedWord {
   position: relative;
-  width: 193px;
+  width: 250px;
   height: 24px;
   overflow: hidden;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li {
   position: absolute;
   top: -24px;
   left: 0;
+  width: 100%;
+  height: 24px;
+  padding-left: 20px;
+  line-height: 24px;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.prev {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.prev {
   top: -24px;
   transition: top 0.5s;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.current {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.current {
   top: 0;
   transition: top 0.5s;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.next {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.next {
   top: 24px;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li a span {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a span {
   display: inline-block;
   margin-right: 10px;
 }
@@ -197,14 +208,16 @@ body {
   flex-direction: column;
   text-align: left;
   transition: all 0.5s;
+  border-left: 1px solid #6d6d6d;
   overflow: hidden;
 }
 #header #header-item .header-item .header-top .wrapper .list.active {
-  height: 350px;
+  height: 452px;
   background: #fff;
 }
 #header #header-item .header-item .header-top .wrapper .list li {
-  padding-top: 20px;
+  padding-top: 40px;
+  padding-left: 20px;
 }
 #header #header-item .header-item .header-top .wrapper .list li a span {
   display: inline-block;

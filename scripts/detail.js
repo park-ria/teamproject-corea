@@ -17,14 +17,14 @@ fetch(joonggoInfo)
 
         const li = document.createElement("li");
         //const img = document.createElement("img");
-        const img = document.createElement("span");
+        const img = document.createElement("img");
         const pager = document.createElement("div");
         const src = document.createAttribute("src");
 
         src.value = `../${slide}`;
 
         //img.setAttributeNode(src);
-        img.style = `display:inline-block;width:600px;height:600px;background:url(../${slide}) center/cover no-repeat`;
+        img.style = `background:url(../${slide}) center/cover no-repeat`;
         li.appendChild(img);
         li.className = "img-slide";
         imgWrapper.appendChild(li);
@@ -191,7 +191,7 @@ fetch(joonggoInfo)
 
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
-      const barNum = product.detail.product_store_confidence_index;
+      const barNum = store.info.product_store_confidence_index;
       barRate = Math.floor(barNum / 10);
 
       fillingBar.animate(
