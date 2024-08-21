@@ -7,7 +7,7 @@ fetch(joonggoInfo)
     const title = params.get("title");
     const id = params.get("id");
 
-    const product = joongoData.data.find((product) => product.id === id);
+    const product = joongoData.product.find((product) => product.id === id);
 
     if (product) {
       // Making Img-slider
@@ -17,14 +17,14 @@ fetch(joonggoInfo)
 
         const li = document.createElement("li");
         //const img = document.createElement("img");
-        const img = document.createElement("span");
+        const img = document.createElement("img");
         const pager = document.createElement("div");
         const src = document.createAttribute("src");
 
         src.value = `../${slide}`;
 
         //img.setAttributeNode(src);
-        img.style = `display:inline-block;width:600px;height:600px;background:url(../${slide}) center/cover no-repeat`;
+        img.style = `background:url(../${slide}) center/cover no-repeat`;
         li.appendChild(img);
         li.className = "img-slide";
         imgWrapper.appendChild(li);
@@ -112,18 +112,17 @@ fetch(joonggoInfo)
         imgWrapper.style.cursor = "grab";
         //console.log("mouseup", e.pageX);
         endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
-        console.log(currentIndex);
 
         if (startPoint < endPoint) {
           // 마우스가 오른쪽으로 드래그 된 경우
+          let prevIndex = (currentIndex - 1) % slideCount;
+          if (currentIndex === 0) prevIndex = slideCount - 1;
+          moveSlide(prevIndex);
+        } else if (startPoint > endPoint) {
+          // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
           moveSlide(nextIndex);
-        } else if (startPoint > endPoint) {
-          // 마우스가 왼쪽으로 드래그 된 경우
-        let prevIndex = (currentIndex - 1) % slideCount;
-        if (currentIndex === 0) prevIndex = slideCount - 1;
-          moveSlide(prevIndex);
         }
       });
 
@@ -139,13 +138,13 @@ fetch(joonggoInfo)
         endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
         if (startPoint < endPoint) {
           // 오른쪽으로 스와이프 된 경우
+          let prevIndex = (currentIndex - 1) % slideCount;
+          if (currentIndex === 0) prevIndex = slideCount - 1;
+          moveSlide(prevIndex);
+        } else if (startPoint > endPoint) {
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
           moveSlide(nextIndex);
-        } else if (startPoint > endPoint) {
-          let prevIndex = (currentIndex - 1) % slideCount;
-          if (currentIndex === 0) prevIndex = slideCount - 1;
-            moveSlide(prevIndex);
         }
       });
 
@@ -179,16 +178,21 @@ fetch(joonggoInfo)
       const userImgTag = document.createElement("img");
       const userImgSrc = document.createAttribute("src");
 
-      userImgSrc.value = `../${product.detail.product_img_path}`;
+      const store = joongoData.store.find(
+        (item) => item.store_name === product.detail.store_name
+      );
+      userImgSrc.value = `../${store.info.product_img_path}`;
       userImgTag.setAttributeNode(userImgSrc);
       userImg.appendChild(userImgTag);
 
       // Making User-id
       const userId = document.querySelector(".user-id");
-      userId.innerText = product.detail.product_store;
+      userId.innerText = product.detail.store_name;
 
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
+      const barNum = store.info.product_store_confidence_index;
+      barRate = Math.floor(barNum / 10);
 
       fillingBar.animate(
         [
@@ -196,7 +200,7 @@ fetch(joonggoInfo)
             width: 0,
           },
           {
-            width: "26%",
+            width: `${barRate}%`,
           },
         ],
         {
@@ -213,8 +217,8 @@ fetch(joonggoInfo)
         number++;
         percentage.innerText = number;
 
-        if (number < 27) {
-          setTimeout(startNumbering, 20);
+        if (number < barRate) {
+          setTimeout(startNumbering, 5);
         }
       };
 
@@ -251,7 +255,8 @@ fetch(joonggoInfo)
 
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
-      mapArea.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${product.point}`;
+      mapArea.innerText = `${product.point === "" ? "-" : product.point}`;
+
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -270,29 +275,29 @@ fetch(joonggoInfo)
       const storeImgTag = document.createElement("img");
       const storeImgSrc = document.createAttribute("src");
 
-      storeImgSrc.value = `../${product.detail.product_img_path}`;
+      storeImgSrc.value = `../${store.info.product_img_path}`;
       storeImgTag.setAttributeNode(storeImgSrc);
       storeImg.appendChild(storeImgTag);
 
       // Making Store-name
       const storeName = document.querySelector(".name");
-      storeName.innerText = product.detail.product_store;
+      storeName.innerText = product.detail.store_name;
 
       // Making Item-info
-      const productItemInfos = product.detail.product_img_etc;
+      const productItemInfos = store.info.product_img_etc;
       const itemsWrapper = document.querySelector(".items-wrapper");
 
       for (let i = 0; i < productItemInfos.length; i++) {
         itemsWrapper.innerHTML += `
-            <li class="item-info">
-              <div class="item-img">
-                <img src="../${productItemInfos[i].image_url}">
-              </div>
-              <div class="item-detail">
-                <span class="item-name">${productItemInfos[i].name}</span>
-                <span class="item-price">${productItemInfos[i].price}</span>
-              </div>
-            </li>
+          <li class="item-info">
+            <div class="item-img">
+              <img src="../${productItemInfos[i].image_url}">
+            </div>
+            <div class="item-detail">
+              <span class="item-name">${productItemInfos[i].name}</span>
+              <span class="item-price">${productItemInfos[i].price}</span>
+            </div>
+          </li>
           `;
       }
 
@@ -381,17 +386,21 @@ fetch(joonggoInfo)
 
       // Making Reviews
       const reviewsBox = document.querySelector(".reviews-box");
+      const reviews = store.review.review_title;
 
-      reviewsBox.innerHTML = `
-        <li>친절/매너가 좋아요.<span><i class="fa-regular fa-user"></i>51</span></li>
-        <li>응답이 빨라요.<span><i class="fa-regular fa-user"></i>26</span></li>
-        <li>상품 상태가 좋아요.<span><i class="fa-regular fa-user"></i>38</span></li>
-        <li>택배 거래가 수월했어요.(포장, 협조적)<span><i class="fa-regular fa-user"></i>17</span></li>
-      `;
-
-      // Making Recommandtion's Items
-      const RecommendWrappers = document.querySelectorAll(".recommend-wrapper");
-      console.log(RecommendWrappers);
+      if(reviews.length === 0) {
+        reviewsBox.innerHTML += 
+        `
+        <li class="no-review">아직 구매자로부터 받은 후기가 없습니다.</li>
+        `;
+      } else {
+        for(let i = 0; i < reviews.length; i++) {
+          reviewsBox.innerHTML += 
+          `
+          <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
+          `;
+        }
+      }
 
     }
   });

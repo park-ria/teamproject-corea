@@ -150,30 +150,43 @@ body {
 
           .popular-searchedWord {
             position: relative;
-            width: 193px;
+            width: 250px;
             height: 24px;
             overflow: hidden;
+            ul {
+              width: 100%;
+              height: 24px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
 
-            li {
-              position: absolute;
-              top: -24px;
-              left: 0;
-              &.prev {
+              li {
+                position: absolute;
                 top: -24px;
-                transition: top 0.5s;
-              }
-              &.current {
-                top: 0;
-                transition: top 0.5s;
-              }
-              &.next {
-                top: 24px;
-              }
+                left: 0;
+                width: 100%;
+                height: 24px;
+                padding-left: 20px;
+                line-height: 24px;
 
-              a span {
-                @include list-a;
+                &.prev {
+                  top: -24px;
+                  transition: top 0.5s;
+                }
+                &.current {
+                  top: 0;
+                  transition: top 0.5s;
+                }
+                &.next {
+                  top: 24px;
+                }
+  
+                a span {
+                  @include list-a;
+                }
               }
             }
+
           }
 
           .list-btn {
@@ -195,6 +208,7 @@ body {
             left: 0;
             width: 100%;
             height: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             text-align: left;
@@ -202,12 +216,12 @@ body {
             overflow: hidden;
 
             &.active {
-              height: 350px;
+              height: 472px;
               background: map-get($map: $color, $key: bg-light-color);
             }
 
             li {
-              padding-top: 20px;
+              padding: 15px 0;
 
               a span {
                 @include list-a;
@@ -302,6 +316,19 @@ body {
   margin-top: 185px;
 }
 
+// pay
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: map-get($color, bg-main-color);
+  border-radius: 3px;
+  font-size: map-get($fontSize, font-small);
+  color: map-get($color, bg-light-color);
+  letter-spacing: normal;
+  text-align: center;
+}
+
 // Footer
 footer {
   background: #3a3a3a;
@@ -357,31 +384,17 @@ footer {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
 
-@media screen and (max-width: 850px) {
-  .inner {
-    padding: 0 30px;
+@media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
   }
 
-  // header
-  #header {
-    display: none;
-  }
-
-  // mobile-menu
   #mobile-menu {
     display: block;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    .mobile-menu{
-      width: 100%;
-    }
   }
 
   // footer
@@ -418,10 +431,15 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
+  #mobile-menu {
+    .mobile-menu {
+      a {
+        img {
+          width: 115px;
+          height: 22px;
+        } 
+      }
+    }
   }
-  .inner {
-    padding: 0 20px;
-  }
+  
 }

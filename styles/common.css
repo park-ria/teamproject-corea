@@ -153,27 +153,38 @@ body {
 }
 #header #header-item .header-item .header-top .wrapper .popular-searchedWord {
   position: relative;
-  width: 193px;
+  width: 250px;
   height: 24px;
   overflow: hidden;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li {
   position: absolute;
   top: -24px;
   left: 0;
+  width: 100%;
+  height: 24px;
+  padding-left: 20px;
+  line-height: 24px;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.prev {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.prev {
   top: -24px;
   transition: top 0.5s;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.current {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.current {
   top: 0;
   transition: top 0.5s;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.next {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.next {
   top: 24px;
 }
-#header #header-item .header-item .header-top .wrapper .popular-searchedWord li a span {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a span {
   display: inline-block;
   margin-right: 10px;
 }
@@ -193,6 +204,7 @@ body {
   left: 0;
   width: 100%;
   height: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -200,11 +212,11 @@ body {
   overflow: hidden;
 }
 #header #header-item .header-item .header-top .wrapper .list.active {
-  height: 350px;
+  height: 472px;
   background: #fff;
 }
 #header #header-item .header-item .header-top .wrapper .list li {
-  padding-top: 20px;
+  padding: 15px 0;
 }
 #header #header-item .header-item .header-top .wrapper .list li a span {
   display: inline-block;
@@ -281,6 +293,18 @@ body {
   margin-top: 185px;
 }
 
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: #0dcc5a;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: normal;
+  text-align: center;
+}
+
 footer {
   background: #3a3a3a;
   color: #fff;
@@ -334,26 +358,15 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 2%;
   }
 }
-@media screen and (max-width: 850px) {
-  .inner {
-    padding: 0 30px;
-  }
-  #header {
-    display: none;
+@media screen and (max-width: 840px) {
+  html {
+    font-size: 8px;
   }
   #mobile-menu {
     display: block;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
-  #mobile-menu .mobile-menu {
-    width: 100%;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -383,10 +396,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
 }
 @media screen and (max-width: 450px) {
-  html {
-    font-size: 8px;
-  }
-  .inner {
-    padding: 0 20px;
+  #mobile-menu .mobile-menu a img {
+    width: 115px;
+    height: 22px;
   }
 }

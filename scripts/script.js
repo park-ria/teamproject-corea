@@ -1,7 +1,7 @@
 // safeserviceModal
-const safeService = document.querySelector("#safe-service");
+const modalBtn = document.querySelector("#modalBtn");
 
-safeService.addEventListener("click", () => {
+modalBtn.addEventListener("click", () => {
   const safeserviceModal = document.querySelector("#safeserviceModal");
   const closeBtn = safeserviceModal.querySelector(".closeBtn");
 
@@ -19,15 +19,12 @@ const rankingSlides = document.querySelectorAll(".slideWrapper > li");
 fetch(JoonggoInfo)
   .then((response) => response.json())
   .then((JoongoData) => {
-    JoongoData.data.forEach((product) => {
-
-      
+    JoongoData.product.forEach((product) => {
       rankingSlides.forEach((rankingSlide) => {
         rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(179612037)}`;
+          const url = `pages/detail.html?id=${encodeURIComponent(181267888)}`;
           window.location.href = url;
         });
-      })
+      });
     });
   });
-
