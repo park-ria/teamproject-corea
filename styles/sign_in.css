@@ -276,13 +276,13 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
+  padding: 50px 0 70px;
 }
 footer .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
-  height: 404px;
 }
 footer .inner .footer-upper {
   display: flex;
@@ -298,11 +298,53 @@ footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
   display: flex;
   gap: 20px;
 }
+footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
+  font-weight: 700;
+}
 footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-style: normal;
+}
+footer .inner .footer-upper .footer-upper-ctg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+footer .inner .footer-upper .footer-upper-ctg button {
+  position: relative;
+  font-size: 1.6rem;
+  color: #fff;
+}
+footer .inner .footer-upper .footer-upper-ctg button i {
+  color: #fff;
+  transition: all 0.3s;
+}
+footer .inner .footer-upper .footer-upper-ctg button.active i {
+  transform: translateY(-15%) rotate(180deg);
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list {
+  width: 580px;
+  max-height: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #6d6d6d;
+  background: #4a4a4a;
+  opacity: 0;
+  transition: all 0.3s;
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list li {
+  width: calc((100% - 50px) / 6);
+  text-align: center;
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+  max-height: 119px;
+  opacity: 1;
 }
 footer .inner .footer-lower {
   display: flex;
@@ -326,12 +368,36 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 2%;
+    padding: 0 28px;
+  }
+  footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 10px;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list {
+    width: 340px;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 20px) / 3);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 215px;
+  }
+  .faq .accordion {
+    width: 100%;
   }
 }
 @media screen and (max-width: 840px) {
   html {
     font-size: 8px;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
+  footer .inner {
+    gap: 10px;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -351,6 +417,18 @@ footer .inner .footer-lower .footer-lower-logo i {
     flex-wrap: wrap;
     justify-content: center;
   }
+  footer .inner .footer-upper .footer-upper-ctg {
+    align-items: center;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list {
+    width: 100%;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 40px) / 5);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 200px;
+  }
   footer .inner .footer-lower {
     display: flex;
     flex-direction: column-reverse;
@@ -360,64 +438,140 @@ footer .inner .footer-lower .footer-lower-logo i {
     gap: 20px;
   }
 }
+@media screen and (max-width: 450px) {
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 20px) / 3);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 179px;
+  }
+}
+/* variable */
 .container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
 .container .sign-in {
-  width: 500px;
-  height: 600px;
+  width: 80%;
+  padding: 50px;
+}
+.container .sign-in form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container .sign-in .sign-in-ttl {
-  padding: 30px;
-}
-.container .sign-in .sign-in-info {
-  width: 100%;
-  padding: 10px;
-}
-.container .sign-in .sign-in-info ul {
+.container .sign-in form .sign-in-ttl {
+  width: 90%;
+  height: 10vh;
+  font-size: 30px;
+  font-weight: 600;
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-.container .sign-in .sign-in-info ul li {
-  display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid #000;
 }
-.container .sign-in .sign-in-info ul li input {
-  width: 60%;
-  height: 30px;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  border: none;
+.container .sign-in form .inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 50px;
 }
-.container .sign-in .sign-in-info ul li button {
-  background: transparent;
-  padding: 5px;
+.container .sign-in form .inputs ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.container .sign-in form .inputs ul li {
+  width: 90%;
+  height: 50px;
+  border-bottom: 2.5px solid #eee;
+  font-size: 1.7rem;
+  padding-left: 20px;
+}
+.container .sign-in form .inputs ul li .label {
+  display: inline-block;
+  width: 150px;
+}
+.container .sign-in form .inputs ul li input {
+  width: 500px;
+  height: 30px;
+  font-size: 1.5rem;
+}
+.container .sign-in form .inputs ul li .phoneWrapper {
+  display: flex;
+  gap: 20px;
+}
+.container .sign-in form .inputs ul li .phoneWrapper input {
+  width: 100px;
+  height: 35px;
   border: 1px solid #eee;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
-.container .sign-in .sign-in-info .sign-in-checkbox {
+.container .sign-in form .inputs ul .token-wrapper {
+  width: 90%;
+  height: 50px;
+  border-bottom: 2.5px solid #eee;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+.container .sign-in form .inputs ul .token-wrapper #token-button {
+  width: 100px;
+  height: 40px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+}
+.container .sign-in form .inputs ul .token-wrapper #token-timer-confirmBtn {
+  width: 100px;
+  height: 40px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+}
+.container .sign-in form .inputs ul .location-wrapper #location {
+  width: 300px;
+  height: 40px;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding: 0 20px;
+}
+.container .sign-in form .inputs ul .gender-wrapper {
+  display: flex;
+  gap: 50px;
+  font-size: 1.7rem;
+}
+.container .sign-in form .inputs ul .gender-wrapper .gender label {
   display: flex;
   gap: 10px;
+}
+.container .sign-in form .sign-in-footer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
   padding: 20px;
+  border-top: 1px solid #eee;
+}
+.container .sign-in form .sign-in-footer #signup-button {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid darkgray;
+  border-radius: 10px;
 }
 
-@media screen and (max-width: 450px) {
-  .container {
-    font-size: 0.8rem;
-  }
-  .container .sign-in-info ul li {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .container .sign-in-info ul li button {
+@media screen and (max-width: 850px) {
+  .sign-in {
     width: 100%;
-    height: 30px;
   }
 }
