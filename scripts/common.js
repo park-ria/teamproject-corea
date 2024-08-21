@@ -22,7 +22,7 @@ listBtn.addEventListener("click", () => {
 
 // list값 추가
 const list = document.querySelector(".list");
-const listArray = [
+const listArray1 = [
   "닌텐도",
   "아이폰",
   "화장품",
@@ -32,29 +32,52 @@ const listArray = [
   "슬리퍼",
   "운동화",
 ];
+const listArray2 = [
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+];
 const popularList = document.querySelector(".popular-searchedWord ul");
 
-listArray.forEach((item, index) => {
+listArray1.forEach((item, index) => {
   const li = document.createElement("li");
   const aTag = document.createElement("a");
   const span = document.createElement("span");
+  const upDown = document.createElement("span");
 
   if (index === 0) {
     li.classList.add("current");
   } else if (index === 1) {
     li.classList.add("next");
-  } else if (index === listArray.length - 1) {
+  } else if (index === listArray1.length - 1) {
     li.classList.add("prev");
   }
 
-  span.innerText = `${index + 1}.`;
+  span.innerText = `${index + 1}`;
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px"
   aTag.innerText = item;
   aTag.prepend(span);
+
+  upDown.className = "up-down";
+  upDown.innerHTML = `<i class="fa-solid fa-chevron-up"></i>`;
+  upDown.style = "color: #0dcc5a; font-size: 14px"
   li.appendChild(aTag);
+  
   const li2 = li.cloneNode(true);
-  list.appendChild(li2);
   popularList.appendChild(li);
+  li2.appendChild(upDown);
+  list.appendChild(li2);
 });
+
+listArray2.forEach((ele, i) => {
+  document.querySelectorAll(".up-down")[i].innerHTML = `${ele}`;
+});
+
 
 // popular-searchedWord event
 const rollingCB = () => {

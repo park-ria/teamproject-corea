@@ -248,20 +248,19 @@ body {
   left: 0;
   width: 100%;
   height: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: left;
   transition: all 0.5s;
-  border-left: 1px solid #6d6d6d;
   overflow: hidden;
 }
 #header #header-item .header-item .header-top .wrapper .list.active {
-  height: 452px;
+  height: 472px;
   background: #fff;
 }
 #header #header-item .header-item .header-top .wrapper .list li {
-  padding-top: 40px;
-  padding-left: 20px;
+  padding: 20px 0;
 }
 #header #header-item .header-item .header-top .wrapper .list li a span {
   display: inline-block;
