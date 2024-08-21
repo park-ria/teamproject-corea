@@ -102,6 +102,279 @@ body {
   height: 100%;
 }
 
+// Header
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: map-get($color, bg-light-color);
+  z-index: 100;
+  
+  #banner.ban {
+    height: 33px;
+    background: map-get($color, bg-dark-color);
+    opacity: 1;
+    transition: all 0.3s;
+
+    &.active {
+      background: map-get($map: $color, $key: bg-light-color);
+      opacity: 0;
+      height: 0;
+    }
+
+    .banner {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: map-get($map: $color, $key: font-light-color);
+      font-size: map-get($map: $fontSize, $key: font-extra-small);
+
+      .banner-left {
+        display: flex;
+        gap: 15px;
+
+        a {
+          display: flex;
+          gap: 5px;
+          span {
+            color: map-get($color, bg-light-color);
+          }
+        }
+      }
+
+      .banner-right {
+        display: flex;
+        gap: 20px;
+        a {
+          color: map-get($color, bg-light-color);
+        }
+      }
+    }
+  }
+
+  #header-item {
+    .header-item {
+      padding: 25px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .search-box {
+          form {
+            position: relative;
+            border: 1px solid map-get($color, bg-dark-gray);
+            border-radius: 50px;
+            input[type="text"] {
+              width: 550px;
+              height: 40px;
+              border-radius: 50px;
+              padding-left: 20px;
+              padding-right: 10px;
+
+              &::placeholder {
+                font-size: map-get($map: $fontSize, $key: font-extra-small);
+                color: map-get($map: $color, $key: font-dark-gray);
+              }
+            }
+
+            button {
+              position: absolute;
+              top: 50%;
+              right: 6px;
+              transform: translateY(-50%);
+              width: 30px;
+              height: 30px;
+              border-radius: 50px;
+              border: none;
+              background-color: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .wrapper {
+          position: relative;
+
+          .popular-searchedWord {
+            position: relative;
+            width: 250px;
+            height: 24px;
+            overflow: hidden;
+            ul {
+              width: 100%;
+              height: 24px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              li {
+                position: absolute;
+                top: -24px;
+                left: 0;
+                width: 100%;
+                height: 24px;
+                padding-left: 20px;
+                line-height: 24px;
+
+                &.prev {
+                  top: -24px;
+                  transition: top 0.5s;
+                }
+                &.current {
+                  top: 0;
+                  transition: top 0.5s;
+                }
+                &.next {
+                  top: 24px;
+                }
+  
+                a {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  span {
+                    @include list-a;
+                  } 
+                }
+              }
+            }
+
+          }
+
+          .list-btn {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) rotate(0);
+            color: map-get($map: $color, $key: font-dark-gray);
+            transition: all 0.3s;
+
+            &.active {
+              transform: translateY(-50%) rotate(180deg);
+            }
+          }
+
+          .list {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 0;
+            padding: 20px 20px 0 20px;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: all 0.5s;
+            overflow: hidden;
+
+            &.active {
+              height: 476px;
+              background: map-get($map: $color, $key: bg-light-color);
+              border-left: 1px solid #eee;
+              border-right: 1px solid #eee;
+              border-bottom: 1px solid #eee;
+            }
+
+            li {
+              padding: 20px 0;
+              border-bottom: 1px solid #eee;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              cursor: pointer;
+              transition: transform 0.3s;
+
+              &:hover {
+                transform: scale(1.02);
+              }
+
+              a {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                span {
+                  @include list-a;
+                } 
+              }
+              & > span {
+                .fa-sort-down {
+                  color: map-get($map: $color, $key: bg-light-gray);
+                }
+                .fa-caret-up {
+                  color: map-get($map: $color, $key: bg-main-color);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .header-bottom {
+        display: flex;
+        justify-content: space-between;
+
+        .header-bottom-left {
+          display: flex;
+          gap: 40px;
+
+          .barmenu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 10px;
+            background: map-get($map: $color, $key: bg-main-color);
+            color: map-get($map: $color, $key: bg-light-color);
+            border-radius: 5px;
+            cursor: pointer;
+
+            i {
+              font-size: 24px;
+            }
+          }
+
+          .gnb {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            a {
+              font-size: 1.6rem;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .header-bottom-right {
+          display: flex;
+          align-items: center;
+          .lnb {
+            display: flex;
+            gap: 12px;
+
+            li a {
+              display: flex;
+              align-items: center;
+
+              img {
+                margin-right: 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 #header-category {
   .inner {
     position: relative;
