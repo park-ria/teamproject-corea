@@ -65,6 +65,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     left: 0;
     display: flex;
     gap: 20px;
+    transition: all 0.5s;
     li {
       position: relative;
       a {
@@ -844,29 +845,6 @@ body {
           }
         }
       }
-    }
-  }
-
-  // best-ranking
-  #best-ranking {
-    .ranking-content {
-      // .slide-btns {
-      //   @include slideBtns;
-      //   button {
-      //     &.slidePrev {
-      //       transform: translateX(0);
-      //       &:hover {
-      //         transform: translate(0, 5%);
-      //       }
-      //     }
-      //     &.slideNext {
-      //       transform: translateX(0);
-      //       &:hover {
-      //         transform: translate(0, 5%);
-      //       }
-      //     }
-      //   }
-      // }
     }
   }
 

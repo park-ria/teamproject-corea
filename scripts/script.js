@@ -206,8 +206,8 @@ const mainSlide = () => {
 };
 
 // add product slide item
-const addProduct = (product, index, ul) => {
-  const ulItems = document.querySelector(ul);
+const addProduct = (product, ul) => {
+  const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
   const slideImg = document.createElement("div");
@@ -237,23 +237,74 @@ const addProduct = (product, index, ul) => {
   slideDesc.innerHTML = desc;
   aTag.append(slideImg, slideDesc);
   liItem.appendChild(aTag);
-  ulItems.appendChild(liItem);
+  ulItem.appendChild(liItem);
 
   // pager
   const slidePager =
-    ulItems.parentElement.nextElementSibling.querySelector(".slidePager");
+    ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
   const spanTag = document.createElement("span");
   slidePager.appendChild(spanTag);
 };
 
 // productSlide
-const productSlide = () => {};
+const productSlide = (section) => {
+  const slideSection = document.querySelector(section);
+  const slideUl = slideSection.querySelector("ul");
+  const slide = slideUl.querySelectorAll("li");
+  const prevBtn = slideSection.querySelector(".slidePrev");
+  const nextBtn = slideSection.querySelector(".slideNext");
+  const slidePager = slideSection.querySelector(".slidePager");
+
+  const slideCount = slide.length;
+  const slideWidth = 240;
+  const slideMargin = 20;
+
+  let currentIdx = 0;
+
+  const moveSlide = (num) => {
+    slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+    currentIdx = num;
+    console.log(currentIdx);
+    if (currentIdx > slideCount - 5) {
+      setTimeout(() => {
+        slideUl.classList.remove("animated");
+        slideUl.style.left = `0px`;
+        currentIdx = 0;
+      });
+      setTimeout(() => {
+        slideUl.classList.add("animated");
+      }, 600);
+    }
+
+    if (currentIdx === -1) {
+      slideUl.style.left = `-${
+        (slideWidth + slideMargin) * (slideCount - 5)
+      }px`;
+      setTimeout(() => {
+        slideUl.classList.remove("animated");
+        slideUl.style.right = `0px`;
+        currentIdx = slideCount - 4;
+      });
+      setTimeout(() => {
+        slideUl.classList.add("animated");
+      }, 600);
+    }
+  };
+
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+};
 
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
-    // mainSlide add
+    // mainSlide
     joongoData.mainSlide.forEach((slide, index) => {
+      // mainSlide add
       addMainSlide(slide, index);
     });
 
@@ -262,13 +313,13 @@ fetch(joonggoInfo)
 
     // data
     joongoData.product.forEach((product, index) => {
-      // add product slide
+      // productSlide add
       if (index < 8) {
-        addProduct(product, index, ".bestRankingUl");
+        addProduct(product, ".bestRankingUl");
       } else if (index < 14) {
-        addProduct(product, index, ".auctionUl");
+        addProduct(product, ".auctionUl");
       } else if (index < 22) {
-        addProduct(product, index, ".recommendedUl");
+        addProduct(product, ".recommendedUl");
       }
 
       // tab-content
@@ -304,39 +355,44 @@ fetch(joonggoInfo)
         }
       });
     });
+
+    // productSlide run
+    productSlide("#best-ranking");
+    productSlide("#auction");
+    productSlide("#recommended");
   });
 
 // auction
-const timeEvent = () => {
-  const time = document.querySelector(".timeEvent");
-  const spanHours = document.createElement("span");
-  const spanMinutes = document.createElement("span");
-  const spanSeconds = document.createElement("span");
+// const timeEvent = () => {
+//   const time = document.querySelector(".timeEvent");
+//   const spanHours = document.createElement("span");
+//   const spanMinutes = document.createElement("span");
+//   const spanSeconds = document.createElement("span");
 
-  const today = new Date();
+//   const today = new Date();
 
-  const dDay = new Date(2024, 7, 22, 18, 0);
-  // dDay.setDate(today.getDate() + 1);
+//   const dDay = new Date(2024, 7, 22, 18, 0);
+//   // dDay.setDate(today.getDate() + 1);
 
-  const resultDay = dDay.getTime() - today.getTime();
+//   const resultDay = dDay.getTime() - today.getTime();
 
-  // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
-  let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
-  let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
-  let resultSeconds = Math.floor((resultDay / 1000) % 60);
+//   // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
+//   let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
+//   let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
+//   let resultSeconds = Math.floor((resultDay / 1000) % 60);
 
-  resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
-  resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
-  resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
+//   resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
+//   resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
+//   resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
 
-  spanHours.innerText = resultHours;
-  spanMinutes.innerText = resultMinutes;
-  spanSeconds.innerText = resultSeconds;
+//   spanHours.innerText = resultHours;
+//   spanMinutes.innerText = resultMinutes;
+//   spanSeconds.innerText = resultSeconds;
 
-  // time.append(spanHours, spanMinutes, spanSeconds);
-};
-//timeEvent();
-setInterval(timeEvent, 1000);
+//   // time.append(spanHours, spanMinutes, spanSeconds);
+// };
+// //timeEvent();
+// setInterval(timeEvent, 1000);
 
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");

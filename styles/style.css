@@ -702,6 +702,7 @@ body {
   left: 0;
   display: flex;
   gap: 20px;
+  transition: all 0.5s;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li {
   position: relative;
@@ -918,6 +919,7 @@ body {
   left: 0;
   display: flex;
   gap: 20px;
+  transition: all 0.5s;
 }
 #auction .auction-content .auction-slide .slideWrapper li {
   position: relative;
@@ -1210,6 +1212,7 @@ body {
   left: 0;
   display: flex;
   gap: 20px;
+  transition: all 0.5s;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li {
   position: relative;
