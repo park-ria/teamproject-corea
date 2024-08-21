@@ -7,10 +7,11 @@ const mainSlideUl = document.querySelector(".mainSlideWrapper");
 // add main slide item
 const addMainSlide = (slide, index) => {
   const liItem = document.createElement("li");
-  const aTag = document.createElement("a");
+  //const aTag = document.createElement("a");
+  const aTag = document.createElement("span");
   const slideDesc = document.createElement("div");
 
-  aTag.setAttribute("href", "#none");
+  //aTag.setAttribute("href", "#none");
   aTag.style.background = `url(../images/${slide.img}) center/cover no-repeat`;
   slideDesc.className = "main-slide-desc";
 
@@ -43,7 +44,7 @@ const mainSlide = () => {
   const slideWidth = 420;
   const slideMargin = 10;
   const slideCount = mainSlide.length;
-  const cloneCount = 3;
+  const cloneCount = 4;
 
   let currentIdx = 0;
 
@@ -57,7 +58,7 @@ const mainSlide = () => {
   };
 
   const setInitialPos = () => {
-    const initialTranslateValue = -(slideWidth + slideMargin) * slideCount;
+    const initialTranslateValue = -(slideWidth + slideMargin) * cloneCount;
     mainSlideUl.style.transform = `translateX(${initialTranslateValue}px)`;
   };
 
@@ -88,7 +89,6 @@ const mainSlide = () => {
     }px`;
 
     currentIdx = num;
-    // console.log(currentIdx, slideCount);
 
     if (currentIdx === slideCount / moveSlideCount || currentIdx === -1) {
       setTimeout(() => {
@@ -107,11 +107,10 @@ const mainSlide = () => {
       }, 600);
     }
     const pager = pagers.querySelector("span");
-    console.log(num);
-    if (num === -1) pager.style.width = `calc(100% / 3 * 3)`;
-    else if (num === 1) pager.style.width = ` calc(100% / 3 * 2)`;
-    else if (num === 0) pager.style.width = `calc(100% / 3 * 1)`;
-    else pager.style.width = `calc(100%  / 3 * ${num})`;
+    if (currentIdx === 0 || currentIdx === 3)
+      pager.style.width = `calc(100% / 3)`;
+    else if (currentIdx === 1) pager.style.width = `calc(100% / 3 * 2)`;
+    else if (currentIdx === 2 || currentIdx === -1) pager.style.width = `100%`;
   };
 
   preBtns.forEach((btn) => {
@@ -207,8 +206,8 @@ const mainSlide = () => {
 };
 
 // add product slide item
-const addProduct = (product, index, ul) => {
-  const ulItems = document.querySelector(ul);
+const addProduct = (product, ul) => {
+  const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
   const slideImg = document.createElement("div");
@@ -216,7 +215,7 @@ const addProduct = (product, index, ul) => {
 
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", "#none");
+  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
@@ -238,23 +237,74 @@ const addProduct = (product, index, ul) => {
   slideDesc.innerHTML = desc;
   aTag.append(slideImg, slideDesc);
   liItem.appendChild(aTag);
-  ulItems.appendChild(liItem);
+  ulItem.appendChild(liItem);
 
   // pager
   const slidePager =
-    ulItems.parentElement.nextElementSibling.querySelector(".slidePager");
+    ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
   const spanTag = document.createElement("span");
   slidePager.appendChild(spanTag);
 };
 
 // productSlide
-const productSlide = () => {};
+const productSlide = (section) => {
+  const slideSection = document.querySelector(section);
+  const slideUl = slideSection.querySelector("ul");
+  const slide = slideUl.querySelectorAll("li");
+  const prevBtn = slideSection.querySelector(".slidePrev");
+  const nextBtn = slideSection.querySelector(".slideNext");
+  const slidePager = slideSection.querySelector(".slidePager");
+
+  const slideCount = slide.length;
+  const slideWidth = 240;
+  const slideMargin = 20;
+
+  let currentIdx = 0;
+
+  const moveSlide = (num) => {
+    slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+    currentIdx = num;
+    console.log(currentIdx);
+    if (currentIdx > slideCount - 5) {
+      setTimeout(() => {
+        slideUl.classList.remove("animated");
+        slideUl.style.left = `0px`;
+        currentIdx = 0;
+      });
+      setTimeout(() => {
+        slideUl.classList.add("animated");
+      }, 600);
+    }
+
+    if (currentIdx === -1) {
+      slideUl.style.left = `-${
+        (slideWidth + slideMargin) * (slideCount - 5)
+      }px`;
+      setTimeout(() => {
+        slideUl.classList.remove("animated");
+        slideUl.style.right = `0px`;
+        currentIdx = slideCount - 4;
+      });
+      setTimeout(() => {
+        slideUl.classList.add("animated");
+      }, 600);
+    }
+  };
+
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+};
 
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
-    // mainSlide add
+    // mainSlide
     joongoData.mainSlide.forEach((slide, index) => {
+      // mainSlide add
       addMainSlide(slide, index);
     });
 
@@ -263,55 +313,106 @@ fetch(joonggoInfo)
 
     // data
     joongoData.product.forEach((product, index) => {
-      // add product slide
+      // productSlide add
       if (index < 8) {
-        addProduct(product, index, ".bestRankingUl");
+        addProduct(product, ".bestRankingUl");
       } else if (index < 14) {
-        addProduct(product, index, ".auctionUl");
+        addProduct(product, ".auctionUl");
       } else if (index < 22) {
-        addProduct(product, index, ".recommendedUl");
+        addProduct(product, ".recommendedUl");
       }
 
-      // 동훈님
-      rankingSlides.forEach((rankingSlide) => {
-        rankingSlide.addEventListener("click", () => {
-          const url = `pages/detail.html?id=${encodeURIComponent(179612232)}`;
-          window.location.href = url;
-        });
+      // tab-content
+      const tabContent = document.querySelectorAll(".tab-content");
+      tabContent.forEach((content) => {
+        if (
+          content.querySelectorAll("li").length < 6 &&
+          content.getAttribute("data-tab") === product.detail.page_path[1]
+        ) {
+          let li = `
+            <li>
+              <a href="/pages/detail.html?id=${product.id}">
+                <div class="tab-content-img" style="background:url('../${
+                  product.image_path
+                }') center/cover
+                no-repeat"></div>
+                <div class="tab-content-desc">
+                  <h4 class="desc-title">
+                    ${product.title}
+                  </h4>
+                  <strong class="desc-price">${product.price}</strong>
+                  <p class="desc-info">
+                    <span class="desc-time">${product.time}</span>
+                    <span class="desc-place">${
+                      product.point ? " | " + product.point : ""
+                    }</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+          `;
+          content.insertAdjacentHTML("beforeend", li);
+        }
       });
     });
+
+    // productSlide run
+    productSlide("#best-ranking");
+    productSlide("#auction");
+    productSlide("#recommended");
   });
 
 // auction
-const timeEvent = () => {
-  const time = document.querySelector(".timeEvent");
-  const spanTag = document.createElement("span");
+// const timeEvent = () => {
+//   const time = document.querySelector(".timeEvent");
+//   const spanHours = document.createElement("span");
+//   const spanMinutes = document.createElement("span");
+//   const spanSeconds = document.createElement("span");
 
-  const today = new Date();
+//   const today = new Date();
 
-  const dDay = new Date(2024, 7, 22, 18, 0);
-  // dDay.setDate(today.getDate() + 1);
+//   const dDay = new Date(2024, 7, 22, 18, 0);
+//   // dDay.setDate(today.getDate() + 1);
 
-  const resultDay = dDay.getTime() - today.getTime();
+//   const resultDay = dDay.getTime() - today.getTime();
 
-  // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
-  let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
-  let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
-  let resultSeconds = Math.floor((resultDay / 1000) % 60);
+//   // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
+//   let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
+//   let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
+//   let resultSeconds = Math.floor((resultDay / 1000) % 60);
 
-  resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
-  resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
-  resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
+//   resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
+//   resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
+//   resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
 
-  const hours = (spanTag.innerText = resultHours);
-  const minutes = (spanTag.innerText = `: ${resultMinutes} :`);
-  const seconds = (spanTag.innerText = resultSeconds);
+//   spanHours.innerText = resultHours;
+//   spanMinutes.innerText = resultMinutes;
+//   spanSeconds.innerText = resultSeconds;
 
-  // time.innerText = `${resultHours} : ${resultMinutes} : ${resultSeconds}`;
-  time.append(hours, minutes, seconds);
-};
-timeEvent();
+//   // time.append(spanHours, spanMinutes, spanSeconds);
+// };
+// //timeEvent();
 // setInterval(timeEvent, 1000);
+
+// tab-menu click event
+const tabMenu = document.querySelectorAll(".tab-menu li");
+tabMenu.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    const tabContents = document.querySelectorAll(".tab-content");
+    tabMenu.forEach((sibiling) => {
+      if (sibiling === e.target) e.target.classList.add("active");
+      else sibiling.classList.remove("active");
+    });
+
+    tabContents.forEach((content) => {
+      content.classList.remove("active");
+    });
+
+    document
+      .querySelector(`ul[data-tab="${e.target.dataset.tab}"]`)
+      .classList.add("active");
+  });
+});
 
 // event slide
 const eventSlideUl = document.querySelector(".event-slide ul");

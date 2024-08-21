@@ -44,7 +44,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
   .view-more {
     a {
-      font-size: 1.2rem;
       color: map-get($color, bg-dark-gray);
     }
   }
@@ -70,6 +69,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     left: 0;
     display: flex;
     gap: 20px;
+    transition: all 0.5s;
     li {
       position: relative;
       a {
@@ -238,41 +238,40 @@ body {
   overflow-x: hidden;
 }
 
-// main
+//common
+.slide-btns {
+  @include slideBtns;
+  .slidePager {
+    @include slidePager;
+  }
+}
+
 // main-slide
 #main-slide {
   // display: none;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  position: relative;
   article {
     position: relative;
     height: 420px;
+    width: 1280px;
     .mainSlideWrapper {
       display: flex;
       justify-content: center;
       gap: 10px;
       position: absolute;
       top: 0;
-      left: calc(50% - 1280px / 2 + 10px);
-      a {
+      left: 0;
+      span {
         position: relative;
         width: 420px;
         height: 420px;
         display: flex;
         align-items: flex-end;
-        &::before {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          // background: rgba($color: #000, $alpha: 0.1);
-          // backdrop-filter: blur(10px);
-        }
-        &.active::before {
-          display: none;
-        }
         .main-slide-desc {
           margin: 0 0 30px 30px;
           color: map-get($color, bg-light-color);
@@ -305,12 +304,12 @@ body {
         background: rgba($color: #fff, $alpha: 0.6);
         transition: all 0.3s;
         &.mainSlidePrev {
-          left: calc(50% - 1280px / 2 + 10px);
-          transform: translate(0, -50%);
+          left: 0;
+          transform: translateY(-50%);
         }
         &.mainSlideNext {
-          left: calc(50% + 1280px / 2 + 10px);
-          transform: translate(-100%, -50%);
+          right: 0;
+          transform: translateY(-50%);
         }
         i {
           font-size: 2.8rem;
@@ -343,7 +342,7 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        // width: calc(100% / 3);
+        width: calc(100% / 3);
         height: 100%;
         background: map-get($color, bar-linear-gradient);
         transition: all 0.3s;
@@ -371,6 +370,23 @@ body {
       }
     }
   }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: calc(50% - 650px);
+    height: 420px;
+    background: rgba($color: #fff, $alpha: 0.1);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
 }
 
 // best-ranking
@@ -385,12 +401,12 @@ body {
     .ranking-slide {
       @include productSlide;
     }
-    .slide-btns {
-      @include slideBtns;
-      .slidePager {
-        @include slidePager;
-      }
-    }
+    // .slide-btns {
+    //   @include slideBtns;
+    //   .slidePager {
+    //     @include slidePager;
+    //   }
+    // }
   }
 }
 
@@ -460,7 +476,7 @@ body {
         left: 0%;
         width: 40%;
         height: 100%;
-        background: linear-gradient(to bottom, #005ac8, #044ba2);
+        background: linear-gradient(to bottom, #005ac8, #064a9e);
         transform: translateY(-50%) skew(-25deg);
       }
     }
@@ -477,12 +493,12 @@ body {
         background: url("../images/auction01.png") center/cover no-repeat;
       }
     }
-    .slide-btns {
-      @include slideBtns;
-      .slidePager {
-        @include slidePager;
-      }
-    }
+    // .slide-btns {
+    //   @include slideBtns;
+    //   .slidePager {
+    //     @include slidePager;
+    //   }
+    // }
   }
 }
 
@@ -515,7 +531,7 @@ body {
         }
       }
       .tab-content {
-        display: flex;
+        display: none;
         flex-wrap: wrap;
         gap: 35px;
         li {
@@ -530,8 +546,6 @@ body {
               width: 150px;
               height: 100%;
               border-radius: 10px;
-              background: url("../images/tab-content01.png") center/cover
-                no-repeat;
             }
             .tab-content-desc {
               width: calc(100% - 150px);
@@ -539,6 +553,9 @@ body {
               @include productDesc;
             }
           }
+        }
+        &.active {
+          display: flex;
         }
       }
     }
@@ -588,12 +605,12 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    .slide-btns {
-      @include slideBtns;
-      .slidePager {
-        @include slidePager;
-      }
-    }
+    // .slide-btns {
+    //   @include slideBtns;
+    //   .slidePager {
+    //     @include slidePager;
+    //   }
+    // }
   }
 }
 
@@ -781,6 +798,25 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
+  // common
+  .slide-btns {
+    @include slideBtns;
+    button {
+      &.slidePrev {
+        transform: translateX(0);
+        &:hover {
+          transform: translate(0, 5%);
+        }
+      }
+      &.slideNext {
+        transform: translateX(0);
+        &:hover {
+          transform: translate(0, 5%);
+        }
+      }
+    }
+  }
+
   // main-slide
   #main-slide {
     article {
@@ -789,36 +825,10 @@ body {
           width: 40px;
           height: 40px;
           &.mainSlidePrev {
-            left: 2%;
+            display: none;
           }
           &.mainSlideNext {
-            left: 98%;
-          }
-          i {
-            font-size: 2rem;
-          }
-        }
-      }
-    }
-  }
-
-  // best-ranking
-  #best-ranking {
-    .ranking-content {
-      .slide-btns {
-        @include slideBtns;
-        button {
-          &.slidePrev {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
-          &.slideNext {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
+            display: none;
           }
         }
       }
@@ -839,8 +849,10 @@ body {
             font-size: 3.6rem;
           }
           .timeEvent {
-            font-size: 4rem;
-            margin: 10px 0;
+            span {
+              font-size: 4rem;
+              margin: 10px 0;
+            }
           }
           p {
             font-size: 2rem;
@@ -848,25 +860,6 @@ body {
         }
         .banner-img {
           height: 80%;
-        }
-      }
-    }
-    .auction-content {
-      .slide-btns {
-        @include slideBtns;
-        button {
-          &.slidePrev {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
-          &.slideNext {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
         }
       }
     }
@@ -893,29 +886,6 @@ body {
       .event-slide {
         ul {
           justify-content: center;
-        }
-      }
-    }
-  }
-
-  // recommended
-  #recommended {
-    .recommended-content {
-      .slide-btns {
-        @include slideBtns;
-        button {
-          &.slidePrev {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
-          &.slideNext {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
         }
       }
     }
@@ -1036,8 +1006,10 @@ body {
             font-size: 4rem;
           }
           .timeEvent {
-            font-size: 4.4rem;
-            margin: 10px 0;
+            span {
+              font-size: 4.4rem;
+              margin: 10px 0;
+            }
           }
           p {
             font-size: 2.2rem;
@@ -1066,24 +1038,6 @@ body {
                   height: 36px;
                 }
               }
-            }
-          }
-        }
-      }
-
-      .slide-btns {
-        @include slideBtns;
-        button {
-          &.slidePrev {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
-            }
-          }
-          &.slideNext {
-            transform: translateX(0);
-            &:hover {
-              transform: translate(0, 5%);
             }
           }
         }
