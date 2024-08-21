@@ -333,10 +333,10 @@ const timeEvent = () => {
   spanMinutes.innerText = resultMinutes;
   spanSeconds.innerText = resultSeconds;
 
-  time.append(spanHours, spanMinutes, spanSeconds);
+  // time.append(spanHours, spanMinutes, spanSeconds);
 };
-timeEvent();
-// setInterval(timeEvent, 1000);
+//timeEvent();
+setInterval(timeEvent, 1000);
 
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");
