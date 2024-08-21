@@ -74,6 +74,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        -webkit-user-drag: none;
         .slide-img {
           width: 100%;
           height: 240px;
@@ -81,8 +82,8 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           overflow: hidden;
         }
         .slide-desc {
-          padding: 0 14px 14px;
           @include productDesc;
+          padding: 0 14px 14px;
         }
       }
       .badge {
@@ -233,6 +234,12 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 //common
 .slide-btns {
@@ -272,7 +279,7 @@ body {
           margin: 0 0 30px 30px;
           color: map-get($color, bg-light-color);
           text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
-          // display: none;
+          -webkit-user-drag: none;
           h2 {
             height: 84px;
             margin-bottom: 10px;

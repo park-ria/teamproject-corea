@@ -216,6 +216,7 @@ const addProduct = (product, ul) => {
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
   aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
+  // aTag.style.webkitUserDrag = "none";
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
@@ -253,49 +254,96 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  const slidePager = slideSection.querySelector(".slidePager");
+  const slidePagers = slideSection.querySelector(".slidePager");
+  const pager = document.createElement("span");
 
   const slideCount = slide.length;
   const slideWidth = 240;
   const slideMargin = 20;
+  const slidesPerView = 5;
 
   let currentIdx = 0;
 
   const moveSlide = (num) => {
+    // slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+    // console.log(-num * (slideWidth + slideMargin));
+    // slideUl.style.width = slideWidth * slideCount;
+    // slideUl.style.transform = `translateX(${slideWidth * -num}px)`;
     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
     currentIdx = num;
-    console.log(currentIdx);
-    if (currentIdx > slideCount - 5) {
-      setTimeout(() => {
-        slideUl.classList.remove("animated");
-        slideUl.style.left = `0px`;
-        currentIdx = 0;
-      });
-      setTimeout(() => {
-        slideUl.classList.add("animated");
-      }, 600);
-    }
 
+    if (
+      currentIdx === slideCount - slidesPerView ||
+      currentIdx > slideCount - slidesPerView
+    ) {
+      slideUl.style.left = 0;
+      currentIdx = 0;
+    }
     if (currentIdx === -1) {
       slideUl.style.left = `-${
-        (slideWidth + slideMargin) * (slideCount - 5)
+        (slideWidth + slideMargin) * (slideCount - slidesPerView)
       }px`;
-      setTimeout(() => {
-        slideUl.classList.remove("animated");
-        slideUl.style.right = `0px`;
-        currentIdx = slideCount - 4;
-      });
-      setTimeout(() => {
-        slideUl.classList.add("animated");
-      }, 600);
+      currentIdx = slideCount - slidesPerView;
     }
+
+    // console.log(-num * (slideWidth + slideMargin));
+    // console.log(currentIdx);
   };
 
+  // const moveLeft = () => {
+  //   let prevIndex = (currentIdx - 1) % slideCount;
+  //   if (currentIdx === 0) prevIndex = slideCount - 1;
+  //   moveSlide(prevIndex);
+  //   // console.log((currentIdx - 1) % slideCount);
+  // };
+
+  // const moveRight = () => {
+  //   let nextIndex = (currentIdx + 1) % slideCount;
+  //   if (currentIdx === slideCount - 1) currentIdx = 0;
+  //   moveSlide(nextIndex);
+  //   // console.log((currentIdx + 1) % slideCount);
+  // };
+
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
   nextBtn.addEventListener("click", () => {
     moveSlide(currentIdx + 1);
   });
-  prevBtn.addEventListener("click", () => {
-    moveSlide(currentIdx - 1);
+
+  // pager
+
+  // drag event
+  let startPoint = 0;
+  let endPoint = 0;
+
+  slideUl.addEventListener("mousedown", (e) => {
+    slideUl.style.cursor = "grabbing";
+    startPoint = e.pageX;
+  });
+
+  slideUl.addEventListener("mouseup", (e) => {
+    slideUl.style.cursor = "grab";
+    endPoint = e.pageX;
+
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+
+  // touch event
+  slideUl.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+  });
+  slideUl.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
   });
 };
 
