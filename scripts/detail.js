@@ -38,7 +38,6 @@ fetch(joonggoInfo)
 
       // // Img-slider
       let currentIndex = 0;
-
       const imgWrapper = document.querySelector(".img-wrapper");
 
       const moveSlide = (num) => {
@@ -54,23 +53,12 @@ fetch(joonggoInfo)
       const moveLeft = () => {
         let prevIndex = (currentIndex - 1) % slideCount;
         if (currentIndex === 0) prevIndex = slideCount - 1;
-        // if (currentIndex === 0) {
-        //   imgPrev.style = "pointer-events: none; background: #eee;";
-        // } else {
-        //   imgPrev.style = "pointer-events: auto; background: rgba(0, 0, 0, 0.2);";
-        // }
         moveSlide(prevIndex);
       };
 
       const moveRight = () => {
         let nextIndex = (currentIndex + 1) % slideCount;
-        if (currentIndex === slideCount - 1) nextIndex = 0;
-        // if (currentIndex === slideCount - 1) {
-        //   nextIndex = slideCount - 1;
-        //   imgNext.style = "pointer-events: none; background: #eee;";
-        // } else {
-        //   imgNext.style = "pointer-events: auto; background: rgba(0, 0, 0, 0.2);";
-        // }
+        if (currentIndex === slideCount - 1) currentIndex = 0;
         moveSlide(nextIndex);
       };
 
@@ -124,34 +112,40 @@ fetch(joonggoInfo)
         imgWrapper.style.cursor = "grab";
         //console.log("mouseup", e.pageX);
         endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
+        console.log(currentIndex);
+
         if (startPoint < endPoint) {
           // 마우스가 오른쪽으로 드래그 된 경우
-          console.log(currentIndex);
-          moveSlide(currentIndex - 1);
+          let nextIndex = (currentIndex + 1) % slideCount;
+          if (currentIndex === slideCount - 1) currentIndex = 0;
+          moveSlide(nextIndex);
         } else if (startPoint > endPoint) {
           // 마우스가 왼쪽으로 드래그 된 경우
-          if(currentIndex === 0) {
-            imgWrapper.style.cursor = ""
-          }
-          moveSlide(currentIndex + 1);
+        let prevIndex = (currentIndex - 1) % slideCount;
+        if (currentIndex === 0) prevIndex = slideCount - 1;
+          moveSlide(prevIndex);
         }
       });
+
+
 
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
         //console.log("touchstart", e.touches[0].pageX);
         startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
-        console.log(imgWrapper.pageX);
       });
       imgWrapper.addEventListener("touchend", (e) => {
         //console.log("touchend", e.changedTouches[0].pageX);
         endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
         if (startPoint < endPoint) {
           // 오른쪽으로 스와이프 된 경우
-          moveSlide(currentIndex + 1);
+          let nextIndex = (currentIndex + 1) % slideCount;
+          if (currentIndex === slideCount - 1) currentIndex = 0;
+          moveSlide(nextIndex);
         } else if (startPoint > endPoint) {
-          // 왼쪽으로 스와이프 된 경우
-          moveSlide(currentIndex - 1);
+          let prevIndex = (currentIndex - 1) % slideCount;
+          if (currentIndex === 0) prevIndex = slideCount - 1;
+            moveSlide(prevIndex);
         }
       });
 
@@ -210,6 +204,7 @@ fetch(joonggoInfo)
           fill: "both",
         }
       );
+
       // Numbering Detail-value
       let number = 0;
 
@@ -301,6 +296,89 @@ fetch(joonggoInfo)
           `;
       }
 
+      // Touch Event
+      const itemWidth = itemsWrapper.querySelectorAll("li")[0].offsetWidth;
+      const itemsCount = itemsWrapper.querySelectorAll("li").length;
+      let itemGap = 30;
+
+      const listClientWidth = itemsWrapper.clientWidth;
+      const listScrollWidth = (itemWidth * itemsCount) + (itemGap * (itemsCount - 1));
+
+      // 최초 터치 및 마우스 다운 지점
+      let startX = 0;
+
+      // 현재 이동중인 지점
+      let nowX = 0;
+
+      // 터치 종료 지점
+      let endX = 0;
+
+      // 두번째 터치 지점
+      let listX = 0;
+
+      // clientX : 사용자가 현재 보고있는 device 매체의 너비를 의미
+
+      const getClientX = (e) => {
+        // const isTouches = e.isTouches ? true : false;
+        // return isTouches ? e.touches[0].clientX : e.clientX;
+        return e.touches ? e.touches[0].clientX : e.clientX;
+      };
+
+      // matrix(1, 0, 0, 1, -75, 0)
+      // 1 : x방향의 스케일
+      // 2 : y방향의 기울기
+      // 3 : x방향의 기울기
+      // 4 : y방향의 스케일
+      // 5 : x축을 기준으로 이동한 거리
+      // 6 : y축을 기준으로 이동한 거리
+
+      const getTranslate = () => {
+        // console.log(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
+        
+        return parseInt(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
+      };
+
+      const setTranslateX = (x) => {
+        itemsWrapper.style.transform = `translateX(${x}px)`
+      }
+
+      const onScrollMove = (e) => {
+        nowX = getClientX(e);
+        setTranslateX(listX + nowX - startX)
+      };
+
+      const onScrollEnd = (e) => {
+        endX = getClientX(e);
+        listX = getTranslate();
+        if(listX > 0) {
+          setTranslateX(0);
+          itemsWrapper.style.transition = `all 0.1s ease`;
+          listX = 0;
+        } else if(listX < listClientWidth - listScrollWidth) {
+          setTranslateX(listClientWidth - listScrollWidth);
+          itemsWrapper.style.transition = `all 0.1s ease`
+          listX = listClientWidth - listScrollWidth;
+        }
+        window.removeEventListener("touchstart", onScrollStart);
+        window.removeEventListener("mousedown", onScrollStart);
+        window.removeEventListener("touchmove", onScrollMove);
+        window.removeEventListener("mousemove", onScrollMove);
+        window.removeEventListener("touchend",onScrollEnd);
+        window.removeEventListener("mouseup", onScrollEnd);
+      }
+
+      const onScrollStart = (e) => {
+        startX = getClientX(e);
+
+        window.addEventListener("touchmove", onScrollMove);
+        window.addEventListener("mousemove", onScrollMove);
+        window.addEventListener("touchend",onScrollEnd);
+        window.addEventListener("mouseup", onScrollEnd);
+      };
+
+      itemsWrapper.addEventListener("touchstart", onScrollStart);
+      itemsWrapper.addEventListener("mousedown", onScrollStart);
+
       // Making Reviews
       const reviewsBox = document.querySelector(".reviews-box");
 
@@ -310,6 +388,11 @@ fetch(joonggoInfo)
         <li>상품 상태가 좋아요.<span><i class="fa-regular fa-user"></i>38</span></li>
         <li>택배 거래가 수월했어요.(포장, 협조적)<span><i class="fa-regular fa-user"></i>17</span></li>
       `;
+
+      // Making Recommandtion's Items
+      const RecommendWrappers = document.querySelectorAll(".recommend-wrapper");
+      console.log(RecommendWrappers);
+
     }
   });
 
