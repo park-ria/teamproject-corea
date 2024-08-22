@@ -335,8 +335,8 @@ const delWishItemByHeart = (target) => {
 };
 
 // 로컬스토리지 추가
-const addWishItem = (products) => {
-  const ul = (document.querySelector(".wishItemList").innerHTML = "");
+/*const addWishItem = (products) => {
+  document.querySelector(".wishItemList").innerHTML = "";
   addItemsInTheWishItemList(products);
   buttonEvent(products);
 };
@@ -346,7 +346,7 @@ const wishItemHandler = (products, productId) => {
   chanageTabBtnCnt();
   addWishItem(products);
   saveWishItem();
-};
+};*/
 
 const buttonEvent = (products) => {
   // all select event
@@ -354,15 +354,15 @@ const buttonEvent = (products) => {
 
   // button event
   document.querySelectorAll(".wishHeart").forEach((item) => {
-    item.addEventListener("click", (e) => {
+    item.addEventListener("click", function (e) {
       e.preventDefault();
       // 로컬스토리지 추가
-      const productId = this.parentNode.parentNode.parentNode.querySelector(
+      /*const productId = this.parentNode.parentNode.parentNode.querySelector(
         "input[type='checkbox']"
       ).value;
-      wishItemHandler(products, productId);
+      wishItemHandler(products, productId);*/
 
-      //delWishItemByHeart(e.target.parentNode.parentNode.parentNode.parentNode);
+      delWishItemByHeart(e.target.parentNode.parentNode.parentNode.parentNode);
     });
   });
 
@@ -387,6 +387,7 @@ fetch("../db.json")
       : jsonData.wishlist.wishItemArr
       ? jsonData.wishlist.wishItemArr
       : [];
+    saveWishItem();
     favoriteStoresArr = jsonData.wishlist.favoriteStoresArr;
     favoriteBrandsArr = jsonData.wishlist.favoriteBrandsArr;
 
