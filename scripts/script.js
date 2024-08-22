@@ -206,17 +206,17 @@ const mainSlide = () => {
   });
 };
 
+// if (window.matchMedia(`(min-width: 450px)`).matches) {
+//   /* 뷰포트 너비가 1024 픽셀 이상 */
+// } else {
+//   /* 뷰포트 너비가 1024 픽셀 미만 */
+//   slidesPerView = 1;
+// }
+
 // add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 const productSlideLimit = 10;
-
-if (window.matchMedia(`(min-width: 450px)`).matches) {
-  /* 뷰포트 너비가 1024 픽셀 이상 */
-} else {
-  /* 뷰포트 너비가 1024 픽셀 미만 */
-  slidesPerView = 1;
-}
 
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
@@ -253,7 +253,6 @@ const addProduct = (product, ul) => {
   ulItem.appendChild(liItem);
 
   // pager
-
   const slidePager =
     ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
   if (slideIndex % productSlideLimit >= slidesPerView - 1) {
@@ -263,9 +262,6 @@ const addProduct = (product, ul) => {
   slideIndex++;
 };
 
-// add product slide pager
-// const addSlidePager = () => {};
-
 // productSlide
 const productSlide = (section) => {
   const slideSection = document.querySelector(section);
@@ -273,16 +269,39 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  // const slidePagers = slideSection.querySelector(".slidePager");
-  // const pager = document.createElement("span");
+  const pagers = slideSection.querySelectorAll(".slidePager span");
 
   const slideCount = slide.length;
   const slideWidth = 240;
   const slideMargin = 20;
 
   let currentIdx = 0;
+  let active = 0;
+
+  // move pager
+  pagers[0].classList.add("active");
+  const movePager = (index, pagers) => {
+    for (let pager of pagers) {
+      pager.classList.remove("active");
+    }
+    pagers[index].classList.add("active");
+  };
+
+  // click pager
+  pagers.forEach((pager, index) => {
+    pager.addEventListener("click", function () {
+      pagers.forEach((sibling) => {
+        if (sibling !== pager) sibling.classList.remove("active");
+      });
+
+      this.classList.add("active");
+      moveSlide(index);
+      console.log(index);
+    });
+  });
 
   const moveSlide = (num) => {
+    console.log(num);
     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
     currentIdx = num;
 
@@ -300,9 +319,14 @@ const productSlide = (section) => {
 
   prevBtn.addEventListener("click", () => {
     moveSlide(currentIdx - 1);
+    active === 0 ? (active = pagers.length - 1) : active--;
+    movePager(active, pagers);
   });
   nextBtn.addEventListener("click", () => {
     moveSlide(currentIdx + 1);
+    active === pagers.length - 1 ? (active = 0) : active++;
+    movePager(active, pagers);
+    // console.log(active);
   });
 
   // drag event
@@ -356,7 +380,7 @@ fetch(joonggoInfo)
       // productSlide add
       if (index < productSlideLimit) {
         addProduct(product, ".bestRankingUl");
-      } else if (index < productSlideLimit * 2) {
+      } else if (index < productSlideLimit * 1.8) {
         addProduct(product, ".auctionUl");
       } else if (index < productSlideLimit * 3) {
         addProduct(product, ".recommendedUl");

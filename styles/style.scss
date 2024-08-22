@@ -129,23 +129,20 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 @mixin slidePager {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
+  transition: all 0.3s;
   span {
     width: 10px;
     height: 10px;
     border-radius: 10px;
     background: map-get($color, bg-light-gray);
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.6s;
     &:hover {
       background: map-get($color, bg-main-color);
     }
-    // &.active {
-    //   width: 40px;
-    //   background: $home-gradient;
-    // }
-    &:first-child {
-      width: 40px;
+    &.active {
+      width: 30px;
       background: $home-gradient;
     }
   }
