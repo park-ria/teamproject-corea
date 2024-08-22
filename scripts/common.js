@@ -685,7 +685,47 @@ const categoryData = {
   ],
 };
 
+
 const main = document.querySelector(".main-category");
+const mobileMenu = document.querySelector(".menu-box");
+const mobileMain = document.querySelector(".categroy-main");
+
+// Making MobileCategory
+categoryData.data.forEach((mobileCategory, index) => {
+  mobileMain.innerHTML += 
+  `
+  <li>
+      <div class="category-img">
+          <div class="img-box">
+              <img src="../images/detail/mobile-category1.jpg" alt="mobile-category">
+          </div>
+          <span>${mobileCategory.main}</span>
+      </div>
+      <div class="categroy-sub">
+        <ul></ul>
+      </div>
+  </li>
+  `;
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+
+  console.log(categorySubs);
+  categorySubs.forEach((categorySub, i) => {
+    if((i + 1) % 5 !== 0) {
+      categorySub.style.transform = `translateX(-${((i + 1) % 5) * 20}%)`;
+    } 
+  });
+  
+  const mobileSub = document.querySelectorAll(".categroy-sub ul");
+
+  mobileCategory.sub.forEach((sub) => {
+      mobileSub[index].innerHTML += 
+      `
+      <li>${sub.title}</li>
+      `;
+  });
+});
+
 
 categoryData.data.forEach((mainCategory) => {
   const mainA = document.createElement("a");
