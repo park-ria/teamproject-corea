@@ -83,6 +83,8 @@ const mainSlide = () => {
 
   const moveSlide = (num) => {
     const moveSlideCount = 3;
+    const showIndex =
+      (slideCount / moveSlideCount + num) % (slideCount / moveSlideCount);
 
     mainSlideUl.style.left = `${
       -num * (slideWidth + slideMargin) * moveSlideCount
@@ -96,21 +98,20 @@ const mainSlide = () => {
         mainSlideUl.style.left =
           num > 0
             ? "0px"
-            : `${
-                -(slideCount + num * moveSlideCount) *
-                (slideWidth + slideMargin)
-              }px`;
-        currentIdx = num > 0 ? 0 : 2;
+            : `${-showIndex * (slideWidth + slideMargin) * moveSlideCount}px`;
+        currentIdx = num > 0 ? 0 : slideCount / moveSlideCount - 1;
       }, 500);
+
       setTimeout(() => {
         mainSlideUl.classList.add("animated");
       }, 600);
     }
     const pager = pagers.querySelector("span");
-    if (currentIdx === 0 || currentIdx === 3)
+    pager.style.width = `calc(100% / 3 * (${showIndex + 1}))`;
+    /*if (currentIdx === 0 || currentIdx === 3)
       pager.style.width = `calc(100% / 3)`;
     else if (currentIdx === 1) pager.style.width = `calc(100% / 3 * 2)`;
-    else if (currentIdx === 2 || currentIdx === -1) pager.style.width = `100%`;
+    else if (currentIdx === 2 || currentIdx === -1) pager.style.width = `100%`;*/
   };
 
   preBtns.forEach((btn) => {
@@ -206,6 +207,17 @@ const mainSlide = () => {
 };
 
 // add product slide item
+let slideIndex = 0;
+let slidesPerView = 5;
+const productSlideLimit = 10;
+
+if (window.matchMedia(`(min-width: 450px)`).matches) {
+  /* 뷰포트 너비가 1024 픽셀 이상 */
+} else {
+  /* 뷰포트 너비가 1024 픽셀 미만 */
+  slidesPerView = 1;
+}
+
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
@@ -241,11 +253,18 @@ const addProduct = (product, ul) => {
   ulItem.appendChild(liItem);
 
   // pager
+
   const slidePager =
     ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
-  const spanTag = document.createElement("span");
-  slidePager.appendChild(spanTag);
+  if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+    const spanTag = document.createElement("span");
+    slidePager.appendChild(spanTag);
+  }
+  slideIndex++;
 };
+
+// add product slide pager
+// const addSlidePager = () => {};
 
 // productSlide
 const productSlide = (section) => {
@@ -254,28 +273,20 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  const slidePagers = slideSection.querySelector(".slidePager");
-  const pager = document.createElement("span");
+  // const slidePagers = slideSection.querySelector(".slidePager");
+  // const pager = document.createElement("span");
 
   const slideCount = slide.length;
   const slideWidth = 240;
   const slideMargin = 20;
-  const slidesPerView = 5;
 
   let currentIdx = 0;
 
   const moveSlide = (num) => {
-    // slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
-    // console.log(-num * (slideWidth + slideMargin));
-    // slideUl.style.width = slideWidth * slideCount;
-    // slideUl.style.transform = `translateX(${slideWidth * -num}px)`;
     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
     currentIdx = num;
 
-    if (
-      currentIdx === slideCount - slidesPerView ||
-      currentIdx > slideCount - slidesPerView
-    ) {
+    if (currentIdx === slideCount - slidesPerView + 1) {
       slideUl.style.left = 0;
       currentIdx = 0;
     }
@@ -285,24 +296,7 @@ const productSlide = (section) => {
       }px`;
       currentIdx = slideCount - slidesPerView;
     }
-
-    // console.log(-num * (slideWidth + slideMargin));
-    // console.log(currentIdx);
   };
-
-  // const moveLeft = () => {
-  //   let prevIndex = (currentIdx - 1) % slideCount;
-  //   if (currentIdx === 0) prevIndex = slideCount - 1;
-  //   moveSlide(prevIndex);
-  //   // console.log((currentIdx - 1) % slideCount);
-  // };
-
-  // const moveRight = () => {
-  //   let nextIndex = (currentIdx + 1) % slideCount;
-  //   if (currentIdx === slideCount - 1) currentIdx = 0;
-  //   moveSlide(nextIndex);
-  //   // console.log((currentIdx + 1) % slideCount);
-  // };
 
   prevBtn.addEventListener("click", () => {
     moveSlide(currentIdx - 1);
@@ -310,8 +304,6 @@ const productSlide = (section) => {
   nextBtn.addEventListener("click", () => {
     moveSlide(currentIdx + 1);
   });
-
-  // pager
 
   // drag event
   let startPoint = 0;
@@ -362,11 +354,11 @@ fetch(joonggoInfo)
     // data
     joongoData.product.forEach((product, index) => {
       // productSlide add
-      if (index < 8) {
+      if (index < productSlideLimit) {
         addProduct(product, ".bestRankingUl");
-      } else if (index < 14) {
+      } else if (index < productSlideLimit * 2) {
         addProduct(product, ".auctionUl");
-      } else if (index < 22) {
+      } else if (index < productSlideLimit * 3) {
         addProduct(product, ".recommendedUl");
       }
 
