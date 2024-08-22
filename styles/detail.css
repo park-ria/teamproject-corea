@@ -694,6 +694,10 @@ body {
   display: block;
 }
 
+#mobile-category .inner .mobile-category h3 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
 #mobile-category .inner .mobile-category ul {
   display: flex;
   flex-wrap: wrap;
@@ -701,6 +705,8 @@ body {
 #mobile-category .inner .mobile-category ul li {
   width: 20%;
   height: 20%;
+  display: flex;
+  flex-direction: column;
 }
 #mobile-category .inner .mobile-category ul li .category-img {
   width: 100%;
@@ -721,6 +727,10 @@ body {
   padding: 10px;
   text-align: center;
 }
+#mobile-category .inner .mobile-category ul li .categroy-sub {
+  width: 500%;
+  padding: 10px;
+}
 #mobile-category .inner .mobile-category ul li .categroy-sub ul {
   display: flex;
   flex-direction: column;
@@ -728,6 +738,7 @@ body {
 }
 #mobile-category .inner .mobile-category ul li .categroy-sub ul li {
   width: 50%;
+  height: 20%;
 }
 
 #bottom-memu {

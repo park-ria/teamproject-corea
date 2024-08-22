@@ -442,7 +442,10 @@ body {
   .inner {
     .mobile-category {
     
-      h3 {}
+      h3 {
+        margin-bottom: 15px;
+        font-size: map-get($map: $fontSize, $key: font-extra-large);
+      }
       ul {
         display: flex;
         flex-wrap: wrap;
@@ -450,6 +453,8 @@ body {
         li {
           width: 20%;
           height: 20%;
+          display: flex;
+          flex-direction: column;
 
           .category-img {
             width: 100%;
@@ -472,6 +477,10 @@ body {
             }
           }
           .categroy-sub {
+            width: 500%;
+            // display: none;
+            padding: 10px;
+
             ul {
               display: flex;
               flex-direction: column;
@@ -479,9 +488,14 @@ body {
 
               li {
                 width: 50%;
+                height: 20%;
               }
             }
           }
+          // &:hover .categroy-sub{
+          //   display: block;
+          // }
+          
         }
       }
     }
