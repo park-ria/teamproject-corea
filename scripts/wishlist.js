@@ -157,7 +157,6 @@ const wishItemChkEvnt = () => {
       ).length;
       if (checkWishItem.length === checkCount) allCheck.checked = true;
       else allCheck.checked = false;
-      wishItemChkEvnt();
     });
   });
 
