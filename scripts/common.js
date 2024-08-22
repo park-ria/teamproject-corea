@@ -695,36 +695,48 @@ categoryData.data.forEach((mobileCategory, index) => {
   mobileMain.innerHTML += 
   `
   <li>
-      <div class="category-img">
-          <div class="img-box">
-              <img src="../images/detail/mobile-category1.jpg" alt="mobile-category">
+  <div class="category-img">
+  <div class="img-box">
+  <img src="../images/detail/mobile-category1.jpg" alt="mobile-category">
           </div>
           <span>${mobileCategory.main}</span>
       </div>
-      <div class="categroy-sub">
-        <ul></ul>
+      <div class="category-sub">
+      <ul></ul>
       </div>
-  </li>
-  `;
+      </li>
+      `;
 
   const categorySubs = document.querySelectorAll(".category-sub");
+      
+  if(index % 5 !== 0) {
+    categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
+  } 
 
-  console.log(categorySubs);
-  categorySubs.forEach((categorySub, i) => {
-    if((i + 1) % 5 !== 0) {
-      categorySub.style.transform = `translateX(-${((i + 1) % 5) * 20}%)`;
-    } 
-  });
-  
-  const mobileSub = document.querySelectorAll(".categroy-sub ul");
+  const mobileSub = document.querySelectorAll(".category-sub ul");
 
   mobileCategory.sub.forEach((sub) => {
       mobileSub[index].innerHTML += 
       `
-      <li>${sub.title}</li>
+      <li>- ${sub.title}</li>
       `;
   });
 });
+
+mobileMenu.addEventListener("click", () => {
+  mobileMain.classList.toggle("active")
+})
+
+const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
+mobileMainImgs.forEach((img) => {
+  img.addEventListener("click", function() {
+    mobileMainImgs.forEach((item) => {
+      item.nextElementSibling.classList.remove("active");
+    })
+    img.nextElementSibling.classList.add("active");
+  })
+})
+
 
 
 categoryData.data.forEach((mainCategory) => {
