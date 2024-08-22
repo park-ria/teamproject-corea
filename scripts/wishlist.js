@@ -157,11 +157,23 @@ const wishItemChkEvnt = () => {
       ).length;
       if (checkWishItem.length === checkCount) allCheck.checked = true;
       else allCheck.checked = false;
+      wishItemChkEvnt();
     });
   });
 
   deleteSeletionButton.addEventListener("click", () => {
-    console.log(checkWishItem);
+    const checkedItem = document.querySelectorAll(
+      "input[name='checkWishItem']:checked"
+    );
+
+    if (checkedItem.length === 0) {
+      alert("삭제할 상품을 선택해주세요.");
+      return;
+    }
+
+    checkedItem.forEach((item) => {
+      delWishItemByHeart(item.closest("li"));
+    });
   });
 };
 
@@ -332,6 +344,7 @@ const delWishItemByHeart = (target) => {
   wishItemArr = wishItemArr.filter((item) => item !== productId);
   saveWishItem();
   target.remove();
+  buttonEvent(products);
 };
 
 // 로컬스토리지 추가
@@ -362,16 +375,15 @@ const buttonEvent = (products) => {
       ).value;
       wishItemHandler(products, productId);*/
 
-      delWishItemByHeart(e.target.parentNode.parentNode.parentNode.parentNode);
+      //delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement);
+      delWishItemByHeart(e.target.closest("li"));
     });
   });
 
   document.querySelectorAll(".wishItemXButton").forEach((item) => {
     item.addEventListener("click", (e) => {
-      delWishItemByHeart(
-        e.target.parentNode.parentNode.parentNode.parentNode.parentNode
-          .parentNode
-      );
+      // delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
+      delWishItemByHeart(e.target.closest("li"));
     });
   });
 };
