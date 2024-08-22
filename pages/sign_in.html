@@ -1,199 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/sign_in.css" />
-    <script defer src="../scripts/sign_in.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="wrapper" id="wrapper">
-      <header id="header">
-        <div id="banner" class="ban">
-          <div class="inner">
-            <div class="banner">
-              <div class="banner-left">
-                <a class="appDownload" href="#none">
-                  <img src="../images/appicon.jpg" alt="appicon" />
-                  <span>앱 다운로드</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/sign_in.css" />
+  <script defer src="../scripts/sign_in.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrapper" id="wrapper">
+    <header id="header">
+      <div id="banner" class="ban">
+        <div class="inner">
+          <div class="banner">
+            <div class="banner-left">
+              <a class="appDownload" href="#none">
+                <img src="../images/appicon.jpg" alt="appicon" />
+                <span>앱 다운로드</span>
+              </a>
+              <a class="favorites" href="#none">
+                <img src="../images/favorites.jpg" alt="favorites" />
+                <span>즐겨찾기</span>
+              </a>
+            </div>
+            <div class="banner-right">
+              <a href="#none">로그인</a>
+              <a href="#none">회원가입</a>
+              <a href="#none">마이페이지</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="header-item">
+        <div class="inner">
+          <div class="header-item">
+            <div class="header-top">
+              <h1 id="logo">
+                <a href="#none">
+                  <img src="../images/logo.png" alt="logo" />
                 </a>
-                <a class="favorites" href="#none">
-                  <img src="../images/favorites.jpg" alt="favorites" />
-                  <span>즐겨찾기</span>
-                </a>
+              </h1>
+              <div class="search-box">
+                <form action="https://localhost:3000" method="get">
+                  <label for="search"></label>
+                  <input type="text" name="search" id="search" placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!" />
+                  <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
               </div>
-              <div class="banner-right">
-                <a href="#none">로그인</a>
-                <a href="#none">회원가입</a>
-                <a href="#none">마이페이지</a>
+              <div class="wrapper">
+                <div class="popular-searchedWord">
+                  <ul></ul>
+                </div>
+                <a href="#none" class="list-btn"><i class="fa-solid fa-chevron-down"></i></a>
+                <ul class="list"></ul>
+              </div>
+            </div>
+            <div class="header-bottom">
+              <nav class="header-bottom-left">
+                <div class="barmenu">
+                  <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                </div>
+                <ul class="gnb">
+                  <li><a href="#none">중고경매</a></li>
+                  <li><a href="#none">내 주변 매물</a></li>
+                  <li><a href="#none">사기조회</a></li>
+                  <li><a href="#none">시세조회</a></li>
+                  <li><a href="#none">이벤트</a></li>
+                  <li><a href="#none">제휴혜택</a></li>
+                </ul>
+              </nav>
+              <div class="header-bottom-right">
+                <ul class="lnb">
+                  <li>
+                    <a href="#none">
+                      <img src="../images/chat.png" alt="chat" />채팅하기</a>
+                  </li>
+                  <li>
+                    <a href="#none">
+                      <img src="../images/sell.png" alt="sell" />판매하기</a>
+                  </li>
+                  <li>
+                    <a href="#none">
+                      <img src="../images/heart.png" alt="heart" />찜한상품</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-        <div id="header-item">
-          <div class="inner">
-            <div class="header-item">
-              <div class="header-top">
-                <h1 id="logo">
-                  <a href="#none">
-                    <img src="../images/logo.png" alt="logo" />
-                  </a>
-                </h1>
-                <div class="search-box">
-                  <form action="https://localhost:3000" method="get">
-                    <label for="search"></label>
-                    <input
-                      type="text"
-                      name="search"
-                      id="search"
-                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
-                    />
-                    <button>
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                  </form>
-                </div>
-                <div class="wrapper">
-                  <div class="popular-searchedWord">
-                    <ul></ul>
+      </div>
+    </header>
+
+    <div class="inner">
+      <div class="container">
+        <div class="sign-in">
+          <form action="http://localhost:5502">
+            <section class="sign-in-ttl">회원가입</section>
+            <section class="inputs">
+              <ul>
+                <li>
+                  <label for="email" class="label">*이메일</label>
+                  <input id="email" class="inputbox" type="email" name="email" placeholder="이메일을 입력해주세요." />
+                  <div id="error_email" class="error"></div>
+                </li>
+
+                <li>
+                  <label for="password1" class="label">*비밀번호</label>
+                  <input type="password" name="password1" id="password1" class="inputbox"
+                    placeholder="8-12자 내로 입력해주세요." />
+                  <div id="error_password1" class="error"></div>
+                </li>
+
+                <li>
+                  <label for="password2" class="label">*비밀번호 확인</label>
+                  <input type="password" name="password2" id="password2" class="password2"
+                    placeholder="비밀번호를 다시 입력해주세요." />
+                  <div id="error_password2" class="error"></div>
+                </li>
+
+                <li>
+                  <label for="name" class="label">*이름</label>
+                  <input id="name" class="inputbox" type="text" name="name" placeholder="이름을 입력해주세요." />
+                  <div id="error_writer" class="error"></div>
+                </li>
+
+                <li>
+                  <div class="phoneWrapper">
+                    <label for="phone" class="label">*휴대폰</label>
+                    <input type="text" name="firstNum" id="phone1" class="phoneNum" onkeyup="onchange()"
+                      onchange="changePhone1()" />
+                    -
+                    <input type="text" name="secondNum" id="phone2" class="phoneNum" onkeyup="onchange()"
+                      onchange="changePhone2()" />
+                    -
+                    <input type="text" name="lastNum" id="phone3" class="phoneNum" onkeyup="onchange()"
+                      onchange="changePhone3()" />
                   </div>
-                  <a href="#none" class="list-btn"
-                    ><i class="fa-solid fa-chevron-down"></i
-                  ></a>
-                  <ul class="list"></ul>
-                </div>
-              </div>
-              <div class="header-bottom">
-                <nav class="header-bottom-left">
-                  <div class="barmenu">
-                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
-                  </div>
-                  <ul class="gnb">
-                    <li><a href="#none">중고경매</a></li>
-                    <li><a href="#none">내 주변 매물</a></li>
-                    <li><a href="#none">사기조회</a></li>
-                    <li><a href="#none">시세조회</a></li>
-                    <li><a href="#none">이벤트</a></li>
-                    <li><a href="#none">제휴혜택</a></li>
-                  </ul>
-                </nav>
-                <div class="header-bottom-right">
-                  <ul class="lnb">
-                    <li>
-                      <a href="#none">
-                        <img src="../images/chat.png" alt="chat" />채팅하기</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#none">
-                        <img src="../images/sell.png" alt="sell" />판매하기</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#none">
-                        <img src="../images/heart.png" alt="heart" />찜한상품</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+                </li>
 
-      <div class="inner">
-        <div class="container">
-          <div class="sign-in">
-            <form action="http://localhost:5502">
-              <section class="sign-in-ttl">회원가입</section>
-              <section class="inputs">
-                <ul>
-                  <li>
-                    <label for="email" class="label">*이메일</label>
-                    <input
-                      id="email"
-                      class="inputbox"
-                      type="email"
-                      name="email"
-                      placeholder="이메일을 입력해주세요."
-                    />
-                    <div id="error_email" class="error"></div>
-                  </li>
-
-                  <li>
-                    <label for="password1" class="label">*비밀번호</label>
-                    <input
-                      type="password"
-                      name="password1"
-                      id="password1"
-                      class="inputbox"
-                      placeholder="비밀번호를 입력해주세요."
-                    />
-                    <div id="error_password1" class="error"></div>
-                  </li>
-
-                  <li>
-                    <label for="password2" class="label">*비밀번호 확인</label>
-                    <input
-                      type="password"
-                      name="password2"
-                      id="password2"
-                      class="password2"
-                      placeholder="비밀번호를 다시 입력해주세요."
-                    />
-                    <div id="error_password2" class="error"></div>
-                  </li>
-
-                  <li>
-                    <label for="name" class="label">*이름</label>
-                    <input
-                      id="name"
-                      class="inputbox"
-                      type="text"
-                      name="name"
-                      placeholder="이름을 입력해주세요."
-                    />
-                    <div id="error_writer" class="error"></div>
-                  </li>
-
-                  <li>
-                    <div class="phoneWrapper">
-                      <label for="phone" class="label">*휴대폰</label>
-                      <input
-                        type="text"
-                        name="firstNum"
-                        id="phone1"
-                        class="phoneNum"
-                        onkeyup="onchange()"
-                        onchange="changePhone1()"
-                      />
-                      -
-                      <input
-                        type="text"
-                        name="secondNum"
-                        id="phone2"
-                        class="phoneNum"
-                        onkeyup="onchange()"
-                        onchange="changePhone2()"
-                      />
-                      -
-                      <input
-                        type="text"
-                        name="lastNum"
-                        id="phone3"
-                        class="phoneNum"
-                        onkeyup="onchange()"
-                        onchange="changePhone3()"
-                      />
-                    </div>
-                  </li>
+                <li>
 
                   <div class="token-wrapper">
                     <div id="token">000000</div>
                     <button id="token-button" disabled>인증번호 전송</button>
                   </div>
+                </li>
+
+                <li>
 
                   <div class="token-wrapper">
                     <div id="token-timer">3:00</div>
@@ -201,8 +158,11 @@
                       인증완료
                     </button>
                   </div>
+                </li>
 
+                <li>
                   <div class="location-wrapper">
+                    <label for="location" class="label">지역</label>
                     <select name="location" id="location">
                       <option selected disabled>지역을 선택하세요.</option>
                       <option>서울</option>
@@ -215,87 +175,82 @@
                     </select>
                   </div>
                   <div id="error_location" class="error"></div>
+                </li>
 
+                <li>
                   <div class="gender-wrapper">
+                    <label for="gender-woman" class="label">성별</label>
                     <div class="gender">
-                      <label for="gender-woman"
-                        ><input
-                          type="radio"
-                          name="gender"
-                          id="gender-woman"
-                          class="gender-radio"
-                        />여성</label
-                      >
+                      <label for="gender-woman"><input type="radio" name="gender" id="gender-woman"
+                          class="gender-radio" />여성</label>
                     </div>
                     <div class="gender">
                       <label for="gender-man">
-                        <input
-                          type="radio"
-                          name="gender"
-                          id="gender-man"
-                          class="gender-radio"
-                        />남성
+                        <input type="radio" name="gender" id="gender-man" class="gender-radio" />남성
                       </label>
                     </div>
                   </div>
                   <div id="error_gender" class="error"></div>
-                </ul>
-              </section>
-              <section class="sign-in-footer">
-                <button id="signup-button" disabled>가입하기</button>
-              </section>
-            </form>
-          </div>
+                </li>
+
+              </ul>
+            </section>
+            <section class="sign-in-footer">
+              <button id="signup-button" disabled>가입하기</button>
+            </section>
+          </form>
         </div>
       </div>
-
-      <footer>
-        <div class="inner">
-          <section class="footer-upper">
-            <div class="footer-upper-info">
-              <div class="footer-company-guide">
-                <ul>
-                  <li>이용약관</li>
-                  <li>개인정보처리방침</li>
-                  <li>분쟁처리절차</li>
-                  <li>청소년보호정책</li>
-                  <li>사업자정보확인</li>
-                  <li>게시글 수집 및 이용 안내</li>
-                </ul>
-              </div>
-              <address class="footer-company-info">
-                <ul>
-                  <li><b>(주)중고나라 사업자 정보</b></li>
-                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
-                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
-                  <li>사업자 등록번호: 215-87-87482</li>
-                  <li>메일: joongna@joonggonara.co.kr</li>
-                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
-                </ul>
-              </address>
-            </div>
-            <div class="footer-upper-ctg">
-              카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
-            </div>
-          </section>
-          <section class="footer-lower">
-            <div class="footer-lower-desc">
-              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
-              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
-              판매회원과<br />
-              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
-              책임도 부담하지 않습니다.
-            </div>
-            <div class="footer-lower-logo">
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-solid fa-mug-saucer"></i>
-              <i class="fa-brands fa-neos"></i>
-              <i class="fa-solid fa-blog"></i>
-            </div>
-          </section>
-        </div>
-      </footer>
     </div>
-  </body>
+
+    <footer>
+      <div class="inner">
+        <section class="footer-upper">
+          <div class="footer-upper-info">
+            <div class="footer-company-guide">
+              <ul>
+                <li>이용약관</li>
+                <li>개인정보처리방침</li>
+                <li>분쟁처리절차</li>
+                <li>청소년보호정책</li>
+                <li>사업자정보확인</li>
+                <li>게시글 수집 및 이용 안내</li>
+              </ul>
+            </div>
+            <address class="footer-company-info">
+              <ul>
+                <li><b>(주)중고나라 사업자 정보</b></li>
+                <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                <li>사업자 등록번호: 215-87-87482</li>
+                <li>메일: joongna@joonggonara.co.kr</li>
+                <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+              </ul>
+            </address>
+          </div>
+          <div class="footer-upper-ctg">
+            카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
+          </div>
+        </section>
+        <section class="footer-lower">
+          <div class="footer-lower-desc">
+            "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+            (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+            판매회원과<br />
+            구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+            책임도 부담하지 않습니다.
+          </div>
+          <div class="footer-lower-logo">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-solid fa-mug-saucer"></i>
+            <i class="fa-brands fa-neos"></i>
+            <i class="fa-solid fa-blog"></i>
+          </div>
+        </section>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>

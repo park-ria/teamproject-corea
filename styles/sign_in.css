@@ -513,10 +513,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   border: 1px solid #eee;
   border-radius: 10px;
 }
-.container .sign-in form .inputs ul .token-wrapper {
+.container .sign-in form .inputs ul li .token-wrapper {
   width: 90%;
   height: 50px;
-  border-bottom: 2.5px solid #eee;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -524,19 +523,19 @@ footer .inner .footer-lower .footer-lower-logo i {
   padding-bottom: 10px;
   gap: 20px;
 }
-.container .sign-in form .inputs ul .token-wrapper #token-button {
+.container .sign-in form .inputs ul li .token-wrapper #token-button {
   width: 100px;
   height: 40px;
   border: 1px solid darkgray;
   border-radius: 10px;
 }
-.container .sign-in form .inputs ul .token-wrapper #token-timer-confirmBtn {
+.container .sign-in form .inputs ul li .token-wrapper #token-timer-confirmBtn {
   width: 100px;
   height: 40px;
   border: 1px solid darkgray;
   border-radius: 10px;
 }
-.container .sign-in form .inputs ul .location-wrapper #location {
+.container .sign-in form .inputs ul li .location-wrapper #location {
   width: 300px;
   height: 40px;
   border: 1px solid darkgray;
@@ -544,14 +543,17 @@ footer .inner .footer-lower .footer-lower-logo i {
   font-size: 1.5rem;
   padding: 0 20px;
 }
-.container .sign-in form .inputs ul .gender-wrapper {
+.container .sign-in form .inputs ul li .gender-wrapper {
   display: flex;
-  gap: 50px;
-  font-size: 1.7rem;
+  gap: 30px;
 }
-.container .sign-in form .inputs ul .gender-wrapper .gender label {
-  display: flex;
-  gap: 10px;
+.container .sign-in form .inputs ul li .gender-wrapper #gender-woman {
+  width: 13px;
+  height: 13px;
+}
+.container .sign-in form .inputs ul li .gender-wrapper #gender-man {
+  width: 13px;
+  height: 13px;
 }
 .container .sign-in form .sign-in-footer {
   width: 90%;
@@ -568,10 +570,4 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   border: 1px solid darkgray;
   border-radius: 10px;
-}
-
-@media screen and (max-width: 850px) {
-  .sign-in {
-    width: 100%;
-  }
 }

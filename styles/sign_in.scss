@@ -11,14 +11,17 @@ $bg-main-color: #0dcc5a;
   height: 100vh;
   display: flex;
   justify-content: center;
+
   .sign-in {
     width: 80%;
     padding: 50px;
+
     form {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .sign-in-ttl {
         width: 90%;
         height: 10vh;
@@ -29,36 +32,43 @@ $bg-main-color: #0dcc5a;
         align-items: center;
         border-bottom: 1px solid #000;
       }
+
       .inputs {
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
         padding-top: 50px;
+
         ul {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: 20px;
+
           li {
             width: 90%;
             height: 50px;
             border-bottom: 2.5px solid $font-light;
             font-size: 1.7rem;
             padding-left: 20px;
+
             .label {
               display: inline-block;
               width: 150px;
             }
+
             input {
               width: 500px;
               height: 30px;
               font-size: 1.5rem;
             }
+
             .phoneWrapper {
               display: flex;
               gap: 20px;
+
               input {
                 width: 100px;
                 height: 35px;
@@ -66,59 +76,70 @@ $bg-main-color: #0dcc5a;
                 border-radius: 10px;
               }
             }
-          }
-          .token-wrapper {
-            width: 90%;
-            height: 50px;
-            border-bottom: 2.5px solid $font-light;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-            padding-right: 50px;
-            padding-bottom: 10px;
-            gap: 20px;
-            #token-button {
-              width: 100px;
-              height: 40px;
-              border: 1px solid $color-border;
-              border-radius: 10px;
-            }
-            #token-timer-confirmBtn {
-              width: 100px;
-              height: 40px;
-              border: 1px solid $color-border;
-              border-radius: 10px;
-            }
-          }
 
-          .location-wrapper {
-            #location {
-              width: 300px;
-              height: 40px;
-              border: 1px solid $color-border;
-              border-radius: 10px;
-              font-size: 1.5rem;
-              padding: 0 20px;
-            }
-          }
-
-          .gender-wrapper {
-            display: flex;
-            gap: 50px;
-            font-size: 1.7rem;
-            .gender label {
+            .token-wrapper {
+              width: 90%;
+              height: 50px;
               display: flex;
-              gap: 10px;
+              justify-content: right;
+              align-items: center;
+              padding-right: 50px;
+              padding-bottom: 10px;
+              gap: 20px;
+
+              #token-button {
+                width: 100px;
+                height: 40px;
+                border: 1px solid $color-border;
+                border-radius: 10px;
+              }
+
+              #token-timer-confirmBtn {
+                width: 100px;
+                height: 40px;
+                border: 1px solid $color-border;
+                border-radius: 10px;
+              }
+            }
+
+            .location-wrapper {
+
+              #location {
+                width: 300px;
+                height: 40px;
+                border: 1px solid $color-border;
+                border-radius: 10px;
+                font-size: 1.5rem;
+                padding: 0 20px;
+              }
+            }
+
+            .gender-wrapper {
+              display: flex;
+              gap: 30px;
+
+              #gender-woman {
+                width: 13px;
+                height: 13px;
+              }
+
+              #gender-man {
+                width: 13px;
+                height: 13px;
+              }
             }
           }
+
         }
       }
+
       .sign-in-footer {
         width: 90%;
         display: flex;
         justify-content: center;
         padding: 20px;
         border-top: 1px solid $font-light;
+
         #signup-button {
           width: 300px;
           height: 40px;
@@ -130,11 +151,5 @@ $bg-main-color: #0dcc5a;
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .sign-in {
-    width: 100%;
   }
 }
