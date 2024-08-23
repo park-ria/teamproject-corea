@@ -530,7 +530,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .wish-items-content .wish-items-content-upper .wish-items-delete-selection #deleteSeletionButton {
   border: 1px solid #111;
-  border-radius: 2px;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   transition: all 0.3s;

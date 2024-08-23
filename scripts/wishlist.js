@@ -343,7 +343,7 @@ const delWishItemByHeart = (target) => {
   wishItemArr = wishItemArr.filter((item) => item !== productId);
   saveWishItem();
   target.remove();
-  buttonEvent(products);
+  wishItemChkEvnt();
 };
 
 // 로컬스토리지 추가
