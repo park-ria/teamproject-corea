@@ -455,3 +455,4 @@ closeItems.forEach((item) => {
     closeItems[1].classList.remove("active");
   });
 });
+

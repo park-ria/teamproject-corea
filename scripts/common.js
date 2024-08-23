@@ -22,7 +22,7 @@ listBtn.addEventListener("click", () => {
 
 // list값 추가
 const list = document.querySelector(".list");
-const listArray = [
+const listArray1 = [
   "닌텐도",
   "아이폰",
   "화장품",
@@ -32,29 +32,52 @@ const listArray = [
   "슬리퍼",
   "운동화",
 ];
+const listArray2 = [
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+];
 const popularList = document.querySelector(".popular-searchedWord ul");
 
-listArray.forEach((item, index) => {
+listArray1.forEach((item, index) => {
   const li = document.createElement("li");
   const aTag = document.createElement("a");
   const span = document.createElement("span");
+  const upDown = document.createElement("span");
 
   if (index === 0) {
     li.classList.add("current");
   } else if (index === 1) {
     li.classList.add("next");
-  } else if (index === listArray.length - 1) {
+  } else if (index === listArray1.length - 1) {
     li.classList.add("prev");
   }
 
-  span.innerText = `${index + 1}.`;
+  span.innerText = `${index + 1}`;
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px"
   aTag.innerText = item;
   aTag.prepend(span);
+
+  upDown.className = "up-down";
+  upDown.innerHTML = `<i class="fa-solid fa-chevron-up"></i>`;
+  upDown.style = "color: #0dcc5a; font-size: 14px"
   li.appendChild(aTag);
+  
   const li2 = li.cloneNode(true);
-  list.appendChild(li2);
   popularList.appendChild(li);
+  li2.appendChild(upDown);
+  list.appendChild(li2);
 });
+
+listArray2.forEach((ele, i) => {
+  document.querySelectorAll(".up-down")[i].innerHTML = `${ele}`;
+});
+
 
 // popular-searchedWord event
 const rollingCB = () => {
@@ -662,11 +685,61 @@ const categoryData = {
   ],
 };
 
-const barMenu = document.querySelector(".barmenu");
-barMenu.addEventListener("moseover", () => {});
+
+const main = document.querySelector(".main-category");
+const mobileMenu = document.querySelector(".menu-box");
+const mobileMain = document.querySelector(".categroy-main");
+
+// Making MobileCategory
+categoryData.data.forEach((mobileCategory, index) => {
+  mobileMain.innerHTML += 
+  `
+  <li>
+  <div class="category-img">
+  <div class="img-box">
+  <img src="../images/detail/mobile-category1.jpg" alt="mobile-category">
+          </div>
+          <span>${mobileCategory.main}</span>
+      </div>
+      <div class="category-sub">
+      <ul></ul>
+      </div>
+      </li>
+      `;
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+      
+  if(index % 5 !== 0) {
+    categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
+  } 
+
+  const mobileSub = document.querySelectorAll(".category-sub ul");
+
+  mobileCategory.sub.forEach((sub) => {
+      mobileSub[index].innerHTML += 
+      `
+      <li>- ${sub.title}</li>
+      `;
+  });
+});
+
+mobileMenu.addEventListener("click", () => {
+  mobileMain.classList.toggle("active")
+})
+
+const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
+mobileMainImgs.forEach((img) => {
+  img.addEventListener("click", function() {
+    mobileMainImgs.forEach((item) => {
+      item.nextElementSibling.classList.remove("active");
+    })
+    img.nextElementSibling.classList.add("active");
+  })
+})
+
+
 
 categoryData.data.forEach((mainCategory) => {
-  const main = document.querySelector(".main-category");
 
   const mainA = document.createElement("a");
   const mainLi = document.createElement("li");
@@ -701,4 +774,46 @@ categoryData.data.forEach((mainCategory) => {
   });
   mainLi.appendChild(subUl);
   // main.appendChild(mainLi);
+});
+
+
+// Barmenu mouseover 
+const barMenu = document.querySelector(".barmenu");
+
+barMenu.addEventListener("mouseover", () => {
+  main.classList.add("active");
+});
+
+main.addEventListener("mouseleave", () => {
+  main.classList.remove("active");
+});
+
+
+// Main-category mouseover
+const mains = document.querySelectorAll(".main-category > li");
+
+mains.forEach((main) => {
+  main.addEventListener("mouseover", (e) => {
+    e.target.querySelector(".sub-category1").classList.add("active");
+  });
+  
+  main.addEventListener("mouseleave", (e) => {
+      e.target.querySelector(".sub-category1").classList.remove("active");
+  });
+});
+
+
+// Sub-categroy mouseover
+const subs = document.querySelectorAll(".sub-category1 > li");
+
+subs.forEach((sub) => {
+  sub.addEventListener("mouseover", (e) => {
+    if (e.target.querySelector(".sub-category2 > li")) {
+      e.target.querySelector(".sub-category2").classList.add("active");
+    }
+  });
+
+  sub.addEventListener("mouseleave", (e) => {
+    e.target.querySelector(".sub-category2").classList.remove("active");
+  });
 });
