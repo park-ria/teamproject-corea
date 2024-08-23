@@ -166,8 +166,36 @@ $bg-main-color: #0dcc5a;
 }
 
 @media screen and (max-width: 850px){
-.sign-in{
-  width: 100%;
-  height: 100vh;
-}  
+.container{
+  .sign-in{
+    width: 100%;
+    padding: 10px;
+    form{
+      .sign-in-ttl{
+        width: 100%;
+      }
+      .inputs{
+        ul{
+          li{
+            .label{
+              font-size: 2.2rem;
+            }
+            input {
+              width: 60%;
+              font-size: 2.2rem;
+            }
+            .phoneWrapper{
+              display: flex;
+              flex-wrap: wrap;
+              input{
+                display: flex;
+                width: 50px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 }

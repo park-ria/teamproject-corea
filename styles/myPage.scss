@@ -757,43 +757,7 @@ $bg-main-color: #0dcc5a;
 
 /* mypage-items-content */
 .mypage-items-content {
-  .mypage-items-content-upper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid map-get($color, bg-light-gray);
-    .mypage-items-delete-selection {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      #deleteSeletionButton {
-        border: 1px solid map-get($color, main-font-color);
-        border-radius: 2px;
-        padding: 3px 5px;
-        cursor: pointer;
-      }
-    }
-    .mypage-items-sorting-wrapper {
-      .sorting-group {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        li {
-          font-size: map-get($fontSize, font-extra-small);
-          a {
-            font-size: map-get($fontSize, font-small);
-            color: map-get($color, bg-dark-gray);
-            &.active {
-              font-weight: 600;
-              color: map-get($color, main-font-color);
-            }
-          }
-        }
-      }
-    }
-  }
+ 
   .mypage-items-content-detail {
     width: 100%;
     .mypageItemList {

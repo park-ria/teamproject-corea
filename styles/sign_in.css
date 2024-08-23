@@ -583,8 +583,26 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 
 @media screen and (max-width: 850px) {
-  .sign-in {
+  .container .sign-in {
     width: 100%;
-    height: 100vh;
+    padding: 10px;
+  }
+  .container .sign-in form .sign-in-ttl {
+    width: 100%;
+  }
+  .container .sign-in form .inputs ul li .label {
+    font-size: 2.2rem;
+  }
+  .container .sign-in form .inputs ul li input {
+    width: 60%;
+    font-size: 2.2rem;
+  }
+  .container .sign-in form .inputs ul li .phoneWrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container .sign-in form .inputs ul li .phoneWrapper input {
+    display: flex;
+    width: 50px;
   }
 }

@@ -1185,41 +1185,6 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 
 /* mypage-items-content */
-.mypage-items-content .mypage-items-content-upper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #dcdcdc;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-delete-selection {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-delete-selection #deleteSeletionButton {
-  border: 1px solid #111;
-  border-radius: 2px;
-  padding: 3px 5px;
-  cursor: pointer;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-sorting-wrapper .sorting-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-sorting-wrapper .sorting-group li {
-  font-size: 1.2rem;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-sorting-wrapper .sorting-group li a {
-  font-size: 1.4rem;
-  color: #6d6d6d;
-}
-.mypage-items-content .mypage-items-content-upper .mypage-items-sorting-wrapper .sorting-group li a.active {
-  font-weight: 600;
-  color: #111;
-}
 .mypage-items-content .mypage-items-content-detail {
   width: 100%;
 }
