@@ -56,6 +56,7 @@ body {
   width: 100%;
   background: map-get($color, bg-light-color);
   z-index: 100;
+  
   #banner.ban {
     height: 33px;
     background: map-get($color, bg-dark-color);
@@ -181,8 +182,13 @@ body {
                   top: 24px;
                 }
   
-                a span {
-                  @include list-a;
+                a {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  span {
+                    @include list-a;
+                  } 
                 }
               }
             }
@@ -208,7 +214,8 @@ body {
             left: 0;
             width: 100%;
             height: 0;
-            padding: 20px;
+            padding: 20px 20px 0 20px;
+            border: 1px solid transparent;
             display: flex;
             flex-direction: column;
             text-align: left;
@@ -216,15 +223,41 @@ body {
             overflow: hidden;
 
             &.active {
-              height: 472px;
+              height: 476px;
               background: map-get($map: $color, $key: bg-light-color);
+              border-left: 1px solid #eee;
+              border-right: 1px solid #eee;
+              border-bottom: 1px solid #eee;
             }
 
             li {
-              padding: 15px 0;
+              padding: 20px 0;
+              border-bottom: 1px solid #eee;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              cursor: pointer;
+              transition: transform 0.3s;
 
-              a span {
-                @include list-a;
+              &:hover {
+                transform: scale(1.02);
+              }
+
+              a {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                span {
+                  @include list-a;
+                } 
+              }
+              & > span {
+                .fa-sort-down {
+                  color: map-get($map: $color, $key: bg-light-gray);
+                }
+                .fa-caret-up {
+                  color: map-get($map: $color, $key: bg-main-color);
+                }
               }
             }
           }
@@ -288,6 +321,87 @@ body {
   }
 }
 
+// header-category
+#header-category {
+  .inner {
+    position: relative;
+    .header-category {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 180px;
+      background: #555;
+
+      .main-category {
+        font-size: map-get($map: $fontSize, $key: font-small);
+        display: none;
+
+        &.active  {
+          display: block;
+        }
+
+          li {
+          padding: 15px 20px;
+          color: map-get($map: $color, $key: bg-light-color);
+          &:hover {
+            background: #ddd;
+            color: map-get($map: $color, $key: bg-dark-color);
+          }
+
+
+          .sub-category1 {
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: #666;
+            display: none;
+
+            &.active {
+              display: block;
+            }
+            
+            li {
+  
+              .sub-category2 {
+                position: absolute;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100%;
+                background: #888;
+                display: none;
+
+                &.active {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// bottom-mmenu
+#bottom-memu {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: map-get($map: $color, $key: bg-light-color);
+  z-index: 9999;
+  display: none;
+
+  .bottom-mmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 // mobile-menu
 #mobile-menu {
   display: none;
@@ -306,6 +420,78 @@ body {
       a {
         font-size: 20px;
       }
+    }
+  }
+}
+
+// mobile-category
+#mobile-category {
+    
+  h3 {
+    margin-left: 2%;
+    padding-left: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: map-get($map: $fontSize, $key: font-extra-large);
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+
+    li {
+      width: 20%;
+      height: 20%;
+      display: flex;
+      flex-direction: column;
+
+      .category-img {
+        width: 100%;
+        height: 100%;
+
+        .img-box {
+          width: 100%;
+          height: 100%;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        span {
+          display: block;
+          padding: 15px;
+          text-align: center;
+          font-size: map-get($map: $fontSize, $key: font-medium);
+          font-weight: 500;
+        }
+      }
+      .category-sub {
+        width: 500%;
+        display: none;
+        padding: 10px 15px;
+        background: #eee;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          
+
+          li {
+            width: 50%;
+            padding: 15px 0;
+            font-size: map-get($map: $fontSize, $key: font-large);
+          }
+        }
+        &.active{
+          display: block;
+        }
+        
+      }
+    }
+    &.active {
+      display: flex;
     }
   }
 }
