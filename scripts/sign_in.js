@@ -71,13 +71,13 @@ tokenButton.addEventListener("click", (e) => {
 tokenConfirmButton.addEventListener("click", function (e) {
   e.preventDefault();
   clearInterval(interval);
-  this.style = "background-color: #fff";
+  this.style = "background-color: #0dcc5a; color: #fff; cursor: pointer";
   this.setAttribute("disabled", "true");
   this.innerText = "인증완료";
   alert("인증이 완료되었습니다 :ㅇ");
 
   signupButton.style =
-    "background-color:#0dcc5a; color: #fff; border: 1px solid none; cursor:pointer"
+    "background-color:#0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer"
   signupButton.removeAttribute("disalbed");
 });
 
@@ -125,13 +125,11 @@ userPw2.addEventListener("change", () => {
   }
 });
 
-name.addEventListener("change", ()=>{
-  console.log(name.value);
-  if (name.value === null || name.value === ""){
-    document.querySelector("#error_writer").innerText="이름을 다시 입력해주세요.";
-    isValid = false;
-  }else{
-    document.querySelector("#error_writer").innerText="";
+name.addEventListener("change",()=>{
+  if(name.value == "".value){
+    document.querySelector("#error_writer").innerText ="이름을 입력해주세요";
+  isValid = false;
+  } else {
+    document.querySelector("#error_writer").innegitrText = "";
   }
 });
-
