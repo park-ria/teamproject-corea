@@ -25,13 +25,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 
 // mix-in
 @mixin sectionHeading {
@@ -100,7 +93,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     height: 40px;
     border-radius: 50%;
     background: map-get($color, bg-light-color);
-    box-shadow: 0 5px 5px rgba($color: #000, $alpha: 0.3);
+    box-shadow: 0 5px 10px rgba($color: #000, $alpha: 0.3);
     transition: all 0.3s;
     i {
       font-size: 2rem;
@@ -111,7 +104,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       transform: translateX(-50%);
       &:hover {
         transform: translate(-50%, 5%);
-        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
       }
     }
     &.slideNext {
@@ -119,7 +112,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       transform: translateX(50%);
       &:hover {
         transform: translate(50%, 5%);
-        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
       }
     }
   }
@@ -139,11 +132,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     &:hover {
       background: map-get($color, bg-main-color);
     }
-    // &.active {
-    //   width: 40px;
-    //   background: $home-gradient;
-    // }
-    &:first-child {
+    &.active {
       width: 40px;
       background: $home-gradient;
     }
@@ -153,18 +142,10 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 @mixin productDesc {
   .desc-title {
     font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
-    width: 100%;
-    height: 45px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
   }
   .desc-price {
     display: block;
-    margin: 10px 0 15px;
+    margin: 10px 0 20px;
     font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
     .current {
       font-size: 1.2rem;
@@ -178,11 +159,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
   .desc-info {
     font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: map-get($color, bg-dark-gray);
   }
 }
 
@@ -237,37 +213,34 @@ body {
 // main
 // main-slide
 #main-slide {
-  // display: none;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
   article {
     position: relative;
     height: 420px;
-    width: 1280px;
     .mainSlideWrapper {
       display: flex;
       justify-content: center;
       gap: 10px;
       position: absolute;
       top: 0;
-      //left: calc(50% - 1280px / 2 + 10px);
-      left: 0;
-      span {
+      left: calc(50% - 1280px / 2 - 1290px);
+      a {
         position: relative;
         width: 420px;
         height: 420px;
         display: flex;
         align-items: flex-end;
+        background: url("../images/main-slide02.png") center/cover no-repeat;
         &::before {
           content: "";
           position: absolute;
           width: 100%;
           height: 100%;
-          // background: rgba($color: #000, $alpha: 0.1);
-          // backdrop-filter: blur(10px);
+          background: rgba($color: #000, $alpha: 0.1);
+          backdrop-filter: blur(10px);
         }
         &.active::before {
           display: none;
@@ -275,24 +248,18 @@ body {
         .main-slide-desc {
           margin: 0 0 30px 30px;
           color: map-get($color, bg-light-color);
-          text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
-          // display: none;
           h2 {
-            height: 84px;
             margin-bottom: 10px;
             font: 400 3rem/1.4 "JalnanGothic";
             letter-spacing: 0;
           }
           p {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font: 400 1.8rem/1.4 "GmarketSansMedium";
+            font-size: 1.6rem;
+            i {
+              margin-left: 10px;
+            }
           }
         }
-      }
-      &.animated {
-        transition: all 0.5s ease-out;
       }
     }
     .main-slide-arrows {
@@ -304,12 +271,12 @@ body {
         background: rgba($color: #fff, $alpha: 0.6);
         transition: all 0.3s;
         &.mainSlidePrev {
-          left: 0;
+          left: calc(50% - 1280px / 2);
           transform: translate(0, -50%);
         }
         &.mainSlideNext {
-          right: 0;
-          transform: translate(0, -50%);
+          left: calc(50% + 1280px / 2);
+          transform: translate(-100%, -50%);
         }
         i {
           font-size: 2.8rem;
@@ -356,25 +323,12 @@ body {
         font-size: 1.6rem;
         color: map-get($color, bg-dark-gray);
       }
-      &.mainSlidePause {
-        display: block;
-        &.active {
-          display: none;
-        }
-      }
-      &.mainSlidePlay {
-        display: none;
-        &.active {
-          display: block;
-        }
-      }
     }
   }
 }
 
 // best-ranking
 #best-ranking {
-  // display: none;
   padding: 150px 0;
   .ranking-content {
     position: relative;
@@ -383,6 +337,9 @@ body {
     }
     .ranking-slide {
       @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
     }
     .slide-btns {
       @include slideBtns;
@@ -395,7 +352,6 @@ body {
 
 // auction
 #auction {
-  // display: none;
   .auction-banner {
     width: 100%;
     height: 400px;
@@ -419,24 +375,23 @@ body {
         font-family: "SBAggroB";
         letter-spacing: 0;
         color: map-get($color, bg-light-color);
-        text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
         z-index: 0;
         cursor: default;
-        margin-left: 50px;
         span {
           font-size: 2rem;
         }
         h2 {
           font-size: 5rem;
+          text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
         }
-        .timeEvent {
-          margin: 10px 0;
+        strong {
           font-size: 5rem;
           color: #fce44a;
+          text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
+          margin: 10px 0;
         }
         p {
           font-size: 2.4rem;
-          font-family: "GmarketSansMedium";
         }
         b {
           color: #fce44a;
@@ -459,7 +414,7 @@ body {
         left: 0%;
         width: 40%;
         height: 100%;
-        background: linear-gradient(to bottom, #005ac8, #044ba2);
+        background: #0051b1;
         transform: translateY(-50%) skew(-25deg);
       }
     }
@@ -486,7 +441,6 @@ body {
 
 // weekly-item
 #weekly-item {
-  // display: none;
   .weekly-item-content {
     padding: 150px 0;
     .weekly-item-heading {
@@ -513,7 +467,7 @@ body {
         }
       }
       .tab-content {
-        display: none;
+        display: flex;
         flex-wrap: wrap;
         gap: 35px;
         li {
@@ -528,6 +482,8 @@ body {
               width: 150px;
               height: 100%;
               border-radius: 10px;
+              background: url("../images/tab-content01.png") center/cover
+                no-repeat;
             }
             .tab-content-desc {
               width: calc(100% - 150px);
@@ -535,9 +491,6 @@ body {
               @include productDesc;
             }
           }
-        }
-        &.active {
-          display: flex;
         }
       }
     }
@@ -552,10 +505,9 @@ body {
       margin-bottom: 30px;
     }
     .event-slide {
-      overflow: hidden;
       ul {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         margin-bottom: 20px;
         a {
           display: inline-block;
@@ -563,7 +515,7 @@ body {
           height: 155px;
           border: 1px solid map-get($color, bg-light-gray);
           border-radius: 10px;
-          // background: url("../images/event-banner01.png") center/cover no-repeat;
+          background: url("../images/event-banner01.png") center/cover no-repeat;
         }
       }
       .slidePager {
@@ -610,15 +562,16 @@ body {
     .safe-service-desc {
       color: map-get($color, bg-light-color);
       h2 {
-        font: 400 4.5rem/1 "GmarketSansBold";
-        margin-bottom: 10px;
+        font-family: "GmarketSansBold";
+        font-size: 4.5rem;
       }
       span {
         display: block;
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin: 20px 0;
       }
       p {
-        font: 400 2.4rem/1.3 "GmarketSansMedium";
+        font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
         margin: 20px 0;
       }
       #modalBtn {
@@ -630,8 +583,7 @@ body {
         color: map-get($color, bg-light-color);
         transition: all 0.3s;
         &:hover {
-          // background: map-get($color, bg-sub-color);
-          background: #268cfb;
+          background: map-get($color, bg-sub-color);
         }
       }
     }
@@ -639,7 +591,7 @@ body {
       position: absolute;
       right: 0;
       bottom: 0;
-      width: 60%;
+      height: 220px;
       img {
         width: 100%;
         height: 100%;
@@ -658,10 +610,10 @@ body {
   width: 100%;
   height: 70vh;
   background: map-get($color, bg-light-color);
+  box-shadow: 0 0 200px rgba($color: #000, $alpha: 0.6);
   border-radius: 50px 50px 0 0;
   overflow: hidden;
-  opacity: 1;
-  z-index: 1;
+  opacity: 0;
   transition: all 0.5s;
   .modal-content {
     display: flex;
@@ -677,10 +629,12 @@ body {
     }
     .modal-left {
       justify-content: end;
-      background: #2d2d2d url("../images/safe-service-modal-point.png") 20% 20%/30%
-        no-repeat;
+      background: #2d2d2d;
+      position: relative;
       .modal-title {
         text-align: end;
+        position: relative;
+        z-index: 1;
         h2 {
           font: 400 3rem/1.3 "Noto Sans KR", sans-serif;
           margin-bottom: 30px;
@@ -699,6 +653,17 @@ body {
           color: map-get($color, bg-main-color);
           text-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.8);
           margin-top: 40px;
+        }
+      }
+      .modal-point {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        width: 30%;
+        img {
+          width: 100%;
+          height: 100%;
+          box-shadow: 0 0;
         }
       }
     }
@@ -724,7 +689,7 @@ body {
           .modal-desc {
             width: 300px;
             h5 {
-              font: 400 1.8rem/1 "GmarketSansMedium";
+              font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
               margin-bottom: 10px;
             }
             p {
@@ -752,7 +717,6 @@ body {
     color: map-get($color, bg-dark-gray);
     font-size: 2.6rem;
     transition: all 0.3s;
-    z-index: 1;
     &:hover {
       color: map-get($color, main-font-color);
     }
@@ -760,22 +724,6 @@ body {
   &.active {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-.modal-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: rgba($color: #000, $alpha: 0.2);
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  cursor: pointer;
-  transition: all 0.5s;
-  &.active {
-    opacity: 1;
-    height: 100vh;
   }
 }
 
@@ -832,13 +780,13 @@ body {
         .banner-desc {
           width: 45%;
           span {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
           }
           h2 {
-            font-size: 3.6rem;
+            font-size: 3.2rem;
           }
-          .timeEvent {
-            font-size: 4rem;
+          strong {
+            font-size: 3.2rem;
             margin: 10px 0;
           }
           p {
@@ -877,9 +825,9 @@ body {
       .weekly-item-tabmenu {
         .tab-content {
           justify-content: center;
-          gap: 10px;
+          gap: 20px;
           li {
-            width: calc((100% - 10px) / 2);
+            width: calc((100% - 20px) / 2);
           }
         }
       }
@@ -924,11 +872,9 @@ body {
   #safe-service {
     height: 350px;
     .safe-service-content {
-      align-items: flex-start;
       .safe-service-desc {
         position: relative;
         z-index: 1;
-        padding-top: 5%;
         h2 {
           font-size: 3rem;
         }
@@ -936,7 +882,8 @@ body {
           font-size: 1.4rem;
         }
         p {
-          font: 400 2.2rem/1.3 "GmarketSansMedium";
+          font: 600 2.2rem/1.3 "Noto Sans KR", sans-serif;
+          text-shadow: 0 0 10px map-get($color, main-font-color);
         }
         #modalBtn {
           padding: 12px 26px;
@@ -944,77 +891,14 @@ body {
           border-radius: 5px;
         }
       }
-    }
-  }
-
-  // safeserviceModal
-  #safeserviceModal {
-    .modal-content {
-      & > div {
-        padding: 30px;
-      }
-      .modal-left {
-        background: #2d2d2d url("../images/safe-service-modal-point.png") 5% 50%/25%
-          no-repeat;
-        .modal-title {
-          h2 {
-            font: 400 2.2rem/1.3 "Noto Sans KR", sans-serif;
-            margin-bottom: 20px;
-          }
-          p {
-            font-size: 1.8rem;
-            margin: 10px 0;
-          }
-          h6 {
-            font: 400 3.3rem/1.2 "GmarketSansBold";
-            margin-top: 20px;
-          }
-        }
-      }
-      .modal-right {
-        ul {
-          li {
-            gap: 10px;
-            .modal-img {
-              width: 140px;
-            }
-            .modal-desc {
-              width: 100%;
-            }
-            &:nth-child(2) {
-              .modal-img img {
-                width: 70%;
-              }
-            }
-          }
-        }
+      .safe-service-banner {
+        height: 180px;
       }
     }
   }
 }
 
 @media screen and (max-width: 840px) {
-  // best-ranking
-  #best-ranking {
-    .ranking-content {
-      .ranking-slide {
-        height: 396px;
-        .slideWrapper {
-          li {
-            a {
-              height: 366px;
-              .slide-desc {
-                .desc-title {
-                  height: 36px;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
   // auction
   #auction {
     .auction-banner {
@@ -1022,28 +906,15 @@ body {
       .banner-content {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
         padding-top: 5%;
         .banner-desc {
           width: 100%;
           align-items: center;
           text-align: center;
-          margin-left: 0;
-          span {
-            font-size: 2.2rem;
-          }
-          h2 {
-            font-size: 4rem;
-          }
-          .timeEvent {
-            font-size: 4.4rem;
-            margin: 10px 0;
-          }
-          p {
-            font-size: 2.2rem;
-          }
         }
         .banner-img {
-          width: 50%;
+          width: 60%;
           height: auto;
         }
         &::before {
@@ -1054,22 +925,6 @@ body {
       }
     }
     .auction-content {
-      .auction-slide {
-        height: 396px;
-        .slideWrapper {
-          li {
-            a {
-              height: 366px;
-              .slide-desc {
-                .desc-title {
-                  height: 36px;
-                }
-              }
-            }
-          }
-        }
-      }
-
       .slide-btns {
         @include slideBtns;
         button {
@@ -1094,12 +949,9 @@ body {
   #weekly-item {
     .weekly-item-content {
       .weekly-item-tabmenu {
-        .tab-menu {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
         .tab-content {
           justify-content: center;
+          gap: 20px;
           li {
             height: 100px;
             a {
@@ -1108,133 +960,10 @@ body {
               }
               .tab-content-desc {
                 width: calc(100% - 100px);
-                padding: 5px 10px;
-                .desc-title {
-                  height: 36px;
-                }
-                .desc-price {
-                  margin: 5px 0 10px;
-                }
               }
             }
           }
         }
-      }
-    }
-  }
-
-  // event
-  #event {
-    .event-content {
-      .event-slide {
-        ul {
-          a {
-            width: 300px;
-            height: 100px;
-          }
-        }
-      }
-    }
-  }
-
-  // recommended
-  #recommended {
-    .recommended-content {
-      .recommended-slide {
-        height: 396px;
-        .slideWrapper {
-          li {
-            a {
-              height: 366px;
-              .slide-desc {
-                .desc-title {
-                  height: 36px;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // safe-service
-  #safe-service {
-    height: auto;
-    .safe-service-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      .safe-service-desc {
-        padding-top: 50px;
-        text-align: center;
-        span {
-          margin: 10px 0;
-        }
-        p {
-          margin: 15px 0;
-        }
-      }
-      .safe-service-banner {
-        position: static;
-        width: 100%;
-      }
-    }
-  }
-
-  // safeserviceModal
-  #safeserviceModal {
-    height: 80vh;
-    .modal-content {
-      flex-direction: column;
-      & > div {
-        width: 100%;
-        height: 50%;
-        padding: 20px;
-      }
-      .modal-left {
-        justify-content: center;
-        .modal-title {
-          text-align: center;
-          h2 {
-            font: 400 2.4rem/1.3 "Noto Sans KR", sans-serif;
-            margin-bottom: 20px;
-          }
-          p {
-            font-size: 1.6rem;
-            margin: 10px 0;
-          }
-          h6 {
-            font: 400 3.2rem/1.2 "GmarketSansBold";
-            margin-top: 20px;
-          }
-        }
-      }
-      .modal-right {
-        justify-content: center;
-        ul {
-          li {
-            height: 90px;
-            margin: 5px 0;
-            .modal-img {
-              width: 120px;
-            }
-            .modal-desc {
-              width: 100%;
-            }
-            &:nth-child(2) {
-              .modal-img img {
-                width: 70%;
-              }
-            }
-          }
-        }
-      }
-    }
-    .closeBtn {
-      color: map-get($color, bg-light-color);
-      &:hover {
-        color: map-get($color, bg-main-color);
       }
     }
   }
@@ -1248,21 +977,9 @@ body {
         .tab-content {
           flex-direction: column;
           justify-content: center;
-          gap: 10px;
+          gap: 20px;
           li {
             width: 100%;
-            a {
-              justify-content: center;
-              .tab-content-img {
-                width: 100px;
-              }
-              .tab-content-desc {
-                width: calc(90% - 100px);
-                .desc-title {
-                  height: 36px;
-                }
-              }
-            }
           }
         }
       }
