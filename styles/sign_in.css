@@ -489,19 +489,25 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .container .sign-in form .inputs ul li {
   width: 90%;
-  height: 50px;
+  height: 80px;
   border-bottom: 2.5px solid #eee;
-  font-size: 1.7rem;
+  font-size: 2rem;
+  padding-top: 5px;
   padding-left: 20px;
 }
 .container .sign-in form .inputs ul li .label {
   display: inline-block;
   width: 150px;
 }
+.container .sign-in form .inputs ul li .error {
+  color: crimson;
+  padding-top: 10px;
+  font-size: 2rem;
+}
 .container .sign-in form .inputs ul li input {
   width: 500px;
   height: 30px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .container .sign-in form .inputs ul li .phoneWrapper {
   display: flex;
@@ -570,4 +576,26 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   border: 1px solid darkgray;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    width: 100%;
+    height: 150vh;
+  }
+  .container .sign-in {
+    width: 100%;
+    padding: 0;
+  }
+  .container .sign-in form .sign-in-ttl {
+    width: 100%;
+  }
+  .container .sign-in form .inputs ul li .label {
+    font-size: 2.5rem;
+  }
+  .container .sign-in form .inputs ul li input {
+    width: 50%;
+    height: 30px;
+    font-size: 2.2rem;
+  }
 }

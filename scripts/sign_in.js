@@ -63,7 +63,7 @@ tokenButton.addEventListener("click", (e) => {
   tokenNumber.innerText = randomNum;
   // console.log(tokenConfirmButton);
   tokenConfirmButton.style =
-    "background-color: #0068ff; color: #fff; cursor: pointer";
+    "background-color: #0dcc5a; color: #fff; cursor: pointer";
   tokenConfirmButton.removeAttribute("disabled", "true");
   getTokenTimer();
 });
@@ -77,7 +77,7 @@ tokenConfirmButton.addEventListener("click", function (e) {
   alert("인증이 완료되었습니다 :ㅇ");
 
   signupButton.style =
-    "background-color:#fff; color: #0068ff; border: 1px solid #0068ff; cursor:pointer"
+    "background-color:#0dcc5a; color: #fff; border: 1px solid none; cursor:pointer"
   signupButton.removeAttribute("disalbed");
 });
 
@@ -106,7 +106,7 @@ email.addEventListener("change", () => {
 });
 
 userPw1.addEventListener("change", () => {
-  if (userPw1.value.length() >= 8 && userPw1.value.length <= 12) {
+  if (userPw1.value.length >= 8 && userPw1.value.length <= 12) {
     document.querySelector("#error_password1").innerText = "";
     isValid = false;
   } else {
@@ -122,6 +122,16 @@ userPw2.addEventListener("change", () => {
     isValid = false;
   } else {
     document.querySelector("#error_password2").innerText = "";
+  }
+});
+
+name.addEventListener("change", ()=>{
+  console.log(name.value);
+  if (name.value === null || name.value === ""){
+    document.querySelector("#error_writer").innerText="이름을 다시 입력해주세요.";
+    isValid = false;
+  }else{
+    document.querySelector("#error_writer").innerText="";
   }
 });
 

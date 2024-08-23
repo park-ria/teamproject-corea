@@ -127,13 +127,13 @@ const addItemsInTheWishItemList = (product, index) => {
 };
 
 // 데이터 추가
-fetch("../db.json")
+/*fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
     jsonData.data.forEach((product, index) => {
       addItemsInTheWishItemList(product, index);
     });
-  });
+  });*/
 
 // 버튼 이벤트
 document.querySelectorAll(".wishItemViewMore").forEach((item) => {
