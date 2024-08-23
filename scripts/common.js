@@ -757,12 +757,12 @@ categoryData.data.forEach((mainCategory) => {
     subLi.appendChild(subA);
     lastUl.className = "sub-category2";
 
-    if (subCategory.list) {
+    if(subCategory.list) {
       subCategory.list.forEach((list) => {
         //console.log(list);
         const listA = document.createElement("a");
         const listLi = document.createElement("li");
-
+  
         listA.innerText = list;
         listLi.appendChild(listA);
         lastUl.appendChild(listLi);
@@ -772,7 +772,7 @@ categoryData.data.forEach((mainCategory) => {
     subUl.appendChild(subLi);
   });
   mainLi.appendChild(subUl);
-  // main.appendChild(mainLi);
+  main.appendChild(mainLi);
 });
 
 // Barmenu mouseover
