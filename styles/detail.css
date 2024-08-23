@@ -251,7 +251,6 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
   font-size: 1.6rem;
-  font-weight: 500;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
@@ -267,25 +266,6 @@ body {
 }
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
-}
-
-#mobile-menu {
-  display: none;
-  background: #fff;
-}
-#mobile-menu .mobile-menu {
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#mobile-menu .mobile-menu .menu-box {
-  display: flex;
-  gap: 15px;
-}
-#mobile-menu .mobile-menu .menu-box a {
-  font-size: 20px;
 }
 
 .container {
@@ -308,13 +288,13 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
+  padding: 50px 0 70px;
 }
 footer .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
-  height: 404px;
 }
 footer .inner .footer-upper {
   display: flex;
@@ -330,11 +310,53 @@ footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
   display: flex;
   gap: 20px;
 }
+footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
+  font-weight: 700;
+}
 footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-style: normal;
+}
+footer .inner .footer-upper .footer-upper-ctg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+footer .inner .footer-upper .footer-upper-ctg button {
+  position: relative;
+  font-size: 1.6rem;
+  color: #fff;
+}
+footer .inner .footer-upper .footer-upper-ctg button i {
+  color: #fff;
+  transition: all 0.3s;
+}
+footer .inner .footer-upper .footer-upper-ctg button.active i {
+  transform: translateY(-15%) rotate(180deg);
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list {
+  width: 580px;
+  max-height: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #6d6d6d;
+  background: #4a4a4a;
+  opacity: 0;
+  transition: all 0.3s;
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list li {
+  width: calc((100% - 50px) / 6);
+  text-align: center;
+}
+footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+  max-height: 119px;
+  opacity: 1;
 }
 footer .inner .footer-lower {
   display: flex;
@@ -358,15 +380,40 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
-    padding: 0 2%;
+    padding: 0 28px;
+  }
+  footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 10px;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list {
+    width: 340px;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 20px) / 3);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 215px;
+  }
+  .faq .accordion {
+    width: 100%;
   }
 }
 @media screen and (max-width: 840px) {
   html {
     font-size: 8px;
   }
+
   #mobile-menu {
     display: block;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
+  footer .inner {
+    gap: 10px;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -386,6 +433,18 @@ footer .inner .footer-lower .footer-lower-logo i {
     flex-wrap: wrap;
     justify-content: center;
   }
+  footer .inner .footer-upper .footer-upper-ctg {
+    align-items: center;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list {
+    width: 100%;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 40px) / 5);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 200px;
+  }
   footer .inner .footer-lower {
     display: flex;
     flex-direction: column-reverse;
@@ -396,9 +455,17 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
 }
 @media screen and (max-width: 450px) {
+
   #mobile-menu .mobile-menu a img {
     width: 115px;
     height: 22px;
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list li {
+    width: calc((100% - 20px) / 3);
+  }
+  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
+    max-height: 179px;
+
   }
 }
 /* mixin */

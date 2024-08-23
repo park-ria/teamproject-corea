@@ -41,11 +41,11 @@ fetch(joonggoInfo)
       const imgWrapper = document.querySelector(".img-wrapper");
 
       const moveSlide = (num) => {
-          const slideWidth = document.querySelector(".img-slide").offsetWidth;
-          imgWrapper.style.width = slideWidth * slideCount;
-          imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
-          currentIndex = num;
-          pagerActive();
+        const slideWidth = document.querySelector(".img-slide").offsetWidth;
+        imgWrapper.style.width = slideWidth * slideCount;
+        imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
+        currentIndex = num;
+        pagerActive();
       };
 
       const slideCount = document.querySelectorAll(".img-slide").length;
@@ -125,8 +125,6 @@ fetch(joonggoInfo)
           moveSlide(nextIndex);
         }
       });
-
-
 
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
@@ -257,7 +255,6 @@ fetch(joonggoInfo)
       const mapArea = document.querySelector(".map-area");
       mapArea.innerText = `${product.point === "" ? "-" : product.point}`;
 
-
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
       itemIfoDetail.innerHTML = `
@@ -307,7 +304,8 @@ fetch(joonggoInfo)
       let itemGap = 30;
 
       const listClientWidth = itemsWrapper.clientWidth;
-      const listScrollWidth = (itemWidth * itemsCount) + (itemGap * (itemsCount - 1));
+      const listScrollWidth =
+        itemWidth * itemsCount + itemGap * (itemsCount - 1);
 
       // 최초 터치 및 마우스 다운 지점
       let startX = 0;
@@ -339,45 +337,47 @@ fetch(joonggoInfo)
 
       const getTranslate = () => {
         // console.log(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
-        
-        return parseInt(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
+
+        return parseInt(
+          getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]
+        );
       };
 
       const setTranslateX = (x) => {
-        itemsWrapper.style.transform = `translateX(${x}px)`
-      }
+        itemsWrapper.style.transform = `translateX(${x}px)`;
+      };
 
       const onScrollMove = (e) => {
         nowX = getClientX(e);
-        setTranslateX(listX + nowX - startX)
+        setTranslateX(listX + nowX - startX);
       };
 
       const onScrollEnd = (e) => {
         endX = getClientX(e);
         listX = getTranslate();
-        if(listX > 0) {
+        if (listX > 0) {
           setTranslateX(0);
           itemsWrapper.style.transition = `all 0.1s ease`;
           listX = 0;
-        } else if(listX < listClientWidth - listScrollWidth) {
+        } else if (listX < listClientWidth - listScrollWidth) {
           setTranslateX(listClientWidth - listScrollWidth);
-          itemsWrapper.style.transition = `all 0.1s ease`
+          itemsWrapper.style.transition = `all 0.1s ease`;
           listX = listClientWidth - listScrollWidth;
         }
         window.removeEventListener("touchstart", onScrollStart);
         window.removeEventListener("mousedown", onScrollStart);
         window.removeEventListener("touchmove", onScrollMove);
         window.removeEventListener("mousemove", onScrollMove);
-        window.removeEventListener("touchend",onScrollEnd);
+        window.removeEventListener("touchend", onScrollEnd);
         window.removeEventListener("mouseup", onScrollEnd);
-      }
+      };
 
       const onScrollStart = (e) => {
         startX = getClientX(e);
 
         window.addEventListener("touchmove", onScrollMove);
         window.addEventListener("mousemove", onScrollMove);
-        window.addEventListener("touchend",onScrollEnd);
+        window.addEventListener("touchend", onScrollEnd);
         window.addEventListener("mouseup", onScrollEnd);
       };
 
@@ -388,20 +388,17 @@ fetch(joonggoInfo)
       const reviewsBox = document.querySelector(".reviews-box");
       const reviews = store.review.review_title;
 
-      if(reviews.length === 0) {
-        reviewsBox.innerHTML += 
-        `
+      if (reviews.length === 0) {
+        reviewsBox.innerHTML += `
         <li class="no-review">아직 구매자로부터 받은 후기가 없습니다.</li>
         `;
       } else {
-        for(let i = 0; i < reviews.length; i++) {
-          reviewsBox.innerHTML += 
-          `
+        for (let i = 0; i < reviews.length; i++) {
+          reviewsBox.innerHTML += `
           <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
           `;
         }
       }
-
     }
   });
 
