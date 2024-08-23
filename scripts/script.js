@@ -280,7 +280,7 @@ const productSlide = (section) => {
 
   // move pager
   pagers[0].classList.add("active");
-  const movePager = (index, pagers) => {
+  const movePager = (index) => {
     for (let pager of pagers) {
       pager.classList.remove("active");
     }
@@ -296,12 +296,12 @@ const productSlide = (section) => {
 
       this.classList.add("active");
       moveSlide(index);
-      console.log(index);
+      console.log(`index : ${index}`);
     });
   });
 
   const moveSlide = (num) => {
-    console.log(num);
+    console.log(`num : ${num}`);
     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
     currentIdx = num;
 
@@ -320,12 +320,12 @@ const productSlide = (section) => {
   prevBtn.addEventListener("click", () => {
     moveSlide(currentIdx - 1);
     active === 0 ? (active = pagers.length - 1) : active--;
-    movePager(active, pagers);
+    movePager(active);
   });
   nextBtn.addEventListener("click", () => {
     moveSlide(currentIdx + 1);
     active === pagers.length - 1 ? (active = 0) : active++;
-    movePager(active, pagers);
+    movePager(active);
     // console.log(active);
   });
 
