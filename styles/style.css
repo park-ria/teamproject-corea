@@ -1729,10 +1729,6 @@ body {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
     margin: 5px 0 10px;
   }
-  #event .event-content .event-slide ul a {
-    width: 300px;
-    height: 100px;
-  }
   #recommended .recommended-content .recommended-slide {
     height: 396px;
   }
@@ -1817,6 +1813,16 @@ body {
   }
 }
 @media screen and (max-width: 450px) {
+  #main-slide article {
+    width: 100%;
+  }
+  #main-slide article .mainSlideWrapper li {
+    width: 100%;
+  }
+  #main-slide article .mainSlideWrapper li span {
+    width: 100%;
+    height: 420px;
+  }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
     flex-direction: column;
     justify-content: center;

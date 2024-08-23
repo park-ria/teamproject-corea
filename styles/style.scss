@@ -1096,18 +1096,18 @@ body {
   }
 
   // event
-  #event {
-    .event-content {
-      .event-slide {
-        ul {
-          a {
-            width: 300px;
-            height: 100px;
-          }
-        }
-      }
-    }
-  }
+  // #event {
+  //   .event-content {
+  //     .event-slide {
+  //       ul {
+  //         a {
+  //           width: 300px;
+  //           height: 100px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   // recommended
   #recommended {
@@ -1213,16 +1213,39 @@ body {
 }
 
 @media screen and (max-width: 450px) {
-  // // best-ranking
-  // #best-ranking {
-  //   .ranking-content {
-  //     .ranking-slide {
-  //       .slideWrapper {
-  //         transform: translateX(-50%);
-  //       }
-  //     }
-  //   }
-  // }
+  // main-slide
+  #main-slide {
+    article {
+      width: 100%;
+      .mainSlideWrapper {
+        li {
+          width: 100%;
+          span {
+            width: 100%;
+            height: 420px;
+            // .main-slide-desc {
+            //   margin: 0 0 30px 30px;
+            //   color: map-get($color, bg-light-color);
+            //   text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
+            //   -webkit-user-drag: none;
+            //   h2 {
+            //     height: 84px;
+            //     margin-bottom: 10px;
+            //     font: 400 3rem/1.4 "JalnanGothic";
+            //     letter-spacing: 0;
+            //   }
+            //   p {
+            //     display: flex;
+            //     align-items: center;
+            //     gap: 5px;
+            //     font: 400 1.8rem/1.4 "GmarketSansMedium";
+            //   }
+            // }
+          }
+        }
+      }
+    }
+  }
 
   // weekly-item
   #weekly-item {

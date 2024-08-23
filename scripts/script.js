@@ -31,6 +31,14 @@ const addMainSlide = (slide, index) => {
   mainSlideUl.appendChild(liItem);
 };
 
+/*const media = matchMedia("screen and (max-width: 450px)");
+function mediaResize() {
+  if (window.innerWidth < 450) {
+    console.log("resized window");
+  }
+}
+window.addEventListener("resize", mediaResize);*/
+
 // mainSlide
 const mainSlide = () => {
   const pagers = document.querySelector(".mainSlidePager");
@@ -41,7 +49,10 @@ const mainSlide = () => {
   const playBtn = document.querySelector(".mainSlidePlay");
 
   const mainSlide = document.querySelectorAll(".mainSlideWrapper li");
-  const slideWidth = 420;
+  const slideWidth = window.matchMedia(`(max-width: 450px)`).matches
+    ? "100%"
+    : 420;
+  //console.log(slideWidth);
   const slideMargin = 10;
   const slideCount = mainSlide.length;
   const cloneCount = 4;
@@ -51,6 +62,7 @@ const mainSlide = () => {
   const updateWidth = () => {
     const currentSlides = document.querySelectorAll(".mainSlideWrapper li");
     const newSlideCount = currentSlides.length;
+
     const newWidth = `
     ${(slideWidth + slideMargin) * newSlideCount - slideMargin}px
     `;
@@ -206,13 +218,6 @@ const mainSlide = () => {
   });
 };
 
-// if (window.matchMedia(`(min-width: 450px)`).matches) {
-//   /* 뷰포트 너비가 1024 픽셀 이상 */
-// } else {
-//   /* 뷰포트 너비가 1024 픽셀 미만 */
-//   slidesPerView = 1;
-// }
-
 // add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
@@ -224,6 +229,20 @@ const addProduct = (product, ul) => {
   const aTag = document.createElement("a");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
+  const badge = document.createElement("span");
+  let badgeClassName = "";
+  switch (ul) {
+    case ".bestRankingUl":
+      badgeClassName = "badge badge-best";
+      break;
+    case ".auctionUl":
+      badgeClassName = "badge badge-auction";
+      break;
+    case ".recommendedUl":
+      badgeClassName = "badge badge-new";
+      break;
+  }
+  badge.className = badgeClassName;
 
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
@@ -250,6 +269,7 @@ const addProduct = (product, ul) => {
   slideDesc.innerHTML = desc;
   aTag.append(slideImg, slideDesc);
   liItem.appendChild(aTag);
+  liItem.appendChild(badge);
   ulItem.appendChild(liItem);
 
   // pager
@@ -276,8 +296,6 @@ const productSlide = (section) => {
   const slideMargin = 20;
 
   let currentIdx = 0;
-  let active = 0;
-
   // move pager
   pagers[0].classList.add("active");
   const movePager = (index) => {
@@ -295,17 +313,20 @@ const productSlide = (section) => {
       });
 
       this.classList.add("active");
+      currentIdx = index;
       moveSlide(index);
-      console.log(`index : ${index}`);
     });
   });
 
   const moveSlide = (num) => {
-    console.log(`num : ${num}`);
-    slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
     currentIdx = num;
+    const keyIndex = slideCount - slidesPerView + 1;
+    const showIndex = (keyIndex + num) % keyIndex;
+    movePager(showIndex);
 
-    if (currentIdx === slideCount - slidesPerView + 1) {
+    slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+
+    if (currentIdx === keyIndex) {
       slideUl.style.left = 0;
       currentIdx = 0;
     }
@@ -319,14 +340,9 @@ const productSlide = (section) => {
 
   prevBtn.addEventListener("click", () => {
     moveSlide(currentIdx - 1);
-    active === 0 ? (active = pagers.length - 1) : active--;
-    movePager(active);
   });
   nextBtn.addEventListener("click", () => {
     moveSlide(currentIdx + 1);
-    active === pagers.length - 1 ? (active = 0) : active++;
-    movePager(active);
-    // console.log(active);
   });
 
   // drag event
@@ -362,6 +378,8 @@ const productSlide = (section) => {
     }
   });
 };
+
+//const mobile = window.matchMedia("(max-width: 450px)").matches;
 
 fetch(joonggoInfo)
   .then((response) => response.json())
@@ -497,7 +515,9 @@ eventImgs.forEach((img) => {
 });
 
 const listClientWidth = eventSlideUl.clientWidth;
-const listScrollWidth = eventSlideUl.clientWidth + 1280;
+console.log(eventSlideUl.clientWidth);
+//const listScrollWidth = eventSlideUl.clientWidth + 1280;
+const listScrollWidth = eventSlideUl.clientWidth * 2;
 
 let startX = 0;
 let nowX = 0;
