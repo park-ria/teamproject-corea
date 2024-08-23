@@ -1,3 +1,5 @@
+@import "./reset.scss";
+
 // mixin
 @mixin list-a {
   display: inline-block;
@@ -5,7 +7,7 @@
 }
 
 // variables
-:root {
+html {
   font-size: 10px;
 }
 
@@ -13,6 +15,7 @@ $main-width: 1280px;
 
 $color: (
   bg-main-color: #0dcc5a,
+  bg-sub-color: #0095ee,
   bg-dark-color: #3a3a3a,
   bg-light-color: #fff,
   bg-dark-gray: #6d6d6d,
@@ -23,7 +26,7 @@ $color: (
 
 $fontSize: (
   font-extra-small: 1.2rem,
-  font-samll: 1.4rem,
+  font-small: 1.4rem,
   font-medium: 1.6rem,
   font-large: 1.8rem,
   font-extra-large: 2rem,
@@ -43,4 +46,461 @@ body {
   width: $main-width;
   height: 100%;
   margin: 0 auto;
+}
+
+// Header
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: map-get($color, bg-light-color);
+  z-index: 100;
+  #banner.ban {
+    height: 33px;
+    background: map-get($color, bg-dark-color);
+    opacity: 1;
+    transition: all 0.3s;
+
+    &.active {
+      background: map-get($map: $color, $key: bg-light-color);
+      opacity: 0;
+      height: 0;
+    }
+
+    .banner {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: map-get($map: $color, $key: font-light-color);
+      font-size: map-get($map: $fontSize, $key: font-extra-small);
+
+      .banner-left {
+        display: flex;
+        gap: 15px;
+
+        a {
+          display: flex;
+          gap: 5px;
+          span {
+            color: map-get($color, bg-light-color);
+          }
+        }
+      }
+
+      .banner-right {
+        display: flex;
+        gap: 20px;
+        a {
+          color: map-get($color, bg-light-color);
+        }
+      }
+    }
+  }
+
+  #header-item {
+    .header-item {
+      padding: 25px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .search-box {
+          form {
+            position: relative;
+            border: 1px solid map-get($color, bg-dark-gray);
+            border-radius: 50px;
+            input[type="text"] {
+              width: 550px;
+              height: 40px;
+              border-radius: 50px;
+              padding-left: 20px;
+              padding-right: 10px;
+
+              &::placeholder {
+                font-size: map-get($map: $fontSize, $key: font-extra-small);
+                color: map-get($map: $color, $key: font-dark-gray);
+              }
+            }
+
+            button {
+              position: absolute;
+              top: 50%;
+              right: 6px;
+              transform: translateY(-50%);
+              width: 30px;
+              height: 30px;
+              border-radius: 50px;
+              border: none;
+              background-color: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .wrapper {
+          position: relative;
+
+          .popular-searchedWord {
+            position: relative;
+            width: 193px;
+            height: 24px;
+            overflow: hidden;
+
+            li {
+              position: absolute;
+              top: -24px;
+              left: 0;
+              &.prev {
+                top: -24px;
+                transition: top 0.5s;
+              }
+              &.current {
+                top: 0;
+                transition: top 0.5s;
+              }
+              &.next {
+                top: 24px;
+              }
+
+              a span {
+                @include list-a;
+              }
+            }
+          }
+
+          .list-btn {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) rotate(0);
+            color: map-get($map: $color, $key: font-dark-gray);
+            transition: all 0.3s;
+
+            &.active {
+              transform: translateY(-50%) rotate(180deg);
+            }
+          }
+
+          .list {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: all 0.5s;
+            overflow: hidden;
+
+            &.active {
+              height: 350px;
+              background: map-get($map: $color, $key: bg-light-color);
+            }
+
+            li {
+              padding-top: 20px;
+
+              a span {
+                @include list-a;
+              }
+            }
+          }
+        }
+      }
+
+      .header-bottom {
+        display: flex;
+        justify-content: space-between;
+
+        .header-bottom-left {
+          display: flex;
+          gap: 40px;
+
+          .barmenu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 10px;
+            background: map-get($map: $color, $key: bg-main-color);
+            color: map-get($map: $color, $key: bg-light-color);
+            border-radius: 5px;
+            cursor: pointer;
+
+            i {
+              font-size: 24px;
+            }
+          }
+
+          .gnb {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            a {
+              font-size: 1.6rem;
+            }
+          }
+        }
+
+        .header-bottom-right {
+          display: flex;
+          align-items: center;
+          .lnb {
+            display: flex;
+            gap: 12px;
+
+            li a {
+              display: flex;
+              align-items: center;
+
+              img {
+                margin-right: 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Contents
+.container {
+  width: 100%;
+  margin-top: 185px;
+}
+
+// pay
+.pay {
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  background: map-get($color, bg-main-color);
+  border-radius: 3px;
+  font-size: map-get($fontSize, font-small);
+  color: map-get($color, bg-light-color);
+  letter-spacing: normal;
+  text-align: center;
+}
+
+// Footer
+footer {
+  background: #3a3a3a;
+  color: #fff;
+  padding: 50px 0 70px;
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    .footer-upper {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      .footer-upper-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .footer-company-guide ul {
+          display: flex;
+          gap: 20px;
+          a {
+            font-weight: 700;
+          }
+        }
+        .footer-company-info ul {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          font-style: normal;
+        }
+      }
+      .footer-upper-ctg {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+        button {
+          position: relative;
+          font-size: 1.6rem;
+          color: map-get($color, bg-light-color);
+          i {
+            color: map-get($color, bg-light-color);
+            transition: all 0.3s;
+          }
+          &.active {
+            i {
+              transform: translateY(-15%) rotate(180deg);
+            }
+          }
+        }
+        .category-list {
+          width: 580px;
+          max-height: 0px;
+          overflow: hidden;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 15px;
+          border: 1px solid map-get($color, bg-dark-gray);
+          background: #4a4a4a;
+          opacity: 0;
+          transition: all 0.3s;
+          li {
+            width: calc((100% - 50px) / 6);
+            text-align: center;
+          }
+          &.active {
+            max-height: 119px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .footer-lower {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      .footer-lower-logo {
+        width: 180px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        i {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+// responsive
+@media screen and (max-width: 1280px) {
+  // common
+  .inner {
+    width: 100%;
+    padding: 0 28px;
+  }
+
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-info {
+          .footer-company-guide ul {
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 10px;
+          }
+        }
+        .footer-upper-ctg {
+          .category-list {
+            width: 340px;
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 215px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // FAQ
+  .faq {
+    .accordion {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  // common
+  html {
+    font-size: 8px;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  // Footer
+  footer {
+    .inner {
+      gap: 10px;
+      .footer-upper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        gap: 20px;
+        .footer-upper-info {
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          .footer-company-guide ul {
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+        .footer-upper-ctg {
+          align-items: center;
+          .category-list {
+            width: 100%;
+            li {
+              width: calc((100% - 40px) / 5);
+            }
+            &.active {
+              max-height: 200px;
+            }
+          }
+        }
+      }
+      .footer-lower {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  // Footer
+  footer {
+    .inner {
+      .footer-upper {
+        .footer-upper-ctg {
+          .category-list {
+            li {
+              width: calc((100% - 20px) / 3);
+            }
+            &.active {
+              max-height: 179px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

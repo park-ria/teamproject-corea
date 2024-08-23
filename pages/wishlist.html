@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/dfc51b96a5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- custom css & js -->
+    <link rel="stylesheet" href="../styles/wishlist.css" />
+    <script defer src="../scripts/common.js"></script>
+    <script defer src="../scripts/wishlist.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <a class="appDownload" href="#none">
+                  <img src="../images/appicon.jpg" alt="appicon" />
+                  <span>앱 다운로드</span>
+                </a>
+                <a class="favorites" href="#none">
+                  <img src="../images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </a>
+              </div>
+              <div class="banner-right">
+                <a href="#none">로그인</a>
+                <a href="#none">회원가입</a>
+                <a href="#none">마이페이지</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="#none">
+                    <img src="../images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form action="https://localhost:3000" method="get">
+                    <label for="search"></label>
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                    />
+                    <button>
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="#none">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="#none">
+                        <img src="../images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="../images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="../images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="container">
+        <section class="wishlist">
+          <div class="inner">
+            <article class="wishlist-tabs">
+              <div class="wishlist-tab">
+                <a
+                  class="wishlistTabButton active"
+                  href="#"
+                  data-tab-name="wish-items"
+                >
+                  찜 <span class="wishlistTabCount wishItems"></span>
+                </a>
+                <a
+                  class="wishlistTabButton"
+                  href="#"
+                  data-tab-name="favorite-stores"
+                >
+                  관심 상점
+                  <span class="wishlistTabCount favoriteStores">5</span>
+                </a>
+                <a
+                  class="wishlistTabButton"
+                  href="#"
+                  data-tab-name="favorite-brands"
+                >
+                  관심 브랜드
+                  <span class="wishlistTabCount favoriteBrands">3</span>
+                </a>
+                <span></span>
+              </div>
+            </article>
+            <article class="wishlistContent wish-items-content active">
+              <div class="wish-items-content-upper">
+                <span class="wish-items-delete-selection">
+                  <input
+                    type="checkbox"
+                    name="allSelection"
+                    id="allSelection"
+                  />
+                  <button id="deleteSeletionButton">선택삭제</button>
+                </span>
+                <span class="wish-items-sorting-wrapper">
+                  <ul class="sorting-group">
+                    <li>
+                      <a href="#" class="active">최신순</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                      <a href="#">인기순</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                      <a href="#">저가순</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                      <a href="#">고가순</a>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+              <div class="wish-items-content-detail">
+                <ul class="wishItemList"></ul>
+                <div class="wishItemPagination">
+                  <a href="#" class="pagerButtons prev">&#60;</a>
+                  <ul class="pager">
+                    <li>
+                      <a href="#" class="pagerNumber active">1</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">2</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">3</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">4</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">5</a>
+                    </li>
+                  </ul>
+                  <a href="#" class="pagerButtons next">&#62;</a>
+                </div>
+              </div>
+            </article>
+            <article class="wishlistContent favorite-stores-content">
+              <div class="favoriteStoresGroup">
+                <ul class="favoriteStoresWrap"></ul>
+                <div class="favoriteStoresPagination">
+                  <a href="#" class="pagerButtons prev">&#60;</a>
+                  <ul class="pager">
+                    <li>
+                      <a href="#" class="pagerNumber active">1</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">2</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">3</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">4</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">5</a>
+                    </li>
+                  </ul>
+                  <a href="#" class="pagerButtons next">&#62;</a>
+                </div>
+              </div>
+            </article>
+            <article class="wishlistContent favorite-brands-content">
+              <div class="favoriteBrandsGroup">
+                <ul class="favoriteBrandsWrap"></ul>
+                <div class="favoriteBrandsPagination">
+                  <a href="#" class="pagerButtons prev">&#60;</a>
+                  <ul class="pager">
+                    <li>
+                      <a href="#" class="pagerNumber active">1</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">2</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">3</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">4</a>
+                    </li>
+                    <li>
+                      <a href="#" class="pagerNumber">5</a>
+                    </li>
+                  </ul>
+                  <a href="#" class="pagerButtons next">&#62;</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div class="inner">
+          <section class="footer-upper">
+            <div class="footer-upper-info">
+              <div class="footer-company-guide">
+                <ul>
+                  <li>이용약관</li>
+                  <li>개인정보처리방침</li>
+                  <li>분쟁처리절차</li>
+                  <li>청소년보호정책</li>
+                  <li>사업자정보확인</li>
+                  <li>게시글 수집 및 이용 안내</li>
+                </ul>
+              </div>
+              <address class="footer-company-info">
+                <ul>
+                  <li><b>(주)중고나라 사업자 정보</b></li>
+                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                  <li>사업자 등록번호: 215-87-87482</li>
+                  <li>메일: joongna@joonggonara.co.kr</li>
+                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+                </ul>
+              </address>
+            </div>
+            <div class="footer-upper-ctg">
+              카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
+            </div>
+          </section>
+          <section class="footer-lower">
+            <div class="footer-lower-desc">
+              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+              판매회원과<br />
+              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+              책임도 부담하지 않습니다.
+            </div>
+            <div class="footer-lower-logo">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-solid fa-mug-saucer"></i>
+              <i class="fa-brands fa-neos"></i>
+              <i class="fa-solid fa-blog"></i>
+            </div>
+          </section>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
