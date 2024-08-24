@@ -687,7 +687,7 @@ const categoryData = {
 
 
 const main = document.querySelector(".main-category");
-const mobileMenu = document.querySelector(".menu-box");
+const mobileMenu = document.querySelector(".menu-box a:last-child");
 const mobileMain = document.querySelector(".categroy-main");
 
 // Making MobileCategory
@@ -695,16 +695,16 @@ categoryData.data.forEach((mobileCategory, index) => {
   mobileMain.innerHTML += 
   `
   <li>
-  <div class="category-img">
-  <div class="img-box">
-  <img src="../images/detail/mobile-category1.jpg" alt="mobile-category">
-          </div>
-          <span>${mobileCategory.main}</span>
+    <div class="category-img">
+      <div class="img-box">
+        <img src="../images/detail/mobile-category${index + 1}.png" alt="mobile-category${index + 1}">
       </div>
-      <div class="category-sub">
+      <span>${mobileCategory.main}</span>
+    </div>
+    <div class="category-sub">
       <ul></ul>
-      </div>
-      </li>
+    </div>
+  </li>
       `;
 
   const categorySubs = document.querySelectorAll(".category-sub");
@@ -723,9 +723,21 @@ categoryData.data.forEach((mobileCategory, index) => {
   });
 });
 
-mobileMenu.addEventListener("click", () => {
-  mobileMain.classList.toggle("active")
+// click MobileMenu
+const mobileArea = document.querySelector("#mobile-category");
+
+mobileMenu.addEventListener("click", (e) => {
+  e.preventDefault()
+  mobileArea.classList.toggle("active");
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+  categorySubs.forEach((categorySub) => {
+    if(categorySub.classList.contains("active")) {
+      categorySub.classList.remove("active");
+    }
+  })
 })
+
 
 const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
 mobileMainImgs.forEach((img) => {
@@ -779,6 +791,7 @@ categoryData.data.forEach((mainCategory) => {
 
 // Barmenu mouseover 
 const barMenu = document.querySelector(".barmenu");
+
 
 barMenu.addEventListener("mouseover", () => {
   main.classList.add("active");

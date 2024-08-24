@@ -66,11 +66,11 @@
   font-size: map-get($map: $fontSize, $key: font-large);
   cursor: pointer;
 
-  &:first-child {
-    left: 0;
+  &.img-prev {
+    left: 1%;
   }
-  &:last-child {
-    right: 0;
+  &.img-next {
+    right: 1%;
   }
   &:hover {
     background: rgba($color: #fff, $alpha: 0.7);
@@ -149,6 +149,11 @@ body {
         gap: 20px;
         a {
           color: map-get($color, bg-light-color);
+          transition: color 0.3s;
+
+          &:hover {
+            color: map-get($map: $color, $key: bg-main-color);
+          }
         }
       }
     }
@@ -156,6 +161,7 @@ body {
 
   #header-item {
     .header-item {
+      width: 1280px;
       padding: 25px 0;
       display: flex;
       flex-direction: column;
@@ -180,7 +186,7 @@ body {
 
               &::placeholder {
                 font-size: map-get($map: $fontSize, $key: font-extra-small);
-                color: map-get($map: $color, $key: font-dark-gray);
+                color: #bbb;
               }
             }
 
@@ -193,9 +199,14 @@ body {
               height: 30px;
               border-radius: 50px;
               border: none;
-              background-color: map-get($map: $color, $key: bg-main-color);
+              background: map-get($map: $color, $key: bar-linear-gradient);
               color: map-get($map: $color, $key: bg-light-color);
               cursor: pointer;
+              transition: box-shadow 0.3s;
+
+              &:hover {
+                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
+              }
             }
           }
         }
@@ -330,12 +341,17 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             padding: 8px 10px;
-            background: map-get($map: $color, $key: bg-main-color);
+            background: map-get($map: $color, $key: bar-linear-gradient);
             color: map-get($map: $color, $key: bg-light-color);
             border-radius: 5px;
             cursor: pointer;
+            transition: box-shadow 0.3s;
+
+            &:hover {
+              box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.3);
+            }
 
             i {
               font-size: 24px;
@@ -349,6 +365,11 @@ body {
             a {
               font-size: 1.6rem;
               font-weight: 500;
+              transition: color 0.3s;
+
+              &:hover {
+                color: map-get($map: $color, $key: bg-main-color);
+              }
             }
           }
         }
@@ -366,6 +387,11 @@ body {
 
               img {
                 margin-right: 4px;
+                transition: filter 0.3s;
+              }
+
+              &:hover img {
+                filter: invert(3) ;
               }
             }
           }
@@ -375,68 +401,68 @@ body {
   }
 }
 
-// #header-category {
-//   .inner {
-//     position: relative;
-//     .header-category {
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       width: 180px;
-//       background: #555;
+#header-category {
+  .inner {
+    position: relative;
+    .header-category {
+      position: absolute;
+      top: -25px;
+      left: 24px;
+      width: 180px;
+      background: #555;
 
-//       .main-category {
-//         font-size: map-get($map: $fontSize, $key: font-small);
-//         display: none;
+      .main-category {
+        font-size: map-get($map: $fontSize, $key: font-small);
+        display: none;
 
-//         &.active  {
-//           display: block;
-//         }
+        &.active  {
+          display: block;
+        }
 
-//           li {
-//           padding: 15px 20px;
-//           color: map-get($map: $color, $key: bg-light-color);
-//           &:hover {
-//             background: #ddd;
-//             color: map-get($map: $color, $key: bg-dark-color);
-//           }
+          li {
+          padding: 15px 20px;
+          color: map-get($map: $color, $key: bg-light-color);
+          &:hover {
+            background: #ddd;
+            color: map-get($map: $color, $key: bg-dark-color);
+          }
 
 
-//           .sub-category1 {
-//             position: absolute;
-//             top: 0;
-//             right: -100%;
-//             width: 100%;
-//             height: 100%;
-//             background: #666;
-//             display: none;
+          .sub-category1 {
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: #666;
+            display: none;
 
-//             &.active {
-//               display: block;
-//             }
+            &.active {
+              display: block;
+            }
             
-//             li {
+            li {
   
-//               .sub-category2 {
-//                 position: absolute;
-//                 top: 0;
-//                 right: -100%;
-//                 width: 100%;
-//                 height: 100%;
-//                 background: #888;
-//                 display: none;
+              .sub-category2 {
+                position: absolute;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100%;
+                background: #888;
+                display: none;
 
-//                 &.active {
-//                   display: block;
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+                &.active {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 // #mobile-category {
     
@@ -602,6 +628,17 @@ body {
             i {
               color: map-get($map: $color, $key: bg-dark-gray);
               font-size: map-get($map: $fontSize, $key: font-extra-large);
+              transition: all 0.3s;
+            }
+
+            &:nth-child(1):hover i,
+            &:nth-child(4):hover i {
+              color: crimson;
+            }
+
+            &:nth-child(2):hover i,
+            &:nth-child(3):hover i {
+              color: map-get($map: $color, $key: bg-main-color);
             }
 
             &:last-child {
@@ -648,7 +685,7 @@ body {
           }
 
           .heading-timeinfo {
-            font-size: map-get($map: $fontSize, $key: font-extra-small);
+            font-size: map-get($map: $fontSize, $key: font-small);
           }
         }
 
@@ -774,7 +811,7 @@ body {
             }
 
             span:nth-child(1) {
-              font-size: 11px;
+              font-size: 12px;
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(2) {
@@ -869,7 +906,7 @@ body {
               width: 100%;
               font-size: map-get($map: $fontSize, $key: font-samll);
               text-align: justify;
-              line-height: 50px;
+              line-height: 40px;
               margin-bottom: 70px;
             }
 
@@ -1115,6 +1152,7 @@ body {
     }
 
     .event-slider {
+      width: 1280px;
       padding: 30px 0;
 
       .slide-wrapper {
@@ -1353,6 +1391,7 @@ body {
       .event-slider {
         .slide-wrapper {
           .slide {
+            width: 790px;
             gap: 3%;
 
             & div:last-child {
@@ -1597,6 +1636,7 @@ body {
       .event-slider {
         .slide-wrapper {
           .slide {
+            width: 415px;
             display: block;
             & div {
               height: 100%;

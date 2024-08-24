@@ -376,23 +376,25 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
-  gap: 15px;
+  gap: 25px;
 }
 #mobile-menu .mobile-menu .menu-box a {
-  font-size: 20px;
+  font-size: 25px;
 }
 
+#mobile-category {
+  background: #fff;
+  height: 100vh;
+  display: none;
+}
 #mobile-category h3 {
-  margin-left: 2%;
-  padding-left: 10px;
   padding: 10px;
-  margin-bottom: 15px;
+  margin: 2% 0 15px 2%;
   font-size: 2rem;
 }
 #mobile-category ul {
-  display: flex;
-  flex-wrap: wrap;
   display: none;
+  flex-wrap: wrap;
 }
 #mobile-category ul li {
   width: 20%;
@@ -435,12 +437,22 @@ body {
   width: 50%;
   padding: 15px 0;
   font-size: 1.8rem;
+  transition: -webkit-text-decoration 0.3s;
+  transition: text-decoration 0.3s;
+  transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+}
+#mobile-category ul li .category-sub ul li:hover {
+  text-decoration: underline;
 }
 #mobile-category ul li .category-sub.active {
   display: block;
 }
-#mobile-category ul.active {
-  display: flex;
+#mobile-category.active {
+  display: block;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  z-index: 3;
 }
 
 .container {
@@ -522,6 +534,17 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   #mobile-menu {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  #mobile-category {
+    display: none;
+  }
+  #mobile-category ul {
+    display: flex;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -554,5 +577,29 @@ footer .inner .footer-lower .footer-lower-logo i {
   #mobile-menu .mobile-menu a img {
     width: 115px;
     height: 22px;
+  }
+  #mobile-menu .mobile-menu .menu-box {
+    gap: 20px;
+  }
+  #mobile-menu .mobile-menu .menu-box a {
+    font-size: 18px;
+  }
+  #mobile-category h3 {
+    font-size: 1.6rem;
+  }
+  #mobile-category ul li .category-img span {
+    width: 78px;
+    padding: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 1.4rem;
+  }
+  #mobile-category ul li .category-sub ul li {
+    padding: 12px 0;
+    font-size: 1.6rem;
+  }
+  #mobile-category.active {
+    top: 37px;
   }
 }
