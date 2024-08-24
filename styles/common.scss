@@ -182,8 +182,13 @@ body {
                   top: 24px;
                 }
 
-                a span {
-                  @include list-a;
+                a {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  span {
+                    @include list-a;
+                  }
                 }
               }
             }
@@ -568,7 +573,11 @@ footer {
     font-size: 8px;
   }
 
-  // Footer
+  #mobile-menu {
+    display: block;
+  }
+
+  // footer
   footer {
     .inner {
       .footer-upper {
@@ -602,19 +611,12 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-  // Footer
-  footer {
-    .inner {
-      .footer-upper {
-        .footer-upper-ctg {
-          .category-list {
-            li {
-              width: calc((100% - 20px) / 3);
-            }
-            &.active {
-              max-height: 179px;
-            }
-          }
+  #mobile-menu {
+    .mobile-menu {
+      a {
+        img {
+          width: 115px;
+          height: 22px;
         }
       }
     }
