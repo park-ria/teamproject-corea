@@ -56,7 +56,7 @@ body {
   width: 100%;
   background: map-get($color, bg-light-color);
   z-index: 100;
-  
+
   #banner.ban {
     height: 33px;
     background: map-get($color, bg-dark-color);
@@ -181,18 +181,17 @@ body {
                 &.next {
                   top: 24px;
                 }
-  
+
                 a {
                   display: flex;
                   justify-content: flex-start;
                   align-items: center;
                   span {
                     @include list-a;
-                  } 
+                  }
                 }
               }
             }
-
           }
 
           .list-btn {
@@ -249,7 +248,7 @@ body {
                 align-items: center;
                 span {
                   @include list-a;
-                } 
+                }
               }
               & > span {
                 .fa-sort-down {
@@ -336,18 +335,17 @@ body {
         font-size: map-get($map: $fontSize, $key: font-small);
         display: none;
 
-        &.active  {
+        &.active {
           display: block;
         }
 
-          li {
+        li {
           padding: 15px 20px;
           color: map-get($map: $color, $key: bg-light-color);
           &:hover {
             background: #ddd;
             color: map-get($map: $color, $key: bg-dark-color);
           }
-
 
           .sub-category1 {
             position: absolute;
@@ -361,9 +359,8 @@ body {
             &.active {
               display: block;
             }
-            
+
             li {
-  
               .sub-category2 {
                 position: absolute;
                 top: 0;
@@ -426,7 +423,6 @@ body {
 
 // mobile-category
 #mobile-category {
-    
   h3 {
     margin-left: 2%;
     padding-left: 10px;
@@ -452,7 +448,7 @@ body {
         .img-box {
           width: 100%;
           height: 100%;
-          
+
           img {
             width: 100%;
             height: 100%;
@@ -476,7 +472,6 @@ body {
         ul {
           display: flex;
           flex-wrap: wrap;
-          
 
           li {
             width: 50%;
@@ -484,10 +479,9 @@ body {
             font-size: map-get($map: $fontSize, $key: font-large);
           }
         }
-        &.active{
+        &.active {
           display: block;
         }
-        
       }
     }
     &.active {
@@ -623,9 +617,8 @@ footer {
         img {
           width: 115px;
           height: 22px;
-        } 
+        }
       }
     }
   }
-  
 }

@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   color: #aaa;
+  margin: 30px 0 100px;
   .pagerButtons {
     width: 30px;
     height: 30px;
@@ -105,7 +106,7 @@
   transition: all 0.5s;
   &.active {
     height: auto;
-    min-height: 340px;
+    min-height: 500px;
     margin-top: 30px;
     opacity: 1;
   }
@@ -125,9 +126,15 @@
       gap: 20px;
       #deleteSeletionButton {
         border: 1px solid map-get($color, main-font-color);
-        border-radius: 2px;
-        padding: 3px 5px;
+        border-radius: 5px;
+        padding: 10px 20px;
         cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background: map-get($color, bg-dark-color);
+          color: map-get($color, bg-light-color);
+          border: 1px solid transparent;
+        }
       }
     }
     .wish-items-sorting-wrapper {
@@ -207,9 +214,13 @@
               position: absolute;
               top: 8px;
               right: 8px;
-              .fa-solid {
+              .fa-heart {
                 color: crimson;
                 font-size: 20px;
+                transition: all 0.3s;
+              }
+              &:hover {
+                transform: scale(1.2);
               }
             }
           }
@@ -251,9 +262,9 @@
                     }
                   }
                   .wishItemPriceBox {
-                    flex: 1.5;
+                    flex: 2;
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
                     .wishItemPriceInfo {
                       width: 135px;
                       display: flex;
@@ -318,6 +329,10 @@
                     .fa-xmark {
                       color: map-get($color, bg-light-gray);
                       font-size: map-get($fontSize, font-large);
+                      transition: color 0.3s;
+                    }
+                    &:hover .fa-xmark {
+                      color: map-get($color, bg-dark-color);
                     }
                   }
                 }
@@ -555,7 +570,7 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 10px;
+          //gap: 10px;
           .favorite-brand-shopkeeper {
             width: 100%;
             text-align: center;
@@ -587,7 +602,7 @@
               gap: 5px;
               li {
                 color: map-get($color, bg-light-color);
-                font-size: 1rem;
+                font-size: 1.2rem;
                 span {
                   &:not(.follower-box-title) {
                     letter-spacing: normal;
@@ -930,6 +945,7 @@
       margin-top: 0;
     }
     .wish-items-content-upper {
+      margin-bottom: 50px;
       .wish-items-delete-selection {
         opacity: 0;
       }
@@ -943,7 +959,8 @@
         justify-content: space-between;
         align-items: center;
         li {
-          width: 180px;
+          width: 175px;
+          padding: 0 0 50px;
           border-bottom: none;
           input[type="checkbox"] {
             display: none;
@@ -954,12 +971,12 @@
             flex-direction: column;
             gap: 10px;
             .wishItemImgWrapper {
-              width: 180px;
-              height: 180px;
+              width: 175px;
+              height: 175px;
               .wishHeart {
                 top: 10px;
                 right: 13px;
-                .fa-solid {
+                .fa-heart {
                   font-size: 22px;
                 }
               }
@@ -983,12 +1000,10 @@
                     .wishItemTitleBox {
                       width: fit-content;
                       .wishItemSellerName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-small);
                       }
                       .wishItemName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-medium);
                       }
@@ -996,7 +1011,6 @@
                     .wishItemPriceBox {
                       width: 100%;
                       min-width: 0;
-                      justify-content: center;
                       .wishItemPriceInfo {
                         .wishItemPrice {
                           b {
@@ -1021,10 +1035,16 @@
               }
               .wishItemLower {
                 display: none;
+                .page {
+                  margin: 0 20px;
+                }
               }
             }
           }
         }
+      }
+      .wishItemPagination {
+        margin: 0 0 100px;
       }
     }
   }
