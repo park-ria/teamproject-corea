@@ -59,15 +59,15 @@ listArray1.forEach((item, index) => {
   }
 
   span.innerText = `${index + 1}`;
-  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px"
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px";
   aTag.innerText = item;
   aTag.prepend(span);
 
   upDown.className = "up-down";
   upDown.innerHTML = `<i class="fa-solid fa-chevron-up"></i>`;
-  upDown.style = "color: #0dcc5a; font-size: 14px"
+  upDown.style = "color: #0dcc5a; font-size: 14px";
   li.appendChild(aTag);
-  
+
   const li2 = li.cloneNode(true);
   popularList.appendChild(li);
   li2.appendChild(upDown);
@@ -77,7 +77,6 @@ listArray1.forEach((item, index) => {
 listArray2.forEach((ele, i) => {
   document.querySelectorAll(".up-down")[i].innerHTML = `${ele}`;
 });
-
 
 // popular-searchedWord event
 const rollingCB = () => {
@@ -685,15 +684,13 @@ const categoryData = {
   ],
 };
 
-
 const main = document.querySelector(".main-category");
 const mobileMenu = document.querySelector(".menu-box");
 const mobileMain = document.querySelector(".categroy-main");
 
 // Making MobileCategory
 categoryData.data.forEach((mobileCategory, index) => {
-  mobileMain.innerHTML += 
-  `
+  mobileMain.innerHTML += `
   <li>
   <div class="category-img">
   <div class="img-box">
@@ -708,36 +705,33 @@ categoryData.data.forEach((mobileCategory, index) => {
       `;
 
   const categorySubs = document.querySelectorAll(".category-sub");
-      
-  if(index % 5 !== 0) {
+
+  if (index % 5 !== 0) {
     categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
-  } 
+  }
 
   const mobileSub = document.querySelectorAll(".category-sub ul");
 
   mobileCategory.sub.forEach((sub) => {
-      mobileSub[index].innerHTML += 
-      `
+    mobileSub[index].innerHTML += `
       <li>- ${sub.title}</li>
       `;
   });
 });
 
 mobileMenu.addEventListener("click", () => {
-  mobileMain.classList.toggle("active")
-})
+  mobileMain.classList.toggle("active");
+});
 
 const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
 mobileMainImgs.forEach((img) => {
-  img.addEventListener("click", function() {
+  img.addEventListener("click", function () {
     mobileMainImgs.forEach((item) => {
       item.nextElementSibling.classList.remove("active");
-    })
+    });
     img.nextElementSibling.classList.add("active");
-  })
-})
-
-
+  });
+});
 
 categoryData.data.forEach((mainCategory) => {
   const mainA = document.createElement("a");
@@ -757,12 +751,12 @@ categoryData.data.forEach((mainCategory) => {
     subLi.appendChild(subA);
     lastUl.className = "sub-category2";
 
-    if(subCategory.list) {
+    if (subCategory.list) {
       subCategory.list.forEach((list) => {
         //console.log(list);
         const listA = document.createElement("a");
         const listLi = document.createElement("li");
-  
+
         listA.innerText = list;
         listLi.appendChild(listA);
         lastUl.appendChild(listLi);
