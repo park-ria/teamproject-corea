@@ -27,7 +27,7 @@ wishlistTabButton.forEach((btn) => {
 
 // insert a count into the tab button
 const chanageTabBtnCnt = () => {
-  document.querySelector(".wishItems").innerText = wishItemArr.length;
+  document.querySelector(".wishItems").innerText = wishItemArr.size;
   document.querySelector(".favoriteStores").innerText =
     favoriteStoresArr.length;
   document.querySelector(".favoriteBrands").innerText =
@@ -45,6 +45,7 @@ const addItemsInTheWishItemList = (products) => {
         <input type="checkbox" name="checkWishItem" id="wishItem${
           index + 1
         }" value="${product.id}" />
+        <label for="wishItem${index + 1}"></label>
         <div class="wishItem">
           <div class="wishItemImgWrapper">
             <a href="/pages/detail.html?id=${
@@ -135,43 +136,46 @@ const addItemsInTheWishItemList = (products) => {
   });
 };
 
-// all select Event
-const wishItemChkEvnt = () => {
-  const allCheck = document.querySelector("#allSelection");
+// all select event
+const allCheck = document.querySelector("#allSelection");
+allCheck.addEventListener("click", function () {
+  const isChecked = this.checked;
   const checkWishItem = document.querySelectorAll(
     "input[name='checkWishItem']"
   );
-  const deleteSeletionButton = document.querySelector("#deleteSeletionButton");
-
-  allCheck.addEventListener("click", function () {
-    const isChecked = this.checked;
-    checkWishItem.forEach((checkbox) => {
-      checkbox.checked = isChecked;
-    });
-  });
-
   checkWishItem.forEach((checkbox) => {
+    checkbox.checked = isChecked;
+  });
+});
+
+// deleteSeletionButton event
+const deleteSeletionButton = document.querySelector("#deleteSeletionButton");
+deleteSeletionButton.addEventListener("click", () => {
+  const checkedItem = document.querySelectorAll(
+    "input[name='checkWishItem']:checked"
+  );
+
+  if (checkedItem.length === 0) {
+    alert("삭제할 상품을 선택해주세요.");
+    return;
+  }
+
+  checkedItem.forEach((item) => {
+    delWishItemByHeart(item.closest("li"));
+  });
+});
+
+const wishItemChkEvnt = () => {
+  let checkWishItems = document.querySelectorAll("input[name='checkWishItem']");
+  checkWishItems.forEach((checkbox) => {
     checkbox.addEventListener("click", function () {
       const checkCount = document.querySelectorAll(
         "input[name='checkWishItem']:checked"
       ).length;
-      if (checkWishItem.length === checkCount) allCheck.checked = true;
+      checkWishItems = document.querySelectorAll("input[name='checkWishItem']");
+      console.log(checkWishItems);
+      if (checkWishItems.length === checkCount) allCheck.checked = true;
       else allCheck.checked = false;
-    });
-  });
-
-  deleteSeletionButton.addEventListener("click", () => {
-    const checkedItem = document.querySelectorAll(
-      "input[name='checkWishItem']:checked"
-    );
-
-    if (checkedItem.length === 0) {
-      alert("삭제할 상품을 선택해주세요.");
-      return;
-    }
-
-    checkedItem.forEach((item) => {
-      delWishItemByHeart(item.closest("li"));
     });
   });
 };
@@ -335,32 +339,30 @@ const addItemsInTheFavoriteBrands = (products) => {
 };
 
 const saveWishItem = () => {
-  localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
+  localStorage.setItem("wishItemArr", JSON.stringify([...wishItemArr]));
 };
 
 const delWishItemByHeart = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
-  wishItemArr = wishItemArr.filter((item) => item !== productId);
+  wishItemArr = new Set([...wishItemArr].filter((item) => item !== productId));
   saveWishItem();
   target.remove();
-  wishItemChkEvnt();
 };
 
 // 로컬스토리지 추가
 /*const addWishItem = (products) => {
   document.querySelector(".wishItemList").innerHTML = "";
   addItemsInTheWishItemList(products);
-  buttonEvent(products);
+  wishItemButtonEvent(products);
 };
-
 const wishItemHandler = (products, productId) => {
-  wishItemArr.push(productId);
+  wishItemArr.add(productId);
   chanageTabBtnCnt();
   addWishItem(products);
   saveWishItem();
 };*/
 
-const buttonEvent = (products) => {
+const wishItemButtonEvent = (products) => {
   // all select event
   wishItemChkEvnt();
 
@@ -369,19 +371,17 @@ const buttonEvent = (products) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
       // 로컬스토리지 추가
-      /*const productId = this.parentNode.parentNode.parentNode.querySelector(
-        "input[type='checkbox']"
-      ).value;
+      /*const productId = e.target
+        .closest("li")
+        .querySelector("input[type='checkbox']").value;
       wishItemHandler(products, productId);*/
 
-      //delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement);
       delWishItemByHeart(e.target.closest("li"));
     });
   });
 
   document.querySelectorAll(".wishItemXButton").forEach((item) => {
     item.addEventListener("click", (e) => {
-      // delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
       delWishItemByHeart(e.target.closest("li"));
     });
   });
@@ -392,12 +392,11 @@ fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
     // array init
-    const loadWishItemArr = JSON.parse(localStorage.getItem("wishItemArr"));
-    wishItemArr = loadWishItemArr
-      ? loadWishItemArr
+    wishItemArr = localStorage.getItem("wishItemArr")
+      ? new Set(JSON.parse(localStorage.getItem("wishItemArr")))
       : jsonData.wishlist.wishItemArr
-      ? jsonData.wishlist.wishItemArr
-      : [];
+      ? new Set(jsonData.wishlist.wishItemArr)
+      : new Set();
     saveWishItem();
     favoriteStoresArr = jsonData.wishlist.favoriteStoresArr;
     favoriteBrandsArr = jsonData.wishlist.favoriteBrandsArr;
@@ -407,12 +406,11 @@ fetch("../db.json")
 
     // putting items in the wishItemList
     addItemsInTheWishItemList(jsonData.product);
+    wishItemButtonEvent(jsonData.product);
 
     // putting items in the favoriteStores
     addItemsInTheFavoriteStores(jsonData.store);
 
     // putting items in the favoriteBrands
     addItemsInTheFavoriteBrands(jsonData.product);
-
-    buttonEvent(jsonData.product);
   });
