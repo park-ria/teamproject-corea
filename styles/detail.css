@@ -114,35 +114,14 @@ body {
   border: 1px solid #6d6d6d;
   border-radius: 50px;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .search-box
-  form
-  input[type="text"] {
+#header #header-item .header-item .header-top .search-box form input[type=text] {
   width: 550px;
   height: 40px;
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .search-box
-  form
-  input[type="text"]::-moz-placeholder {
-  font-size: 1.2rem;
-}
-#header
-  #header-item
-  .header-item
-  .header-top
-  .search-box
-  form
-  input[type="text"]::placeholder {
+#header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form button {
@@ -167,55 +146,23 @@ body {
   height: 24px;
   overflow: hidden;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .wrapper
-  .popular-searchedWord
-  li {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord li {
   position: absolute;
   top: -24px;
   left: 0;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .wrapper
-  .popular-searchedWord
-  li.prev {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.prev {
   top: -24px;
   transition: top 0.5s;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .wrapper
-  .popular-searchedWord
-  li.current {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.current {
   top: 0;
   transition: top 0.5s;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .wrapper
-  .popular-searchedWord
-  li.next {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord li.next {
   top: 24px;
 }
-#header
-  #header-item
-  .header-item
-  .header-top
-  .wrapper
-  .popular-searchedWord
-  li
-  a
-  span {
+#header #header-item .header-item .header-top .wrapper .popular-searchedWord li a span {
   display: inline-block;
   margin-right: 10px;
 }
@@ -271,13 +218,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-#header
-  #header-item
-  .header-item
-  .header-bottom
-  .header-bottom-left
-  .barmenu
-  i {
+#header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
   font-size: 24px;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
@@ -296,26 +237,11 @@ body {
   display: flex;
   gap: 12px;
 }
-#header
-  #header-item
-  .header-item
-  .header-bottom
-  .header-bottom-right
-  .lnb
-  li
-  a {
+#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a {
   display: flex;
   align-items: center;
 }
-#header
-  #header-item
-  .header-item
-  .header-bottom
-  .header-bottom-right
-  .lnb
-  li
-  a
-  img {
+#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
 }
 
@@ -546,14 +472,7 @@ body {
   height: 100vh;
   background: #666;
 }
-#header-category
-  .inner
-  .header-category
-  .main-category
-  li
-  .sub-category1
-  li
-  .sub-category2 {
+#header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
   position: absolute;
   top: 0;
   right: -100%;
@@ -610,7 +529,6 @@ body {
 #main .inner .main .main-img .img-slider .img-wrapper .img-slide img {
   width: 600px;
   height: 600px;
-  -o-object-fit: cover;
   object-fit: cover;
 }
 #main .inner .main .main-img .img-slider .img-pagers {
@@ -699,22 +617,10 @@ body {
 }
 #main .inner .main .main-desc .desc-heading .heading-category span:nth-child(1),
 #main .inner .main .main-desc .desc-heading .heading-category span:nth-child(2),
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-heading
-  .heading-category
-  span:nth-child(3) {
+#main .inner .main .main-desc .desc-heading .heading-category span:nth-child(3) {
   color: #6d6d6d;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-heading
-  .heading-category
-  span:nth-child(3) {
+#main .inner .main .main-desc .desc-heading .heading-category span:nth-child(3) {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -765,41 +671,18 @@ body {
   justify-content: space-between;
   align-items: end;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-user
-  .user-info
-  .user-detail
-  .detail-barBox {
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox {
   white-space: nowrap;
   width: 100%;
   display: flex;
   align-items: end;
   gap: 10px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-user
-  .user-info
-  .user-detail
-  .detail-barBox
-  span {
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox span {
   font-size: 10px;
   color: #6d6d6d;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-user
-  .user-info
-  .user-detail
-  .detail-barBox
-  .detail-bar {
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar {
   width: 80%;
   height: 15px;
   background: #f1f4f6;
@@ -807,16 +690,7 @@ body {
   overflow: hidden;
   position: relative;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-user
-  .user-info
-  .user-detail
-  .detail-barBox
-  .detail-bar
-  .filling-bar {
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar .filling-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -833,15 +707,7 @@ body {
   font-size: 1.2rem;
   color: #6d6d6d;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-user
-  .user-info
-  .user-detail
-  .detail-value
-  span {
+#main .inner .main .main-desc .desc-user .user-info .user-detail .detail-value span {
   font-size: 22px;
   line-height: 22px;
   color: #111;
@@ -873,31 +739,14 @@ body {
   height: 20px;
   background: #dcdcdc;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-conditions
-  .conditions-box:last-child::before {
+#main .inner .main .main-desc .desc-conditions .conditions-box:last-child::before {
   display: none;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-conditions
-  .conditions-box
-  span:nth-child(1) {
+#main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(1) {
   font-size: 11px;
   color: #6d6d6d;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-conditions
-  .conditions-box
-  span:nth-child(2) {
+#main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(2) {
   font-weight: 600;
 }
 #main .inner .main .main-desc .desc-map {
@@ -985,14 +834,7 @@ body {
   display: flex;
   gap: 25px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-itemInfo
-  .itemIfo-detail
-  .relatedWords
-  span {
+#main .inner .main .main-desc .desc-itemInfo .itemIfo-detail .relatedWords span {
   padding: 10px 15px;
   background: #dcdcdc;
   font-size: 11px;
@@ -1047,54 +889,20 @@ body {
   gap: 25px;
   cursor: pointer;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-info
-  .info-box
-  .box-name
-  .name {
+#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .name {
   font-size: 1.8rem;
   font-weight: 600;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-info
-  .info-box
-  .box-name
-  .certi {
+#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi {
   display: flex;
   align-items: center;
   gap: 3px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-info
-  .info-box
-  .box-name
-  .certi
-  span {
+#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi span {
   font-size: 10px;
   margin-right: 3px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-info
-  .info-box
-  .box-name
-  .certi
-  .certi-check {
+#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi .certi-check {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1103,17 +911,7 @@ body {
   background: #0dcc5a;
   border-radius: 3px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-info
-  .info-box
-  .box-name
-  .certi
-  .certi-check
-  i {
+#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi .certi-check i {
   font-size: 13px;
   color: #fff;
 }
@@ -1162,120 +960,46 @@ body {
 #main .inner .main .main-desc .desc-store .store-contents .selling-items {
   overflow: hidden;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 30px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-img {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img {
   width: 180px;
   height: 169px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-img
-  img {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
   transition: all 0.3s;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-img:hover
-  img {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img:hover img {
   transform: scale(1.04);
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-detail {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-detail {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-detail
-  .item-name {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-detail .item-name {
   width: 180px;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
   cursor: pointer;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .selling-items
-  .items-wrapper
-  .item-info
-  .item-detail
-  .item-price {
+#main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-detail .item-price {
   font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
@@ -1286,29 +1010,14 @@ body {
 #main .inner .main .main-desc .desc-store .store-contents .reviews h3 {
   margin-bottom: 30px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .reviews
-  .reviews-box {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 15px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .reviews
-  .reviews-box
-  li {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -1316,40 +1025,13 @@ body {
   background: #dcdcdc;
   border-radius: 7px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .reviews
-  .reviews-box
-  li
-  span {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span {
   color: #6d6d6d;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .reviews
-  .reviews-box
-  li
-  span
-  i {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span i {
   margin-right: 10px;
 }
-#main
-  .inner
-  .main
-  .main-desc
-  .desc-store
-  .store-contents
-  .reviews
-  .reviews-box
-  li.no-review {
+#main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li.no-review {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1443,86 +1125,40 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-img {
   width: 180px;
   height: 169px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img
-  img {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
   transition: all 0.3s;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img:hover
-  img {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-img:hover img {
   transform: scale(1.04);
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-detail {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail
-  .item-name {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-detail .item-name {
   width: 180px;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
   cursor: pointer;
 }
-#recommendation
-  .recommendation
-  .related
-  .related-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail
-  .item-price {
+#recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-detail .item-price {
   font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
@@ -1567,86 +1203,40 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-img {
   width: 180px;
   height: 169px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img
-  img {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
   object-fit: cover;
   transition: all 0.3s;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-img:hover
-  img {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-img:hover img {
   transform: scale(1.04);
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-detail {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail
-  .item-name {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-detail .item-name {
   width: 180px;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;
   cursor: pointer;
 }
-#recommendation
-  .recommendation
-  .recent
-  .recent-slider
-  .recommend-wrapper
-  .item-slide
-  .item-detail
-  .item-price {
+#recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-detail .item-price {
   font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
@@ -1715,25 +1305,10 @@ body {
   #main .inner .main .main-desc .desc-user {
     margin-bottom: 50px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-user
-    .user-info
-    .user-detail
-    .detail-barBox {
+  #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox {
     gap: 30px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-user
-    .user-info
-    .user-detail
-    .detail-barBox
-    .detail-bar {
+  #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar {
     width: 80%;
   }
   #main .inner .main .main-desc .desc-conditions {
@@ -1764,38 +1339,14 @@ body {
   #main .inner .main .main-desc .desc-store .store-contents > div {
     top: 15px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .selling-items
-    .items-wrapper {
+  #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper {
     gap: 40px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .selling-items
-    .items-wrapper
-    .item-info
-    .item-img {
+  #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img {
     width: 250px;
     height: 235px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .reviews
-    .reviews-box
-    li {
+  #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 15px 12px;
   }
   #event {
@@ -1813,48 +1364,22 @@ body {
   #recommendation .recommendation .related .related-slider .related-wrapper {
     gap: 40px;
   }
-  #recommendation
-    .recommendation
-    .related
-    .related-slider
-    .related-wrapper
-    .item-slide
-    .item-img {
+  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img {
     width: 250px;
     height: 235px;
   }
-  #recommendation
-    .recommendation
-    .related
-    .related-slider
-    .related-wrapper
-    .item-slide
-    .item-img
-    img {
+  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img img {
     width: 100%;
     height: 100%;
   }
   #recommendation .recommendation .recent .recent-slider .recent-wrapper {
     gap: 40px;
   }
-  #recommendation
-    .recommendation
-    .recent
-    .recent-slider
-    .recent-wrapper
-    .item-slide
-    .item-img {
+  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img {
     width: 250px;
     height: 235px;
   }
-  #recommendation
-    .recommendation
-    .recent
-    .recent-slider
-    .recent-wrapper
-    .item-slide
-    .item-img
-    img {
+  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img img {
     width: 100%;
     height: 100%;
   }
@@ -1932,48 +1457,20 @@ body {
   #main .inner .main .main-desc .desc-heading .heading-price {
     font-size: 24px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-user
-    .user-info
-    .user-detail
-    .detail-barBox {
+  #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox {
     gap: 20px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-user
-    .user-info
-    .user-detail
-    .detail-barBox
-    .detail-bar {
+  #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox .detail-bar {
     width: 70%;
     height: 12px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-user
-    .user-info
-    .user-detail
-    .detail-value {
+  #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-value {
     font-size: 1.8rem;
   }
   #main .inner .main .main-desc .desc-conditions .conditions-box {
     gap: 8px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-conditions
-    .conditions-box
-    span:nth-child(1) {
+  #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(1) {
     font-size: 9px;
   }
   #main .inner .main .main-desc .desc-btns {
@@ -1982,64 +1479,23 @@ body {
   #main .inner .main .main-desc .desc-itemInfo .itemIfo-detail h6 {
     margin-bottom: 20px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .selling-items
-    .items-wrapper {
+  #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper {
     gap: 20px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .selling-items
-    .items-wrapper
-    .item-info
-    .item-img {
+  #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img {
     width: 130px;
     height: 130px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .selling-items
-    .items-wrapper
-    .item-info
-    .item-detail
-    .item-name {
+  #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-detail .item-name {
     width: 130px;
   }
   #main .inner .main .main-desc .desc-store .store-contents .reviews h3 {
     margin-bottom: 30px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .reviews
-    .reviews-box {
+  #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box {
     gap: 10px;
   }
-  #main
-    .inner
-    .main
-    .main-desc
-    .desc-store
-    .store-contents
-    .reviews
-    .reviews-box
-    li {
+  #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 10px;
     font-size: 1.2rem;
   }
@@ -2055,7 +1511,6 @@ body {
   #event .event .event-slider .slide-wrapper .slide div img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
     object-fit: cover;
   }
   #event .event .event-slider .slide-wrapper .slide div:nth-child(2) {
@@ -2067,35 +1522,15 @@ body {
   #recommendation .recommendation .related .related-slider .related-wrapper {
     gap: 20px;
   }
-  #recommendation
-    .recommendation
-    .related
-    .related-slider
-    .related-wrapper
-    .item-slide
-    .item-img {
+  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img {
     width: 130px;
     height: 130px;
   }
-  #recommendation
-    .recommendation
-    .related
-    .related-slider
-    .related-wrapper
-    .item-slide
-    .item-img
-    img {
+  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img img {
     width: 130px;
     height: 130px;
   }
-  #recommendation
-    .recommendation
-    .related
-    .related-slider
-    .related-wrapper
-    .item-slide
-    .item-detail
-    .item-name {
+  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-detail .item-name {
     width: 130px;
   }
   #recommendation .recommendation .related .related-slider .btn {
@@ -2104,35 +1539,15 @@ body {
   #recommendation .recommendation .recent .recent-slider .recent-wrapper {
     gap: 20px;
   }
-  #recommendation
-    .recommendation
-    .recent
-    .recent-slider
-    .recent-wrapper
-    .item-slide
-    .item-img {
+  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img {
     width: 130px;
     height: 130px;
   }
-  #recommendation
-    .recommendation
-    .recent
-    .recent-slider
-    .recent-wrapper
-    .item-slide
-    .item-img
-    img {
+  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img img {
     width: 130px;
     height: 130px;
   }
-  #recommendation
-    .recommendation
-    .recent
-    .recent-slider
-    .recent-wrapper
-    .item-slide
-    .item-detail
-    .item-name {
+  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-detail .item-name {
     width: 130px;
   }
   #recommendation .recommendation .recent .recent-slider .btn {
