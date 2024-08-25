@@ -31,14 +31,6 @@ const addMainSlide = (slide, index) => {
   mainSlideUl.appendChild(liItem);
 };
 
-/*const media = matchMedia("screen and (max-width: 450px)");
-function mediaResize() {
-  if (window.innerWidth < 450) {
-    console.log("resized window");
-  }
-}
-window.addEventListener("resize", mediaResize);*/
-
 // mainSlide
 const mainSlide = () => {
   const pagers = document.querySelector(".mainSlidePager");
@@ -49,10 +41,7 @@ const mainSlide = () => {
   const playBtn = document.querySelector(".mainSlidePlay");
 
   const mainSlide = document.querySelectorAll(".mainSlideWrapper li");
-  const slideWidth = window.matchMedia(`(max-width: 450px)`).matches
-    ? "100%"
-    : 420;
-  //console.log(slideWidth);
+  const slideWidth = 420;
   const slideMargin = 10;
   const slideCount = mainSlide.length;
   const cloneCount = 4;
@@ -445,36 +434,70 @@ fetch(joonggoInfo)
   });
 
 // auction
-// const timeEvent = () => {
-//   const time = document.querySelector(".timeEvent");
-//   const spanHours = document.createElement("span");
-//   const spanMinutes = document.createElement("span");
-//   const spanSeconds = document.createElement("span");
+const timeItems = document.querySelector(".timeEvent");
 
-//   const today = new Date();
+const formatting = (time) => {
+  let sec = Math.floor(time % 60);
+  let min = Math.floor((time / 60) % 60);
+  let hour = Math.floor(time / 3600);
 
-//   const dDay = new Date(2024, 7, 22, 18, 0);
-//   // dDay.setDate(today.getDate() + 1);
+  sec = sec < 10 ? `0${sec}` : `${sec}`;
+  min = min < 10 ? `0${min}` : `${min}`;
+  hour = hour < 10 ? `0${hour}` : `${hour}`;
 
-//   const resultDay = dDay.getTime() - today.getTime();
+  return { hour, min, sec };
+};
 
-//   // let resultDate = Math.floor(resultDay / (24 * 60 * 60 * 1000));
-//   let resultHours = Math.floor((resultDay / (60 * 60 * 1000)) % 24);
-//   let resultMinutes = Math.floor((resultDay / (60 * 1000)) % 60);
-//   let resultSeconds = Math.floor((resultDay / 1000) % 60);
+const createSpan = (content, className) => {
+  const span = document.createElement("span");
+  span.innerText = content;
+  span.classList.add(className);
+  return span;
+};
 
-//   resultHours = resultHours < 10 ? `0${resultHours}` : resultHours;
-//   resultMinutes = resultMinutes < 10 ? `0${resultMinutes}` : resultMinutes;
-//   resultSeconds = resultSeconds < 10 ? `0${resultSeconds}` : resultSeconds;
+const updateUnit = (parent, unit, itemValue) => {
+  const unitElement = parent.querySelector(`.${unit}`);
+  console.log(unitElement);
 
-//   spanHours.innerText = resultHours;
-//   spanMinutes.innerText = resultMinutes;
-//   spanSeconds.innerText = resultSeconds;
+  if (unitElement) {
+    const currentValue = unitElement.querySelector(".old").innerText;
 
-//   // time.append(spanHours, spanMinutes, spanSeconds);
-// };
-// //timeEvent();
-// setInterval(timeEvent, 1000);
+    if (currentValue !== itemValue) {
+      const oldSpan = unitElement.querySelector(".old");
+      const newSpan = createSpan(itemValue, "new");
+      unitElement.appendChild(newSpan);
+
+      if (unit === "sec") {
+        unitElement.classList.add("updating");
+      }
+
+      setTimeout(() => {
+        if (oldSpan) unitElement.removeChild(oldSpan);
+        newSpan.classList.replace("new", "old");
+        unitElement.classList.remove("updating");
+      }, 100);
+    }
+  } else {
+    const unitContainer = document.createElement("div");
+    unitContainer.classList.add("timeItem", unit);
+    unitContainer.appendChild(createSpan(itemValue, "old"));
+    parent.appendChild(unitContainer);
+  }
+};
+
+const updateTime = () => {
+  const today = new Date();
+  const eventDay = new Date(2024, 7, 25, 23, 59, 59);
+
+  const gapDate = Math.floor((eventDay - today) / 1000);
+  const { hour, min, sec } = formatting(gapDate);
+
+  updateUnit(timeItems, "hour", hour);
+  updateUnit(timeItems, "min", min);
+  updateUnit(timeItems, "sec", sec);
+};
+
+// setInterval(updateTime, 1000);
 
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");
@@ -515,7 +538,6 @@ eventImgs.forEach((img) => {
 });
 
 const listClientWidth = eventSlideUl.clientWidth;
-console.log(eventSlideUl.clientWidth);
 //const listScrollWidth = eventSlideUl.clientWidth + 1280;
 const listScrollWidth = eventSlideUl.clientWidth * 2;
 
@@ -597,3 +619,20 @@ closeItems.forEach((item) => {
     closeItems[1].classList.remove("active");
   });
 });
+
+// const media = matchMedia("screen and (max-width: 450px)");
+// function mediaResize() {
+//   if (window.innerWidth < 450) {
+//   }
+// }
+// window.addEventListener("resize", mediaResize);
+
+// const mobile = window.matchMedia("screen and (max-width: 450px)");
+
+// mobile.addListener(function (e) {
+//   if (e.matches) {
+//     console.log("모바일 화면 입니다.");
+//   } else {
+//     console.log("데스크탑 화면 입니다.");
+//   }
+// });

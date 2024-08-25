@@ -447,25 +447,46 @@ body {
           font-size: 5rem;
         }
         .timeEvent {
-          // overflow: hidden;
-          span {
+          position: relative;
+          display: flex;
+          align-items: center;
+          .timeItem {
             position: relative;
-            // top: -100%;
+            width: calc(100% / 3);
+            height: 50px;
+            span {
+              display: block;
+              font-size: 5rem;
+              color: #fce44a;
+              transition: transform 0.5s ease;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 100%;
+              text-align: left;
 
-            margin: 10px 0;
-            font-size: 5rem;
-            color: #fce44a;
-            transition: all 0.3s;
+              &.old {
+                transform: translateY(-50%);
+              }
+              &.new {
+                transform: translateY(-200%);
+              }
+              &.old {
+                transform: translateY(100%);
+              }
+              &.new {
+                transform: translateY(-200%);
+              }
+            }
             &::after {
               content: " : ";
+              font-size: 5rem;
+              color: #fce44a;
             }
             &:last-child {
               &::after {
                 content: "";
               }
-            }
-            &.active {
-              top: 0;
             }
           }
         }
@@ -1095,20 +1116,6 @@ body {
     }
   }
 
-  // event
-  // #event {
-  //   .event-content {
-  //     .event-slide {
-  //       ul {
-  //         a {
-  //           width: 300px;
-  //           height: 100px;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   // recommended
   #recommended {
     .recommended-content {
@@ -1214,38 +1221,17 @@ body {
 
 @media screen and (max-width: 450px) {
   // main-slide
-  #main-slide {
-    article {
-      width: 100%;
-      .mainSlideWrapper {
-        li {
-          width: 100%;
-          span {
-            width: 100%;
-            height: 420px;
-            // .main-slide-desc {
-            //   margin: 0 0 30px 30px;
-            //   color: map-get($color, bg-light-color);
-            //   text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
-            //   -webkit-user-drag: none;
-            //   h2 {
-            //     height: 84px;
-            //     margin-bottom: 10px;
-            //     font: 400 3rem/1.4 "JalnanGothic";
-            //     letter-spacing: 0;
-            //   }
-            //   p {
-            //     display: flex;
-            //     align-items: center;
-            //     gap: 5px;
-            //     font: 400 1.8rem/1.4 "GmarketSansMedium";
-            //   }
-            // }
-          }
-        }
-      }
-    }
-  }
+  // #main-slide {
+  //   article {
+  //     .mainSlideWrapper {
+  //       li {
+  //         &.clone {
+  //           display: none;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   // weekly-item
   #weekly-item {

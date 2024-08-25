@@ -20,20 +20,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -128,9 +120,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -540,8 +529,7 @@ body {
 #main .inner .main .main-img .img-slider .img-wrapper .img-slide img {
   width: 600px;
   height: 600px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #main .inner .main .main-img .img-slider .img-pagers {
   position: absolute;
@@ -993,8 +981,7 @@ body {
 #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: all 0.3s;
 }
 #main .inner .main .main-desc .desc-store .store-contents .selling-items .items-wrapper .item-info .item-img:hover img {
@@ -1153,8 +1140,7 @@ body {
 #recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: all 0.3s;
 }
 #recommendation .recommendation .related .related-slider .recommend-wrapper .item-slide .item-img:hover img {
@@ -1232,8 +1218,7 @@ body {
 #recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: all 0.3s;
 }
 #recommendation .recommendation .recent .recent-slider .recommend-wrapper .item-slide .item-img:hover img {
@@ -1526,8 +1511,7 @@ body {
   #event .event .event-slider .slide-wrapper .slide div img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   #event .event .event-slider .slide-wrapper .slide div:nth-child(2) {
     display: none;
