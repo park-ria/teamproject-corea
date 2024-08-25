@@ -242,10 +242,10 @@
               .fa-heart {
                 color: crimson;
                 font-size: 20px;
-                transition: all 0.3s;
-              }
-              &:hover {
-                transform: scale(1.2);
+                transition: transform 0.3s;
+                &:hover {
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -535,7 +535,12 @@
             .followButton {
               .fa-solid {
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: #06b38b;
+                transition: transform 0.3s, color 0.3s;
+                &:hover {
+                  color: map-get($color, bg-light-color);
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -545,14 +550,26 @@
           height: 240px;
           overflow: hidden;
           .favorite-store-products {
+            width: fit-content;
             display: flex;
             align-items: center;
             gap: 20px;
+            cursor: grab;
+            transition: transform ease-out 0.5s;
             & > li {
               & > a {
                 display: inline-block;
                 width: 240px;
                 height: 240px;
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+                cursor: grab;
+                &:active {
+                  cursor: grabbing;
+                }
                 .favoriteStoreProductImg {
                   display: inline-block;
                   width: inherit;
@@ -641,7 +658,12 @@
             .followButton {
               .fa-solid {
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: #06b38b;
+                transition: transform 0.3s, color 0.3s;
+                &:hover {
+                  color: map-get($color, bg-light-color);
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -654,11 +676,22 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            cursor: grab;
+            transition: transform ease-out 0.5s;
             & > li {
               & > a {
                 display: inline-block;
                 width: 240px;
                 height: 240px;
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+                cursor: grab;
+                &:active {
+                  cursor: grabbing;
+                }
                 .favoriteBrandProductImg {
                   display: inline-block;
                   width: inherit;
@@ -780,9 +813,9 @@
                     width: 80px;
                     padding: 10px 0;
                     font-size: map-get($fontSize, font-small);
-                    &.wishItemXButton {
-                      //display: none;
-                    }
+                    /*&.wishItemXButton {
+                      display: none;
+                    }*/
                   }
                 }
               }
@@ -832,26 +865,10 @@
             }
             .favorite-store-score {
               width: 30%;
-              .store-score-desc {
-                .store-score-title {
-                  //font-size: 10px;
-                }
-                .store-score-value {
-                  //font-size: 8px;
-                  b {
-                    //font-size: 12px;
-                  }
-                }
-              }
             }
             .favorite-store-follower {
               width: auto;
               gap: 10px;
-              .favorite-store-follower-box {
-                li {
-                  //font-size: 10px;
-                }
-              }
             }
           }
           .favorite-store-products-box {
@@ -919,9 +936,6 @@
                 margin-top: 0;
                 width: auto;
                 min-width: 53px;
-                li {
-                  //font-size: 10px;
-                }
               }
             }
             .favorite-brand-follow-button {

@@ -757,9 +757,9 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart {
   color: crimson;
   font-size: 20px;
-  transition: all 0.3s;
+  transition: transform 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart:hover {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart:hover {
   transform: scale(1.2);
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
@@ -1063,7 +1063,12 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid {
   font-size: 1.6rem;
+  color: #06b38b;
+  transition: transform 0.3s, color 0.3s;
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid:hover {
   color: #fff;
+  transform: scale(1.2);
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
   flex: 1;
@@ -1071,14 +1076,27 @@ footer .inner .footer-lower .footer-lower-logo i {
   overflow: hidden;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
+  width: -moz-fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   gap: 20px;
+  cursor: grab;
+  transition: transform ease-out 0.5s;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
   display: inline-block;
   width: 240px;
   height: 240px;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  cursor: grab;
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a:active {
+  cursor: grabbing;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg {
   display: inline-block;
@@ -1196,7 +1214,12 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid {
   font-size: 1.6rem;
+  color: #06b38b;
+  transition: transform 0.3s, color 0.3s;
+}
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid:hover {
   color: #fff;
+  transform: scale(1.2);
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
   flex: 1;
@@ -1207,11 +1230,22 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: flex;
   align-items: center;
   gap: 20px;
+  cursor: grab;
+  transition: transform ease-out 0.5s;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
   display: inline-block;
   width: 240px;
   height: 240px;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  cursor: grab;
+}
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a:active {
+  cursor: grabbing;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg {
   display: inline-block;
@@ -1364,6 +1398,9 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 80px;
     padding: 10px 0;
     font-size: 1.4rem;
+    /*&.wishItemXButton {
+      display: none;
+    }*/
   }
   /* favorite stores content */
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li {
