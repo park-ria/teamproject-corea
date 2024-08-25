@@ -126,10 +126,10 @@ userPw2.addEventListener("change", () => {
 });
 
 name.addEventListener("change",()=>{
-  if(name.value == "".value){
-    document.querySelector("#error_writer").innerText ="이름을 입력해주세요";
+  if(name.value == "" || name.value == null || name.value.length <= 1){
+    document.querySelector("#error_writer").innerText ="이름을 다시 입력해주세요";
   isValid = false;
   } else {
-    document.querySelector("#error_writer").innegitrText = "";
+    document.querySelector("#error_writer").innerText = "";
   }
 });
