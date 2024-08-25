@@ -25,15 +25,26 @@ wishlistTabButton.forEach((btn) => {
   });
 });
 
+// insert a count into the tab button
+const chanageTabBtnCnt = () => {
+  document.querySelector(".wishItems").innerText = wishItemArr.length;
+  document.querySelector(".favoriteStores").innerText =
+    favoriteStoresArr.length;
+  document.querySelector(".favoriteBrands").innerText =
+    favoriteBrandsArr.length;
+};
+
 // putting items in the wishItemList
-const addItemsInTheWishItemList = (product, index) => {
-  wishItemArr.forEach((arr) => {
-    if (arr === product.id) {
-      const li = `
+const addItemsInTheWishItemList = (products) => {
+  wishItemArr.forEach((arr, index) => {
+    const product = products.filter((item) => {
+      return item.id.includes(arr);
+    })[0];
+    const li = `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
           index + 1
-        }" value="wishItem${index + 1}" />
+        }" value="${product.id}" />
         <div class="wishItem">
           <div class="wishItemImgWrapper">
             <a href="/pages/detail.html?id=${
@@ -120,10 +131,7 @@ const addItemsInTheWishItemList = (product, index) => {
         </div>
       </li>
       `;
-      document
-        .querySelector(".wishItemList")
-        .insertAdjacentHTML("beforeend", li);
-    }
+    document.querySelector(".wishItemList").insertAdjacentHTML("beforeend", li);
   });
 };
 
@@ -133,6 +141,7 @@ const wishItemChkEvnt = () => {
   const checkWishItem = document.querySelectorAll(
     "input[name='checkWishItem']"
   );
+  const deleteSeletionButton = document.querySelector("#deleteSeletionButton");
 
   allCheck.addEventListener("click", function () {
     const isChecked = this.checked;
@@ -150,91 +159,123 @@ const wishItemChkEvnt = () => {
       else allCheck.checked = false;
     });
   });
+
+  deleteSeletionButton.addEventListener("click", () => {
+    const checkedItem = document.querySelectorAll(
+      "input[name='checkWishItem']:checked"
+    );
+
+    if (checkedItem.length === 0) {
+      alert("삭제할 상품을 선택해주세요.");
+      return;
+    }
+
+    checkedItem.forEach((item) => {
+      delWishItemByHeart(item.closest("li"));
+    });
+  });
 };
 
 // putting items in the favoriteStores
-const addItemsInTheFavoriteStores = (store) => {
+const addItemsInTheFavoriteStores = (stores) => {
   favoriteStoresArr.forEach((arr) => {
-    if (arr === store.store_name) {
-      let li = `
-        <li>
-          <div class="favorite-store-info">
-            <div class="favorite-store-shopkeeper">
-              <a href="/pages/mypage.html?id=${
-                store.store_name
-              }" class="favoriteStoresTitle">
-                <img
-                  src="../${store.info.product_img_path}"
-                />
-                <p>${store.store_name}</p>
-              </a>
-            </div>
-            <div class="favorite-store-score">
-              <span class="store-score-desc">
-                <span class="store-score-title">거래순환률</span>
-                <span class="store-score-value">
-                  <b>${Math.ceil(
-                    store.info.product_store_confidence_index / 10
-                  )}</b>
-                  /100
+    stores.forEach((store) => {
+      if (arr === store.store_name) {
+        let li = `
+          <li>
+            <div class="favorite-store-info">
+              <div class="favorite-store-shopkeeper">
+                <a href="/pages/mypage.html?id=${
+                  store.store_name
+                }" class="favoriteStoresTitle">
                   <img
-                    src="../images/detail/circulater.png"
-                    alt="circulater"
+                    src="../${store.info.product_img_path}"
                   />
+                  <p>${store.store_name}</p>
+                </a>
+              </div>
+              <div class="favorite-store-score">
+                <span class="store-score-desc">
+                  <span class="store-score-title">거래순환률</span>
+                  <span class="store-score-value">
+                    <b>${Math.ceil(
+                      store.info.product_store_confidence_index / 10
+                    )}</b>
+                    /100
+                    <img
+                      src="../images/detail/circulater.png"
+                      alt="circulater"
+                    />
+                  </span>
                 </span>
-              </span>
-              <div class="detail-bar">
-                  <div class="filling-bar" style="width:${Math.ceil(
-                    store.info.product_store_confidence_index / 10
-                  )}%"></div>
+                <div class="detail-bar">
+                    <div class="filling-bar" style="width:${Math.ceil(
+                      store.info.product_store_confidence_index / 10
+                    )}%"></div>
+                </div>
+              </div>
+              <div class="favorite-store-follower">
+                <ul class="favorite-store-follower-box">
+                  <li>
+                    <span class="follower-box-title">안전거래</span>
+                    <span class="amountOfProducts">${
+                      store.info.product_store_safe_deal
+                    }</span>
+                  </li>
+                  <li>|</li>
+                  <li>
+                    <span class="follower-box-title">팔로워</span>
+                    <span class="numberOfFollowers">${
+                      store.info.product_store_follower
+                    }</span>
+                  </li>
+                </ul>
+                <a href="#" class="followButton">
+                  <i class="fa-solid fa-bookmark"></i>
+                </a>
               </div>
             </div>
-            <div class="favorite-store-follower">
-              <ul class="favorite-store-follower-box">
-                <li>
-                  <span class="follower-box-title">안전거래</span>
-                  <span class="amountOfProducts">${
-                    store.info.product_store_safe_deal
-                  }</span>
-                </li>
-                <li>|</li>
-                <li>
-                  <span class="follower-box-title">팔로워</span>
-                  <span class="numberOfFollowers">${
-                    store.info.product_store_follower
-                  }</span>
-                </li>
+            <div class="favorite-store-products-box">
+              <ul class="favorite-store-products">
+                ${[...store.info.product_img_etc]
+                  .map(
+                    (img) => `
+                  <li>
+                    <a href="#">
+                      <span class="favoriteStoreProductImg" style="background:url('../${img.image_url}') center/cover no-repeat"></span>
+                    </a>
+                  </li>
+                `
+                  )
+                  .join("")}
               </ul>
-              <a href="#" class="followButton">
-                <i class="fa-solid fa-bookmark"></i>
-              </a>
             </div>
-          </div>
-          <div class="favorite-store-products-box">
-            <ul class="favorite-store-products">`;
-      store.info.product_img_etc.forEach((img) => {
-        li += `
-          <li>
-            <a href="#">
-              <span class="favoriteStoreProductImg" style="background:url('../${img.image_url}') center/cover no-repeat"></span>
-            </a>
           </li>
         `;
-      });
-      li += `
-            </ul>
-          </div>
-        </li>
-      `;
-      document
-        .querySelector(".favoriteStoresWrap")
-        .insertAdjacentHTML("beforeend", li);
-    }
+        document
+          .querySelector(".favoriteStoresWrap")
+          .insertAdjacentHTML("beforeend", li);
+      }
+    });
   });
 };
 
 // putting items in the favoriteBrands
-const addItemsInTheFavoriteBrands = () => {
+const addItemsInTheFavoriteBrands = (products) => {
+  products.forEach((product) => {
+    // put data into favoriteBrandsArr
+    favoriteBrandsArr.forEach((arr) => {
+      if (product.title.includes(arr.brand)) {
+        arr.products.push({
+          id: product.id,
+          image_path: product.image_path,
+        });
+
+        arr.count += 1;
+      }
+    });
+  });
+
   // making favoriteBrands li
   favoriteBrandsArr.forEach((arr) => {
     let li = `
@@ -270,18 +311,18 @@ const addItemsInTheFavoriteBrands = () => {
             </div>
           </div>
           <div class="favorite-brand-products-box">
-            <ul class="favorite-brand-products">`;
-
-    arr.products.forEach((product) => {
-      li += `
+            <ul class="favorite-brand-products">
+            ${[...arr.products]
+              .map(
+                (product) => `
               <li>
                 <a href="/pages/detail.html?id=${product.id}">
                   <span class="favoriteBrandProductImg" style="background:url('../${product.image_path}') center/cover no-repeat"></span>
                 </a>
-              </li>`;
-    });
-
-    li += `
+              </li>
+            `
+              )
+              .join("")}
             </ul>
           </div>
         </li>
@@ -293,66 +334,85 @@ const addItemsInTheFavoriteBrands = () => {
   });
 };
 
+const saveWishItem = () => {
+  localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
+};
+
+const delWishItemByHeart = (target) => {
+  const productId = target.querySelector("input[type='checkbox']").value;
+  wishItemArr = wishItemArr.filter((item) => item !== productId);
+  saveWishItem();
+  target.remove();
+  wishItemChkEvnt();
+};
+
+// 로컬스토리지 추가
+/*const addWishItem = (products) => {
+  document.querySelector(".wishItemList").innerHTML = "";
+  addItemsInTheWishItemList(products);
+  buttonEvent(products);
+};
+
+const wishItemHandler = (products, productId) => {
+  wishItemArr.push(productId);
+  chanageTabBtnCnt();
+  addWishItem(products);
+  saveWishItem();
+};*/
+
+const buttonEvent = (products) => {
+  // all select event
+  wishItemChkEvnt();
+
+  // button event
+  document.querySelectorAll(".wishHeart").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      // 로컬스토리지 추가
+      /*const productId = this.parentNode.parentNode.parentNode.querySelector(
+        "input[type='checkbox']"
+      ).value;
+      wishItemHandler(products, productId);*/
+
+      //delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement);
+      delWishItemByHeart(e.target.closest("li"));
+    });
+  });
+
+  document.querySelectorAll(".wishItemXButton").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      // delWishItemByHeart(e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);
+      delWishItemByHeart(e.target.closest("li"));
+    });
+  });
+};
+
 // push the db.json data
 fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
-    // insert a count into the tab button
-    wishItemArr = jsonData.wishlist.wishItemArr;
+    // array init
+    const loadWishItemArr = JSON.parse(localStorage.getItem("wishItemArr"));
+    wishItemArr = loadWishItemArr
+      ? loadWishItemArr
+      : jsonData.wishlist.wishItemArr
+      ? jsonData.wishlist.wishItemArr
+      : [];
+    saveWishItem();
     favoriteStoresArr = jsonData.wishlist.favoriteStoresArr;
     favoriteBrandsArr = jsonData.wishlist.favoriteBrandsArr;
 
-    document.querySelector(".wishItems").innerText = wishItemArr.length;
-    document.querySelector(".favoriteStores").innerText =
-      favoriteStoresArr.length;
-    document.querySelector(".favoriteBrands").innerText =
-      favoriteBrandsArr.length;
+    // insert a count into the tab button
+    chanageTabBtnCnt();
 
-    jsonData.product.forEach((product, index) => {
-      // putting items in the wishItemList
-      addItemsInTheWishItemList(product, index);
+    // putting items in the wishItemList
+    addItemsInTheWishItemList(jsonData.product);
 
-      // put data into favoriteBrandsArr
-      favoriteBrandsArr.forEach((arr) => {
-        if (product.title.includes(arr.brand)) {
-          arr.products.push({
-            id: product.id,
-            image_path: product.image_path,
-          });
-
-          arr.count += 1;
-        }
-      });
-    });
+    // putting items in the favoriteStores
+    addItemsInTheFavoriteStores(jsonData.store);
 
     // putting items in the favoriteBrands
-    addItemsInTheFavoriteBrands();
+    addItemsInTheFavoriteBrands(jsonData.product);
 
-    // all select event
-    wishItemChkEvnt();
-
-    jsonData.store.forEach((store) => {
-      // putting items in the favoriteStores
-      addItemsInTheFavoriteStores(store);
-    });
+    buttonEvent(jsonData.product);
   });
-
-// button event
-document.querySelectorAll(".wishItemViewMore").forEach((item) => {
-  item.addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log(this);
-  });
-});
-document.querySelectorAll(".wishHeart").forEach((item) => {
-  item.addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log(this);
-  });
-});
-document.querySelectorAll(".wishItemChatButton").forEach((item) => {
-  item.addEventListener("click", function () {
-    e.preventDefault();
-    console.log(this);
-  });
-});

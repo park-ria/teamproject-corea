@@ -31,7 +31,10 @@ const listArray1 = [
   "청바지",
   "슬리퍼",
   "운동화",
+  "노트북",
+  "캠핑의자"
 ];
+
 const listArray2 = [
   `<i class="fa-solid fa-caret-up"></i>`,
   `<i class="fa-solid fa-caret-up"></i>`,
@@ -41,7 +44,135 @@ const listArray2 = [
   `<i class="fa-solid fa-caret-up"></i>`,
   `<i class="fa-solid fa-caret-up"></i>`,
   `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
 ];
+
+// Current-time
+const todday = new Date();
+const year = todday.getFullYear();
+let month = todday.getMonth() + 1;
+let date = todday.getDate();
+
+month = month < 10 ? `0${month}` : month;
+date = date < 10 ? `0${date}` : date;
+
+let hours = todday.getHours();
+hours = hours < 10 ? `0${hours}` : hours;
+
+document.querySelector(".current-time").innerText = `${year}-${month}-${date} ${hours}:00 기준`
+
+
+let recentWords = [];
+
+const save = () => {
+  localStorage.setItem("recentWords", JSON.stringify(recentWords));
+};
+
+const delItem = (e) => {
+  const target = e.target.parentElement.parentElement.parentElement;
+  target.remove();
+  recentWords = recentWords.filter((recentWord) => recentWord.id != target.id);
+  save();
+  target.remove();
+};
+
+//
+
+// Recent-list 생성 및 삭제
+const searchForm = document.querySelector(".search-box form");
+const searchInput = document.querySelector(".search-box input[type='text']");
+const searchSubmit = document.querySelector(".search-box input[type='submit']");
+const recentList = document.querySelector(".recent-list");
+const searchWordList = document.querySelector(".searchedword-list");
+
+searchInput.addEventListener("click", (e) => {
+  searchWordList.classList.toggle("active");
+})
+
+const addWord = (recentWord) => {
+  if (recentWord.text !== "") {
+
+    const div = document.createElement("div");
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const button = document.createElement("button");
+    const currentDate = document.createElement("span");
+  
+    currentDate.innerText = `${year}.${month}.${date}`;
+    currentDate.className = "current-date";
+    span.innerText = recentWord.text;
+    span.className = "recent-word";
+    button.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    button.addEventListener("click", delItem);
+    div.className = "recent-box";
+    li.className = "new-word";
+  
+    div.appendChild(currentDate);
+    div.appendChild(button);
+    li.appendChild(span);
+    li.appendChild(div);
+    recentList.appendChild(li);
+  }
+}; 
+
+const handler = (e) => {
+  e.preventDefault();
+
+  const recentWord = {
+    id: Date.now(),
+    text: searchInput.value,
+  };
+
+  recentWords.push(recentWord);
+  addWord(recentWord);
+  save();
+
+  searchInput.value = "";
+};
+
+const init = () => {
+  const userRecentWords = JSON.parse(localStorage.getItem(`recentWords`));
+
+  if (userRecentWords) {
+    recentWords.forEach((recentWord) => {
+      addWord(recentWord);
+    });
+    recentWords = userRecentWords;
+  }
+}
+
+init();
+
+searchForm.addEventListener("submit",handler);
+
+// Ranking-list 생성
+listArray1.forEach((word, index) => {
+  const rankingList = document.querySelector(".ranking-list");
+
+  const li = document.createElement("li");
+  const aTag = document.createElement("a");
+  const span = document.createElement("span");
+  const upDown = document.createElement("span");
+
+  span.innerText = `${index + 1}`;
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px"
+  aTag.innerText = word;
+  aTag.prepend(span);
+
+  upDown.className = "up-down";
+  upDown.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+  upDown.style = "color: #0dcc5a; font-size: 14px"
+
+  li.style = ` grid-area: rank${index + 1}`;
+  
+  li.appendChild(aTag);
+  li.appendChild(upDown);
+  rankingList.appendChild(li);
+})
+
+
+// Popular-searchedWord 리스트 생성
 const popularList = document.querySelector(".popular-searchedWord ul");
 
 listArray1.forEach((item, index) => {
@@ -64,7 +195,6 @@ listArray1.forEach((item, index) => {
   aTag.prepend(span);
 
   upDown.className = "up-down";
-  upDown.innerHTML = `<i class="fa-solid fa-chevron-up"></i>`;
   upDown.style = "color: #0dcc5a; font-size: 14px"
   li.appendChild(aTag);
   
@@ -75,7 +205,7 @@ listArray1.forEach((item, index) => {
 });
 
 listArray2.forEach((ele, i) => {
-  document.querySelectorAll(".up-down")[i].innerHTML = `${ele}`;
+  document.querySelectorAll(".list .up-down")[i].innerHTML = `${ele}`;
 });
 
 
@@ -735,8 +865,8 @@ mobileMenu.addEventListener("click", (e) => {
     if(categorySub.classList.contains("active")) {
       categorySub.classList.remove("active");
     }
-  })
-})
+  });
+});
 
 
 const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
@@ -800,7 +930,6 @@ barMenu.addEventListener("mouseover", () => {
 main.addEventListener("mouseleave", () => {
   main.classList.remove("active");
 });
-
 
 // Main-category mouseover
 const mains = document.querySelectorAll(".main-category > li");

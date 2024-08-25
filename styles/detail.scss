@@ -100,457 +100,8 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
-
-// Header
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: map-get($color, bg-light-color);
-  z-index: 100;
-  
-  #banner.ban {
-    height: 33px;
-    background: map-get($color, bg-dark-color);
-    opacity: 1;
-    transition: all 0.3s;
-
-    &.active {
-      background: map-get($map: $color, $key: bg-light-color);
-      opacity: 0;
-      height: 0;
-    }
-
-    .banner {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: map-get($map: $color, $key: font-light-color);
-      font-size: map-get($map: $fontSize, $key: font-extra-small);
-
-      .banner-left {
-        display: flex;
-        gap: 15px;
-
-        a {
-          display: flex;
-          gap: 5px;
-          span {
-            color: map-get($color, bg-light-color);
-          }
-        }
-      }
-
-      .banner-right {
-        display: flex;
-        gap: 20px;
-        a {
-          color: map-get($color, bg-light-color);
-          transition: color 0.3s;
-
-          &:hover {
-            color: map-get($map: $color, $key: bg-main-color);
-          }
-        }
-      }
-    }
-  }
-
-  #header-item {
-    .header-item {
-      width: 1280px;
-      padding: 25px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .header-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .search-box {
-          form {
-            position: relative;
-            border: 1px solid map-get($color, bg-dark-gray);
-            border-radius: 50px;
-            input[type="text"] {
-              width: 550px;
-              height: 40px;
-              border-radius: 50px;
-              padding-left: 20px;
-              padding-right: 10px;
-
-              &::placeholder {
-                font-size: map-get($map: $fontSize, $key: font-extra-small);
-                color: #bbb;
-              }
-            }
-
-            button {
-              position: absolute;
-              top: 50%;
-              right: 6px;
-              transform: translateY(-50%);
-              width: 30px;
-              height: 30px;
-              border-radius: 50px;
-              border: none;
-              background: map-get($map: $color, $key: bar-linear-gradient);
-              color: map-get($map: $color, $key: bg-light-color);
-              cursor: pointer;
-              transition: box-shadow 0.3s;
-
-              &:hover {
-                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
-              }
-            }
-          }
-        }
-
-        .wrapper {
-          position: relative;
-
-          .popular-searchedWord {
-            position: relative;
-            width: 250px;
-            height: 24px;
-            overflow: hidden;
-            ul {
-              width: 100%;
-              height: 24px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-
-              li {
-                position: absolute;
-                top: -24px;
-                left: 0;
-                width: 100%;
-                height: 24px;
-                padding-left: 20px;
-                line-height: 24px;
-
-                &.prev {
-                  top: -24px;
-                  transition: top 0.5s;
-                }
-                &.current {
-                  top: 0;
-                  transition: top 0.5s;
-                }
-                &.next {
-                  top: 24px;
-                }
-  
-                a {
-                  display: flex;
-                  justify-content: flex-start;
-                  align-items: center;
-                  span {
-                    @include list-a;
-                  } 
-                }
-              }
-            }
-
-          }
-
-          .list-btn {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%) rotate(0);
-            color: map-get($map: $color, $key: font-dark-gray);
-            transition: all 0.3s;
-
-            &.active {
-              transform: translateY(-50%) rotate(180deg);
-            }
-          }
-
-          .list {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 0;
-            padding: 20px 20px 0 20px;
-            border: 1px solid transparent;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            transition: all 0.5s;
-            overflow: hidden;
-
-            &.active {
-              height: 476px;
-              background: map-get($map: $color, $key: bg-light-color);
-              border-left: 1px solid #eee;
-              border-right: 1px solid #eee;
-              border-bottom: 1px solid #eee;
-            }
-
-            li {
-              padding: 20px 0;
-              border-bottom: 1px solid #eee;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              cursor: pointer;
-              transition: transform 0.3s;
-
-              &:hover {
-                transform: scale(1.02);
-              }
-
-              a {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                span {
-                  @include list-a;
-                } 
-              }
-              & > span {
-                .fa-sort-down {
-                  color: map-get($map: $color, $key: bg-light-gray);
-                }
-                .fa-caret-up {
-                  color: map-get($map: $color, $key: bg-main-color);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .header-bottom {
-        display: flex;
-        justify-content: space-between;
-
-        .header-bottom-left {
-          display: flex;
-          gap: 40px;
-
-          .barmenu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 10px;
-            background: map-get($map: $color, $key: bar-linear-gradient);
-            color: map-get($map: $color, $key: bg-light-color);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: box-shadow 0.3s;
-
-            &:hover {
-              box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.3);
-            }
-
-            i {
-              font-size: 24px;
-            }
-          }
-
-          .gnb {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            a {
-              font-size: 1.6rem;
-              font-weight: 500;
-              transition: color 0.3s;
-
-              &:hover {
-                color: map-get($map: $color, $key: bg-main-color);
-              }
-            }
-          }
-        }
-
-        .header-bottom-right {
-          display: flex;
-          align-items: center;
-          .lnb {
-            display: flex;
-            gap: 12px;
-
-            li a {
-              display: flex;
-              align-items: center;
-
-              img {
-                margin-right: 4px;
-                transition: filter 0.3s;
-              }
-
-              &:hover img {
-                filter: invert(3) ;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-#header-category {
-  .inner {
-    position: relative;
-    .header-category {
-      position: absolute;
-      top: -25px;
-      left: 24px;
-      width: 180px;
-      background: #555;
-
-      .main-category {
-        font-size: map-get($map: $fontSize, $key: font-small);
-        display: none;
-
-        &.active  {
-          display: block;
-        }
-
-          li {
-          padding: 15px 20px;
-          color: map-get($map: $color, $key: bg-light-color);
-          &:hover {
-            background: #ddd;
-            color: map-get($map: $color, $key: bg-dark-color);
-          }
-
-
-          .sub-category1 {
-            position: absolute;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100%;
-            background: #666;
-            display: none;
-
-            &.active {
-              display: block;
-            }
-            
-            li {
-  
-              .sub-category2 {
-                position: absolute;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100%;
-                background: #888;
-                display: none;
-
-                &.active {
-                  display: block;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-// #mobile-category {
-    
-//       h3 {
-//         margin-left: 2%;
-//         padding-left: 10px;
-//         padding: 10px;
-//         margin-bottom: 15px;
-//         font-size: map-get($map: $fontSize, $key: font-extra-large);
-//       }
-//       ul {
-//         display: flex;
-//         flex-wrap: wrap;
-//         display: none;
-  
-//         li {
-//           width: 20%;
-//           height: 20%;
-//           display: flex;
-//           flex-direction: column;
-
-//           .category-img {
-//             width: 100%;
-//             height: 100%;
-
-//             .img-box {
-//               width: 100%;
-//               height: 100%;
-              
-//               img {
-//                 width: 100%;
-//                 height: 100%;
-//                 object-fit: cover;
-//               }
-//             }
-//             span {
-//               display: block;
-//               padding: 15px;
-//               text-align: center;
-//               font-size: map-get($map: $fontSize, $key: font-medium);
-//               font-weight: 500;
-//             }
-//           }
-//           .category-sub {
-//             width: 500%;
-//             display: none;
-//             padding: 10px 15px;
-//             background: #eee;
-
-//             ul {
-//               display: flex;
-//               flex-wrap: wrap;
-              
-
-//               li {
-//                 width: 50%;
-//                 padding: 15px 0;
-//                 font-size: map-get($map: $fontSize, $key: font-large);
-//               }
-//             }
-//             &.active{
-//               display: block;
-//             }
-            
-//           }
-//         }
-//         &.active {
-//           display: flex;
-//         }
-//       }
-// }
-
-// // bottom-mmenu
-// #bottom-memu {
-//   position: fixed;
-//   left: 0;
-//   bottom: 0;
-//   width: 100%;
-//   background: map-get($map: $color, $key: bg-light-color);
-//   z-index: 9999;
-//   display: none;
-
-//   .bottom-mmenu {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-// }
 
 // main
 #main {
@@ -617,7 +168,7 @@ body {
           line-height: 18px;
           font-weight: 500;
 
-          a {
+          .icon-box {
             width: 25%;
             display: flex;
             justify-content: center;
@@ -625,22 +176,82 @@ body {
             gap: 10px;
             border-right: 1px solid map-get($map: $color, $key: bg-light-gray);
 
-            i {
-              color: map-get($map: $color, $key: bg-dark-gray);
-              font-size: map-get($map: $fontSize, $key: font-extra-large);
-              transition: all 0.3s;
+            a {
+              display: flex;
+              gap: 10px;
+
+              i {
+                color: map-get($map: $color, $key: bg-dark-gray);
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+              }
             }
 
-            &:nth-child(1):hover i,
-            &:nth-child(4):hover i {
-              color: crimson;
+            &.share {
+              position: relative;
+
+              .share-box {
+                position: absolute;
+                top: 55px;
+                left: -50%;
+                padding: 20px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 2px solid map-get($map: $color, $key: bg-light-gray);
+                border-radius: 10px;
+                transform: translateX(10%);
+                display: none;
+                
+                &::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 50%;
+                  width: 0;
+                  height: 0;
+                  border: 10px solid transparent;
+                  border-bottom-color: map-get($map: $color, $key: bg-main-color);
+                  border-top: 0;
+                  margin-left: -10px;
+                  margin-top: -10px;
+                }
+
+                div {
+                  width: 80px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 10px;
+
+                  a {
+                    width: 40px;
+                    height: 40px;
+
+                    img {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                    }
+                  }
+
+                  span {
+                    font-size: 13px;
+                    color: map-get($map: $color, $key: bg-light-gray);
+                    transition: all 0.3s;
+                  }
+
+                  &:hover span{
+                    text-decoration: underline;
+                    color: map-get($map: $color, $key: bg-main-color);
+                  }
+                }
+                &.active {
+                  display: flex;
+                }
+              }
             }
 
-            &:nth-child(2):hover i,
-            &:nth-child(3):hover i {
-              color: map-get($map: $color, $key: bg-main-color);
-            }
-
+            
             &:last-child {
               border-right: none;
             }
@@ -656,12 +267,12 @@ body {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: map-get($map: $fontSize, $key: font-samll);
             margin-bottom: 15px;
-
+            
             span:nth-child(1),
             span:nth-child(2),
             span:nth-child(3) {
+              font-size: map-get($map: $fontSize, $key: font-small);
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(3) {
@@ -686,6 +297,7 @@ body {
 
           .heading-timeinfo {
             font-size: map-get($map: $fontSize, $key: font-small);
+            color: #aaa;
           }
         }
 
@@ -732,7 +344,7 @@ body {
                 gap: 10px;
 
                 span {
-                  font-size: 10px;
+                  font-size: map-get($map: $fontSize, $key: font-extra-small);
                   color: map-get($map: $color, $key: bg-dark-gray);
                 }
 
@@ -782,7 +394,7 @@ body {
           width: 600px;
           display: flex;
           align-items: center;
-          height: 90px;
+          height: 75px;
           border: 1px solid map-get($map: $color, $key: bg-light-gray);
           border-radius: 4px;
           margin-bottom: 30px;
@@ -802,7 +414,7 @@ body {
               right: 0;
               transform: translateY(-50%);
               width: 1px;
-              height: 20px;
+              height: 17px;
               background: map-get($map: $color, $key: bg-light-gray);
             }
 
@@ -844,7 +456,7 @@ body {
           }
           #map {
             width: 100%;
-            height: 140px;
+            height: 155px;
             border: 1px solid map-get($map: $color, $key: bg-light-gray);
           }
         }
@@ -949,8 +561,9 @@ body {
             }
             .bar {
               border: none;
-              border-bottom: 1px solid
+              border-bottom: 2px solid
                 map-get($map: $color, $key: bg-light-gray);
+                border-radius: 2px;
             }
           }
 
@@ -1152,13 +765,12 @@ body {
     }
 
     .event-slider {
-      width: 1280px;
       padding: 30px 0;
-
+      width: 1280px;
+      
       .slide-wrapper {
         position: relative;
         overflow: hidden;
-        width: 100%;
         height: 155px;
         margin-bottom: 30px;
 
@@ -1389,6 +1001,7 @@ body {
     margin-bottom: 150px;
     .event {
       .event-slider {
+        width: 830px;
         .slide-wrapper {
           .slide {
             width: 790px;
