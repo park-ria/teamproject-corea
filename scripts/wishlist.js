@@ -1,4 +1,5 @@
 let wishItemArr;
+let wishItemArrDetail = [];
 let favoriteStoresArr;
 let favoriteBrandsArr;
 
@@ -34,13 +35,105 @@ const chanageTabBtnCnt = () => {
     favoriteBrandsArr.length;
 };
 
+// all select event
+const allCheck = document.querySelector("#allSelection");
+allCheck.addEventListener("click", function () {
+  const isChecked = this.checked;
+  const checkWishItem = document.querySelectorAll(
+    "input[name='checkWishItem']"
+  );
+  checkWishItem.forEach((checkbox) => {
+    checkbox.checked = isChecked;
+  });
+});
+
+// deleteSeletionButton event
+const deleteSeletionButton = document.querySelector("#deleteSeletionButton");
+deleteSeletionButton.addEventListener("click", () => {
+  const checkedItem = document.querySelectorAll(
+    "input[name='checkWishItem']:checked"
+  );
+
+  if (checkedItem.length === 0) {
+    alert("삭제할 상품을 선택해주세요.");
+    return;
+  }
+
+  checkedItem.forEach((item) => {
+    delWishItemByHeart(item.closest("li"));
+  });
+
+  allCheck.checked = false;
+});
+
+// sorting btton click event
+const sortingButtons = document.querySelectorAll(".sorting-group a");
+sortingButtons.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    sortingButtons.forEach((sibling) => {
+      if (sibling !== this) sibling.classList.remove("active");
+    });
+    this.classList.add("active");
+    allCheck.checked = false;
+  });
+});
+
+const addSortedItem = (sortedProducts) => {
+  document.querySelector(".wishItemList").innerHTML = "";
+
+  sortedProducts.forEach((product, index) => {
+    addItemsInTheWishItemList(product, index);
+  });
+  wishItemButtonEvent();
+};
+
+// latestSorting
+const latestSorting = document.querySelector("#latestSorting");
+const sortNew = () => {
+  const sortedProducts = wishItemArrDetail.sort((a, b) => {
+    return new Date(b.real_time).getTime() - new Date(a.real_time).getTime();
+  });
+
+  addSortedItem(sortedProducts);
+};
+latestSorting.addEventListener("click", sortNew);
+
+// popularSorting
+const popularSorting = document.querySelector("#popularSorting");
+const sortPopular = () => {
+  const sortedProducts = wishItemArrDetail.sort((a, b) => {
+    return b.detail.view - a.detail.view;
+  });
+
+  addSortedItem(sortedProducts);
+};
+popularSorting.addEventListener("click", sortPopular);
+
+// lowPriceSorting
+const lowPriceSorting = document.querySelector("#lowPriceSorting");
+const sortLowPrice = () => {
+  const sortedProducts = wishItemArrDetail.sort((a, b) => {
+    return a.price.replace(/[^0-9]/g, "") - b.price.replace(/[^0-9]/g, "");
+  });
+
+  addSortedItem(sortedProducts);
+};
+lowPriceSorting.addEventListener("click", sortLowPrice);
+
+// highPriceSorting
+const highPriceSorting = document.querySelector("#highPriceSorting");
+const sortHighPrice = () => {
+  const sortedProducts = wishItemArrDetail.sort((a, b) => {
+    return b.price.replace(/[^0-9]/g, "") - a.price.replace(/[^0-9]/g, "");
+  });
+
+  addSortedItem(sortedProducts);
+};
+highPriceSorting.addEventListener("click", sortHighPrice);
+
 // putting items in the wishItemList
-const addItemsInTheWishItemList = (products) => {
-  wishItemArr.forEach((arr, index) => {
-    const product = products.filter((item) => {
-      return item.id.includes(arr);
-    })[0];
-    const li = `
+const addItemsInTheWishItemList = (product, index) => {
+  const li = `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
           index + 1
@@ -118,13 +211,17 @@ const addItemsInTheWishItemList = (products) => {
             <div class="wishItemLower">
               <p>${product.time}</p>
               <span class="wishItemCount">
+                <span class="wishItemViewCount">
+                  <i class="fa-regular fa-eye"></i>
+                  ${product.detail.view}
+                </span>
                 <span class="wishItemChattingCount">
                   <i class="fa-regular fa-comment-dots"></i>
-                  ${product.detail.sub_data.split(" · ")[2].split(" ")[1]}
+                  ${product.detail.chat}
                 </span>
                 <span class="wishItemLikeCount">
                   <i class="fa-regular fa-heart"></i>
-                  ${product.detail.sub_data.split(" · ")[3].split(" ")[1]}
+                  ${product.detail.wish}
                 </span>
               </span>
             </div>
@@ -132,38 +229,8 @@ const addItemsInTheWishItemList = (products) => {
         </div>
       </li>
       `;
-    document.querySelector(".wishItemList").insertAdjacentHTML("beforeend", li);
-  });
+  document.querySelector(".wishItemList").insertAdjacentHTML("beforeend", li);
 };
-
-// all select event
-const allCheck = document.querySelector("#allSelection");
-allCheck.addEventListener("click", function () {
-  const isChecked = this.checked;
-  const checkWishItem = document.querySelectorAll(
-    "input[name='checkWishItem']"
-  );
-  checkWishItem.forEach((checkbox) => {
-    checkbox.checked = isChecked;
-  });
-});
-
-// deleteSeletionButton event
-const deleteSeletionButton = document.querySelector("#deleteSeletionButton");
-deleteSeletionButton.addEventListener("click", () => {
-  const checkedItem = document.querySelectorAll(
-    "input[name='checkWishItem']:checked"
-  );
-
-  if (checkedItem.length === 0) {
-    alert("삭제할 상품을 선택해주세요.");
-    return;
-  }
-
-  checkedItem.forEach((item) => {
-    delWishItemByHeart(item.closest("li"));
-  });
-});
 
 const wishItemChkEvnt = () => {
   let checkWishItems = document.querySelectorAll("input[name='checkWishItem']");
@@ -173,7 +240,6 @@ const wishItemChkEvnt = () => {
         "input[name='checkWishItem']:checked"
       ).length;
       checkWishItems = document.querySelectorAll("input[name='checkWishItem']");
-      console.log(checkWishItems);
       if (checkWishItems.length === checkCount) allCheck.checked = true;
       else allCheck.checked = false;
     });
@@ -345,24 +411,12 @@ const saveWishItem = () => {
 const delWishItemByHeart = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
   wishItemArr = new Set([...wishItemArr].filter((item) => item !== productId));
+  wishItemArrDetail = wishItemArrDetail.filter((item) => item.id !== productId);
   saveWishItem();
   target.remove();
 };
 
-// 로컬스토리지 추가
-/*const addWishItem = (products) => {
-  document.querySelector(".wishItemList").innerHTML = "";
-  addItemsInTheWishItemList(products);
-  wishItemButtonEvent(products);
-};
-const wishItemHandler = (products, productId) => {
-  wishItemArr.add(productId);
-  chanageTabBtnCnt();
-  addWishItem(products);
-  saveWishItem();
-};*/
-
-const wishItemButtonEvent = (products) => {
+const wishItemButtonEvent = () => {
   // all select event
   wishItemChkEvnt();
 
@@ -370,12 +424,6 @@ const wishItemButtonEvent = (products) => {
   document.querySelectorAll(".wishHeart").forEach((item) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
-      // 로컬스토리지 추가
-      /*const productId = e.target
-        .closest("li")
-        .querySelector("input[type='checkbox']").value;
-      wishItemHandler(products, productId);*/
-
       delWishItemByHeart(e.target.closest("li"));
     });
   });
@@ -405,8 +453,13 @@ fetch("../db.json")
     chanageTabBtnCnt();
 
     // putting items in the wishItemList
-    addItemsInTheWishItemList(jsonData.product);
-    wishItemButtonEvent(jsonData.product);
+    wishItemArr.forEach((arr) => {
+      const product = jsonData.product.filter((item) => {
+        return item.id.includes(arr);
+      })[0];
+      wishItemArrDetail.push(product);
+    });
+    sortNew();
 
     // putting items in the favoriteStores
     addItemsInTheFavoriteStores(jsonData.store);
