@@ -706,7 +706,7 @@ body {
   height: 100vh;
   padding: 10px 20px;
   background: map-get($map: $color, $key: bg-light-color);
-  display: none;
+  display: noneg;
 
   .mb-searchbox {
     position: relative;
