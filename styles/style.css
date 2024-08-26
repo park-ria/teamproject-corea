@@ -1577,6 +1577,9 @@ body {
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
   }
+  #main-slide article {
+    width: 420px;
+  }
   #main-slide article .main-slide-arrows button {
     width: 40px;
     height: 40px;
@@ -1586,6 +1589,9 @@ body {
   }
   #main-slide article .main-slide-arrows button.mainSlideNext {
     display: none;
+  }
+  #main-slide .main-slide-btns .mainSlidePager span {
+    width: 11.1111111111%;
   }
   #auction .auction-banner .banner-content {
     align-items: flex-end;

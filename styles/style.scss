@@ -862,6 +862,7 @@ body {
   // main-slide
   #main-slide {
     article {
+      width: 420px;
       .main-slide-arrows {
         button {
           width: 40px;
@@ -872,6 +873,13 @@ body {
           &.mainSlideNext {
             display: none;
           }
+        }
+      }
+    }
+    .main-slide-btns {
+      .mainSlidePager {
+        span {
+          width: calc(100% / 9);
         }
       }
     }
