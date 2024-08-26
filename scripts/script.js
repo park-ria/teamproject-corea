@@ -114,6 +114,9 @@ let mainSlide = () => {
     }
     const pager = pagers.querySelector("span");
     pager.style.width = `calc(100% / ${pagerRate} * (${showIndex + 1}))`;
+
+    pauseBtn.classList.remove("active");
+    playBtn.classList.remove("active");
   };
 
   preBtns.forEach((btn) => {
@@ -133,7 +136,7 @@ let mainSlide = () => {
     if (timer === undefined) {
       timer = setInterval(() => {
         moveSlide(currentIdx + 1);
-      }, 3000);
+      }, 4000);
     }
   };
   autoSlide();
@@ -213,6 +216,18 @@ let slideIndex = 0;
 let slidesPerView = 5;
 const productSlideLimit = 10;
 
+if (matchMedia("screen and (min-width: 1280px)").matches) {
+  slidesPerView = 5;
+} else if (matchMedia("screen and (min-width: 1075px)").matches) {
+  slidesPerView = 4;
+} else if (matchMedia("screen and (min-width: 800px)").matches) {
+  slidesPerView = 3;
+} else if (matchMedia("screen and (min-width: 531px)").matches) {
+  slidesPerView = 2;
+} else {
+  slidesPerView = 1;
+}
+
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
@@ -281,11 +296,12 @@ const productSlide = (section) => {
   const nextBtn = slideSection.querySelector(".slideNext");
   const pagers = slideSection.querySelectorAll(".slidePager span");
 
+  prevBtn.classList.add("disabled");
+
   const slideCount = slide.length;
-  const slideWidth = 240;
-  const slideMargin = 20;
 
   let currentIdx = 0;
+
   // move pager
   pagers[0].classList.add("active");
   const movePager = (index) => {
@@ -293,6 +309,7 @@ const productSlide = (section) => {
       pager.classList.remove("active");
     }
     pagers[index].classList.add("active");
+    // console.log(index);
   };
 
   // click pager
@@ -309,22 +326,36 @@ const productSlide = (section) => {
   });
 
   const moveSlide = (num) => {
-    currentIdx = num;
-    const keyIndex = slideCount - slidesPerView + 1;
-    const showIndex = (keyIndex + num) % keyIndex;
-    movePager(showIndex);
+    if (num < 0 || num >= slideCount) return;
 
-    slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+    const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+    const slideMargin = 20;
+    const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
+    const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentIdx === keyIndex) {
-      slideUl.style.left = 0;
-      currentIdx = 0;
+    if (currentSlideWidth >= clientWidth) {
+      currentIdx = num;
+      movePager(currentIdx);
+      slideUl.style.transform = `translateX(${
+        -num * (slideWidth + slideMargin)
+      }px)`;
+    } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
+      currentIdx = num;
+      movePager(currentIdx);
+      slideUl.style.transform = `translateX(${
+        -(num - 1) * (slideWidth + slideMargin) -
+        slideWidth +
+        (clientWidth - currentSlideWidth)
+      }px)`;
     }
-    if (currentIdx === -1) {
-      slideUl.style.left = `-${
-        (slideWidth + slideMargin) * (slideCount - slidesPerView)
-      }px`;
-      currentIdx = slideCount - slidesPerView;
+
+    if (num === 0) {
+      prevBtn.classList.add("disabled");
+    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.add("disabled");
+    } else {
+      prevBtn.classList.remove("disabled");
+      nextBtn.classList.remove("disabled");
     }
   };
 
@@ -341,6 +372,7 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
+    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 
@@ -369,7 +401,101 @@ const productSlide = (section) => {
   });
 };
 
-//const mobile = window.matchMedia("(max-width: 450px)").matches;
+// const productSlide = (section) => {
+//   const slideSection = document.querySelector(section);
+//   const slideUl = slideSection.querySelector("ul");
+//   const slide = slideUl.querySelectorAll("li");
+//   const prevBtn = slideSection.querySelector(".slidePrev");
+//   const nextBtn = slideSection.querySelector(".slideNext");
+//   const pagers = slideSection.querySelectorAll(".slidePager span");
+
+//   const slideCount = slide.length;
+//   const slideWidth = 240;
+//   const slideMargin = 20;
+
+//   let currentIdx = 0;
+//   // move pager
+//   pagers[0].classList.add("active");
+//   const movePager = (index) => {
+//     for (let pager of pagers) {
+//       pager.classList.remove("active");
+//     }
+//     pagers[index].classList.add("active");
+//   };
+
+//   // click pager
+//   pagers.forEach((pager, index) => {
+//     pager.addEventListener("click", function () {
+//       pagers.forEach((sibling) => {
+//         if (sibling !== pager) sibling.classList.remove("active");
+//       });
+
+//       this.classList.add("active");
+//       currentIdx = index;
+//       moveSlide(index);
+//     });
+//   });
+
+//   const moveSlide = (num) => {
+//     currentIdx = num;
+//     const keyIndex = slideCount - slidesPerView + 1;
+//     const showIndex = (keyIndex + num) % keyIndex;
+//     movePager(showIndex);
+
+//     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
+
+//     if (currentIdx === keyIndex) {
+//       slideUl.style.left = 0;
+//       currentIdx = 0;
+//     }
+//     if (currentIdx === -1) {
+//       slideUl.style.left = `-${
+//         (slideWidth + slideMargin) * (slideCount - slidesPerView)
+//       }px`;
+//       currentIdx = slideCount - slidesPerView;
+//     }
+//   };
+
+//   prevBtn.addEventListener("click", () => {
+//     moveSlide(currentIdx - 1);
+//   });
+//   nextBtn.addEventListener("click", () => {
+//     moveSlide(currentIdx + 1);
+//   });
+
+//   // drag event
+//   let startPoint = 0;
+//   let endPoint = 0;
+
+//   slideUl.addEventListener("mousedown", (e) => {
+//     slideUl.style.cursor = "grabbing";
+//     startPoint = e.pageX;
+//   });
+
+//   slideUl.addEventListener("mouseup", (e) => {
+//     slideUl.style.cursor = "grab";
+//     endPoint = e.pageX;
+
+//     if (startPoint < endPoint) {
+//       moveSlide(currentIdx - 1);
+//     } else if (startPoint > endPoint) {
+//       moveSlide(currentIdx + 1);
+//     }
+//   });
+
+//   // touch event
+//   slideUl.addEventListener("touchstart", (e) => {
+//     startPoint = e.touches[0].pageX;
+//   });
+//   slideUl.addEventListener("touchend", (e) => {
+//     endPoint = e.changedTouches[0].pageX;
+//     if (startPoint < endPoint) {
+//       moveSlide(currentIdx - 1);
+//     } else if (startPoint > endPoint) {
+//       moveSlide(currentIdx + 1);
+//     }
+//   });
+// };
 
 fetch(joonggoInfo)
   .then((response) => response.json())

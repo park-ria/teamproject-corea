@@ -54,13 +54,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 @mixin productSlide {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  // display: flex;
+  // justify-content: center;
+  // gap: 30px;
   height: 406px;
   overflow: hidden;
   .slideWrapper {
+    width: fit-content;
     position: absolute;
     left: 0;
     display: flex;
@@ -106,6 +106,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     i {
       font-size: 2rem;
       color: map-get($color, bg-dark-gray);
+      line-height: 35px;
     }
     &.slidePrev {
       left: 0;
@@ -121,6 +122,23 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       &:hover {
         transform: translate(50%, 5%);
         box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.disabled {
+      opacity: 0.6;
+      cursor: default;
+      pointer-events: none;
+      &.slidePrev {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(-50%, 0);
+        }
+      }
+      &.slideNext {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(50%, 0);
+        }
       }
     }
   }
@@ -280,7 +298,7 @@ body {
           h2 {
             height: 84px;
             margin-bottom: 10px;
-            font: 400 3rem/1.4 "JalnanGothic";
+            font: 400 3.2rem/1.4 "JalnanGothic";
             letter-spacing: 0;
           }
           p {
@@ -331,7 +349,7 @@ body {
     align-items: center;
     gap: 8px;
     .mainSlidePager {
-      width: 180px;
+      width: 220px;
       height: 15px;
       background: map-get($color, bg-light-gray);
       border-radius: 20px;
@@ -345,7 +363,7 @@ body {
         width: calc(100% / 3);
         height: 100%;
         background: map-get($color, bar-linear-gradient);
-        transition: all 0.3s;
+        transition: all 0.5s;
       }
     }
     button {
@@ -865,8 +883,6 @@ body {
       width: 420px;
       .main-slide-arrows {
         button {
-          width: 40px;
-          height: 40px;
           &.mainSlidePrev {
             display: none;
           }
@@ -1019,7 +1035,7 @@ body {
   #best-ranking {
     .ranking-content {
       .ranking-slide {
-        height: 396px;
+        height: 390px;
         .slideWrapper {
           li {
             a {
@@ -1078,7 +1094,7 @@ body {
     }
     .auction-content {
       .auction-slide {
-        height: 396px;
+        height: 390px;
         .slideWrapper {
           li {
             a {
@@ -1132,7 +1148,7 @@ body {
   #recommended {
     .recommended-content {
       .recommended-slide {
-        height: 396px;
+        height: 390px;
         .slideWrapper {
           li {
             a {
@@ -1233,17 +1249,41 @@ body {
 
 @media screen and (max-width: 450px) {
   // main-slide
-  // #main-slide {
-  //   article {
-  //     .mainSlideWrapper {
-  //       li {
-  //         &.clone {
-  //           display: none;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  #main-slide {
+    article {
+      .mainSlideWrapper {
+        span {
+          justify-content: center;
+          .main-slide-desc {
+            text-align: center;
+            margin: 30px 0;
+            h2 {
+              height: auto;
+            }
+            p {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+    .main-slide-btns {
+      .mainSlidePager {
+        width: calc(100% - 114px);
+      }
+    }
+  }
+
+  // best-ranking
+  #best-ranking {
+    .ranking-content {
+      .ranking-slide {
+        width: 240px;
+        margin: 0 auto;
+        overflow: visible;
+      }
+    }
+  }
 
   // weekly-item
   #weekly-item {
