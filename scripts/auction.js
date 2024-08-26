@@ -68,13 +68,30 @@ const addBestProduct = (product, ul) => {
   liItem.appendChild(badge);
   ulItem.appendChild(liItem);
 
+  // 893px ~ 1280px 페이저 오류
   // pager
   const slidePager =
     ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
-  if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-    const spanTag = document.createElement("span");
-    slidePager.appendChild(spanTag);
+  if (matchMedia("screen and (min-width: 1280px)").matches) {
+    if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+      const spanTag = document.createElement("span");
+      slidePager.appendChild(spanTag);
+    }
+  } else if (matchMedia("screen and (min-width: 893px)").matches) {
+    if (slideIndex % productSlideLimit >= slidesPerView) {
+      const spanTag = document.createElement("span");
+      slidePager.appendChild(spanTag);
+    }
+  } else {
+    if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+      const spanTag = document.createElement("span");
+      slidePager.appendChild(spanTag);
+    }
   }
+  // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+  //   const spanTag = document.createElement("span");
+  //   slidePager.appendChild(spanTag);
+  // }
   slideIndex++;
 };
 
