@@ -254,9 +254,6 @@ body {
   cursor: pointer;
   transition: transform 0.3s;
 }
-#header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li:hover {
-  transform: scale(1.02);
-}
 #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li a {
   display: flex;
   justify-content: flex-start;
@@ -620,6 +617,118 @@ body {
 #mobile-search {
   position: fixed;
   top: 57px;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  padding: 10px 20px;
+  background: #fff;
+  display: none;
+}
+#mobile-search .mb-searchbox {
+  position: relative;
+  margin-bottom: 20px;
+}
+#mobile-search .mb-searchbox form input[type=text] {
+  width: 100%;
+  height: 35px;
+  background: #eee;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+#mobile-search .mb-searchbox form input[type=submit] {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  width: 29px;
+  height: 29px;
+  background: url("../images/detail/search.png") center/cover no-repeat;
+  border-radius: 50px;
+  border: none;
+  background-color: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
+  color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+#mobile-search .mb-searchbox form input[type=submit]:hover {
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+#mobile-search .searchedword-list .recent-words {
+  margin-bottom: 20px;
+}
+#mobile-search .searchedword-list .recent-words h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li span {
+  font-size: 1.8rem;
+}
+#mobile-search .searchedword-list .recommendedwords {
+  margin-bottom: 20px;
+}
+#mobile-search .searchedword-list .recommendedwords h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+#mobile-search .searchedword-list .recommendedwords ul {
+  display: flex;
+  gap: 5px;
+}
+#mobile-search .searchedword-list .recommendedwords ul li {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: #eee;
+  font-size: 1.8rem;
+}
+#mobile-search .searchedword-list .live-ranking h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#mobile-search .searchedword-list .live-ranking h3 .current-time {
+  color: #aaa;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "rank1 rank6" "rank2 rank7" "rank3 rank8" "rank4 rank9" "rank5 rank10";
+  position: relative;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: #dcdcdc;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list li {
+  padding: 10px 20px;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list li a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list li a span {
+  display: inline-block;
+  margin-right: 10px;
+}
+#mobile-search .searchedword-list .live-ranking .ranking-list li > span .fa-caret-up {
+  color: #0dcc5a;
 }
 
 .container {

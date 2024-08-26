@@ -826,72 +826,9 @@ const categoryData = {
   ],
 };
 
-
 const main = document.querySelector(".main-category");
-const mobileMenu = document.querySelector(".menu-box a:last-child");
-const mobileMain = document.querySelector(".categroy-main");
 
-// Making MobileCategory
-categoryData.data.forEach((mobileCategory, index) => {
-  mobileMain.innerHTML += 
-  `
-  <li>
-    <div class="category-img">
-      <div class="img-box">
-        <img src="../images/detail/mobile-category${index + 1}.png" alt="mobile-category${index + 1}">
-      </div>
-      <span>${mobileCategory.main}</span>
-    </div>
-    <div class="category-sub">
-      <ul></ul>
-    </div>
-  </li>
-      `;
-
-  const categorySubs = document.querySelectorAll(".category-sub");
-      
-  if(index % 5 !== 0) {
-    categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
-  } 
-
-  const mobileSub = document.querySelectorAll(".category-sub ul");
-
-  mobileCategory.sub.forEach((sub) => {
-      mobileSub[index].innerHTML += 
-      `
-      <li>- ${sub.title}</li>
-      `;
-  });
-});
-
-// click MobileMenu
-const mobileArea = document.querySelector("#mobile-category");
-
-mobileMenu.addEventListener("click", (e) => {
-  e.preventDefault()
-  mobileArea.classList.toggle("active");
-
-  const categorySubs = document.querySelectorAll(".category-sub");
-  categorySubs.forEach((categorySub) => {
-    if(categorySub.classList.contains("active")) {
-      categorySub.classList.remove("active");
-    }
-  });
-});
-
-
-const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
-mobileMainImgs.forEach((img) => {
-  img.addEventListener("click", function() {
-    mobileMainImgs.forEach((item) => {
-      item.nextElementSibling.classList.remove("active");
-    })
-    img.nextElementSibling.classList.add("active");
-  })
-})
-
-
-
+// headercategory
 categoryData.data.forEach((mainCategory) => {
 
   const mainA = document.createElement("a");
@@ -970,3 +907,106 @@ subs.forEach((sub) => {
     e.target.querySelector(".sub-category2").classList.remove("active");
   });
 });
+
+
+
+
+const mobileSearchMenu = document.querySelector(".menu-box button:first-child");
+const mobileMenu = document.querySelector(".menu-box button:last-child");
+const mobileMain = document.querySelector(".categroy-main");
+const mobileSearch = document.querySelector("#mobile-search");
+const mobileArea = document.querySelector("#mobile-category");
+
+// Mobile-search 클릭 이벤트
+mobileSearchMenu.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if(mobileArea.classList.contains("active")) {
+    mobileArea.classList.remove("active");
+  }
+
+  if(mobileMenu.classList.contains("active")) {
+    mobileMenu.classList.remove("active");
+  }
+  
+  mobileSearchMenu.classList.add("active")
+  mobileSearch.classList.add("active");
+});
+
+const backBtn = document.querySelector(".mb-searchbox form button");
+
+backBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  mobileSearchMenu.classList.remove("active");
+  mobileSearch.classList.remove("active");
+
+})
+
+// MobileMenu 클릭 이벤트 
+mobileMenu.addEventListener("click", (e) => {
+    e.preventDefault();
+
+  if(mobileSearch.classList.contains("active")) {
+    mobileSearch.classList.remove("active");
+  }
+
+  if(mobileSearchMenu.classList.contains("active")) {
+    mobileSearchMenu.classList.remove("active");
+  }
+  
+  mobileArea.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+  categorySubs.forEach((categorySub) => {
+    if(categorySub.classList.contains("active")) {
+      categorySub.classList.remove("active");
+    }
+  });
+});
+
+const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
+mobileMainImgs.forEach((img) => {
+  img.addEventListener("click", function() {
+    mobileMainImgs.forEach((item) => {
+      item.nextElementSibling.classList.remove("active");
+    })
+    img.nextElementSibling.classList.add("active");
+  })
+})
+
+// Making MobileCategory
+categoryData.data.forEach((mobileCategory, index) => {
+  mobileMain.innerHTML += 
+  `
+  <li>
+    <div class="category-img">
+      <div class="img-box">
+        <img src="../images/detail/mobile-category${index + 1}.png" alt="mobile-category${index + 1}">
+      </div>
+      <span>${mobileCategory.main}</span>
+    </div>
+    <div class="category-sub">
+      <ul></ul>
+    </div>
+  </li>
+      `;
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+      
+  if(index % 5 !== 0) {
+    categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
+  } 
+
+  const mobileSub = document.querySelectorAll(".category-sub ul");
+
+  mobileCategory.sub.forEach((sub) => {
+      mobileSub[index].innerHTML += 
+      `
+      <li>- ${sub.title}</li>
+      `;
+  });
+});
+
+

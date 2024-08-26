@@ -601,15 +601,59 @@ body {
   .mobile-menu {
     width: 100%;
     padding: 10px;
+    padding-right: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .menu-box {
       display: flex;
+      align-items: center;
       gap: 25px;
-      a {
+      button {
         font-size: 25px;
+
+        &:first-child.active {
+          display: none;
+        }
+        &:last-child {
+          width: 25px;
+          height: 18px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+          
+          span {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: map-get($map: $color, $key: bg-dark-color);
+            border-radius: 3px;
+
+            &:nth-child(1) {
+              top: 0%;
+            }
+            &:nth-child(2) {
+              top: 50%;
+            }
+            &:nth-child(3) {
+              top: 100%;
+            }
+          }
+          &.active span:nth-child(1) {
+            top: 50%;
+            transform: rotate(45deg);
+          }
+          &.active span:nth-child(2) {
+            display: none;
+          }
+          &.active span:nth-child(3) {
+            top: 50%;
+            transform: rotate(-45deg);
+          }
+        }
       }
     }
   }
@@ -698,50 +742,49 @@ body {
 
 // mobile-search 
 #mobile-search {
-  position: fixed;
-  top: 57px;
-  left: 0;
-  z-index: 3;
   width: 100%;
   height: 100vh;
   padding: 10px 20px;
   background: map-get($map: $color, $key: bg-light-color);
   display: none;
-
+  
   .mb-searchbox {
     position: relative;
     margin-bottom: 20px;
     form {
+      display: flex;
+      button {
+        font-size: 22px;
+        padding: 0 15px;
+      }
       input[type="text"] {
         width: 100%;
         height: 35px;
         background: #eee;
         border-radius: 20px;
         padding-left: 20px;
-
+        
       }
-
+      
       input[type="submit"] {
         position: absolute;
-              top: 3px;
-              right: 5px;
-              width: 29px;
-              height: 29px;
-              background: url("../images/detail/search.png") center/cover no-repeat;
-              border-radius: 50px;
-              border: none;
-              background-color: map-get($map: $color, $key: bar-linear-gradient);
-              color: map-get($map: $color, $key: bg-light-color);
-              cursor: pointer;
-              transition: box-shadow 0.3s;
+        top: 3px;
+        right: 5px;
+        width: 29px;
+        height: 29px;
+        background: url("../images/detail/search.png") center/cover no-repeat;
+        border-radius: 50px;
+        border: none;
+        background-color: map-get($map: $color, $key: bar-linear-gradient);
+        color: map-get($map: $color, $key: bg-light-color);
+        cursor: pointer;
+        transition: box-shadow 0.3s;
 
-              &:hover {
-                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
-              }
+        &:hover {
+          box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
+        }
       }
     }
-  
-
   }
 
   .searchedword-list {
@@ -774,6 +817,8 @@ body {
           border-radius: 20px;
           background: #eee;
           font-size: map-get($map: $fontSize, $key: font-large);
+          font-weight: 500;
+          cursor: pointer;
         }
       }
     }
@@ -797,6 +842,14 @@ body {
         @include rankig-list;
       }
     }
+  }
+
+  &.active {
+    position: fixed;
+    top: 57px;
+    left: 0;
+    display: block;
+    z-index: 3;
   }
 }
 
@@ -988,6 +1041,66 @@ footer {
     }
   }
   
+  // mobile-search
+  #mobile-search {
+    
+    .mb-searchbox {
+      position: relative;
+      margin-bottom: 20px;
+      form {
+        display: flex;
+        button {
+          font-size: 22px;
+          padding: 0 15px;
+        }
+        input[type="text"] {
+          width: 100%;
+          height: 35px;
+          background: #eee;
+          border-radius: 20px;
+          padding-left: 20px;
+          
+        }
+        
+        input[type="submit"] {
+          position: absolute;
+          top: 3px;
+          right: 5px;
+          width: 29px;
+          height: 29px;
+          background: url("../images/detail/search.png") center/cover no-repeat;
+          border-radius: 50px;
+          border: none;
+          background-color: map-get($map: $color, $key: bar-linear-gradient);
+          color: map-get($map: $color, $key: bg-light-color);
+          cursor: pointer;
+          transition: box-shadow 0.3s;
+
+          &:hover {
+            box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
+          }
+        }
+      }
+    }
+
+    .searchedword-list {
+      
+      .recommendedwords {
+        ul {
+          display: flex;
+          gap: 5px;
+          li {
+            padding: 10px;
+            font-size: map-get($map: $fontSize, $key: font-medium);
+          }
+        }
+      }
+    }
+
+
+    &.active {
+      top: 37px;
+    }
+  }
 }
 
-// mobile-search
