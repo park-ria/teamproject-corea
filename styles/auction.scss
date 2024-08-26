@@ -102,6 +102,9 @@ body {
               }
             }
           }
+          .badge {
+            display: none;
+          }
         }
       }
       .slide-btns {
@@ -246,14 +249,47 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
-}
-
-@media screen and (max-width: 840px) {
   #best-auction {
     .best-auction-content {
       .best-auction-slide {
-        height: 310px;
-        ul {
+        overflow: visible;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  #product-list {
+    .product {
+      li {
+        a {
+          width: 180px;
+          .slide-img {
+            height: 180px;
+          }
+          .slide-desc {
+            .desc-title {
+              height: 18px;
+            }
+          }
+        }
+        .badge {
+          width: 40px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        width: 300px;
+        height: 330px;
+        margin: 0 auto;
+        .bestAuction {
           li {
             a {
               width: 300px;
@@ -282,30 +318,6 @@ body {
       }
     }
   }
-  #product-list {
-    .product {
-      li {
-        a {
-          width: 180px;
-          .slide-img {
-            height: 180px;
-          }
-          .slide-desc {
-            .desc-title {
-              height: 18px;
-            }
-          }
-        }
-        .badge {
-          width: 40px;
-          height: 20px;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
   #product-list {
     .product {
       li {

@@ -2445,6 +2445,9 @@ body {
   line-clamp: 1;
   -webkit-line-clamp: 1;
 }
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge {
+  display: none;
+}
 #best-auction .best-auction-content .best-auction-slide .slide-btns button {
   position: absolute;
   top: 35%;
@@ -2719,62 +2722,12 @@ body {
   font-weight: 900;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 1280px) {
   #best-auction .best-auction-content .best-auction-slide {
-    height: 310px;
+    overflow: visible;
   }
-  #best-auction .best-auction-content .best-auction-slide ul li a {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-img {
-    height: 200px;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-img .timeEvent {
-    padding: 4px 10px;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-img .timeEvent .clock {
-    width: 25px;
-    height: 25px;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-title {
-    font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
-    width: 100%;
-    height: 45px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-price {
-    display: block;
-    margin: 10px 0 15px;
-    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-price .current {
-    font-size: 1.2rem;
-    letter-spacing: 0;
-    color: #0095ee;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-price .fixed {
-    font-size: 1.2rem;
-    text-decoration: line-through;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-info {
-    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #6d6d6d;
-  }
-  #best-auction .best-auction-content .best-auction-slide ul li a .slide-desc .desc-title {
-    height: 18px;
-  }
+}
+@media screen and (max-width: 840px) {
   #product-list .product li a {
     width: 180px;
   }
@@ -2790,6 +2743,63 @@ body {
   }
 }
 @media screen and (max-width: 450px) {
+  #best-auction .best-auction-content .best-auction-slide {
+    width: 300px;
+    height: 330px;
+    margin: 0 auto;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img {
+    height: 200px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent {
+    padding: 4px 10px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock {
+    width: 25px;
+    height: 25px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
+    font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price {
+    display: block;
+    margin: 10px 0 15px;
+    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price .current {
+    font-size: 1.2rem;
+    letter-spacing: 0;
+    color: #0095ee;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price .fixed {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-info {
+    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #6d6d6d;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
+    height: 18px;
+  }
   #product-list .product li a {
     width: 150px;
   }
