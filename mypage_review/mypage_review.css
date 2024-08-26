@@ -1,1 +1,56 @@
-*{margin:0;padding:0;box-sizing:border-box}ul,li{list-style:none}.inner .container{display:flex;justify-content:center}.inner .container .mypageReview{width:80%;display:flex;flex-direction:column;align-items:center}.inner .container .mypageReview .mypageReviewCon{width:80%;display:flex;flex-direction:column;gap:50px}.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul{display:flex;flex-direction:column}.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li{width:100%;height:70%;display:flex;align-items:center;gap:20px;padding:10px;border-bottom:1px solid #a9a9a9}.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li img{width:50px;height:50px;border:50%}.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li .mypageReviewdesc{display:flex;flex-direction:column;gap:5px}@media screen and (max-width: 850px){.inner .container .mypageReview{width:100%}}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* variable */
+ul, li {
+  list-style: none;
+}
+
+.inner .container {
+  display: flex;
+  justify-content: center;
+}
+.inner .container .mypageReview {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inner .container .mypageReview .mypageReviewCon {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul {
+  display: flex;
+  flex-direction: column;
+}
+.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li img {
+  width: 50px;
+  height: 50px;
+  border: 50%;
+}
+.inner .container .mypageReview .mypageReviewCon #mypageReviewResult ul li .mypageReviewdesc {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media screen and (max-width: 850px) {
+  .inner .container .mypageReview {
+    width: 100%;
+  }
+}

@@ -57,26 +57,28 @@ $bg-main-color: #0dcc5a;
             justify-content: space-between;
             align-items: center;
 
-            .sign-input{
+            .sign-input {
               width: 100%;
               display: flex;
               gap: 50px;
               font-size: 1.8rem;
               padding-bottom: 17px;
-              .label{
+              .label {
                 width: 50%;
                 padding-left: 20px;
-                span{
+                span {
                   color: crimson;
                 }
               }
-              .inputbox{
+              .inputbox {
                 width: 70%;
                 height: 30px;
                 font-size: 1.8rem;
               }
-              #phonelabel{
+              #phonelabel {
                 width: 25%;
+                display: flex;
+                align-items: center;
               }
               .phonewrapper {
                 width: 50%;
@@ -92,23 +94,22 @@ $bg-main-color: #0dcc5a;
               }
             }
 
-            .error{
+            .error {
               width: 50%;
               color: crimson;
-              padding-bottom: 17px;
+              display: none;
             }
-
 
             .token-wrapper {
               width: 90%;
               height: 50px;
               display: flex;
+              justify-content: center;
               align-items: center;
-              padding-left: 32%;
               padding-bottom: 20px;
               gap: 10%;
 
-              .token-upperwrapper{
+              .token-upperwrapper {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -122,7 +123,7 @@ $bg-main-color: #0dcc5a;
                 }
               }
 
-              .token-bottomwrapper{
+              .token-bottomwrapper {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -138,34 +139,47 @@ $bg-main-color: #0dcc5a;
             }
             .location-wrapper {
               width: 100%;
-              display: flex;
-              gap: 20px;
-              #location{
-                width: 70%;
+              // display: flex;
+              // align-items: center;
+              position: relative;
+              #location {
+                width: 50%;
                 height: 40px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 border-radius: 10px;
                 font-size: 1.5rem;
-                padding-left: 20px;
               }
             }
             .gender-wrapper {
-              width: 50%;
-              display: flex;
-              gap: 50px;
+              width: 100%;
+              position: relative;
+              .gender-box {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                justify-content: space-between;
+                width: 50%;
+                text-align: center;
+                .gender {
+                  width: 100%;
+                  #gender-woman {
+                    width: 13px;
+                    height: 13px;
+                  }
 
-              #gender-woman {
-                width: 13px;
-                height: 13px;
-              }
-
-              #gender-man {
-                width: 13px;
-                height: 13px;
+                  #gender-man {
+                    width: 13px;
+                    height: 13px;
+                  }
+                }
               }
             }
-
           }
-
         }
       }
 
@@ -190,115 +204,107 @@ $bg-main-color: #0dcc5a;
   }
 }
 
-@media screen and (max-width: 850px){
-.container{
-  width: 100%;
-  justify-content: center;
-  .sign-in{
+@media screen and (max-width: 850px) {
+  .container {
     width: 100%;
-    padding: 10px;
-    form{
-      .sign-in-ttl{
-        width: 100%;
-        padding-top: 5px;
-      }
-      .inputs{
-        padding-top: 10px;
-        ul{
-          padding: 0;
-          gap: 5px;
-          li{
-            width: 100%;
-            height: 80px;
+    justify-content: center;
+    .sign-in {
+      width: 100%;
+      padding: 10px;
+      form {
+        .sign-in-ttl {
+          width: 100%;
+          padding-top: 5px;
+        }
+        .inputs {
+          padding-top: 10px;
+          ul {
             padding: 0;
-            padding-top: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .sign-input{
-              gap: 5px;
-              padding-bottom: 0;
-              .label{
-                width: 40%;
-                font-size: 2rem;
-                text-align: center;
-                padding-left: 0;
-              }
-              .inputbox {
-                width: 100%;
-                font-size: 2rem;
-              }
-              .phonewrapper{
-                width: 80%;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                input{
+            gap: 5px;
+            li {
+              width: 100%;
+              height: 80px;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .sign-input {
+                gap: 5px;
+                padding-bottom: 0;
+                .label {
+                  width: 50%;
+                  font-size: 2rem;
+                  padding-left: 10px;
+                }
+                .inputbox {
+                  width: 100%;
+                  font-size: 1.8rem;
+                }
+                .phonewrapper {
+                  width: 80%;
                   display: flex;
-                  width: 25%;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 10px;
+                  input {
+                    display: flex;
+                    width: 25%;
+                  }
                 }
               }
-            }
-            .error{
-              width: 80%;
-              padding-top: 5px;
-            }
-            .token-wrapper{
-              padding-left: 7px;
-              gap: 20px;
-              .token-upperwrapper{
-                #token-button{
-                  width: 70px;
+              .error {
+                width: 80%;
+                padding-top: 5px;
+              }
+              .token-wrapper {
+                gap: 20px;
+                padding-bottom: 0;
+                .token-upperwrapper {
+                  #token-button {
+                    width: 70px;
+                  }
+                }
+                .token-bottomwrapper {
+                  #token-timer-confirmBtn {
+                    width: 70px;
+                  }
                 }
               }
-              .token-bottomwrapper{
-                #token-timer-confirmBtn{
-                  width: 70px;
-                }
-              }
-            }
-            .location-wrapper{
-              width: 100%;
-              display: flex;
-              justify-content: center;
-              padding-left: 20px;
-              padding-bottom: 20px;
-              gap: 50px;
-              #location{
+              .location-wrapper {
                 width: 100%;
-                padding-left: 5px;
-                font-size: 1.5rem;
-              }
-            }
-            .gender-wrapper{
-              width: 100%;
-              display: flex;
-              justify-content: center;
-              padding-left: 20px;
-              padding-top: 15px;
-              gap: 50px;
-              label{
-                width: 100%;
-                #gender-woman{
-                  width: 15px;
-                  height: 15px;
+                gap: 50px;
+                #location {
+                  width: 50%;
+                  padding-left: 5px;
+                  font-size: 1.5rem;
                 }
-                #gender-man{
-                  width: 15px;
-                  height: 15px;
+              }
+              .gender-wrapper {
+                width: 100%;
+                display: flex;
+                gap: 50px;
+                label {
+                  display: inline-block;
+                  width: 100%;
+                  #gender-woman {
+                    width: 15px;
+                    height: 15px;
+                  }
+                  #gender-man {
+                    width: 15px;
+                    height: 15px;
+                  }
                 }
               }
             }
           }
         }
-      }
-      .sign-in-footer{
-        padding-top: 15px;
+        .sign-in-footer {
+          padding-top: 15px;
+        }
       }
     }
   }
-}
 }
