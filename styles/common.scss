@@ -5,6 +5,56 @@
   display: inline-block;
   margin-right: 10px;
 }
+@mixin rankig-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+  "rank1 rank6"
+  "rank2 rank7"
+  "rank3 rank8"
+  "rank4 rank9"
+  "rank5 rank10";
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: map-get($map: $color, $key: bg-light-gray);
+  }
+
+  li {
+    padding: 10px 20px;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+    }
+
+    a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      span {
+        @include list-a;
+      } 
+    }
+    & > span {
+      .fa-caret-up {
+        color: map-get($map: $color, $key: bg-main-color);
+      }
+    }
+  }
+}
 
 // variables
 html {
@@ -180,7 +230,6 @@ body {
               .recent-words {
                 h3 {
                   font-size: 14px;
-                  margin-bottom: 15px;
                 }
                 .recent-list {
                   width: 100%;
@@ -238,55 +287,7 @@ body {
                 }
 
                 .ranking-list {
-                  width: 100%;
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
-                  grid-template-areas: 
-                  "rank1 rank6"
-                  "rank2 rank7"
-                  "rank3 rank8"
-                  "rank4 rank9"
-                  "rank5 rank10";
-                  position: relative;
-
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 2px;
-                    height: 100%;
-                    background: map-get($map: $color, $key: bg-light-gray);
-                  }
-
-                  li {
-                    padding: 10px 20px;
-                    border-bottom: none;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    cursor: pointer;
-                    transition: transform 0.3s;
-      
-                    &:hover {
-                      transform: scale(1.02);
-                    }
-      
-                    a {
-                      display: flex;
-                      justify-content: flex-start;
-                      align-items: center;
-                      span {
-                        @include list-a;
-                      } 
-                    }
-                    & > span {
-                      .fa-caret-up {
-                        color: map-get($map: $color, $key: bg-main-color);
-                      }
-                    }
-                  }
+                  @include rankig-list;
                 }
               }
               &.active {
@@ -695,6 +696,110 @@ body {
   }
 }
 
+// mobile-search 
+#mobile-search {
+  position: fixed;
+  top: 57px;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  padding: 10px 20px;
+  background: map-get($map: $color, $key: bg-light-color);
+  display: none;
+
+  .mb-searchbox {
+    position: relative;
+    margin-bottom: 20px;
+    form {
+      input[type="text"] {
+        width: 100%;
+        height: 35px;
+        background: #eee;
+        border-radius: 20px;
+        padding-left: 20px;
+
+      }
+
+      input[type="submit"] {
+        position: absolute;
+              top: 3px;
+              right: 5px;
+              width: 29px;
+              height: 29px;
+              background: url("../images/detail/search.png") center/cover no-repeat;
+              border-radius: 50px;
+              border: none;
+              background-color: map-get($map: $color, $key: bar-linear-gradient);
+              color: map-get($map: $color, $key: bg-light-color);
+              cursor: pointer;
+              transition: box-shadow 0.3s;
+
+              &:hover {
+                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
+              }
+      }
+    }
+  
+
+  }
+
+  .searchedword-list {
+    .recent-words {
+      margin-bottom: 20px;
+      h3 {
+        font-size: map-get($map: $fontSize, $key: font-extra-large);
+        margin-bottom: 15px;
+      }      
+      .recent-list {
+        li {
+          span {
+            font-size: map-get($map: $fontSize, $key: font-large);
+          }
+        }
+      }
+    }
+
+    .recommendedwords {
+      margin-bottom: 20px;
+      h3 {
+        font-size: map-get($map: $fontSize, $key: font-extra-large);
+        margin-bottom: 15px;
+      }
+      ul {
+        display: flex;
+        gap: 5px;
+        li {
+          padding: 10px 20px;
+          border-radius: 20px;
+          background: #eee;
+          font-size: map-get($map: $fontSize, $key: font-large);
+        }
+      }
+    }
+
+    .live-ranking {
+      h3 {
+        font-size: map-get($map: $fontSize, $key: font-extra-large);
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .current-time {
+          color: #aaa;
+          font-weight: 400;
+          font-size: map-get($map: $fontSize, $key: font-medium);
+        }
+      }
+
+      .ranking-list {
+        @include rankig-list;
+      }
+    }
+  }
+}
+
 // contents
 .container {
   width: 100%;
@@ -884,3 +989,5 @@ footer {
   }
   
 }
+
+// mobile-search

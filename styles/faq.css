@@ -178,13 +178,42 @@ body {
   background: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
+  display: none;
 }
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words h3 {
   font-size: 14px;
-  margin-bottom: 15px;
 }
-#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words span {
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list {
+  width: 100%;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-word {
   color: #bbb;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button {
+  font-size: 1.8rem;
+  color: #bbb;
+  transition: color 0.3s;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+  color: #3a3a3a;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li:hover .recent-word {
+  color: #3a3a3a;
+  font-weight: 600;
 }
 #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 {
   display: flex;
@@ -195,7 +224,7 @@ body {
 #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 .current-time {
   font-size: 13px;
   margin-left: 30px;
-  color: #bbb;
+  color: #aaa;
   font-weight: 400;
 }
 #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list {
@@ -236,11 +265,11 @@ body {
   display: inline-block;
   margin-right: 10px;
 }
-#header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li > span .fa-sort-down {
-  color: #dcdcdc;
-}
 #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li > span .fa-caret-up {
   color: #0dcc5a;
+}
+#header #header-item .header-item .header-top .search-box form .searchedword-list.active {
+  display: block;
 }
 #header #header-item .header-item .header-top .wrapper {
   position: relative;
@@ -585,6 +614,11 @@ body {
   top: 57px;
   left: 0;
   z-index: 3;
+}
+
+#mobile-search {
+  position: fixed;
+  top: 57px;
 }
 
 .container {

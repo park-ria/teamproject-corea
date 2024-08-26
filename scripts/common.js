@@ -60,7 +60,10 @@ date = date < 10 ? `0${date}` : date;
 let hours = todday.getHours();
 hours = hours < 10 ? `0${hours}` : hours;
 
-document.querySelector(".current-time").innerText = `${year}-${month}-${date} ${hours}:00 기준`
+const currentTimers = document.querySelectorAll(".current-time");
+currentTimers.forEach((currentTimer) => {
+  currentTimer.innerText = `${year}-${month}-${date} ${hours}:00 기준`;
+});
 
 
 let recentWords = [];
@@ -72,7 +75,7 @@ const save = () => {
 const delItem = (e) => {
   const target = e.target.parentElement.parentElement.parentElement;
   target.remove();
-  recentWords = recentWords.filter((recentWord) => recentWord.id != target.id);
+  recentWords = recentWords.filter((recentWord) => recentWord.id != e.target.parentElement.id);
   save();
   target.remove();
 };
@@ -86,9 +89,14 @@ const searchSubmit = document.querySelector(".search-box input[type='submit']");
 const recentList = document.querySelector(".recent-list");
 const searchWordList = document.querySelector(".searchedword-list");
 
+// 검색창 클릭 이벤트
 searchInput.addEventListener("click", (e) => {
   searchWordList.classList.toggle("active");
-})
+
+  if(recentList.querySelector("li:first-child").classList.contains("no-words")) {
+    recentList.querySelector("li:first-child").remove();
+  }
+});
 
 const addWord = (recentWord) => {
   if (recentWord.text !== "") {
@@ -148,7 +156,8 @@ searchForm.addEventListener("submit",handler);
 
 // Ranking-list 생성
 listArray1.forEach((word, index) => {
-  const rankingList = document.querySelector(".ranking-list");
+  const headerRanking = document.querySelector("#header .ranking-list");
+  const mobileRanking = document.querySelector("#mobile-search .ranking-list");
 
   const li = document.createElement("li");
   const aTag = document.createElement("a");
@@ -168,7 +177,9 @@ listArray1.forEach((word, index) => {
   
   li.appendChild(aTag);
   li.appendChild(upDown);
-  rankingList.appendChild(li);
+  const li2 = li.cloneNode(true);
+  headerRanking.appendChild(li);
+  mobileRanking.appendChild(li2);
 })
 
 
