@@ -588,108 +588,6 @@ $bg-main-color: #0dcc5a;
 
       /* favorite brands content */
       .favorite-brands-content {
-        .favoriteBrandsGroup {
-          .favoriteBrandsWrap {
-            & > li {
-              width: 100%;
-              padding: 30px 0;
-              border-bottom: 1px solid map-get($color, bg-light-gray);
-              display: flex;
-              align-items: center;
-              gap: 20px;
-              &:first-child {
-                padding-top: 0;
-              }
-              .favorite-brand-info {
-                width: 240px;
-                height: 240px;
-                padding: 15px;
-                background: map-get($color, main-font-color);
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                .favorite-brand-shopkeeper {
-                  width: 100%;
-                  text-align: center;
-                  .favoriteBrandsTitle {
-                    display: inline-block;
-                    width: 100%;
-                    height: fit-content;
-                    img {
-                      width: 100px;
-                      height: 100px;
-                      object-fit: cover;
-                      border-radius: 50%;
-                    }
-                    & > p {
-                      width: 100%;
-                      margin-top: 10px;
-                      font-size: map-get($fontSize, font-medium);
-                      color: map-get($color, bg-light-color);
-                      white-space: nowrap;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                    }
-                  }
-                  .favorite-brand-follower-box {
-                    margin-top: 5px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 5px;
-                    li {
-                      color: map-get($color, bg-light-color);
-                      font-size: 1rem;
-                      span {
-                        &:not(.follower-box-title) {
-                          letter-spacing: normal;
-                        }
-                      }
-                    }
-                  }
-                }
-                .favorite-brand-follow-button {
-                  align-self: flex-end;
-                  .followButton {
-                    .fa-solid {
-                      font-size: map-get($fontSize, font-medium);
-                      color: map-get($color, bg-light-color);
-                    }
-                  }
-                }
-              }
-              .favorite-brand-products-box {
-                flex: 1;
-                height: 240px;
-                overflow: hidden;
-                .favorite-brand-products {
-                  display: flex;
-                  align-items: center;
-                  gap: 20px;
-                  flex-wrap: wrap;
-                  & > li {
-                    & > a {
-                      display: inline-block;
-                      width: 240px;
-                      height: 240px;
-                      .favoriteBrandProductImg {
-                        display: inline-block;
-                        width: inherit;
-                        height: inherit;
-                        background: url("https://img2.joongna.com/media/original/2024/08/10/1723275807508LJn_0Zh9h.jpg?impolicy=resizeWatermark3&isSecret=false")
-                          center/cover no-repeat;
-                        border-radius: 10px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -756,11 +654,10 @@ $bg-main-color: #0dcc5a;
 }
 
 /* mypage-items-content */
-.mypage-items-content {
- 
-  .mypage-items-content-detail {
+.mypage-purchases-content {
+  .mypage-purchases-content-detail {
     width: 100%;
-    .mypageItemList {
+    .mypagePurchaseList {
       li {
         width: 100%;
         padding: 50px 0;
@@ -768,18 +665,18 @@ $bg-main-color: #0dcc5a;
         align-items: center;
         gap: 20px;
         border-bottom: 1px solid map-get($color, bg-light-gray);
-        .mypageItem {
+        .mypagePurchase {
           width: 100%;
           height: 150px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-          .mypageItemImgWrapper {
+          .mypagePurchaseImgWrapper {
             width: 150px;
             height: 150px;
             position: relative;
-            .mypageItemViewMore {
+            .mypagePurchaseViewMore {
               width: inherit;
               height: inherit;
               img {
@@ -821,31 +718,31 @@ $bg-main-color: #0dcc5a;
               }
             }
           }
-          .mypageItemDescGroup {
+          .mypagePurchaseDescGroup {
             flex: 1;
             height: auto;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             gap: 20px;
-            .mypageItemDesc {
+            .mypagePurchaseDesc {
               height: 100%;
               display: flex;
               align-items: center;
               justify-content: space-between;
-              .mypageItemViewMore {
+              .mypagePurchaseViewMore {
                 flex: 3;
-                .mypageItemInfo {
+                .mypagePurchaseInfo {
                   height: 100%;
                   display: flex;
                   justify-content: space-between;
-                  .mypageItemTitleBox {
+                  .mypagePurchaseTitleBox {
                     flex: 1;
-                    .mypageItemSellerName {
+                    .mypagePurchaseSellerName {
                       font-size: map-get($fontSize, font-small);
                       color: map-get($color, bg-dark-gray);
                     }
-                    .mypageItemName {
+                    .mypagePurchaseName {
                       width: 100%;
                       margin-top: 10px;
                       line-height: 25px;
@@ -858,17 +755,17 @@ $bg-main-color: #0dcc5a;
                       -webkit-box-orient: vertical;
                     }
                   }
-                  .mypageItemPriceBox {
+                  .mypagePurchasePriceBox {
                     flex: 1.5;
                     display: flex;
                     justify-content: space-around;
-                    .mypageItemPriceInfo {
+                    .mypagePurchasePriceInfo {
                       width: 135px;
                       display: flex;
                       justify-content: flex-end;
                       align-items: center;
                       gap: 10px;
-                      .mypageItemPrice {
+                      .mypagePurchasePrice {
                         font-size: map-get($fontSize, font-extra-small);
                         b {
                           font-size: map-get($fontSize, font-large);
@@ -885,7 +782,7 @@ $bg-main-color: #0dcc5a;
                         text-align: center;
                       }
                     }
-                    .mypageItemShippingInfo {
+                    .mypagePurchaseShippingInfo {
                       display: flex;
                       flex-direction: column;
                       justify-content: center;
@@ -896,7 +793,7 @@ $bg-main-color: #0dcc5a;
                   }
                 }
               }
-              .mypageItemButtons {
+              .mypagePurchaseButtons {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
@@ -915,7 +812,7 @@ $bg-main-color: #0dcc5a;
                   &.mypageItemChatButton {
                     background: map-get($color, bg-main-color);
                   }
-                  &.mypageItemXButton {
+                  &.mypagePurchaseXButton {
                     width: 24px;
                     min-width: 24px;
                     height: 24px;
@@ -931,7 +828,7 @@ $bg-main-color: #0dcc5a;
                 }
               }
             }
-            .mypageItemLower {
+            .mypagePurchaseLower {
               display: flex;
               gap: 10px;
               font-size: map-get($fontSize, font-extra-small);
@@ -939,7 +836,7 @@ $bg-main-color: #0dcc5a;
               & > p {
                 width: 50px;
               }
-              .mypageItemCount {
+              .mypagePurchaseCount {
                 display: flex;
                 gap: 10px;
               }
@@ -949,31 +846,31 @@ $bg-main-color: #0dcc5a;
 
         &.soldOut {
           color: map-get($color, bg-light-gray);
-          .mypageItem {
-            .mypageItemImgWrapper {
+          .mypagePurchase {
+            .mypagePurchaseImgWrapper {
               .soldOutFilter {
                 opacity: 1;
               }
             }
-            .mypageItemDescGroup {
-              .mypageItemDesc {
-                .mypageItemViewMore {
-                  .mypageItemInfo {
-                    .mypageItemTitleBox p {
+            .mypagePurchaseDescGroup {
+              .mypagePurchaseDesc {
+                .mypagePurchaseViewMore {
+                  .mypagePurchaseInfo {
+                    .mypagePurchaseTitleBox p {
                       color: map-get($color, bg-light-gray);
                     }
-                    .mypageItemPriceBox .mypageItemPriceInfo > .pay {
+                    .mypagePurchasePriceBox .mypagePurchasePriceInfo > .pay {
                       background: map-get($color, bg-light-gray);
                     }
                   }
                 }
-                .mypageItemButtons {
-                  button:not(.mypageItemXButton) {
+                .mypagePurchaseButtons {
+                  button:not(.mypagePurchaseXButton) {
                     background: map-get($color, bg-light-gray);
                   }
                 }
               }
-              .mypageItemLower {
+              .mypagePurchaseLower {
                 color: map-get($color, bg-light-gray);
               }
             }
@@ -985,9 +882,9 @@ $bg-main-color: #0dcc5a;
 }
 
 /* favorite stores content */
-.favorite-stores-content {
-  .favoriteStoresGroup {
-    .favoriteStoresWrap {
+.mypage-sell-content {
+  .mypageSellGroup {
+    .mypageSellWrap {
       & > li {
         width: 100%;
         padding: 30px 0;
@@ -998,7 +895,7 @@ $bg-main-color: #0dcc5a;
         &:first-child {
           padding-top: 0;
         }
-        .favorite-store-info {
+        .mypage-sell-info {
           width: 240px;
           height: 240px;
           padding: 15px;
@@ -1009,10 +906,10 @@ $bg-main-color: #0dcc5a;
           justify-content: center;
           align-items: center;
           gap: 10px;
-          .favorite-store-shopkeeper {
+          .mypage-sell-shopkeeper {
             width: 100%;
             text-align: center;
-            .favoriteStoresTitle {
+            .mypageSellTitle {
               img {
                 width: 100px;
                 height: 100px;
@@ -1030,18 +927,18 @@ $bg-main-color: #0dcc5a;
               }
             }
           }
-          .favorite-store-score {
+          .mypage-sell-score {
             width: 100%;
             color: map-get($color, bg-light-color);
-            .store-score-desc {
+            .sell-score-desc {
               width: 100%;
               display: flex;
               justify-content: space-between;
               align-items: flex-end;
-              .store-score-title {
+              .sell-score-title {
                 font-size: 1rem;
               }
-              .store-score-value {
+              .sell-score-value {
                 display: flex;
                 align-items: flex-end;
                 font-size: 0.8rem;
@@ -1078,12 +975,12 @@ $bg-main-color: #0dcc5a;
               }
             }
           }
-          .favorite-store-follower {
+          .mypage-sell-follower {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .favorite-store-follower-box {
+            .mypage-sell-follower-box {
               display: flex;
               align-items: center;
               gap: 5px;
@@ -1105,11 +1002,11 @@ $bg-main-color: #0dcc5a;
             }
           }
         }
-        .favorite-store-products-box {
+        .mypage-sell-products-box {
           flex: 1;
           height: 240px;
           overflow: hidden;
-          .favorite-store-products {
+          .mypage-sell-products {
             display: flex;
             align-items: center;
             gap: 20px;
@@ -1118,7 +1015,7 @@ $bg-main-color: #0dcc5a;
                 display: inline-block;
                 width: 240px;
                 height: 240px;
-                .favoriteStoreProductImg {
+                .mypageSellProductImg {
                   display: inline-block;
                   width: inherit;
                   height: inherit;
@@ -1133,4 +1030,44 @@ $bg-main-color: #0dcc5a;
   }
 }
 
-/* favorite brands content */
+/* mypage reviews content */
+.review-content {
+  .mypageReview {
+    #result {
+      .mypageReview {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        .mypageReviewCon {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+          #mypageReviewResult ul {
+            display: flex;
+            flex-direction: column;
+            li {
+              width: 100%;
+              height: 70%;
+              display: flex;
+              align-items: center;
+              gap: 20px;
+              padding: 10px;
+              border-bottom: 1px solid $font-light;
+              img {
+                width: 50px;
+                height: 50px;
+                border: 50%;
+              }
+              .mypageReviewdesc {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

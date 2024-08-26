@@ -6,7 +6,6 @@ const signupButton = document.querySelector("#signup-button");
 
 console.log(tokenConfirmButton);
 
-
 const changePhone1 = () => {
   const phone1 = document.querySelector("#phone1").value;
   if (phone1.length === 3) {
@@ -45,21 +44,25 @@ const getTokenTimer = () => {
       timer -= 1;
     } else {
       tokenNumber.innerText = "000000";
-      tokenButton.style = "background-color: #0dcc5a; color: #fff; cursor: pointer, border:none";
+      tokenButton.style =
+        "background-color: #0dcc5a; color: #fff; cursor: pointer, border:none";
       tokenButton.setAttribute("disabled", "true");
 
       tokenTimer.innerText = "3:00";
       tokenConfirmButton.style = "";
       tokenConfirmButton.setAttribute("disabled", "true");
 
-      clearInterval(interval)
+      clearInterval(interval);
     }
   }, 1000);
 };
 
 tokenButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const randomNum = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
+  const randomNum = String(Math.floor(Math.random() * 1000000)).padStart(
+    6,
+    "0"
+  );
   tokenNumber.innerText = randomNum;
   // console.log(tokenConfirmButton);
   tokenConfirmButton.style =
@@ -77,14 +80,13 @@ tokenConfirmButton.addEventListener("click", function (e) {
   alert("인증이 완료되었습니다 :ㅇ");
 
   signupButton.style =
-    "background-color:#0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer"
+    "background-color:#0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer";
   signupButton.removeAttribute("disalbed");
 });
 
 signupButton.addEventListener("click", (e) => {
   e.preventDefault();
-})
-
+});
 
 const email = document.querySelector("#email");
 const userPw1 = document.querySelector("#password1");
@@ -99,6 +101,7 @@ email.addEventListener("change", () => {
   if (email.value.includes("@") === false) {
     document.querySelector("#error_email").innerText =
       "이메일 형식이 올바르지 않습니다.";
+    document.querySelector("#error_email").style.display = "block";
     isValid = false;
   } else {
     document.querySelector("#error_email").innerText = "";
@@ -108,10 +111,12 @@ email.addEventListener("change", () => {
 userPw1.addEventListener("change", () => {
   if (userPw1.value.length >= 8 && userPw1.value.length <= 12) {
     document.querySelector("#error_password1").innerText = "";
+
     isValid = false;
   } else {
     document.querySelector("#error_password1").innerText =
       "8-12자 이내로 입력해주세요";
+    document.querySelector("#error_password1").style.display = "block";
   }
 });
 
@@ -119,16 +124,19 @@ userPw2.addEventListener("change", () => {
   if (userPw2.value !== userPw1.value) {
     document.querySelector("#error_password2").innerText =
       "비밀번호가 올바르지 않습니다.";
+    document.querySelector("#error_password2").style.display = "block";
     isValid = false;
   } else {
     document.querySelector("#error_password2").innerText = "";
   }
 });
 
-name.addEventListener("change",()=>{
-  if(name.value == "" || name.value == null || name.value.length <= 1){
-    document.querySelector("#error_writer").innerText ="이름을 다시 입력해주세요";
-  isValid = false;
+name.addEventListener("change", () => {
+  if (name.value == "" || name.value == null || name.value.length <= 1) {
+    document.querySelector("#error_writer").innerText =
+      "이름을 다시 입력해주세요";
+    document.querySelector("#error_writer").style.display = "block";
+    isValid = false;
   } else {
     document.querySelector("#error_writer").innerText = "";
   }

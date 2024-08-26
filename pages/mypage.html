@@ -1,238 +1,259 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--fontawsome-->
+    <script
+      src="https://kit.fontawesome.com/4effeb5db1.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--custom CSS&JS-->
+    <link rel="stylesheet" href="../styles/myPage.css" />
+    <script defer src="../scripts/myPages.js"></script>
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!--fontawsome-->
-  <script src="https://kit.fontawesome.com/4effeb5db1.js" crossorigin="anonymous"></script>
-  <!--custom CSS&JS-->
-  <link rel="stylesheet" href="../styles/myPage.css" />
-  <script defer src="../scripts/myPages.js"></script>
-  <title>Document</title>
-</head>
-
-<body>
-  <header id="header">
-    <div id="banner" class="ban">
-      <div class="inner">
-        <div class="banner">
-          <div class="banner-left">
-            <a class="appDownload" href="#none">
-              <img src="../images/appicon.jpg" alt="appicon" />
-              <span>앱 다운로드</span>
-            </a>
-            <a class="favorites" href="#none">
-              <img src="../images/favorites.jpg" alt="favorites" />
-              <span>즐겨찾기</span>
-            </a>
-          </div>
-          <div class="banner-right">
-            <a href="#none">로그인</a>
-            <a href="#none">회원가입</a>
-            <a href="#none">마이페이지</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="header-item">
-      <div class="inner">
-        <div class="header-item">
-          <div class="header-top">
-            <h1 id="logo">
-              <a href="#none">
-                <img src="../images/logo.png" alt="logo" />
+  <body>
+    <header id="header">
+      <div id="banner" class="ban">
+        <div class="inner">
+          <div class="banner">
+            <div class="banner-left">
+              <a class="appDownload" href="#none">
+                <img src="../images/appicon.jpg" alt="appicon" />
+                <span>앱 다운로드</span>
               </a>
-            </h1>
-            <div class="search-box">
-              <form action="https://localhost:3000" method="get">
-                <label for="search"></label>
-                <input type="text" name="search" id="search" placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!" />
-                <button>
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
+              <a class="favorites" href="#none">
+                <img src="../images/favorites.jpg" alt="favorites" />
+                <span>즐겨찾기</span>
+              </a>
             </div>
-            <div class="wrapper">
-              <div class="popular-searchedWord">
-                <ul></ul>
-              </div>
-              <a href="#none" class="list-btn"><i class="fa-solid fa-chevron-down"></i></a>
-              <ul class="list"></ul>
-            </div>
-          </div>
-          <div class="header-bottom">
-            <nav class="header-bottom-left">
-              <div class="barmenu">
-                <i class="fa-solid fa-bars"></i><span>카테고리</span>
-              </div>
-              <ul class="gnb">
-                <li><a href="#none">중고경매</a></li>
-                <li><a href="#none">내 주변 매물</a></li>
-                <li><a href="#none">사기조회</a></li>
-                <li><a href="#none">시세조회</a></li>
-                <li><a href="#none">이벤트</a></li>
-                <li><a href="#none">제휴혜택</a></li>
-              </ul>
-            </nav>
-            <div class="header-bottom-right">
-              <ul class="lnb">
-                <li>
-                  <a href="#none">
-                    <img src="../images/chat.png" alt="chat" />채팅하기</a>
-                </li>
-                <li>
-                  <a href="#none">
-                    <img src="../images/sell.png" alt="sell" />판매하기</a>
-                </li>
-                <li>
-                  <a href="#none">
-                    <img src="../images/heart.png" alt="heart" />찜한상품</a>
-                </li>
-              </ul>
+            <div class="banner-right">
+              <a href="#none">로그인</a>
+              <a href="#none">회원가입</a>
+              <a href="#none">마이페이지</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
-
-  <div class="inner">
-    <section class="container">
-      <div class="mypage">
-        <section class="mypage-info">
-          <i class="fa-regular fa-face-grin"></i>
-          <div class="mypage-info-desc">
-            <div class="mypage-info-desc-ttl"><b>haehae0932</b></div>
-            <div class="mypage-info-desc-fllw">팔로워 1</div>
-            <div class="mypage-info-desc-sub">
-              안녕하세요. 좋은거래 쿨거래를 희망합니다.
-            </div>
-          </div>
-        </section>
-        <section class="mypage-desc">
-          <div class="mypage-desc-stck">
-            <div class="stck-100">
-              <div class="stck-user"></div>
-            </div>
-          </div>
-          <div class="mypage-desc-sub">
-            <div class="mypage-desc-sub-hp">
-              <div class="mypage-desc-sub-hp-ttl">
-                <i class="fa-regular fa-heart"></i> 재거래 희망률 100%
+      <div id="header-item">
+        <div class="inner">
+          <div class="header-item">
+            <div class="header-top">
+              <h1 id="logo">
+                <a href="#none">
+                  <img src="../images/logo.png" alt="logo" />
+                </a>
+              </h1>
+              <div class="search-box">
+                <form action="https://localhost:3000" method="get">
+                  <label for="search"></label>
+                  <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                  />
+                  <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
               </div>
-              <div class="mypage-desc-sub-hp-desc">9명 중 9명이 만족</div>
-            </div>
-            <div class="mypage-desc-sub-rp">
-              <div class="mypage-desc-sub-rp-ttl">
-                <i class="fa-regular fa-comment"></i>응답률-%
-              </div>
-              <div class="mypage-desc-sub-rp-desc">
-                표시될 만큼 충분히 채팅하지 않았어요.
+              <div class="wrapper">
+                <div class="popular-searchedWord">
+                  <ul></ul>
+                </div>
+                <a href="#none" class="list-btn"
+                  ><i class="fa-solid fa-chevron-down"></i
+                ></a>
+                <ul class="list"></ul>
               </div>
             </div>
+            <div class="header-bottom">
+              <nav class="header-bottom-left">
+                <div class="barmenu">
+                  <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                </div>
+                <ul class="gnb">
+                  <li><a href="#none">중고경매</a></li>
+                  <li><a href="#none">내 주변 매물</a></li>
+                  <li><a href="#none">사기조회</a></li>
+                  <li><a href="#none">시세조회</a></li>
+                  <li><a href="#none">이벤트</a></li>
+                  <li><a href="#none">제휴혜택</a></li>
+                </ul>
+              </nav>
+              <div class="header-bottom-right">
+                <ul class="lnb">
+                  <li>
+                    <a href="#none">
+                      <img src="../images/chat.png" alt="chat" />채팅하기</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#none">
+                      <img src="../images/sell.png" alt="sell" />판매하기</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#none">
+                      <img src="../images/heart.png" alt="heart" />찜한상품</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
-      <article class="mypage-tabs">
-        <div class="mypage-tab">
-          <a
-            class="mypageTabButton active"
-            href="#"
-            data-tab-name="mypage-items"
-          >
-            구매내역 <span class="mypageTabCount mypageItems"></span>
-          </a>
-          <a
-            class="mypageTabButton"
-            href="#"
-            data-tab-name="favorite-stores"
-          >
-            판매내역
-            <span class="mypageTabCount favoriteStores">5</span>
-          </a>
-          <a
-            class="mypageTabButton"
-            href="#"
-            data-tab-name="favorite-brands"
-          >
-            거래후기
-            <span class="mypageTabCount favoriteBrands">3</span>
-          </a>
-          <span></span>
-        </div>
-      </article>
-      <article class="mypageContent mypage-items-content active">
+    </header>
 
-        <div class="mypage-items-content-detail">
-          <ul class="mypageItemList"></ul>
-        </div>
-      </article>
-      <article class="mypageContent favorite-stores-content">
-        <div class="favoriteStoresGroup">
-          <ul class="favoriteStoresWrap"></ul>
-        </div>
-      </article>
-      <article class="mypageContent favorite-brands-content">
-        <div class="mypageReview">
-          <div id="mypageReviewTtl">
-
-          </div>
-          <div id="result">
-            후기 2개
-          </div>
-        </div>
-      </article>
-
-    </section>
-  </div>
-
-  <footer>
     <div class="inner">
-      <section class="footer-upper">
-        <div class="footer-upper-info">
-          <div class="footer-company-guide">
-            <ul>
-              <li>이용약관</li>
-              <li>개인정보처리방침</li>
-              <li>분쟁처리절차</li>
-              <li>청소년보호정책</li>
-              <li>사업자정보확인</li>
-              <li>게시글 수집 및 이용 안내</li>
-            </ul>
+      <section class="container">
+        <article class="mypage">
+          <div class="mypage-info">
+            <i class="fa-regular fa-face-grin"></i>
+            <div class="mypage-info-desc">
+              <div class="mypage-info-desc-ttl"><b>haehae0932</b></div>
+              <div class="mypage-info-desc-fllw">팔로워 1</div>
+              <div class="mypage-info-desc-sub">
+                안녕하세요. 좋은거래 쿨거래를 희망합니다.
+              </div>
+            </div>
           </div>
-          <address class="footer-company-info">
-            <ul>
-              <li><b>(주)중고나라 사업자 정보</b></li>
-              <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
-              <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
-              <li>사업자 등록번호: 215-87-87482</li>
-              <li>메일: joongna@joonggonara.co.kr</li>
-              <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
-            </ul>
-          </address>
-        </div>
-        <div class="footer-upper-ctg">
-          카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
-        </div>
-      </section>
-      <section class="footer-lower">
-        <div class="footer-lower-desc">
-          "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
-          (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며 판매회원과<br />
-          구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
-          책임도 부담하지 않습니다.
-        </div>
-        <div class="footer-lower-logo">
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-youtube"></i>
-          <i class="fa-solid fa-mug-saucer"></i>
-          <i class="fa-brands fa-neos"></i>
-          <i class="fa-solid fa-blog"></i>
-        </div>
+          <div class="mypage-desc">
+            <div class="mypage-desc-stck">
+              <div class="stck-100">
+                <div class="stck-user"></div>
+              </div>
+            </div>
+            <div class="mypage-desc-sub">
+              <div class="mypage-desc-sub-hp">
+                <div class="mypage-desc-sub-hp-ttl">
+                  <i class="fa-regular fa-heart"></i> 재거래 희망률 100%
+                </div>
+                <div class="mypage-desc-sub-hp-desc">9명 중 9명이 만족</div>
+              </div>
+              <div class="mypage-desc-sub-rp">
+                <div class="mypage-desc-sub-rp-ttl">
+                  <i class="fa-regular fa-comment"></i>응답률-%
+                </div>
+                <div class="mypage-desc-sub-rp-desc">
+                  표시될 만큼 충분히 채팅하지 않았어요.
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="mypage-tabs">
+          <div class="mypage-tab">
+            <a
+              class="mypageTabButton active"
+              href="#"
+              data-tab-name="mypage-items"
+            >
+              구매내역 <span class="mypageTabCount mypageItems"></span>
+            </a>
+            <a class="mypageTabButton" href="#" data-tab-name="favorite-stores">
+              판매내역
+              <span class="mypageTabCount favoriteStores">5</span>
+            </a>
+            <a class="mypageTabButton" href="#" data-tab-name="favorite-brands">
+              거래후기
+              <span class="mypageTabCount favoriteBrands">3</span>
+            </a>
+            <span></span>
+          </div>
+        </article>
+        <article class="mypageContent mypage-purchases-content active">
+          <div class="mypage-purchases-content-detail">
+            <ul class="mypagePurchaseList"></ul>
+          </div>
+        </article>
+        <article class="mypageContent mypage-sell-content">
+          <div class="mypageSellGroup">
+            <ul class="mypageSellWrap"></ul>
+          </div>
+        </article>
+        <article class="mypageContent review-content">
+          <div class="mypageReview">
+            <div id="mypageReviewTtl"></div>
+            <div id="result">
+              <article class="mypageReview">
+                <div class="mypageReviewCon">
+                  <div id="mypageReviewTtl"><b>후기2개</b></div>
+                  <div id="mypageReviewResult">
+                    <ul>
+                      <li>
+                        <img src="../images/bxs_user.png" alt="bxs_user" />
+                        <div class="mypageReviewdesc">
+                          <div class="reviewId"><b>오키나와 무스메</b></div>
+                          <div class="reviewContent">즐거운 관람되세요!</div>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="../images/bxs_user.png" alt="bxs_user" />
+                        <div class="mypageReviewdesc">
+                          <div class="reviewId"><b>백색인간</b></div>
+                          <div class="reviewContent">잘 쓰세요~</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
-  </footer>
-</body>
 
+    <footer>
+      <div class="inner">
+        <section class="footer-upper">
+          <div class="footer-upper-info">
+            <div class="footer-company-guide">
+              <ul>
+                <li>이용약관</li>
+                <li>개인정보처리방침</li>
+                <li>분쟁처리절차</li>
+                <li>청소년보호정책</li>
+                <li>사업자정보확인</li>
+                <li>게시글 수집 및 이용 안내</li>
+              </ul>
+            </div>
+            <address class="footer-company-info">
+              <ul>
+                <li><b>(주)중고나라 사업자 정보</b></li>
+                <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                <li>사업자 등록번호: 215-87-87482</li>
+                <li>메일: joongna@joonggonara.co.kr</li>
+                <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+              </ul>
+            </address>
+          </div>
+          <div class="footer-upper-ctg">
+            카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
+          </div>
+        </section>
+        <section class="footer-lower">
+          <div class="footer-lower-desc">
+            "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+            (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며 판매회원과<br />
+            구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+            책임도 부담하지 않습니다.
+          </div>
+          <div class="footer-lower-logo">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-solid fa-mug-saucer"></i>
+            <i class="fa-brands fa-neos"></i>
+            <i class="fa-solid fa-blog"></i>
+          </div>
+        </section>
+      </div>
+    </footer>
+  </body>
 </html>
