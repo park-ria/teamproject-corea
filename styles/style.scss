@@ -452,7 +452,7 @@ body {
           align-items: center;
           .timeItem {
             position: relative;
-            width: calc(100% / 3);
+            // width: calc(100% / 3);
             height: 50px;
             span {
               display: block;
@@ -471,12 +471,6 @@ body {
               &.new {
                 transform: translateY(-200%);
               }
-              &.old {
-                transform: translateY(100%);
-              }
-              &.new {
-                transform: translateY(-200%);
-              }
             }
             &::after {
               content: " : ";
@@ -486,6 +480,16 @@ body {
             &:last-child {
               &::after {
                 content: "";
+              }
+            }
+            &.updating {
+              span {
+                &.old {
+                  transform: translateY(100%);
+                }
+                &.new {
+                  transform: translateY(-200%);
+                }
               }
             }
           }
