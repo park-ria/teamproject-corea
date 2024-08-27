@@ -489,10 +489,12 @@ body {
 #header-category .inner .header-category .main-category li .sub-category1.active {
   display: block;
 }
+
 #header-category .inner .header-category .main-category li .sub-category1 li:hover {
   text-decoration: underline;
   background: #fff;
 }
+
 #header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
   position: absolute;
   top: 0;
