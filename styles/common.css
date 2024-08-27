@@ -489,12 +489,10 @@ body {
 #header-category .inner .header-category .main-category li .sub-category1.active {
   display: block;
 }
-
 #header-category .inner .header-category .main-category li .sub-category1 li:hover {
   text-decoration: underline;
   background: #fff;
 }
-
 #header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
   position: absolute;
   top: 0;
@@ -861,6 +859,9 @@ footer .inner .footer-lower .footer-lower-logo i {
 @media screen and (max-width: 840px) {
   html {
     font-size: 8px;
+  }
+  #header {
+    display: none;
   }
   #mobile-menu {
     display: block;
