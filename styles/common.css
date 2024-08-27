@@ -779,7 +779,7 @@ body {
   position: fixed;
   top: 57px;
   left: 0;
-  display: block;
+  display: none;
   z-index: 3;
 }
 
@@ -855,6 +855,12 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 100%;
     padding: 0 2%;
   }
+  #mobile-search {
+    display: none;
+  }
+  #mobile-search.active {
+    display: none;
+  }
 }
 @media screen and (max-width: 840px) {
   html {
@@ -876,6 +882,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   #mobile-search {
     display: none;
+  }
+  #mobile-search.active {
+    display: block;
   }
   footer .inner .footer-upper {
     display: flex;
