@@ -253,6 +253,7 @@ fetch(joonggoInfo)
         }
       });
 
+
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
       mapArea.innerHTML = `${product.point === "" ? "-" : `<i class="fa-solid fa-location-dot"></i> ${product.point}`}`;
@@ -260,14 +261,14 @@ fetch(joonggoInfo)
       // Map API
       const mapContainer = document.getElementById("map"), // 지도를 표시할 div
       mapOption = {
-        center: new kakao.maps.LatLng(product.latitude, product.longitude), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), // 지도의 중심좌표
         level: 3, // 지도의 확대 레벨
       };
 
       const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
       // 마커가 표시될 위치입니다
-      const markerPosition = new kakao.maps.LatLng(product.latitude, product.longitude);
+      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
 
       // 마커를 생성합니다
       const marker = new kakao.maps.Marker({
@@ -285,8 +286,6 @@ fetch(joonggoInfo)
       map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
 
-
-
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
       itemIfoDetail.innerHTML = `
@@ -297,7 +296,7 @@ fetch(joonggoInfo)
         `;
 
       // Making RelatedWords
-      product.keywords.forEach((keyword) => {
+      product.detail.keywords.forEach((keyword) => {
         const relatedWords = document.querySelector(".relatedWords");
         if(keyword) {
           relatedWords.innerHTML +=

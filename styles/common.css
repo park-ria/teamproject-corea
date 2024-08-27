@@ -703,8 +703,37 @@ body {
   font-size: 2rem;
   margin-bottom: 15px;
 }
-#mobile-search .searchedword-list .recent-words .recent-list li span {
+#mobile-search .searchedword-list .recent-words .recent-list {
+  width: 100%;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
+  color: #bbb;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box button {
   font-size: 1.8rem;
+  color: #bbb;
+  transition: color 0.3s;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+  color: #3a3a3a;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li:hover .recent-word {
+  color: #3a3a3a;
+  font-weight: 600;
 }
 #mobile-search .searchedword-list .recommendedwords {
   margin-bottom: 20px;
@@ -986,7 +1015,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   #mobile-search .searchedword-list .recommendedwords ul li {
     padding: 10px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   #mobile-search.active {
     top: 37px;

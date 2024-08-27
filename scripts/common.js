@@ -71,6 +71,8 @@ const save = () => {
   localStorage.setItem("recentWords", JSON.stringify(recentWords));
 };
 
+let isDuplicated = false;
+
 const delItem = (e) => {
   const target = e.target.parentElement.parentElement.parentElement;
   target.remove();

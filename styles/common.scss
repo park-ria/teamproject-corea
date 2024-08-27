@@ -800,9 +800,40 @@ body {
         margin-bottom: 15px;
       }
       .recent-list {
+        width: 100%;
+
         li {
-          span {
-            font-size: map-get($map: $fontSize, $key: font-large);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+          cursor: pointer;
+
+            .recent-word {
+              color: #bbb;
+              font-weight: 500;
+              transition: all 0.3s;
+            }
+            
+            .recent-box {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+
+              button {
+                font-size: map-get($map: $fontSize, $key: font-large);
+                color: #bbb;
+                transition: color 0.3s;
+
+                &:hover {
+                  color: map-get($map: $color, $key: bg-dark-color);
+                }
+              }
+            }
+
+          &:hover .recent-word {
+            color: map-get($map: $color, $key: bg-dark-color);
+            font-weight: 600;
           }
         }
       }
@@ -1109,7 +1140,7 @@ footer {
           gap: 5px;
           li {
             padding: 10px;
-            font-size: map-get($map: $fontSize, $key: font-medium);
+            font-size: map-get($map: $fontSize, $key: font-small);
           }
         }
       }
