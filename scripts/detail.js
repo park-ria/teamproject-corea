@@ -255,7 +255,36 @@ fetch(joonggoInfo)
 
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
-      mapArea.innerText = `${product.point === "" ? "-" : product.point}`;
+      mapArea.innerHTML = `${product.point === "" ? "-" : `<i class="fa-solid fa-location-dot"></i> ${product.point}`}`;
+
+      // Map API
+      const mapContainer = document.getElementById("map"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(product.latitude, product.longitude), // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+
+      const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      // 마커가 표시될 위치입니다
+      const markerPosition = new kakao.maps.LatLng(product.latitude, product.longitude);
+
+      // 마커를 생성합니다
+      const marker = new kakao.maps.Marker({
+      position: markerPosition,
+      });
+
+      // 마커가 지도 위에 표시되도록 설정합니다
+      marker.setMap(map);
+
+      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+      const mapTypeControl = new kakao.maps.MapTypeControl();
+
+      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+      // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+
 
 
       // Making ItemIfo-detail
@@ -264,11 +293,19 @@ fetch(joonggoInfo)
         <p>${product.detail.product_description}</p>
         <h6>연관 검색어</h6>
         <div class="relatedWords">
-            <span>#루이비통</span>
-            <span>#트랙수트</span>
-            <span>#메쉬</span>
         </div>
         `;
+
+      // Making RelatedWords
+      product.keywords.forEach((keyword) => {
+        const relatedWords = document.querySelector(".relatedWords");
+        if(keyword) {
+          relatedWords.innerHTML +=
+          `
+          <span>#${keyword}</span>
+          `;
+        }
+      });
 
       // Making Store-info
       const storeImg = document.querySelector(".info-img");
@@ -324,21 +361,10 @@ fetch(joonggoInfo)
       // clientX : 사용자가 현재 보고있는 device 매체의 너비를 의미
 
       const getClientX = (e) => {
-        // const isTouches = e.isTouches ? true : false;
-        // return isTouches ? e.touches[0].clientX : e.clientX;
         return e.touches ? e.touches[0].clientX : e.clientX;
       };
 
-      // matrix(1, 0, 0, 1, -75, 0)
-      // 1 : x방향의 스케일
-      // 2 : y방향의 기울기
-      // 3 : x방향의 기울기
-      // 4 : y방향의 스케일
-      // 5 : x축을 기준으로 이동한 거리
-      // 6 : y축을 기준으로 이동한 거리
-
       const getTranslate = () => {
-        // console.log(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
         
         return parseInt(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
       };
@@ -401,32 +427,26 @@ fetch(joonggoInfo)
           `;
         }
       }
-
     }
   });
 
-// Map API
-const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-  mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3, // 지도의 확대 레벨
-  };
 
-const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+// Share Click시 팝업창
+const shareBtn = document.querySelector(".share");
 
-// 마커가 표시될 위치입니다
-const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-
-// 마커를 생성합니다
-const marker = new kakao.maps.Marker({
-  position: markerPosition,
+shareBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector(".share-box").classList.toggle("active");
 });
 
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+// URL click시 url주소 
+const urlBtn  = document.querySelector(".url");
 
-// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-// marker.setMap(null);
+urlBtn.addEventListener("click", () => {
+  const urlAddress = window.location.href;
+  prompt("Ctrl+C를 눌러 클립보드로 복사하세요", `${urlAddress}`);
+})
+
 
 // Store-btns active
 const storeBtns = document.querySelectorAll(".store-btns button");
