@@ -22,7 +22,7 @@ listBtn.addEventListener("click", () => {
 
 // list값 추가
 const list = document.querySelector(".list");
-const listArray = [
+const listArray1 = [
   "닌텐도",
   "아이폰",
   "화장품",
@@ -31,29 +31,204 @@ const listArray = [
   "청바지",
   "슬리퍼",
   "운동화",
+  "노트북",
+  "캠핑의자",
 ];
-const popularList = document.querySelector(".popular-searchedWord ul");
 
-listArray.forEach((item, index) => {
+const listArray2 = [
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-sort-down"></i></i>`,
+  `<i class="fa-solid fa-caret-up"></i>`,
+];
+
+// Current-time
+const todday = new Date();
+const year = todday.getFullYear();
+let month = todday.getMonth() + 1;
+let date = todday.getDate();
+
+month = month < 10 ? `0${month}` : month;
+date = date < 10 ? `0${date}` : date;
+
+let hours = todday.getHours();
+hours = hours < 10 ? `0${hours}` : hours;
+
+const currentTimers = document.querySelectorAll(".current-time");
+currentTimers.forEach((currentTimer) => {
+  currentTimer.innerText = `${year}-${month}-${date} ${hours}:00 기준`;
+});
+
+let recentWords = [];
+
+const save = () => {
+  localStorage.setItem("recentWords", JSON.stringify(recentWords));
+};
+
+const delItem = (e) => {
+  const target = e.target.parentElement.parentElement.parentElement;
+  target.remove();
+  recentWords = recentWords.filter(
+    (recentWord) =>
+      recentWord !=
+      e.target.closest("li").querySelector(".recent-word").innerText
+  );
+  console.log(e.target.closest("li").querySelector(".recent-word").innerText);
+  noWords(recentWords.length);
+  save();
+  target.remove();
+};
+
+//
+
+// Recent-list 생성 및 삭제
+const searchForm = document.querySelector(".search-box form");
+const searchInput = document.querySelector(".search-box input[type='text']");
+const searchSubmit = document.querySelector(".search-box input[type='submit']");
+const recentList = document.querySelector(".recent-list");
+const searchWordList = document.querySelector(".searchedword-list");
+
+// 검색창 클릭 이벤트
+searchInput.addEventListener("click", (e) => {
+  searchWordList.classList.toggle("active");
+});
+
+// nowords display-none 이벤트
+const noWords = (length) => {
+  if (length > 0) {
+    document.querySelector(".no-words").style.display = "none";
+  } else {
+    document.querySelector(".no-words").style.display = "block";
+  }
+};
+
+const addWord = (recentWord) => {
+  if (recentWord !== "") {
+    const div = document.createElement("div");
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const button = document.createElement("button");
+    const currentDate = document.createElement("span");
+
+    currentDate.innerText = `${year}.${month}.${date}`;
+    currentDate.className = "current-date";
+    span.innerText = recentWord;
+    span.className = "recent-word";
+    button.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    button.addEventListener("click", delItem);
+    div.className = "recent-box";
+    li.className = "new-word";
+
+    div.appendChild(currentDate);
+    div.appendChild(button);
+    li.appendChild(span);
+    li.appendChild(div);
+    recentList.prepend(li);
+  }
+};
+
+const handler = (e) => {
+  e.preventDefault();
+
+  /*const recentWord = {
+    id: Date.now(),
+    text: searchInput.value,
+  };*/
+  recentWords.push(searchInput.value);
+  noWords(recentWords.length);
+  addWord(searchInput.value);
+  save();
+
+  searchInput.value = "";
+};
+
+const init = () => {
+  const userRecentWords = JSON.parse(localStorage.getItem(`recentWords`));
+
+  if (userRecentWords) {
+    noWords(userRecentWords.length);
+    userRecentWords.forEach((recentWord) => {
+      addWord(recentWord);
+    });
+    recentWords = userRecentWords;
+  } else {
+    recentWords = [];
+  }
+};
+
+init();
+
+searchForm.addEventListener("submit", handler);
+document.mbForm.addEventListener("submit", handler);
+
+// Ranking-list 생성
+listArray1.forEach((word, index) => {
+  const headerRanking = document.querySelector("#header .ranking-list");
+  const mobileRanking = document.querySelector("#mobile-search .ranking-list");
+
   const li = document.createElement("li");
   const aTag = document.createElement("a");
   const span = document.createElement("span");
+  const upDown = document.createElement("span");
+
+  span.innerText = `${index + 1}`;
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px";
+  aTag.innerText = word;
+  aTag.prepend(span);
+
+  upDown.className = "up-down";
+  upDown.innerHTML = `<i class="fa-solid fa-caret-up"></i>`;
+  upDown.style = "color: #0dcc5a; font-size: 14px";
+
+  li.style = ` grid-area: rank${index + 1}`;
+
+  li.appendChild(aTag);
+  li.appendChild(upDown);
+  const li2 = li.cloneNode(true);
+  headerRanking.appendChild(li);
+  mobileRanking.appendChild(li2);
+});
+
+// Popular-searchedWord 리스트 생성
+const popularList = document.querySelector(".popular-searchedWord ul");
+
+listArray1.forEach((item, index) => {
+  const li = document.createElement("li");
+  const aTag = document.createElement("a");
+  const span = document.createElement("span");
+  const upDown = document.createElement("span");
 
   if (index === 0) {
     li.classList.add("current");
   } else if (index === 1) {
     li.classList.add("next");
-  } else if (index === listArray.length - 1) {
+  } else if (index === listArray1.length - 1) {
     li.classList.add("prev");
   }
 
-  span.innerText = `${index + 1}.`;
+  span.innerText = `${index + 1}`;
+  span.style = "color: #0dcc5a; font-weight: bold; font-size: 16px";
   aTag.innerText = item;
   aTag.prepend(span);
+
+  upDown.className = "up-down";
+  upDown.style = "color: #0dcc5a; font-size: 14px";
   li.appendChild(aTag);
+
   const li2 = li.cloneNode(true);
-  list.appendChild(li2);
   popularList.appendChild(li);
+  li2.appendChild(upDown);
+  list.appendChild(li2);
+});
+
+listArray2.forEach((ele, i) => {
+  document.querySelectorAll(".list .up-down")[i].innerHTML = `${ele}`;
 });
 
 // popular-searchedWord event
@@ -662,12 +837,10 @@ const categoryData = {
   ],
 };
 
-const barMenu = document.querySelector(".barmenu");
-barMenu.addEventListener("moseover", () => {});
+const main = document.querySelector(".main-category");
 
+// headercategory
 categoryData.data.forEach((mainCategory) => {
-  const main = document.querySelector(".main-category");
-
   const mainA = document.createElement("a");
   const mainLi = document.createElement("li");
   const subUl = document.createElement("ul");
@@ -700,5 +873,141 @@ categoryData.data.forEach((mainCategory) => {
     subUl.appendChild(subLi);
   });
   mainLi.appendChild(subUl);
-  // main.appendChild(mainLi);
+  main.appendChild(mainLi);
+});
+
+// Barmenu mouseover
+const barMenu = document.querySelector(".barmenu");
+
+barMenu.addEventListener("mouseover", () => {
+  main.classList.add("active");
+});
+
+main.addEventListener("mouseleave", () => {
+  main.classList.remove("active");
+});
+
+// Main-category mouseover
+const mains = document.querySelectorAll(".main-category > li");
+
+mains.forEach((main) => {
+  main.addEventListener("mouseover", (e) => {
+    e.target.querySelector(".sub-category1").classList.add("active");
+  });
+
+  main.addEventListener("mouseleave", (e) => {
+    e.target.querySelector(".sub-category1").classList.remove("active");
+  });
+});
+
+// Sub-categroy mouseover
+const subs = document.querySelectorAll(".sub-category1 > li");
+
+subs.forEach((sub) => {
+  sub.addEventListener("mouseover", (e) => {
+    if (e.target.querySelector(".sub-category2 > li")) {
+      e.target.querySelector(".sub-category2").classList.add("active");
+    }
+  });
+
+  sub.addEventListener("mouseleave", (e) => {
+    e.target.querySelector(".sub-category2").classList.remove("active");
+  });
+});
+
+const mobileSearchMenu = document.querySelector(".menu-box button:first-child");
+const mobileMenu = document.querySelector(".menu-box button:last-child");
+const mobileMain = document.querySelector(".categroy-main");
+const mobileSearch = document.querySelector("#mobile-search");
+const mobileArea = document.querySelector("#mobile-category");
+
+// Mobile-search 클릭 이벤트
+mobileSearchMenu.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (mobileArea.classList.contains("active")) {
+    mobileArea.classList.remove("active");
+  }
+
+  if (mobileMenu.classList.contains("active")) {
+    mobileMenu.classList.remove("active");
+  }
+
+  mobileSearchMenu.classList.add("active");
+  mobileSearch.classList.add("active");
+});
+
+const backBtn = document.querySelector("#mobile-search form button");
+
+backBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  mobileSearchMenu.classList.remove("active");
+  mobileSearch.classList.remove("active");
+});
+
+// MobileMenu 클릭 이벤트
+mobileMenu.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (mobileSearch.classList.contains("active")) {
+    mobileSearch.classList.remove("active");
+  }
+
+  if (mobileSearchMenu.classList.contains("active")) {
+    mobileSearchMenu.classList.remove("active");
+  }
+
+  mobileArea.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+  categorySubs.forEach((categorySub) => {
+    if (categorySub.classList.contains("active")) {
+      categorySub.classList.remove("active");
+    }
+  });
+});
+
+// Making MobileCategory
+categoryData.data.forEach((mobileCategory, index) => {
+  mobileMain.innerHTML += `
+  <li>
+    <div class="category-img">
+      <div class="img-box">
+        <img src="../images/detail/mobile-category${
+          index + 1
+        }.png" alt="mobile-category${index + 1}">
+      </div>
+      <span>${mobileCategory.main}</span>
+    </div>
+    <div class="category-sub">
+      <ul></ul>
+    </div>
+  </li>
+      `;
+
+  const categorySubs = document.querySelectorAll(".category-sub");
+
+  if (index % 5 !== 0) {
+    categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
+  }
+
+  const mobileSub = document.querySelectorAll(".category-sub ul");
+
+  mobileCategory.sub.forEach((sub) => {
+    mobileSub[index].innerHTML += `
+      <li>- ${sub.title}</li>
+      `;
+  });
+});
+
+// Mobile-category-img 클릭시 이벤트
+const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
+mobileMainImgs.forEach((img) => {
+  img.addEventListener("click", function () {
+    mobileMainImgs.forEach((item) => {
+      item.nextElementSibling.classList.remove("active");
+    });
+    img.nextElementSibling.classList.add("active");
+  });
 });
