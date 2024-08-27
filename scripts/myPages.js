@@ -128,6 +128,7 @@ const addMypagePurchaseList = (product, index) => {
 };
 
 // putting Items in the mypageSellList
+let mypageSellArr = ["19370577", "26753605", "104046947"];
 const addMypageSellWrap = (product, index) => {
   mypageSellArr.forEach((arr) => {
     if (arr === product.id) {
@@ -228,7 +229,7 @@ fetch("../db.json")
   .then((jsonData) => {
     jsonData.product.forEach((product, index) => {
       addMypagePurchaseList(product, index);
-      addMypageSellWrap();
+      addMypageSellWrap(product, index);
     });
   });
 
