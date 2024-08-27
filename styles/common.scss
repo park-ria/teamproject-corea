@@ -238,11 +238,16 @@ body {
                 .recent-list {
                   width: 100%;
 
+                  .no-words {
+                    font-size: map-get($map: $fontSize, $key: font-small);
+                    color: #bbb;
+                  }
+
                   li {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 10px 0;
+                    padding: 15px 0;
                     cursor: pointer;
 
                     .recent-word {

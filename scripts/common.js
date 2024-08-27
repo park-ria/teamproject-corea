@@ -91,15 +91,24 @@ const delItem = (e) => {
 
 // Recent-list 생성 및 삭제
 const searchForm = document.querySelector(".search-box form");
-const searchInput = document.querySelector(".search-box input[type='text']");
+const searchInput = document.querySelectorAll(".search-box input[type='text']");
 const searchSubmit = document.querySelector(".search-box input[type='submit']");
-const recentList = document.querySelector(".recent-list");
+const recentList = document.querySelectorAll(".recent-list");
 const searchWordList = document.querySelector(".searchedword-list");
 
+
 // 검색창 클릭 이벤트
-searchInput.addEventListener("click", (e) => {
-  searchWordList.classList.toggle("active");
+searchInput[0].addEventListener("click", (e) => {
+  searchWordList.classList.add("active");
 });
+
+window.addEventListener("click", (e) => {
+  console.log(e.target)
+  if(e.target !== searchInput[0] && e.target !== searchWordList) {
+    searchWordList.classList.remove("active")
+  }
+})
+
 
 // nowords display-none 이벤트
 const noWords = (length) => {
@@ -131,7 +140,10 @@ const addWord = (recentWord) => {
     div.appendChild(button);
     li.appendChild(span);
     li.appendChild(div);
-    recentList.prepend(li);
+    const li2 = li.cloneNode(true);
+    recentList[0].prepend(li);
+    recentList[1].prepend(li2);
+
   }
 };
 
@@ -142,12 +154,14 @@ const handler = (e) => {
     id: Date.now(),
     text: searchInput.value,
   };*/
-  recentWords.push(searchInput.value);
+  recentWords.push(searchInput[0].value, searchInput[1].value);
   noWords(recentWords.length);
-  addWord(searchInput.value);
+  addWord(searchInput[0].value);
+  addWord(searchInput[1].value);
   save();
 
-  searchInput.value = "";
+  searchInput[0].value = "";
+  searchInput[1].value = "";
 };
 
 const init = () => {

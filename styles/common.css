@@ -186,11 +186,15 @@ body {
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list {
   width: 100%;
 }
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list .no-words {
+  font-size: 1.4rem;
+  color: #bbb;
+}
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 15px 0;
   cursor: pointer;
 }
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-word {
