@@ -33,17 +33,18 @@ mypageTabButton.forEach((btn) => {
 });
 
 // Putting Items in the mypagePurchaseList
-const addMypagePurchaseList = (product, index) => {
-  mypagePurchaseArr.forEach((arr) => {
-    if (arr === product.id) {
-      document.querySelector(".mypagePurchaseList").innerHTML += `
+const addItemsInTheMypagePurchaseList = (product, index) => {
+  const li = `
       <li>
-        <input type="checkbox" name="checkmypagePurchase" id="mypagePurchase${
+        <input type="checkbox" name="checkMypagePurchase" id="mypagePurchase${
           index + 1
-        }" value="mypagePurchase${index + 1}" />
+        }" value="${product.id}" />
+        <label for="mypagePurchase${index + 1}"></label>
         <div class="mypagePurchase">
           <div class="mypagePurchaseImgWrapper">
-            <a href="#" class="mypagePurchaseViewMore">
+            <a href="/pages/detail.html?id=${
+              product.id
+            }" class="mypagePurchaseViewMore">
               <img
                 src="../${product.image_path}"
                 alt="product_image"
@@ -55,11 +56,13 @@ const addMypagePurchaseList = (product, index) => {
           </div>
           <div class="mypagePurchaseDescGroup">
             <div class="mypagePurchaseDesc">
-              <a href="#" class="mypagePurchaseViewMore">
+              <a href="/pages/detail.html?id=${
+                product.id
+              }" class="mypagePurchaseViewMore">
                 <span class="mypagePurchaseInfo">
                   <span class="mypagePurchaseTitleBox">
                     <p class="mypagePurchaseSellerName">${
-                      product.detail.product_store
+                      product.detail.store_name
                     }</p>
                     <p class="mypagePurchaseName">
                       ${product.title}
@@ -109,37 +112,85 @@ const addMypagePurchaseList = (product, index) => {
             <div class="mypagePurchaseLower">
               <p>${product.time}</p>
               <span class="mypagePurchaseCount">
+                <span class="mypagePurchaseViewCount">
+                  <i class="fa-regular fa-eye"></i>
+                  ${product.detail.view}
+                </span>
                 <span class="mypagePurchaseChattingCount">
                   <i class="fa-regular fa-comment-dots"></i>
-                  ${product.detail.sub_data.split(" · ")[2].split(" ")[1]}
+                  ${product.detail.chat}
                 </span>
                 <span class="mypagePurchaseLikeCount">
                   <i class="fa-regular fa-heart"></i>
-                  ${product.detail.sub_data.split(" · ")[3].split(" ")[1]}
+                  ${product.detail.wish}
                 </span>
               </span>
             </div>
           </div>
         </div>
       </li>
-    `;
-    }
+      `;
+  document.querySelector(".mypagePurchaseList").insertAdjacentHTML("beforeend", li);
+};
+
+const mypagePurchaseChkEvnt = () => {
+  let checkMypagePurchase = document.querySelectorAll("input[name='checkMypagePurchase']");
+  checkMypagePurchases.forEach((checkbox) => {
+    checkbox.addEventListener("click", function () {
+      const checkCount = document.querySelectorAll(
+        "input[name='checkMypagePurchase']:checked"
+      ).length;
+      checkMypagePurchases = document.querySelectorAll("input[name='checkMypagePurchase']");
+      if (checkMypagePurchases.length === checkCount) allCheck.checked = true;
+      else allCheck.checked = false;
+    });
+  });
+};
+
+const saveMypagePurchase = () => {
+  localStorage.setPurchase("mypagePurchaseArr", JSON.stringify([...mypagePurchaseArr]));
+};
+
+const delMypagePurchaseByHeart = (target) => {
+  const productId = target.querySelector("input[type='checkbox']").value;
+  mypagePurchaseArr = new Set([...mypagePurchaseArr].filter((item) => item !== productId));
+  mypagePurchaseArrDetail = mypagePurchaseArrDetail.filter((item) => item.id !== productId);
+  saveMypagePurchase();
+  target.remove();
+};
+
+const mypagePurchaseButtonEvent = () => {
+  // all select event
+  mypagePurchaseChkEvnt();
+
+  // button event
+  document.querySelectorAll(".mypageHeart").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      delMypagePurchaseByHeart(e.target.closest("li"));
+    });
+  });
+
+  document.querySelectorAll(".mypagePurchaseXButton").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      delMypagePurchaseByHeart(e.target.closest("li"));
+    });
   });
 };
 
 // putting Items in the mypageSellList
-let mypageSellArr = ["19370577", "26753605", "104046947"];
-const addMypageSellWrap = (product, index) => {
-  mypageSellArr.forEach((arr) => {
-    if (arr === product.id) {
-      document.querySelector(".mypageSellList").innerHTML += `
+const addItemsInTheMypageSellList = (product, index) => {
+  const li = `
       <li>
-        <input type="checkbox" name="checkmypageSell" id="mypageSell${
+        <input type="checkbox" name="checkMypageSell" id="mypageSell${
           index + 1
-        }" value="mypageSell${index + 1}" />
+        }" value="${product.id}" />
+        <label for="mypageSell${index + 1}"></label>
         <div class="mypageSell">
           <div class="mypageSellImgWrapper">
-            <a href="#" class="mypageSellViewMore">
+            <a href="/pages/detail.html?id=${
+              product.id
+            }" class="mypageSellViewMore">
               <img
                 src="../${product.image_path}"
                 alt="product_image"
@@ -151,11 +202,13 @@ const addMypageSellWrap = (product, index) => {
           </div>
           <div class="mypageSellDescGroup">
             <div class="mypageSellDesc">
-              <a href="#" class="mypageSellViewMore">
+              <a href="/pages/detail.html?id=${
+                product.id
+              }" class="mypageSellViewMore">
                 <span class="mypageSellInfo">
                   <span class="mypageSellTitleBox">
                     <p class="mypageSellSellerName">${
-                      product.detail.product_store
+                      product.detail.store_name
                     }</p>
                     <p class="mypageSellName">
                       ${product.title}
@@ -194,7 +247,7 @@ const addMypageSellWrap = (product, index) => {
                 <button class="mypageSellChatButton">채팅하기</button>
                 ${
                   product.pay_flag > 0
-                    ? '<button class="mypageSellButton">구매하기</button>'
+                    ? '<button class="mypageSellPurchaseButton">구매하기</button>'
                     : '<button class="mypageSellProposalButton">가격제안</button>'
                 }
                 <button class="mypageSellXButton">
@@ -205,23 +258,72 @@ const addMypageSellWrap = (product, index) => {
             <div class="mypageSellLower">
               <p>${product.time}</p>
               <span class="mypageSellCount">
+                <span class="mypageSellViewCount">
+                  <i class="fa-regular fa-eye"></i>
+                  ${product.detail.view}
+                </span>
                 <span class="mypageSellChattingCount">
                   <i class="fa-regular fa-comment-dots"></i>
-                  ${product.detail.sub_data.split(" · ")[2].split(" ")[1]}
+                  ${product.detail.chat}
                 </span>
                 <span class="mypageSellLikeCount">
                   <i class="fa-regular fa-heart"></i>
-                  ${product.detail.sub_data.split(" · ")[3].split(" ")[1]}
+                  ${product.detail.wish}
                 </span>
               </span>
             </div>
           </div>
         </div>
       </li>
-    `;
-    }
+      `;
+  document.querySelector(".mypageSellList").insertAdjacentHTML("beforeend", li);
+};
+
+const mypageSellChkEvnt = () => {
+  let checkWishItems = document.querySelectorAll("input[name='checkMypageSell']");
+  checkMypageSells.forEach((checkbox) => {
+    checkbox.addEventListener("click", function () {
+      const checkCount = document.querySelectorAll(
+        "input[name='checkMypageSell']:checked"
+      ).length;
+      checkWishItems = document.querySelectorAll("input[name='checkMypageSell']");
+      if (checkMypageSells.length === checkCount) allCheck.checked = true;
+      else allCheck.checked = false;
+    });
   });
 };
+
+const saveMypageSell = () => {
+  localStorage.setItem("mypageSellArr", JSON.stringify([...mypageSellArr]));
+};
+
+const delMypageSellByHeart = (target) => {
+  const productId = target.querySelector("input[type='checkbox']").value;
+  mypageSellArr = new Set([...mypageSellArr].filter((item) => item !== productId));
+  mypageSellArrDetail = mypageSellArrDetail.filter((item) => item.id !== productId);
+  saveMypageSell();
+  target.remove();
+};
+
+const mypageSellButtonEvent = () => {
+  // all select event
+  mypageSellChkEvnt();
+
+  // button event
+  document.querySelectorAll(".mypageHeart").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      delMypageSellByHeart(e.target.closest("li"));
+    });
+  });
+
+  document.querySelectorAll(".mypageSellXButton").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      delMypageSellByHeart(e.target.closest("li"));
+    });
+  });
+};
+
 
 // 데이터 추가
 fetch("../db.json")
