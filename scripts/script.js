@@ -623,8 +623,8 @@ const updateTime = () => {
   updateUnit(timeItems, "min", min);
   updateUnit(timeItems, "sec", sec);
 };
-
-//setInterval(updateTime, 1000);
+// updateTime();
+setInterval(updateTime, 1000);
 
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");
@@ -648,7 +648,7 @@ tabMenu.forEach((li) => {
 
 // event slide
 const eventSlideUl = document.querySelector(".event-slide ul");
-const eventImgs = [
+const eventSlides = [
   "images/event-banner01.png",
   "images/event-banner02.png",
   "images/event-banner03.png",
@@ -656,78 +656,105 @@ const eventImgs = [
   "images/event-banner05.png",
   "images/event-banner06.png",
 ];
-eventImgs.forEach((img) => {
+eventSlides.forEach((slide) => {
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
-  aTag.style.background = `url(../${img}) center/cover no-repeat`;
+  aTag.style.background = `url(../${slide}) center/cover no-repeat`;
   liItem.appendChild(aTag);
   eventSlideUl.appendChild(liItem);
 });
+const eventSlide = () => {
+  const slideUl = document.querySelector(".event-slide ul");
+  const slide = document.querySelectorAll(".event-slide li");
 
-const listClientWidth = eventSlideUl.clientWidth;
-//const listScrollWidth = eventSlideUl.clientWidth + 1280;
-const listScrollWidth = eventSlideUl.clientWidth * 2;
+  const slideCount = slide.length;
 
-let startX = 0;
-let nowX = 0;
-let endX = 0;
-let listX = 0;
+  let currentIdx = 0;
 
-const getClientX = (e) => {
-  return e.touches ? e.touches[0].clientX : e.clientX;
+  const moveSlide = (num) => {
+    if (num < 0) return;
+
+    const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+    const slideMargin = 20;
+    const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
+    const clientWidth = slideUl.parentElement.clientWidth;
+
+    if (currentSlideWidth >= clientWidth) {
+      currentIdx = num;
+      slideUl.style.transform = `translateX(${
+        -num * (slideWidth + slideMargin)
+      }px)`;
+    } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
+      currentIdx = num;
+      slideUl.style.transform = `translateX(${
+        -(num - 1) * (slideWidth + slideMargin) -
+        slideWidth +
+        (clientWidth - currentSlideWidth)
+      }px)`;
+    } else {
+      currentIdx = 0;
+      slideUl.style.transform = "translateX(0px)";
+    }
+  };
+
+  // drag event
+  let startPoint = 0;
+  let endPoint = 0;
+
+  slideUl.addEventListener("mousedown", (e) => {
+    slideUl.style.cursor = "grabbing";
+    startPoint = e.pageX;
+  });
+
+  slideUl.addEventListener("mouseup", (e) => {
+    slideUl.style.cursor = "grab";
+    endPoint = e.pageX;
+
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+
+  // autoPlay
+  let timer = undefined;
+
+  const autoSlide = () => {
+    if (timer === undefined) {
+      timer = setInterval(() => {
+        moveSlide(currentIdx + 1);
+      }, 3000);
+    }
+  };
+  autoSlide();
+
+  const stopSlide = () => {
+    clearInterval(timer);
+    timer = undefined;
+  };
+
+  slideUl.addEventListener("mouseenter", () => {
+    stopSlide();
+  });
+  slideUl.addEventListener("mouseleave", () => {
+    autoSlide();
+  });
+
+  // touch event
+  slideUl.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+  });
+  slideUl.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
 };
-
-const getTranslateX = () => {
-  return parseInt(
-    getComputedStyle(eventSlideUl).transform.split(/[^\-0-9]+/g)[5]
-  );
-};
-
-const setTranslateX = (x) => {
-  eventSlideUl.style.transform = `translateX(${x}px)`;
-};
-
-const onScrollMove = (e) => {
-  nowX = getClientX(e);
-
-  setTranslateX(listX + nowX - startX);
-};
-
-const onScrollEnd = (e) => {
-  endX = getClientX(e);
-
-  listX = getTranslateX();
-
-  if (listX > 0) {
-    setTranslateX(0);
-    eventSlideUl.style.transition = `all 0.1s ease`;
-    listX = 0;
-  } else if (listX < listClientWidth - listScrollWidth) {
-    setTranslateX(listClientWidth - listScrollWidth);
-    eventSlideUl.style.transition = `all 0.1s ease`;
-    listX = listClientWidth - listScrollWidth;
-  }
-
-  window.removeEventListener("touchmove", onScrollMove);
-  window.removeEventListener("mousemove", onScrollMove);
-  window.removeEventListener("touchend", onScrollEnd);
-  window.removeEventListener("mouseup", onScrollEnd);
-  window.removeEventListener("touchstart", onscrollStart);
-  window.removeEventListener("mousedown", onscrollStart);
-};
-
-const onscrollStart = (e) => {
-  startX = getClientX(e);
-
-  window.addEventListener("touchmove", onScrollMove);
-  window.addEventListener("mousemove", onScrollMove);
-
-  window.addEventListener("touchend", onScrollEnd);
-  window.addEventListener("mouseup", onScrollEnd);
-};
-
-eventSlideUl.addEventListener("touchstart", onscrollStart);
-eventSlideUl.addEventListener("mousedown", onscrollStart);
+eventSlide();
 
 // safeserviceModal
 const modalBtn = document.querySelector("#modalBtn");

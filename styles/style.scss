@@ -54,9 +54,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 @mixin productSlide {
   position: relative;
-  // display: flex;
-  // justify-content: center;
-  // gap: 30px;
   height: 406px;
   overflow: hidden;
   .slideWrapper {
@@ -125,7 +122,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       }
     }
     &.disabled {
-      opacity: 0.6;
+      opacity: 0.4;
       cursor: default;
       pointer-events: none;
       &.slidePrev {
@@ -419,12 +416,6 @@ body {
     .ranking-slide {
       @include productSlide;
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
   }
 }
 
@@ -465,13 +456,16 @@ body {
           font-size: 5rem;
         }
         .timeEvent {
-          position: relative;
           display: flex;
           align-items: center;
           .timeItem {
             position: relative;
-            // width: calc(100% / 3);
-            height: 50px;
+            width: 120px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
             span {
               display: block;
               font-size: 5rem;
@@ -480,24 +474,21 @@ body {
               position: absolute;
               top: 50%;
               transform: translateY(-50%);
-              width: 100%;
               text-align: left;
-
+              text-shadow: 0 10px 10px rgba($color: #000, $alpha: 0.3);
               &.old {
                 transform: translateY(-50%);
               }
               &.new {
                 transform: translateY(-200%);
               }
-            }
-            &::after {
-              content: " : ";
-              font-size: 5rem;
-              color: #fce44a;
-            }
-            &:last-child {
               &::after {
-                content: "";
+                content: " : ";
+                display: inline-block;
+                width: 20px;
+                margin-left: 15px;
+                font-size: 5rem;
+                color: #fce44a;
               }
             }
             &.updating {
@@ -509,6 +500,9 @@ body {
                   transform: translateY(-200%);
                 }
               }
+            }
+            &.sec span::after {
+              content: "";
             }
           }
         }
@@ -632,16 +626,17 @@ body {
     .event-slide {
       overflow: hidden;
       ul {
+        width: fit-content;
         display: flex;
+        justify-content: center;
         gap: 20px;
-        margin-bottom: 20px;
+        transition: all 0.5s;
         a {
           display: inline-block;
           width: 410px;
           height: 155px;
           border: 1px solid map-get($color, bg-light-gray);
           border-radius: 10px;
-          // background: url("../images/event-banner01.png") center/cover no-repeat;
         }
       }
       .slidePager {
@@ -914,12 +909,12 @@ body {
           h2 {
             font-size: 3.6rem;
           }
-          .timeEvent {
-            span {
-              font-size: 4rem;
-              margin: 10px 0;
-            }
-          }
+          // .timeEvent {
+          //   span {
+          //     font-size: 4rem;
+          //     margin: 10px 0;
+          //   }
+          // }
           p {
             font-size: 2rem;
           }
@@ -941,17 +936,6 @@ body {
           li {
             width: calc((100% - 10px) / 2);
           }
-        }
-      }
-    }
-  }
-
-  // event
-  #event {
-    .event-content {
-      .event-slide {
-        ul {
-          justify-content: center;
         }
       }
     }
@@ -1071,12 +1055,12 @@ body {
           h2 {
             font-size: 4rem;
           }
-          .timeEvent {
-            span {
-              font-size: 4.4rem;
-              margin: 10px 0;
-            }
-          }
+          // .timeEvent {
+          //   span {
+          //     font-size: 4.4rem;
+          //     margin: 10px 0;
+          //   }
+          // }
           p {
             font-size: 2.2rem;
           }
@@ -1138,6 +1122,20 @@ body {
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  // event
+  #event {
+    .event-content {
+      .event-slide {
+        ul {
+          a {
+            width: 310px;
+            height: 100px;
           }
         }
       }
@@ -1279,7 +1277,7 @@ body {
     .ranking-content {
       .ranking-slide {
         width: 240px;
-        margin: 0 auto;
+
         overflow: visible;
       }
     }
