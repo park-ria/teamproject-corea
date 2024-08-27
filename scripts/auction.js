@@ -240,7 +240,10 @@ const addProductList = (product, ul) => {
                 <span class="fixed">${product.price}</span>
               </strong>
               <p class="desc-info">
-                <span class="desc-time">${product.time}</span>
+                <span class="desc-time">${product.time.replace(
+                  "전",
+                  "후 종료"
+                )}</span>
                 <span class="desc-place">
                 ${product.point ? " | " + product.point : ""}
                 </span>
