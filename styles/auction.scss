@@ -62,14 +62,14 @@ body {
                 left: 15px;
                 display: flex;
                 align-items: center;
-                gap: 5px;
-                padding: 6px 12px;
+                padding: 6px 3px 6px 12px;
                 border-radius: 8px;
                 background: map-get($color, bg-sub-color);
                 .clock {
                   position: relative;
                   width: 30px;
                   height: 30px;
+                  margin-right: 8px;
                   background: url("../images/clock.svg") center/contain
                     no-repeat;
                   animation: vibration 0.2s linear infinite;
@@ -86,9 +86,49 @@ body {
                     animation: clock 3s linear infinite;
                   }
                 }
-                span {
-                  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-                  color: map-get($color, bg-light-color);
+                .timeItem {
+                  position: relative;
+                  width: 32px;
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  overflow: hidden;
+                  span {
+                    display: block;
+                    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+                    color: map-get($color, bg-light-color);
+                    transition: transform 0.5s ease;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    text-align: center;
+                    &.old {
+                      transform: translateY(-50%);
+                    }
+                    &.new {
+                      transform: translateY(-200%);
+                    }
+                    &::after {
+                      content: " : ";
+                      display: inline-block;
+                      width: 10px;
+                      margin-left: 2px;
+                    }
+                  }
+                  &.updating {
+                    span {
+                      &.old {
+                        transform: translateY(100%);
+                      }
+                      &.new {
+                        transform: translateY(-200%);
+                      }
+                    }
+                  }
+                  &.sec span::after {
+                    content: "";
+                  }
                 }
               }
             }
@@ -101,9 +141,6 @@ body {
                 -webkit-line-clamp: 1;
               }
             }
-          }
-          .badge {
-            display: none;
           }
         }
       }
@@ -161,15 +198,14 @@ body {
     }
   }
   .product {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 30px 0;
     li {
       position: relative;
       a {
-        width: 240px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -263,10 +299,6 @@ body {
     .product {
       li {
         a {
-          width: 180px;
-          .slide-img {
-            height: 180px;
-          }
           .slide-desc {
             .desc-title {
               height: 18px;
@@ -322,17 +354,8 @@ body {
     .product {
       li {
         a {
-          width: 150px;
-          .slide-img {
-            height: 150px;
-          }
           .slide-desc {
             padding: 0 0 20px;
-            .desc-title {
-              height: 34px;
-              line-clamp: 2;
-              -webkit-line-clamp: 2;
-            }
           }
         }
       }

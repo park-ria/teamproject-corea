@@ -13,50 +13,95 @@ if (matchMedia("screen and (min-width: 1280px)").matches) {
 } else {
   slidesPerView = 1;
 }
-// else if (matchMedia("screen and (min-width: 500px)").matches) {
-//   slidesPerView = 2;
-// } else if (matchMedia("screen and (max-width: 500px)").matches) {
-//   slidesPerView = 1;
-// }
 
 const productSlideLimit = 10;
 
-const addBestProduct = (product, ul) => {
+// time event
+
+const formatting = (time) => {
+  let sec = Math.floor(time % 60);
+  let min = Math.floor((time / 60) % 60);
+  let hour = Math.floor(time / 3600);
+
+  sec = sec < 10 ? `0${sec}` : `${sec}`;
+  min = min < 10 ? `0${min}` : `${min}`;
+  hour = hour < 10 ? `0${hour}` : `${hour}`;
+
+  return { hour, min, sec };
+};
+
+const createSpan = (content, className) => {
+  const span = document.createElement("span");
+  span.innerText = content;
+  span.classList.add(className);
+  return span;
+};
+
+const updateUnit = (parent, unit, itemValue) => {
+  const unitElement = parent.querySelector(`.${unit}`);
+  //console.log(unitElement);
+
+  if (unitElement) {
+    const currentValue = unitElement.querySelector(".old").innerText;
+
+    if (currentValue !== itemValue) {
+      const oldSpan = unitElement.querySelector(".old");
+      const newSpan = createSpan(itemValue, "new");
+      unitElement.appendChild(newSpan);
+
+      if (unit === "sec") {
+        unitElement.classList.add("updating");
+      }
+
+      setTimeout(() => {
+        if (oldSpan) unitElement.removeChild(oldSpan);
+        newSpan.classList.replace("new", "old");
+        unitElement.classList.remove("updating");
+      }, 100);
+    }
+  } else {
+    const unitContainer = document.createElement("div");
+    unitContainer.classList.add("timeItem", unit);
+    unitContainer.appendChild(createSpan(itemValue, "old"));
+    parent.appendChild(unitContainer);
+  }
+};
+
+const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
-  const badge = document.createElement("span");
-  badge.className = "badge badge-auction";
-
-  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
-  // aTag.style.webkitUserDrag = "none";
 
   slideImg.className = "slide-img";
-
-  const timeEvent = document.createElement("div");
-  timeEvent.className = "timeEvent";
-
   slideDesc.className = "slide-desc";
-
-  // <div class="timeEvent">
-  //   <div class="clock"></div>
-  //   <span>16 : 49 : 20</span>
-  // </div>
+  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
+
+  // currentPrice
+  const originPrice = Number(product.price.replace(/,/g, "").replace("원", ""));
+  const saleNum = Math.floor(Math.random() * 31);
+  const salePrice = Math.floor(originPrice * (saleNum / 100));
+  const resultPrice = originPrice - salePrice;
+  const currentPrice = new Intl.NumberFormat("ko-kr", {
+    currency: "KRW",
+  }).format(resultPrice);
 
   const desc = `
               <h4 class="desc-title">
                 ${product.title}
               </h4>
               <strong class="desc-price">
-                <span class="current">현재가</span> 215,000원
+                <span class="current">현재가</span> ${currentPrice}원
                 <span class="fixed">${product.price}</span>
               </strong>
               <p class="desc-info">
-                <span class="desc-time">${product.time}</span>
+                <span class="desc-time">${product.time.replace(
+                  "전",
+                  "후 종료"
+                )}</span>
                 <span class="desc-place">
                 ${product.point ? " | " + product.point : ""}
                 </span>
@@ -64,21 +109,48 @@ const addBestProduct = (product, ul) => {
         `;
 
   slideDesc.innerHTML = desc;
-  slideImg.appendChild(timeEvent);
   aTag.append(slideImg, slideDesc);
-  liItem.appendChild(aTag);
-  liItem.appendChild(badge);
+  liItem.append(aTag);
+
   ulItem.appendChild(liItem);
 
-  // 893px ~ 1280px 페이저 오류
-  // pager
-  const slidePager =
-    ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
-  if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-    const spanTag = document.createElement("span");
-    slidePager.appendChild(spanTag);
+  if (ul === ".bestAuction") {
+    // time event
+    const timeItems = document.createElement("div");
+    const clock = document.createElement("div");
+    timeItems.className = "timeEvent";
+    clock.className = "clock";
+
+    const updateTime = () => {
+      const today = new Date();
+      const eventDay = new Date(2024, 7, 29, 23, 59, 59);
+
+      const gapDate = Math.floor((eventDay - today) / 1000);
+      const { hour, min, sec } = formatting(gapDate);
+
+      updateUnit(timeItems, "hour", hour);
+      updateUnit(timeItems, "min", min);
+      updateUnit(timeItems, "sec", sec);
+    };
+    // updateTime();
+    setInterval(updateTime, 1000);
+
+    timeItems.prepend(clock);
+    slideImg.appendChild(timeItems);
+
+    // slide pager
+    const slidePager =
+      ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
+    if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+      const spanTag = document.createElement("span");
+      slidePager.appendChild(spanTag);
+    }
+    slideIndex++;
+  } else {
+    const badge = document.createElement("span");
+    badge.className = "badge badge-auction";
+    liItem.append(badge);
   }
-  slideIndex++;
 };
 
 // productSlide
@@ -216,65 +288,17 @@ const productSlide = (section) => {
   });
 };
 
-const addProductList = (product, ul) => {
-  const ulItem = document.querySelector(ul);
-  const liItem = document.createElement("li");
-  const aTag = document.createElement("a");
-  const slideImg = document.createElement("div");
-  const slideDesc = document.createElement("div");
-  const badge = document.createElement("span");
-  badge.className = "badge badge-auction";
-
-  slideImg.className = "slide-img";
-  slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
-
-  slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
-
-  const desc = `
-              <h4 class="desc-title">
-                ${product.title}
-              </h4>
-              <strong class="desc-price">
-                <span class="current">현재가</span> 215,000원
-                <span class="fixed">${product.price}</span>
-              </strong>
-              <p class="desc-info">
-                <span class="desc-time">${product.time.replace(
-                  "전",
-                  "후 종료"
-                )}</span>
-                <span class="desc-place">
-                ${product.point ? " | " + product.point : ""}
-                </span>
-              </p>
-        `;
-
-  slideDesc.innerHTML = desc;
-  aTag.append(slideImg, slideDesc);
-  liItem.appendChild(aTag);
-  liItem.appendChild(badge);
-  ulItem.appendChild(liItem);
-};
-
-// function mediaResize() {
-//   if (window.innerWidth < 450) {
-// }
-// }
-// window.addEventListener("resize", mediaResize);
-
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
-    // data
     joongoData.product.forEach((product, index) => {
       // addBestProduct
-      if (index < productSlideLimit) {
-        addBestProduct(product, ".bestAuction");
+      if (index < 7) {
+        addProduct(product, ".bestAuction");
       }
       // addProductList
       else if (index < productSlideLimit * 3) {
-        addProductList(product, ".product");
+        addProduct(product, ".product");
       }
     });
 

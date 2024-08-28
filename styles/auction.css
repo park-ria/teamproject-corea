@@ -22,12 +22,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -122,6 +130,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -458,12 +469,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -558,6 +577,9 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -907,7 +929,6 @@ body {
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -1091,7 +1112,8 @@ body {
   width: calc(50% - 650px);
   height: 420px;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   z-index: 1;
 }
 #main-slide::before {
@@ -1337,7 +1359,8 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -1834,7 +1857,8 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1952,7 +1976,8 @@ body {
   width: 100%;
   height: 0;
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
   opacity: 0;
   cursor: pointer;
   transition: all 0.5s;
@@ -2289,7 +2314,6 @@ body {
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -2352,8 +2376,7 @@ body {
   left: 15px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
+  padding: 6px 3px 6px 12px;
   border-radius: 8px;
   background: #0095ee;
 }
@@ -2361,6 +2384,7 @@ body {
   position: relative;
   width: 30px;
   height: 30px;
+  margin-right: 8px;
   background: url("../images/clock.svg") center/contain no-repeat;
   animation: vibration 0.2s linear infinite;
 }
@@ -2376,9 +2400,45 @@ body {
   background: #fff;
   animation: clock 3s linear infinite;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent span {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem {
+  position: relative;
+  width: 32px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span {
+  display: block;
   font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
   color: #fff;
+  transition: transform 0.5s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.old {
+  transform: translateY(-50%);
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.new {
+  transform: translateY(-200%);
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span::after {
+  content: " : ";
+  display: inline-block;
+  width: 10px;
+  margin-left: 2px;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.old {
+  transform: translateY(100%);
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.new {
+  transform: translateY(-200%);
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.sec span::after {
+  content: "";
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc {
   padding: 0 14px 20px;
@@ -2420,9 +2480,6 @@ body {
   height: 23px;
   line-clamp: 1;
   -webkit-line-clamp: 1;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge {
-  display: none;
 }
 #best-auction .best-auction-content .best-auction-slide .slide-btns button {
   position: absolute;
@@ -2527,9 +2584,8 @@ body {
   font-weight: 900;
 }
 #product-list .product {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding: 30px 0;
 }
@@ -2537,7 +2593,7 @@ body {
   position: relative;
 }
 #product-list .product li a {
-  width: 240px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -2704,12 +2760,6 @@ body {
   }
 }
 @media screen and (max-width: 840px) {
-  #product-list .product li a {
-    width: 180px;
-  }
-  #product-list .product li a .slide-img {
-    height: 180px;
-  }
   #product-list .product li a .slide-desc .desc-title {
     height: 18px;
   }
@@ -2776,18 +2826,7 @@ body {
   #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
     height: 18px;
   }
-  #product-list .product li a {
-    width: 150px;
-  }
-  #product-list .product li a .slide-img {
-    height: 150px;
-  }
   #product-list .product li a .slide-desc {
     padding: 0 0 20px;
-  }
-  #product-list .product li a .slide-desc .desc-title {
-    height: 34px;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
   }
 }
