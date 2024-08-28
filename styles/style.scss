@@ -240,6 +240,58 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 }
 
+@mixin timeEvent {
+  display: flex;
+  align-items: center;
+  .timeItem {
+    position: relative;
+    width: 120px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    span {
+      display: block;
+      font-size: 5rem;
+      color: #fce44a;
+      transition: transform 0.5s ease;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left;
+      text-shadow: 0 10px 10px rgba($color: #000, $alpha: 0.3);
+      &.old {
+        transform: translateY(-50%);
+      }
+      &.new {
+        transform: translateY(-200%);
+      }
+      &::after {
+        content: " : ";
+        display: inline-block;
+        width: 20px;
+        margin-left: 15px;
+        font-size: 5rem;
+        color: #fce44a;
+      }
+    }
+    &.updating {
+      span {
+        &.old {
+          transform: translateY(100%);
+        }
+        &.new {
+          transform: translateY(-200%);
+        }
+      }
+    }
+    &.sec span::after {
+      content: "";
+    }
+  }
+}
+
 html,
 body {
   width: 100%;
@@ -456,55 +508,7 @@ body {
           font-size: 5rem;
         }
         .timeEvent {
-          display: flex;
-          align-items: center;
-          .timeItem {
-            position: relative;
-            width: 120px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            span {
-              display: block;
-              font-size: 5rem;
-              color: #fce44a;
-              transition: transform 0.5s ease;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              text-align: left;
-              text-shadow: 0 10px 10px rgba($color: #000, $alpha: 0.3);
-              &.old {
-                transform: translateY(-50%);
-              }
-              &.new {
-                transform: translateY(-200%);
-              }
-              &::after {
-                content: " : ";
-                display: inline-block;
-                width: 20px;
-                margin-left: 15px;
-                font-size: 5rem;
-                color: #fce44a;
-              }
-            }
-            &.updating {
-              span {
-                &.old {
-                  transform: translateY(100%);
-                }
-                &.new {
-                  transform: translateY(-200%);
-                }
-              }
-            }
-            &.sec span::after {
-              content: "";
-            }
-          }
+          @include timeEvent;
         }
         p {
           font-size: 2.4rem;
@@ -1207,6 +1211,7 @@ html {
         .tab-menu {
           flex-wrap: wrap;
           justify-content: center;
+          padding: 0 10%;
         }
         .tab-content {
           justify-content: center;
