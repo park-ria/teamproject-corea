@@ -467,13 +467,6 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .slide-btns button {
   position: absolute;
   top: 35%;
@@ -506,7 +499,7 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .slide-btns button.disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: default;
   pointer-events: none;
 }
@@ -857,13 +850,17 @@ body {
   font-size: 5rem;
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent {
-  position: relative;
   display: flex;
   align-items: center;
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem {
   position: relative;
-  height: 50px;
+  width: 120px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span {
   display: block;
@@ -873,8 +870,8 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 100%;
-  text-align: left;
+  text-align: center;
+  text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span.old {
   transform: translateY(-50%);
@@ -882,19 +879,22 @@ body {
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span.new {
   transform: translateY(-200%);
 }
-#auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem::after {
+#auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span::after {
   content: " : ";
+  display: inline-block;
+  width: 20px;
+  margin-left: 15px;
   font-size: 5rem;
   color: #fce44a;
-}
-#auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem:last-child::after {
-  content: "";
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.updating span.old {
   transform: translateY(100%);
 }
 #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.updating span.new {
   transform: translateY(-200%);
+}
+#auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.sec span::after {
+  content: "";
 }
 #auction .auction-banner .banner-content .banner-desc p {
   font-size: 2.4rem;
@@ -1085,18 +1085,34 @@ body {
   margin-bottom: 30px;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li {
+  position: relative;
   padding: 8px 12px;
-  background: #fff;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   font-size: 1.6rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.4s;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #0dcc5a;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li.active {
   color: #fff;
-  background: #0dcc5a;
   border: 1px solid transparent;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu li.active::before {
+  width: 100%;
+  opacity: 1;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
   display: none;
@@ -1179,9 +1195,11 @@ body {
   overflow: hidden;
 }
 #event .event-content .event-slide ul {
+  width: fit-content;
   display: flex;
+  justify-content: center;
   gap: 20px;
-  margin-bottom: 20px;
+  transition: all 0.5s;
 }
 #event .event-content .event-slide ul a {
   display: inline-block;
@@ -1529,6 +1547,127 @@ body {
   height: 100vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.quickMenu {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 5;
+}
+.quickMenu .quickBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.quickMenu .quickBtns li {
+  width: 56px;
+  height: 56px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns li button,
+.quickMenu .quickBtns li a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quickMenu .quickBtns li button i,
+.quickMenu .quickBtns li a i {
+  font-size: 24px;
+  color: #6d6d6d;
+}
+.quickMenu .quickBtns li:hover {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px, rgba(0, 0, 0, 0.1) 0px 0px 50px;
+}
+.quickMenu .quickBtns .trigger {
+  position: relative;
+}
+.quickMenu .quickBtns .trigger button {
+  background: #0dcc5a;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger button i {
+  color: #fff;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger .movePages {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  transform: translateY(-35%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger .movePages li {
+  position: relative;
+  overflow: hidden;
+}
+.quickMenu .quickBtns .trigger .movePages li a {
+  font-weight: 700;
+  color: #6d6d6d;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 130px;
+}
+.quickMenu .quickBtns .trigger .movePages li a::before {
+  font-family: "fontawesome";
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 20px;
+}
+.quickMenu .quickBtns .trigger .movePages li a.mypage::before {
+  content: "\f007";
+}
+.quickMenu .quickBtns .trigger .movePages li a.cart::before {
+  content: "\f004";
+}
+.quickMenu .quickBtns .trigger .movePages li a.view::before {
+  content: "\f06e";
+}
+.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
+  content: "\f062";
+}
+.quickMenu .quickBtns .trigger .movePages li:hover {
+  width: 130px;
+  transform: translateX(-74px);
+}
+.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
+  width: 56px;
+  transform: translateX(0);
+}
+.quickMenu .quickBtns .trigger.active button {
+  background: #dcdcdc;
+}
+.quickMenu .quickBtns .trigger.active button i {
+  color: #6d6d6d;
+  transform: rotate(45deg);
+}
+.quickMenu .quickBtns .trigger.active .movePages {
+  top: -10px;
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
 @media screen and (max-width: 1280px) {
   .slide-btns button {
     position: absolute;
@@ -1562,7 +1701,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
   .slide-btns button.disabled {
-    opacity: 0.6;
+    opacity: 0.4;
     cursor: default;
     pointer-events: none;
   }
@@ -1614,10 +1753,6 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 3.6rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
-    font-size: 4rem;
-    margin: 10px 0;
-  }
   #auction .auction-banner .banner-content .banner-desc p {
     font-size: 2rem;
   }
@@ -1630,9 +1765,6 @@ body {
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
     width: calc((100% - 10px) / 2);
-  }
-  #event .event-content .event-slide ul {
-    justify-content: center;
   }
   #safe-service {
     height: 350px;
@@ -1706,7 +1838,7 @@ body {
   #auction .auction-banner .banner-content {
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 7%;
   }
   #auction .auction-banner .banner-content .banner-desc {
     width: 100%;
@@ -1720,9 +1852,56 @@ body {
   #auction .auction-banner .banner-content .banner-desc h2 {
     font-size: 4rem;
   }
-  #auction .auction-banner .banner-content .banner-desc .timeEvent span {
-    font-size: 4.4rem;
-    margin: 10px 0;
+  #auction .auction-banner .banner-content .banner-desc .timeEvent {
+    display: flex;
+    align-items: center;
+    padding-left: 36px;
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem {
+    position: relative;
+    width: 120px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span {
+    display: block;
+    font-size: 5rem;
+    color: #fce44a;
+    transition: transform 0.5s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span.old {
+    transform: translateY(-50%);
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span.new {
+    transform: translateY(-200%);
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem span::after {
+    content: " : ";
+    display: inline-block;
+    width: 20px;
+    margin-left: 15px;
+    font-size: 5rem;
+    color: #fce44a;
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.updating span.old {
+    transform: translateY(100%);
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.updating span.new {
+    transform: translateY(-200%);
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem.sec span::after {
+    content: "";
+  }
+  #auction .auction-banner .banner-content .banner-desc .timeEvent .timeItem {
+    width: 100px;
   }
   #auction .auction-banner .banner-content .banner-desc p {
     font-size: 2.2rem;
@@ -1748,6 +1927,7 @@ body {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu {
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 10%;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
     justify-content: center;
@@ -1767,6 +1947,10 @@ body {
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
     margin: 5px 0 10px;
+  }
+  #event .event-content .event-slide ul a {
+    width: 310px;
+    height: 100px;
   }
   #recommended .recommended-content .recommended-slide {
     height: 390px;
@@ -1870,7 +2054,6 @@ body {
   }
   #best-ranking .ranking-content .ranking-slide {
     width: 240px;
-    margin: 0 auto;
     overflow: visible;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content {
@@ -1892,5 +2075,74 @@ body {
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
     height: 36px;
+  }
+  .quickMenu {
+    right: 14px;
+    bottom: 68px;
+  }
+  .quickMenu .quickBtns {
+    gap: 6px;
+  }
+  .quickMenu .quickBtns li {
+    width: 44px;
+    height: 44px;
+    border-radius: 18px;
+  }
+  .quickMenu .quickBtns li button i,
+  .quickMenu .quickBtns li a i {
+    font-size: 20px;
+    color: #6d6d6d;
+  }
+  .quickMenu .quickBtns .trigger button {
+    border-radius: 18px;
+  }
+  .quickMenu .quickBtns .trigger button i {
+    color: #fff;
+    transition: all 0.4s;
+  }
+  .quickMenu .quickBtns .trigger .movePages {
+    gap: 6px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a {
+    font-weight: 700;
+    color: #6d6d6d;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 110px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a::before {
+    font-family: "fontawesome";
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.mypage::before {
+    content: "\f007";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.cart::before {
+    content: "\f004";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.view::before {
+    content: "\f06e";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
+    content: "\f062";
+  }
+  .quickMenu .quickBtns .trigger .movePages li:hover {
+    width: 100px;
+    transform: translateX(-56px);
+  }
+  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
+    width: 44px;
+    transform: translateX(0);
+  }
+  .quickMenu .quickBtns .trigger.active .movePages {
+    top: -6px;
   }
 }
