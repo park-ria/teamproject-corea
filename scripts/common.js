@@ -71,31 +71,29 @@ const save = () => {
   localStorage.setItem("recentWords", JSON.stringify(recentWords));
 };
 
-let isDuplicated = false;
+const recentList = document.querySelectorAll(".recent-list");
 
 const delItem = (e) => {
   const target = e.target.parentElement.parentElement.parentElement;
+
   target.remove();
   recentWords = recentWords.filter(
     (recentWord) =>
       recentWord !=
       e.target.closest("li").querySelector(".recent-word").innerText
   );
-  console.log(e.target.closest("li").querySelector(".recent-word").innerText);
+  // console.log(e.target.closest("li").querySelector(".recent-word").innerText);
   noWords(recentWords.length);
   save();
+
   target.remove();
 };
-
-//
 
 // Recent-list 생성 및 삭제
 const searchForm = document.querySelector(".search-box form");
 const searchInput = document.querySelectorAll(".search-box input[type='text']");
 const searchSubmit = document.querySelector(".search-box input[type='submit']");
-const recentList = document.querySelectorAll(".recent-list");
 const searchWordList = document.querySelector(".searchedword-list");
-
 
 // 검색창 클릭 이벤트
 searchInput[0].addEventListener("click", (e) => {
@@ -103,19 +101,20 @@ searchInput[0].addEventListener("click", (e) => {
 });
 
 window.addEventListener("click", (e) => {
-  console.log(e.target)
-  if(e.target !== searchInput[0] && e.target !== searchWordList) {
-    searchWordList.classList.remove("active")
-  }
-})
-
+  // console.log(e.target)
+  // if(e.target !== searchInput[0] && e.target !== searchWordList) {
+  //   searchWordList.classList.remove("active")
+  // }
+});
 
 // nowords display-none 이벤트
 const noWords = (length) => {
   if (length > 0) {
-    document.querySelector(".no-words").style.display = "none";
+    document.querySelectorAll(".no-words")[0].style.display = "none";
+    document.querySelectorAll(".no-words")[1].style.display = "none";
   } else {
-    document.querySelector(".no-words").style.display = "block";
+    document.querySelectorAll(".no-words")[0].style.display = "block";
+    document.querySelectorAll(".no-words")[1].style.display = "block";
   }
 };
 
@@ -132,7 +131,8 @@ const addWord = (recentWord) => {
     span.innerText = recentWord;
     span.className = "recent-word";
     button.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-    button.addEventListener("click", delItem);
+    // button.addEventListener("click", delItem);
+    button.className = "delete-button";
     div.className = "recent-box";
     li.className = "new-word";
 
@@ -140,28 +140,45 @@ const addWord = (recentWord) => {
     div.appendChild(button);
     li.appendChild(span);
     li.appendChild(div);
+
     const li2 = li.cloneNode(true);
     recentList[0].prepend(li);
     recentList[1].prepend(li2);
 
+    document.querySelectorAll(".delete-button").forEach((button) => {
+      button.addEventListener("click", delItem);
+    });
   }
 };
 
-const handler = (e) => {
+const handler1 = (e) => {
   e.preventDefault();
 
-  /*const recentWord = {
-    id: Date.now(),
-    text: searchInput.value,
-  };*/
-  recentWords.push(searchInput[0].value, searchInput[1].value);
+  recentWords = recentWords.filter(
+    (recentWord) => recentWord != searchInput[0].value
+  );
+  recentWords.push(searchInput[0].value);
+
   noWords(recentWords.length);
   addWord(searchInput[0].value);
+  save();
+
+  searchInput[0].value = null;
+};
+
+const handler2 = (e) => {
+  e.preventDefault();
+
+  recentWords = recentWords.filter(
+    (recentWord) => recentWord != searchInput[1].value
+  );
+  recentWords.push(searchInput[1].value);
+
+  noWords(recentWords.length);
   addWord(searchInput[1].value);
   save();
 
-  searchInput[0].value = "";
-  searchInput[1].value = "";
+  searchInput[1].value = null;
 };
 
 const init = () => {
@@ -180,8 +197,41 @@ const init = () => {
 
 init();
 
-searchForm.addEventListener("submit", handler);
-document.mbForm.addEventListener("submit", handler);
+document.hdForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (recentWords.length > 0) {
+    const samewords = recentWords.find((sameword) => sameword === e.target.children[0].value);
+    
+    recentList.forEach((duplicatedwords) => {
+      duplicatedwords.querySelectorAll("li").forEach((duplicatedword) => {
+        if (duplicatedword && duplicatedword.querySelector("span").innerText === samewords) {
+          duplicatedword.remove();
+        }
+      });
+    });
+
+  }
+  handler1(e);
+});
+
+document.mbForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (recentWords.length > 0) {
+    const samewords = recentWords.find((sameword) => sameword === e.target.children[1].value);
+    
+    recentList.forEach((duplicatedwords) => {
+      duplicatedwords.querySelectorAll("li").forEach((duplicatedword) => {
+        if (duplicatedword && duplicatedword.querySelector("span").innerText === samewords) {
+          duplicatedword.remove();
+        }
+      });
+    });
+
+  }
+  handler2(e);
+});
 
 // Ranking-list 생성
 listArray1.forEach((word, index) => {

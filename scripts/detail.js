@@ -148,6 +148,30 @@ fetch(joonggoInfo)
         }
       });
 
+      // 찜한목록 click시 이벤트
+      const pickedList = document.querySelector(".pickedlist");
+      const heartBtn = pickedList.querySelector("i");
+      
+      let idList = [];  
+
+      const saveId = (id) => {
+        
+      }
+
+      pickedList.addEventListener("click", () => {
+        if(heartBtn.classList.contains("fa-solid")) {
+          heartBtn.classList.remove("fa-solid");
+          heartBtn.classList.add("fa-regular");
+          saveId(product.id);
+
+        } else {
+
+          heartBtn.classList.remove("fa-regular");
+          heartBtn.classList.add("fa-solid");
+          removeId(product.id);
+        }
+      })
+
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
         const headingCategory = document.querySelector(".heading-category");
@@ -427,14 +451,13 @@ fetch(joonggoInfo)
         }
       }
     }
-  });
+});
 
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
 
-shareBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+shareBtn.addEventListener("click", () => {
   document.querySelector(".share-box").classList.toggle("active");
 });
 

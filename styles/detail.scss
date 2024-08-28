@@ -186,6 +186,19 @@ body {
               }
             }
 
+            &.pickedlist {
+              a {
+                span {
+                }
+                i {
+                  color: crimson;
+                  
+                  &.fa-solid {
+                  }
+                }
+              }
+            }
+
             &.share {
               position: relative;
 
@@ -255,6 +268,20 @@ body {
             &:last-child {
               border-right: none;
             }
+          }
+        }
+
+        button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 35px;
+          height: 35px;
+          background: map-get($map: $color, $key: bg-light-color);
+          display: none;
+
+          i {
+            font-size: 30px;
           }
         }
       }
