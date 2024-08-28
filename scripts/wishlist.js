@@ -4,6 +4,29 @@ let favoriteStoresArr;
 let favorStoreArrDetail = [];
 let favoriteBrandsArr;
 
+// checkEmptyData
+const checkEmptyData = (arr) => {
+  console.log(arr);
+  const emptyMsg = document.querySelector(
+    ".wishlistContent.active > .emptyMsg"
+  );
+  const sibling = document.querySelectorAll(
+    ".wishlistContent.active > .emptyMsg ~ div"
+  );
+
+  if (arr.size === 0) {
+    sibling.forEach((div) => {
+      div.style.display = "none";
+    });
+    emptyMsg.style.display = "flex";
+  } else {
+    sibling.forEach((div) => {
+      div.style.display = "block";
+    });
+    emptyMsg.style.display = "none";
+  }
+};
+
 // tab button click event
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
 wishlistTabButton.forEach((btn) => {
@@ -24,6 +47,8 @@ wishlistTabButton.forEach((btn) => {
       if (item !== target) item.classList.remove("active");
     });
     target.classList.add("active");
+
+    checkEmptyData(`${this.getAttribute("data-arr-name")}Arr`);
   });
 });
 
@@ -637,26 +662,7 @@ fetch("../db.json")
       ? new Set(jsonData.wishlist.wishItemArr)
       : new Set();
     saveWishItem();
-
-    const emptyMsg = document.querySelector(
-      ".wishlistContent.active > .emptyMsg"
-    );
-    const sibling = document.querySelectorAll(
-      ".wishlistContent.active > .emptyMsg ~ div"
-    );
-    console.log(emptyMsg, sibling);
-
-    if (wishItemArr.size === 0) {
-      sibling.forEach((div) => {
-        div.style.display = "none";
-      });
-      emptyMsg.style.display = "flex";
-    } else {
-      sibling.forEach((div) => {
-        div.style.display = "block";
-      });
-      emptyMsg.style.display = "none";
-    }
+    checkEmptyData(wishItemArr);
 
     favoriteStoresArr = localStorage.getItem("favoriteStoresArr")
       ? new Set(JSON.parse(localStorage.getItem("favoriteStoresArr")))
@@ -701,18 +707,4 @@ fetch("../db.json")
       arr.products = products;
     });
     createFavorBrands();
-    /*jsonData.product.forEach((product) => {
-      // put data into favoriteBrandsArr
-      favoriteBrandsArr.forEach((arr) => {
-        if (product.title.includes(arr.brand)) {
-          arr.products.push({
-            id: product.id,
-            image_path: product.image_path,
-          });
-
-          arr.count += 1;
-        }
-      });
-    });
-    addItemsInTheFavoriteBrands(jsonData.product);*/
   });
