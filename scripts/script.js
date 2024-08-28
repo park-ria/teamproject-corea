@@ -614,7 +614,11 @@ const updateUnit = (parent, unit, itemValue) => {
 
 const updateTime = () => {
   const today = new Date();
-  const eventDay = new Date(2024, 7, 29, 23, 59, 59);
+  const eventDay = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() + 1
+  );
 
   const gapDate = Math.floor((eventDay - today) / 1000);
   const { hour, min, sec } = formatting(gapDate);

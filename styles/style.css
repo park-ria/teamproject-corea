@@ -1621,25 +1621,41 @@ html {
   z-index: -1;
   transition: all 0.4s;
 }
-.quickMenu .quickBtns .trigger .movePages li span {
+.quickMenu .quickBtns .trigger .movePages li {
+  position: relative;
+  overflow: hidden;
+}
+.quickMenu .quickBtns .trigger .movePages li a {
   font-weight: 700;
   color: #6d6d6d;
   text-align: center;
-  width: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.4s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 130px;
+}
+.quickMenu .quickBtns .trigger .movePages li a::before {
+  font-family: "fontawesome";
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 20px;
+}
+.quickMenu .quickBtns .trigger .movePages li a.mypage::before {
+  content: "\f007";
+}
+.quickMenu .quickBtns .trigger .movePages li a.cart::before {
+  content: "\f004";
+}
+.quickMenu .quickBtns .trigger .movePages li a.view::before {
+  content: "\f06e";
 }
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:hover a {
-  gap: 10px;
-}
-.quickMenu .quickBtns .trigger .movePages li:hover a span {
-  width: 60px;
-  opacity: 1;
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
