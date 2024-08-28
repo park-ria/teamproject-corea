@@ -1142,9 +1142,6 @@ body {
   color: #6d6d6d;
   font-size: 2rem;
 }
-#main .inner .main .main-img .img-icons .icon-box.pickedlist a i {
-  color: crimson;
-}
 #main .inner .main .main-img .img-icons .icon-box.share {
   position: relative;
 }
@@ -1206,17 +1203,16 @@ body {
 #main .inner .main .main-img .img-icons .icon-box:last-child {
   border-right: none;
 }
-#main .inner .main .main-img button {
+#main .inner .main .main-img .heart-btn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 20px;
   width: 35px;
   height: 35px;
-  background: #fff;
-  display: none;
 }
-#main .inner .main .main-img button i {
+#main .inner .main .main-img .heart-btn i {
   font-size: 30px;
+  color: crimson;
 }
 #main .inner .main .main-desc .desc-heading {
   margin-bottom: 30px;

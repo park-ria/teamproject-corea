@@ -186,19 +186,6 @@ body {
               }
             }
 
-            &.pickedlist {
-              a {
-                span {
-                }
-                i {
-                  color: crimson;
-                  
-                  &.fa-solid {
-                  }
-                }
-              }
-            }
-
             &.share {
               position: relative;
 
@@ -271,17 +258,20 @@ body {
           }
         }
 
-        button {
+        .heart-btn {
           position: absolute;
-          top: 0;
-          right: 0;
+          top: 20px;
+          right: 20px;
           width: 35px;
           height: 35px;
-          background: map-get($map: $color, $key: bg-light-color);
-          display: none;
+          // background: map-get($map: $color, $key: bg-light-color);
 
           i {
             font-size: 30px;
+            color: crimson;
+
+            &.fa-solid {
+            }
           }
         }
       }

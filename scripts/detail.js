@@ -149,28 +149,51 @@ fetch(joonggoInfo)
       });
 
       // 찜한목록 click시 이벤트
-      const pickedList = document.querySelector(".pickedlist");
-      const heartBtn = pickedList.querySelector("i");
+      const heartBtns = document.querySelectorAll(".heart-btn");
+      // const heartToggle = heartBtns.querySelectorAll("i");
       
       let idList = [];  
-
-      const saveId = (id) => {
-        
+      
+      const saveId = () => {
+        localStorage.setItem("idList", JSON.stringify(idList));
       }
 
-      pickedList.addEventListener("click", () => {
-        if(heartBtn.classList.contains("fa-solid")) {
-          heartBtn.classList.remove("fa-solid");
-          heartBtn.classList.add("fa-regular");
-          saveId(product.id);
+      const removeId = (id) => {
+        idList = JSON.parse(localStorage.getItem("idList"));
+        idList = idList.filter((duplicatedId) => duplicatedId !== id)
+        saveId();
+      }
 
-        } else {
 
-          heartBtn.classList.remove("fa-regular");
-          heartBtn.classList.add("fa-solid");
-          removeId(product.id);
-        }
+      heartBtns.forEach((heartBtn) => {
+        heartBtn.addEventListener("click", (e) => {
+          if(e.target.classList.contains("fa-solid")) {   
+            e.target.classList.remove("fa-solid");
+            e.target.classList.add("fa-regular");
+            removeId(product.id);
+          } else {
+            
+            e.target.classList.remove("fa-regular");
+            e.target.classList.add("fa-solid");
+            idList.push(product.id);
+            saveId();
+          }
+        })
       })
+
+      // heartBtns.addEventListener("click", () => {
+      //   if(heartToggle.classList.contains("fa-solid")) {   
+      //     heartToggle.classList.remove("fa-solid");
+      //     heartToggle.classList.add("fa-regular");
+      //     removeId(product.id);
+      //   } else {
+          
+      //     heartToggle.classList.remove("fa-regular");
+      //     heartToggle.classList.add("fa-solid");
+      //     idList.push(product.id);
+      //     saveId();
+      //   }
+      // })
 
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {

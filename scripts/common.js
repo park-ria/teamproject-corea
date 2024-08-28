@@ -958,11 +958,15 @@ const mains = document.querySelectorAll(".main-category > li");
 
 mains.forEach((main) => {
   main.addEventListener("mouseover", (e) => {
-    e.target.querySelector(".sub-category1").classList.add("active");
+    if(e.target.querySelector(".sub-category1")) {
+      e.target.querySelector(".sub-category1").classList.add("active");
+    }
   });
 
   main.addEventListener("mouseleave", (e) => {
-    e.target.querySelector(".sub-category1").classList.remove("active");
+    if(e.target.querySelector(".sub-category1")) {
+      e.target.querySelector(".sub-category1").classList.remove("active");
+    }
   });
 });
 
