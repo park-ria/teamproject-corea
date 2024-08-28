@@ -624,7 +624,7 @@ const updateTime = () => {
   updateUnit(timeItems, "sec", sec);
 };
 
-//setInterval(updateTime, 1000);
+// setInterval(updateTime, 1000);
 
 // tab-menu click event
 const tabMenu = document.querySelectorAll(".tab-menu li");
