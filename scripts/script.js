@@ -773,3 +773,9 @@ closeItems.forEach((item) => {
     closeItems[1].classList.remove("active");
   });
 });
+
+// quickMenu
+const quickTrigger = document.querySelector(".quickMenu .trigger");
+quickTrigger.addEventListener("click", function () {
+  this.classList.toggle("active");
+});

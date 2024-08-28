@@ -852,6 +852,111 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+// quickMenu
+.quickMenu {
+  position: fixed;
+  right: 10%;
+  bottom: 20%;
+  z-index: 5;
+  .quickBtns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    li {
+      width: 56px;
+      height: 56px;
+      border-radius: 24px;
+      background: map-get($color, bg-light-color);
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
+      transition: all 0.4s;
+      button,
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+          font-size: 24px;
+          color: map-get($color, bg-dark-gray);
+        }
+      }
+      &:hover {
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+          rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px,
+          rgba(0, 0, 0, 0.1) 0px 0px 50px;
+      }
+    }
+    .trigger {
+      position: relative;
+      button {
+        background: map-get($color, bg-main-color);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.4s;
+        i {
+          color: map-get($color, bg-light-color);
+          transition: all 0.4s;
+        }
+      }
+      .movePages {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        transform: translateY(-35%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0;
+        z-index: -1;
+        transition: all 0.4s;
+        li {
+          span {
+            font-weight: 700;
+            color: map-get($color, bg-dark-gray);
+            text-align: center;
+            width: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s;
+          }
+          &:hover {
+            width: 130px;
+            transform: translateX(-74px);
+            a {
+              gap: 10px;
+              span {
+                width: 60px;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+      &.active {
+        button {
+          background: map-get($color, bg-light-gray);
+          i {
+            color: map-get($color, bg-dark-gray);
+            transform: rotate(45deg);
+          }
+        }
+        .movePages {
+          top: -10px;
+          transform: translateY(-100%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1280px) {
   // common
   .slide-btns {
