@@ -139,18 +139,11 @@ $bg-main-color: #0dcc5a;
             }
             .location-wrapper {
               width: 100%;
-<<<<<<< HEAD
-              display: flex;
-              gap: 0;
-              #location{
-                width: 80%;
-=======
               // display: flex;
               // align-items: center;
               position: relative;
               #location {
                 width: 50%;
->>>>>>> 82aefc8baf67205cad6e15c2916e9698341e904d
                 height: 40px;
                 position: absolute;
                 top: 50%;
@@ -242,11 +235,13 @@ $bg-main-color: #0dcc5a;
                 .label {
                   width: 50%;
                   font-size: 2rem;
+                  text-align: left;
                   padding-left: 10px;
                 }
                 .inputbox {
                   width: 100%;
                   font-size: 1.8rem;
+                  flex: 1;
                 }
                 .phonewrapper {
                   width: 80%;

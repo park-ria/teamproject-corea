@@ -1,14 +1,71 @@
+const email = document.querySelector("#email");
+const userPw1 = document.querySelector("#password1");
+const userPw2 = document.querySelector("#password2");
+const name = document.querySelector("#name");
+const phone = document.querySelector("#phone");
+const userArr = [];
+
+// console.log(email, userPw1, userPw2, name, phone);
+let isValid = true;
+
+email.addEventListener("change", () => {
+  if (email.value.includes("@") === false) {
+    document.querySelector("#error_email").innerText =
+      "이메일 형식이 올바르지 않습니다.";
+    document.querySelector("#error_email").style.display = "block";
+    isValid = false;
+  } else {
+    document.querySelector("#error_email").innerText = "";
+  }
+});
+
+userPw1.addEventListener("change", () => {
+  if (userPw1.value.length >= 8 && userPw1.value.length <= 12) {
+    document.querySelector("#error_password1").innerText = "";
+
+    isValid = false;
+  } else {
+    document.querySelector("#error_password1").innerText =
+      "8-12자 이내로 입력해주세요";
+    document.querySelector("#error_password1").style.display = "block";
+  }
+});
+
+userPw2.addEventListener("change", () => {
+  if (userPw2.value !== userPw1.value) {
+    document.querySelector("#error_password2").innerText =
+      "비밀번호가 올바르지 않습니다.";
+    document.querySelector("#error_password2").style.display = "block";
+    isValid = false;
+  } else {
+    document.querySelector("#error_password2").innerText = "";
+  }
+});
+
+name.addEventListener("change", () => {
+  if (name.value == "" || name.value == null || name.value.length <= 1) {
+    document.querySelector("#error_writer").innerText =
+      "이름을 다시 입력해주세요";
+    document.querySelector("#error_writer").style.display = "block";
+    isValid = false;
+  } else {
+    document.querySelector("#error_writer").innerText = "";
+  }
+});
+
 const tokenButton = document.querySelector("#token-button");
 const tokenNumber = document.querySelector("#token");
 const tokenTimer = document.querySelector("#token-timer");
 const tokenConfirmButton = document.querySelector("#token-timer-confirmBtn");
 const signupButton = document.querySelector("#signup-button");
 
-console.log(tokenConfirmButton);
+// console.log(tokenConfirmButton);
 
 const changePhone1 = () => {
-  const phone1 = document.querySelector("#phone1").value;
-  if (phone1.length === 3) {
+  const phone1 = document.querySelector("#phone1");
+  phone1.value = phone1.value.replace(/[^0-9.]/g, "");
+
+  if (phone1.value.length === 3) {
     document.querySelector("#phone2").focus();
   }
 };
@@ -81,63 +138,35 @@ tokenConfirmButton.addEventListener("click", function (e) {
 
   signupButton.style =
     "background-color:#0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer";
-  signupButton.removeAttribute("disalbed");
+  signupButton.removeAttribute("disabled");
 });
 
-signupButton.addEventListener("click", (e) => {
+document.frm.addEventListener("submit", (e) => {
   e.preventDefault();
-});
 
-const email = document.querySelector("#email");
-const userPw1 = document.querySelector("#password1");
-const userPw2 = document.querySelector("#password2");
-const name = document.querySelector("#name");
-const phone = document.querySelector("#phone");
-
-// console.log(email, userPw1, userPw2, name, phone);
-let isValid = true;
-
-email.addEventListener("change", () => {
-  if (email.value.includes("@") === false) {
-    document.querySelector("#error_email").innerText =
-      "이메일 형식이 올바르지 않습니다.";
-    document.querySelector("#error_email").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector("#error_email").innerText = "";
+  if (email.value === "") {
+    alert("이메일을 입력해주세요");
+    email.focus();
+    return;
   }
-});
-
-userPw1.addEventListener("change", () => {
-  if (userPw1.value.length >= 8 && userPw1.value.length <= 12) {
-    document.querySelector("#error_password1").innerText = "";
-
-    isValid = false;
-  } else {
-    document.querySelector("#error_password1").innerText =
-      "8-12자 이내로 입력해주세요";
-    document.querySelector("#error_password1").style.display = "block";
+  if (password1.value === "") {
+    alert("비밀번호를 입력해주세요");
+    password1.focus();
+    return;
   }
-});
 
-userPw2.addEventListener("change", () => {
-  if (userPw2.value !== userPw1.value) {
-    document.querySelector("#error_password2").innerText =
-      "비밀번호가 올바르지 않습니다.";
-    document.querySelector("#error_password2").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector("#error_password2").innerText = "";
-  }
-});
+  const phone1 = document.querySelector("#phone1");
+  const phone2 = document.querySelector("#phone2");
+  const phone3 = document.querySelector("#phone3");
 
-name.addEventListener("change", () => {
-  if (name.value == "" || name.value == null || name.value.length <= 1) {
-    document.querySelector("#error_writer").innerText =
-      "이름을 다시 입력해주세요";
-    document.querySelector("#error_writer").style.display = "block";
-    isValid = false;
-  } else {
-    document.querySelector("#error_writer").innerText = "";
-  }
+  const userInfo = {
+    email: email.value,
+    password: password1.value,
+    name: name.value,
+    phone1: phone1.value,
+    phone2: phone2.value,
+    phone3: phone3.value,
+  };
+  userArr.push(userInfo);
+  console.log(userArr);
 });

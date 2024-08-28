@@ -107,7 +107,7 @@
       <div class="inner">
         <div class="container">
           <div class="sign-in">
-            <form action="http://localhost:5502">
+            <form name="frm" action="http://localhost:5502">
               <section class="sign-in-ttl">회원가입</section>
               <section class="inputs">
                 <ul>
@@ -282,7 +282,12 @@
                 </ul>
               </section>
               <section class="sign-in-footer">
-                <button id="signup-button" disabled>가입하기</button>
+                <input
+                  type="submit"
+                  id="signup-button"
+                  value="가입하기"
+                  disabled
+                />
               </section>
             </form>
           </div>
