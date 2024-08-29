@@ -1077,12 +1077,14 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .wishlistContent .emptyMsg {
   width: 100%;
-  height: 500px;
-  display: none;
+  height: 0;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .wishlistContent .emptyMsg.empty {
   display: flex;
@@ -1104,6 +1106,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #dcdcdc;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .wish-items-content .wish-items-content-upper .wish-items-delete-selection {
   display: flex;
@@ -1296,7 +1300,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button {
   display: inline-block;
   width: 50%;
-  min-width: 75px;
+  min-width: 110px;
   padding: 15px 0;
   background: #111;
   border-radius: 5px;
@@ -1361,6 +1365,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   color: #aaa;
   margin: 30px 0 100px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .wish-items-content .wish-items-content-detail .wishItemPagination .pagerButtons {
   width: 30px;
@@ -1419,7 +1425,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper {
   width: 100%;
@@ -1535,6 +1541,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: 240px;
   height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -1549,7 +1557,10 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: inherit;
   height: inherit;
-  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg:hover {
+  transform: scale(1.2);
 }
 .favorite-stores-content .favoriteStoresPagination {
   display: flex;
@@ -1557,6 +1568,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   color: #aaa;
   margin: 30px 0 100px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .favorite-stores-content .favoriteStoresPagination .pagerButtons {
   width: 30px;
@@ -1610,7 +1623,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   height: 240px;
   padding: 15px;
   background: #111;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1684,6 +1697,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: 240px;
   height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -1698,7 +1713,10 @@ footer .inner .footer-lower .footer-lower-logo i {
   display: inline-block;
   width: inherit;
   height: inherit;
-  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg:hover {
+  transform: scale(1.2);
 }
 .favorite-brands-content .favoriteBrandsPagination {
   display: flex;
@@ -1706,6 +1724,8 @@ footer .inner .footer-lower .footer-lower-logo i {
   align-items: center;
   color: #aaa;
   margin: 30px 0 100px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .favorite-brands-content .favoriteBrandsPagination .pagerButtons {
   width: 30px;
@@ -1842,21 +1862,18 @@ footer .inner .footer-lower .footer-lower-logo i {
     gap: 10px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button {
-    width: 80px;
+    width: 110px;
     padding: 10px 0;
     font-size: 1.4rem;
-    /*&.wishItemXButton {
-      display: none;
-    }*/
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton {
+    display: none;
   }
   /* favorite stores content */
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li {
     padding: 30px 0;
     flex-direction: column;
     gap: 10px;
-    /*&:first-child {
-      padding-top: 0;
-    }*/
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info {
     width: 100%;
@@ -1899,7 +1916,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
     gap: 10px;
   }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg {
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
     border-radius: 0;
   }
   /* favorite brands content */
@@ -1907,9 +1924,6 @@ footer .inner .footer-lower .footer-lower-logo i {
     padding: 30px 0;
     flex-direction: column;
     gap: 10px;
-    /*&:first-child{
-      padding-top: 0;
-    }*/
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info {
     width: 100%;
@@ -1959,7 +1973,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products {
     gap: 10px;
   }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg {
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
     border-radius: 0;
   }
 }
