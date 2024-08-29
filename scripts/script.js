@@ -3,7 +3,6 @@ const joonggoInfo = "../db.json";
 const rankingSlides = document.querySelectorAll(".slideWrapper > li");
 
 const mainSlideUl = document.querySelector(".mainSlideWrapper");
-
 // add main slide item
 const addMainSlide = (slide, index) => {
   const liItem = document.createElement("li");
@@ -190,7 +189,6 @@ let mainSlide = () => {
   mainSlideUl.addEventListener("mousedown", function (e) {
     this.style.cursor = "grabbing";
     startPoint = e.pageX;
-    // console.log(startPoint);
   });
 
   mainSlideUl.addEventListener("mouseup", function (e) {
@@ -614,10 +612,18 @@ const updateUnit = (parent, unit, itemValue) => {
 
 const updateTime = () => {
   const today = new Date();
+  // console.log(product.timer.split(" ")[0]);
+  // let second = 0;
+  /*if(product.timer.split(" ")[0] === "초"){
+  second = today.getseconds() + product.timer.split(" ")[0] 숫자
+}*/
+
   const eventDay = new Date(
     today.getFullYear(),
     today.getMonth(),
     today.getDate() + 1
+
+    //sencond
   );
 
   const gapDate = Math.floor((eventDay - today) / 1000);
@@ -823,3 +829,8 @@ quickTrigger.addEventListener("click", function () {
 ChannelIO("boot", {
   pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
 });
+
+// const goTop = document.querySelector(".moveTop");
+// goTop.addEventListener("click", () => {
+//   window.scrollTo({ top: 0, behavior: "smooth" });
+// });
