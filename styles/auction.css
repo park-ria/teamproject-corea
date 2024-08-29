@@ -2555,18 +2555,29 @@ body {
 #product-list {
   padding: 100px 0 150px;
 }
-#product-list .sorting {
+#product-list .sorting-group {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 20px 0;
+  position: sticky;
+  top: 185px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fff;
+  z-index: 1;
 }
-#product-list .sorting li {
-  font-size: 1.8rem;
+#product-list .sorting-group li {
   position: relative;
-  color: #6d6d6d;
-  cursor: pointer;
 }
-#product-list .sorting li::after {
+#product-list .sorting-group li a {
+  font-size: 1.8rem;
+  color: #6d6d6d;
+}
+#product-list .sorting-group li a.active {
+  font-weight: 700;
+}
+#product-list .sorting-group li::after {
   content: "";
   width: 2px;
   height: 100%;
@@ -2577,11 +2588,8 @@ body {
   background: #dcdcdc;
   transition: all 0.3s;
 }
-#product-list .sorting li:last-child::after {
+#product-list .sorting-group li:last-child::after {
   display: none;
-}
-#product-list .sorting li.active {
-  font-weight: 900;
 }
 #product-list .product {
   display: grid;

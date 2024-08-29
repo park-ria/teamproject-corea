@@ -175,15 +175,26 @@ body {
 
 #product-list {
   padding: 100px 0 150px;
-  .sorting {
+  .sorting-group {
     display: flex;
     align-items: center;
     gap: 20px;
+    padding: 20px 0;
+    position: sticky;
+    top: 185px;
+    border-top: 1px solid map-get($color, bg-light-gray);
+    border-bottom: 1px solid map-get($color, bg-light-gray);
+    background: map-get($color, bg-light-color);
+    z-index: 1;
     li {
-      font-size: 1.8rem;
       position: relative;
-      color: map-get($color, bg-dark-gray);
-      cursor: pointer;
+      a {
+        font-size: 1.8rem;
+        color: map-get($color, bg-dark-gray);
+        &.active {
+          font-weight: 700;
+        }
+      }
       &::after {
         @include verticalBar;
       }
@@ -191,9 +202,6 @@ body {
         &::after {
           display: none;
         }
-      }
-      &.active {
-        font-weight: 900;
       }
     }
   }

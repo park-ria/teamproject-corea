@@ -1,11 +1,8 @@
 const joonggoInfo = "../db.json";
 
 let slideIndex = 0;
-//let slidesPerView = 3;
-/*let slidesPerView = matchMedia("screen and (min-width: 1280px)").matches
-  ? 3
-  : 2;*/
 
+let slidesPerView = 0;
 if (matchMedia("screen and (min-width: 1280px)").matches) {
   slidesPerView = 3;
 } else if (matchMedia("screen and (min-width: 901px)").matches) {
@@ -42,8 +39,7 @@ const updateUnit = (parent, unit, itemValue) => {
 
   if (unitElement) {
     const currentValue = unitElement.querySelector(".old").innerText;
-
-    if (currentValue !== itemValue) {
+    if (currentValue != itemValue) {
       const oldSpan = unitElement.querySelector(".old");
       const newSpan = createSpan(itemValue, "new");
       unitElement.appendChild(newSpan);
@@ -66,6 +62,7 @@ const updateUnit = (parent, unit, itemValue) => {
   }
 };
 
+// product
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
@@ -120,20 +117,46 @@ const addProduct = (product, ul) => {
     timeItems.className = "timeEvent";
     clock.className = "clock";
 
-    const random = Math.floor(Math.random() * 100000000);
+    const today = new Date();
+
+    const time = Number(product.time.replace(/[^0-9]/g, ""));
+    // console.log(time);
+    let eventDate = today.getDate();
+    let eventHrs = today.getHours();
+    let eventMin = today.getMinutes();
+    let eventSec = today.getSeconds();
+
+    if (product.time.includes("일")) {
+      eventDate += time;
+      // console.log(eventDate);
+    } else if (product.time.includes("시간")) {
+      eventHrs += time;
+      // console.log(eventHrs);
+    } else if (product.time.includes("분")) {
+      eventMin += time;
+      // console.log(eventMin);
+    } else if (product.time.includes("초")) {
+      eventSec += time;
+      // console.log(eventSec);
+    }
+
+    /*const eventDay = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      eventDate,
+      eventHrs,
+      eventMin,
+      eventSec
+    );*/
+
+    const eventDayStr = `${today.getFullYear()}-${
+      today.getMonth() + 1
+    }-${eventDate} ${eventHrs}:${eventMin}:${eventSec}`;
 
     const updateTime = () => {
-      const today = new Date();
-
-      // const eventDay = new Date(
-      //   today.getFullYear(),
-      //   today.getMonth(),
-      //   today.getDate() + 1
-      // );
-
-      const eventDay = new Date(today.getTime() + random);
+      console.log(eventDayStr);
+      const eventDay = new Date(eventDayStr);
       console.log(eventDay);
-
       const gapDate = Math.floor((eventDay - today) / 1000);
       const { hour, min, sec } = formatting(gapDate);
 
@@ -141,8 +164,8 @@ const addProduct = (product, ul) => {
       updateUnit(timeItems, "min", min);
       updateUnit(timeItems, "sec", sec);
     };
-    // updateTime();
-    setInterval(updateTime, 1000);
+    updateTime();
+    //setInterval(updateTime, 1000);
 
     timeItems.prepend(clock);
     slideImg.appendChild(timeItems);
@@ -296,6 +319,18 @@ const productSlide = (section) => {
     }
   });
 };
+
+// sorting
+const sortingBtns = document.querySelectorAll(".sorting-group a");
+sortingBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    sortingBtns.forEach((sibling) => {
+      if (sibling !== this) sibling.classList.remove("active");
+    });
+
+    this.classList.add("active");
+  });
+});
 
 fetch(joonggoInfo)
   .then((response) => response.json())
