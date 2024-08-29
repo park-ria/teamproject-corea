@@ -54,6 +54,7 @@ body {
   font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: #111;
+  overflow-x: hidden;
 }
 
 .inner {
@@ -82,6 +83,7 @@ body {
   height: 0;
 }
 #header #banner.ban .banner {
+  width: 1280px;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -1034,7 +1036,7 @@ body {
 }
 
 #main {
-  padding-top: 185px;
+  margin-top: 185px;
   margin-bottom: 200px;
 }
 #main .inner .main {
@@ -1209,9 +1211,12 @@ body {
   right: 20px;
   width: 35px;
   height: 35px;
+  color: #fff;
 }
 #main .inner .main .main-img .heart-btn i {
   font-size: 30px;
+}
+#main .inner .main .main-img .heart-btn i.fa-solid {
   color: crimson;
 }
 #main .inner .main .main-desc .desc-heading {
@@ -1391,7 +1396,10 @@ body {
   justify-content: space-between;
   margin-bottom: 100px;
 }
-#main .inner .main .main-desc .desc-btns button {
+#main .inner .main .main-desc .desc-btns a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 48.5%;
   height: 50px;
   border-radius: 5px;
@@ -1401,13 +1409,13 @@ body {
   transition: all 0.3s;
   cursor: pointer;
 }
-#main .inner .main .main-desc .desc-btns button.chat {
+#main .inner .main .main-desc .desc-btns a.chat {
   background: #0dcc5a;
 }
-#main .inner .main .main-desc .desc-btns button.trade {
+#main .inner .main .main-desc .desc-btns a.trade {
   background: #3a3a3a;
 }
-#main .inner .main .main-desc .desc-btns button:hover {
+#main .inner .main .main-desc .desc-btns a:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-weight: bold;
 }
@@ -1888,7 +1896,7 @@ body {
     display: none;
   }
   #main {
-    padding-top: 40px;
+    margin-top: 60px;
     margin-bottom: 150px;
   }
   #main .inner .main {
@@ -1911,6 +1919,10 @@ body {
   }
   #main .inner .main .main-img .img-icons {
     padding: 17px 0;
+  }
+  #main .inner .main .main-img .heart-btn {
+    top: 65px;
+    right: 30px;
   }
   #main .inner .main .main-desc .desc-heading {
     margin-bottom: 40px;
@@ -2045,6 +2057,7 @@ body {
     background: #3a3a3a;
   }
   #main {
+    margin-top: 45px;
     margin-bottom: 150px;
   }
   #main .inner .main {
@@ -2060,7 +2073,7 @@ body {
     height: 100%;
   }
   #main .inner .main .main-img .img-slider .img-wrapper .img-slide img {
-    width: 400px;
+    width: 410px;
     height: 400px;
   }
   #main .inner .main .main-img .img-icons a span {
@@ -2068,6 +2081,9 @@ body {
   }
   #main .inner .main .main-img .img-icons a i {
     font-size: 2rem;
+  }
+  #main .inner .main .main-img .heart-btn {
+    right: 20px;
   }
   #main .inner .main .main-desc .desc-heading {
     margin-bottom: 60px;

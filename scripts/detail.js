@@ -1,5 +1,6 @@
 const joonggoInfo = "../db.json";
 
+
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
@@ -9,7 +10,57 @@ fetch(joonggoInfo)
 
     const product = joongoData.product.find((product) => product.id === id);
 
+
+
     if (product) {
+
+        // 찜한목록 click시 이벤트
+        const heartBtns = document.querySelectorAll(".heart-btn");
+  
+        let idList = [];  
+
+        const checkId = JSON.parse(localStorage.getItem("idList"));
+        
+        console.log(checkId);
+
+        if(checkId !== "null") {
+          heartBtns.forEach((heartBtn) => {
+            heartBtn.querySelector("i").classList.remove("fa-regular");
+            heartBtn.querySelector("i").classList.add("fa-solid");
+          })
+        } else {
+          heartBtns.forEach((heartBtn) => {
+            heartBtn.querySelector("i").classList.remove("fa-solid");
+            heartBtn.querySelector("i").classList.add("fa-regular");
+          })
+        }
+        
+        const saveId = () => {
+          localStorage.setItem("idList", JSON.stringify(idList));
+        }
+  
+        const removeId = (id) => {
+          idList = JSON.parse(localStorage.getItem("idList"));
+          idList = idList.filter((duplicatedId) => duplicatedId !== id)
+          saveId();
+        }
+  
+        heartBtns.forEach((heartBtn) => {
+          heartBtn.addEventListener("click", (e) => {
+            if(e.target.classList.contains("fa-solid")) {   
+              e.target.classList.remove("fa-solid");
+              e.target.classList.add("fa-regular");
+              removeId(product.id);
+            } else {
+              
+              e.target.classList.remove("fa-regular");
+              e.target.classList.add("fa-solid");
+              idList.push(product.id);
+              saveId();
+            }
+          })
+        })
+
       // Making Img-slider
       product.detail.url_list.forEach((slide, index) => {
         const imgWrapper = document.querySelector(".img-wrapper");
@@ -126,8 +177,6 @@ fetch(joonggoInfo)
         }
       });
 
-
-
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
         //console.log("touchstart", e.touches[0].pageX);
@@ -147,53 +196,6 @@ fetch(joonggoInfo)
           moveSlide(nextIndex);
         }
       });
-
-      // 찜한목록 click시 이벤트
-      const heartBtns = document.querySelectorAll(".heart-btn");
-      // const heartToggle = heartBtns.querySelectorAll("i");
-      
-      let idList = [];  
-      
-      const saveId = () => {
-        localStorage.setItem("idList", JSON.stringify(idList));
-      }
-
-      const removeId = (id) => {
-        idList = JSON.parse(localStorage.getItem("idList"));
-        idList = idList.filter((duplicatedId) => duplicatedId !== id)
-        saveId();
-      }
-
-
-      heartBtns.forEach((heartBtn) => {
-        heartBtn.addEventListener("click", (e) => {
-          if(e.target.classList.contains("fa-solid")) {   
-            e.target.classList.remove("fa-solid");
-            e.target.classList.add("fa-regular");
-            removeId(product.id);
-          } else {
-            
-            e.target.classList.remove("fa-regular");
-            e.target.classList.add("fa-solid");
-            idList.push(product.id);
-            saveId();
-          }
-        })
-      })
-
-      // heartBtns.addEventListener("click", () => {
-      //   if(heartToggle.classList.contains("fa-solid")) {   
-      //     heartToggle.classList.remove("fa-solid");
-      //     heartToggle.classList.add("fa-regular");
-      //     removeId(product.id);
-      //   } else {
-          
-      //     heartToggle.classList.remove("fa-regular");
-      //     heartToggle.classList.add("fa-solid");
-      //     idList.push(product.id);
-      //     saveId();
-      //   }
-      // })
 
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {

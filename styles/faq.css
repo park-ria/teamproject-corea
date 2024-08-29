@@ -54,6 +54,7 @@ body {
   font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: #111;
+  overflow-x: hidden;
 }
 
 .inner {
@@ -82,6 +83,7 @@ body {
   height: 0;
 }
 #header #banner.ban .banner {
+  width: 1280px;
   height: 100%;
   display: flex;
   justify-content: space-between;

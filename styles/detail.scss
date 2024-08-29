@@ -105,7 +105,7 @@ body {
 
 // main
 #main {
-  padding-top: 185px;
+  margin-top: 185px;
   margin-bottom: 200px;
 
   .inner {
@@ -264,13 +264,13 @@ body {
           right: 20px;
           width: 35px;
           height: 35px;
-          // background: map-get($map: $color, $key: bg-light-color);
+          color: map-get($map: $color, $key: bg-light-color);
 
           i {
             font-size: 30px;
-            color: crimson;
-
+            
             &.fa-solid {
+              color: crimson;
             }
           }
         }
@@ -483,7 +483,10 @@ body {
           justify-content: space-between;
           margin-bottom: 100px;
 
-          button {
+            a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 48.5%;
             height: 50px;
             border-radius: 5px;
@@ -890,7 +893,7 @@ body {
 
   // // main
   #main {
-    padding-top: 40px;
+    margin-top: 60px;
     margin-bottom: 150px;
     .inner {
       .main {
@@ -919,6 +922,11 @@ body {
 
           .img-icons {
             padding: 17px 0;
+          }
+
+          .heart-btn {
+            top: 65px;
+            right: 30px;
           }
         }
 
@@ -1009,6 +1017,7 @@ body {
             }
           }
         }
+
       }
     }
   }
@@ -1126,6 +1135,7 @@ body {
 
   // // main
   #main {
+    margin-top: 45px;
     margin-bottom: 150px;
     .inner {
       .main {
@@ -1142,7 +1152,7 @@ body {
                 height: 100%;
 
                 img {
-                  width: 400px;
+                  width: 410px;
                   height: 400px;
                 }
               }
@@ -1158,6 +1168,9 @@ body {
                 font-size: map-get($map: $fontSize, $key: font-extra-large);
               }
             }
+          }
+          .heart-btn {
+            right: 20px;
           }
         }
 

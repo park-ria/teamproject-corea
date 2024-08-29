@@ -48,6 +48,7 @@ const listArray2 = [
   `<i class="fa-solid fa-caret-up"></i>`,
 ];
 
+
 // Current-time
 const todday = new Date();
 const year = todday.getFullYear();
@@ -93,19 +94,19 @@ const delItem = (e) => {
 const searchForm = document.querySelector(".search-box form");
 const searchInput = document.querySelectorAll(".search-box input[type='text']");
 const searchSubmit = document.querySelector(".search-box input[type='submit']");
-const searchWordList = document.querySelector(".searchedword-list");
+const searchWordList = document.querySelectorAll(".searchedword-list");
 
 // 검색창 클릭 이벤트
 searchInput[0].addEventListener("click", (e) => {
-  searchWordList.classList.add("active");
+  searchWordList[0].classList.add("active");
 });
 
-window.addEventListener("click", (e) => {
-  // console.log(e.target)
-  // if(e.target !== searchInput[0] && e.target !== searchWordList) {
-  //   searchWordList.classList.remove("active")
-  // }
-});
+document.querySelector("#main").addEventListener("click", (e) => {
+  if(e.currentTarget == document.querySelector("#main")) {
+    searchWordList[0].classList.remove("active");
+  }
+})
+
 
 // nowords display-none 이벤트
 const noWords = (length) => {
@@ -201,16 +202,20 @@ document.hdForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (recentWords.length > 0) {
-    const samewords = recentWords.find((sameword) => sameword === e.target.children[0].value);
-    
+    const samewords = recentWords.find(
+      (sameword) => sameword === e.target.children[0].value
+    );
+
     recentList.forEach((duplicatedwords) => {
       duplicatedwords.querySelectorAll("li").forEach((duplicatedword) => {
-        if (duplicatedword && duplicatedword.querySelector("span").innerText === samewords) {
+        if (
+          duplicatedword &&
+          duplicatedword.querySelector("span").innerText === samewords
+        ) {
           duplicatedword.remove();
         }
       });
     });
-
   }
   handler1(e);
 });
@@ -219,16 +224,20 @@ document.mbForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (recentWords.length > 0) {
-    const samewords = recentWords.find((sameword) => sameword === e.target.children[1].value);
-    
+    const samewords = recentWords.find(
+      (sameword) => sameword === e.target.children[1].value
+    );
+
     recentList.forEach((duplicatedwords) => {
       duplicatedwords.querySelectorAll("li").forEach((duplicatedword) => {
-        if (duplicatedword && duplicatedword.querySelector("span").innerText === samewords) {
+        if (
+          duplicatedword &&
+          duplicatedword.querySelector("span").innerText === samewords
+        ) {
           duplicatedword.remove();
         }
       });
     });
-
   }
   handler2(e);
 });
@@ -958,13 +967,13 @@ const mains = document.querySelectorAll(".main-category > li");
 
 mains.forEach((main) => {
   main.addEventListener("mouseover", (e) => {
-    if(e.target.querySelector(".sub-category1")) {
+    if (e.target.querySelector(".sub-category1")) {
       e.target.querySelector(".sub-category1").classList.add("active");
     }
   });
 
   main.addEventListener("mouseleave", (e) => {
-    if(e.target.querySelector(".sub-category1")) {
+    if (e.target.querySelector(".sub-category1")) {
       e.target.querySelector(".sub-category1").classList.remove("active");
     }
   });
