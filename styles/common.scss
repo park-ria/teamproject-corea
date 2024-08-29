@@ -133,16 +133,47 @@ body {
         display: flex;
         gap: 15px;
 
-        a {
+        & > div {
           display: flex;
+          align-items: center;
           gap: 5px;
+          position: relative;
+          cursor: pointer;
+
           span {
             color: map-get($color, bg-light-color);
             transition: color 0.3s;
           }
 
+          .download-box {
+            position: absolute;
+            bottom: -29px;
+            left: 0;
+            width: 210%;
+            height: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: 17px;
+              i {
+                color: #aaa;
+
+              }
+
+              span {
+                color: #000;
+                font-size: map-get($map: $fontSize, $key: font-extra-small);
+              }
+            }
+          }
+
           &:hover span {
-            color: #bbb;
+            color: map-get($map: $color, $key: bg-main-color);
           }
         }
       }

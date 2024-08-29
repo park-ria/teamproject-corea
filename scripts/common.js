@@ -954,13 +954,21 @@ categoryData.data.forEach((mainCategory) => {
 // Barmenu mouseover
 const barMenu = document.querySelector(".barmenu");
 
-barMenu.addEventListener("mouseover", () => {
+barMenu.addEventListener("click", () => {
   main.classList.add("active");
 });
 
 main.addEventListener("mouseleave", () => {
   main.classList.remove("active");
 });
+
+// barMenu.addEventListener("mouseover", () => {
+//   main.classList.add("active");
+// });
+
+// main.addEventListener("mouseleave", () => {
+//   main.classList.remove("active");
+// });
 
 // Main-category mouseover
 const mains = document.querySelectorAll(".main-category > li");

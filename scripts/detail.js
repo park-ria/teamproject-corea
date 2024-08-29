@@ -23,7 +23,7 @@ fetch(joonggoInfo)
         
         console.log(checkId);
 
-        if(checkId !== "null") {
+        if(checkId.length > 0 ) {
           heartBtns.forEach((heartBtn) => {
             heartBtn.querySelector("i").classList.remove("fa-regular");
             heartBtn.querySelector("i").classList.add("fa-solid");
