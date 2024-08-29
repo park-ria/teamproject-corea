@@ -14,17 +14,17 @@ const checkEmptyData = (arr) => {
     ".wishlistContent.active > .emptyMsg ~ div"
   );
 
-  if (arr.size === 0) {
-    sibling.forEach((div) => {
-      div.style.display = "none";
-    });
-    emptyMsg.style.display = "flex";
-  } else {
-    sibling.forEach((div) => {
-      div.style.display = "block";
-    });
-    emptyMsg.style.display = "none";
-  }
+  // if (arr.size === 0) {
+  //   sibling.forEach((div) => {
+  //     div.style.display = "none";
+  //   });
+  //   emptyMsg.style.display = "flex";
+  // } else {
+  //   sibling.forEach((div) => {
+  //     div.style.display = "flex";
+  //   });
+  //   emptyMsg.style.display = "none";
+  // }
 };
 
 // tab button click event
