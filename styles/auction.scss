@@ -26,9 +26,40 @@ body {
   padding: 80px 0;
   .best-auction-content {
     position: relative;
-    .section-title {
+    .best-auction-heading {
       @include sectionHeading;
-      margin-bottom: 20px;
+      justify-content: flex-start;
+      gap: 10px;
+      .clock {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url("../images/clock.svg") center/contain no-repeat;
+        animation: vibration 0.2s linear infinite;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 46%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center bottom;
+          width: 3px;
+          height: 10px;
+          background: map-get($color, bg-sub-color);
+          animation: clock 3s linear infinite;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 6px;
+          height: 6px;
+          background: map-get($color, bg-sub-color);
+          border-radius: 50%;
+        }
+      }
     }
     .best-auction-slide {
       height: 390px;
@@ -42,6 +73,7 @@ body {
         left: 0;
         transition: all 0.5s;
         li {
+          position: relative;
           a {
             width: 410px;
             display: flex;
@@ -56,81 +88,81 @@ body {
               width: 100%;
               height: 236px;
               position: relative;
-              .timeEvent {
-                position: absolute;
-                bottom: 15px;
-                left: 15px;
-                display: flex;
-                align-items: center;
-                padding: 6px 3px 6px 12px;
-                border-radius: 8px;
-                background: map-get($color, bg-sub-color);
-                .clock {
-                  position: relative;
-                  width: 30px;
-                  height: 30px;
-                  margin-right: 8px;
-                  background: url("../images/clock.svg") center/contain
-                    no-repeat;
-                  animation: vibration 0.2s linear infinite;
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -70%);
-                    transform-origin: bottom center;
-                    width: 2px;
-                    height: 7px;
-                    background: map-get($color, bg-light-color);
-                    animation: clock 3s linear infinite;
-                  }
-                }
-                .timeItem {
-                  position: relative;
-                  width: 32px;
-                  height: 30px;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  overflow: hidden;
-                  span {
-                    display: block;
-                    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-                    color: map-get($color, bg-light-color);
-                    transition: transform 0.5s ease;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    text-align: center;
-                    &.old {
-                      transform: translateY(-50%);
-                    }
-                    &.new {
-                      transform: translateY(-200%);
-                    }
-                    &::after {
-                      content: " : ";
-                      display: inline-block;
-                      width: 10px;
-                      margin-left: 2px;
-                    }
-                  }
-                  &.updating {
-                    span {
-                      &.old {
-                        transform: translateY(100%);
-                      }
-                      &.new {
-                        transform: translateY(-200%);
-                      }
-                    }
-                  }
-                  &.sec span::after {
-                    content: "";
-                  }
-                }
-              }
+              // .timeEvent {
+              //   position: absolute;
+              //   bottom: 15px;
+              //   left: 15px;
+              //   display: flex;
+              //   align-items: center;
+              //   padding: 6px 3px 6px 12px;
+              //   border-radius: 8px;
+              //   background: map-get($color, bg-sub-color);
+              //   .clock {
+              //     position: relative;
+              //     width: 30px;
+              //     height: 30px;
+              //     margin-right: 8px;
+              //     background: url("../images/clock.svg") center/contain
+              //       no-repeat;
+              //     animation: vibration 0.2s linear infinite;
+              //     &::before {
+              //       content: "";
+              //       position: absolute;
+              //       top: 50%;
+              //       left: 50%;
+              //       transform: translate(-50%, -70%);
+              //       transform-origin: bottom center;
+              //       width: 2px;
+              //       height: 7px;
+              //       background: map-get($color, bg-light-color);
+              //       animation: clock 3s linear infinite;
+              //     }
+              //   }
+              //   .timeItem {
+              //     position: relative;
+              //     width: 32px;
+              //     height: 30px;
+              //     display: flex;
+              //     justify-content: center;
+              //     align-items: center;
+              //     overflow: hidden;
+              //     span {
+              //       display: block;
+              //       font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+              //       color: map-get($color, bg-light-color);
+              //       transition: transform 0.5s ease;
+              //       position: absolute;
+              //       top: 50%;
+              //       transform: translateY(-50%);
+              //       text-align: center;
+              //       &.old {
+              //         transform: translateY(-50%);
+              //       }
+              //       &.new {
+              //         transform: translateY(-200%);
+              //       }
+              //       &::after {
+              //         content: " : ";
+              //         display: inline-block;
+              //         width: 10px;
+              //         margin-left: 2px;
+              //       }
+              //     }
+              //     &.updating {
+              //       span {
+              //         &.old {
+              //           transform: translateY(100%);
+              //         }
+              //         &.new {
+              //           transform: translateY(-200%);
+              //         }
+              //       }
+              //     }
+              //     &.sec span::after {
+              //       content: "";
+              //     }
+              //   }
+              // }
             }
             .slide-desc {
               padding: 0 14px 20px;
@@ -141,6 +173,9 @@ body {
                 -webkit-line-clamp: 1;
               }
             }
+          }
+          .badge {
+            @include badgeType;
           }
         }
       }
@@ -236,57 +271,6 @@ body {
       }
       .badge {
         @include badgeType;
-      }
-    }
-  }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    button {
-      width: 30px;
-      height: 30px;
-      border: 1px solid map-get($color, bg-light-gray);
-      i {
-        font-size: 1.6rem;
-        color: map-get($color, bg-dark-gray);
-      }
-      &.mainSlidePause {
-        display: block;
-        &.active {
-          display: none;
-        }
-      }
-      &.mainSlidePlay {
-        display: none;
-        &.active {
-          display: block;
-        }
-      }
-    }
-    ul {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      li {
-        font-size: 1.6rem;
-        position: relative;
-        color: map-get($color, bg-dark-gray);
-        cursor: pointer;
-        &::after {
-          @include verticalBar;
-          right: -12px;
-        }
-        &:last-child {
-          &::after {
-            display: none;
-            right: -12px;
-          }
-        }
-        &.active {
-          font-weight: 900;
-        }
       }
     }
   }

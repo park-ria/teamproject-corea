@@ -22,20 +22,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -130,9 +122,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -469,20 +458,12 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
-input::-moz-placeholder {
-  opacity: 1;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
-}
-input:focus::-moz-placeholder {
-  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -577,9 +558,6 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
-}
-#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
-  font-size: 1.2rem;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -929,6 +907,7 @@ body {
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -1112,8 +1091,7 @@ body {
   width: calc(50% - 650px);
   height: 420px;
   background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   z-index: 1;
 }
 #main-slide::before {
@@ -1359,8 +1337,7 @@ body {
 #auction .auction-banner .banner-content .banner-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #auction .auction-banner .banner-content::before {
   content: "";
@@ -1857,8 +1834,7 @@ body {
 #safe-service .safe-service-content .safe-service-banner img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #safeserviceModal {
@@ -1976,8 +1952,7 @@ body {
   width: 100%;
   height: 0;
   background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   opacity: 0;
   cursor: pointer;
   transition: all 0.5s;
@@ -2314,6 +2289,7 @@ body {
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -2325,21 +2301,52 @@ body {
 #best-auction .best-auction-content {
   position: relative;
 }
-#best-auction .best-auction-content .section-title {
+#best-auction .best-auction-content .best-auction-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  gap: 10px;
 }
-#best-auction .best-auction-content .section-title .section-title {
+#best-auction .best-auction-content .best-auction-heading .section-title {
   font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: -2px;
   cursor: default;
 }
-#best-auction .best-auction-content .section-title .view-more a {
+#best-auction .best-auction-content .best-auction-heading .view-more a {
   color: #6d6d6d;
+}
+#best-auction .best-auction-content .best-auction-heading .clock {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: url("../images/clock.svg") center/contain no-repeat;
+  animation: vibration 0.2s linear infinite;
+}
+#best-auction .best-auction-content .best-auction-heading .clock::before {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center bottom;
+  width: 3px;
+  height: 10px;
+  background: #0095ee;
+  animation: clock 3s linear infinite;
+}
+#best-auction .best-auction-content .best-auction-heading .clock::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: #0095ee;
+  border-radius: 50%;
 }
 #best-auction .best-auction-content .best-auction-slide {
   height: 390px;
@@ -2353,6 +2360,9 @@ body {
   top: 0;
   left: 0;
   transition: all 0.5s;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li {
+  position: relative;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a {
   width: 410px;
@@ -2369,76 +2379,6 @@ body {
   width: 100%;
   height: 236px;
   position: relative;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  display: flex;
-  align-items: center;
-  padding: 6px 3px 6px 12px;
-  border-radius: 8px;
-  background: #0095ee;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  margin-right: 8px;
-  background: url("../images/clock.svg") center/contain no-repeat;
-  animation: vibration 0.2s linear infinite;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  transform-origin: bottom center;
-  width: 2px;
-  height: 7px;
-  background: #fff;
-  animation: clock 3s linear infinite;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem {
-  position: relative;
-  width: 32px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span {
-  display: block;
-  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-  color: #fff;
-  transition: transform 0.5s ease;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.old {
-  transform: translateY(-50%);
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.new {
-  transform: translateY(-200%);
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span::after {
-  content: " : ";
-  display: inline-block;
-  width: 10px;
-  margin-left: 2px;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.old {
-  transform: translateY(100%);
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.new {
-  transform: translateY(-200%);
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.sec span::after {
-  content: "";
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc {
   padding: 0 14px 20px;
@@ -2480,6 +2420,56 @@ body {
   height: 23px;
   line-clamp: 1;
   -webkit-line-clamp: 1;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge {
+  position: absolute;
+  top: 5%;
+  right: -2%;
+  width: 46px;
+  height: 26px;
+  cursor: pointer;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-best {
+  background: url("../images/badge-best.png") center/contain no-repeat;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-best::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "인기";
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-new {
+  background: url("../images/badge-new.png") center/contain no-repeat;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-new::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "신규";
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-auction {
+  background: url("../images/badge-auction.png") center/contain no-repeat;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-auction::before {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  font: 400 1.3rem/1 "JalnanGothic";
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 0 1px #111;
+  content: "경매";
 }
 #best-auction .best-auction-content .best-auction-slide .slide-btns button {
   position: absolute;
@@ -2703,63 +2693,6 @@ body {
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "경매";
-}
-#product-list .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-#product-list .pagination button {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #dcdcdc;
-}
-#product-list .pagination button i {
-  font-size: 1.6rem;
-  color: #6d6d6d;
-}
-#product-list .pagination button.mainSlidePause {
-  display: block;
-}
-#product-list .pagination button.mainSlidePause.active {
-  display: none;
-}
-#product-list .pagination button.mainSlidePlay {
-  display: none;
-}
-#product-list .pagination button.mainSlidePlay.active {
-  display: block;
-}
-#product-list .pagination ul {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-#product-list .pagination ul li {
-  font-size: 1.6rem;
-  position: relative;
-  color: #6d6d6d;
-  cursor: pointer;
-}
-#product-list .pagination ul li::after {
-  content: "";
-  width: 2px;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  transform: translateY(-50%);
-  background: #dcdcdc;
-  transition: all 0.3s;
-  right: -12px;
-}
-#product-list .pagination ul li:last-child::after {
-  display: none;
-  right: -12px;
-}
-#product-list .pagination ul li.active {
-  font-weight: 900;
 }
 
 @media screen and (max-width: 1280px) {
