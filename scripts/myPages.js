@@ -194,7 +194,7 @@ const mypagePurchaseButtonEvent = () => {
 // putting Items in the mypageSellList
 const addItemsInTheMypageSellList = (product, index) => {
   const li = `
-      <li>
+      <li class="soldOut">
         <input type="checkbox" name="checkMypageSell" id="mypageSell${
           index + 1
         }" value="${product.id}" />
@@ -203,7 +203,7 @@ const addItemsInTheMypageSellList = (product, index) => {
           <div class="mypageSellImgWrapper">
             <a href="/pages/detail.html?id=${
               product.id
-            }" class="mypageSellViewMore">
+            }" class="mypageSellViewMore ">
               <img
                 src="../${product.image_path}"
                 alt="product_image"
@@ -289,12 +289,11 @@ const addItemsInTheMypageSellList = (product, index) => {
         </div>
       </li>
       `;
-
-  document.querySelector(".mypageSellWrap").insertAdjacentHTML("beforeend", li);
+  document.querySelector(".mypageSellList").insertAdjacentHTML("beforeend", li);
 };
 
 const mypageSellChkEvnt = () => {
-  let checkWishItems = document.querySelectorAll(
+  let checkMypageSell = document.querySelectorAll(
     "input[name='checkMypageSell']"
   );
   checkMypageSells.forEach((checkbox) => {
@@ -302,7 +301,7 @@ const mypageSellChkEvnt = () => {
       const checkCount = document.querySelectorAll(
         "input[name='checkMypageSell']:checked"
       ).length;
-      checkWishItems = document.querySelectorAll(
+      checkMypageSell = document.querySelectorAll(
         "input[name='checkMypageSell']"
       );
       if (checkMypageSells.length === checkCount) allCheck.checked = true;
@@ -312,7 +311,7 @@ const mypageSellChkEvnt = () => {
 };
 
 const saveMypageSell = () => {
-  localStorage.setItem("mypageSellArr", JSON.stringify([...mypageSellArr]));
+  localStorage.setSell("mypageSellArr", JSON.stringify([...mypageSellArr]));
 };
 
 const delMypageSellByHeart = (target) => {

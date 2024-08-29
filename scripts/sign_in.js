@@ -71,8 +71,10 @@ const changePhone1 = () => {
 };
 
 const changePhone2 = () => {
-  const phone2 = document.querySelector("#phone2").value;
-  if (phone2.length === 4) {
+  const phone2 = document.querySelector("#phone2");
+  phone2.value = phone2.value.replace(/[^0-9.]/g, "");
+
+  if (phone2.value.length === 4) {
     document.querySelector("#phone3").focus();
   }
 };
@@ -84,16 +86,16 @@ const changePhone3 = () => {
 
   if (phone1.length === 3 && phone2.length === 4 && phone3.length === 4) {
     tokenButton.style =
-      "background-color: #0dcc5a; color: #fff; cursor: pointer, border:none";
+      "background-color: #0dcc5a; color: #fff; border:1px solid #0dcc5a; cursor: pointer";
     tokenButton.removeAttribute("disabled");
   }
 };
 
-let interval;
+let intersection;
 
 const getTokenTimer = () => {
   let timer = 180;
-  interval = setInterval(() => {
+  intersection = setInterval(() => {
     if (timer >= 0) {
       const minutes = Math.floor(timer / 60);
       const seconds = timer % 60;
@@ -109,7 +111,7 @@ const getTokenTimer = () => {
       tokenConfirmButton.style = "";
       tokenConfirmButton.setAttribute("disabled", "true");
 
-      clearInterval(interval);
+      clearInterval(intersection);
     }
   }, 1000);
 };
@@ -123,15 +125,16 @@ tokenButton.addEventListener("click", (e) => {
   tokenNumber.innerText = randomNum;
   // console.log(tokenConfirmButton);
   tokenConfirmButton.style =
-    "background-color: #0dcc5a; color: #fff; cursor: pointer";
+    "background-color: #0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor: pointer";
   tokenConfirmButton.removeAttribute("disabled", "true");
   getTokenTimer();
 });
 
 tokenConfirmButton.addEventListener("click", function (e) {
   e.preventDefault();
-  clearInterval(interval);
-  this.style = "background-color: #0dcc5a; color: #fff; cursor: pointer";
+  clearInterval(intersection);
+  this.style =
+    "background-color: #0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor: pointer";
   this.setAttribute("disabled", "true");
   this.innerText = "인증완료";
   alert("인증이 완료되었습니다 :ㅇ");
@@ -152,6 +155,16 @@ document.frm.addEventListener("submit", (e) => {
   if (password1.value === "") {
     alert("비밀번호를 입력해주세요");
     password1.focus();
+    return;
+  }
+  if (password2.value === "") {
+    alert("비밀번호를 확인해주세요");
+    password2.focus();
+    return;
+  }
+  if (name.value === "") {
+    alert("이름을 입력해주세요");
+    name.focus();
     return;
   }
 
