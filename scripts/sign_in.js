@@ -181,5 +181,6 @@ document.frm.addEventListener("submit", (e) => {
     phone3: phone3.value,
   };
   userArr.push(userInfo);
-  console.log(userArr);
+  alert("회원가입이 완료되었습니다:)");
+  location.href = "/index.html";
 });
