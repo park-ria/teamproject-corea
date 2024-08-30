@@ -1,3 +1,9 @@
+// AppDowload 클릭시 이벤트
+const apppDownload = document.querySelector(".appDownload");
+apppDownload.addEventListener("click", function() {
+  this.querySelector(".download-box").classList.toggle("active");
+})
+
 // scroll 이동시 banner event
 window.addEventListener("scroll", () => {
   let scrolling = window.scrollY;

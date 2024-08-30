@@ -107,26 +107,33 @@ body {
 }
 #header #banner.ban .banner .banner-left > div .download-box {
   position: absolute;
-  bottom: -29px;
+  bottom: -35px;
   left: 0;
   width: 210%;
-  height: 20px;
+  height: 25px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  transition: bottom 0.3s;
+  display: none;
 }
 #header #banner.ban .banner .banner-left > div .download-box a {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px 4px;
   font-size: 17px;
+  transition: background 0.3s;
+  border-radius: 3px;
 }
-#header #banner.ban .banner .banner-left > div .download-box a i {
-  color: #aaa;
+#header #banner.ban .banner .banner-left > div .download-box a:hover {
+  background: #eee;
 }
 #header #banner.ban .banner .banner-left > div .download-box a span {
   color: #000;
   font-size: 1.2rem;
+}
+#header #banner.ban .banner .banner-left > div .download-box.active {
+  display: flex;
 }
 #header #banner.ban .banner .banner-left > div:hover span {
   color: #0dcc5a;
@@ -455,13 +462,14 @@ body {
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a {
   display: flex;
   align-items: center;
+  transition: color 0.3s;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
-  transition: filter 0.3s;
 }
-#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover img {
-  filter: invert(100%);
+#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover {
+  color: #0dcc5a;
+  font-weight: bold;
 }
 
 #header-category .inner {

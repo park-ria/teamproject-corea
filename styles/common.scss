@@ -147,28 +147,36 @@ body {
 
           .download-box {
             position: absolute;
-            bottom: -29px;
+            bottom: -35px;
             left: 0;
             width: 210%;
-            height: 20px;
+            height: 25px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-
+            transition: bottom 0.3s;
+            display: none;
+            
             a {
               display: flex;
               align-items: center;
               gap: 5px;
+              padding: 5px 4px;
               font-size: 17px;
-              i {
-                color: #aaa;
+              transition: background 0.3s;
+              border-radius: 3px;
 
+              &:hover {
+                background: #eee;
               }
 
               span {
                 color: #000;
                 font-size: map-get($map: $fontSize, $key: font-extra-small);
               }
+            }
+
+            &.active {
+              display: flex;
             }
           }
 
@@ -512,14 +520,15 @@ body {
             li a {
               display: flex;
               align-items: center;
+              transition: color 0.3s;
 
               img {
                 margin-right: 4px;
-                transition: filter 0.3s;
               }
 
-              &:hover img {
-                filter: invert(100%);
+              &:hover {
+                color: map-get($map: $color, $key: bg-main-color);
+                font-weight: bold;
               }
             }
           }
