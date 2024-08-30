@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/09d57ad258.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- custom css & js -->
+    <link rel="stylesheet" href="../styles/auction.css" />
+    <script defer src="../scripts/common.js"></script>
+    <script defer src="../scripts/auction.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <a class="appDownload" href="#none">
+                  <img src="../images/appicon.jpg" alt="appicon" />
+                  <span>앱 다운로드</span>
+                </a>
+                <a class="favorites" href="#none">
+                  <img src="../images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </a>
+              </div>
+              <div class="banner-right">
+                <a href="../pages/login.html">로그인</a>
+                <a href="../pages/sign_in.html">회원가입</a>
+                <a href="#none">마이페이지</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="#none">
+                    <img src="../images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form action="https://localhost:3000" method="get">
+                    <label for="search"></label>
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                    />
+                    <button>
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="#none">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="#none">
+                        <img src="../images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="../images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="./pages/wishlist.html">
+                        <img src="../images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="container">
+        <section id="auction">
+          <figure class="auction-banner">
+            <div class="inner">
+              <article class="banner-content">
+                <div class="banner-desc">
+                  <span>지금 놓치면 경매 끝!</span>
+                  <h2>더 저렴한 <b>중고경매</b></h2>
+                  <strong>실시간 집중도 UP!</strong>
+                  <p>실시간 <b>최저가</b> 경매상품을 만나보세요!</p>
+                </div>
+                <div class="banner-img">
+                  <img
+                    src="../images/auction-banner01.png"
+                    alt="auction-banner01"
+                  />
+                </div>
+              </article>
+            </div>
+          </figure>
+        </section>
+        <section id="best-auction">
+          <div class="inner">
+            <article class="best-auction-content">
+              <div class="best-auction-heading">
+                <div class="clock"></div>
+                <h3 class="section-title">인기 경매 상품을 만나보세요!</h3>
+              </div>
+              <div class="best-auction-slide">
+                <ul class="bestAuction"></ul>
+              </div>
+              <div class="slide-btns">
+                <button class="slidePrev disabled" type="button">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <button class="slideNext" type="button">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <div class="slidePager"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section id="product-list">
+          <div class="inner">
+            <ul class="sorting-group">
+              <li>
+                <a href="#" id="latestSorting" class="active">최신 등록순</a>
+              </li>
+              <li>
+                <a href="#" id="popularSorting">인기순</a>
+              </li>
+              <li>
+                <a href="#" id="lowPriceSorting">낮은 가격순</a>
+              </li>
+              <li>
+                <a href="#" id="highPriceSorting">높은 가격순</a>
+              </li>
+            </ul>
+            <ul class="product"></ul>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div class="inner">
+          <section class="footer-upper">
+            <div class="footer-upper-info">
+              <div class="footer-company-guide">
+                <ul>
+                  <li>이용약관</li>
+                  <li>개인정보처리방침</li>
+                  <li>분쟁처리절차</li>
+                  <li>청소년보호정책</li>
+                  <li>사업자정보확인</li>
+                  <li>게시글 수집 및 이용 안내</li>
+                </ul>
+              </div>
+              <address class="footer-company-info">
+                <ul>
+                  <li><b>(주)중고나라 사업자 정보</b></li>
+                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                  <li>사업자 등록번호: 215-87-87482</li>
+                  <li>메일: joongna@joonggonara.co.kr</li>
+                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+                </ul>
+              </address>
+            </div>
+            <div class="footer-upper-ctg">
+              카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
+            </div>
+          </section>
+          <section class="footer-lower">
+            <div class="footer-lower-desc">
+              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+              판매회원과<br />
+              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+              책임도 부담하지 않습니다.
+            </div>
+            <div class="footer-lower-logo">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-solid fa-mug-saucer"></i>
+              <i class="fa-brands fa-neos"></i>
+              <i class="fa-solid fa-blog"></i>
+            </div>
+          </section>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

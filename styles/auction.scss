@@ -1,0 +1,357 @@
+@import "./common.scss", "./style.scss";
+
+// mix-in
+@mixin verticalBar {
+  content: "";
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  background: map-get($color, bg-light-gray);
+  transition: all 0.3s;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#best-auction {
+  background: #f9f9f9;
+  border-bottom: 1px solid map-get($color, bg-light-gray);
+  padding: 80px 0;
+  .best-auction-content {
+    position: relative;
+    .best-auction-heading {
+      @include sectionHeading;
+      justify-content: flex-start;
+      gap: 10px;
+      .clock {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url("../images/clock.svg") center/contain no-repeat;
+        animation: vibration 0.2s linear infinite;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 46%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center bottom;
+          width: 3px;
+          height: 10px;
+          background: map-get($color, bg-sub-color);
+          animation: clock 3s linear infinite;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 6px;
+          height: 6px;
+          background: map-get($color, bg-sub-color);
+          border-radius: 50%;
+        }
+      }
+    }
+    .best-auction-slide {
+      height: 390px;
+      position: relative;
+      overflow: hidden;
+      .bestAuction {
+        display: flex;
+        gap: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s;
+        li {
+          position: relative;
+          a {
+            width: 410px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px map-get($color, bg-light-gray);
+            background: map-get($color, bg-light-color);
+            overflow: hidden;
+            -webkit-user-drag: none;
+            .slide-img {
+              width: 100%;
+              height: 236px;
+              position: relative;
+              .timeEvent {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                display: flex;
+                align-items: center;
+                padding: 6px 3px 6px 12px;
+                border-radius: 8px;
+                background: map-get($color, bg-sub-color);
+                .clock {
+                  position: relative;
+                  width: 30px;
+                  height: 30px;
+                  margin-right: 8px;
+                  background: url("../images/clock.svg") center/contain
+                    no-repeat;
+                  animation: vibration 0.2s linear infinite;
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -70%);
+                    transform-origin: bottom center;
+                    width: 2px;
+                    height: 7px;
+                    background: map-get($color, bg-light-color);
+                    animation: clock 3s linear infinite;
+                  }
+                }
+                .timeItem {
+                  position: relative;
+                  width: 32px;
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  overflow: hidden;
+                  span {
+                    display: block;
+                    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+                    color: map-get($color, bg-light-color);
+                    transition: transform 0.5s ease;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    text-align: center;
+                    &.old {
+                      transform: translateY(-50%);
+                    }
+                    &.new {
+                      transform: translateY(-200%);
+                    }
+                    &::after {
+                      content: " : ";
+                      display: inline-block;
+                      width: 10px;
+                      margin-left: 2px;
+                    }
+                  }
+                  &.updating {
+                    span {
+                      &.old {
+                        transform: translateY(100%);
+                      }
+                      &.new {
+                        transform: translateY(-200%);
+                      }
+                    }
+                  }
+                  &.sec span::after {
+                    content: "";
+                  }
+                }
+              }
+            }
+            .slide-desc {
+              padding: 0 14px 20px;
+              @include productDesc;
+              .desc-title {
+                height: 23px;
+                line-clamp: 1;
+                -webkit-line-clamp: 1;
+              }
+            }
+          }
+          .badge {
+            @include badgeType;
+          }
+        }
+      }
+    }
+    .slide-btns {
+      @include slideBtns;
+      button {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
+}
+@keyframes clock {
+  0% {
+    transform: translate(-50%, -70%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+@keyframes vibration {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+#product-list {
+  padding: 100px 0 150px;
+  .sorting-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    position: sticky;
+    top: 185px;
+    border-top: 1px solid map-get($color, bg-light-gray);
+    border-bottom: 1px solid map-get($color, bg-light-gray);
+    background: map-get($color, bg-light-color);
+    z-index: 1;
+    li {
+      position: relative;
+      a {
+        font-size: 1.8rem;
+        color: map-get($color, bg-dark-gray);
+        &.active {
+          font-weight: 700;
+        }
+      }
+      &::after {
+        @include verticalBar;
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  .product {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px 0;
+    li {
+      position: relative;
+      a {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .slide-img {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px;
+          overflow: hidden;
+          background: url("../images/auction01.png") center/cover no-repeat;
+        }
+        .slide-desc {
+          padding: 0 14px 20px;
+          @include productDesc;
+          .desc-title {
+            height: 23px;
+            line-clamp: 1;
+            -webkit-line-clamp: 1;
+          }
+        }
+      }
+      .badge {
+        @include badgeType;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        overflow: visible;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  #product-list {
+    .product {
+      li {
+        a {
+          .slide-desc {
+            .desc-title {
+              height: 18px;
+            }
+          }
+        }
+        .badge {
+          width: 40px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        width: 300px;
+        height: 330px;
+        margin: 0 auto;
+        .bestAuction {
+          li {
+            a {
+              width: 300px;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              .slide-img {
+                height: 200px;
+                .timeEvent {
+                  padding: 4px 10px;
+                  .clock {
+                    width: 25px;
+                    height: 25px;
+                  }
+                }
+              }
+              .slide-desc {
+                @include productDesc;
+                .desc-title {
+                  height: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #product-list {
+    .product {
+      li {
+        a {
+          .slide-desc {
+            padding: 0 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
