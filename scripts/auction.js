@@ -36,7 +36,7 @@ const createSpan = (content, className) => {
 
 const updateUnit = (parent, unit, itemValue) => {
   const unitElement = parent.querySelector(`.${unit}`);
-  //console.log(unitElement);
+  console.log(unitElement);
 
   if (unitElement) {
     const currentValue = unitElement.querySelector(".old").innerText;
@@ -142,17 +142,34 @@ const addProduct = (product, ul) => {
       // console.log(eventSec);
     }
 
-    const eventDay = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      eventDate,
-      eventHrs,
-      eventMin,
-      eventSec
-    );
+    // const eventDay = new Date(
+    //   today.getFullYear(),
+    //   today.getMonth(),
+    //   eventDate,
+    //   eventHrs,
+    //   eventMin,
+    //   eventSec
+    // );
+
+    // const eventDay = new Date(
+    //   today.getFullYear(),
+    //   today.getMonth(),
+    //   31,
+    //   23,
+    //   59,
+    //   59
+    // );
 
     const updateTime = () => {
-      console.log(eventDay);
+      const today = new Date();
+      const eventDay = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        eventDate,
+        eventHrs,
+        eventMin,
+        eventSec
+      );
       const gapDate = Math.floor((eventDay - today) / 1000);
       const { hour, min, sec } = formatting(gapDate);
 
@@ -160,8 +177,8 @@ const addProduct = (product, ul) => {
       updateUnit(timeItems, "min", min);
       updateUnit(timeItems, "sec", sec);
     };
-    updateTime();
-    //setInterval(updateTime, 1000);
+    //updateTime();
+    setInterval(updateTime, 1000);
 
     timeItems.prepend(clock);
     slideImg.appendChild(timeItems);
