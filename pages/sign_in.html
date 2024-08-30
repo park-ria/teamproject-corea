@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--fontawsome-->
+    <!-- fontawesome -->
     <script
-      src="https://kit.fontawesome.com/4effeb5db1.js"
+      src="https://kit.fontawesome.com/09d57ad258.js"
       crossorigin="anonymous"
     ></script>
-    <!--custom-->
-    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/sign_in.css" />
+    <script defer src="../scripts/sign_in.js"></script>
     <script defer src="../scripts/common.js"></script>
-    <script defer src="../scripts/login.js"></script>
-
     <title>Document</title>
   </head>
+
   <body>
     <div class="wrapper" id="wrapper">
       <header id="header">
@@ -205,83 +204,190 @@
 
       <div class="inner">
         <div class="container">
-          <div class="login">
-            <div class="login-header">
-              <img src="../images/logo.png" alt="logo" />
-              <div class="login-header-desc">
-                중고나라에 오신것을 환영합니다.
-              </div>
-            </div>
-
-            <div class="login-main">
-              <div class="login-main-npt">
-                <form action="http://127.0.0.1:5502" method="get">
-                  <ul>
-                    <li>
+          <div class="sign-in">
+            <form name="frm" action="http://localhost:5502">
+              <section class="sign-in-ttl">회원가입</section>
+              <section class="inputs">
+                <ul>
+                  <li>
+                    <div class="sign-input">
+                      <label for="email" class="label"
+                        ><span>*</span> 이메일</label
+                      >
                       <input
+                        id="email"
+                        class="inputbox"
                         type="email"
-                        id="userId"
-                        placeholder="아이디를 입력하세요"
+                        name="email"
+                        placeholder="이메일을 입력해주세요."
                       />
-                    </li>
-                    <li>
+                    </div>
+                    <div id="error_email" class="error"></div>
+                  </li>
+
+                  <li>
+                    <div class="sign-input">
+                      <label for="password1" class="label"
+                        ><span>*</span> 비밀번호</label
+                      >
                       <input
                         type="password"
-                        id="userPw"
-                        placeholder="비밀번호를 입력하세요"
+                        name="password1"
+                        id="password1"
+                        class="inputbox"
+                        placeholder="8-12자 내로 입력해주세요."
                       />
-                    </li>
-                    <div class="login-main-checkbox">
-                      <input type="checkbox" id="checkbox" />로그인상태 유지하기
                     </div>
-                    <input type="submit" id="login-button" value="로그인" />
-                  </ul>
-                </form>
-              </div>
-              <div class="login-main-srt">
-                <ul>
-                  <li><a href="">아이디 찾기</a></li>
-                  <li><a href="">비밀번호 찾기</a></li>
+                    <div id="error_password1" class="error"></div>
+                  </li>
+
                   <li>
-                    <a id="signIn" href="../pages/sign_in.html">회원가입</a>
+                    <div class="sign-input">
+                      <label for="password2" class="label"
+                        ><span>*</span> 비밀번호 확인</label
+                      >
+                      <input
+                        type="password"
+                        name="password2"
+                        id="password2"
+                        class="inputbox"
+                        placeholder="비밀번호를 다시 입력해주세요."
+                      />
+                    </div>
+                    <div id="error_password2" class="error"></div>
+                  </li>
+
+                  <li>
+                    <div class="sign-input">
+                      <label for="name" class="label"
+                        ><span>*</span> 이름</label
+                      >
+                      <input
+                        id="name"
+                        class="inputbox"
+                        type="text"
+                        name="name"
+                        placeholder="이름을 입력해주세요."
+                      />
+                    </div>
+                    <div id="error_writer" class="error"></div>
+                  </li>
+
+                  <li>
+                    <div class="sign-input">
+                      <label for="phone" class="label" id="phonelabel"
+                        ><span>*</span> 휴대폰</label
+                      >
+                      <div class="phonewrapper">
+                        <input
+                          type="text"
+                          name="firstNum"
+                          id="phone1"
+                          class="phoneNum"
+                          onkeyup="onchange()"
+                          onchange="changePhone1()"
+                        />
+                        -
+                        <input
+                          type="text"
+                          name="secondNum"
+                          id="phone2"
+                          class="phoneNum"
+                          onkeyup="onchange()"
+                          onchange="changePhone2()"
+                        />
+                        -
+                        <input
+                          type="text"
+                          name="lastNum"
+                          id="phone3"
+                          class="phoneNum"
+                          onkeyup="onchange()"
+                          onchange="changePhone3()"
+                        />
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="token-wrapper">
+                      <div class="token-upperwrapper">
+                        <div id="token">000000</div>
+                        <button id="token-button" disabled>
+                          인증번호 전송
+                        </button>
+                      </div>
+                      <div class="token-bottomwrapper">
+                        <div id="token-timer">3:00</div>
+                        <button id="token-timer-confirmBtn" disabled>
+                          인증완료
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="sign-input">
+                      <div class="location-wrapper">
+                        <label for="location" class="label" id="locationlabel"
+                          >지역</label
+                        >
+                        <select name="location" id="location">
+                          <option selected disabled>지역을 선택하세요.</option>
+                          <option>서울</option>
+                          <option>경기</option>
+                          <option>경상도</option>
+                          <option>충청도</option>
+                          <option>전라도</option>
+                          <option>강원도</option>
+                          <option>제주도</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="sign-input">
+                      <div class="gender-wrapper">
+                        <label for="gender" class="label">성별</label>
+                        <div class="gender-box">
+                          <div class="gender">
+                            <label for="gender-woman"
+                              ><input
+                                type="radio"
+                                name="gender"
+                                id="gender-woman"
+                                class="gender-radio"
+                              />
+                              여성</label
+                            >
+                          </div>
+                          <div class="gender">
+                            <label for="gender-man">
+                              <input
+                                type="radio"
+                                name="gender"
+                                id="gender-man"
+                                class="gender-radio"
+                              />
+                              남성
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                 </ul>
-              </div>
-              <div class="login-main-nthr">
-                <div class="login-main-nthr-ttl">다른 방법으로 로그인하기</div>
-                <div class="login-main-nthr-logo">
-                  <ul>
-                    <li>
-                      <a
-                        href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
-                        ><img src="../images/login/naver.png" alt="naver"
-                      /></a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Fwww.google.com%2F%3Fhl%3Dko&ec=GAZAmgQ&hl=ko&passive=true&ifkv=Ab5oB3qIObM4hJGsSxHaz0Q_GV7qU4TPbcC4S6uh011KWT-wGT0YhXiLEjhQ8JupGgwKVtnwz4_RZQ&ddm=0&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
-                        ><img src="../images/login/google.png" alt="google"
-                      /></a>
-                    </li>
-                    <li>
-                      <a href="https://www.facebook.com/?locale=ko_KR"
-                        ><img src="../images/login/facebook.png" alt="facebook"
-                      /></a>
-                    </li>
-                    <li>
-                      <a href="https://www.instagram.com/"
-                        ><img src="../images/login/insta.png" alt="instagram"
-                      /></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="login-footer">
-              도움이 필요하시면 고객센터로 문의부탁드립니다.<br />
-              고객센처 운영시간 09-18시(점심 12-13시)
-            </div>
+              </section>
+              <section class="sign-in-footer">
+                <input
+                  type="submit"
+                  id="signup-button"
+                  value="가입하기"
+                  disabled
+                />
+              </section>
+            </form>
           </div>
         </div>
       </div>
@@ -297,7 +403,7 @@
                   <li>분쟁처리절차</li>
                   <li>청소년보호정책</li>
                   <li>사업자정보확인</li>
-                  <li><a target="_blank" href="../pages/faq.html">FAQ</a></li>
+                  <li>게시글 수집 및 이용 안내</li>
                 </ul>
               </div>
               <address class="footer-company-info">
@@ -312,10 +418,7 @@
               </address>
             </div>
             <div class="footer-upper-ctg">
-              <button>
-                카테고리 전체보기 <i class="fa-solid fa-angle-down"></i>
-              </button>
-              <ul class="category-list"></ul>
+              카테고리 전체보기<i class="fa-solid fa-angle-down"></i>
             </div>
           </section>
           <section class="footer-lower">
