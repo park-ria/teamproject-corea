@@ -768,14 +768,17 @@ eventSlide();
 
 // safeserviceModal
 const modalBtn = document.querySelector("#modalBtn");
+const closeItems = document.querySelectorAll(".closeBtn, .modal-back");
 
 modalBtn.addEventListener("click", () => {
   const safeserviceModal = document.querySelector("#safeserviceModal");
-  const closeBtn = safeserviceModal.querySelector(".closeBtn");
 
   safeserviceModal.classList.add("active");
+  closeItems[1].classList.add("active");
+});
 
-  closeBtn.addEventListener("click", () => {
+closeItems.forEach((item) => {
+  item.addEventListener("click", () => {
     safeserviceModal.classList.remove("active");
     closeItems[1].classList.remove("active");
   });
