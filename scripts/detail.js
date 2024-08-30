@@ -17,14 +17,14 @@ fetch(joonggoInfo)
 
         const li = document.createElement("li");
         //const img = document.createElement("img");
-        const img = document.createElement("span");
+        const img = document.createElement("img");
         const pager = document.createElement("div");
         const src = document.createAttribute("src");
 
         src.value = `../${slide}`;
 
         //img.setAttributeNode(src);
-        img.style = `display:inline-block;width:600px;height:600px;background:url(../${slide}) center/cover no-repeat`;
+        img.style = `background:url(../${slide}) center/cover no-repeat`;
         li.appendChild(img);
         li.className = "img-slide";
         imgWrapper.appendChild(li);
@@ -41,11 +41,11 @@ fetch(joonggoInfo)
       const imgWrapper = document.querySelector(".img-wrapper");
 
       const moveSlide = (num) => {
-        const slideWidth = document.querySelector(".img-slide").offsetWidth;
-        imgWrapper.style.width = slideWidth * slideCount;
-        imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
-        currentIndex = num;
-        pagerActive();
+          const slideWidth = document.querySelector(".img-slide").offsetWidth;
+          imgWrapper.style.width = slideWidth * slideCount;
+          imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
+          currentIndex = num;
+          pagerActive();
       };
 
       const slideCount = document.querySelectorAll(".img-slide").length;
@@ -126,6 +126,8 @@ fetch(joonggoInfo)
         }
       });
 
+
+
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
         //console.log("touchstart", e.touches[0].pageX);
@@ -189,7 +191,7 @@ fetch(joonggoInfo)
 
       // Filling Detail-bar
       const fillingBar = document.querySelector(".filling-bar");
-      const barNum = product.detail.product_store_confidence_index;
+      const barNum = store.info.product_store_confidence_index;
       barRate = Math.floor(barNum / 10);
 
       fillingBar.animate(
@@ -253,7 +255,37 @@ fetch(joonggoInfo)
 
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
-      mapArea.innerText = `${product.point === "" ? "-" : product.point}`;
+      mapArea.innerHTML = `${product.point === "" ? "-" : `<i class="fa-solid fa-location-dot"></i> ${product.point}`}`;
+
+      // Map API
+      const mapContainer = document.getElementById("map"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(product.latitude, product.longitude), // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+
+      const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      // 마커가 표시될 위치입니다
+      const markerPosition = new kakao.maps.LatLng(product.latitude, product.longitude);
+
+      // 마커를 생성합니다
+      const marker = new kakao.maps.Marker({
+      position: markerPosition,
+      });
+
+      // 마커가 지도 위에 표시되도록 설정합니다
+      marker.setMap(map);
+
+      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+      const mapTypeControl = new kakao.maps.MapTypeControl();
+
+      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+      // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+
+
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -261,11 +293,19 @@ fetch(joonggoInfo)
         <p>${product.detail.product_description}</p>
         <h6>연관 검색어</h6>
         <div class="relatedWords">
-            <span>#루이비통</span>
-            <span>#트랙수트</span>
-            <span>#메쉬</span>
         </div>
         `;
+
+      // Making RelatedWords
+      product.keywords.forEach((keyword) => {
+        const relatedWords = document.querySelector(".relatedWords");
+        if(keyword) {
+          relatedWords.innerHTML +=
+          `
+          <span>#${keyword}</span>
+          `;
+        }
+      });
 
       // Making Store-info
       const storeImg = document.querySelector(".info-img");
@@ -304,8 +344,7 @@ fetch(joonggoInfo)
       let itemGap = 30;
 
       const listClientWidth = itemsWrapper.clientWidth;
-      const listScrollWidth =
-        itemWidth * itemsCount + itemGap * (itemsCount - 1);
+      const listScrollWidth = (itemWidth * itemsCount) + (itemGap * (itemsCount - 1));
 
       // 최초 터치 및 마우스 다운 지점
       let startX = 0;
@@ -322,62 +361,49 @@ fetch(joonggoInfo)
       // clientX : 사용자가 현재 보고있는 device 매체의 너비를 의미
 
       const getClientX = (e) => {
-        // const isTouches = e.isTouches ? true : false;
-        // return isTouches ? e.touches[0].clientX : e.clientX;
         return e.touches ? e.touches[0].clientX : e.clientX;
       };
 
-      // matrix(1, 0, 0, 1, -75, 0)
-      // 1 : x방향의 스케일
-      // 2 : y방향의 기울기
-      // 3 : x방향의 기울기
-      // 4 : y방향의 스케일
-      // 5 : x축을 기준으로 이동한 거리
-      // 6 : y축을 기준으로 이동한 거리
-
       const getTranslate = () => {
-        // console.log(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
-
-        return parseInt(
-          getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]
-        );
+        
+        return parseInt(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
       };
 
       const setTranslateX = (x) => {
-        itemsWrapper.style.transform = `translateX(${x}px)`;
-      };
+        itemsWrapper.style.transform = `translateX(${x}px)`
+      }
 
       const onScrollMove = (e) => {
         nowX = getClientX(e);
-        setTranslateX(listX + nowX - startX);
+        setTranslateX(listX + nowX - startX)
       };
 
       const onScrollEnd = (e) => {
         endX = getClientX(e);
         listX = getTranslate();
-        if (listX > 0) {
+        if(listX > 0) {
           setTranslateX(0);
           itemsWrapper.style.transition = `all 0.1s ease`;
           listX = 0;
-        } else if (listX < listClientWidth - listScrollWidth) {
+        } else if(listX < listClientWidth - listScrollWidth) {
           setTranslateX(listClientWidth - listScrollWidth);
-          itemsWrapper.style.transition = `all 0.1s ease`;
+          itemsWrapper.style.transition = `all 0.1s ease`
           listX = listClientWidth - listScrollWidth;
         }
         window.removeEventListener("touchstart", onScrollStart);
         window.removeEventListener("mousedown", onScrollStart);
         window.removeEventListener("touchmove", onScrollMove);
         window.removeEventListener("mousemove", onScrollMove);
-        window.removeEventListener("touchend", onScrollEnd);
+        window.removeEventListener("touchend",onScrollEnd);
         window.removeEventListener("mouseup", onScrollEnd);
-      };
+      }
 
       const onScrollStart = (e) => {
         startX = getClientX(e);
 
         window.addEventListener("touchmove", onScrollMove);
         window.addEventListener("mousemove", onScrollMove);
-        window.addEventListener("touchend", onScrollEnd);
+        window.addEventListener("touchend",onScrollEnd);
         window.addEventListener("mouseup", onScrollEnd);
       };
 
@@ -388,13 +414,15 @@ fetch(joonggoInfo)
       const reviewsBox = document.querySelector(".reviews-box");
       const reviews = store.review.review_title;
 
-      if (reviews.length === 0) {
-        reviewsBox.innerHTML += `
+      if(reviews.length === 0) {
+        reviewsBox.innerHTML += 
+        `
         <li class="no-review">아직 구매자로부터 받은 후기가 없습니다.</li>
         `;
       } else {
-        for (let i = 0; i < reviews.length; i++) {
-          reviewsBox.innerHTML += `
+        for(let i = 0; i < reviews.length; i++) {
+          reviewsBox.innerHTML += 
+          `
           <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
           `;
         }
@@ -402,28 +430,23 @@ fetch(joonggoInfo)
     }
   });
 
-// Map API
-const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-  mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3, // 지도의 확대 레벨
-  };
 
-const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+// Share Click시 팝업창
+const shareBtn = document.querySelector(".share");
 
-// 마커가 표시될 위치입니다
-const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-
-// 마커를 생성합니다
-const marker = new kakao.maps.Marker({
-  position: markerPosition,
+shareBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector(".share-box").classList.toggle("active");
 });
 
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+// URL click시 url주소 
+const urlBtn  = document.querySelector(".url");
 
-// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-// marker.setMap(null);
+urlBtn.addEventListener("click", () => {
+  const urlAddress = window.location.href;
+  prompt("Ctrl+C를 눌러 클립보드로 복사하세요", `${urlAddress}`);
+})
+
 
 // Store-btns active
 const storeBtns = document.querySelectorAll(".store-btns button");

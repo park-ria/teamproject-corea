@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   color: #aaa;
+  margin: 30px 0 100px;
   .pagerButtons {
     width: 30px;
     height: 30px;
@@ -49,6 +50,31 @@
   width: 100%;
   margin-top: 250px;
   overflow: hidden;
+  input[type="checkbox"] {
+    display: none;
+  }
+  label {
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    border: 1px solid map-get($color, bg-dark-color);
+    border-radius: 50%;
+    &::before {
+      content: "\f00c";
+      font-family: "fontawesome";
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-55%, -45%);
+    }
+  }
+  input[type="checkbox"]:checked + label {
+    border: 1px solid transparent;
+    background: map-get($color, bg-main-color);
+    color: map-get($color, bg-light-color);
+  }
 }
 
 /* wishlist tabs*/
@@ -105,9 +131,28 @@
   transition: all 0.5s;
   &.active {
     height: auto;
-    min-height: 340px;
     margin-top: 30px;
     opacity: 1;
+  }
+  .emptyMsg {
+    width: 100%;
+    height: 500px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    &.empty {
+      display: flex;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+    p {
+      font-size: map-get($fontSize, font-large);
+    }
   }
 }
 
@@ -125,9 +170,15 @@
       gap: 20px;
       #deleteSeletionButton {
         border: 1px solid map-get($color, main-font-color);
-        border-radius: 2px;
-        padding: 3px 5px;
+        border-radius: 5px;
+        padding: 10px 20px;
         cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background: map-get($color, bg-dark-color);
+          color: map-get($color, bg-light-color);
+          border: 1px solid transparent;
+        }
       }
     }
     .wish-items-sorting-wrapper {
@@ -207,9 +258,13 @@
               position: absolute;
               top: 8px;
               right: 8px;
-              .fa-solid {
+              .fa-heart {
                 color: crimson;
                 font-size: 20px;
+                transition: transform 0.3s;
+                &:hover {
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -251,9 +306,9 @@
                     }
                   }
                   .wishItemPriceBox {
-                    flex: 1.5;
+                    flex: 2;
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
                     .wishItemPriceInfo {
                       width: 135px;
                       display: flex;
@@ -318,6 +373,10 @@
                     .fa-xmark {
                       color: map-get($color, bg-light-gray);
                       font-size: map-get($fontSize, font-large);
+                      transition: color 0.3s;
+                    }
+                    &:hover .fa-xmark {
+                      color: map-get($color, bg-dark-color);
                     }
                   }
                 }
@@ -385,13 +444,13 @@
     .favoriteStoresWrap {
       & > li {
         width: 100%;
-        padding: 30px 0;
+        padding: 50px 0;
         border-bottom: 1px solid map-get($color, bg-light-gray);
         display: flex;
         align-items: center;
         gap: 20px;
         &:first-child {
-          padding-top: 0;
+          padding-top: 20px;
         }
         .favorite-store-info {
           width: 240px;
@@ -495,7 +554,12 @@
             .followButton {
               .fa-solid {
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: #06b38b;
+                transition: transform 0.3s, color 0.3s;
+                &:hover {
+                  color: map-get($color, bg-light-color);
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -505,14 +569,26 @@
           height: 240px;
           overflow: hidden;
           .favorite-store-products {
+            width: fit-content;
             display: flex;
             align-items: center;
             gap: 20px;
+            cursor: grab;
+            transition: transform ease-out 0.5s;
             & > li {
               & > a {
                 display: inline-block;
                 width: 240px;
                 height: 240px;
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+                cursor: grab;
+                &:active {
+                  cursor: grabbing;
+                }
                 .favoriteStoreProductImg {
                   display: inline-block;
                   width: inherit;
@@ -537,13 +613,13 @@
     .favoriteBrandsWrap {
       & > li {
         width: 100%;
-        padding: 30px 0;
+        padding: 50px 0;
         border-bottom: 1px solid map-get($color, bg-light-gray);
         display: flex;
         align-items: center;
         gap: 20px;
         &:first-child {
-          padding-top: 0;
+          padding-top: 20px;
         }
         .favorite-brand-info {
           width: 240px;
@@ -555,7 +631,7 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 10px;
+          //gap: 10px;
           .favorite-brand-shopkeeper {
             width: 100%;
             text-align: center;
@@ -587,7 +663,7 @@
               gap: 5px;
               li {
                 color: map-get($color, bg-light-color);
-                font-size: 1rem;
+                font-size: 1.2rem;
                 span {
                   &:not(.follower-box-title) {
                     letter-spacing: normal;
@@ -601,7 +677,12 @@
             .followButton {
               .fa-solid {
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: #06b38b;
+                transition: transform 0.3s, color 0.3s;
+                &:hover {
+                  color: map-get($color, bg-light-color);
+                  transform: scale(1.2);
+                }
               }
             }
           }
@@ -614,11 +695,22 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            cursor: grab;
+            transition: transform ease-out 0.5s;
             & > li {
               & > a {
                 display: inline-block;
                 width: 240px;
                 height: 240px;
+                -webkit-user-drag: none;
+                -khtml-user-drag: none;
+                -moz-user-drag: none;
+                -o-user-drag: none;
+                user-drag: none;
+                cursor: grab;
+                &:active {
+                  cursor: grabbing;
+                }
                 .favoriteBrandProductImg {
                   display: inline-block;
                   width: inherit;
@@ -740,9 +832,9 @@
                     width: 80px;
                     padding: 10px 0;
                     font-size: map-get($fontSize, font-small);
-                    &.wishItemXButton {
-                      //display: none;
-                    }
+                    /*&.wishItemXButton {
+                      display: none;
+                    }*/
                   }
                 }
               }
@@ -757,9 +849,13 @@
   .favorite-stores-content {
     .favoriteStoresGroup {
       .favoriteStoresWrap {
-        li {
+        & > li {
+          padding: 30px 0;
           flex-direction: column;
           gap: 10px;
+          /*&:first-child {
+            padding-top: 0;
+          }*/
           .favorite-store-info {
             width: 100%;
             height: auto;
@@ -788,26 +884,10 @@
             }
             .favorite-store-score {
               width: 30%;
-              .store-score-desc {
-                .store-score-title {
-                  //font-size: 10px;
-                }
-                .store-score-value {
-                  //font-size: 8px;
-                  b {
-                    //font-size: 12px;
-                  }
-                }
-              }
             }
             .favorite-store-follower {
               width: auto;
               gap: 10px;
-              .favorite-store-follower-box {
-                li {
-                  //font-size: 10px;
-                }
-              }
             }
           }
           .favorite-store-products-box {
@@ -832,9 +912,13 @@
   .favorite-brands-content {
     .favoriteBrandsGroup {
       .favoriteBrandsWrap {
-        li {
+        & > li {
+          padding: 30px 0;
           flex-direction: column;
           gap: 10px;
+          /*&:first-child{
+            padding-top: 0;
+          }*/
           .favorite-brand-info {
             width: 100%;
             height: auto;
@@ -871,9 +955,6 @@
                 margin-top: 0;
                 width: auto;
                 min-width: 53px;
-                li {
-                  //font-size: 10px;
-                }
               }
             }
             .favorite-brand-follow-button {
@@ -903,6 +984,9 @@
   /* wishlist */
   .wishlist {
     width: 100%;
+    label {
+      display: none;
+    }
   }
 
   /* wishlist tabs*/
@@ -930,6 +1014,7 @@
       margin-top: 0;
     }
     .wish-items-content-upper {
+      margin-bottom: 50px;
       .wish-items-delete-selection {
         opacity: 0;
       }
@@ -943,7 +1028,8 @@
         justify-content: space-between;
         align-items: center;
         li {
-          width: 180px;
+          width: 175px;
+          padding: 0 0 50px;
           border-bottom: none;
           input[type="checkbox"] {
             display: none;
@@ -954,12 +1040,12 @@
             flex-direction: column;
             gap: 10px;
             .wishItemImgWrapper {
-              width: 180px;
-              height: 180px;
+              width: 175px;
+              height: 175px;
               .wishHeart {
                 top: 10px;
                 right: 13px;
-                .fa-solid {
+                .fa-heart {
                   font-size: 22px;
                 }
               }
@@ -983,12 +1069,10 @@
                     .wishItemTitleBox {
                       width: fit-content;
                       .wishItemSellerName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-small);
                       }
                       .wishItemName {
-                        //width: 100%;
                         width: fit-content;
                         font-size: map-get($fontSize, font-medium);
                       }
@@ -996,7 +1080,6 @@
                     .wishItemPriceBox {
                       width: 100%;
                       min-width: 0;
-                      justify-content: center;
                       .wishItemPriceInfo {
                         .wishItemPrice {
                           b {
@@ -1021,10 +1104,16 @@
               }
               .wishItemLower {
                 display: none;
+                .page {
+                  margin: 0 20px;
+                }
               }
             }
           }
         }
+      }
+      .wishItemPagination {
+        margin: 0 0 100px;
       }
     }
   }
@@ -1033,7 +1122,7 @@
   .favorite-stores-content {
     .favoriteStoresGroup {
       .favoriteStoresWrap {
-        li {
+        & > li {
           .favorite-store-info {
             width: 100%;
             .favorite-store-shopkeeper {
@@ -1075,7 +1164,7 @@
   .favorite-brands-content {
     .favoriteBrandsGroup {
       .favoriteBrandsWrap {
-        li {
+        & > li {
           .favorite-brand-info {
             .favorite-brand-follower {
               width: 90px;
