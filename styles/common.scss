@@ -89,6 +89,7 @@ body {
   font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: map-get($color, main-font-color);
+  overflow-x: hidden;
 }
 
 // layout
@@ -112,14 +113,15 @@ body {
     background: map-get($color, bg-dark-color);
     opacity: 1;
     transition: all 0.3s;
-
+    
     &.active {
       background: map-get($map: $color, $key: bg-light-color);
       opacity: 0;
       height: 0;
     }
-
+    
     .banner {
+      width: 1280px;
       height: 100%;
       display: flex;
       justify-content: space-between;
@@ -131,16 +133,55 @@ body {
         display: flex;
         gap: 15px;
 
-        a {
+        & > div {
           display: flex;
+          align-items: center;
           gap: 5px;
+          position: relative;
+          cursor: pointer;
+
           span {
             color: map-get($color, bg-light-color);
             transition: color 0.3s;
           }
 
+          .download-box {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            width: 210%;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            transition: bottom 0.3s;
+            display: none;
+            
+            a {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              padding: 5px 4px;
+              font-size: 17px;
+              transition: background 0.3s;
+              border-radius: 3px;
+
+              &:hover {
+                background: #eee;
+              }
+
+              span {
+                color: #000;
+                font-size: map-get($map: $fontSize, $key: font-extra-small);
+              }
+            }
+
+            &.active {
+              display: flex;
+            }
+          }
+
           &:hover span {
-            color: #bbb;
+            color: map-get($map: $color, $key: bg-main-color);
           }
         }
       }
@@ -238,11 +279,16 @@ body {
                 .recent-list {
                   width: 100%;
 
+                  .no-words {
+                    font-size: map-get($map: $fontSize, $key: font-small);
+                    color: #bbb;
+                  }
+
                   li {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 10px 0;
+                    padding: 15px 0;
                     cursor: pointer;
 
                     .recent-word {
@@ -474,14 +520,15 @@ body {
             li a {
               display: flex;
               align-items: center;
+              transition: color 0.3s;
 
               img {
                 margin-right: 4px;
-                transition: filter 0.3s;
               }
 
-              &:hover img {
-                filter: invert(100%);
+              &:hover {
+                color: map-get($map: $color, $key: bg-main-color);
+                font-weight: bold;
               }
             }
           }
@@ -800,9 +847,40 @@ body {
         margin-bottom: 15px;
       }
       .recent-list {
+        width: 100%;
+
         li {
-          span {
-            font-size: map-get($map: $fontSize, $key: font-large);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+          cursor: pointer;
+
+            .recent-word {
+              color: #bbb;
+              font-weight: 500;
+              transition: all 0.3s;
+            }
+            
+            .recent-box {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+
+              button {
+                font-size: map-get($map: $fontSize, $key: font-large);
+                color: #bbb;
+                transition: color 0.3s;
+
+                &:hover {
+                  color: map-get($map: $color, $key: bg-dark-color);
+                }
+              }
+            }
+
+          &:hover .recent-word {
+            color: map-get($map: $color, $key: bg-dark-color);
+            font-weight: 600;
           }
         }
       }
@@ -853,7 +931,7 @@ body {
     position: fixed;
     top: 57px;
     left: 0;
-    display: block;
+    display: none;
     z-index: 3;
   }
 }
@@ -934,6 +1012,12 @@ footer {
     width: 100%;
     padding: 0 2%;
   }
+  #mobile-search {
+    display: none;
+    &.active {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 840px) {
@@ -964,6 +1048,9 @@ footer {
 
   #mobile-search {
     display: none;
+    &.active {
+      display: block;
+    }
   }
 
   // footer
@@ -1100,7 +1187,7 @@ footer {
           gap: 5px;
           li {
             padding: 10px;
-            font-size: map-get($map: $fontSize, $key: font-medium);
+            font-size: map-get($map: $fontSize, $key: font-small);
           }
         }
       }

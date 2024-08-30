@@ -25,6 +25,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 // mix-in
 @mixin sectionHeading {
@@ -82,7 +89,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         .slide-desc {
           @include productDesc;
           padding: 0 14px 14px;
-          padding: 0 14px 14px;
         }
       }
       .badge {
@@ -100,7 +106,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     height: 40px;
     border-radius: 50%;
     background: map-get($color, bg-light-color);
-    box-shadow: 0 5px 10px rgba($color: #000, $alpha: 0.3);
+    box-shadow: 0 5px 5px rgba($color: #000, $alpha: 0.3);
     transition: all 0.3s;
     i {
       font-size: 2rem;
@@ -112,7 +118,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       transform: translateX(-50%);
       &:hover {
         transform: translate(-50%, 5%);
-        box-shadow: 0 0px 5px rgba($color: #000, $alpha: 0.3);
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
       }
     }
     &.slideNext {
@@ -148,15 +154,12 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   justify-content: center;
   gap: 5px;
   transition: all 0.3s;
-  gap: 5px;
-  transition: all 0.3s;
   span {
     width: 10px;
     height: 10px;
     border-radius: 10px;
     background: map-get($color, bg-light-gray);
     cursor: pointer;
-    transition: all 0.6s;
     transition: all 0.6s;
     &:hover {
       background: map-get($color, bg-main-color);
@@ -171,10 +174,19 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 @mixin productDesc {
   .desc-title {
     font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: nowrap;
   }
   .desc-price {
     display: block;
-    margin: 10px 0 20px;
+    margin: 10px 0 15px;
     font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
     .current {
       font-size: 1.2rem;
@@ -188,6 +200,11 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
   .desc-info {
     font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: map-get($color, bg-dark-gray);
   }
 }
 
@@ -313,11 +330,13 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   position: relative;
   article {
     position: relative;
     height: 420px;
+    width: 1280px;
     .mainSlideWrapper {
       display: flex;
       justify-content: center;
@@ -337,17 +356,21 @@ body {
           text-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.2);
           -webkit-user-drag: none;
           h2 {
+            height: 84px;
             margin-bottom: 10px;
             font: 400 3.2rem/1.4 "JalnanGothic";
             letter-spacing: 0;
           }
           p {
-            font-size: 1.6rem;
-            i {
-              margin-left: 10px;
-            }
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font: 400 1.8rem/1.4 "GmarketSansMedium";
           }
         }
+      }
+      &.animated {
+        transition: all 0.5s ease-out;
       }
     }
     .main-slide-arrows {
@@ -446,6 +469,7 @@ body {
 
 // best-ranking
 #best-ranking {
+  // display: none;
   padding: 150px 0;
   .ranking-content {
     position: relative;
@@ -460,11 +484,12 @@ body {
 
 // auction
 #auction {
+  // display: none;
   .auction-banner {
     width: 100%;
     height: 400px;
     background: linear-gradient(to bottom, #7bceff, #0095ee);
-    // margin-bottom: 80px;
+    margin-bottom: 80px;
     overflow: hidden;
     .banner-content {
       width: 100%;
@@ -483,20 +508,22 @@ body {
         font-family: "SBAggroB";
         letter-spacing: 0;
         color: map-get($color, bg-light-color);
+        text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
         z-index: 0;
         cursor: default;
+        margin-left: 50px;
         span {
           font-size: 2rem;
         }
         h2 {
           font-size: 5rem;
-          text-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.3);
         }
         .timeEvent {
           @include timeEvent;
         }
         p {
           font-size: 2.4rem;
+          font-family: "GmarketSansMedium";
         }
         b {
           color: #fce44a;
@@ -526,7 +553,6 @@ body {
   }
   .auction-content {
     position: relative;
-    margin-top: 80px;
     .auction-heading {
       @include sectionHeading;
     }
@@ -547,6 +573,7 @@ body {
 
 // weekly-item
 #weekly-item {
+  // display: none;
   .weekly-item-content {
     padding: 150px 0;
     .weekly-item-heading {
@@ -589,7 +616,7 @@ body {
         }
       }
       .tab-content {
-        display: flex;
+        display: none;
         flex-wrap: wrap;
         gap: 35px;
         li {
@@ -604,8 +631,6 @@ body {
               width: 150px;
               height: 100%;
               border-radius: 10px;
-              background: url("../images/tab-content01.png") center/cover
-                no-repeat;
             }
             .tab-content-desc {
               width: calc(100% - 150px);
@@ -613,6 +638,9 @@ body {
               @include productDesc;
             }
           }
+        }
+        &.active {
+          display: flex;
         }
       }
     }
@@ -627,6 +655,7 @@ body {
       margin-bottom: 30px;
     }
     .event-slide {
+      overflow: hidden;
       ul {
         width: fit-content;
         display: flex;
@@ -685,16 +714,15 @@ body {
     .safe-service-desc {
       color: map-get($color, bg-light-color);
       h2 {
-        font-family: "GmarketSansBold";
-        font-size: 4.5rem;
+        font: 400 4.5rem/1 "GmarketSansBold";
+        margin-bottom: 10px;
       }
       span {
         display: block;
-        font-size: 2rem;
-        margin: 20px 0;
+        font-size: 1.8rem;
       }
       p {
-        font: 600 2.6rem/1.5 "Noto Sans KR", sans-serif;
+        font: 400 2.4rem/1.3 "GmarketSansMedium";
         margin: 20px 0;
       }
       #modalBtn {
@@ -706,7 +734,8 @@ body {
         color: map-get($color, bg-light-color);
         transition: all 0.3s;
         &:hover {
-          background: map-get($color, bg-sub-color);
+          // background: map-get($color, bg-sub-color);
+          background: #268cfb;
         }
       }
     }
@@ -714,7 +743,7 @@ body {
       position: absolute;
       right: 0;
       bottom: 0;
-      height: 220px;
+      width: 60%;
       img {
         width: 100%;
         height: 100%;
@@ -733,10 +762,10 @@ body {
   width: 100%;
   height: 70vh;
   background: map-get($color, bg-light-color);
-  box-shadow: 0 0 200px rgba($color: #000, $alpha: 0.6);
   border-radius: 50px 50px 0 0;
   overflow: hidden;
-  opacity: 0;
+  opacity: 1;
+  z-index: 1;
   transition: all 0.5s;
   .modal-content {
     display: flex;
@@ -752,12 +781,10 @@ body {
     }
     .modal-left {
       justify-content: end;
-      background: #2d2d2d;
-      position: relative;
+      background: #2d2d2d url("../images/safe-service-modal-point.png") 20% 20%/30%
+        no-repeat;
       .modal-title {
         text-align: end;
-        position: relative;
-        z-index: 1;
         h2 {
           font: 400 3rem/1.3 "Noto Sans KR", sans-serif;
           margin-bottom: 30px;
@@ -776,17 +803,6 @@ body {
           color: map-get($color, bg-main-color);
           text-shadow: 0 4px 10px rgba($color: #000, $alpha: 0.8);
           margin-top: 40px;
-        }
-      }
-      .modal-point {
-        position: absolute;
-        top: 10%;
-        left: 15%;
-        width: 30%;
-        img {
-          width: 100%;
-          height: 100%;
-          box-shadow: 0 0;
         }
       }
     }
@@ -812,7 +828,7 @@ body {
           .modal-desc {
             width: 300px;
             h5 {
-              font: 700 1.8rem/1.2 "Noto Sans KR", sans-serif;
+              font: 400 1.8rem/1 "GmarketSansMedium";
               margin-bottom: 10px;
             }
             p {
@@ -840,6 +856,7 @@ body {
     color: map-get($color, bg-dark-gray);
     font-size: 2.6rem;
     transition: all 0.3s;
+    z-index: 1;
     &:hover {
       color: map-get($color, main-font-color);
     }
@@ -1040,10 +1057,10 @@ body {
         .banner-desc {
           width: 45%;
           span {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
           }
           h2 {
-            font-size: 3.2rem;
+            font-size: 3.6rem;
           }
           // .timeEvent {
           //   span {
@@ -1068,9 +1085,9 @@ body {
       .weekly-item-tabmenu {
         .tab-content {
           justify-content: center;
-          gap: 20px;
+          gap: 10px;
           li {
-            width: calc((100% - 20px) / 2);
+            width: calc((100% - 10px) / 2);
           }
         }
       }
@@ -1081,9 +1098,11 @@ body {
   #safe-service {
     height: 350px;
     .safe-service-content {
+      align-items: flex-start;
       .safe-service-desc {
         position: relative;
         z-index: 1;
+        padding-top: 5%;
         h2 {
           font-size: 3rem;
         }
@@ -1091,8 +1110,7 @@ body {
           font-size: 1.4rem;
         }
         p {
-          font: 600 2.2rem/1.3 "Noto Sans KR", sans-serif;
-          text-shadow: 0 0 10px map-get($color, main-font-color);
+          font: 400 2.2rem/1.3 "GmarketSansMedium";
         }
         #modalBtn {
           padding: 12px 26px;
@@ -1100,8 +1118,50 @@ body {
           border-radius: 5px;
         }
       }
-      .safe-service-banner {
-        height: 180px;
+    }
+  }
+
+  // safeserviceModal
+  #safeserviceModal {
+    .modal-content {
+      & > div {
+        padding: 30px;
+      }
+      .modal-left {
+        background: #2d2d2d url("../images/safe-service-modal-point.png") 5% 50%/25%
+          no-repeat;
+        .modal-title {
+          h2 {
+            font: 400 2.2rem/1.3 "Noto Sans KR", sans-serif;
+            margin-bottom: 20px;
+          }
+          p {
+            font-size: 1.8rem;
+            margin: 10px 0;
+          }
+          h6 {
+            font: 400 3.3rem/1.2 "GmarketSansBold";
+            margin-top: 20px;
+          }
+        }
+      }
+      .modal-right {
+        ul {
+          li {
+            gap: 10px;
+            .modal-img {
+              width: 140px;
+            }
+            .modal-desc {
+              width: 100%;
+            }
+            &:nth-child(2) {
+              .modal-img img {
+                width: 70%;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -1160,7 +1220,7 @@ body {
           }
         }
         .banner-img {
-          width: 60%;
+          width: 50%;
           height: auto;
         }
         &::before {
@@ -1200,7 +1260,6 @@ body {
         }
         .tab-content {
           justify-content: center;
-          gap: 20px;
           li {
             height: 100px;
             a {
@@ -1386,7 +1445,7 @@ body {
         .tab-content {
           flex-direction: column;
           justify-content: center;
-          gap: 20px;
+          gap: 10px;
           li {
             width: 100%;
             a {

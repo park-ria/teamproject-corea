@@ -171,6 +171,9 @@ body {
                 height: 23px;
                 line-clamp: 1;
                 -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
               }
             }
           }
