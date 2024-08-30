@@ -66,11 +66,11 @@
   font-size: map-get($map: $fontSize, $key: font-large);
   cursor: pointer;
 
-  &:first-child {
-    left: 0;
+  &.img-prev {
+    left: 1%;
   }
-  &:last-child {
-    right: 0;
+  &.img-next {
+    right: 1%;
   }
   &:hover {
     background: rgba($color: #fff, $alpha: 0.7);
@@ -100,77 +100,7 @@ html,
 body {
   width: 100%;
   height: 100%;
-}
-
-#header-category {
-  .inner {
-    position: relative;
-    .header-category {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 180px;
-      background: #555;
-
-      .main-category {
-        font-size: map-get($map: $fontSize, $key: font-small);
-        li {
-          position: relative;
-          padding: 15px 20px;
-          color: map-get($map: $color, $key: bg-light-color);
-          &:hover {
-            background: #ddd;
-            color: map-get($map: $color, $key: bg-dark-color);
-          }
-
-          .sub-category1 {
-            position: absolute;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100vh;
-            background: #666;
-
-            li {
-              // position: relative;
-              // padding: 15px 20px;
-              // color: map-get($map: $color, $key: bg-light-color);
-              // &:hover {
-              //   background: #ddd;
-              //   color: map-get($map: $color, $key: bg-dark-color);
-              // }
-
-              .sub-category2 {
-                position: absolute;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: #888;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-// bottom-mmenu
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: map-get($map: $color, $key: bg-light-color);
-  z-index: 9999;
-  display: none;
-
-  .bottom-mmenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  overflow-x: hidden;
 }
 
 // main
@@ -238,7 +168,7 @@ body {
           line-height: 18px;
           font-weight: 500;
 
-          a {
+          .icon-box {
             width: 25%;
             display: flex;
             justify-content: center;
@@ -246,9 +176,82 @@ body {
             gap: 10px;
             border-right: 1px solid map-get($map: $color, $key: bg-light-gray);
 
-            i {
-              color: map-get($map: $color, $key: bg-dark-gray);
-              font-size: map-get($map: $fontSize, $key: font-extra-large);
+            a {
+              display: flex;
+              gap: 10px;
+
+              i {
+                color: map-get($map: $color, $key: bg-dark-gray);
+                font-size: map-get($map: $fontSize, $key: font-extra-large);
+              }
+            }
+
+            &.share {
+              position: relative;
+
+              .share-box {
+                position: absolute;
+                top: 55px;
+                left: -50%;
+                padding: 20px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 2px solid map-get($map: $color, $key: bg-light-gray);
+                border-radius: 10px;
+                transform: translateX(10%);
+                display: none;
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 50%;
+                  width: 0;
+                  height: 0;
+                  border: 10px solid transparent;
+                  border-bottom-color: map-get(
+                    $map: $color,
+                    $key: bg-main-color
+                  );
+                  border-top: 0;
+                  margin-left: -10px;
+                  margin-top: -10px;
+                }
+
+                div {
+                  width: 80px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 10px;
+
+                  a {
+                    width: 40px;
+                    height: 40px;
+
+                    img {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                    }
+                  }
+
+                  span {
+                    font-size: 13px;
+                    color: map-get($map: $color, $key: bg-light-gray);
+                    transition: all 0.3s;
+                  }
+
+                  &:hover span {
+                    text-decoration: underline;
+                    color: map-get($map: $color, $key: bg-main-color);
+                  }
+                }
+                &.active {
+                  display: flex;
+                }
+              }
             }
 
             &:last-child {
@@ -259,7 +262,6 @@ body {
       }
 
       .main-desc {
-        width: 100%;
         .desc-heading {
           margin-bottom: 30px;
 
@@ -267,12 +269,12 @@ body {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: map-get($map: $fontSize, $key: font-samll);
             margin-bottom: 15px;
 
             span:nth-child(1),
             span:nth-child(2),
             span:nth-child(3) {
+              font-size: map-get($map: $fontSize, $key: font-small);
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(3) {
@@ -296,7 +298,8 @@ body {
           }
 
           .heading-timeinfo {
-            font-size: map-get($map: $fontSize, $key: font-extra-small);
+            font-size: map-get($map: $fontSize, $key: font-small);
+            color: #aaa;
           }
         }
 
@@ -343,7 +346,7 @@ body {
                 gap: 10px;
 
                 span {
-                  font-size: 10px;
+                  font-size: map-get($map: $fontSize, $key: font-extra-small);
                   color: map-get($map: $color, $key: bg-dark-gray);
                 }
 
@@ -390,9 +393,10 @@ body {
         }
 
         .desc-conditions {
+          width: 600px;
           display: flex;
           align-items: center;
-          height: 90px;
+          height: 75px;
           border: 1px solid map-get($map: $color, $key: bg-light-gray);
           border-radius: 4px;
           margin-bottom: 30px;
@@ -412,7 +416,7 @@ body {
               right: 0;
               transform: translateY(-50%);
               width: 1px;
-              height: 20px;
+              height: 17px;
               background: map-get($map: $color, $key: bg-light-gray);
             }
 
@@ -421,7 +425,7 @@ body {
             }
 
             span:nth-child(1) {
-              font-size: 11px;
+              font-size: 12px;
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(2) {
@@ -454,7 +458,7 @@ body {
           }
           #map {
             width: 100%;
-            height: 140px;
+            height: 155px;
             border: 1px solid map-get($map: $color, $key: bg-light-gray);
           }
         }
@@ -516,7 +520,7 @@ body {
               width: 100%;
               font-size: map-get($map: $fontSize, $key: font-samll);
               text-align: justify;
-              line-height: 50px;
+              line-height: 40px;
               margin-bottom: 70px;
             }
 
@@ -559,8 +563,9 @@ body {
             }
             .bar {
               border: none;
-              border-bottom: 1px solid
+              border-bottom: 2px solid
                 map-get($map: $color, $key: bg-light-gray);
+              border-radius: 2px;
             }
           }
 
@@ -763,11 +768,11 @@ body {
 
     .event-slider {
       padding: 30px 0;
+      width: 1280px;
 
       .slide-wrapper {
         position: relative;
         overflow: hidden;
-        width: 100%;
         height: 155px;
         margin-bottom: 30px;
 
@@ -870,12 +875,13 @@ body {
 
   // // main
   #main {
-    padding-top: 90px;
+    padding-top: 40px;
     margin-bottom: 150px;
     .inner {
       .main {
         flex-direction: column;
         align-items: center;
+        gap: 35px;
 
         .main-img {
           position: static;
@@ -889,8 +895,8 @@ body {
                 height: 100%;
 
                 img {
-                  width: 820px;
-                  height: 820px;
+                  width: 800px;
+                  height: 800px;
                 }
               }
             }
@@ -924,6 +930,7 @@ body {
           }
 
           .desc-conditions {
+            width: 100%;
             margin-bottom: 50px;
           }
 
@@ -996,8 +1003,10 @@ body {
     margin-bottom: 150px;
     .event {
       .event-slider {
+        width: 830px;
         .slide-wrapper {
           .slide {
+            width: 790px;
             gap: 3%;
 
             & div:last-child {
@@ -1105,9 +1114,9 @@ body {
     margin-bottom: 150px;
     .inner {
       .main {
-        gap: 40px;
         justify-content: center;
         align-items: center;
+        gap: 45px;
 
         .main-img {
           width: 100%;
@@ -1172,6 +1181,9 @@ body {
               span:nth-child(1) {
                 font-size: 9px;
               }
+              span:nth-child(2) {
+                font-size: 10px;
+              }
             }
           }
 
@@ -1188,6 +1200,12 @@ body {
           }
 
           .desc-store {
+            .store-btns {
+              button {
+                padding: 13px;
+              }
+            }
+
             .store-contents {
               .selling-items {
                 .items-wrapper {
@@ -1233,6 +1251,7 @@ body {
       .event-slider {
         .slide-wrapper {
           .slide {
+            width: 415px;
             display: block;
             & div {
               height: 100%;
