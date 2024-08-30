@@ -1,6 +1,6 @@
 const joonggoInfo = "../db.json";
 
-// let sortedLists = [];
+let sortedLists = [];
 let slideIndex = 0;
 
 let slidesPerView = 0;
@@ -14,55 +14,55 @@ if (matchMedia("screen and (min-width: 1280px)").matches) {
 
 const productSlideLimit = 10;
 
-// // time event
-// const formatting = (time) => {
-//   let sec = Math.floor(time % 60);
-//   let min = Math.floor((time / 60) % 60);
-//   let hour = Math.floor(time / 3600);
+// time event
+const formatting = (time) => {
+  let sec = Math.floor(time % 60);
+  let min = Math.floor((time / 60) % 60);
+  let hour = Math.floor(time / 3600);
 
-//   sec = sec < 10 ? `0${sec}` : `${sec}`;
-//   min = min < 10 ? `0${min}` : `${min}`;
-//   hour = hour < 10 ? `0${hour}` : `${hour}`;
+  sec = sec < 10 ? `0${sec}` : `${sec}`;
+  min = min < 10 ? `0${min}` : `${min}`;
+  hour = hour < 10 ? `0${hour}` : `${hour}`;
 
-//   return { hour, min, sec };
-// };
+  return { hour, min, sec };
+};
 
-// const createSpan = (content, className) => {
-//   const span = document.createElement("span");
-//   span.innerText = content;
-//   span.classList.add(className);
-//   return span;
-// };
+const createSpan = (content, className) => {
+  const span = document.createElement("span");
+  span.innerText = content;
+  span.classList.add(className);
+  return span;
+};
 
-// const updateUnit = (parent, unit, itemValue) => {
-//   const unitElement = parent.querySelector(`.${unit}`);
-//   //console.log(unitElement);
+const updateUnit = (parent, unit, itemValue) => {
+  const unitElement = parent.querySelector(`.${unit}`);
+  //console.log(unitElement);
 
-//   if (unitElement) {
-//     const currentValue = unitElement.querySelector(".old").innerText;
-//     if (currentValue != itemValue) {
-//       const oldSpan = unitElement.querySelector(".old");
-//       const newSpan = createSpan(itemValue, "new");
-//       unitElement.appendChild(newSpan);
+  if (unitElement) {
+    const currentValue = unitElement.querySelector(".old").innerText;
+    if (currentValue != itemValue) {
+      const oldSpan = unitElement.querySelector(".old");
+      const newSpan = createSpan(itemValue, "new");
+      unitElement.appendChild(newSpan);
 
-//       if (unit === "sec") {
-//         unitElement.classList.add("updating");
-//       }
+      if (unit === "sec") {
+        unitElement.classList.add("updating");
+      }
 
-//       setTimeout(() => {
-//         if (oldSpan) unitElement.removeChild(oldSpan);
-//         newSpan.classList.replace("new", "old");
-//         unitElement.classList.remove("updating");
-//       }, 100);
-//     }
-//   } else {
-//     const unitContainer = document.createElement("div");
-//     unitContainer.classList.add("timeItem", unit);
-//     unitContainer.appendChild(createSpan(itemValue, "old"));
-//     parent.appendChild(unitContainer);
-//   }
-// };
-
+      setTimeout(() => {
+        if (oldSpan) unitElement.removeChild(oldSpan);
+        newSpan.classList.replace("new", "old");
+        unitElement.classList.remove("updating");
+      }, 100);
+    }
+  } else {
+    const unitContainer = document.createElement("div");
+    unitContainer.classList.add("timeItem", unit);
+    unitContainer.appendChild(createSpan(itemValue, "old"));
+    parent.appendChild(unitContainer);
+  }
+};
+const today = new Date();
 // product
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
@@ -113,64 +113,58 @@ const addProduct = (product, ul) => {
   ulItem.appendChild(liItem);
 
   if (ul === ".bestAuction") {
-    // // time event
-    // const timeItems = document.createElement("div");
-    // const clock = document.createElement("div");
-    // timeItems.className = "timeEvent";
-    // clock.className = "clock";
+    // time event
+    const timeItems = document.createElement("div");
+    const clock = document.createElement("div");
+    timeItems.className = "timeEvent";
+    clock.className = "clock";
 
-    // const today = new Date();
+    //const today = new Date();
 
-    // const time = Number(product.time.replace(/[^0-9]/g, ""));
-    // // console.log(time);
-    // let eventDate = today.getDate();
-    // let eventHrs = today.getHours();
-    // let eventMin = today.getMinutes();
-    // let eventSec = today.getSeconds();
+    const time = Number(product.time.replace(/[^0-9]/g, ""));
+    // console.log(time);
+    let eventDate = today.getDate();
+    let eventHrs = today.getHours();
+    let eventMin = today.getMinutes();
+    let eventSec = today.getSeconds();
 
-    // if (product.time.includes("일")) {
-    //   eventDate += time;
-    //   // console.log(eventDate);
-    // } else if (product.time.includes("시간")) {
-    //   eventHrs += time;
-    //   // console.log(eventHrs);
-    // } else if (product.time.includes("분")) {
-    //   eventMin += time;
-    //   // console.log(eventMin);
-    // } else if (product.time.includes("초")) {
-    //   eventSec += time;
-    //   // console.log(eventSec);
-    // }
+    if (product.time.includes("일")) {
+      eventDate += time;
+      // console.log(eventDate);
+    } else if (product.time.includes("시간")) {
+      eventHrs += time;
+      // console.log(eventHrs);
+    } else if (product.time.includes("분")) {
+      eventMin += time;
+      // console.log(eventMin);
+    } else if (product.time.includes("초")) {
+      eventSec += time;
+      // console.log(eventSec);
+    }
 
-    // /*const eventDay = new Date(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   eventDate,
-    //   eventHrs,
-    //   eventMin,
-    //   eventSec
-    // );*/
+    const eventDay = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      eventDate,
+      eventHrs,
+      eventMin,
+      eventSec
+    );
 
-    // const eventDayStr = `${today.getFullYear()}-${
-    //   today.getMonth() + 1
-    // }-${eventDate} ${eventHrs}:${eventMin}:${eventSec}`;
+    const updateTime = () => {
+      console.log(eventDay);
+      const gapDate = Math.floor((eventDay - today) / 1000);
+      const { hour, min, sec } = formatting(gapDate);
 
-    // const updateTime = () => {
-    //   // console.log(eventDayStr);
-    //   const eventDay = new Date(eventDayStr);
-    //   // console.log(eventDay);
-    //   const gapDate = Math.floor((eventDay - today) / 1000);
-    //   const { hour, min, sec } = formatting(gapDate);
+      updateUnit(timeItems, "hour", hour);
+      updateUnit(timeItems, "min", min);
+      updateUnit(timeItems, "sec", sec);
+    };
+    updateTime();
+    //setInterval(updateTime, 1000);
 
-    //   updateUnit(timeItems, "hour", hour);
-    //   updateUnit(timeItems, "min", min);
-    //   updateUnit(timeItems, "sec", sec);
-    // };
-    // updateTime();
-    // //setInterval(updateTime, 1000);
-
-    // timeItems.prepend(clock);
-    // slideImg.appendChild(timeItems);
+    timeItems.prepend(clock);
+    slideImg.appendChild(timeItems);
 
     // badge
     badge.className = "badge badge-best";
@@ -315,24 +309,24 @@ sortingBtns.forEach((btn) => {
 
     this.classList.add("active");
 
-    // if (this.id === "latestSorting") sortNew();
+    if (this.id === "latestSorting") sortNew();
   });
 });
 
-// const sortedLiItems = document.querySelectorAll(".product li");
-// console.log(sortedLiItems);
+// latestSorting;
 
-// latestSorting
+const sortNew = () => {
+  // addProduct(product);
+  const products = sortedLists.sort((a, b) => {
+    return new Date(b.real_time).getTime() - new Date(a.real_time).getTime();
+  });
 
-// const addSorted = (product) => {};
+  document.querySelector(".product").innerHTML = "";
 
-// const sortNew = () => {
-//   // addProduct(product);
-//   const products = sortedLists.sort((a, b) => {
-//     return new Date(b.real_time).getTime() - new Date(a.real_time).getTime();
-//   });
-//   console.log(products);
-// };
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
 
 fetch(joonggoInfo)
   .then((response) => response.json())
@@ -345,9 +339,12 @@ fetch(joonggoInfo)
       // addProductList
       else if (index < productSlideLimit * 2 + 2) {
         addProduct(product, ".product");
+        sortedLists.push(product);
       }
     });
 
     // productList run
     productSlide("#best-auction");
+
+    // console.log(joongoData.product);
   });

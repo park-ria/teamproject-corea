@@ -88,81 +88,81 @@ body {
               width: 100%;
               height: 236px;
               position: relative;
-              // .timeEvent {
-              //   position: absolute;
-              //   bottom: 15px;
-              //   left: 15px;
-              //   display: flex;
-              //   align-items: center;
-              //   padding: 6px 3px 6px 12px;
-              //   border-radius: 8px;
-              //   background: map-get($color, bg-sub-color);
-              //   .clock {
-              //     position: relative;
-              //     width: 30px;
-              //     height: 30px;
-              //     margin-right: 8px;
-              //     background: url("../images/clock.svg") center/contain
-              //       no-repeat;
-              //     animation: vibration 0.2s linear infinite;
-              //     &::before {
-              //       content: "";
-              //       position: absolute;
-              //       top: 50%;
-              //       left: 50%;
-              //       transform: translate(-50%, -70%);
-              //       transform-origin: bottom center;
-              //       width: 2px;
-              //       height: 7px;
-              //       background: map-get($color, bg-light-color);
-              //       animation: clock 3s linear infinite;
-              //     }
-              //   }
-              //   .timeItem {
-              //     position: relative;
-              //     width: 32px;
-              //     height: 30px;
-              //     display: flex;
-              //     justify-content: center;
-              //     align-items: center;
-              //     overflow: hidden;
-              //     span {
-              //       display: block;
-              //       font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
-              //       color: map-get($color, bg-light-color);
-              //       transition: transform 0.5s ease;
-              //       position: absolute;
-              //       top: 50%;
-              //       transform: translateY(-50%);
-              //       text-align: center;
-              //       &.old {
-              //         transform: translateY(-50%);
-              //       }
-              //       &.new {
-              //         transform: translateY(-200%);
-              //       }
-              //       &::after {
-              //         content: " : ";
-              //         display: inline-block;
-              //         width: 10px;
-              //         margin-left: 2px;
-              //       }
-              //     }
-              //     &.updating {
-              //       span {
-              //         &.old {
-              //           transform: translateY(100%);
-              //         }
-              //         &.new {
-              //           transform: translateY(-200%);
-              //         }
-              //       }
-              //     }
-              //     &.sec span::after {
-              //       content: "";
-              //     }
-              //   }
-              // }
+              .timeEvent {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                display: flex;
+                align-items: center;
+                padding: 6px 3px 6px 12px;
+                border-radius: 8px;
+                background: map-get($color, bg-sub-color);
+                .clock {
+                  position: relative;
+                  width: 30px;
+                  height: 30px;
+                  margin-right: 8px;
+                  background: url("../images/clock.svg") center/contain
+                    no-repeat;
+                  animation: vibration 0.2s linear infinite;
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -70%);
+                    transform-origin: bottom center;
+                    width: 2px;
+                    height: 7px;
+                    background: map-get($color, bg-light-color);
+                    animation: clock 3s linear infinite;
+                  }
+                }
+                .timeItem {
+                  position: relative;
+                  width: 32px;
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  overflow: hidden;
+                  span {
+                    display: block;
+                    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+                    color: map-get($color, bg-light-color);
+                    transition: transform 0.5s ease;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    text-align: center;
+                    &.old {
+                      transform: translateY(-50%);
+                    }
+                    &.new {
+                      transform: translateY(-200%);
+                    }
+                    &::after {
+                      content: " : ";
+                      display: inline-block;
+                      width: 10px;
+                      margin-left: 2px;
+                    }
+                  }
+                  &.updating {
+                    span {
+                      &.old {
+                        transform: translateY(100%);
+                      }
+                      &.new {
+                        transform: translateY(-200%);
+                      }
+                    }
+                  }
+                  &.sec span::after {
+                    content: "";
+                  }
+                }
+              }
             }
             .slide-desc {
               padding: 0 14px 20px;
@@ -179,14 +179,15 @@ body {
           }
         }
       }
-      .slide-btns {
-        @include slideBtns;
-        button {
-          top: 45%;
-        }
-        .slidePager {
-          @include slidePager;
-        }
+    }
+    .slide-btns {
+      @include slideBtns;
+      button {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .slidePager {
+        @include slidePager;
       }
     }
   }
