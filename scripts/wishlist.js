@@ -4,6 +4,29 @@ let favoriteStoresArr;
 let favorStoreArrDetail = [];
 let favoriteBrandsArr;
 
+// checkEmptyData
+const checkEmptyData = (arr) => {
+  console.log(arr);
+  const emptyMsg = document.querySelector(
+    ".wishlistContent.active > .emptyMsg"
+  );
+  const sibling = document.querySelectorAll(
+    ".wishlistContent.active > .emptyMsg ~ div"
+  );
+
+  if (arr.size === 0) {
+    sibling.forEach((div) => {
+      div.style.display = "none";
+    });
+    emptyMsg.style.display = "flex";
+  } else {
+    sibling.forEach((div) => {
+      div.style.display = "block";
+    });
+    emptyMsg.style.display = "none";
+  }
+};
+
 // tab button click event
 const wishlistTabButton = document.querySelectorAll(".wishlistTabButton");
 wishlistTabButton.forEach((btn) => {
@@ -24,6 +47,8 @@ wishlistTabButton.forEach((btn) => {
       if (item !== target) item.classList.remove("active");
     });
     target.classList.add("active");
+
+    checkEmptyData(`${this.getAttribute("data-arr-name")}Arr`);
   });
 });
 
@@ -59,7 +84,7 @@ deleteSeletionButton.addEventListener("click", () => {
   }
 
   checkedItem.forEach((item) => {
-    delWishItemByHeart(item.closest("li"));
+    delWishItem(item.closest("li"));
   });
 
   allCheck.checked = false;
@@ -249,12 +274,13 @@ const saveWishItem = () => {
   localStorage.setItem("wishItemArr", JSON.stringify([...wishItemArr]));
 };
 
-const delWishItemByHeart = (target) => {
+const delWishItem = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
   wishItemArr = new Set([...wishItemArr].filter((item) => item !== productId));
   wishItemArrDetail = wishItemArrDetail.filter((item) => item.id !== productId);
   saveWishItem();
   target.remove();
+  document.querySelector(".wishItems").innerText = wishItemArr.size;
 };
 
 const wishItemButtonEvent = () => {
@@ -265,13 +291,13 @@ const wishItemButtonEvent = () => {
   document.querySelectorAll(".wishHeart").forEach((item) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
-      delWishItemByHeart(e.target.closest("li"));
+      delWishItem(e.target.closest("li"));
     });
   });
 
   document.querySelectorAll(".wishItemXButton").forEach((item) => {
     item.addEventListener("click", (e) => {
-      delWishItemByHeart(e.target.closest("li"));
+      delWishItem(e.target.closest("li"));
     });
   });
 };
@@ -371,6 +397,7 @@ const delFavorStores = (target) => {
   );
   saveFavoriteStores();
   target.remove();
+  document.querySelector(".favoriteStores").innerText = favoriteStoresArr.size;
 };
 
 const favorStoresButtonEvent = () => {
@@ -526,16 +553,15 @@ const saveBrandStores = () => {
 };
 
 const delFavorBrands = (target) => {
-  console.log(target);
-  /*const storeNm = target.querySelector(".favoriteStoresTitle>p").innerText;
-  favoriteStoresArr = new Set(
-    [...favoriteStoresArr].filter((item) => item !== storeNm)
+  console.log(target.querySelector(".favoriteBrandsTitle > p").innerText);
+  console.log(favoriteBrandsArr);
+  const brandNm = target.querySelector(".favoriteBrandsTitle > p").innerText;
+  favoriteBrandsArr = new Set(
+    [...favoriteBrandsArr].filter((item) => item.brand !== brandNm)
   );
-  favorStoreArrDetail = favorStoreArrDetail.filter(
-    (item) => item.store_name !== storeNm
-  );
-  saveFavoriteStores();
-  target.remove();*/
+  saveBrandStores();
+  target.remove();
+  document.querySelector(".favoriteBrands").innerText = favoriteBrandsArr.size;
 };
 
 const favorBrandsButtonEvent = () => {
@@ -636,6 +662,7 @@ fetch("../db.json")
       ? new Set(jsonData.wishlist.wishItemArr)
       : new Set();
     saveWishItem();
+    checkEmptyData(wishItemArr);
 
     favoriteStoresArr = localStorage.getItem("favoriteStoresArr")
       ? new Set(JSON.parse(localStorage.getItem("favoriteStoresArr")))
@@ -680,18 +707,4 @@ fetch("../db.json")
       arr.products = products;
     });
     createFavorBrands();
-    /*jsonData.product.forEach((product) => {
-      // put data into favoriteBrandsArr
-      favoriteBrandsArr.forEach((arr) => {
-        if (product.title.includes(arr.brand)) {
-          arr.products.push({
-            id: product.id,
-            image_path: product.image_path,
-          });
-
-          arr.count += 1;
-        }
-      });
-    });
-    addItemsInTheFavoriteBrands(jsonData.product);*/
   });

@@ -1,6 +1,5 @@
 const joonggoInfo = "../db.json";
 
-
 fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
@@ -10,56 +9,52 @@ fetch(joonggoInfo)
 
     const product = joongoData.product.find((product) => product.id === id);
 
-
-
     if (product) {
+      // 찜한목록 click시 이벤트
+      const heartBtns = document.querySelectorAll(".heart-btn");
 
-        // 찜한목록 click시 이벤트
-        const heartBtns = document.querySelectorAll(".heart-btn");
-  
-        let idList = [];  
+      let idList = [];
 
-        const checkId = JSON.parse(localStorage.getItem("idList"));
-        
-        console.log(checkId);
+      const checkId = JSON.parse(localStorage.getItem("idList"));
 
-        if(checkId.length > 0 ) {
-          heartBtns.forEach((heartBtn) => {
-            heartBtn.querySelector("i").classList.remove("fa-regular");
-            heartBtn.querySelector("i").classList.add("fa-solid");
-          })
-        } else {
-          heartBtns.forEach((heartBtn) => {
-            heartBtn.querySelector("i").classList.remove("fa-solid");
-            heartBtn.querySelector("i").classList.add("fa-regular");
-          })
-        }
-        
-        const saveId = () => {
-          localStorage.setItem("idList", JSON.stringify(idList));
-        }
-  
-        const removeId = (id) => {
-          idList = JSON.parse(localStorage.getItem("idList"));
-          idList = idList.filter((duplicatedId) => duplicatedId !== id)
-          saveId();
-        }
-  
+      console.log(checkId);
+
+      if (checkId.length > 0) {
         heartBtns.forEach((heartBtn) => {
-          heartBtn.addEventListener("click", (e) => {
-            if(e.target.classList.contains("fa-solid")) {   
-              e.target.classList.remove("fa-solid");
-              e.target.classList.add("fa-regular");
-              removeId(product.id);
-            } else {
-              
-              e.target.classList.remove("fa-regular");
-              e.target.classList.add("fa-solid");
-              idList.push(product.id);
-              saveId();
-            }
-          })
-        })
+          heartBtn.querySelector("i").classList.remove("fa-regular");
+          heartBtn.querySelector("i").classList.add("fa-solid");
+        });
+      } else {
+        heartBtns.forEach((heartBtn) => {
+          heartBtn.querySelector("i").classList.remove("fa-solid");
+          heartBtn.querySelector("i").classList.add("fa-regular");
+        });
+      }
+
+      const saveId = () => {
+        localStorage.setItem("idList", JSON.stringify(idList));
+      };
+
+      const removeId = (id) => {
+        idList = JSON.parse(localStorage.getItem("idList"));
+        idList = idList.filter((duplicatedId) => duplicatedId !== id);
+        saveId();
+      };
+
+      heartBtns.forEach((heartBtn) => {
+        heartBtn.addEventListener("click", (e) => {
+          if (e.target.classList.contains("fa-solid")) {
+            e.target.classList.remove("fa-solid");
+            e.target.classList.add("fa-regular");
+            removeId(product.id);
+          } else {
+            e.target.classList.remove("fa-regular");
+            e.target.classList.add("fa-solid");
+            idList.push(product.id);
+            saveId();
+          }
+        });
+      });
 
       // Making Img-slider
       product.detail.url_list.forEach((slide, index) => {
@@ -92,11 +87,11 @@ fetch(joonggoInfo)
       const imgWrapper = document.querySelector(".img-wrapper");
 
       const moveSlide = (num) => {
-          const slideWidth = document.querySelector(".img-slide").offsetWidth;
-          imgWrapper.style.width = slideWidth * slideCount;
-          imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
-          currentIndex = num;
-          pagerActive();
+        const slideWidth = document.querySelector(".img-slide").offsetWidth;
+        imgWrapper.style.width = slideWidth * slideCount;
+        imgWrapper.style.transform = `translateX(${slideWidth * -num}px)`;
+        currentIndex = num;
+        pagerActive();
       };
 
       const slideCount = document.querySelectorAll(".img-slide").length;
@@ -302,26 +297,35 @@ fetch(joonggoInfo)
         }
       });
 
-
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
-      mapArea.innerHTML = `${product.point === "" ? "-" : `<i class="fa-solid fa-location-dot"></i> ${product.point}`}`;
+      mapArea.innerHTML = `${
+        product.point === ""
+          ? "-"
+          : `<i class="fa-solid fa-location-dot"></i> ${product.point}`
+      }`;
 
       // Map API
       const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-      mapOption = {
-        center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
+        mapOption = {
+          center: new kakao.maps.LatLng(
+            product.detail.latitude,
+            product.detail.longitude
+          ), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
 
       const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
       // 마커가 표시될 위치입니다
-      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
+      const markerPosition = new kakao.maps.LatLng(
+        product.detail.latitude,
+        product.detail.longitude
+      );
 
       // 마커를 생성합니다
       const marker = new kakao.maps.Marker({
-      position: markerPosition,
+        position: markerPosition,
       });
 
       // 마커가 지도 위에 표시되도록 설정합니다
@@ -333,7 +337,6 @@ fetch(joonggoInfo)
       // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
       // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
       map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -347,9 +350,8 @@ fetch(joonggoInfo)
       // Making RelatedWords
       product.detail.keywords.forEach((keyword) => {
         const relatedWords = document.querySelector(".relatedWords");
-        if(keyword) {
-          relatedWords.innerHTML +=
-          `
+        if (keyword) {
+          relatedWords.innerHTML += `
           <span>#${keyword}</span>
           `;
         }
@@ -392,7 +394,8 @@ fetch(joonggoInfo)
       let itemGap = 30;
 
       const listClientWidth = itemsWrapper.clientWidth;
-      const listScrollWidth = (itemWidth * itemsCount) + (itemGap * (itemsCount - 1));
+      const listScrollWidth =
+        itemWidth * itemsCount + itemGap * (itemsCount - 1);
 
       // 최초 터치 및 마우스 다운 지점
       let startX = 0;
@@ -413,45 +416,46 @@ fetch(joonggoInfo)
       };
 
       const getTranslate = () => {
-        
-        return parseInt(getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]);
+        return parseInt(
+          getComputedStyle(itemsWrapper).transform.split(/[^\-0-9]+/g)[5]
+        );
       };
 
       const setTranslateX = (x) => {
-        itemsWrapper.style.transform = `translateX(${x}px)`
-      }
+        itemsWrapper.style.transform = `translateX(${x}px)`;
+      };
 
       const onScrollMove = (e) => {
         nowX = getClientX(e);
-        setTranslateX(listX + nowX - startX)
+        setTranslateX(listX + nowX - startX);
       };
 
       const onScrollEnd = (e) => {
         endX = getClientX(e);
         listX = getTranslate();
-        if(listX > 0) {
+        if (listX > 0) {
           setTranslateX(0);
           itemsWrapper.style.transition = `all 0.1s ease`;
           listX = 0;
-        } else if(listX < listClientWidth - listScrollWidth) {
+        } else if (listX < listClientWidth - listScrollWidth) {
           setTranslateX(listClientWidth - listScrollWidth);
-          itemsWrapper.style.transition = `all 0.1s ease`
+          itemsWrapper.style.transition = `all 0.1s ease`;
           listX = listClientWidth - listScrollWidth;
         }
         window.removeEventListener("touchstart", onScrollStart);
         window.removeEventListener("mousedown", onScrollStart);
         window.removeEventListener("touchmove", onScrollMove);
         window.removeEventListener("mousemove", onScrollMove);
-        window.removeEventListener("touchend",onScrollEnd);
+        window.removeEventListener("touchend", onScrollEnd);
         window.removeEventListener("mouseup", onScrollEnd);
-      }
+      };
 
       const onScrollStart = (e) => {
         startX = getClientX(e);
 
         window.addEventListener("touchmove", onScrollMove);
         window.addEventListener("mousemove", onScrollMove);
-        window.addEventListener("touchend",onScrollEnd);
+        window.addEventListener("touchend", onScrollEnd);
         window.addEventListener("mouseup", onScrollEnd);
       };
 
@@ -462,22 +466,245 @@ fetch(joonggoInfo)
       const reviewsBox = document.querySelector(".reviews-box");
       const reviews = store.review.review_title;
 
-      if(reviews.length === 0) {
-        reviewsBox.innerHTML += 
-        `
+      if (reviews.length === 0) {
+        reviewsBox.innerHTML += `
         <li class="no-review">아직 구매자로부터 받은 후기가 없습니다.</li>
         `;
       } else {
-        for(let i = 0; i < reviews.length; i++) {
-          reviewsBox.innerHTML += 
-          `
+        for (let i = 0; i < reviews.length; i++) {
+          reviewsBox.innerHTML += `
           <li>${reviews[i].title}<span><i class="fa-regular fa-user"></i>${reviews[i].cnt}</span></li>
           `;
         }
       }
     }
-});
+  });
 
+  // add product slide item
+let slideIndex = 0;
+let slidesPerView = 5;
+const productSlideLimit = 10;
+
+if (matchMedia("screen and (min-width: 1280px)").matches) {
+  slidesPerView = 5;
+} else if (matchMedia("screen and (min-width: 1075px)").matches) {
+  slidesPerView = 4;
+} else if (matchMedia("screen and (min-width: 800px)").matches) {
+  slidesPerView = 3;
+} else if (matchMedia("screen and (min-width: 531px)").matches) {
+  slidesPerView = 2;
+} else {
+  slidesPerView = 1;
+}
+
+const addProduct = (product, ul) => {
+  const ulItem = document.querySelector(ul);
+  const liItem = document.createElement("li");
+  const aTag = document.createElement("a");
+  const slideImg = document.createElement("div");
+  const slideDesc = document.createElement("div");
+
+  slideImg.className = "slide-img";
+  slideDesc.className = "slide-desc";
+  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
+  // aTag.style.webkitUserDrag = "none";
+
+  slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
+
+  const desc = `
+              <h4 class="desc-title">
+                ${product.title}
+              </h4>
+              <strong class="desc-price">
+                ${product.price}
+              </strong>
+              <p class="desc-info">
+                <span class="desc-time">${product.time}</span>
+                <span class="desc-place">
+                ${product.point ? " | " + product.point : ""}
+                </span>
+              </p>
+        `;
+
+  slideDesc.innerHTML = desc;
+  aTag.append(slideImg, slideDesc);
+  liItem.appendChild(aTag);
+  ulItem.appendChild(liItem);
+
+  // pager
+  const slidePager =
+    ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
+  if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+    const spanTag = document.createElement("span");
+    slidePager.appendChild(spanTag);
+  }
+  slideIndex++;
+};
+
+// productSlide
+const productSlide = (section) => {
+  const slideSection = document.querySelector(section);
+  const slideUl = slideSection.querySelector("ul");
+  const slide = slideUl.querySelectorAll("li");
+  const prevBtn = slideSection.querySelector(".slidePrev");
+  const nextBtn = slideSection.querySelector(".slideNext");
+  const pagers = slideSection.querySelectorAll(".slidePager span");
+
+  prevBtn.classList.add("disabled");
+
+  const slideCount = slide.length;
+
+  let currentIdx = 0;
+
+  // move pager
+  pagers[0].classList.add("active");
+  const movePager = (index) => {
+    for (let pager of pagers) {
+      pager.classList.remove("active");
+    }
+    pagers[index].classList.add("active");
+    // console.log(index);
+  };
+
+  // click pager
+  pagers.forEach((pager, index) => {
+    pager.addEventListener("click", function () {
+      pagers.forEach((sibling) => {
+        if (sibling !== pager) sibling.classList.remove("active");
+      });
+
+      this.classList.add("active");
+      currentIdx = index;
+      moveSlide(index);
+    });
+  });
+
+  const moveSlide = (num) => {
+    if (num < 0 || num >= slideCount) return;
+
+    const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+    const slideMargin = 20;
+    const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
+    const clientWidth = slideUl.parentElement.clientWidth;
+
+    if (currentSlideWidth >= clientWidth) {
+      currentIdx = num;
+      movePager(currentIdx);
+      slideUl.style.transform = `translateX(${
+        -num * (slideWidth + slideMargin)
+      }px)`;
+    } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
+      currentIdx = num;
+      movePager(currentIdx);
+      slideUl.style.transform = `translateX(${
+        -(num - 1) * (slideWidth + slideMargin) -
+        slideWidth +
+        (clientWidth - currentSlideWidth)
+      }px)`;
+    }
+
+    if (num === 0) {
+      prevBtn.classList.add("disabled");
+    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.add("disabled");
+    } else {
+      prevBtn.classList.remove("disabled");
+      nextBtn.classList.remove("disabled");
+    }
+  };
+
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
+
+  // drag event
+  let startPoint = 0;
+  let endPoint = 0;
+
+  slideUl.addEventListener("mousedown", (e) => {
+    slideUl.style.cursor = "grabbing";
+    // slide.querySelectorAll("a").style.cursor = "grabbing";
+    startPoint = e.pageX;
+  });
+
+  slideUl.addEventListener("mouseup", (e) => {
+    slideUl.style.cursor = "grab";
+    endPoint = e.pageX;
+
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+
+  // touch event
+  slideUl.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+  });
+  slideUl.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+};
+
+
+  fetch(joonggoInfo)
+  .then((response) => response.json())
+  .then((joongoData) => {
+
+
+    // data
+    joongoData.product.forEach((product, index) => {
+      // productSlide add
+if (index < productSlideLimit ) {
+        addProduct(product, ".recommendedUl");
+      }
+
+      // tab-content
+      const tabContent = document.querySelectorAll(".tab-content");
+      tabContent.forEach((content) => {
+        if (
+          content.querySelectorAll("li").length < 6 &&
+          content.getAttribute("data-tab") === product.detail.page_path[1]
+        ) {
+          let li = `
+            <li>
+              <a href="/pages/detail.html?id=${product.id}">
+                <div class="tab-content-img" style="background:url('../${
+                  product.image_path
+                }') center/cover
+                no-repeat"></div>
+                <div class="tab-content-desc">
+                  <h4 class="desc-title">
+                    ${product.title}
+                  </h4>
+                  <strong class="desc-price">${product.price}</strong>
+                  <p class="desc-info">
+                    <span class="desc-time">${product.time}</span>
+                    <span class="desc-place">${
+                      product.point ? " | " + product.point : ""
+                    }</span>
+                  </p>
+                </div>
+              </a>
+            </li>
+          `;
+          content.insertAdjacentHTML("beforeend", li);
+        }
+      });
+    });
+
+    // productSlide run
+    productSlide("#recommended");
+  });
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
@@ -486,14 +713,13 @@ shareBtn.addEventListener("click", () => {
   document.querySelector(".share-box").classList.toggle("active");
 });
 
-// URL click시 url주소 
-const urlBtn  = document.querySelector(".url");
+// URL click시 url주소
+const urlBtn = document.querySelector(".url");
 
 urlBtn.addEventListener("click", () => {
   const urlAddress = window.location.href;
   prompt("Ctrl+C를 눌러 클립보드로 복사하세요", `${urlAddress}`);
-})
-
+});
 
 // Store-btns active
 const storeBtns = document.querySelectorAll(".store-btns button");
@@ -520,3 +746,113 @@ storeBtns.forEach((button, index) => {
     storeContents[index].classList.add("active");
   });
 });
+
+// event slide
+const eventSlideUl = document.querySelector(".event-slide ul");
+const eventSlides = [
+  "images/event-banner01.png",
+  "images/event-banner02.png",
+  "images/event-banner03.png",
+  "images/event-banner04.png",
+  "images/event-banner05.png",
+  "images/event-banner06.png",
+];
+eventSlides.forEach((slide) => {
+  const liItem = document.createElement("li");
+  const aTag = document.createElement("a");
+  aTag.style.background = `url(../${slide}) center/cover no-repeat`;
+  liItem.appendChild(aTag);
+  eventSlideUl.appendChild(liItem);
+});
+const eventSlide = () => {
+  const slideUl = document.querySelector(".event-slide ul");
+  const slide = document.querySelectorAll(".event-slide li");
+
+  const slideCount = slide.length;
+
+  let currentIdx = 0;
+
+  const moveSlide = (num) => {
+    if (num < 0) return;
+
+    const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+    const slideMargin = 20;
+    const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
+    const clientWidth = slideUl.parentElement.clientWidth;
+
+    if (currentSlideWidth >= clientWidth) {
+      currentIdx = num;
+      slideUl.style.transform = `translateX(${
+        -num * (slideWidth + slideMargin)
+      }px)`;
+    } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
+      currentIdx = num;
+      slideUl.style.transform = `translateX(${
+        -(num - 1) * (slideWidth + slideMargin) -
+        slideWidth +
+        (clientWidth - currentSlideWidth)
+      }px)`;
+    } else {
+      currentIdx = 0;
+      slideUl.style.transform = "translateX(0px)";
+    }
+  };
+
+  // drag event
+  let startPoint = 0;
+  let endPoint = 0;
+
+  slideUl.addEventListener("mousedown", (e) => {
+    slideUl.style.cursor = "grabbing";
+    startPoint = e.pageX;
+  });
+
+  slideUl.addEventListener("mouseup", (e) => {
+    slideUl.style.cursor = "grab";
+    endPoint = e.pageX;
+
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+
+  // autoPlay
+  let timer = undefined;
+
+  const autoSlide = () => {
+    if (timer === undefined) {
+      timer = setInterval(() => {
+        moveSlide(currentIdx + 1);
+      }, 3000);
+    }
+  };
+  autoSlide();
+
+  const stopSlide = () => {
+    clearInterval(timer);
+    timer = undefined;
+  };
+
+  slideUl.addEventListener("mouseenter", () => {
+    stopSlide();
+  });
+  slideUl.addEventListener("mouseleave", () => {
+    autoSlide();
+  });
+
+  // touch event
+  slideUl.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+  });
+  slideUl.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint) {
+      moveSlide(currentIdx - 1);
+    } else if (startPoint > endPoint) {
+      moveSlide(currentIdx + 1);
+    }
+  });
+};
+eventSlide();

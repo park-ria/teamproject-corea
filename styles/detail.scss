@@ -1,6 +1,8 @@
 @import "./common.scss";
 
 /* mixin */
+// variables
+$home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 @mixin list-a {
   display: inline-block;
   margin-right: 10px;
@@ -95,12 +97,216 @@
     }
   }
 }
+// home
+@mixin sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  .section-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    cursor: default;
+  }
+  .view-more {
+    a {
+      color: map-get($color, bg-dark-gray);
+    }
+  }
+}
+
+@mixin slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.3s;
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: map-get($color, bg-light-gray);
+    cursor: pointer;
+    transition: all 0.6s;
+    &:hover {
+      background: map-get($color, bg-main-color);
+    }
+    &.active {
+      width: 30px;
+      background: $home-gradient;
+    }
+  }
+}
+
+@mixin productSlide {
+  position: relative;
+  height: 406px;
+  overflow: hidden;
+  .slideWrapper {
+    width: fit-content;
+    position: absolute;
+    left: 0;
+    display: flex;
+    gap: 20px;
+    transition: all 0.5s;
+    li {
+      position: relative;
+      a {
+        width: 240px;
+        height: 376px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        cursor: grab;
+        &:active {
+          cursor: grabbing;
+        }
+        .slide-img {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .slide-desc {
+          @include productDesc;
+          padding: 0 14px 14px;
+        }
+      }
+
+    }
+  }
+}
+
+@mixin productDesc {
+  .desc-title {
+    font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: nowrap;
+  }
+  .desc-price {
+    display: block;
+    margin: 10px 0 15px;
+    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+    .current {
+      font-size: 1.2rem;
+      letter-spacing: 0;
+      color: map-get($color, bg-sub-color);
+    }
+    .fixed {
+      font-size: 1.2rem;
+      text-decoration: line-through;
+    }
+  }
+  .desc-info {
+    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: map-get($color, bg-dark-gray);
+  }
+}
+
+@mixin slideBtns {
+  button {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: map-get($color, bg-light-color);
+    box-shadow: 0 5px 5px rgba($color: #000, $alpha: 0.3);
+    transition: all 0.3s;
+    i {
+      font-size: 2rem;
+      color: map-get($color, bg-dark-gray);
+      line-height: 35px;
+    }
+    &.slidePrev {
+      left: 0;
+      transform: translateX(-50%);
+      &:hover {
+        transform: translate(-50%, 5%);
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.slideNext {
+      right: 0;
+      transform: translateX(50%);
+      &:hover {
+        transform: translate(50%, 5%);
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+      &.slidePrev {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(-50%, 0);
+        }
+      }
+      &.slideNext {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(50%, 0);
+        }
+      }
+    }
+  }
+}
+
+@mixin slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.3s;
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: map-get($color, bg-light-gray);
+    cursor: pointer;
+    transition: all 0.6s;
+    &:hover {
+      background: map-get($color, bg-main-color);
+    }
+    &.active {
+      width: 30px;
+      background: $home-gradient;
+    }
+  }
+}
+
+
 
 html,
 body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+}
+
+//common
+.slide-btns {
+  @include slideBtns;
+  .slidePager {
+    @include slidePager;
+  }
 }
 
 // main
@@ -130,10 +336,10 @@ body {
           .img-wrapper {
             display: flex;
             transition: all 0.3s;
-            
+
             .img-slide {
-                width: 100%;
-                height: 100%;
+              width: 100%;
+              height: 100%;
               // cursor: pointer;
 
               img {
@@ -201,16 +407,19 @@ body {
                 border-radius: 10px;
                 transform: translateX(10%);
                 display: none;
-                
+
                 &::before {
-                  content: '';
+                  content: "";
                   position: absolute;
                   top: 0;
                   left: 50%;
                   width: 0;
                   height: 0;
                   border: 10px solid transparent;
-                  border-bottom-color: map-get($map: $color, $key: bg-main-color);
+                  border-bottom-color: map-get(
+                    $map: $color,
+                    $key: bg-main-color
+                  );
                   border-top: 0;
                   margin-left: -10px;
                   margin-top: -10px;
@@ -240,7 +449,7 @@ body {
                     transition: all 0.3s;
                   }
 
-                  &:hover span{
+                  &:hover span {
                     text-decoration: underline;
                     color: map-get($map: $color, $key: bg-main-color);
                   }
@@ -251,7 +460,6 @@ body {
               }
             }
 
-            
             &:last-child {
               border-right: none;
             }
@@ -268,7 +476,7 @@ body {
 
           i {
             font-size: 30px;
-            
+
             &.fa-solid {
               color: crimson;
             }
@@ -285,7 +493,7 @@ body {
             align-items: center;
             gap: 8px;
             margin-bottom: 15px;
-            
+
             span:nth-child(1),
             span:nth-child(2),
             span:nth-child(3) {
@@ -483,7 +691,7 @@ body {
           justify-content: space-between;
           margin-bottom: 100px;
 
-            a {
+          a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -583,7 +791,7 @@ body {
               border: none;
               border-bottom: 2px solid
                 map-get($map: $color, $key: bg-light-gray);
-                border-radius: 2px;
+              border-radius: 2px;
             }
           }
 
@@ -760,124 +968,54 @@ body {
 
 // event
 #event {
-  margin-bottom: 200px;
-  .event {
-    padding: 30px 0;
-
+  .event-content {
     .event-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-
-      h3 {
-        font-size: 24px;
-        font-weight: bold;
-      }
-      a {
-        font-size: map-get($map: $fontSize, $key: font-samll);
-        color: map-get($map: $color, $key: bg-light-gray);
-
-        span {
-          margin-right: 5px;
-        }
-      }
+      @include sectionHeading;
+      margin-bottom: 30px;
     }
-
-    .event-slider {
-      padding: 30px 0;
-      width: 1280px;
-      
-      .slide-wrapper {
-        position: relative;
-        overflow: hidden;
-        height: 155px;
-        margin-bottom: 30px;
-
-        .slide {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: space-between;
-          cursor: pointer;
-
-          & div {
-            border: 1px solid map-get($map: $color, $key: bg-light-gray);
-            border-radius: 10px;
-            overflow: hidden;
-          }
+    .event-slide {
+      overflow: hidden;
+      ul {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        transition: all 0.5s;
+        a {
+          display: inline-block;
+          width: 410px;
+          height: 155px;
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 10px;
         }
       }
-
-      .pagers {
-        @include pagers;
+      .slidePager {
+        @include slidePager;
       }
     }
   }
 }
 
-// recommendation
-#recommendation {
-  margin-bottom: 200px;
-  .recommendation {
-    display: flex;
-    flex-direction: column;
-    gap: 120px;
-    .related {
-      h3 {
-        font-size: map-get($map: $fontSize, $key: font-extra-large);
-        font-weight: bold;
-        margin-bottom: 40px;
-      }
-
-      .related-slider {
-        position: relative;
-        overflow: hidden;
-
-        .recommend-wrapper {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          .item-slide {
-            @include item-info;
-          }
-        }
-
-        .btn {
-          @include slider-btns;
-        }
+// recommended
+#recommended {
+  padding: 150px 0;
+  .recommended-content {
+    position: relative;
+    .recommended-heading {
+      @include sectionHeading;
+    }
+    .recommended-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    .recent {
-      h3 {
-        font-size: map-get($map: $fontSize, $key: font-extra-large);
-        font-weight: bold;
-        margin-bottom: 40px;
-      }
-
-      .recent-slider {
-        position: relative;
-        overflow: hidden;
-
-        .recommend-wrapper {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          .item-slide {
-            @include item-info;
-          }
-        }
-
-        .btn {
-          @include slider-btns;
-        }
-      }
-    }
+    // .slide-btns {
+    //   @include slideBtns;
+    //   .slidePager {
+    //     @include slidePager;
+    //   }
+    // }
   }
 }
 
@@ -913,8 +1051,8 @@ body {
                 height: 100%;
 
                 img {
-                    width: 800px;
-                    height: 800px;
+                  width: 800px;
+                  height: 800px;
                 }
               }
             }
@@ -973,10 +1111,10 @@ body {
 
           .desc-store {
             .store-btns {
-                button {
-                    font-size: map-get($map: $fontSize, $key: font-medium);
-                    padding: 17px;
-                }
+              button {
+                font-size: map-get($map: $fontSize, $key: font-medium);
+                padding: 17px;
+              }
             }
 
             .store-info {
@@ -992,9 +1130,9 @@ body {
             }
 
             .store-contents {
-                &>div {
-                    top: 15px;
-                }
+              & > div {
+                top: 15px;
+              }
               .selling-items {
                 .items-wrapper {
                   gap: 40px;
@@ -1017,7 +1155,6 @@ body {
             }
           }
         }
-
       }
     }
   }
@@ -1144,7 +1281,7 @@ body {
         gap: 45px;
 
         .main-img {
-            width: 100%;
+          width: 100%;
           .img-slider {
             .img-wrapper {
               .img-slide {
@@ -1175,45 +1312,45 @@ body {
         }
 
         .main-desc {
-            .desc-heading {
-                margin-bottom: 60px;
-                .heading-name {
-                    font-size: 22px;
-                }
-                .heading-price {
-                    font-size: 24px;
-                }
+          .desc-heading {
+            margin-bottom: 60px;
+            .heading-name {
+              font-size: 22px;
             }
-            .desc-user {
-                .user-info {
-                    .user-detail {
-                        .detail-barBox {
-                        gap: 20px;
-                        .detail-bar {
-                            width: 70%;
-                            height: 12px;
-                        }
-                        }
-
-                        .detail-value {
-                            font-size: map-get($map: $fontSize, $key: font-large);
-                        }
-                    }
-                }
+            .heading-price {
+              font-size: 24px;
             }
+          }
+          .desc-user {
+            .user-info {
+              .user-detail {
+                .detail-barBox {
+                  gap: 20px;
+                  .detail-bar {
+                    width: 70%;
+                    height: 12px;
+                  }
+                }
 
-            .desc-conditions {
-                .conditions-box {
-                gap: 8px;
-
-                span:nth-child(1) {
-                    font-size: 9px;
+                .detail-value {
+                  font-size: map-get($map: $fontSize, $key: font-large);
                 }
-                span:nth-child(2) {
-                    font-size: 10px;
-                }
-                }
+              }
             }
+          }
+
+          .desc-conditions {
+            .conditions-box {
+              gap: 8px;
+
+              span:nth-child(1) {
+                font-size: 9px;
+              }
+              span:nth-child(2) {
+                font-size: 10px;
+              }
+            }
+          }
 
           .desc-btns {
             display: none;
@@ -1228,11 +1365,11 @@ body {
           }
 
           .desc-store {
-              .store-btns {
-                  button {
-                      padding: 13px;
-                  }
+            .store-btns {
+              button {
+                padding: 13px;
               }
+            }
 
             .store-contents {
               .selling-items {
