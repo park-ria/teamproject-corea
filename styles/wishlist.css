@@ -1560,7 +1560,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   transition: transform 0.3s;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .favorite-stores-content .favoriteStoresPagination {
   display: flex;
@@ -1716,7 +1716,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   transition: transform 0.3s;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .favorite-brands-content .favoriteBrandsPagination {
   display: flex;
@@ -2108,12 +2108,13 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper {
     width: auto;
-    max-width: 110px;
+    max-width: 130px;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
     font-size: 1.4rem;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
+    display: none;
     width: auto;
     min-width: 100px;
   }

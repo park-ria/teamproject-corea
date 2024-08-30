@@ -324,9 +324,7 @@ const addItemsInTheFavoriteStores = (store) => {
     <li>
       <div class="favorite-store-info">
         <div class="favorite-store-shopkeeper">
-          <a href="/pages/mypage.html?id=${
-            store.store_name
-          }" class="favoriteStoresTitle">
+          <a href="#none" class="favoriteStoresTitle">
             <img
               src="../${store.info.product_img_path}"
             />

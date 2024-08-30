@@ -603,7 +603,7 @@
                   height: inherit;
                   transition: transform 0.3s;
                   &:hover {
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                   }
                 }
               }
@@ -729,7 +729,7 @@
                   height: inherit;
                   transition: transform 0.3s;
                   &:hover {
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                   }
                 }
               }
@@ -1132,7 +1132,7 @@
             width: 100%;
             .favorite-store-shopkeeper {
               width: auto;
-              max-width: 110px;
+              max-width: 130px;
               .favoriteStoresTitle {
                 & > p {
                   font-size: map-get($fontSize, font-small);
@@ -1140,6 +1140,7 @@
               }
             }
             .favorite-store-score {
+              display: none;
               width: auto;
               min-width: 100px;
             }
