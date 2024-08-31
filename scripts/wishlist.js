@@ -285,6 +285,22 @@ const wishItemChkEvnt = () => {
   });
 };
 
+const wishItemHover = () => {
+  let wishItemViewMore = document.querySelectorAll(".wishItemViewMore");
+  wishItemViewMore.forEach((info) => {
+    info.addEventListener("mouseenter", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.add("hover");
+    });
+    info.addEventListener("mouseleave", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.remove("hover");
+    });
+  });
+};
+
 const saveWishItem = () => {
   localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
 };
@@ -302,6 +318,7 @@ const delWishItem = (target) => {
 const wishItemButtonEvent = () => {
   // all select event
   wishItemChkEvnt();
+  wishItemHover();
 
   // button event
   document.querySelectorAll(".wishHeart").forEach((item) => {

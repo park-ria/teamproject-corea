@@ -1244,8 +1244,10 @@ footer .inner .footer-lower .footer-lower-logo i {
   width: 150px;
   height: 150px;
   position: relative;
+  overflow: hidden;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore {
+  display: inline-block;
   width: inherit;
   height: inherit;
 }
@@ -1254,6 +1256,10 @@ footer .inner .footer-lower .footer-lower-logo i {
   height: inherit;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: transform 0.3s;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img.hover {
+  transform: scale(1.1);
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter {
   position: absolute;

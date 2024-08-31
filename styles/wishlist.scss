@@ -256,13 +256,19 @@
             width: 150px;
             height: 150px;
             position: relative;
+            overflow: hidden;
             .wishItemViewMore {
+              display: inline-block;
               width: inherit;
               height: inherit;
               img {
                 width: inherit;
                 height: inherit;
                 object-fit: cover;
+                transition: transform 0.3s;
+                &.hover {
+                  transform: scale(1.1);
+                }
               }
             }
             .soldOutFilter {
