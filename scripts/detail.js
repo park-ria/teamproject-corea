@@ -4,7 +4,6 @@ fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
     const params = new URLSearchParams(window.location.search);
-    const title = params.get("title");
     const id = params.get("id");
 
     const product = joongoData.product.find((product) => product.id === id);
@@ -17,9 +16,7 @@ fetch(joonggoInfo)
 
       const checkId = JSON.parse(localStorage.getItem("idList"));
 
-      // console.log(checkId);
-
-      if (checkId.length > 0) {
+      if (checkId && checkId.length > 0) {
         heartBtns.forEach((heartBtn) => {
           heartBtn.querySelector("i").classList.remove("fa-regular");
           heartBtn.querySelector("i").classList.add("fa-solid");
@@ -473,21 +470,25 @@ fetch(joonggoInfo)
       }
 
       // data
-      joongoData.product.forEach((item, index) => {
-        if (item.detail.page_path[1] == product.detail.page_path[1]) {
-          addProduct(item, ".recommendedUl");
-        }
 
+      let itemNum = 0;
+
+      joongoData.product.forEach((item, index) => {
+        if (
+          item.detail.page_path[1] == product.detail.page_path[1] &&
+          itemNum < 9
+        ) {
+          addProduct(item, ".recommendedUl");
+          itemNum++;
+        }
       });
       // productSlide run
       productSlide("#recommended");
       productSlide("#recent");
-
     }
-
   });
 
-  // add product slide item
+// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 const productSlideLimit = 10;

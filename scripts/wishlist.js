@@ -386,6 +386,12 @@ const addItemsInTheFavoriteStores = (store) => {
             )
             .join("")}
         </ul>
+        <div class="img-prev btn">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="img-next btn">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
       </div>
     </li>
   `;
@@ -437,7 +443,7 @@ const favorStoreSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
@@ -451,6 +457,16 @@ const favorStoreSlide = (slideUl) => {
       }px)`;
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
@@ -547,6 +563,12 @@ const addItemsInTheFavoriteBrands = (brand) => {
               )
               .join("")}
             </ul>
+            <div class="img-prev btn">
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="img-next btn">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
           </div>
         </li>
       `;
@@ -598,7 +620,7 @@ const favorBrandSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
@@ -612,6 +634,16 @@ const favorBrandSlide = (slideUl) => {
       }px)`;
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
