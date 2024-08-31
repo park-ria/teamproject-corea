@@ -1010,12 +1010,23 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
+  }
+}
+
+// recent
+#recent {
+  padding: 150px 0;
+  .recent-content {
+    position: relative;
+    .recent-heading {
+      @include sectionHeading;
+    }
+    .recent-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
   }
 }
 
@@ -1160,67 +1171,9 @@ body {
   }
 
   // event
-  #event {
-    margin-bottom: 150px;
-    .event {
-      .event-slider {
-        width: 830px;
-        .slide-wrapper {
-          .slide {
-            width: 790px;
-            gap: 3%;
-
-            & div:last-child {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
 
   // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 150px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
 
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 450px) {
@@ -1409,90 +1362,8 @@ body {
     }
   }
 
-  // event
-  #event {
-    margin-bottom: 150px;
-    .event {
-      .event-slider {
-        .slide-wrapper {
-          .slide {
-            width: 415px;
-            display: block;
-            & div {
-              height: 100%;
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-              &:nth-child(2) {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+
 
   // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 100px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
 
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
-
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-    }
-  }
 }

@@ -107,11 +107,11 @@ searchInput[0].addEventListener("click", (e) => {
   searchWordList[0].classList.add("active");
 });
 
-// document.querySelector("#main").addEventListener("click", (e) => {
-//   if(e.currentTarget == document.querySelector("#main")) {
-//     searchWordList[0].classList.remove("active");
-//   }
-// })
+document.querySelector("#main").addEventListener("click", (e) => {
+  if(e.currentTarget == document.querySelector("main")) {
+    searchWordList[0].classList.remove("active");
+  }
+})
 
 
 // nowords display-none 이벤트

@@ -2440,6 +2440,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -2695,6 +2696,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -2859,6 +2861,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
   display: block;
@@ -3015,6 +3018,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -4041,6 +4045,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price {
   display: block;
@@ -4286,6 +4291,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+  white-space: nowrap;
 }
 #product-list .product li a .slide-desc .desc-price {
   display: block;
@@ -4411,6 +4417,7 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+    white-space: nowrap;
   }
   #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price {
     display: block;
