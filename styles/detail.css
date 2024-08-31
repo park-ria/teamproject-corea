@@ -1921,6 +1921,107 @@ body {
   background: url("../images/best-ranking01.png") center/cover no-repeat;
 }
 
+#recent {
+  padding: 150px 0;
+}
+#recent .recent-content {
+  position: relative;
+}
+#recent .recent-content .recent-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#recent .recent-content .recent-heading .section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  cursor: default;
+}
+#recent .recent-content .recent-heading .view-more a {
+  color: #6d6d6d;
+}
+#recent .recent-content .recent-slide {
+  position: relative;
+  height: 406px;
+  overflow: hidden;
+}
+#recent .recent-content .recent-slide .slideWrapper {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s;
+}
+#recent .recent-content .recent-slide .slideWrapper li {
+  position: relative;
+}
+#recent .recent-content .recent-slide .slideWrapper li a {
+  width: 240px;
+  height: 376px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  cursor: grab;
+}
+#recent .recent-content .recent-slide .slideWrapper li a:active {
+  cursor: grabbing;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-img {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc {
+  padding: 0 14px 14px;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-title {
+  font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+  width: 100%;
+  height: 45px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  white-space: nowrap;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-price {
+  display: block;
+  margin: 10px 0 15px;
+  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-price .current {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #0095ee;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-price .fixed {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+#recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-info {
+  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #6d6d6d;
+}
+#recent .recent-content .recent-slide .slide-img {
+  background: url("../images/best-ranking01.png") center/cover no-repeat;
+}
+
 @media screen and (max-width: 850px) {
   #header {
     display: none;
@@ -2007,44 +2108,6 @@ body {
   }
   #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 15px 12px;
-  }
-  #event {
-    margin-bottom: 150px;
-  }
-  #event .event .event-slider {
-    width: 830px;
-  }
-  #event .event .event-slider .slide-wrapper .slide {
-    width: 790px;
-    gap: 3%;
-  }
-  #event .event .event-slider .slide-wrapper .slide div:last-child {
-    display: none;
-  }
-  #recommendation .recommendation {
-    gap: 150px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper {
-    gap: 40px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img {
-    width: 250px;
-    height: 235px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img img {
-    width: 100%;
-    height: 100%;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper {
-    gap: 40px;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img {
-    width: 250px;
-    height: 235px;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img img {
-    width: 100%;
-    height: 100%;
   }
 }
 @media screen and (max-width: 450px) {
@@ -2171,61 +2234,5 @@ body {
   #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 10px;
     font-size: 1.2rem;
-  }
-  #event {
-    margin-bottom: 150px;
-  }
-  #event .event .event-slider .slide-wrapper .slide {
-    width: 415px;
-    display: block;
-  }
-  #event .event .event-slider .slide-wrapper .slide div {
-    height: 100%;
-  }
-  #event .event .event-slider .slide-wrapper .slide div img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  #event .event .event-slider .slide-wrapper .slide div:nth-child(2) {
-    display: none;
-  }
-  #recommendation .recommendation {
-    gap: 100px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper {
-    gap: 20px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img {
-    width: 130px;
-    height: 130px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-img img {
-    width: 130px;
-    height: 130px;
-  }
-  #recommendation .recommendation .related .related-slider .related-wrapper .item-slide .item-detail .item-name {
-    width: 130px;
-  }
-  #recommendation .recommendation .related .related-slider .btn {
-    display: none;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper {
-    gap: 20px;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img {
-    width: 130px;
-    height: 130px;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-img img {
-    width: 130px;
-    height: 130px;
-  }
-  #recommendation .recommendation .recent .recent-slider .recent-wrapper .item-slide .item-detail .item-name {
-    width: 130px;
-  }
-  #recommendation .recommendation .recent .recent-slider .btn {
-    display: none;
   }
 }

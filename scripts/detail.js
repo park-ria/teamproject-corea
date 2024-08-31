@@ -17,7 +17,7 @@ fetch(joonggoInfo)
 
       const checkId = JSON.parse(localStorage.getItem("idList"));
 
-      console.log(checkId);
+      // console.log(checkId);
 
       if (checkId.length > 0) {
         heartBtns.forEach((heartBtn) => {
@@ -397,19 +397,13 @@ fetch(joonggoInfo)
       const listScrollWidth =
         itemWidth * itemsCount + itemGap * (itemsCount - 1);
 
-      // 최초 터치 및 마우스 다운 지점
       let startX = 0;
 
-      // 현재 이동중인 지점
       let nowX = 0;
 
-      // 터치 종료 지점
       let endX = 0;
 
-      // 두번째 터치 지점
       let listX = 0;
-
-      // clientX : 사용자가 현재 보고있는 device 매체의 너비를 의미
 
       const getClientX = (e) => {
         return e.touches ? e.touches[0].clientX : e.clientX;
@@ -477,7 +471,20 @@ fetch(joonggoInfo)
           `;
         }
       }
+
+      // data
+      joongoData.product.forEach((item, index) => {
+        if (item.detail.page_path[1] == product.detail.page_path[1]) {
+          addProduct(item, ".recommendedUl");
+        }
+
+      });
+      // productSlide run
+      productSlide("#recommended");
+      productSlide("#recent");
+
     }
+
   });
 
   // add product slide item
@@ -654,57 +661,6 @@ const productSlide = (section) => {
     }
   });
 };
-
-
-  fetch(joonggoInfo)
-  .then((response) => response.json())
-  .then((joongoData) => {
-
-
-    // data
-    joongoData.product.forEach((product, index) => {
-      // productSlide add
-if (index < productSlideLimit ) {
-        addProduct(product, ".recommendedUl");
-      }
-
-      // tab-content
-      const tabContent = document.querySelectorAll(".tab-content");
-      tabContent.forEach((content) => {
-        if (
-          content.querySelectorAll("li").length < 6 &&
-          content.getAttribute("data-tab") === product.detail.page_path[1]
-        ) {
-          let li = `
-            <li>
-              <a href="/pages/detail.html?id=${product.id}">
-                <div class="tab-content-img" style="background:url('../${
-                  product.image_path
-                }') center/cover
-                no-repeat"></div>
-                <div class="tab-content-desc">
-                  <h4 class="desc-title">
-                    ${product.title}
-                  </h4>
-                  <strong class="desc-price">${product.price}</strong>
-                  <p class="desc-info">
-                    <span class="desc-time">${product.time}</span>
-                    <span class="desc-place">${
-                      product.point ? " | " + product.point : ""
-                    }</span>
-                  </p>
-                </div>
-              </a>
-            </li>
-          `;
-          content.insertAdjacentHTML("beforeend", li);
-        }
-      });
-    });
-
-    // productSlide run
-    productSlide("#recommended");
-  });
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
