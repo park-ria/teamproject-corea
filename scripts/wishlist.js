@@ -6,11 +6,9 @@ let favoriteBrandsArr;
 
 // checkEmptyData
 const checkEmptyData = (arr) => {
-  const emptyMsg = document.querySelector(
-    ".wishlistContent.active > .emptyMsg"
-  );
+  const emptyMsg = document.querySelector(".wishlistContent.active .emptyMsg");
   const siblings = document.querySelectorAll(
-    ".wishlistContent.active > .emptyMsg ~ div"
+    ".wishlistContent.active .emptyMsg ~ div"
   );
 
   if (arr.length === 0) {
@@ -236,15 +234,15 @@ const addItemsInTheWishItemList = (product, index) => {
                 </span>
               </a>
               <span class="wishItemButtons">
-                <button class="wishItemChatButton">채팅하기</button>
+                <a class="wishItemChatButton" href="#none">채팅하기</a>
                 ${
                   product.pay_flag > 0
-                    ? '<button class="wishItemPurchaseButton">구매하기</button>'
-                    : '<button class="wishItemProposalButton">가격제안</button>'
+                    ? `<a class="wishItemPurchaseButton" href="/pages/order.html?id=${product.id}">구매하기</a>`
+                    : '<a class="wishItemProposalButton">가격제안</a>'
                 }
-                <button class="wishItemXButton">
+                <a class="wishItemXButton" href="#none">
                   <i class="fa-solid fa-xmark"></i>
-                </button>
+                </a>
               </span>
             </div>
             <div class="wishItemLower">

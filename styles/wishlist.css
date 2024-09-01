@@ -1381,7 +1381,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   flex: 1;
   gap: 20px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a {
   display: inline-block;
   width: 50%;
   min-width: 110px;
@@ -1391,11 +1391,19 @@ footer .inner .footer-lower .footer-lower-logo i {
   color: #fff;
   font-size: 1.6rem;
   text-align: center;
+  transition: background 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemChatButton {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
+  background: #444;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
   background: #0dcc5a;
+  transition: background 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
+  background: #0ca64a;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
   width: 24px;
   min-width: 24px;
   height: 24px;
@@ -1404,12 +1412,12 @@ footer .inner .footer-lower .footer-lower-logo i {
   line-height: 24px;
   background: transparent;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton .fa-xmark {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton .fa-xmark {
   color: #dcdcdc;
   font-size: 1.8rem;
   transition: color 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton:hover .fa-xmark {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton:hover .fa-xmark {
   color: #3a3a3a;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower {
@@ -1437,7 +1445,7 @@ footer .inner .footer-lower .footer-lower-logo i {
 .wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo > .pay {
   background: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button:not(.wishItemXButton) {
+.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:not(.wishItemXButton) {
   background: #dcdcdc;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemLower {
@@ -1999,12 +2007,12 @@ footer .inner .footer-lower .footer-lower-logo i {
     align-self: center;
     gap: 10px;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a {
     width: 110px;
     padding: 10px 0;
     font-size: 1.4rem;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons button.wishItemXButton {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
     display: none;
   }
   /* favorite stores content */

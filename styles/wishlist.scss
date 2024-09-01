@@ -389,7 +389,7 @@
                 align-items: center;
                 flex: 1;
                 gap: 20px;
-                button {
+                a {
                   display: inline-block;
                   width: 50%;
                   min-width: 110px;
@@ -399,8 +399,16 @@
                   color: map-get($color, bg-light-color);
                   font-size: map-get($fontSize, font-medium);
                   text-align: center;
+                  transition: background 0.3s;
+                  &:hover {
+                    background: #444;
+                  }
                   &.wishItemChatButton {
                     background: map-get($color, bg-main-color);
+                    transition: background 0.3s;
+                    &:hover {
+                      background: #0ca64a;
+                    }
                   }
                   &.wishItemXButton {
                     width: 24px;
@@ -459,7 +467,7 @@
                   }
                 }
                 .wishItemButtons {
-                  button:not(.wishItemXButton) {
+                  a:not(.wishItemXButton) {
                     background: map-get($color, bg-light-gray);
                   }
                 }
@@ -885,7 +893,7 @@
                   justify-content: flex-start;
                   align-self: center;
                   gap: 10px;
-                  button {
+                  a {
                     width: 110px;
                     padding: 10px 0;
                     font-size: map-get($fontSize, font-small);
