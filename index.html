@@ -11,6 +11,7 @@
     ></script>
     <!-- custom css & js -->
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/common.css" />
     <script defer src="./scripts/common.js"></script>
     <script defer src="./scripts/script.js"></script>
   </head>
@@ -221,6 +222,7 @@
           </div>
         </div>
       </div>
+
       <main class="container">
         <section id="main-slide">
           <article>
@@ -303,7 +305,7 @@
               <div class="auction-heading">
                 <h3 class="section-title">인기 경매 상품을 만나보세요!</h3>
                 <span class="view-more"
-                  ><a href="#none"
+                  ><a href="/pages/auction.html" target="_blank"
                     >전체보기 <i class="fa-solid fa-angle-right"></i></a
                 ></span>
               </div>
@@ -317,12 +319,7 @@
                 <button class="slideNext" type="button">
                   <i class="fa-solid fa-angle-right"></i>
                 </button>
-                <div class="slidePager">
-                  <!-- <span class="active"></span>
-                  <span></span>
-                  <span></span>
-                  <span></span> -->
-                </div>
+                <div class="slidePager"></div>
               </div>
             </article>
           </div>
@@ -497,12 +494,24 @@
             <div class="footer-upper-info">
               <div class="footer-company-guide">
                 <ul>
-                  <li>이용약관</li>
-                  <li>개인정보처리방침</li>
-                  <li>분쟁처리절차</li>
-                  <li>청소년보호정책</li>
-                  <li>사업자정보확인</li>
-                  <li><a target="_blank" href="./pages/faq.html">FAQ</a></li>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
                 </ul>
               </div>
               <address class="footer-company-info">
@@ -518,7 +527,8 @@
             </div>
             <div class="footer-upper-ctg">
               <button>
-                카테고리 전체보기 <i class="fa-solid fa-angle-down"></i>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
               </button>
               <ul class="category-list"></ul>
             </div>
@@ -532,38 +542,32 @@
               책임도 부담하지 않습니다.
             </div>
             <div class="footer-lower-logo">
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-solid fa-mug-saucer"></i>
-              <i class="fa-brands fa-neos"></i>
-              <i class="fa-solid fa-blog"></i>
+              <a href="https://www.facebook.com/joonggonara.m/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCTUQdtrWF8BekcHX-X1SMPw"
+                target="_blank"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://cafe.naver.com/joonggonara" target="_blank">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a
+                href="https://m.blog.naver.com/jnofficial/223313152022"
+                target="_blank"
+              >
+                <i class="fa-brands fa-neos"></i>
+              </a>
+              <a href="https://joonggonara.co.kr/" target="_blank">
+                <i class="fa-solid fa-blog"></i>
+              </a>
             </div>
           </section>
         </div>
       </footer>
-      <div class="quickMenu">
-        <ul class="quickBtns">
-          <li class="trigger">
-            <button>
-              <i class="fa-solid fa-plus"></i>
-            </button>
-            <ul class="movePages">
-              <li>
-                <a href="#" class="mypage"> 마이페이지 </a>
-              </li>
-              <li>
-                <a href="#" class="cart"> 찜한상품 </a>
-              </li>
-              <li>
-                <a href="#" class="view"> 최근본상품 </a>
-              </li>
-              <li>
-                <a href="#main-slide" class="moveTop"></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+      <div class="quickMenu"></div>
     </div>
   </body>
 </html>

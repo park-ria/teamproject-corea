@@ -6,11 +6,9 @@ const mainSlideUl = document.querySelector(".mainSlideWrapper");
 // add main slide item
 const addMainSlide = (slide, index) => {
   const liItem = document.createElement("li");
-  //const aTag = document.createElement("a");
   const aTag = document.createElement("span");
   const slideDesc = document.createElement("div");
 
-  //aTag.setAttribute("href", "#none");
   aTag.style.background = `url(../images/${slide.img}) center/cover no-repeat`;
   slideDesc.className = "main-slide-desc";
 
@@ -24,7 +22,7 @@ const addMainSlide = (slide, index) => {
                 </p>
   `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.appendChild(slideDesc);
   liItem.appendChild(aTag);
   mainSlideUl.appendChild(liItem);
@@ -269,7 +267,7 @@ const addProduct = (product, ul) => {
               </p>
         `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.append(slideImg, slideDesc);
   liItem.appendChild(aTag);
   liItem.appendChild(badge);
@@ -349,12 +347,16 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
     }
+    console.log(num);
   };
 
   prevBtn.addEventListener("click", () => {
@@ -784,51 +786,104 @@ closeItems.forEach((item) => {
   });
 });
 
-// quickMenu
-const quickTrigger = document.querySelector(".quickMenu .trigger");
-quickTrigger.addEventListener("click", function () {
-  this.classList.toggle("active");
-});
+// // quickMenu
+// const quickMenu = document.querySelector(".quickMenu");
+// const addQuickMenu = () => {
+//   const quickBtns = document.createElement("ul");
+//   const liTrigger = document.createElement("li");
 
-// channelTalk
-(function () {
-  var w = window;
-  if (w.ChannelIO) {
-    return w.console.error("ChannelIO script included twice.");
-  }
-  var ch = function () {
-    ch.c(arguments);
-  };
-  ch.q = [];
-  ch.c = function (args) {
-    ch.q.push(args);
-  };
-  w.ChannelIO = ch;
-  function l() {
-    if (w.ChannelIOInitialized) {
-      return;
-    }
-    w.ChannelIOInitialized = true;
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-    var x = document.getElementsByTagName("script")[0];
-    if (x.parentNode) {
-      x.parentNode.insertBefore(s, x);
-    }
-  }
-  if (document.readyState === "complete") {
-    l();
-  } else {
-    w.addEventListener("DOMContentLoaded", l);
-    w.addEventListener("load", l);
-  }
-})();
+//   quickMenu.className = "quickMenu";
+//   quickBtns.className = "quickBtns";
+//   liTrigger.className = "trigger";
 
-ChannelIO("boot", {
-  pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
-});
+//   const openMenu = `
+//             <button>
+//               <i class="fa-solid fa-plus"></i>
+//             </button>
+//             <ul class="movePages">
+//               <li>
+//                 <a
+//                 href="/pages/login.html"
+//                 class="mypage"
+//                 target="_blank"
+//                 >
+//                 마이페이지
+//                 </a>
+//               </li>
+//               <li>
+//                 <a
+//                 href="/pages/wishlist.html"
+//                 class="cart"
+//                 target="_blank"
+//                 >
+//                 찜한상품
+//                 </a>
+//               </li>
+//               <li>
+//                 <a
+//                   href="/pages/auction.html"
+//                   class="auction"
+//                   target="_blank"
+//                 >
+//                 중고경매
+//                 </a>
+//               </li>
+//               <li>
+//                 <a href="#main-slide" class="moveTop"></a>
+//               </li>
+//             </ul>
+// `;
+
+//   liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+
+//   quickBtns.appendChild(liTrigger);
+//   quickMenu.appendChild(quickBtns);
+
+//   liTrigger.addEventListener("click", function () {
+//     this.classList.toggle("active");
+//   });
+// };
+// addQuickMenu();
+
+// // channelTalk
+// (function () {
+//   var w = window;
+//   if (w.ChannelIO) {
+//     return w.console.error("ChannelIO script included twice.");
+//   }
+//   var ch = function () {
+//     ch.c(arguments);
+//   };
+//   ch.q = [];
+//   ch.c = function (args) {
+//     ch.q.push(args);
+//   };
+//   w.ChannelIO = ch;
+//   function l() {
+//     if (w.ChannelIOInitialized) {
+//       return;
+//     }
+//     w.ChannelIOInitialized = true;
+//     var s = document.createElement("script");
+//     s.type = "text/javascript";
+//     s.async = true;
+//     s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+//     var x = document.getElementsByTagName("script")[0];
+//     if (x.parentNode) {
+//       x.parentNode.insertBefore(s, x);
+//     }
+//   }
+//   if (document.readyState === "complete") {
+//     l();
+//   } else {
+//     w.addEventListener("DOMContentLoaded", l);
+//     w.addEventListener("load", l);
+//   }
+// })();
+
+// ChannelIO("boot", {
+//   pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
+// });
 
 // const goTop = document.querySelector(".moveTop");
 // goTop.addEventListener("click", () => {

@@ -1,16 +1,18 @@
 // AppDowload 클릭시 이벤트
 const apppDownload = document.querySelector(".appDownload");
-apppDownload.addEventListener("click", function() {
+apppDownload.addEventListener("click", function () {
   this.querySelector(".download-box").classList.toggle("active");
-})
+});
 
 // scroll 이동시 banner event
 window.addEventListener("scroll", () => {
   let scrolling = window.scrollY;
   const banner = document.querySelector(".ban");
+  const header = document.querySelector("#header");
 
   if (scrolling > 33) {
     banner.classList.add("active");
+    header.style.boxShadow = "0 0 10px #ccc";
   } else {
     banner.classList.remove("active");
   }
@@ -53,7 +55,6 @@ const listArray2 = [
   `<i class="fa-solid fa-sort-down"></i></i>`,
   `<i class="fa-solid fa-caret-up"></i>`,
 ];
-
 
 // Current-time
 const todday = new Date();
@@ -112,7 +113,6 @@ searchInput[0].addEventListener("click", (e) => {
 //     searchWordList[0].classList.remove("active");
 //   }
 // })
-
 
 // nowords display-none 이벤트
 const noWords = (length) => {
@@ -1103,4 +1103,120 @@ mobileMainImgs.forEach((img) => {
     });
     img.nextElementSibling.classList.add("active");
   });
+});
+
+// Footer category-list
+const categoryUl = document.querySelector(".category-list");
+const categoryBtn = document.querySelector(".footer-upper-ctg button");
+
+categoryData.data.forEach((category) => {
+  const liItem = document.createElement("li");
+  const aTag = document.createElement("a");
+  aTag.innerText = category.main;
+  liItem.appendChild(aTag);
+  categoryUl.appendChild(liItem);
+});
+
+categoryBtn.addEventListener("click", function () {
+  this.classList.toggle("active");
+  categoryUl.classList.toggle("active");
+});
+
+// quickMenu
+const quickMenu = document.querySelector(".quickMenu");
+const addQuickMenu = () => {
+  const quickBtns = document.createElement("ul");
+  const liTrigger = document.createElement("li");
+
+  quickMenu.className = "quickMenu";
+  quickBtns.className = "quickBtns";
+  liTrigger.className = "trigger";
+
+  const openMenu = `
+            <button>
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <ul class="movePages">
+              <li>
+                <a 
+                href="/pages/login.html" 
+                class="mypage"
+                target="_blank"
+                >
+                마이페이지 
+                </a>
+              </li>
+              <li>
+                <a 
+                href="/pages/wishlist.html" 
+                class="cart"
+                target="_blank"
+                >
+                찜한상품
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/pages/auction.html"
+                  class="auction"
+                  target="_blank"
+                >
+                중고경매
+                </a>
+              </li>
+              <li>
+                <a href="#" class="moveTop"></a>
+              </li>
+            </ul>
+`;
+
+  liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+
+  quickBtns.appendChild(liTrigger);
+  quickMenu.appendChild(quickBtns);
+
+  liTrigger.addEventListener("click", function () {
+    this.classList.toggle("active");
+  });
+};
+addQuickMenu();
+
+// channelTalk
+(function () {
+  var w = window;
+  if (w.ChannelIO) {
+    return w.console.error("ChannelIO script included twice.");
+  }
+  var ch = function () {
+    ch.c(arguments);
+  };
+  ch.q = [];
+  ch.c = function (args) {
+    ch.q.push(args);
+  };
+  w.ChannelIO = ch;
+  function l() {
+    if (w.ChannelIOInitialized) {
+      return;
+    }
+    w.ChannelIOInitialized = true;
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+    var x = document.getElementsByTagName("script")[0];
+    if (x.parentNode) {
+      x.parentNode.insertBefore(s, x);
+    }
+  }
+  if (document.readyState === "complete") {
+    l();
+  } else {
+    w.addEventListener("DOMContentLoaded", l);
+    w.addEventListener("load", l);
+  }
+})();
+
+ChannelIO("boot", {
+  pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
 });

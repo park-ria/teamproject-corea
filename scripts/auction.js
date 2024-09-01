@@ -36,7 +36,6 @@ const createSpan = (content, className) => {
 
 const updateUnit = (parent, unit, itemValue) => {
   const unitElement = parent.querySelector(`.${unit}`);
-  console.log(unitElement);
 
   if (unitElement) {
     const currentValue = unitElement.querySelector(".old").innerText;
@@ -119,7 +118,7 @@ const addProduct = (product, ul) => {
     timeItems.className = "timeEvent";
     clock.className = "clock";
 
-    //const today = new Date();
+    const today = new Date();
 
     const time = Number(product.time.replace(/[^0-9]/g, ""));
     // console.log(time);
@@ -266,7 +265,10 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
     } else {
       prevBtn.classList.remove("disabled");
@@ -327,15 +329,48 @@ sortingBtns.forEach((btn) => {
     this.classList.add("active");
 
     if (this.id === "latestSorting") sortNew();
+    else if (this.id === "popularSorting") sortPopular();
+    else if (this.id === "lowPriceSorting") sortLowPrice();
+    else sorthighPrice();
   });
 });
 
-// latestSorting;
-
 const sortNew = () => {
-  // addProduct(product);
   const products = sortedLists.sort((a, b) => {
-    return new Date(b.real_time).getTime() - new Date(a.real_time).getTime();
+    return new Date(a.real_time).getTime() - new Date(b.real_time).getTime();
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sortPopular = () => {
+  const products = sortedLists.sort((a, b) => {
+    return b.detail.view - a.detail.view;
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sortLowPrice = () => {
+  const products = sortedLists.sort((a, b) => {
+    return a.price.replace(/[^0-9]/g, "") - b.price.replace(/[^0-9]/g, "");
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sorthighPrice = () => {
+  const products = sortedLists.sort((a, b) => {
+    return b.price.replace(/[^0-9]/g, "") - a.price.replace(/[^0-9]/g, "");
   });
 
   document.querySelector(".product").innerHTML = "";
@@ -350,7 +385,7 @@ fetch(joonggoInfo)
   .then((joongoData) => {
     joongoData.product.forEach((product, index) => {
       // addBestProduct
-      if (index < 7) {
+      if (index < productSlideLimit * 2 && product.time.includes("분")) {
         addProduct(product, ".bestAuction");
       }
       // addProductList
@@ -362,6 +397,4 @@ fetch(joonggoInfo)
 
     // productList run
     productSlide("#best-auction");
-
-    // console.log(joongoData.product);
   });

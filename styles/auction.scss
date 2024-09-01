@@ -28,8 +28,6 @@ body {
     position: relative;
     .best-auction-heading {
       @include sectionHeading;
-      justify-content: flex-start;
-      gap: 10px;
       .clock {
         position: relative;
         width: 40px;
@@ -101,21 +99,32 @@ body {
                   position: relative;
                   width: 30px;
                   height: 30px;
-                  margin-right: 8px;
                   background: url("../images/clock.svg") center/contain
                     no-repeat;
+                  margin-right: 5px;
                   animation: vibration 0.2s linear infinite;
                   &::before {
                     content: "";
                     position: absolute;
-                    top: 50%;
+                    top: 48%;
                     left: 50%;
-                    transform: translate(-50%, -70%);
-                    transform-origin: bottom center;
+                    transform: translate(-50%, -50%);
+                    transform-origin: center bottom;
                     width: 2px;
                     height: 7px;
                     background: map-get($color, bg-light-color);
                     animation: clock 3s linear infinite;
+                  }
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    top: 52%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 4px;
+                    height: 4px;
+                    background: map-get($color, bg-light-color);
+                    border-radius: 50%;
                   }
                 }
                 .timeItem {
@@ -187,7 +196,7 @@ body {
     .slide-btns {
       @include slideBtns;
       button {
-        top: 50%;
+        top: 44%;
         transform: translateY(-50%);
       }
       .slidePager {
@@ -221,7 +230,7 @@ body {
     gap: 20px;
     padding: 20px 0;
     position: sticky;
-    top: 185px;
+    top: 150px;
     border-top: 1px solid map-get($color, bg-light-gray);
     border-bottom: 1px solid map-get($color, bg-light-gray);
     background: map-get($color, bg-light-color);
@@ -293,6 +302,10 @@ body {
 
 @media screen and (max-width: 840px) {
   #product-list {
+    padding: 50px 0 100px;
+    .sorting-group {
+      top: 60px;
+    }
     .product {
       li {
         a {

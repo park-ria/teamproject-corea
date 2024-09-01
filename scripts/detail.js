@@ -19,7 +19,7 @@ fetch(joonggoInfo)
 
       console.log(checkId);
 
-      if (checkId.length > 0) {
+      /*  if (checkId.length > 0) {
         heartBtns.forEach((heartBtn) => {
           heartBtn.querySelector("i").classList.remove("fa-regular");
           heartBtn.querySelector("i").classList.add("fa-solid");
@@ -29,7 +29,7 @@ fetch(joonggoInfo)
           heartBtn.querySelector("i").classList.remove("fa-solid");
           heartBtn.querySelector("i").classList.add("fa-regular");
         });
-      }
+      }*/
 
       const saveId = () => {
         localStorage.setItem("idList", JSON.stringify(idList));
@@ -480,7 +480,7 @@ fetch(joonggoInfo)
     }
   });
 
-  // add product slide item
+// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 const productSlideLimit = 10;
@@ -655,16 +655,13 @@ const productSlide = (section) => {
   });
 };
 
-
-  fetch(joonggoInfo)
+fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
-
-
     // data
     joongoData.product.forEach((product, index) => {
       // productSlide add
-if (index < productSlideLimit ) {
+      if (index < productSlideLimit) {
         addProduct(product, ".recommendedUl");
       }
 

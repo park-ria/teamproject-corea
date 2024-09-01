@@ -173,21 +173,20 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 @mixin productDesc {
   .desc-title {
-    font: 400 1.6rem/1.4 "Noto Sans KR", sans-serif;
+    font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
     width: 100%;
-    height: 45px;
+    height: 47px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    white-space: nowrap;
   }
   .desc-price {
     display: block;
     margin: 10px 0 15px;
-    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+    font: 700 1.9rem/1 "Noto Sans KR", sans-serif;
     .current {
       font-size: 1.2rem;
       letter-spacing: 0;
@@ -210,7 +209,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 @mixin badgeText {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -301,21 +300,11 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-// body {
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-//   user-select: none;
-// }
-
 //common
+.container {
+  position: relative;
+}
+
 .slide-btns {
   @include slideBtns;
   .slidePager {
@@ -325,7 +314,6 @@ body {
 
 // main-slide
 #main-slide {
-  // display: none;
   scroll-margin: 500px;
   display: flex;
   justify-content: center;
@@ -489,7 +477,6 @@ body {
     width: 100%;
     height: 400px;
     background: linear-gradient(to bottom, #7bceff, #0095ee);
-    margin-bottom: 80px;
     overflow: hidden;
     .banner-content {
       width: 100%;
@@ -504,7 +491,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 10px;
+        gap: 20px;
         font-family: "SBAggroB";
         letter-spacing: 0;
         color: map-get($color, bg-light-color);
@@ -520,6 +507,10 @@ body {
         }
         .timeEvent {
           @include timeEvent;
+        }
+        strong {
+          font-size: 5rem;
+          color: #fce44a;
         }
         p {
           font-size: 2.4rem;
@@ -553,21 +544,18 @@ body {
   }
   .auction-content {
     position: relative;
+    padding-top: 80px;
     .auction-heading {
       @include sectionHeading;
     }
     .auction-slide {
       @include productSlide;
-      .slide-img {
-        background: url("../images/auction01.png") center/cover no-repeat;
+    }
+    .slide-btns {
+      button {
+        top: 44%;
       }
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
   }
 }
 
@@ -691,12 +679,6 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
   }
 }
 
@@ -765,7 +747,7 @@ body {
   border-radius: 50px 50px 0 0;
   overflow: hidden;
   opacity: 1;
-  z-index: 1;
+  z-index: 100000000;
   transition: all 0.5s;
   .modal-content {
     display: flex;
@@ -868,7 +850,7 @@ body {
 }
 .modal-back {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 0;
@@ -879,7 +861,8 @@ body {
   transition: all 0.5s;
   &.active {
     opacity: 1;
-    height: 100vh;
+    z-index: 1;
+    height: 100%;
   }
 }
 
@@ -888,7 +871,10 @@ body {
   position: fixed;
   right: 24px;
   bottom: 90px;
+  // transform: translateY(100%);
   z-index: 5;
+  // opacity: 0;
+  // transition: all 0.5s;
   .quickBtns {
     display: flex;
     flex-direction: column;
@@ -970,8 +956,8 @@ body {
             &.cart::before {
               content: "\f004";
             }
-            &.view::before {
-              content: "\f06e";
+            &.auction::before {
+              content: "\f2b5";
             }
             &.moveTop::before {
               content: "\f062";
@@ -1003,12 +989,15 @@ body {
       }
     }
   }
+  // &.active {
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
 }
 
 @media screen and (max-width: 1280px) {
   // common
   .slide-btns {
-    @include slideBtns;
     button {
       &.slidePrev {
         transform: translateX(0);
@@ -1056,18 +1045,13 @@ body {
         align-items: flex-end;
         .banner-desc {
           width: 45%;
+          margin-left: 0;
           span {
             font-size: 1.8rem;
           }
           h2 {
             font-size: 3.6rem;
           }
-          // .timeEvent {
-          //   span {
-          //     font-size: 4rem;
-          //     margin: 10px 0;
-          //   }
-          // }
           p {
             font-size: 2rem;
           }
@@ -1183,6 +1167,10 @@ body {
                 }
               }
             }
+            .badge {
+              width: 40px;
+              height: 20px;
+            }
           }
         }
       }
@@ -1196,12 +1184,13 @@ body {
       .banner-content {
         flex-direction: column;
         align-items: center;
-        padding-top: 7%;
+        padding-top: 9%;
         .banner-desc {
           width: 100%;
           align-items: center;
           text-align: center;
           margin-left: 0;
+          gap: 10px;
           span {
             font-size: 2.2rem;
           }
@@ -1213,6 +1202,7 @@ body {
             padding-left: 36px;
             .timeItem {
               width: 100px;
+              height: 50px;
             }
           }
           p {
@@ -1243,6 +1233,10 @@ body {
                 }
               }
             }
+            .badge {
+              width: 40px;
+              height: 20px;
+            }
           }
         }
       }
@@ -1255,8 +1249,6 @@ body {
       .weekly-item-tabmenu {
         .tab-menu {
           flex-wrap: wrap;
-          justify-content: center;
-          padding: 0 10%;
         }
         .tab-content {
           justify-content: center;
@@ -1311,6 +1303,10 @@ body {
                   height: 36px;
                 }
               }
+            }
+            .badge {
+              width: 40px;
+              height: 20px;
             }
           }
         }
@@ -1427,21 +1423,14 @@ body {
     }
   }
 
-  // best-ranking
-  #best-ranking {
-    .ranking-content {
-      .ranking-slide {
-        width: 240px;
-
-        overflow: visible;
-      }
-    }
-  }
-
   // weekly-item
   #weekly-item {
     .weekly-item-content {
       .weekly-item-tabmenu {
+        .tab-menu {
+          justify-content: center;
+          padding: 0 10%;
+        }
         .tab-content {
           flex-direction: column;
           justify-content: center;
@@ -1519,8 +1508,8 @@ body {
               &.cart::before {
                 content: "\f004";
               }
-              &.view::before {
-                content: "\f06e";
+              &.auction::before {
+                content: "\f2b5";
               }
               &.moveTop::before {
                 content: "\f062";
