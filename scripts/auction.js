@@ -62,6 +62,7 @@ const updateUnit = (parent, unit, itemValue) => {
   }
 };
 const today = new Date();
+
 // product
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
@@ -105,7 +106,7 @@ const addProduct = (product, ul) => {
               </p>
         `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.append(slideImg, slideDesc);
   liItem.append(aTag);
 
@@ -129,35 +130,13 @@ const addProduct = (product, ul) => {
 
     if (product.time.includes("일")) {
       eventDate += time;
-      // console.log(eventDate);
     } else if (product.time.includes("시간")) {
       eventHrs += time;
-      // console.log(eventHrs);
     } else if (product.time.includes("분")) {
       eventMin += time;
-      // console.log(eventMin);
     } else if (product.time.includes("초")) {
       eventSec += time;
-      // console.log(eventSec);
     }
-
-    // const eventDay = new Date(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   eventDate,
-    //   eventHrs,
-    //   eventMin,
-    //   eventSec
-    // );
-
-    // const eventDay = new Date(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   31,
-    //   23,
-    //   59,
-    //   59
-    // );
 
     const updateTime = () => {
       const today = new Date();
@@ -176,7 +155,6 @@ const addProduct = (product, ul) => {
       updateUnit(timeItems, "min", min);
       updateUnit(timeItems, "sec", sec);
     };
-    //updateTime();
     setInterval(updateTime, 1000);
 
     timeItems.prepend(clock);
@@ -265,11 +243,13 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
+      nextBtn.classList.remove("disabled");
     } else if (
       num === slideCount - slidesPerView ||
       num > slideCount - slidesPerView
     ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
@@ -289,7 +269,6 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
-    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 

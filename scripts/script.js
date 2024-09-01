@@ -29,7 +29,7 @@ const addMainSlide = (slide, index) => {
 };
 
 // mainSlide
-let mainSlide = () => {
+const mainSlide = () => {
   const pagers = document.querySelector(".mainSlidePager");
 
   const preBtns = document.querySelectorAll(".mainSlidePrev");
@@ -347,16 +347,17 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
+      nextBtn.classList.remove("disabled");
     } else if (
       num === slideCount - slidesPerView ||
       num > slideCount - slidesPerView
     ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
     }
-    console.log(num);
   };
 
   prevBtn.addEventListener("click", () => {
@@ -400,102 +401,6 @@ const productSlide = (section) => {
     }
   });
 };
-
-// const productSlide = (section) => {
-//   const slideSection = document.querySelector(section);
-//   const slideUl = slideSection.querySelector("ul");
-//   const slide = slideUl.querySelectorAll("li");
-//   const prevBtn = slideSection.querySelector(".slidePrev");
-//   const nextBtn = slideSection.querySelector(".slideNext");
-//   const pagers = slideSection.querySelectorAll(".slidePager span");
-
-//   const slideCount = slide.length;
-//   const slideWidth = 240;
-//   const slideMargin = 20;
-
-//   let currentIdx = 0;
-//   // move pager
-//   pagers[0].classList.add("active");
-//   const movePager = (index) => {
-//     for (let pager of pagers) {
-//       pager.classList.remove("active");
-//     }
-//     pagers[index].classList.add("active");
-//   };
-
-//   // click pager
-//   pagers.forEach((pager, index) => {
-//     pager.addEventListener("click", function () {
-//       pagers.forEach((sibling) => {
-//         if (sibling !== pager) sibling.classList.remove("active");
-//       });
-
-//       this.classList.add("active");
-//       currentIdx = index;
-//       moveSlide(index);
-//     });
-//   });
-
-//   const moveSlide = (num) => {
-//     currentIdx = num;
-//     const keyIndex = slideCount - slidesPerView + 1;
-//     const showIndex = (keyIndex + num) % keyIndex;
-//     movePager(showIndex);
-
-//     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
-
-//     if (currentIdx === keyIndex) {
-//       slideUl.style.left = 0;
-//       currentIdx = 0;
-//     }
-//     if (currentIdx === -1) {
-//       slideUl.style.left = `-${
-//         (slideWidth + slideMargin) * (slideCount - slidesPerView)
-//       }px`;
-//       currentIdx = slideCount - slidesPerView;
-//     }
-//   };
-
-//   prevBtn.addEventListener("click", () => {
-//     moveSlide(currentIdx - 1);
-//   });
-//   nextBtn.addEventListener("click", () => {
-//     moveSlide(currentIdx + 1);
-//   });
-
-//   // drag event
-//   let startPoint = 0;
-//   let endPoint = 0;
-
-//   slideUl.addEventListener("mousedown", (e) => {
-//     slideUl.style.cursor = "grabbing";
-//     startPoint = e.pageX;
-//   });
-
-//   slideUl.addEventListener("mouseup", (e) => {
-//     slideUl.style.cursor = "grab";
-//     endPoint = e.pageX;
-
-//     if (startPoint < endPoint) {
-//       moveSlide(currentIdx - 1);
-//     } else if (startPoint > endPoint) {
-//       moveSlide(currentIdx + 1);
-//     }
-//   });
-
-//   // touch event
-//   slideUl.addEventListener("touchstart", (e) => {
-//     startPoint = e.touches[0].pageX;
-//   });
-//   slideUl.addEventListener("touchend", (e) => {
-//     endPoint = e.changedTouches[0].pageX;
-//     if (startPoint < endPoint) {
-//       moveSlide(currentIdx - 1);
-//     } else if (startPoint > endPoint) {
-//       moveSlide(currentIdx + 1);
-//     }
-//   });
-// };
 
 fetch(joonggoInfo)
   .then((response) => response.json())
