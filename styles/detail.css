@@ -67,7 +67,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 17px);
+  width: 100%;
   background: #fff;
   z-index: 100;
 }
@@ -546,21 +546,6 @@ body {
   display: block;
 }
 
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: none;
-}
-#bottom-memu .bottom-mmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #mobile-menu {
   display: none;
   background: #fff;
@@ -568,7 +553,6 @@ body {
 #mobile-menu .mobile-menu {
   width: 100%;
   padding: 10px;
-  padding-right: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -654,6 +638,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -679,6 +664,7 @@ body {
   transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
   transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+  cursor: pointer;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
@@ -1139,9 +1125,18 @@ body {
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
+#bottom-memu {
+  display: none;
+}
+#bottom-memu .bottom-mmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #main {
   margin-top: 185px;
-  margin-bottom: 200px;
+  margin-bottom: 185px;
 }
 #main .inner .main {
   display: flex;
@@ -1221,6 +1216,20 @@ body {
   background: rgba(255, 255, 255, 0.7);
   color: #111;
 }
+#main .inner .main .main-img .img-slider .heart-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+}
+#main .inner .main .main-img .img-slider .heart-btn i {
+  font-size: 30px;
+}
+#main .inner .main .main-img .img-slider .heart-btn i.fa-solid {
+  color: crimson;
+}
 #main .inner .main .main-img .img-icons {
   display: flex;
   justify-content: flex-start;
@@ -1245,83 +1254,18 @@ body {
   gap: 10px;
 }
 #main .inner .main .main-img .img-icons .icon-box a i {
-  color: #6d6d6d;
-  font-size: 2rem;
-}
-#main .inner .main .main-img .img-icons .icon-box.share {
-  position: relative;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box {
-  position: absolute;
-  top: 55px;
-  left: -50%;
-  padding: 20px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid #dcdcdc;
-  border-radius: 10px;
-  transform: translateX(10%);
-  display: none;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: #0dcc5a;
-  border-top: 0;
-  margin-left: -10px;
-  margin-top: -10px;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box div {
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box div a {
-  width: 40px;
-  height: 40px;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box div a img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-#main .inner .main .main-img .img-icons .icon-box.share .share-box div span {
-  font-size: 13px;
   color: #dcdcdc;
-  transition: all 0.3s;
+  font-size: 2rem;
+  transition: color 0.3s;
 }
-#main .inner .main .main-img .img-icons .icon-box.share .share-box div:hover span {
-  text-decoration: underline;
-  color: #0dcc5a;
+#main .inner .main .main-img .img-icons .icon-box:hover a i {
+  color: #6d6d6d;
 }
-#main .inner .main .main-img .img-icons .icon-box.share .share-box.active {
-  display: flex;
+#main .inner .main .main-img .img-icons .icon-box:first-child:hover a i {
+  color: crimson;
 }
 #main .inner .main .main-img .img-icons .icon-box:last-child {
   border-right: none;
-}
-#main .inner .main .main-img .heart-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 35px;
-  height: 35px;
-  color: #fff;
-}
-#main .inner .main .main-img .heart-btn i {
-  font-size: 30px;
-}
-#main .inner .main .main-img .heart-btn i.fa-solid {
-  color: crimson;
 }
 #main .inner .main .main-desc .desc-heading {
   margin-bottom: 30px;
@@ -1512,6 +1456,19 @@ body {
   color: #fff;
   transition: all 0.3s;
   cursor: pointer;
+  position: relative;
+}
+#main .inner .main .main-desc .desc-btns a::before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #fff;
+  border-radius: 5px;
+  transition: width 0.3s;
 }
 #main .inner .main .main-desc .desc-btns a.chat {
   background: #0dcc5a;
@@ -1522,6 +1479,9 @@ body {
 #main .inner .main .main-desc .desc-btns a:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-weight: bold;
+}
+#main .inner .main .main-desc .desc-btns a:hover::before {
+  width: 22%;
 }
 #main .inner .main .main-desc .desc-itemInfo {
   margin-bottom: 85px;
@@ -1563,7 +1523,13 @@ body {
   font-size: 11px;
   font-weight: 500;
   border-radius: 5px;
+  transition: -webkit-text-decoration 0.2s;
+  transition: text-decoration 0.2s;
+  transition: text-decoration 0.2s, -webkit-text-decoration 0.2s;
   cursor: pointer;
+}
+#main .inner .main .main-desc .desc-itemInfo .itemIfo-detail .relatedWords span:hover {
+  text-decoration: underline;
 }
 #main .inner .main .main-desc .desc-store {
   margin-bottom: 20px;
@@ -1764,6 +1730,68 @@ body {
   font-size: 1.4rem;
 }
 
+.share-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfdfd;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  z-index: 5;
+  display: none;
+}
+.share-box div {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.share-box div a {
+  width: 40px;
+  height: 40px;
+}
+.share-box div a img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.share-box div span {
+  font-size: 13px;
+  color: #6d6d6d;
+  transition: all 0.3s;
+}
+.share-box div:hover span {
+  text-decoration: underline;
+  color: #0dcc5a;
+}
+.share-box.active {
+  display: flex;
+}
+
+.shaerbox-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  display: none;
+}
+.shaerbox-filter.active {
+  display: block;
+}
+
+#event {
+  margin-bottom: 185px;
+}
 #event .event-content .event-heading {
   display: flex;
   justify-content: space-between;
@@ -1821,7 +1849,7 @@ body {
 }
 
 #recommended {
-  padding: 150px 0;
+  margin-bottom: 185px;
 }
 #recommended .recommended-content {
   position: relative;
@@ -1922,7 +1950,7 @@ body {
 }
 
 #recent {
-  padding: 150px 0;
+  margin-bottom: 185px;
 }
 #recent .recent-content {
   position: relative;
@@ -2022,7 +2050,7 @@ body {
   background: url("../images/best-ranking01.png") center/cover no-repeat;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 840px) {
   #header {
     display: none;
   }
@@ -2048,12 +2076,21 @@ body {
     width: 800px;
     height: 800px;
   }
+  #main .inner .main .main-img .img-slider .heart-btn {
+    top: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+  }
+  #main .inner .main .main-img .img-slider .heart-btn i {
+    font-size: 45px;
+  }
   #main .inner .main .main-img .img-icons {
     padding: 17px 0;
   }
-  #main .inner .main .main-img .heart-btn {
-    top: 65px;
-    right: 30px;
+  #main .inner .main .main-desc {
+    width: 100%;
+    margin-bottom: 70px;
   }
   #main .inner .main .main-desc .desc-heading {
     margin-bottom: 40px;
@@ -2084,6 +2121,9 @@ body {
     width: 48%;
     height: 60px;
   }
+  #main .inner .main .main-desc .desc-store {
+    margin-bottom: 0;
+  }
   #main .inner .main .main-desc .desc-store .store-btns button {
     font-size: 1.6rem;
     padding: 17px;
@@ -2109,6 +2149,28 @@ body {
   #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 15px 12px;
   }
+  #event .event-content .event-slide ul a {
+    width: 310px;
+    height: 100px;
+  }
+  #recommended .recommended-content .recommended-slide {
+    height: 390px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
+  }
+  #recent .recent-content .recent-slide {
+    height: 390px;
+  }
+  #recent .recent-content .recent-slide .slideWrapper li a {
+    height: 366px;
+  }
+  #recent .recent-content .recent-slide .slideWrapper li a .slide-desc .desc-title {
+    height: 36px;
+  }
 }
 @media screen and (max-width: 450px) {
   :root {
@@ -2116,6 +2178,12 @@ body {
   }
   #bottom-memu {
     display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
   }
   #bottom-memu .bottom-mmenu {
     display: flex;
@@ -2127,7 +2195,12 @@ body {
     width: 10%;
     text-align: center;
     font-size: 26px;
+  }
+  #bottom-memu .bottom-mmenu .heart-btn i {
     color: #dcdcdc;
+  }
+  #bottom-memu .bottom-mmenu .heart-btn i.fa-solid {
+    color: crimson;
   }
   #bottom-memu .bottom-mmenu .btns {
     width: 90%;
@@ -2151,7 +2224,6 @@ body {
   }
   #main {
     margin-top: 45px;
-    margin-bottom: 150px;
   }
   #main .inner .main {
     justify-content: center;
@@ -2169,14 +2241,23 @@ body {
     width: 410px;
     height: 400px;
   }
+  #main .inner .main .main-img .img-slider .heart-btn {
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+  }
+  #main .inner .main .main-img .img-slider .heart-btn i {
+    font-size: 35px;
+  }
   #main .inner .main .main-img .img-icons a span {
     display: none;
   }
   #main .inner .main .main-img .img-icons a i {
     font-size: 2rem;
   }
-  #main .inner .main .main-img .heart-btn {
-    right: 20px;
+  #main .inner .main .main-desc {
+    margin-bottom: 0;
   }
   #main .inner .main .main-desc .desc-heading {
     margin-bottom: 60px;
@@ -2234,5 +2315,14 @@ body {
   #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
     padding: 10px;
     font-size: 1.2rem;
+  }
+  #event {
+    margin-bottom: 150px;
+  }
+  #recommended {
+    margin-bottom: 150px;
+  }
+  #recent {
+    margin-bottom: 150px;
   }
 }
