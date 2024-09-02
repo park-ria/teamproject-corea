@@ -1,4 +1,4 @@
-@import "../common.scss";
+@import "./common.scss";
 
 /* variable */
 @mixin checkbox-style {
@@ -85,6 +85,7 @@
       .delivery-left {
         width: 60%;
         padding-right: 20px;
+        border-right: 1px solid map-get($color, bg-light-gray);
       }
       .delivery-right {
         width: 40%;
