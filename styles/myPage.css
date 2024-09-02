@@ -46,6 +46,53 @@ button {
   font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: none;
+  padding-left: 10px;
+  transition: all 0.3s;
+}
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+input::placeholder {
+  opacity: 1;
+  transition: all 0.3s;
+}
+input:focus {
+  outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
+}
+input:focus::placeholder {
+  opacity: 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: 400 1.3rem/1 "Noto Sans KR", sans-serif;
+}
+
 html {
   font-size: 10px;
   @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
@@ -1700,47 +1747,111 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 }
 
 /* variable */
-/* wishlist */
-.wishlist {
+.inner .container {
+  width: 100%;
+}
+.inner .container .mypage {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  padding: 50px;
+  /* mypage */
+  /* mypage tabs*/
+  /* mypageContent */
+}
+.inner .container .mypage .mypage-info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.inner .container .mypage .mypage-info .fa-face-grin {
+  font-size: 70px;
+}
+.inner .container .mypage .mypage-info .mypage-info-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inner .container .mypage .mypage-info .mypage-info-desc .mypage-info-desc-fllw {
+  color: darkgray;
+}
+.inner .container .mypage .mypage-desc {
+  width: 100%;
+  height: 100%;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-stck {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-stck .stck-100 {
+  width: 500px;
+  height: 15px;
+  background: #f1f4f6;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-stck .stck-100 .stck-user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, #0dcb5b, #08b980, #02a1af);
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-stck .stck-100 .stck-user.active {
+  width: 27%;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub {
+  display: flex;
+  justify-content: space-around;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-hp {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-hp .mypage-desc-sub-hp-ttl {
+  display: flex;
+  gap: 10px;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-hp .mypage-desc-sub-hp-desc {
+  padding-left: 25px;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-rp {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-rp .mypage-desc-sub-rp-ttl {
+  display: flex;
+  gap: 10px;
+}
+.inner .container .mypage .mypage-desc .mypage-desc-sub .mypage-desc-sub-rp .mypage-desc-sub-rp-desc {
+  padding-left: 25px;
+}
+.inner .container .mypage .mypage {
   width: 100%;
   margin-top: 250px;
   overflow: hidden;
 }
-.wishlist input[type=checkbox] {
-  display: none;
-}
-.wishlist label {
-  display: block;
-  width: 22px;
-  height: 22px;
-  position: relative;
-  border: 1px solid #3a3a3a;
-  border-radius: 50%;
-}
-.wishlist label::before {
-  content: "\f00c";
-  font-family: "fontawesome";
-  font-size: 12px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-55%, -45%);
-}
-.wishlist input[type=checkbox]:checked + label {
-  border: 1px solid transparent;
-  background: #0dcc5a;
-  color: #fff;
-}
-
-/* wishlist tabs*/
-.wishlist-tabs {
+.inner .container .mypage .mypage-tabs {
   width: 100%;
 }
-.wishlist-tabs .wishlist-tab {
+.inner .container .mypage .mypage-tabs .mypage-tab {
   display: flex;
   align-items: center;
 }
-.wishlist-tabs .wishlist-tab .wishlistTabButton {
+.inner .container .mypage .mypage-tabs .mypage-tab .mypageTabButton {
   background: #fafafa;
   width: 200px;
   height: 50px;
@@ -1752,32 +1863,30 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #6d6d6d;
   text-align: center;
 }
-.wishlist-tabs .wishlist-tab .wishlistTabButton:first-child {
+.inner .container .mypage .mypage-tabs .mypage-tab .mypageTabButton:first-child {
   border-radius: 8px 0 0 0;
 }
-.wishlist-tabs .wishlist-tab .wishlistTabButton:nth-child(3) {
+.inner .container .mypage .mypage-tabs .mypage-tab .mypageTabButton:nth-child(3) {
   border-radius: 0 8px 0 0;
   border-right: 1px solid #dcdcdc;
 }
-.wishlist-tabs .wishlist-tab .wishlistTabButton.active {
+.inner .container .mypage .mypage-tabs .mypage-tab .mypageTabButton.active {
   background: #fff;
   border: 1px solid #111;
   border-bottom: 1px solid #fff;
   font-weight: 600;
   color: #111;
 }
-.wishlist-tabs .wishlist-tab .wishlistTabButton.active .wishlistTabCount {
+.inner .container .mypage .mypage-tabs .mypage-tab .mypageTabButton.active .mypageTabCount {
   color: #0dcc5a;
 }
-.wishlist-tabs .wishlist-tab > span {
+.inner .container .mypage .mypage-tabs .mypage-tab > span {
   flex: 1;
   width: 200px;
   height: 50px;
   border-bottom: 1px solid #111;
 }
-
-/* wishlistContent */
-.wishlistContent {
+.inner .container .mypage .mypageContent {
   width: 100%;
   height: 0;
   margin-top: 0;
@@ -1785,83 +1894,78 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   overflow: hidden;
   transition: all 0.5s;
 }
-.wishlistContent.active {
+.inner .container .mypage .mypageContent.active {
   height: auto;
+  min-height: 340px;
   margin-top: 30px;
   opacity: 1;
 }
-.wishlistContent .emptyMsg {
-  width: 100%;
-  height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.wishlistContent .emptyMsg.empty {
-  display: flex;
-}
-.wishlistContent .emptyMsg img {
-  width: 150px;
-  height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.wishlistContent .emptyMsg p {
-  font-size: 1.8rem;
-}
 
-/* wish-items-content */
-.wish-items-content .wish-items-content-upper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #dcdcdc;
-  opacity: 0;
-  transition: opacity 0.3s;
+/* mypage tabs*/
+.mypage-tabs {
+  width: 100%;
 }
-.wish-items-content .wish-items-content-upper .wish-items-delete-selection {
+.mypage-tabs .mypage-tab {
   display: flex;
   align-items: center;
-  gap: 20px;
 }
-.wish-items-content .wish-items-content-upper .wish-items-delete-selection #deleteSeletionButton {
-  border: 1px solid #111;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.wish-items-content .wish-items-content-upper .wish-items-delete-selection #deleteSeletionButton:hover {
-  background: #3a3a3a;
-  color: #fff;
-  border: 1px solid transparent;
-}
-.wish-items-content .wish-items-content-upper .wish-items-sorting-wrapper .sorting-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.wish-items-content .wish-items-content-upper .wish-items-sorting-wrapper .sorting-group li {
-  font-size: 1.2rem;
-}
-.wish-items-content .wish-items-content-upper .wish-items-sorting-wrapper .sorting-group li a {
-  font-size: 1.4rem;
+.mypage-tabs .mypage-tab .mypageTabButton {
+  background: #fafafa;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #dcdcdc;
+  border-right: none;
+  border-bottom: 1px solid #111;
+  font-size: 1.6rem;
+  line-height: 50px;
   color: #6d6d6d;
+  text-align: center;
 }
-.wish-items-content .wish-items-content-upper .wish-items-sorting-wrapper .sorting-group li a.active {
+.mypage-tabs .mypage-tab .mypageTabButton:first-child {
+  border-radius: 8px 0 0 0;
+}
+.mypage-tabs .mypage-tab .mypageTabButton:nth-child(3) {
+  border-radius: 0 8px 0 0;
+  border-right: 1px solid #dcdcdc;
+}
+.mypage-tabs .mypage-tab .mypageTabButton.active {
+  background: #fff;
+  border: 1px solid #111;
+  border-bottom: 1px solid #fff;
   font-weight: 600;
   color: #111;
 }
-.wish-items-content .wish-items-content-detail {
+.mypage-tabs .mypage-tab .mypageTabButton.active .mypageTabCount {
+  color: #0dcc5a;
+}
+.mypage-tabs .mypage-tab > span {
+  flex: 1;
+  width: 200px;
+  height: 50px;
+  border-bottom: 1px solid #111;
+}
+
+/* mypageContent */
+.mypageContent {
+  width: 100%;
+  height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.mypageContent.active {
+  height: auto;
+  min-height: 340px;
+  margin-top: 30px;
+  opacity: 1;
+}
+
+/* mypage-purchase-content */
+.mypage-purchases-content .mypage-purchases-content-detail {
   width: 100%;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li {
   width: 100%;
   padding: 50px 0;
   display: flex;
@@ -1869,7 +1973,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   gap: 20px;
   border-bottom: 1px solid #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase {
   width: 100%;
   height: 150px;
   display: flex;
@@ -1877,28 +1981,22 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   align-items: center;
   gap: 20px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper {
   width: 150px;
   height: 150px;
   position: relative;
-  overflow: hidden;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore {
-  display: inline-block;
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .mypagePurchaseViewMore {
   width: inherit;
   height: inherit;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .mypagePurchaseViewMore img {
   width: inherit;
   height: inherit;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: transform 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img.hover {
-  transform: scale(1.1);
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .soldOutFilter {
   position: absolute;
   top: 0;
   left: 0;
@@ -1910,7 +2008,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   background: rgba(0, 0, 0, 0.7);
   opacity: 0;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter .soldOutFilterTxt {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .soldOutFilter .soldOutFilterTxt {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1921,20 +2019,16 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   font-size: 2.5rem;
   line-height: 30px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .mypageHeart {
   position: absolute;
   top: 8px;
   right: 8px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseImgWrapper .mypageHeart .fa-solid {
   color: crimson;
   font-size: 20px;
-  transition: transform 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart:hover {
-  transform: scale(1.2);
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup {
   flex: 1;
   height: auto;
   display: flex;
@@ -1942,28 +2036,28 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   justify-content: space-between;
   gap: 20px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore {
   flex: 3;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo {
   height: 100%;
   display: flex;
   justify-content: space-between;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchaseTitleBox {
   flex: 1;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchaseTitleBox .mypagePurchaseSellerName {
   font-size: 1.4rem;
   color: #6d6d6d;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchaseTitleBox .mypagePurchaseName {
   width: 100%;
   margin-top: 10px;
   line-height: 25px;
@@ -1975,25 +2069,25 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   -webkit-line-clamp: 2; /* 2줄 넘어가면 말줄임 */
   -webkit-box-orient: vertical;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
-  flex: 2;
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox {
+  flex: 1.5;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchasePriceInfo {
   width: 135px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchasePriceInfo .mypagePurchasePrice {
   font-size: 1.2rem;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchasePriceInfo .mypagePurchasePrice b {
   font-size: 1.8rem;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchasePriceInfo .pay {
   width: 35px;
   height: 20px;
   background: #0dcc5a;
@@ -2003,7 +2097,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   letter-spacing: normal;
   text-align: center;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchaseShippingInfo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2011,36 +2105,28 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   gap: 20px;
   font-size: 1.4rem;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex: 1;
   gap: 20px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons button {
   display: inline-block;
   width: 50%;
-  min-width: 110px;
+  min-width: 75px;
   padding: 15px 0;
   background: #111;
   border-radius: 5px;
   color: #fff;
   font-size: 1.6rem;
   text-align: center;
-  transition: background 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
-  background: #444;
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons button.mypageItemChatButton {
   background: #0dcc5a;
-  transition: background 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
-  background: #0ca64a;
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons button.mypagePurchaseXButton {
   width: 24px;
   min-width: 24px;
   height: 24px;
@@ -2049,102 +2135,55 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   line-height: 24px;
   background: transparent;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton .fa-xmark {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons button.mypagePurchaseXButton .fa-xmark {
   color: #dcdcdc;
   font-size: 1.8rem;
-  transition: color 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton:hover .fa-xmark {
-  color: #3a3a3a;
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseLower {
   display: flex;
   gap: 10px;
   font-size: 1.2rem;
   color: #6d6d6d;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower > p {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseLower > p {
   width: 50px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower .wishItemCount {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseLower .mypagePurchaseCount {
   display: flex;
   gap: 10px;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut {
   color: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemImgWrapper .soldOutFilter {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut .mypagePurchase .mypagePurchaseImgWrapper .soldOutFilter {
   opacity: 1;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox p {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchaseTitleBox p {
   color: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo > .pay {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseViewMore .mypagePurchaseInfo .mypagePurchasePriceBox .mypagePurchasePriceInfo > .pay {
   background: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:not(.wishItemXButton) {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseDesc .mypagePurchaseButtons button:not(.mypagePurchaseXButton) {
   background: #dcdcdc;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li.soldOut .wishItem .wishItemDescGroup .wishItemLower {
+.mypage-purchases-content .mypage-purchases-content-detail .mypagePurchaseList li.soldOut .mypagePurchase .mypagePurchaseDescGroup .mypagePurchaseLower {
   color: #dcdcdc;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #aaa;
-  margin: 30px 0 100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pagerButtons {
-  width: 30px;
-  height: 30px;
-  font-size: 25px;
-  text-align: center;
-  line-height: 27px;
-  transition: all 0.3s;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pagerButtons:hover {
-  color: #3a3a3a;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pager {
-  margin: 20px;
-  display: flex;
-  gap: 20px;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pager li a {
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  transition: all 0.3s;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pager li a:hover {
-  color: #3a3a3a;
-  font-weight: 700;
-}
-.wish-items-content .wish-items-content-detail .wishItemPagination .pager li a.active {
-  display: inline-block;
-  font-weight: 500;
-  color: #fff;
-  background: #0dcc5a;
-  border-radius: 50%;
 }
 
 /* favorite stores content */
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li {
   width: 100%;
-  padding: 50px 0;
+  padding: 30px 0;
   border-bottom: 1px solid #dcdcdc;
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li:first-child {
-  padding-top: 20px;
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li:first-child {
+  padding-top: 0;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info {
   width: 240px;
   height: 240px;
   padding: 15px;
@@ -2154,20 +2193,20 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-shopkeeper {
   width: 100%;
   text-align: center;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle img {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-shopkeeper .mypageSellTitle img {
   width: 100px;
   height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-shopkeeper .mypageSellTitle > p {
   width: 100%;
   margin-top: 10px;
   font-size: 1.6rem;
@@ -2176,36 +2215,36 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score {
   width: 100%;
   color: #fff;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .sell-score-desc {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc .store-score-title {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .sell-score-desc .sell-score-title {
   font-size: 1rem;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc .store-score-value {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .sell-score-desc .sell-score-value {
   display: flex;
   align-items: flex-end;
   font-size: 0.8rem;
   letter-spacing: normal;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc .store-score-value b {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .sell-score-desc .sell-score-value b {
   font-size: 1.2rem;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc .store-score-value img {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .sell-score-desc .sell-score-value img {
   width: 13px;
   height: 13px;
   margin-left: 5px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .detail-bar {
   width: 100%;
   height: 8px;
   margin-top: 5px;
@@ -2214,7 +2253,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   position: relative;
   overflow: hidden;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar .filling-bar {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-score .detail-bar .filling-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -2225,709 +2264,82 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   transition: all 0.5s;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-follower {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-follower .mypage-sell-follower-box {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-follower .mypage-sell-follower-box li {
   color: #fff;
   font-size: 1rem;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li span:not(.follower-box-title) {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-follower .mypage-sell-follower-box li span:not(.follower-box-title) {
   letter-spacing: normal;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-info .mypage-sell-follower .followButton .fa-solid {
   font-size: 1.6rem;
-  color: #06b38b;
-  transition: transform 0.3s, color 0.3s;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid:hover {
   color: #fff;
-  transform: scale(1.2);
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-products-box {
   flex: 1;
   height: 240px;
   overflow: hidden;
-  position: relative;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
-  width: -moz-fit-content;
-  width: fit-content;
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-products-box .mypage-sell-products {
   display: flex;
   align-items: center;
   gap: 20px;
-  cursor: grab;
-  transition: transform ease-out 0.5s;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-products-box .mypage-sell-products > li > a {
   display: inline-block;
   width: 240px;
   height: 240px;
-  border-radius: 8px;
-  overflow: hidden;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-  cursor: grab;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a:active {
-  cursor: grabbing;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg {
+.mypage-sell-content .mypageSellGroup .mypageSellWrap > li .mypage-sell-products-box .mypage-sell-products > li > a .mypageSellProductImg {
   display: inline-block;
   width: inherit;
   height: inherit;
-  transition: transform 0.3s;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg:hover {
-  transform: scale(1.1);
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn.img-prev {
-  left: 1%;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn.img-next {
-  right: 1%;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn:hover {
-  background: rgba(255, 255, 255, 0.7);
-  color: #111;
-}
-.favorite-stores-content .favoriteStoresPagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #aaa;
-  margin: 30px 0 100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.favorite-stores-content .favoriteStoresPagination .pagerButtons {
-  width: 30px;
-  height: 30px;
-  font-size: 25px;
-  text-align: center;
-  line-height: 27px;
-  transition: all 0.3s;
-}
-.favorite-stores-content .favoriteStoresPagination .pagerButtons:hover {
-  color: #3a3a3a;
-}
-.favorite-stores-content .favoriteStoresPagination .pager {
-  margin: 20px;
-  display: flex;
-  gap: 20px;
-}
-.favorite-stores-content .favoriteStoresPagination .pager li a {
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  transition: all 0.3s;
-}
-.favorite-stores-content .favoriteStoresPagination .pager li a:hover {
-  color: #3a3a3a;
-  font-weight: 700;
-}
-.favorite-stores-content .favoriteStoresPagination .pager li a.active {
-  display: inline-block;
-  font-weight: 500;
-  color: #fff;
-  background: #0dcc5a;
-  border-radius: 50%;
+  border-radius: 10px;
 }
 
-/* favorite brands content */
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li {
-  width: 100%;
-  padding: 50px 0;
-  border-bottom: 1px solid #dcdcdc;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li:first-child {
-  padding-top: 20px;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info {
-  width: 240px;
-  height: 240px;
-  padding: 15px;
-  background: #111;
-  border-radius: 8px;
+/* mypage reviews content */
+.review-content .mypageReview #result .mypageReview {
+  width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper {
+.review-content .mypageReview #result .mypageReview .mypageReviewCon {
   width: 100%;
-  text-align: center;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle {
-  display: inline-block;
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle img {
-  width: 100px;
-  height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
-  width: 100%;
-  margin-top: 10px;
-  font-size: 1.6rem;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box {
-  margin-top: 5px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+.review-content .mypageReview #result .mypageReview .mypageReviewCon #mypageReviewResult ul {
+  display: flex;
+  flex-direction: column;
+}
+.review-content .mypageReview #result .mypageReview .mypageReviewCon #mypageReviewResult ul li {
+  width: 100%;
+  height: 70%;
+  display: flex;
   align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.review-content .mypageReview #result .mypageReview .mypageReviewCon #mypageReviewResult ul li img {
+  width: 50px;
+  height: 50px;
+  border: 50%;
+}
+.review-content .mypageReview #result .mypageReview .mypageReviewCon #mypageReviewResult ul li .mypageReviewdesc {
+  display: flex;
+  flex-direction: column;
   gap: 5px;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li {
-  color: #fff;
-  font-size: 1.2rem;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li span:not(.follower-box-title) {
-  letter-spacing: normal;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button {
-  align-self: flex-end;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid {
-  font-size: 1.6rem;
-  color: #06b38b;
-  transition: transform 0.3s, color 0.3s;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid:hover {
-  color: #fff;
-  transform: scale(1.2);
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
-  flex: 1;
-  height: 240px;
-  overflow: hidden;
-  position: relative;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  cursor: grab;
-  transition: transform ease-out 0.5s;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
-  display: inline-block;
-  width: 240px;
-  height: 240px;
-  border-radius: 8px;
-  overflow: hidden;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-  cursor: grab;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a:active {
-  cursor: grabbing;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg {
-  display: inline-block;
-  width: inherit;
-  height: inherit;
-  transition: transform 0.3s;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg:hover {
-  transform: scale(1.1);
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn.img-prev {
-  left: 1%;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn.img-next {
-  right: 1%;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn:hover {
-  background: rgba(255, 255, 255, 0.7);
-  color: #111;
-}
-.favorite-brands-content .favoriteBrandsPagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #aaa;
-  margin: 30px 0 100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.favorite-brands-content .favoriteBrandsPagination .pagerButtons {
-  width: 30px;
-  height: 30px;
-  font-size: 25px;
-  text-align: center;
-  line-height: 27px;
-  transition: all 0.3s;
-}
-.favorite-brands-content .favoriteBrandsPagination .pagerButtons:hover {
-  color: #3a3a3a;
-}
-.favorite-brands-content .favoriteBrandsPagination .pager {
-  margin: 20px;
-  display: flex;
-  gap: 20px;
-}
-.favorite-brands-content .favoriteBrandsPagination .pager li a {
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  transition: all 0.3s;
-}
-.favorite-brands-content .favoriteBrandsPagination .pager li a:hover {
-  color: #3a3a3a;
-  font-weight: 700;
-}
-.favorite-brands-content .favoriteBrandsPagination .pager li a.active {
-  display: inline-block;
-  font-weight: 500;
-  color: #fff;
-  background: #0dcc5a;
-  border-radius: 50%;
-}
-
-@media screen and (max-width: 840px) {
-  /* common */
-  html {
-    font-size: 10px;
-  }
-  /* wishlist */
-  .wishlist {
-    width: 100%;
-  }
-  /* wishlist tabs*/
-  .wishlist-tabs {
-    width: 100%;
-  }
-  .wishlist-tabs .wishlist-tab {
-    width: 100%;
-  }
-  .wishlist-tabs .wishlist-tab .wishlistTabButton {
-    flex: 1;
-  }
-  /* wishlistContent */
-  .wishlistContent {
-    width: 100%;
-  }
-  /* wish-items-content */
-  .wish-items-content .wish-items-content-detail {
-    width: 100%;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList {
-    width: 100%;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li {
-    width: 100%;
-    gap: 10px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
-    width: 100%;
-    height: 150px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
-    flex: 1;
-    gap: 5px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc {
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore {
-    width: 100%;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
-    width: 100%;
-    height: auto;
-    min-height: 100px;
-    flex-direction: column;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
-    flex: 0;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
-    font-size: 1.2rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
-    width: 90%;
-    margin-top: 5px;
-    font-size: 1.4rem;
-    line-height: 18px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
-    flex: 1;
-    min-width: 200px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
-    width: auto;
-    justify-content: flex-start;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
-    font-size: 1.6rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
-    height: 16px;
-    font-size: 1.2rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.4rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons {
-    width: 100%;
-    justify-content: flex-start;
-    align-self: center;
-    gap: 10px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a {
-    width: 110px;
-    padding: 10px 0;
-    font-size: 1.4rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
-    display: none;
-  }
-  /* favorite stores content */
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li {
-    padding: 30px 0;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    border-radius: 0;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper {
-    width: auto;
-    max-width: 130px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle img {
-    width: 35px;
-    height: 35px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
-    margin-top: 0;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
-    width: 30%;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
-    width: auto;
-    gap: 10px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
-    width: 100%;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
-    gap: 10px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
-    border-radius: 0;
-  }
-  /* favorite brands content */
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li {
-    padding: 30px 0;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    border-radius: 0;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper {
-    width: 90%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle {
-    width: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle img {
-    width: 35px;
-    height: 35px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
-    margin-top: 0;
-    width: -moz-fit-content;
-    width: fit-content;
-    max-width: 180px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box {
-    margin-top: 0;
-    width: auto;
-    min-width: 53px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button {
-    align-self: center;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
-    width: 100%;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products {
-    gap: 10px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
-    border-radius: 0;
-  }
-}
-@media screen and (max-width: 450px) {
-  /* wishlist */
-  .wishlist {
-    width: 100%;
-  }
-  .wishlist label {
-    display: none;
-  }
-  /* wishlist tabs*/
-  .wishlist-tabs {
-    width: 100%;
-  }
-  .wishlist-tabs .wishlist-tab {
-    width: 100%;
-  }
-  .wishlist-tabs .wishlist-tab .wishlistTabButton {
-    flex: 1;
-  }
-  .wishlist-tabs .wishlist-tab > span {
-    flex: 0;
-  }
-  /* wishlistContent */
-  .wishlistContent {
-    width: 100%;
-  }
-  /* wish-items-content */
-  .wish-items-content.active {
-    margin-top: 0;
-  }
-  .wish-items-content .wish-items-content-upper {
-    margin-bottom: 50px;
-  }
-  .wish-items-content .wish-items-content-upper .wish-items-delete-selection {
-    opacity: 0;
-  }
-  .wish-items-content .wish-items-content-detail {
-    width: 100%;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li {
-    width: 175px;
-    padding: 0 0 50px;
-    border-bottom: none;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li input[type=checkbox] {
-    display: none;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
-    width: 100%;
-    height: 280px;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
-    width: 175px;
-    height: 175px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart {
-    top: 10px;
-    right: 13px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart {
-    font-size: 22px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter .soldOutFilterTxt {
-    width: 120px;
-    height: 120px;
-    font-size: 3rem;
-    line-height: 30px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
-    width: 100%;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo {
-    min-height: 0;
-    gap: 10px;
-    align-items: center;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
-    width: -moz-fit-content;
-    width: fit-content;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
-    width: -moz-fit-content;
-    width: fit-content;
-    font-size: 1.4rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
-    width: -moz-fit-content;
-    width: fit-content;
-    font-size: 1.6rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
-    width: 100%;
-    min-width: 0;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
-    font-size: 1.8rem;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .pay {
-    height: 20px;
-    font-size: 1.4rem;
-    line-height: 15px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
-    display: none;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons {
-    display: none;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower {
-    display: none;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemLower .page {
-    margin: 0 20px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemPagination {
-    margin: 0 0 100px;
-  }
-  /* favorite stores content */
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info {
-    width: 100%;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper {
-    width: auto;
-    max-width: 130px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
-    font-size: 1.4rem;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
-    display: none;
-    width: auto;
-    min-width: 100px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
-    width: auto;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
-    width: 100%;
-    height: 180px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
-    gap: 10px;
-  }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
-    width: 180px;
-    height: 180px;
-  }
-  /* favorite brands content */
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follower {
-    width: 90px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
-    width: 100%;
-    height: 180px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products {
-    gap: 10px;
-  }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
-    width: 180px;
-    height: 180px;
-  }
 }
