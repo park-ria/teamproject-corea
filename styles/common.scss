@@ -56,6 +56,22 @@
   }
 }
 
+@mixin greenBtn {
+  background: map-get($map: $color, $key: bg-main-color);
+  &:hover {
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+    font-weight: bold;
+    opacity: 0.8;
+  }
+}
+@mixin blackBtn {
+  background: map-get($map: $color, $key: bg-dark-color);
+  &:hover {
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+    font-weight: bold;
+    opacity: 0.8;
+  }
+}
 // variables
 html {
   font-size: 10px;

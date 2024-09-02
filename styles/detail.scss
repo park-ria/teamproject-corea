@@ -97,6 +97,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
   }
 }
+
 // home
 @mixin sectionHeading {
   display: flex;
@@ -112,28 +113,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   .view-more {
     a {
       color: map-get($color, bg-dark-gray);
-    }
-  }
-}
-
-@mixin slidePager {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  transition: all 0.3s;
-  span {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    background: map-get($color, bg-light-gray);
-    cursor: pointer;
-    transition: all 0.6s;
-    &:hover {
-      background: map-get($color, bg-main-color);
-    }
-    &.active {
-      width: 30px;
-      background: $home-gradient;
     }
   }
 }
@@ -280,9 +259,6 @@ body {
 //common
 .slide-btns {
   @include slideBtns;
-  .slidePager {
-    @include slidePager;
-  }
 }
 
 // bottom-mmenu
@@ -451,8 +427,11 @@ body {
           }
 
           .heading-timeinfo {
-            font-size: map-get($map: $fontSize, $key: font-small);
+            font-size: map-get($map: $fontSize, $key: font-medium);
             color: #aaa;
+            display: flex;
+            gap: 5px;
+            
           }
         }
 
@@ -578,11 +557,12 @@ body {
             }
 
             span:nth-child(1) {
-              font-size: 12px;
+              font-size: 13px;
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(2) {
-              font-size: map-get($map: $fontSize, $key: font-samll);
+              // font-size: map-get($map: $fontSize, $key: font-samll);
+              font-size: 15px;
               font-weight: 600;
             }
           }
@@ -600,7 +580,7 @@ body {
             display: inline-block;
             font-size: map-get($map: $fontSize, $key: font-extra-small);
             color: map-get($map: $color, $key: bg-dark-gray);
-            background: map-get($map: $color, $key: bg-light-gray);
+            background: #f1f1f1;
             border-radius: 3px;
             padding: 10px;
             margin-bottom: 42px;
@@ -633,35 +613,15 @@ body {
             color: map-get($map: $color, $key: bg-light-color);
             transition: all 0.3s;
             cursor: pointer;
-            position: relative;
-
-            &::before {
-              content: "";
-              position: absolute;
-              bottom: 8px;
-              left: 50%;
-              transform: translateX(-50%);
-              width: 0;
-              height: 2px;
-              background: map-get($map: $color, $key: bg-light-color);
-              border-radius: 5px;
-              transition: width 0.3s;
-            }
 
             &.chat {
-              background: map-get($map: $color, $key: bg-main-color);
+              @include greenBtn;
             }
             &.trade {
-              background: map-get($map: $color, $key: bg-dark-color);
+              @include blackBtn;
             }
 
-            &:hover {
-              box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-              font-weight: bold;
-            }
-            &:hover::before{
-              width: 22%;
-            }
+          
           }
         }
 
@@ -701,24 +661,21 @@ body {
               font-size: map-get($map: $fontSize, $key: font-extra-small);
               color: map-get($map: $color, $key: bg-dark-gray);
               font-weight: 300;
-              margin-bottom: 10px;
+              margin-bottom: 20px;
             }
             .relatedWords {
               display: flex;
+              flex-wrap: wrap;
               gap: 25px;
 
               span {
                 padding: 10px 15px;
-                background: map-get($map: $color, $key: bg-light-gray);
-                font-size: 11px;
+                background: #f1f1f1;
+                font-size: map-get($map: $fontSize, $key: font-small);
                 font-weight: 500;
                 border-radius: 5px;
                 transition: text-decoration 0.2s;
                 cursor: pointer;
-
-                &:hover {
-                  text-decoration: underline;
-                }
               }
             }
           }
@@ -1006,9 +963,6 @@ body {
           border-radius: 10px;
         }
       }
-      .slidePager {
-        @include slidePager;
-      }
     }
   }
 }
@@ -1268,6 +1222,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
+    padding-bottom: 25px;
     background: map-get($map: $color, $key: bg-light-color);
     z-index: 9999;
 
@@ -1319,7 +1274,7 @@ body {
 
   // // main
   #main {
-    margin-top: 45px;
+    margin-top: 85px;
     .inner {
       .main {
         justify-content: center;
@@ -1329,6 +1284,7 @@ body {
         .main-img {
           width: 100%;
           .img-slider {
+            margin-bottom: 40px;
             .img-wrapper {
               .img-slide {
                 width: 100%;
@@ -1415,6 +1371,10 @@ body {
             .itemIfo-detail {
               h6 {
                 margin-bottom: 20px;
+              }
+
+              .relatedWords {
+                gap: 15px;
               }
             }
           }
