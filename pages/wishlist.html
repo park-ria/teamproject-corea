@@ -211,6 +211,7 @@
                   class="wishlistTabButton active"
                   href="#"
                   data-tab-name="wish-items"
+                  data-arr-name="wishItem"
                 >
                   찜 <span class="wishlistTabCount wishItems"></span>
                 </a>
@@ -218,6 +219,7 @@
                   class="wishlistTabButton"
                   href="#"
                   data-tab-name="favorite-stores"
+                  data-arr-name="favoriteStores"
                 >
                   관심 상점
                   <span class="wishlistTabCount favoriteStores">5</span>
@@ -226,6 +228,7 @@
                   class="wishlistTabButton"
                   href="#"
                   data-tab-name="favorite-brands"
+                  data-arr-name="favoriteBrands"
                 >
                   관심 브랜드
                   <span class="wishlistTabCount favoriteBrands">3</span>
@@ -233,7 +236,11 @@
                 <span></span>
               </div>
             </article>
-            <article class="wishlistContent wish-items-content">
+            <article class="wishlistContent wish-items-content active">
+              <div class="emptyMsg">
+                <img src="../images/cart.png" alt="no-data" />
+                <p>찜한 상품이 없습니다.</p>
+              </div>
               <div class="wish-items-content-upper">
                 <span class="wish-items-delete-selection">
                   <input
@@ -290,6 +297,10 @@
               </div>
             </article>
             <article class="wishlistContent favorite-stores-content">
+              <div class="emptyMsg">
+                <img src="../images/cart.png" alt="no-data" />
+                <p>관심 상점이 없습니다.</p>
+              </div>
               <div class="favoriteStoresGroup">
                 <ul class="favoriteStoresWrap"></ul>
                 <div class="favoriteStoresPagination">
@@ -315,7 +326,11 @@
                 </div>
               </div>
             </article>
-            <article class="wishlistContent favorite-brands-content active">
+            <article class="wishlistContent favorite-brands-content">
+              <div class="emptyMsg">
+                <img src="../images/cart.png" alt="no-data" />
+                <p>관심 브랜드가 없습니다.</p>
+              </div>
               <div class="favoriteBrandsGroup">
                 <ul class="favoriteBrandsWrap"></ul>
                 <div class="favoriteBrandsPagination">

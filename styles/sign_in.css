@@ -54,6 +54,7 @@ body {
   font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: #111;
+  overflow-x: hidden;
 }
 
 .inner {
@@ -82,6 +83,7 @@ body {
   height: 0;
 }
 #header #banner.ban .banner {
+  width: 1280px;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -92,16 +94,49 @@ body {
   display: flex;
   gap: 15px;
 }
-#header #banner.ban .banner .banner-left a {
+#header #banner.ban .banner .banner-left > div {
   display: flex;
+  align-items: center;
   gap: 5px;
+  position: relative;
+  cursor: pointer;
 }
-#header #banner.ban .banner .banner-left a span {
+#header #banner.ban .banner .banner-left > div span {
   color: #fff;
   transition: color 0.3s;
 }
-#header #banner.ban .banner .banner-left a:hover span {
-  color: #bbb;
+#header #banner.ban .banner .banner-left > div .download-box {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  width: 210%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  transition: bottom 0.3s;
+  display: none;
+}
+#header #banner.ban .banner .banner-left > div .download-box a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 4px;
+  font-size: 17px;
+  transition: background 0.3s;
+  border-radius: 3px;
+}
+#header #banner.ban .banner .banner-left > div .download-box a:hover {
+  background: #eee;
+}
+#header #banner.ban .banner .banner-left > div .download-box a span {
+  color: #000;
+  font-size: 1.2rem;
+}
+#header #banner.ban .banner .banner-left > div .download-box.active {
+  display: flex;
+}
+#header #banner.ban .banner .banner-left > div:hover span {
+  color: #0dcc5a;
 }
 #header #banner.ban .banner .banner-right {
   display: flex;
@@ -186,11 +221,15 @@ body {
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list {
   width: 100%;
 }
+#header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list .no-words {
+  font-size: 1.4rem;
+  color: #bbb;
+}
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 15px 0;
   cursor: pointer;
 }
 #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-word {
@@ -423,13 +462,14 @@ body {
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a {
   display: flex;
   align-items: center;
+  transition: color 0.3s;
 }
 #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
   margin-right: 4px;
-  transition: filter 0.3s;
 }
-#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover img {
-  filter: invert(100%);
+#header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover {
+  color: #0dcc5a;
+  font-weight: bold;
 }
 
 #header-category .inner {
@@ -703,8 +743,37 @@ body {
   font-size: 2rem;
   margin-bottom: 15px;
 }
-#mobile-search .searchedword-list .recent-words .recent-list li span {
+#mobile-search .searchedword-list .recent-words .recent-list {
+  width: 100%;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
+  color: #bbb;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box button {
   font-size: 1.8rem;
+  color: #bbb;
+  transition: color 0.3s;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+  color: #3a3a3a;
+}
+#mobile-search .searchedword-list .recent-words .recent-list li:hover .recent-word {
+  color: #3a3a3a;
+  font-weight: 600;
 }
 #mobile-search .searchedword-list .recommendedwords {
   margin-bottom: 20px;
@@ -779,7 +848,7 @@ body {
   position: fixed;
   top: 57px;
   left: 0;
-  display: block;
+  display: none;
   z-index: 3;
 }
 
@@ -855,6 +924,12 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 100%;
     padding: 0 2%;
   }
+  #mobile-search {
+    display: none;
+  }
+  #mobile-search.active {
+    display: none;
+  }
 }
 @media screen and (max-width: 840px) {
   html {
@@ -879,6 +954,9 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   #mobile-search {
     display: none;
+  }
+  #mobile-search.active {
+    display: block;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -977,7 +1055,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   }
   #mobile-search .searchedword-list .recommendedwords ul li {
     padding: 10px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   #mobile-search.active {
     top: 37px;
@@ -1190,13 +1268,14 @@ footer .inner .footer-lower .footer-lower-logo i {
     width: 100%;
     height: 80px;
     padding: 0;
+    padding-left: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .container .sign-in form .inputs ul li .sign-input {
     gap: 5px;
-    padding-left: 15%;
+    padding-left: 15px;
     padding-bottom: 0;
   }
   .container .sign-in form .inputs ul li .sign-input .label {
@@ -1204,7 +1283,7 @@ footer .inner .footer-lower .footer-lower-logo i {
     text-align: left;
     padding-left: 10px;
     padding-bottom: 0;
-    width: 200px;
+    width: 110px;
   }
   .container .sign-in form .inputs ul li .sign-input .inputbox {
     width: 100%;
@@ -1302,7 +1381,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   .container .sign-in form .inputs ul li .sign-input {
     gap: 5px;
     padding-bottom: 0;
-    padding-left: 0;
+    padding-left: 15px;
   }
   .container .sign-in form .inputs ul li .sign-input .label {
     font-size: 2rem;
@@ -1331,7 +1410,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   .container .sign-in form .inputs ul li .error {
     width: 80%;
     padding-top: 5px;
-    padding-left: 40%;
+    padding-left: 30%;
     padding-bottom: 0;
     display: none;
   }
