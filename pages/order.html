@@ -706,6 +706,54 @@
                               <p>SC리워드</p>
                             </label>
                           </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="kakao"
+                              id="kakaoCard"
+                            />
+                            <label for="kakaoCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_kakao.png"
+                                  alt="logo_kakao"
+                              /></span>
+                              <p>카카오뱅크</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="busan"
+                              id="busanCard"
+                            />
+                            <label for="busanCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_busan.png"
+                                  alt="logo_busan"
+                              /></span>
+                              <p>부산은행</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="gwangju"
+                              id="gwangjuCard"
+                            />
+                            <label for="gwangjuCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_gwangju.png"
+                                  alt="logo_gwangju"
+                              /></span>
+                              <p>SC리워드</p>
+                            </label>
+                          </li>
                         </ul>
                         <div class="monthlyInstallmentPlan">
                           <span>할부 방식</span>
@@ -720,52 +768,13 @@
                         </div>
                       </div>
                     </div>
-                    <div class="payTypeModal">
-                      <h3>페이코 안내사항</h3>
-                      <ul>
-                        <li>
-                          PAYCO는 NHN에서 제공하는 안전한 간편결제 서비스입니다.
-                        </li>
-                        <li>
-                          카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에
-                          따라 변경될 수 있습니다.
-                        </li>
-                        <li>
-                          지원 가능 결제수단 : 페이코 결제창 내 노출되는 모든
-                          카드/포인트/쿠폰
-                        </li>
-                        <li>
-                          페이코포인트 1일 결제한도는 200만원입니다. (안전거래
-                          수수료 포함)
-                        </li>
-                      </ul>
-                      <button class="payTypeModalClose">확인</button>
-                    </div>
-                    <div class="payTypeModal">
-                      <h3>네이버페이 안내사항</h3>
-                      <ul>
-                        <li>
-                          네이버페이는 네이버ID로 신용카드 또는 은행계좌 정보를
-                          등록하여 결제할 수 있는 간편결제 서비스입니다.
-                        </li>
-                        <li>
-                          주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당
-                          카드사 정책에 따라 변경될 수 있습니다.
-                        </li>
-                        <li>
-                          지원 가능 결제수단 : 네이버페이 결제창 내 노출되는
-                          모든 카드/계좌
-                        </li>
-                      </ul>
-                      <button class="payTypeModalClose">확인</button>
-                    </div>
                     <div class="payAdvertising">
                       <img
                         src="../images/payco_black_logo.png"
                         alt="payco_logo"
                       />
                       <b>페이코 최대 4만원 즉시할인</b>
-                      1만원 이상 페이코 포인트로 결제 시 2% 즉시할인
+                      <p>1만원 이상 페이코 포인트로 결제 시 2% 즉시할인</p>
                     </div>
                   </div>
                 </div>
@@ -792,18 +801,20 @@
                             <p class="feeTitle">(3.5% 적용)</p>
                           </span>
                           <span class="paymentAmountWrapPrice">
-                            <span class="freeFee"> <b>490</b>원 </span>
+                            <span class="freeFee"> 490원</span>
                             <b>0</b>원
                           </span>
-                          <ul class="feeDesc">
-                            <li>
+                        </li>
+                        <li>
+                          <div class="feeDesc">
+                            <span>
                               중고나라 페이 첫 결제 시 안전거래 수수료 무료
                               (최대 2천원)
-                            </li>
-                            <li>
+                            </span>
+                            <span>
                               안전거래 시 발생하는 수수료는 구매자가 부담합니다.
-                            </li>
-                          </ul>
+                            </span>
+                          </div>
                         </li>
                         <li>
                           <span class="finalPaymentAmountTitle">합계</span>
@@ -908,6 +919,42 @@
           </div>
         </section>
       </main>
+
+      <div class="payTypeModal-overlay"></div>
+      <div class="payTypeModal">
+        <h3>페이코 안내사항</h3>
+        <ul>
+          <li>PAYCO는 NHN에서 제공하는 안전한 간편결제 서비스입니다.</li>
+          <li>
+            카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수
+            있습니다.
+          </li>
+          <li>
+            지원 가능 결제수단 : 페이코 결제창 내 노출되는 모든 카드/포인트/쿠폰
+          </li>
+          <li>
+            페이코포인트 1일 결제한도는 200만원입니다. (안전거래 수수료 포함)
+          </li>
+        </ul>
+        <button class="payTypeModalClose">확인</button>
+      </div>
+      <!-- <div class="payTypeModal1">
+        <h3>네이버페이 안내사항</h3>
+        <ul>
+          <li>
+            네이버페이는 네이버ID로 신용카드 또는 은행계좌 정보를 등록하여
+            결제할 수 있는 간편결제 서비스입니다.
+          </li>
+          <li>
+            주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라
+            변경될 수 있습니다.
+          </li>
+          <li>
+            지원 가능 결제수단 : 네이버페이 결제창 내 노출되는 모든 카드/계좌
+          </li>
+        </ul>
+        <button class="payTypeModalClose">확인</button>
+      </div> -->
 
       <footer>
         <div class="inner">

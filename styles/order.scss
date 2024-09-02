@@ -75,8 +75,9 @@
 /* order */
 .order {
   width: 100%;
+  padding: 100px 0 150px;
   .order-title {
-    font-size: map-get($fontSize, font-extra-large);
+    font-size: 3rem;
   }
   .order-content {
     form {
@@ -87,10 +88,14 @@
       }
       .delivery-right {
         width: 40%;
+        height: fit-content;
+        padding: 0 20px;
+        position: sticky;
+        top: 0;
       }
       .delivery-desc {
         width: 100%;
-        margin: 30px 0;
+        margin: 20px 0 30px;
         .sub-title {
           padding: 30px 0;
           border-bottom: 1px solid map-get($color, bg-dark-gray);
@@ -451,7 +456,8 @@
                           object-fit: cover;
                           &[alt="logo_samsung"],
                           &[alt="logo_hyundai"],
-                          &[alt="logo_lotte"] {
+                          &[alt="logo_lotte"],
+                          &[alt="logo_busan"] {
                             width: 70px;
                           }
                           &[alt="logo_sc"] {
@@ -503,6 +509,99 @@
               }
             }
           }
+          .payAdvertising {
+            padding: 30px 20px 40px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            img {
+              width: 80px;
+              object-fit: cover;
+              margin-bottom: 10px;
+            }
+            b {
+              font-size: map-get($fontSize, font-large);
+              padding-left: 5px;
+            }
+            p {
+              padding-left: 5px;
+            }
+          }
+        }
+        &.finalPaymentAmount {
+          h3 {
+            font-size: map-get($fontSize, font-extra-large);
+            padding: 30px 0;
+          }
+          .paymentAmountWrap {
+            ul {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &:last-child {
+                  align-items: flex-end;
+                }
+                .paymentAmountWrapTitle {
+                  font-size: map-get($fontSize, font-medium);
+                  display: flex;
+                  align-items: flex-end;
+                  gap: 8px;
+                  .feeTitle {
+                    font-size: map-get($fontSize, font-extra-small);
+                    color: map-get($color, bg-dark-gray);
+                    text-decoration: line-through;
+                  }
+                }
+                .paymentAmountWrapPrice {
+                  font-size: map-get($fontSize, font-medium);
+                  b {
+                    font-size: map-get($fontSize, font-large);
+                  }
+                  .freeFee {
+                    text-decoration: line-through;
+                    margin-right: 10px;
+                  }
+                }
+                .feeDesc {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  background: #f9f9f9;
+                  padding: 20px;
+                  span {
+                    font-size: map-get($fontSize, font-extra-small);
+                    color: map-get($color, bg-dark-gray);
+                  }
+                }
+                .finalPaymentAmountTitle {
+                  font-size: map-get($fontSize, font-medium);
+                  color: map-get($color, bg-main-color);
+                }
+                .finalPaymentAmountPrice {
+                  font-size: map-get($fontSize, font-medium);
+                  color: map-get($color, bg-main-color);
+                  letter-spacing: normal;
+                  b {
+                    font-size: 2.6rem;
+                    margin-right: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.approval {
+          border-top: 1px dotted map-get($color, bg-light-gray);
+          padding: 30px 0;
+          .allCheckWrap {
+            width: 100%;
+          }
         }
       }
       .banner {
@@ -513,5 +612,74 @@
         }
       }
     }
+  }
+}
+
+/* payTypeModal */
+.payTypeModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  background: map-get($color, bg-light-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+  &.active {
+    height: auto;
+    padding: 50px 40px 30px;
+    opacity: 1;
+  }
+  h3 {
+    font-size: map-get($fontSize, font-extra-large);
+  }
+  ul {
+    margin-top: 30px;
+    margin: 30px 0 0 20px;
+    li {
+      margin-bottom: 12px;
+      font-size: map-get($fontSize, font-medium);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #aaa;
+      }
+    }
+  }
+  .payTypeModalClose {
+    margin: 20px;
+    width: 100%;
+    padding: 15px;
+    font-size: map-get($fontSize, font-large);
+    font-weight: bold;
+    color: map-get($color, bg-light-color);
+    background: map-get($color, bg-main-color);
+    border-radius: 5px;
+  }
+}
+.payTypeModal-overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  &.active {
+    height: 100vh;
+    opacity: 1;
+    background: rgba($color: #000000, $alpha: 0.4);
   }
 }

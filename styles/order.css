@@ -1065,9 +1065,10 @@ footer .inner .footer-lower .footer-lower-logo i {
 /* order */
 .order {
   width: 100%;
+  padding: 100px 0 150px;
 }
 .order .order-title {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .order .order-content form {
   display: flex;
@@ -1078,10 +1079,15 @@ footer .inner .footer-lower .footer-lower-logo i {
 }
 .order .order-content form .delivery-right {
   width: 40%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
 }
 .order .order-content form .delivery-desc {
   width: 100%;
-  margin: 30px 0;
+  margin: 20px 0 30px;
 }
 .order .order-content form .delivery-desc .sub-title {
   padding: 30px 0;
@@ -1510,7 +1516,7 @@ footer .inner .footer-lower .footer-lower-logo i {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_samsung], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_hyundai], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_lotte] {
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_samsung], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_hyundai], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_lotte], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_busan] {
   width: 70px;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_sc] {
@@ -1554,6 +1560,96 @@ footer .inner .footer-lower .footer-lower-logo i {
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan #mipMonth:focus {
   outline: none;
 }
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising {
+  padding: 30px 20px 40px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising img {
+  width: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising b {
+  font-size: 1.8rem;
+  padding-left: 5px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising p {
+  padding-left: 5px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount h3 {
+  font-size: 2rem;
+  padding: 30px 0;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li:last-child {
+  align-items: flex-end;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapTitle {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapTitle .feeTitle {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+  text-decoration: line-through;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice {
+  font-size: 1.6rem;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice b {
+  font-size: 1.8rem;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice .freeFee {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 20px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc span {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountTitle {
+  font-size: 1.6rem;
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
+  font-size: 1.6rem;
+  color: #0dcc5a;
+  letter-spacing: normal;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice b {
+  font-size: 2.6rem;
+  margin-right: 5px;
+}
+.order .order-content form .delivery-desc.approval {
+  border-top: 1px dotted #dcdcdc;
+  padding: 30px 0;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap {
+  width: 100%;
+}
 .order .order-content form .banner {
   margin: 50px 0;
 }
@@ -1561,4 +1657,74 @@ footer .inner .footer-lower .footer-lower-logo i {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+/* payTypeModal */
+.payTypeModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.payTypeModal.active {
+  height: auto;
+  padding: 50px 40px 30px;
+  opacity: 1;
+}
+.payTypeModal h3 {
+  font-size: 2rem;
+}
+.payTypeModal ul {
+  margin-top: 30px;
+  margin: 30px 0 0 20px;
+}
+.payTypeModal ul li {
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payTypeModal ul li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #aaa;
+}
+.payTypeModal .payTypeModalClose {
+  margin: 20px;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  background: #0dcc5a;
+  border-radius: 5px;
+}
+
+.payTypeModal-overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.payTypeModal-overlay.active {
+  height: 100vh;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
 }
