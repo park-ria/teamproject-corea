@@ -20,12 +20,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -40,17 +48,6 @@ button {
 
 html {
   font-size: 10px;
-  scroll-behavior: smooth;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 body {
@@ -70,7 +67,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 17px);
   background: #fff;
   z-index: 100;
 }
@@ -166,7 +163,7 @@ body {
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
-  box-shadow: 0 0 2px #6d6d6d;
+  border: 1px solid #6d6d6d;
   border-radius: 50px;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text] {
@@ -175,6 +172,11 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #bbb;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -544,15 +546,29 @@ body {
   display: block;
 }
 
+#bottom-memu {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: none;
+}
+#bottom-memu .bottom-mmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #mobile-menu {
   display: none;
   background: #fff;
-  box-shadow: 0 0 10px #ddd;
 }
 #mobile-menu .mobile-menu {
   width: 100%;
-  height: 60px;
   padding: 10px;
+  padding-right: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -565,26 +581,8 @@ body {
 #mobile-menu .mobile-menu .menu-box button {
   font-size: 22px;
 }
-#mobile-menu .mobile-menu .menu-box button:first-child {
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4px;
-  transition: all 0.3s;
-}
-#mobile-menu .mobile-menu .menu-box button:first-child i {
-  font-size: 22px;
-  opacity: 1;
-  transition: all 0.3s;
-}
 #mobile-menu .mobile-menu .menu-box button:first-child.active {
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-}
-#mobile-menu .mobile-menu .menu-box button:first-child.active i {
-  opacity: 0;
+  display: none;
 }
 #mobile-menu .mobile-menu .menu-box button:last-child {
   width: 22px;
@@ -601,7 +599,6 @@ body {
   height: 3px;
   background: #3a3a3a;
   border-radius: 5px;
-  transition: all 0.3s;
 }
 #mobile-menu .mobile-menu .menu-box button:last-child span:nth-child(1) {
   top: 0%;
@@ -626,16 +623,8 @@ body {
 
 #mobile-category {
   background: #fff;
-  width: 100%;
   height: 100vh;
-  overflow-y: scroll;
-  position: fixed;
-  top: 60px;
-  left: 0;
-  transform: translateX(100%);
-  z-index: 3;
-  border-top: 1px solid #dcdcdc;
-  transition: transform 0.3s;
+  display: none;
 }
 #mobile-category h3 {
   padding: 10px;
@@ -651,7 +640,6 @@ body {
   height: 20%;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
 #mobile-category ul li .category-img {
   width: 100%;
@@ -664,7 +652,8 @@ body {
 #mobile-category ul li .category-img .img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -675,10 +664,7 @@ body {
 }
 #mobile-category ul li .category-sub {
   width: 500%;
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.3s;
+  display: none;
   padding: 10px 15px;
   background: #f5f5f5;
 }
@@ -690,32 +676,30 @@ body {
   width: 50%;
   padding: 15px 10px;
   font-size: 1.8rem;
+  transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
+  transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
 }
 #mobile-category ul li .category-sub.active {
-  opacity: 1;
-  height: 200px;
-  overflow-y: scroll;
+  display: block;
 }
 #mobile-category.active {
-  transform: translateX(0);
+  display: block;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  z-index: 3;
 }
 
 #mobile-search {
-  position: fixed;
-  top: 60px;
-  left: 0;
   width: 100%;
   height: 100vh;
-  padding: 40px 20px;
+  padding: 10px 20px;
   background: #fff;
-  border-top: 1px solid #dcdcdc;
-  transform: translateX(100%);
-  transition: transform 0.5s;
-  z-index: 3;
+  display: none;
 }
 #mobile-search .search-box {
   position: relative;
@@ -751,6 +735,9 @@ body {
 }
 #mobile-search .search-box form input[type=submit]:hover {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+#mobile-search .searchedword-list .recent-words {
+  margin-bottom: 20px;
 }
 #mobile-search .searchedword-list .recent-words h3 {
   font-size: 2rem;
@@ -789,7 +776,7 @@ body {
   font-weight: 600;
 }
 #mobile-search .searchedword-list .recommendedwords {
-  margin: 40px 0;
+  margin-bottom: 20px;
 }
 #mobile-search .searchedword-list .recommendedwords h3 {
   font-size: 2rem;
@@ -797,7 +784,6 @@ body {
 }
 #mobile-search .searchedword-list .recommendedwords ul {
   display: flex;
-  flex-wrap: wrap;
   gap: 5px;
 }
 #mobile-search .searchedword-list .recommendedwords ul li {
@@ -859,7 +845,11 @@ body {
   color: #0dcc5a;
 }
 #mobile-search.active {
-  transform: translateX(0);
+  position: fixed;
+  top: 57px;
+  left: 0;
+  display: none;
+  z-index: 3;
 }
 
 .container {
@@ -882,13 +872,13 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
-  padding: 50px 0 70px;
 }
 footer .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+  height: 404px;
 }
 footer .inner .footer-upper {
   display: flex;
@@ -904,86 +894,29 @@ footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
   display: flex;
   gap: 20px;
 }
-footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
-  font: 600 1.6rem/1 "Noto Sans KR";
-  opacity: 0.6;
-  transition: all 0.3s;
-}
-footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a:hover {
-  opacity: 1;
-}
 footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font: normal 1.4rem/1 "Noto Sans KR";
-}
-footer .inner .footer-upper .footer-upper-ctg {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 15px;
-}
-footer .inner .footer-upper .footer-upper-ctg button {
-  position: relative;
-}
-footer .inner .footer-upper .footer-upper-ctg button span {
-  font: normal 1.6rem/1 "Noto Sans KR";
-  color: #fff;
-}
-footer .inner .footer-upper .footer-upper-ctg button i {
-  color: #fff;
-  transition: all 0.3s;
-}
-footer .inner .footer-upper .footer-upper-ctg button.active i {
-  transform: translateY(-15%) rotate(180deg);
-}
-footer .inner .footer-upper .footer-upper-ctg .category-list {
-  width: 580px;
-  max-height: 0px;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px;
-  border: 1px solid #6d6d6d;
-  background: #4a4a4a;
-  opacity: 0;
-  transition: all 0.3s;
-}
-footer .inner .footer-upper .footer-upper-ctg .category-list li {
-  width: calc((100% - 50px) / 6);
-  text-align: center;
-}
-footer .inner .footer-upper .footer-upper-ctg .category-list li a {
-  cursor: pointer;
-}
-footer .inner .footer-upper .footer-upper-ctg .category-list.active {
-  max-height: 119px;
-  opacity: 1;
+  font-style: normal;
 }
 footer .inner .footer-lower {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-footer .inner .footer-lower .footer-lower-desc {
-  font: normal 1.2rem/1.4 "Noto Sans KR";
-  opacity: 0.6;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
 footer .inner .footer-lower .footer-lower-logo {
+  width: 180px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
-footer .inner .footer-lower .footer-lower-logo a i {
-  font-size: 2.2rem;
-  opacity: 0.6;
-  transition: all 0.3s;
-}
-footer .inner .footer-lower .footer-lower-logo a:hover i {
-  opacity: 1;
+footer .inner .footer-lower .footer-lower-logo i {
+  font-size: 15px;
 }
 
 @media screen and (max-width: 1280px) {
@@ -996,32 +929,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #mobile-search.active {
     display: none;
-  }
-  #mobile-category {
-    display: none;
-  }
-  #mobile-category.active {
-    display: none;
-  }
-  footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
-    flex-wrap: wrap;
-    align-content: center;
-    gap: 10px;
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list {
-    width: 340px;
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list li {
-    width: calc((100% - 20px) / 3);
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
-    max-height: 215px;
-  }
-  footer .inner .footer-lower {
-    gap: 50px;
-  }
-  footer .inner .footer-lower .footer-lower-logo {
-    margin-right: 80px;
   }
 }
 @media screen and (max-width: 840px) {
@@ -1040,25 +947,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     z-index: 3;
   }
   #mobile-category {
-    display: block;
+    display: none;
   }
   #mobile-category ul {
     display: flex;
   }
-  #mobile-category.active {
-    display: block;
-  }
   #mobile-search {
-    display: block;
+    display: none;
   }
   #mobile-search.active {
     display: block;
-  }
-  .container {
-    margin-top: 60px;
-  }
-  footer .inner {
-    gap: 10px;
   }
   footer .inner .footer-upper {
     display: flex;
@@ -1078,18 +976,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     flex-wrap: wrap;
     justify-content: center;
   }
-  footer .inner .footer-upper .footer-upper-ctg {
-    align-items: center;
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list {
-    width: 100%;
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list li {
-    width: calc((100% - 40px) / 5);
-  }
-  footer .inner .footer-upper .footer-upper-ctg .category-list.active {
-    max-height: 200px;
-  }
   footer .inner .footer-lower {
     display: flex;
     flex-direction: column-reverse;
@@ -1098,9 +984,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     text-align: center;
     gap: 20px;
   }
-  footer .inner .footer-lower .footer-lower-logo {
-    margin-right: 0;
-  }
 }
 @media screen and (max-width: 450px) {
   #mobile-menu .mobile-menu a img {
@@ -1108,14 +991,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     height: 22px;
   }
   #mobile-menu .mobile-menu .menu-box {
-    gap: 15px;
+    gap: 20px;
   }
-  #mobile-menu .mobile-menu .menu-box button:first-child i {
-    font-size: 18px;
-  }
-  #mobile-menu .mobile-menu .menu-box button:last-child {
-    width: 18px;
-    height: 12px;
+  #mobile-menu .mobile-menu .menu-box a {
+    font-size: 16px;
   }
   #mobile-category h3 {
     font-size: 1.4rem;
@@ -1133,7 +1012,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     font-size: 1.6rem;
   }
   #mobile-category.active {
-    top: 60px;
+    top: 37px;
   }
   #mobile-search .mb-searchbox {
     position: relative;
@@ -1171,80 +1050,681 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
   }
   #mobile-search .searchedword-list .recommendedwords ul {
-    justify-content: center;
+    display: flex;
+    gap: 5px;
   }
   #mobile-search .searchedword-list .recommendedwords ul li {
     padding: 10px;
     font-size: 1.4rem;
   }
   #mobile-search.active {
-    top: 60px;
+    top: 37px;
   }
 }
-.faq {
-  padding: 100px 0;
+/* variable */
+/* order */
+.order {
+  width: 100%;
+  padding: 100px 0 150px;
+}
+.order .order-title {
+  font-size: 3rem;
+}
+.order .order-content form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
 }
-.faq h1 {
-  font-size: 2.6rem;
+.order .order-content form .delivery-left {
+  width: 60%;
+  padding-right: 20px;
 }
-.faq .accordion {
-  width: 900px;
-  padding: 50px 0;
-  border-top: 1px solid #3a3a3a;
-}
-.faq .accordion .title {
-  position: relative;
-  padding: 20px;
-  border-bottom: 1px solid #dcdcdc;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.faq .accordion .title::after {
-  content: "+";
-  font-family: "fontawesome";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  transition: all 0.3s;
-}
-.faq .accordion .title.active {
-  box-shadow: 0 0 5px #dcdcdc;
-}
-.faq .accordion .title.active::after {
-  content: "+";
-  font-family: "fontawesome";
-  transform: translateY(-50%) rotate(45deg);
-}
-.faq .accordion .title p {
-  font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-}
-.faq .accordion .content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+.order .order-content form .delivery-right {
+  width: 40%;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 0 20px;
-  background: #eee;
-  transition: all 0.3s;
+  position: sticky;
+  top: 0;
 }
-.faq .accordion .content p {
-  font: 400 1.4rem/1.5 "Noto Sans KR", sans-serif;
+.order .order-content form .delivery-desc {
+  width: 100%;
+  margin: 20px 0 30px;
 }
-.faq .accordion .content p b {
-  color: #6d6d6d;
+.order .order-content form .delivery-desc .sub-title {
+  padding: 30px 0;
+  border-bottom: 1px solid #6d6d6d;
 }
-.faq .accordion .content.active {
-  padding: 20px;
-  max-height: revert;
+.order .order-content form .delivery-desc .sub-title h3 {
+  font-size: 1.8rem;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc {
+  margin: 30px 0;
+  padding-left: 20px;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li label {
+  width: 100px;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone1,
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone2,
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone3 {
+  width: 30%;
+  padding: 10px 0;
+  text-align: center;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #zonecode {
+  width: 65%;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #zonecode:focus::-moz-placeholder {
   opacity: 1;
 }
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #zonecode:focus::placeholder {
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #searchAddr {
+  width: 30%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #0dcc5a;
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #searchAddr:hover {
+  background: #0dcc5a;
+  border: 1px solid transparent;
+  color: #fff;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text] {
+  width: 80%;
+  padding: 10px 30px;
+  border: 1px solid #dcdcdc;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]::-moz-placeholder {
+  color: #aaa;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]::placeholder {
+  color: #aaa;
+  transition: opacity 0.3s;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]#recipient {
+  width: 50%;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]#address:focus::-moz-placeholder {
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]#address:focus::placeholder {
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select {
+  width: 80%;
+  padding: 10px 25px;
+  border: 1px solid #dcdcdc;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 10px;
+  color: #aaa;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt strong {
+  font-size: 1.6rem;
+  color: #111;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .store-name {
+  padding: 20px;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .store-name .shop-icon {
+  width: 25px;
+  height: 25px;
+  background: url("../images/store.png") center/cover no-repeat;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm {
+  width: 50%;
+  justify-content: space-around;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:not(.productImgNm) {
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:last-child {
+  border-right: none;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productImg {
+  width: 150px;
+  height: 150px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productName {
+  width: calc(100% - 200px);
+  font-size: 1.6rem;
+  word-wrap: break-word;
+  line-height: 30px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productPrice {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.order .order-content form .delivery-desc.paymentMethod .joongna-pay {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .joongna-pay span {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: #0dcc5a;
+  color: #fff;
+}
+.order .order-content form .delivery-desc.paymentMethod .joongna-pay span::before {
+  content: "\f111";
+  font-family: "fontawesome";
+  font-size: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+}
+.order .order-content form .delivery-desc.paymentMethod .payType {
+  width: 100%;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton {
+  width: 48%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.active {
+  border: 1px solid #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton img {
+  height: 12px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton img#tosspay {
+  height: 16px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton img#kakaopay {
+  height: 22px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton .sale-banner {
+  width: 60px;
+  height: 20px;
+  font-size: 10px;
+  text-align: center;
+  line-height: 18px;
+  background: #fff;
+  color: #ff0038;
+  border: 1px solid #ff0038;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc {
+  width: 100%;
+  margin: 20px 0;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.3s, opacity 0.3s;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.active {
+  height: auto;
+  padding: 10px;
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap {
+  padding: 10px 0;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck input[type=checkbox] {
+  display: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck label span::before {
+  content: "\f00c";
+  font-family: "fontawesome";
+  font-size: 11px;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -46%);
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck input[type=checkbox]:checked + label > span {
+  border: 1px solid transparent;
+  background: #0dcc5a;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck input[type=checkbox]:checked + label > span::before {
+  color: #fff;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck .fa-solid {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck .fa-solid:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap {
+  display: inline-block;
+  width: 45%;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap input[type=radio] {
+  display: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap input[type=radio]:checked + label > span {
+  border: 1px solid transparent;
+  background: #0dcc5a;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap .radioWrap input[type=radio]:checked + label > span::before {
+  content: "\f111";
+  font-family: "fontawesome";
+  font-size: 8px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -55%);
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap.on {
+  height: auto;
+  padding: 10px 0;
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: all 0.5s;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc.on {
+  height: auto;
+  padding: 10px 0;
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc #cashBillSubType {
+  width: 30%;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  text-align: center;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc #cashBillSubType:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc input[type=text] {
+  width: 68%;
+  height: 40px;
+  padding-left: 30px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide #bank {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide #bank:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  border-top: 1px solid #dcdcdc;
+  border-left: 1px solid #dcdcdc;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li {
+  height: 125px;
+  border-right: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  border-collapse: collapse;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li.active {
+  border: 2px solid #0dcc5a;
+  border-collapse: collapse;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg {
+  height: 50px;
+  line-height: 70px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img {
+  width: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_samsung], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_hyundai], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_lotte], .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_busan] {
+  width: 70px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label .cardImg img[alt=logo_sc] {
+  width: 28px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li label p {
+  font-size: 1.4rem;
+  color: #111;
+  transition: color 0.3s, font-weight 0.3s;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li input[type=radio] {
+  display: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide ul li input[type=radio]:checked + label > p {
+  color: #0dcc5a;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan {
+  margin-top: 30px;
+  padding: 30px 0;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan span {
+  padding-left: 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan #mipMonth {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan #mipMonth:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising {
+  padding: 30px 20px 40px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising img {
+  width: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising b {
+  font-size: 1.8rem;
+  padding-left: 5px;
+}
+.order .order-content form .delivery-desc.paymentMethod .payAdvertising p {
+  padding-left: 5px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount h3 {
+  font-size: 2rem;
+  padding: 30px 0;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li:last-child {
+  align-items: flex-end;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapTitle {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapTitle .feeTitle {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+  text-decoration: line-through;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice {
+  font-size: 1.6rem;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice b {
+  font-size: 1.8rem;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice .freeFee {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 20px;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc span {
+  font-size: 1.2rem;
+  color: #6d6d6d;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountTitle {
+  font-size: 1.6rem;
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
+  font-size: 1.6rem;
+  color: #0dcc5a;
+  letter-spacing: normal;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice b {
+  font-size: 2.6rem;
+  margin-right: 5px;
+}
+.order .order-content form .delivery-desc.approval {
+  border-top: 1px dotted #dcdcdc;
+  padding: 30px 0;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap {
+  width: 100%;
+}
+.order .order-content form .banner {
+  margin: 50px 0;
+}
+.order .order-content form .banner img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
-@media screen and (max-width: 1280px) {
-  .faq .accordion {
-    width: 100%;
-  }
+/* payTypeModal */
+.payTypeModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.payTypeModal.active {
+  height: auto;
+  padding: 50px 40px 30px;
+  opacity: 1;
+}
+.payTypeModal h3 {
+  font-size: 2rem;
+}
+.payTypeModal ul {
+  margin-top: 30px;
+  margin: 30px 0 0 20px;
+}
+.payTypeModal ul li {
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payTypeModal ul li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #aaa;
+}
+.payTypeModal .payTypeModalClose {
+  margin: 20px;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  background: #0dcc5a;
+  border-radius: 5px;
+}
+
+.payTypeModal-overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.payTypeModal-overlay.active {
+  height: 100vh;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
 }
