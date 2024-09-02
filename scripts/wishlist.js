@@ -6,11 +6,9 @@ let favoriteBrandsArr;
 
 // checkEmptyData
 const checkEmptyData = (arr) => {
-  const emptyMsg = document.querySelector(
-    ".wishlistContent.active > .emptyMsg"
-  );
+  const emptyMsg = document.querySelector(".wishlistContent.active .emptyMsg");
   const siblings = document.querySelectorAll(
-    ".wishlistContent.active > .emptyMsg ~ div"
+    ".wishlistContent.active .emptyMsg ~ div"
   );
 
   if (arr.length === 0) {
@@ -236,15 +234,15 @@ const addItemsInTheWishItemList = (product, index) => {
                 </span>
               </a>
               <span class="wishItemButtons">
-                <button class="wishItemChatButton">채팅하기</button>
+                <a class="wishItemChatButton" href="#none">채팅하기</a>
                 ${
                   product.pay_flag > 0
-                    ? '<button class="wishItemPurchaseButton">구매하기</button>'
-                    : '<button class="wishItemProposalButton">가격제안</button>'
+                    ? `<a class="wishItemPurchaseButton" href="/pages/order.html?id=${product.id}">구매하기</a>`
+                    : '<a class="wishItemProposalButton">가격제안</a>'
                 }
-                <button class="wishItemXButton">
+                <a class="wishItemXButton" href="#none">
                   <i class="fa-solid fa-xmark"></i>
-                </button>
+                </a>
               </span>
             </div>
             <div class="wishItemLower">
@@ -285,6 +283,22 @@ const wishItemChkEvnt = () => {
   });
 };
 
+const wishItemHover = () => {
+  let wishItemViewMore = document.querySelectorAll(".wishItemViewMore");
+  wishItemViewMore.forEach((info) => {
+    info.addEventListener("mouseenter", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.add("hover");
+    });
+    info.addEventListener("mouseleave", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.remove("hover");
+    });
+  });
+};
+
 const saveWishItem = () => {
   localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
 };
@@ -302,6 +316,7 @@ const delWishItem = (target) => {
 const wishItemButtonEvent = () => {
   // all select event
   wishItemChkEvnt();
+  wishItemHover();
 
   // button event
   document.querySelectorAll(".wishHeart").forEach((item) => {
@@ -386,6 +401,12 @@ const addItemsInTheFavoriteStores = (store) => {
             )
             .join("")}
         </ul>
+        <div class="img-prev btn">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="img-next btn">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
       </div>
     </li>
   `;
@@ -437,7 +458,7 @@ const favorStoreSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
@@ -451,6 +472,16 @@ const favorStoreSlide = (slideUl) => {
       }px)`;
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
@@ -547,6 +578,12 @@ const addItemsInTheFavoriteBrands = (brand) => {
               )
               .join("")}
             </ul>
+            <div class="img-prev btn">
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="img-next btn">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
           </div>
         </li>
       `;
@@ -598,7 +635,7 @@ const favorBrandSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
@@ -612,6 +649,16 @@ const favorBrandSlide = (slideUl) => {
       }px)`;
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
