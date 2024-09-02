@@ -329,7 +329,7 @@ const productSlide = (section) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       movePager(currentIdx);
       slideUl.style.transform = `translateX(${

@@ -21,12 +21,20 @@ input {
   padding-left: 10px;
   transition: all 0.3s;
 }
+input::-moz-placeholder {
+  opacity: 1;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
 input::placeholder {
   opacity: 1;
   transition: all 0.3s;
 }
 input:focus {
   outline: none;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
 }
 input:focus::placeholder {
   opacity: 0;
@@ -50,7 +58,6 @@ body {
   overflow-x: hidden;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -176,6 +183,11 @@ body {
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
+}
+#header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #bbb;
 }
 #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
   font-size: 1.2rem;
@@ -680,7 +692,8 @@ body {
 #mobile-category ul li .category-img .img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -706,7 +719,9 @@ body {
   width: 50%;
   padding: 15px 10px;
   font-size: 1.8rem;
+  transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
+  transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
@@ -1002,6 +1017,123 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   opacity: 1;
 }
 
+.quickMenu {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 5;
+}
+.quickMenu .quickBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.quickMenu .quickBtns li {
+  width: 56px;
+  height: 56px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns li button,
+.quickMenu .quickBtns li a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quickMenu .quickBtns li button i,
+.quickMenu .quickBtns li a i {
+  font-size: 24px;
+  color: #6d6d6d;
+}
+.quickMenu .quickBtns li:hover {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px, rgba(0, 0, 0, 0.1) 0px 0px 50px;
+}
+.quickMenu .quickBtns .trigger {
+  position: relative;
+}
+.quickMenu .quickBtns .trigger button {
+  background: #0dcc5a;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger button i {
+  color: #fff;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger .movePages {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  transform: translateY(-35%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.quickMenu .quickBtns .trigger .movePages li {
+  position: relative;
+  overflow: hidden;
+}
+.quickMenu .quickBtns .trigger .movePages li a {
+  font-weight: 700;
+  color: #6d6d6d;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 130px;
+}
+.quickMenu .quickBtns .trigger .movePages li a::before {
+  font-family: "fontawesome";
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 20px;
+}
+.quickMenu .quickBtns .trigger .movePages li a.mypage::before {
+  content: "\f007";
+}
+.quickMenu .quickBtns .trigger .movePages li a.cart::before {
+  content: "\f004";
+}
+.quickMenu .quickBtns .trigger .movePages li a.auction::before {
+  content: "\f2b5";
+}
+.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
+  content: "\f062";
+}
+.quickMenu .quickBtns .trigger .movePages li:hover {
+  width: 130px;
+  transform: translateX(-74px);
+}
+.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
+  width: 56px;
+  transform: translateX(0);
+}
+.quickMenu .quickBtns .trigger.active button {
+  background: #dcdcdc;
+}
+.quickMenu .quickBtns .trigger.active button i {
+  color: #6d6d6d;
+  transform: rotate(45deg);
+}
+.quickMenu .quickBtns .trigger.active .movePages {
+  top: -10px;
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
@@ -1196,6 +1328,75 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #mobile-search.active {
     top: 60px;
   }
+  .quickMenu {
+    right: 14px;
+    bottom: 68px;
+  }
+  .quickMenu .quickBtns {
+    gap: 6px;
+  }
+  .quickMenu .quickBtns li {
+    width: 44px;
+    height: 44px;
+    border-radius: 18px;
+  }
+  .quickMenu .quickBtns li button i,
+  .quickMenu .quickBtns li a i {
+    font-size: 20px;
+    color: #6d6d6d;
+  }
+  .quickMenu .quickBtns .trigger button {
+    border-radius: 18px;
+  }
+  .quickMenu .quickBtns .trigger button i {
+    color: #fff;
+    transition: all 0.4s;
+  }
+  .quickMenu .quickBtns .trigger .movePages {
+    gap: 6px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a {
+    font-weight: 700;
+    color: #6d6d6d;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 110px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a::before {
+    font-family: "fontawesome";
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.mypage::before {
+    content: "\f007";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.cart::before {
+    content: "\f004";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.auction::before {
+    content: "\f2b5";
+  }
+  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
+    content: "\f062";
+  }
+  .quickMenu .quickBtns .trigger .movePages li:hover {
+    width: 100px;
+    transform: translateX(-56px);
+  }
+  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
+    width: 44px;
+    transform: translateX(0);
+  }
+  .quickMenu .quickBtns .trigger.active .movePages {
+    top: -6px;
+  }
 }
 /* variable */
 /* wishlist */
@@ -1303,7 +1504,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wishlistContent .emptyMsg img {
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .wishlistContent .emptyMsg p {
   font-size: 1.8rem;
@@ -1382,7 +1584,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
   width: inherit;
   height: inherit;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .soldOutFilter {
   position: absolute;
@@ -1639,7 +1842,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
@@ -1677,7 +1881,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 13px;
   height: 13px;
   margin-left: 5px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .detail-bar {
   width: 100%;
@@ -1732,6 +1937,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   overflow: hidden;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products {
+  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -1831,12 +2037,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle {
   display: inline-block;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle img {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
@@ -2089,6 +2297,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
     margin-top: 0;
+    width: -moz-fit-content;
     width: fit-content;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
@@ -2146,6 +2355,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
     margin-top: 0;
+    width: -moz-fit-content;
     width: fit-content;
     max-width: 180px;
   }
@@ -2252,13 +2462,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     align-items: center;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
+    width: -moz-fit-content;
     width: fit-content;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 1.4rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 1.6rem;
   }

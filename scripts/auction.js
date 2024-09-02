@@ -371,6 +371,7 @@ fetch(joonggoInfo)
       else if (index < productSlideLimit * 2 + 2) {
         addProduct(product, ".product");
         sortedLists.push(product);
+        sortNew();
       }
     });
 

@@ -37,9 +37,6 @@
     cursor: pointer;
     transition: transform 0.3s;
 
-    &:hover {
-    }
-
     a {
       display: flex;
       justify-content: flex-start;
@@ -60,16 +57,6 @@
 html {
   font-size: 10px;
   scroll-behavior: smooth;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 $main-width: 1280px;
@@ -93,15 +80,21 @@ $fontSize: (
   font-extra-large: 2rem,
 );
 
-// font
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-
 body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
   letter-spacing: -1px;
   color: map-get($color, main-font-color);
-  overflow-x: hidden;
 }
+
+// font
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 // layout
 .inner {
@@ -1255,6 +1248,345 @@ footer {
   .inner {
     width: 100%;
     padding: 0 2%;
+  }
+
+  // Header
+  #header {
+    #banner.ban {
+      .banner {
+        width: 100%;
+      }
+    }
+
+    #header-item {
+      .header-item {
+        width: 100%;
+        .header-top {
+          gap: 20px;
+
+          .search-box {
+            width: 50%;
+            form {
+              input[type="text"] {
+                // width: 550px;
+                width: 100%;
+                // max-width: 380px;
+                height: 40px;
+                border-radius: 50px;
+                padding-left: 20px;
+                padding-right: 10px;
+
+                &::placeholder {
+                  font-size: map-get($map: $fontSize, $key: font-extra-small);
+                  font-weight: 500;
+                  color: #bbb;
+                  width: 100%;
+                  padding-right: 10px;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  word-wrap: normal;
+                }
+              }
+
+              input[type="submit"] {
+                position: absolute;
+                top: 50%;
+                right: 6px;
+                transform: translateY(-50%);
+                width: 30px;
+                height: 30px;
+                background: url("../images/detail/search.png") center/cover
+                  no-repeat;
+                border-radius: 50px;
+                border: none;
+                background-color: map-get(
+                  $map: $color,
+                  $key: bar-linear-gradient
+                );
+                color: map-get($map: $color, $key: bg-light-color);
+                cursor: pointer;
+                transition: box-shadow 0.3s;
+
+                &:hover {
+                  box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
+                }
+              }
+
+              .searchedword-list {
+                position: absolute;
+                top: 120%;
+                left: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+                padding: 15px;
+                background: map-get($map: $color, $key: bg-light-color);
+                box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+                border-radius: 8px;
+                display: none;
+
+                .recent-words {
+                  h3 {
+                    font-size: 14px;
+                  }
+                  .recent-list {
+                    width: 100%;
+
+                    .no-words {
+                      font-size: map-get($map: $fontSize, $key: font-small);
+                      color: #bbb;
+                    }
+
+                    li {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      padding: 15px 0;
+                      cursor: pointer;
+
+                      .recent-word {
+                        color: #bbb;
+                        font-weight: 500;
+                        transition: all 0.3s;
+                      }
+                      .recent-box {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+
+                        button {
+                          font-size: map-get($map: $fontSize, $key: font-large);
+                          color: #bbb;
+                          transition: color 0.3s;
+
+                          &:hover {
+                            color: map-get($map: $color, $key: bg-dark-color);
+                          }
+                        }
+                      }
+
+                      &:hover .recent-word {
+                        color: map-get($map: $color, $key: bg-dark-color);
+                        font-weight: 600;
+                      }
+                    }
+                  }
+                }
+
+                .live-ranking {
+                  h3 {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    margin-bottom: 15px;
+
+                    .current-time {
+                      font-size: 13px;
+                      margin-left: 30px;
+                      color: #aaa;
+                      font-weight: 400;
+                    }
+                  }
+
+                  .ranking-list {
+                    @include rankig-list;
+                  }
+                }
+                &.active {
+                  display: block;
+                }
+              }
+            }
+          }
+
+          .wrapper {
+            position: relative;
+
+            .popular-searchedWord {
+              position: relative;
+              width: 200px;
+              height: 24px;
+              overflow: hidden;
+              ul {
+                width: 100%;
+                height: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                  position: absolute;
+                  top: -24px;
+                  left: 0;
+                  width: 100%;
+                  height: 24px;
+                  padding-left: 20px;
+                  line-height: 24px;
+                  cursor: pointer;
+
+                  &.prev {
+                    top: -24px;
+                    transition: top 0.5s;
+                  }
+                  &.current {
+                    top: 0;
+                    transition: top 0.5s;
+                  }
+                  &.next {
+                    top: 24px;
+                  }
+
+                  a {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    span {
+                      @include list-a;
+                    }
+                  }
+                }
+              }
+            }
+
+            .list-btn {
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%) rotate(0);
+              color: map-get($map: $color, $key: font-dark-gray);
+              transition: all 0.3s;
+
+              &.active {
+                transform: translateY(-50%) rotate(180deg);
+              }
+            }
+
+            .list {
+              position: absolute;
+              top: 20px;
+              left: 0;
+              width: 100%;
+              height: 0;
+              margin-top: 15px;
+              padding: 0 20px;
+              border: 1px solid transparent;
+              display: flex;
+              flex-direction: column;
+              text-align: left;
+              transition: all 0.5s;
+              overflow: hidden;
+
+              &.active {
+                height: 468px;
+                background: map-get($map: $color, $key: bg-light-color);
+                border-left: 1px solid #eee;
+                border-right: 1px solid #eee;
+                border-bottom: 1px solid #eee;
+              }
+
+              li {
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                transition: transform 0.3s;
+
+                &:hover {
+                  transform: scale(1.02);
+                }
+
+                a {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  span {
+                    @include list-a;
+                  }
+                }
+                & > span {
+                  .fa-sort-down {
+                    color: map-get($map: $color, $key: bg-light-gray);
+                  }
+                  .fa-caret-up {
+                    color: map-get($map: $color, $key: bg-main-color);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .header-bottom {
+          gap: 20px;
+
+          .header-bottom-left {
+            display: flex;
+            gap: 12px;
+
+            .barmenu {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
+              padding: 8px 10px;
+              background: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
+              border-radius: 5px;
+              cursor: pointer;
+              transition: box-shadow 0.3s;
+
+              &:hover {
+                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.3);
+              }
+
+              i {
+                font-size: 24px;
+              }
+            }
+
+            .gnb {
+              gap: 12px;
+              a {
+                font-size: 1.6rem;
+                font-weight: 500;
+                transition: color 0.3s;
+
+                &:hover {
+                  color: map-get($map: $color, $key: bg-main-color);
+                }
+              }
+            }
+          }
+
+          .header-bottom-right {
+            display: flex;
+            align-items: center;
+            .lnb {
+              gap: 8px;
+
+              li a {
+                display: flex;
+                align-items: center;
+                transition: color 0.3s;
+
+                img {
+                  margin-right: 2px;
+                }
+
+                &:hover {
+                  color: map-get($map: $color, $key: bg-main-color);
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   // mobile header

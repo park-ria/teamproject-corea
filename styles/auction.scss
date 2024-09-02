@@ -33,7 +33,7 @@ body {
         width: 40px;
         height: 40px;
         background: url("../images/clock.svg") center/contain no-repeat;
-        animation: vibration 0.2s linear infinite;
+        animation: vibration 0.2s ease-in-out infinite;
         &::before {
           content: "";
           position: absolute;
