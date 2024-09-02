@@ -258,7 +258,9 @@ fetch(joonggoInfo)
             pickedInfo.countNum = pickedInfo.countNum - 1;
             console.log(pickedInfo);
             removeId(pickedInfo);
-            headingTimeinfo.querySelector("span:nth-child(4)").innerText = `찜 ${pickedInfo.countNum}`
+            headingTimeinfo.querySelector(
+              "span:nth-child(4)"
+            ).innerText = `찜 ${pickedInfo.countNum}`;
           } else {
             heartBtns.forEach((btn) => {
               console.log("클릭");
@@ -270,7 +272,9 @@ fetch(joonggoInfo)
             console.log(pickedInfo);
             wishItemArr.push(pickedInfo);
             saveId();
-            headingTimeinfo.querySelector("span:nth-child(4)").innerText = `찜 ${pickedInfo.countNum}`
+            headingTimeinfo.querySelector(
+              "span:nth-child(4)"
+            ).innerText = `찜 ${pickedInfo.countNum}`;
           }
         });
       });
@@ -563,6 +567,7 @@ fetch(joonggoInfo)
   });
 
 // add product slide item
+// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 
@@ -692,8 +697,13 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.remove("disabled");
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
