@@ -6,6 +6,7 @@ $font-dark: darkgray;
 $font-light: #eee;
 $bg-main-color: #0dcc5a;
 
+
 // .inner {
 //   .container {
 //     width: 100%;
@@ -109,13 +110,16 @@ $bg-main-color: #0dcc5a;
     // height: 700px;
     display: flex;
     justify-content: center;
+
     .login {
       width: 500px;
       // height: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 100px 0 100px;
+
+      padding: 100px 0 150px;
+
       .login-header {
         display: flex;
         flex-direction: column;

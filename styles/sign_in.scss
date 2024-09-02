@@ -226,19 +226,24 @@ $bg-main-color: #0dcc5a;
               height: 80px;
               padding: 0;
               padding-left: 10px;
+
               display: flex;
               justify-content: space-between;
               align-items: center;
               .sign-input {
                 gap: 5px;
+
                 padding-left: 15px;
+
                 padding-bottom: 0;
                 .label {
                   font-size: 2rem;
                   text-align: left;
                   padding-left: 10px;
                   padding-bottom: 0;
+
                   width: 110px;
+
                 }
                 .inputbox {
                   width: 100%;
@@ -343,7 +348,8 @@ $bg-main-color: #0dcc5a;
               .sign-input {
                 gap: 5px;
                 padding-bottom: 0;
-                padding-left: 15px;
+
+                padding-left: 0;
                 .label {
                   font-size: 2rem;
                   text-align: left;
@@ -372,7 +378,9 @@ $bg-main-color: #0dcc5a;
               .error {
                 width: 80%;
                 padding-top: 5px;
-                padding-left: 30%;
+
+                padding-left: 40%;
+
                 padding-bottom: 0;
                 display: none;
               }

@@ -6,24 +6,27 @@ let favoriteBrandsArr;
 
 // checkEmptyData
 const checkEmptyData = (arr) => {
-  console.log(arr);
   const emptyMsg = document.querySelector(
     ".wishlistContent.active > .emptyMsg"
   );
-  const sibling = document.querySelectorAll(
+  const siblings = document.querySelectorAll(
     ".wishlistContent.active > .emptyMsg ~ div"
   );
 
-  if (arr.size === 0) {
-    sibling.forEach((div) => {
-      div.style.display = "none";
+  if (arr.length === 0) {
+    siblings.forEach((sibling) => {
+      sibling.style.opacity = 0;
+      sibling.style.height = 0;
     });
-    emptyMsg.style.display = "flex";
+    emptyMsg.style.opacity = 1;
+    emptyMsg.style.height = "400px";
   } else {
-    sibling.forEach((div) => {
-      div.style.display = "block";
+    siblings.forEach((sibling) => {
+      sibling.style.opacity = 1;
+      sibling.style.height = "auto";
     });
-    emptyMsg.style.display = "none";
+    emptyMsg.style.opacity = 0;
+    emptyMsg.style.height = 0;
   }
 };
 
@@ -48,15 +51,27 @@ wishlistTabButton.forEach((btn) => {
     });
     target.classList.add("active");
 
-    checkEmptyData(`${this.getAttribute("data-arr-name")}Arr`);
+    switch (this.getAttribute("data-arr-name")) {
+      case "wishItem":
+        checkEmptyData(wishItemArr);
+        break;
+      case "favoriteStores":
+        checkEmptyData(favoriteStoresArr);
+        break;
+      case "favoriteBrands":
+        checkEmptyData(favoriteBrandsArr);
+        break;
+    }
   });
 });
 
 // insert a count into the tab button
 const chanageTabBtnCnt = () => {
-  document.querySelector(".wishItems").innerText = wishItemArr.size;
-  document.querySelector(".favoriteStores").innerText = favoriteStoresArr.size;
-  document.querySelector(".favoriteBrands").innerText = favoriteBrandsArr.size;
+  document.querySelector(".wishItems").innerText = wishItemArr.length;
+  document.querySelector(".favoriteStores").innerText =
+    favoriteStoresArr.length;
+  document.querySelector(".favoriteBrands").innerText =
+    favoriteBrandsArr.length;
 };
 
 // all select event
@@ -271,16 +286,17 @@ const wishItemChkEvnt = () => {
 };
 
 const saveWishItem = () => {
-  localStorage.setItem("wishItemArr", JSON.stringify([...wishItemArr]));
+  localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
 };
 
 const delWishItem = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
-  wishItemArr = new Set([...wishItemArr].filter((item) => item !== productId));
+  wishItemArr = wishItemArr.filter((item) => item !== productId);
   wishItemArrDetail = wishItemArrDetail.filter((item) => item.id !== productId);
   saveWishItem();
   target.remove();
-  document.querySelector(".wishItems").innerText = wishItemArr.size;
+  document.querySelector(".wishItems").innerText = wishItemArr.length;
+  checkEmptyData(wishItemArr);
 };
 
 const wishItemButtonEvent = () => {
@@ -308,9 +324,7 @@ const addItemsInTheFavoriteStores = (store) => {
     <li>
       <div class="favorite-store-info">
         <div class="favorite-store-shopkeeper">
-          <a href="/pages/mypage.html?id=${
-            store.store_name
-          }" class="favoriteStoresTitle">
+          <a href="#none" class="favoriteStoresTitle">
             <img
               src="../${store.info.product_img_path}"
             />
@@ -381,23 +395,20 @@ const addItemsInTheFavoriteStores = (store) => {
 };
 
 const saveFavoriteStores = () => {
-  localStorage.setItem(
-    "favoriteStoresArr",
-    JSON.stringify([...favoriteStoresArr])
-  );
+  localStorage.setItem("favoriteStoresArr", JSON.stringify(favoriteStoresArr));
 };
 
 const delFavorStores = (target) => {
   const storeNm = target.querySelector(".favoriteStoresTitle>p").innerText;
-  favoriteStoresArr = new Set(
-    [...favoriteStoresArr].filter((item) => item !== storeNm)
-  );
+  favoriteStoresArr = favoriteStoresArr.filter((item) => item !== storeNm);
   favorStoreArrDetail = favorStoreArrDetail.filter(
     (item) => item.store_name !== storeNm
   );
   saveFavoriteStores();
   target.remove();
-  document.querySelector(".favoriteStores").innerText = favoriteStoresArr.size;
+  document.querySelector(".favoriteStores").innerText =
+    favoriteStoresArr.length;
+  checkEmptyData(favoriteStoresArr);
 };
 
 const favorStoresButtonEvent = () => {
@@ -546,22 +557,19 @@ const addItemsInTheFavoriteBrands = (brand) => {
 };
 
 const saveBrandStores = () => {
-  localStorage.setItem(
-    "favoriteBrandsArr",
-    JSON.stringify([...favoriteBrandsArr])
-  );
+  localStorage.setItem("favoriteBrandsArr", JSON.stringify(favoriteBrandsArr));
 };
 
 const delFavorBrands = (target) => {
-  console.log(target.querySelector(".favoriteBrandsTitle > p").innerText);
-  console.log(favoriteBrandsArr);
   const brandNm = target.querySelector(".favoriteBrandsTitle > p").innerText;
-  favoriteBrandsArr = new Set(
-    [...favoriteBrandsArr].filter((item) => item.brand !== brandNm)
+  favoriteBrandsArr = favoriteBrandsArr.filter(
+    (item) => item.brand !== brandNm
   );
   saveBrandStores();
   target.remove();
-  document.querySelector(".favoriteBrands").innerText = favoriteBrandsArr.size;
+  document.querySelector(".favoriteBrands").innerText =
+    favoriteBrandsArr.length;
+  checkEmptyData(favoriteBrandsArr);
 };
 
 const favorBrandsButtonEvent = () => {
@@ -657,25 +665,25 @@ fetch("../db.json")
   .then((jsonData) => {
     // array init
     wishItemArr = localStorage.getItem("wishItemArr")
-      ? new Set(JSON.parse(localStorage.getItem("wishItemArr")))
+      ? JSON.parse(localStorage.getItem("wishItemArr"))
       : jsonData.wishlist.wishItemArr
-      ? new Set(jsonData.wishlist.wishItemArr)
-      : new Set();
+      ? jsonData.wishlist.wishItemArr
+      : [];
     saveWishItem();
     checkEmptyData(wishItemArr);
 
     favoriteStoresArr = localStorage.getItem("favoriteStoresArr")
-      ? new Set(JSON.parse(localStorage.getItem("favoriteStoresArr")))
+      ? JSON.parse(localStorage.getItem("favoriteStoresArr"))
       : jsonData.wishlist.favoriteStoresArr
-      ? new Set(jsonData.wishlist.favoriteStoresArr)
-      : new Set();
+      ? jsonData.wishlist.favoriteStoresArr
+      : [];
     saveFavoriteStores();
 
     favoriteBrandsArr = localStorage.getItem("favoriteBrandsArr")
-      ? new Set(JSON.parse(localStorage.getItem("favoriteBrandsArr")))
+      ? JSON.parse(localStorage.getItem("favoriteBrandsArr"))
       : jsonData.wishlist.favoriteBrandsArr
-      ? new Set(jsonData.wishlist.favoriteBrandsArr)
-      : new Set();
+      ? jsonData.wishlist.favoriteBrandsArr
+      : [];
     saveBrandStores();
 
     // insert a count into the tab button

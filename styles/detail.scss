@@ -97,6 +97,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
   }
 }
+
 // home
 @mixin sectionHeading {
   display: flex;
@@ -112,28 +113,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   .view-more {
     a {
       color: map-get($color, bg-dark-gray);
-    }
-  }
-}
-
-@mixin slidePager {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  transition: all 0.3s;
-  span {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    background: map-get($color, bg-light-gray);
-    cursor: pointer;
-    transition: all 0.6s;
-    &:hover {
-      background: map-get($color, bg-main-color);
-    }
-    &.active {
-      width: 30px;
-      background: $home-gradient;
     }
   }
 }
@@ -177,7 +156,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           padding: 0 14px 14px;
         }
       }
-
     }
   }
 }
@@ -270,49 +248,33 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 }
 
-@mixin slidePager {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  transition: all 0.3s;
-  span {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    background: map-get($color, bg-light-gray);
-    cursor: pointer;
-    transition: all 0.6s;
-    &:hover {
-      background: map-get($color, bg-main-color);
-    }
-    &.active {
-      width: 30px;
-      background: $home-gradient;
-    }
-  }
-}
-
-
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
+// html,
+// body {
+//   width: 100%;
+//   height: 100%;
+//   overflow-x: hidden;
+// }
 
 //common
 .slide-btns {
   @include slideBtns;
-  .slidePager {
-    @include slidePager;
+}
+
+// bottom-mmenu
+#bottom-memu {
+  display: none;
+
+  .bottom-mmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 // main
 #main {
-  margin-top: 185px;
-  margin-bottom: 200px;
+  margin-top: 285px;
+  margin-bottom: 185px;
 
   .inner {
     .main {
@@ -361,6 +323,23 @@ body {
           .btn {
             @include slider-btns;
           }
+
+          .heart-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            color: map-get($map: $color, $key: bg-light-color);
+  
+            i {
+              font-size: 30px;
+  
+              &.fa-solid {
+                color: crimson;
+              }
+            }
+          }
         }
 
         .img-icons {
@@ -387,98 +366,24 @@ body {
               gap: 10px;
 
               i {
-                color: map-get($map: $color, $key: bg-dark-gray);
+                color: map-get($map: $color, $key: bg-light-gray);
                 font-size: map-get($map: $fontSize, $key: font-extra-large);
+                transition: color 0.3s;
               }
+
+            
             }
 
-            &.share {
-              position: relative;
+            &:hover a i {
+              color: map-get($map: $color, $key: bg-dark-gray);
+            }
 
-              .share-box {
-                position: absolute;
-                top: 55px;
-                left: -50%;
-                padding: 20px 10px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border: 2px solid map-get($map: $color, $key: bg-light-gray);
-                border-radius: 10px;
-                transform: translateX(10%);
-                display: none;
-
-                &::before {
-                  content: "";
-                  position: absolute;
-                  top: 0;
-                  left: 50%;
-                  width: 0;
-                  height: 0;
-                  border: 10px solid transparent;
-                  border-bottom-color: map-get(
-                    $map: $color,
-                    $key: bg-main-color
-                  );
-                  border-top: 0;
-                  margin-left: -10px;
-                  margin-top: -10px;
-                }
-
-                div {
-                  width: 80px;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  gap: 10px;
-
-                  a {
-                    width: 40px;
-                    height: 40px;
-
-                    img {
-                      width: 100%;
-                      height: 100%;
-                      object-fit: contain;
-                    }
-                  }
-
-                  span {
-                    font-size: 13px;
-                    color: map-get($map: $color, $key: bg-light-gray);
-                    transition: all 0.3s;
-                  }
-
-                  &:hover span {
-                    text-decoration: underline;
-                    color: map-get($map: $color, $key: bg-main-color);
-                  }
-                }
-                &.active {
-                  display: flex;
-                }
-              }
+            &:first-child:hover a i {
+              color: crimson;
             }
 
             &:last-child {
               border-right: none;
-            }
-          }
-        }
-
-        .heart-btn {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          width: 35px;
-          height: 35px;
-          color: map-get($map: $color, $key: bg-light-color);
-
-          i {
-            font-size: 30px;
-
-            &.fa-solid {
-              color: crimson;
             }
           }
         }
@@ -521,8 +426,11 @@ body {
           }
 
           .heading-timeinfo {
-            font-size: map-get($map: $fontSize, $key: font-small);
+            font-size: map-get($map: $fontSize, $key: font-medium);
             color: #aaa;
+            display: flex;
+            gap: 5px;
+            
           }
         }
 
@@ -648,11 +556,12 @@ body {
             }
 
             span:nth-child(1) {
-              font-size: 12px;
+              font-size: 13px;
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(2) {
-              font-size: map-get($map: $fontSize, $key: font-samll);
+              // font-size: map-get($map: $fontSize, $key: font-samll);
+              font-size: 15px;
               font-weight: 600;
             }
           }
@@ -670,7 +579,7 @@ body {
             display: inline-block;
             font-size: map-get($map: $fontSize, $key: font-extra-small);
             color: map-get($map: $color, $key: bg-dark-gray);
-            background: map-get($map: $color, $key: bg-light-gray);
+            background: #f1f1f1;
             border-radius: 3px;
             padding: 10px;
             margin-bottom: 42px;
@@ -700,21 +609,33 @@ body {
             border-radius: 5px;
             border: 0;
             font-size: map-get($map: $fontSize, $key: font-large);
-            color: map-get($map: $color, $key: bg-light-color);
+            // color: map-get($map: $color, $key: bg-light-color);
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            color: #fff;
+            // &::before {
+            //   content: "";
+            //   position: absolute;
+            //   top: 0;
+            //   left: 0;
+            //   width: 0;
+            //   height: 100%;
+            //   background: #0dcc5a;
+
+            //   transition: all 0.3s;
+            // }
 
             &.chat {
-              background: map-get($map: $color, $key: bg-main-color);
+              @include greenBtn;
             }
             &.trade {
-              background: map-get($map: $color, $key: bg-dark-color);
+              @include blackBtn;
             }
 
-            &:hover {
-              box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-              font-weight: bold;
-            }
+          
           }
         }
 
@@ -754,18 +675,20 @@ body {
               font-size: map-get($map: $fontSize, $key: font-extra-small);
               color: map-get($map: $color, $key: bg-dark-gray);
               font-weight: 300;
-              margin-bottom: 10px;
+              margin-bottom: 20px;
             }
             .relatedWords {
               display: flex;
+              flex-wrap: wrap;
               gap: 25px;
 
               span {
                 padding: 10px 15px;
-                background: map-get($map: $color, $key: bg-light-gray);
-                font-size: 11px;
+                background: #f1f1f1;
+                font-size: map-get($map: $fontSize, $key: font-small);
                 font-weight: 500;
                 border-radius: 5px;
+                transition: text-decoration 0.2s;
                 cursor: pointer;
               }
             }
@@ -966,8 +889,73 @@ body {
   }
 }
 
+.share-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfdfd;
+  border: 2px solid map-get($map: $color, $key: bg-light-gray);
+  border-radius: 10px;
+  z-index: 5;
+  display: none;
+
+  div {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      width: 40px;
+      height: 40px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    span {
+      font-size: 13px;
+      color: map-get($map: $color, $key: bg-dark-gray);
+      transition: all 0.3s;
+    }
+
+    &:hover span {
+      text-decoration: underline;
+      color: map-get($map: $color, $key: bg-main-color);
+    }
+  }
+  &.active {
+    display: flex;
+  }
+}
+
+.shaerbox-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.4);
+  z-index: 4;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
 // event
 #event {
+  margin-bottom: 185px;
   .event-content {
     .event-heading {
       @include sectionHeading;
@@ -989,16 +977,13 @@ body {
           border-radius: 10px;
         }
       }
-      .slidePager {
-        @include slidePager;
-      }
     }
   }
 }
 
 // recommended
 #recommended {
-  padding: 150px 0;
+  margin-bottom: 185px;
   .recommended-content {
     position: relative;
     .recommended-heading {
@@ -1010,12 +995,23 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
+  }
+}
+
+// recent
+#recent {
+  margin-bottom: 185px;
+  .recent-content {
+    position: relative;
+    .recent-heading {
+      @include sectionHeading;
+    }
+    .recent-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
   }
 }
 
@@ -1023,7 +1019,7 @@ body {
 @media screen and (max-width: 1280px) {
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 840px) {
   // header
   #header {
     display: none;
@@ -1056,19 +1052,28 @@ body {
                 }
               }
             }
+
+            .heart-btn {
+              top: 30px;
+              right: 30px;
+              width: 45px;
+              height: 45px;
+  
+              i {
+                font-size: 45px;
+              }
+            }
           }
 
           .img-icons {
             padding: 17px 0;
           }
-
-          .heart-btn {
-            top: 65px;
-            right: 30px;
-          }
         }
 
         .main-desc {
+          width: 100%;
+          margin-bottom: 70px;
+
           .desc-heading {
             margin-bottom: 40px;
             .heading-price {
@@ -1110,6 +1115,7 @@ body {
           }
 
           .desc-store {
+            margin-bottom: 0;
             .store-btns {
               button {
                 font-size: map-get($map: $fontSize, $key: font-medium);
@@ -1160,59 +1166,32 @@ body {
   }
 
   // event
-  #event {
-    margin-bottom: 150px;
-    .event {
-      .event-slider {
-        width: 830px;
-        .slide-wrapper {
-          .slide {
-            width: 790px;
-            gap: 3%;
-
-            & div:last-child {
-              display: none;
+    // event
+    #event {
+      .event-content {
+        .event-slide {
+          ul {
+            a {
+              width: 310px;
+              height: 100px;
             }
           }
         }
       }
     }
-  }
 
   // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 150px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
-
-                img {
-                  width: 100%;
-                  height: 100%;
+  #recommended {
+    .recommended-content {
+      .recommended-slide {
+        height: 390px;
+        .slideWrapper {
+          li {
+            a {
+              height: 366px;
+              .slide-desc {
+                .desc-title {
+                  height: 36px;
                 }
               }
             }
@@ -1221,6 +1200,28 @@ body {
       }
     }
   }
+
+  // recent
+  #recent {
+    .recent-content {
+      .recent-slide {
+        height: 390px;
+        .slideWrapper {
+          li {
+            a {
+              height: 366px;
+              .slide-desc {
+                .desc-title {
+                  height: 36px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -1231,6 +1232,13 @@ body {
   //bottom-menu
   #bottom-memu {
     display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 25px;
+    background: map-get($map: $color, $key: bg-light-color);
+    z-index: 9999;
 
     .bottom-mmenu {
       display: flex;
@@ -1242,7 +1250,15 @@ body {
         width: 10%;
         text-align: center;
         font-size: 26px;
-        color: map-get($map: $color, $key: bg-light-gray);
+        
+        i {
+          color: map-get($map: $color, $key: bg-light-gray);
+
+          &.fa-solid {
+            color: crimson;
+          }
+        }
+
       }
 
       .btns {
@@ -1272,8 +1288,7 @@ body {
 
   // // main
   #main {
-    margin-top: 45px;
-    margin-bottom: 150px;
+    margin-top: 85px;
     .inner {
       .main {
         justify-content: center;
@@ -1283,6 +1298,7 @@ body {
         .main-img {
           width: 100%;
           .img-slider {
+            margin-bottom: 40px;
             .img-wrapper {
               .img-slide {
                 width: 100%;
@@ -1292,6 +1308,17 @@ body {
                   width: 410px;
                   height: 400px;
                 }
+              }
+            }
+
+            .heart-btn {
+              top: 20px;
+              right: 20px;
+              width: 35px;
+              height: 35px;
+  
+              i {
+                font-size: 35px;
               }
             }
           }
@@ -1306,12 +1333,10 @@ body {
               }
             }
           }
-          .heart-btn {
-            right: 20px;
-          }
         }
 
         .main-desc {
+          margin-bottom: 0;
           .desc-heading {
             margin-bottom: 60px;
             .heading-name {
@@ -1360,6 +1385,10 @@ body {
             .itemIfo-detail {
               h6 {
                 margin-bottom: 20px;
+              }
+
+              .relatedWords {
+                gap: 15px;
               }
             }
           }
@@ -1412,87 +1441,16 @@ body {
   // event
   #event {
     margin-bottom: 150px;
-    .event {
-      .event-slider {
-        .slide-wrapper {
-          .slide {
-            width: 415px;
-            display: block;
-            & div {
-              height: 100%;
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-              &:nth-child(2) {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
   }
 
-  // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 100px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
-
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
-
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-    }
+  // event
+  #recommended {
+    margin-bottom: 150px;
   }
+
+  // event
+  #recent {
+    margin-bottom: 150px;
+  }
+
 }
