@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/images/opengraph.jpg" />
+    <meta property="og:image:width" content="390" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:title" content="중고나라 Junggonara" />
+    <meta
+      property="og:description"
+      content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
+    />
+    <link rel="icon" href="/images/appicon.jpg" />
     <!--fontawsome-->
     <script
       src="https://kit.fontawesome.com/4effeb5db1.js"
@@ -13,7 +22,7 @@
     <script defer src="../scripts/common.js"></script>
     <script defer src="../scripts/login.js"></script>
 
-    <title>Document</title>
+    <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
   </head>
   <body>
     <div class="wrapper" id="wrapper">
@@ -22,19 +31,35 @@
           <div class="inner">
             <div class="banner">
               <div class="banner-left">
-                <a class="appDownload" href="#none">
+                <div class="appDownload">
                   <img src="../images/appicon.jpg" alt="appicon" />
                   <span>앱 다운로드</span>
-                </a>
-                <a class="favorites" href="#none">
+                  <div class="download-box">
+                    <a
+                      class="apple"
+                      href="https://apps.apple.com/kr/app/%EC%A4%91%EA%B3%A0%EB%82%98%EB%9D%BC-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-%EC%A4%91%EA%B3%A0%EB%A7%88%EC%BC%93/id896515652"
+                    >
+                      <i class="fa-brands fa-apple"></i>
+                      <span>앱스토어</span>
+                    </a>
+                    <a
+                      class="googleplay"
+                      href="https://play.google.com/store/apps/details?id=com.elz.secondhandstore&hl=ko"
+                    >
+                      <i class="fa-brands fa-google-play"></i>
+                      <span>구글플레이</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="favorites">
                   <img src="../images/favorites.jpg" alt="favorites" />
                   <span>즐겨찾기</span>
-                </a>
+                </div>
               </div>
               <div class="banner-right">
-                <a href="#none">로그인</a>
-                <a href="#none">회원가입</a>
-                <a href="#none">마이페이지</a>
+                <a href="http://127.0.0.1:5502/pages/login.html">로그인</a>
+                <a href="http://127.0.0.1:5502/pages/sign_in.html">회원가입</a>
+                <a href="http://127.0.0.1:5502/pages/faq.html">F&Q</a>
               </div>
             </div>
           </div>
@@ -44,12 +69,16 @@
             <div class="header-item">
               <div class="header-top">
                 <h1 id="logo">
-                  <a href="../index.html">
+                  <a href="http://127.0.0.1:5502/index.html">
                     <img src="../images/logo.png" alt="logo" />
                   </a>
                 </h1>
                 <div class="search-box">
-                  <form action="https://localhost:3000" method="get">
+                  <form
+                    name="hdForm"
+                    action="https://localhost:3000"
+                    method="get"
+                  >
                     <input
                       type="text"
                       name="search"
@@ -104,17 +133,17 @@
                 <div class="header-bottom-right">
                   <ul class="lnb">
                     <li>
-                      <a href="#none">
+                      <a href="http://127.0.0.1:5502/pages/login.html">
                         <img src="../images/chat.png" alt="chat" />채팅하기</a
                       >
                     </li>
                     <li>
-                      <a href="#none">
+                      <a href="http://127.0.0.1:5502/pages/login.html">
                         <img src="../images/sell.png" alt="sell" />판매하기</a
                       >
                     </li>
                     <li>
-                      <a href="#none">
+                      <a href="http://127.0.0.1:5502/pages/wishlist.html">
                         <img src="../images/heart.png" alt="heart" />찜한상품</a
                       >
                     </li>
@@ -137,7 +166,7 @@
       <div id="mobile-menu">
         <div class="inner">
           <div class="mobile-menu">
-            <a href="#" class="mobile-logo">
+            <a href="http://127.0.0.1:5502/index.html" class="mobile-logo">
               <img src="../images/logo.png" alt="logo" />
             </a>
             <div class="menu-box">
@@ -178,7 +207,7 @@
             <h3>최근 검색어</h3>
             <ul class="recent-list">
               <li class="no-words">
-                <span>다이슨</span>
+                <span>최근 검색어가 없습니다</span>
               </li>
             </ul>
           </div>
@@ -292,12 +321,24 @@
             <div class="footer-upper-info">
               <div class="footer-company-guide">
                 <ul>
-                  <li>이용약관</li>
-                  <li>개인정보처리방침</li>
-                  <li>분쟁처리절차</li>
-                  <li>청소년보호정책</li>
-                  <li>사업자정보확인</li>
-                  <li><a target="_blank" href="../pages/faq.html">FAQ</a></li>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
                 </ul>
               </div>
               <address class="footer-company-info">
@@ -313,7 +354,8 @@
             </div>
             <div class="footer-upper-ctg">
               <button>
-                카테고리 전체보기 <i class="fa-solid fa-angle-down"></i>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
               </button>
               <ul class="category-list"></ul>
             </div>
@@ -327,15 +369,34 @@
               책임도 부담하지 않습니다.
             </div>
             <div class="footer-lower-logo">
-              <i class="fa-brands fa-facebook"></i>
-              <i class="fa-brands fa-youtube"></i>
-              <i class="fa-solid fa-mug-saucer"></i>
-              <i class="fa-brands fa-neos"></i>
-              <i class="fa-solid fa-blog"></i>
+              <a href="https://www.facebook.com/joonggonara.m/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCTUQdtrWF8BekcHX-X1SMPw"
+                target="_blank"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://cafe.naver.com/joonggonara" target="_blank">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a
+                href="https://m.blog.naver.com/jnofficial/223313152022"
+                target="_blank"
+              >
+                <i class="fa-brands fa-neos"></i>
+              </a>
+              <a href="https://joonggonara.co.kr/" target="_blank">
+                <i class="fa-solid fa-blog"></i>
+              </a>
             </div>
           </section>
         </div>
       </footer>
+
+      <!-- quickMenu -->
+      <div class="quickMenu"></div>
     </div>
   </body>
 </html>
