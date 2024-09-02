@@ -50,6 +50,7 @@ html {
   font-size: 10px;
 }
 
+
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -77,6 +78,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   width: 100%;
   background: #fff;
@@ -174,6 +176,7 @@ body {
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
+
   box-shadow: 0 0 2px #6d6d6d;
   border-radius: 50px;
 }
@@ -557,6 +560,7 @@ body {
   display: block;
 }
 
+
 #mobile-menu {
   display: none;
   background: #fff;
@@ -566,6 +570,7 @@ body {
   width: 100%;
   height: 60px;
   padding: 10px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -578,6 +583,7 @@ body {
 #mobile-menu .mobile-menu .menu-box button {
   font-size: 22px;
 }
+
 #mobile-menu .mobile-menu .menu-box button:first-child {
   height: 20px;
   display: flex;
@@ -598,6 +604,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child.active i {
   opacity: 0;
+
 }
 #mobile-menu .mobile-menu .menu-box button:last-child {
   width: 22px;
@@ -614,7 +621,9 @@ body {
   height: 3px;
   background: #3a3a3a;
   border-radius: 5px;
+
   transition: all 0.3s;
+
 }
 #mobile-menu .mobile-menu .menu-box button:last-child span:nth-child(1) {
   top: 0%;
@@ -639,6 +648,7 @@ body {
 
 #mobile-category {
   background: #fff;
+
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
@@ -649,6 +659,7 @@ body {
   z-index: 3;
   border-top: 1px solid #dcdcdc;
   transition: transform 0.3s;
+
 }
 #mobile-category h3 {
   padding: 10px;
@@ -664,7 +675,9 @@ body {
   height: 20%;
   display: flex;
   flex-direction: column;
+
   cursor: pointer;
+
 }
 #mobile-category ul li .category-img {
   width: 100%;
@@ -679,7 +692,9 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+
   cursor: pointer;
+
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -690,10 +705,12 @@ body {
 }
 #mobile-category ul li .category-sub {
   width: 500%;
+
   height: 0;
   opacity: 0;
   overflow: hidden;
   transition: all 0.3s;
+
   padding: 10px 15px;
   background: #f5f5f5;
 }
@@ -708,12 +725,15 @@ body {
   transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
   transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+
   cursor: pointer;
+
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
 }
 #mobile-category ul li .category-sub.active {
+
   opacity: 1;
   height: 200px;
   overflow-y: scroll;
@@ -734,6 +754,7 @@ body {
   transform: translateX(100%);
   transition: transform 0.5s;
   z-index: 3;
+
 }
 #mobile-search .search-box {
   position: relative;
@@ -770,6 +791,7 @@ body {
 #mobile-search .search-box form input[type=submit]:hover {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }
+
 #mobile-search .searchedword-list .recent-words h3 {
   font-size: 2rem;
   margin-bottom: 15px;
@@ -807,7 +829,9 @@ body {
   font-weight: 600;
 }
 #mobile-search .searchedword-list .recommendedwords {
+
   margin: 40px 0;
+
 }
 #mobile-search .searchedword-list .recommendedwords h3 {
   font-size: 2rem;
@@ -815,7 +839,9 @@ body {
 }
 #mobile-search .searchedword-list .recommendedwords ul {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 5px;
 }
 #mobile-search .searchedword-list .recommendedwords ul li {
@@ -877,7 +903,9 @@ body {
   color: #0dcc5a;
 }
 #mobile-search.active {
+
   transform: translateX(0);
+
 }
 
 .container {
@@ -900,13 +928,17 @@ body {
 footer {
   background: #3a3a3a;
   color: #fff;
+
   padding: 50px 0 70px;
+
 }
 footer .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+
+
 }
 footer .inner .footer-upper {
   display: flex;
@@ -922,6 +954,7 @@ footer .inner .footer-upper .footer-upper-info .footer-company-guide ul {
   display: flex;
   gap: 20px;
 }
+
 footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
   font: 600 1.6rem/1 "Noto Sans KR";
   opacity: 0.6;
@@ -930,10 +963,12 @@ footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
 footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a:hover {
   opacity: 1;
 }
+
 footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   font: normal 1.4rem/1 "Noto Sans KR";
 }
 footer .inner .footer-upper .footer-upper-ctg {
@@ -979,10 +1014,12 @@ footer .inner .footer-upper .footer-upper-ctg .category-list li a {
 footer .inner .footer-upper .footer-upper-ctg .category-list.active {
   max-height: 119px;
   opacity: 1;
+
 }
 footer .inner .footer-lower {
   display: flex;
   justify-content: space-between;
+
   align-items: center;
 }
 footer .inner .footer-lower .footer-lower-desc {
@@ -1119,6 +1156,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -1126,6 +1164,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
+
   #header #banner.ban .banner {
     width: 100%;
   }
@@ -1451,12 +1490,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #0dcc5a;
     font-weight: bold;
   }
+
   #mobile-search {
     display: none;
   }
   #mobile-search.active {
     display: none;
   }
+
   #mobile-category {
     display: none;
   }
@@ -1483,6 +1524,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   footer .inner .footer-lower .footer-lower-logo {
     margin-right: 80px;
   }
+
 }
 @media screen and (max-width: 840px) {
   html {
@@ -1500,26 +1542,32 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     z-index: 3;
   }
   #mobile-category {
+
     display: block;
+
   }
   #mobile-category ul {
     display: flex;
   }
+
   #mobile-category.active {
     display: block;
   }
   #mobile-search {
     display: block;
+
   }
   #mobile-search.active {
     display: block;
   }
+
   .container {
     margin-top: 60px;
   }
   footer .inner {
     gap: 10px;
   }
+
   footer .inner .footer-upper {
     display: flex;
     flex-direction: column;
@@ -1538,6 +1586,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   footer .inner .footer-upper .footer-upper-ctg {
     align-items: center;
   }
@@ -1550,6 +1599,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   footer .inner .footer-upper .footer-upper-ctg .category-list.active {
     max-height: 200px;
   }
+
   footer .inner .footer-lower {
     display: flex;
     flex-direction: column-reverse;
@@ -1558,9 +1608,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     text-align: center;
     gap: 20px;
   }
+
   footer .inner .footer-lower .footer-lower-logo {
     margin-right: 0;
   }
+
 }
 @media screen and (max-width: 450px) {
   #mobile-menu .mobile-menu a img {
@@ -1568,6 +1620,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     height: 22px;
   }
   #mobile-menu .mobile-menu .menu-box {
+
     gap: 15px;
   }
   #mobile-menu .mobile-menu .menu-box button:first-child i {
@@ -1576,6 +1629,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #mobile-menu .mobile-menu .menu-box button:last-child {
     width: 18px;
     height: 12px;
+
   }
   #mobile-category h3 {
     font-size: 1.4rem;
@@ -1593,7 +1647,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     font-size: 1.6rem;
   }
   #mobile-category.active {
+
     top: 60px;
+
   }
   #mobile-search .mb-searchbox {
     position: relative;
@@ -1631,13 +1687,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
   }
   #mobile-search .searchedword-list .recommendedwords ul {
+
     justify-content: center;
+
   }
   #mobile-search .searchedword-list .recommendedwords ul li {
     padding: 10px;
     font-size: 1.4rem;
   }
   #mobile-search.active {
+
     top: 60px;
   }
   .quickMenu {
@@ -1917,13 +1976,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     height: 80px;
     padding: 0;
+    padding-left: 10px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .container .sign-in form .inputs ul li .sign-input {
     gap: 5px;
-    padding-left: 15%;
+
+    padding-left: 15px;
+
+
     padding-bottom: 0;
   }
   .container .sign-in form .inputs ul li .sign-input .label {
@@ -1931,7 +1995,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     text-align: left;
     padding-left: 10px;
     padding-bottom: 0;
-    width: 200px;
+    width: 110px;
+
   }
   .container .sign-in form .inputs ul li .sign-input .inputbox {
     width: 100%;
