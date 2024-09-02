@@ -909,3 +909,106 @@ const eventSlide = () => {
   });
 };
 eventSlide();
+
+
+// quickMenu
+const quickMenu = document.querySelector(".quickMenu");
+const addQuickMenu = () => {
+  const quickBtns = document.createElement("ul");
+  const liTrigger = document.createElement("li");
+
+  quickMenu.className = "quickMenu";
+  quickBtns.className = "quickBtns";
+  liTrigger.className = "trigger";
+
+  const openMenu = `
+            <button>
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <ul class="movePages">
+              <li>
+                <a 
+                href="/pages/login.html" 
+                class="mypage"
+                target="_blank"
+                >
+                마이페이지 
+                </a>
+              </li>
+              <li>
+                <a 
+                href="/pages/wishlist.html" 
+                class="cart"
+                target="_blank"
+                >
+                찜한상품
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/pages/auction.html"
+                  class="auction"
+                  target="_blank"
+                >
+                중고경매
+                </a>
+              </li>
+              <li>
+                <a href="#" class="moveTop"></a>
+              </li>
+            </ul>
+`;
+
+  liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+
+  quickBtns.appendChild(liTrigger);
+  quickMenu.appendChild(quickBtns);
+
+  liTrigger.addEventListener("click", function () {
+    this.classList.toggle("active");
+  });
+};
+addQuickMenu();
+
+// channelTalk
+(function () {
+  var w = window;
+  if (w.ChannelIO) {
+    return w.console.error("ChannelIO script included twice.");
+  }
+  var ch = function () {
+    ch.c(arguments);
+  };
+  ch.q = [];
+  ch.c = function (args) {
+    ch.q.push(args);
+  };
+  w.ChannelIO = ch;
+  function l() {
+    if (w.ChannelIOInitialized) {
+      return;
+    }
+    w.ChannelIOInitialized = true;
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+    var x = document.getElementsByTagName("script")[0];
+    if (x.parentNode) {
+      x.parentNode.insertBefore(s, x);
+    }
+  }
+  if (document.readyState === "complete") {
+    l();
+  } else {
+    w.addEventListener("DOMContentLoaded", l);
+    w.addEventListener("load", l);
+  }
+})();
+
+ChannelIO("boot", {
+  pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
+});
+
+var config = BootConfig.create(PLUGIN_KEY)
+	.setChannelButtonOption(ChannelButtonOption(ChannelButtonPosition.RIGHT, 16, 16)) // X축/Y축 각각 16dp 떨어짐

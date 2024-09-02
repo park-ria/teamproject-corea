@@ -91,7 +91,6 @@ const delItem = (e) => {
       recentWord !=
       e.target.closest("li").querySelector(".recent-word").innerText
   );
-  // console.log(e.target.closest("li").querySelector(".recent-word").innerText);
   noWords(recentWords.length);
   save();
 
@@ -554,9 +553,6 @@ categoryBtn.addEventListener("click", function () {
 });
 
 })
-
-
-
 
 // quickMenu
 const quickMenu = document.querySelector(".quickMenu");
