@@ -20,7 +20,7 @@
     ></script>
     <!-- custom css & js -->
     <link rel="stylesheet" href="/styles/style.css" />
-    <link rel="stylesheet" href="/styles/common.css" />
+    <!-- <link rel="stylesheet" href="/styles/common.css" /> -->
     <script defer src="/scripts/common.js"></script>
     <script defer src="/scripts/script.js"></script>
   </head>
@@ -85,7 +85,26 @@
                       id="search"
                       placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
                       autocomplete="off"
+                      autocomplete="off"
                     />
+                    <input type="submit" value="" />
+                    <div class="searchedword-list">
+                      <div class="recent-words">
+                        <h3>최근 검색어</h3>
+                        <ul class="recent-list">
+                          <li class="no-words">
+                            <span>최근 검색어가 없습니다</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="live-ranking">
+                        <h3>
+                          급상승 검색어
+                          <p class="current-time"></p>
+                        </h3>
+                        <ul class="ranking-list"></ul>
+                      </div>
+                    </div>
                     <input type="submit" value="" />
                     <div class="searchedword-list">
                       <div class="recent-words">
@@ -150,6 +169,13 @@
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-category">
+          <div class="inner">
+            <div class="header-category">
+              <ul class="main-category"></ul>
             </div>
           </div>
         </div>
@@ -371,6 +397,8 @@
                 ></span>
               </div>
               <div class="event-slide">
+                <ul></ul>
+                <div class="slidePager"></div>
                 <ul></ul>
                 <div class="slidePager"></div>
               </div>

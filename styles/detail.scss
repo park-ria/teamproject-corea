@@ -177,7 +177,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           padding: 0 14px 14px;
         }
       }
-
     }
   }
 }
@@ -291,8 +290,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
   }
 }
-
-
 
 html,
 body {
@@ -700,21 +697,33 @@ body {
             border-radius: 5px;
             border: 0;
             font-size: map-get($map: $fontSize, $key: font-large);
-            color: map-get($map: $color, $key: bg-light-color);
+            // color: map-get($map: $color, $key: bg-light-color);
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            color: #fff;
+            // &::before {
+            //   content: "";
+            //   position: absolute;
+            //   top: 0;
+            //   left: 0;
+            //   width: 0;
+            //   height: 100%;
+            //   background: #0dcc5a;
+
+            //   transition: all 0.3s;
+            // }
 
             &.chat {
               background: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
+              &:hover {
+              }
             }
             &.trade {
               background: map-get($map: $color, $key: bg-dark-color);
-            }
-
-            &:hover {
-              box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-              font-weight: bold;
-            }
           }
         }
 
@@ -1010,12 +1019,23 @@ body {
         background: url("../images/best-ranking01.png") center/cover no-repeat;
       }
     }
-    // .slide-btns {
-    //   @include slideBtns;
-    //   .slidePager {
-    //     @include slidePager;
-    //   }
-    // }
+  }
+}
+
+// recent
+#recent {
+  padding: 150px 0;
+  .recent-content {
+    position: relative;
+    .recent-heading {
+      @include sectionHeading;
+    }
+    .recent-slide {
+      @include productSlide;
+      .slide-img {
+        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      }
+    }
   }
 }
 
@@ -1160,67 +1180,8 @@ body {
   }
 
   // event
-  #event {
-    margin-bottom: 150px;
-    .event {
-      .event-slider {
-        width: 830px;
-        .slide-wrapper {
-          .slide {
-            width: 790px;
-            gap: 3%;
-
-            & div:last-child {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
 
   // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 150px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 40px;
-            .item-slide {
-              .item-img {
-                width: 250px;
-                height: 235px;
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 450px) {
@@ -1409,90 +1370,5 @@ body {
     }
   }
 
-  // event
-  #event {
-    margin-bottom: 150px;
-    .event {
-      .event-slider {
-        .slide-wrapper {
-          .slide {
-            width: 415px;
-            display: block;
-            & div {
-              height: 100%;
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-              &:nth-child(2) {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
   // recommendation
-  #recommendation {
-    .recommendation {
-      gap: 100px;
-      .related {
-        .related-slider {
-          .related-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
 
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-      .recent {
-        .recent-slider {
-          .recent-wrapper {
-            gap: 20px;
-            .item-slide {
-              .item-img {
-                width: 130px;
-                height: 130px;
-
-                img {
-                  width: 130px;
-                  height: 130px;
-                }
-              }
-              .item-detail {
-                .item-name {
-                  width: 130px;
-                }
-              }
-            }
-          }
-
-          .btn {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
