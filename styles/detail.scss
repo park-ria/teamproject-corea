@@ -177,7 +177,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           padding: 0 14px 14px;
         }
       }
-
     }
   }
 }
@@ -291,8 +290,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
   }
 }
-
-
 
 html,
 body {
@@ -700,21 +697,33 @@ body {
             border-radius: 5px;
             border: 0;
             font-size: map-get($map: $fontSize, $key: font-large);
-            color: map-get($map: $color, $key: bg-light-color);
+            // color: map-get($map: $color, $key: bg-light-color);
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            color: #fff;
+            // &::before {
+            //   content: "";
+            //   position: absolute;
+            //   top: 0;
+            //   left: 0;
+            //   width: 0;
+            //   height: 100%;
+            //   background: #0dcc5a;
+
+            //   transition: all 0.3s;
+            // }
 
             &.chat {
               background: map-get($map: $color, $key: bg-main-color);
+              color: map-get($map: $color, $key: bg-light-color);
+              &:hover {
+              }
             }
             &.trade {
               background: map-get($map: $color, $key: bg-dark-color);
-            }
-
-            &:hover {
-              box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-              font-weight: bold;
-            }
           }
         }
 
@@ -1173,7 +1182,6 @@ body {
   // event
 
   // recommendation
-
 }
 
 @media screen and (max-width: 450px) {
@@ -1362,8 +1370,5 @@ body {
     }
   }
 
-
-
   // recommendation
 
-}
