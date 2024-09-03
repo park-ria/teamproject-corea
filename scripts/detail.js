@@ -250,7 +250,6 @@ fetch(joonggoInfo)
 
           if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
             heartBtns.forEach((btn) => {
-              console.log("클릭");
               const heart = btn.querySelector("i");
               heart.classList.remove("fa-solid");
               heart.classList.add("fa-regular");
@@ -263,7 +262,6 @@ fetch(joonggoInfo)
             ).innerText = `찜 ${pickedInfo.countNum}`;
           } else {
             heartBtns.forEach((btn) => {
-              console.log("클릭");
               const heart = btn.querySelector("i");
               heart.classList.remove("fa-regular");
               heart.classList.add("fa-solid");
@@ -399,6 +397,16 @@ fetch(joonggoInfo)
       // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
       // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
       map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+      // trade버튼 클릭시 이벤트
+      const tradeBtn = document.querySelector(".trade");
+
+
+      tradeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const url = `/pages/order.html?id=${product.id}`;
+        window.location.href = url;
+      })
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");

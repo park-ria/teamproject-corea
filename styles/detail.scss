@@ -615,18 +615,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             position: relative;
             z-index: 2;
             overflow: hidden;
-            color: #fff;
-            // &::before {
-            //   content: "";
-            //   position: absolute;
-            //   top: 0;
-            //   left: 0;
-            //   width: 0;
-            //   height: 100%;
-            //   background: #0dcc5a;
-
-            //   transition: all 0.3s;
-            // }
+            color: #fff;  
 
             &.chat {
               @include greenBtn;
@@ -804,6 +793,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               padding: 12px;
               border-radius: 5px;
               transition: all 0.3s;
+              color: map-get($map: $color, $key: bg-dark-gray);
 
               &.active {
                 background: map-get($map: $color, $key: bg-main-color);
