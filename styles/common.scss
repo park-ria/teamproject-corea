@@ -534,7 +534,7 @@ body {
               border-radius: 3px;
 
               &:hover {
-                background: #eee;
+                background: #e1e1e1;
               }
 
               span {
@@ -926,8 +926,9 @@ body {
         }
 
         li {
-          padding: 10px 20px;
+          padding: 12px 20px;
           color: map-get($map: $color, $key: bg-dark-color);
+          font-size: map-get($map: $fontSize, $key: font-small);
           font-weight: 400;
           cursor: pointer;
 
@@ -940,7 +941,7 @@ body {
               top: 50%;
               left: -20px;
               transform: translateY(-50%);
-              width: 3px;
+              width: 4px;
               height: 120%;
               background: map-get($map: $color, $key: bg-main-color);
               border-radius: 5px;

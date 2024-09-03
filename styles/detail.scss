@@ -712,9 +712,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             }
             .bar {
               border: none;
-              border-bottom: 2px solid
+              border-bottom: 1px solid
                 map-get($map: $color, $key: bg-light-gray);
-              border-radius: 2px;
+              border-radius: 1px;
             }
           }
 
