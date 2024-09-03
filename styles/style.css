@@ -137,7 +137,7 @@ body {
   border-radius: 3px;
 }
 #header #banner.ban .banner .banner-left > div .download-box a:hover {
-  background: #eee;
+  background: #e1e1e1;
 }
 #header #banner.ban .banner .banner-left > div .download-box a span {
   color: #000;
@@ -506,6 +506,7 @@ body {
 #header-category .inner .header-category .main-category li {
   padding: 10px 20px;
   color: #3a3a3a;
+  font-size: 1.4rem;
   font-weight: 400;
   cursor: pointer;
 }
@@ -1140,6 +1141,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
+
   .slide-btns button.slidePrev {
     transform: translateX(0);
   }
@@ -1150,6 +1152,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(0);
   }
   .slide-btns button.slideNext:hover {
+
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -1786,7 +1789,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -1800,7 +1803,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -1814,7 +1817,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2045,7 +2048,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2059,7 +2062,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2073,7 +2076,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2365,7 +2368,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2379,7 +2382,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2393,7 +2396,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";

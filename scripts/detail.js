@@ -197,7 +197,7 @@ fetch(joonggoInfo)
             countNum: updateWatchNum,
           };
           saveWatch(product.id, watchInfo);
-          headingTimeinfo.innerHTML += `<span>${watchArr[1]} ${watchNum}</span>`;
+          headingTimeinfo.innerHTML += `<span>${watchArr[1]} ${updateWatchNum}</span>`;
         } else {
           headingTimeinfo.innerHTML += `<span>${subData}</span>`;
         }
@@ -909,3 +909,5 @@ const eventSlide = () => {
   });
 };
 eventSlide();
+
+

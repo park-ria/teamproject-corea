@@ -170,6 +170,14 @@ highPriceSorting.addEventListener("click", sortHighPrice);
 
 // putting items in the wishItemList
 const addItemsInTheWishItemList = (product, index) => {
+  const findedWishItem = wishItemArr.find((arr) => arr.id === product.id);
+  const watchInfoArr = JSON.parse(localStorage.getItem("watchInfoArr")) || [];
+
+  let viewCount;
+  if (watchInfoArr.length > 0) {
+    viewCount = watchInfoArr.find((arr) => arr.id === product.id);
+  }
+
   const li = `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
@@ -250,7 +258,7 @@ const addItemsInTheWishItemList = (product, index) => {
               <span class="wishItemCount">
                 <span class="wishItemViewCount">
                   <i class="fa-regular fa-eye"></i>
-                  ${product.detail.view}
+                  ${viewCount ? viewCount.countNum : product.detail.view}
                 </span>
                 <span class="wishItemChattingCount">
                   <i class="fa-regular fa-comment-dots"></i>
@@ -258,7 +266,7 @@ const addItemsInTheWishItemList = (product, index) => {
                 </span>
                 <span class="wishItemLikeCount">
                   <i class="fa-regular fa-heart"></i>
-                  ${product.detail.wish}
+                  ${findedWishItem.countNum}
                 </span>
               </span>
             </div>
@@ -305,7 +313,7 @@ const saveWishItem = () => {
 
 const delWishItem = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
-  wishItemArr = wishItemArr.filter((item) => item !== productId);
+  wishItemArr = wishItemArr.filter((item) => item.id !== productId);
   wishItemArrDetail = wishItemArrDetail.filter((item) => item.id !== productId);
   saveWishItem();
   target.remove();
@@ -334,7 +342,7 @@ const wishItemButtonEvent = () => {
 };
 
 // putting items in the favoriteStores
-const addItemsInTheFavoriteStores = (store) => {
+const addItemsInTheFavoriteStores = (store, index) => {
   let li = `
     <li>
       <div class="favorite-store-info">
@@ -401,7 +409,7 @@ const addItemsInTheFavoriteStores = (store) => {
             )
             .join("")}
         </ul>
-        <div class="img-prev btn">
+        <div class="img-prev btn disabled">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
         <div class="img-next btn">
@@ -410,9 +418,22 @@ const addItemsInTheFavoriteStores = (store) => {
       </div>
     </li>
   `;
-  document
-    .querySelector(".favoriteStoresWrap")
-    .insertAdjacentHTML("beforeend", li);
+
+  const ul = document.querySelector(".favoriteStoresWrap");
+  ul.insertAdjacentHTML("beforeend", li);
+
+  const slideUl = ul.querySelectorAll(".favorite-store-products")[index];
+  const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+  const slideMargin = matchMedia("screen and (max-width: 840px)").matches
+    ? 10
+    : 20;
+  const clientWidth = slideUl.parentElement.clientWidth;
+  if (
+    (slideWidth + slideMargin) * store.info.product_img_etc.length <
+    clientWidth
+  ) {
+    slideUl.nextElementSibling.nextElementSibling.classList.add("disabled");
+  }
 };
 
 const saveFavoriteStores = () => {
@@ -463,6 +484,20 @@ const favorStoreSlide = (slideUl) => {
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
+
+      if (num === 0) {
+        prevBtn.classList.add("disabled");
+        nextBtn.classList.remove("disabled");
+      } else if (
+        currentSlideWidth - clientWidth >= 0 &&
+        currentSlideWidth - clientWidth <= slideMargin
+      ) {
+        nextBtn.classList.add("disabled");
+        prevBtn.classList.remove("disabled");
+      } else {
+        prevBtn.classList.remove("disabled");
+        nextBtn.classList.remove("disabled");
+      }
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
@@ -470,6 +505,9 @@ const favorStoreSlide = (slideUl) => {
         slideWidth +
         (clientWidth - currentSlideWidth)
       }px)`;
+
+      nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     }
   };
 
@@ -519,8 +557,8 @@ const favorStoreSlide = (slideUl) => {
 
 const createFavorStores = () => {
   document.querySelector(".favoriteStoresWrap").innerHTML = "";
-  favorStoreArrDetail.forEach((store) => {
-    addItemsInTheFavoriteStores(store);
+  favorStoreArrDetail.forEach((store, index) => {
+    addItemsInTheFavoriteStores(store, index);
   });
 
   favorStoresButtonEvent();
@@ -530,7 +568,7 @@ const createFavorStores = () => {
 };
 
 // putting items in the favoriteBrands
-const addItemsInTheFavoriteBrands = (brand) => {
+const addItemsInTheFavoriteBrands = (brand, index) => {
   // making favoriteBrands li
   let li = `
         <li>
@@ -578,7 +616,7 @@ const addItemsInTheFavoriteBrands = (brand) => {
               )
               .join("")}
             </ul>
-            <div class="img-prev btn">
+            <div class="img-prev btn disabled">
               <i class="fa-solid fa-chevron-left"></i>
             </div>
             <div class="img-next btn">
@@ -588,9 +626,18 @@ const addItemsInTheFavoriteBrands = (brand) => {
         </li>
       `;
 
-  document
-    .querySelector(".favoriteBrandsWrap")
-    .insertAdjacentHTML("beforeend", li);
+  const ul = document.querySelector(".favoriteBrandsWrap");
+  ul.insertAdjacentHTML("beforeend", li);
+
+  const slideUl = ul.querySelectorAll(".favorite-brand-products")[index];
+  const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+  const slideMargin = matchMedia("screen and (max-width: 840px)").matches
+    ? 10
+    : 20;
+  const clientWidth = slideUl.parentElement.clientWidth;
+  if ((slideWidth + slideMargin) * brand.products.length < clientWidth) {
+    slideUl.nextElementSibling.nextElementSibling.classList.add("disabled");
+  }
 };
 
 const saveBrandStores = () => {
@@ -640,6 +687,20 @@ const favorBrandSlide = (slideUl) => {
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
+
+      if (num === 0) {
+        prevBtn.classList.add("disabled");
+        nextBtn.classList.remove("disabled");
+      } else if (
+        currentSlideWidth - clientWidth >= 0 &&
+        currentSlideWidth - clientWidth <= slideMargin
+      ) {
+        nextBtn.classList.add("disabled");
+        prevBtn.classList.remove("disabled");
+      } else {
+        prevBtn.classList.remove("disabled");
+        nextBtn.classList.remove("disabled");
+      }
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
@@ -647,6 +708,9 @@ const favorBrandSlide = (slideUl) => {
         slideWidth +
         (clientWidth - currentSlideWidth)
       }px)`;
+
+      nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     }
   };
 
@@ -696,8 +760,8 @@ const favorBrandSlide = (slideUl) => {
 
 const createFavorBrands = () => {
   document.querySelector(".favoriteBrandsWrap").innerHTML = "";
-  favoriteBrandsArr.forEach((brand) => {
-    addItemsInTheFavoriteBrands(brand);
+  favoriteBrandsArr.forEach((brand, index) => {
+    addItemsInTheFavoriteBrands(brand, index);
   });
 
   favorBrandsButtonEvent();
@@ -711,11 +775,12 @@ fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
     // array init
-    wishItemArr = localStorage.getItem("wishItemArr")
+    /*wishItemArr = localStorage.getItem("wishItemArr")
       ? JSON.parse(localStorage.getItem("wishItemArr"))
       : jsonData.wishlist.wishItemArr
       ? jsonData.wishlist.wishItemArr
-      : [];
+      : [];*/
+    wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
     saveWishItem();
     checkEmptyData(wishItemArr);
 
@@ -739,7 +804,7 @@ fetch("../db.json")
     // putting items in the wishItemList
     wishItemArr.forEach((arr) => {
       const product = jsonData.product.filter((item) => {
-        return item.id.includes(arr);
+        return item.id.includes(arr.id);
       })[0];
       wishItemArrDetail.push(product);
     });
