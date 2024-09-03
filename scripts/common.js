@@ -1,4 +1,3 @@
-
 // AppDowload 클릭시 이벤트
 const apppDownload = document.querySelector(".appDownload");
 apppDownload.addEventListener("click", function () {
@@ -110,11 +109,10 @@ searchInput[0].addEventListener("click", (e) => {
 });
 
 document.querySelector("main").addEventListener("click", (e) => {
-  if(e.currentTarget == document.querySelector("main")) {
+  if (e.currentTarget == document.querySelector("main")) {
     searchWordList[0].classList.remove("active");
   }
-})
-
+});
 
 // nowords display-none 이벤트
 const noWords = (length) => {
@@ -350,151 +348,151 @@ items.forEach((item) => {
   });
 });
 
-
 // Header Category 생성
 const categoryData = "../db.json";
 
 fetch(categoryData)
-.then((response) => response.json())
-.then((data) => {
+  .then((response) => response.json())
+  .then((data) => {
+    const main = document.querySelector(".main-category");
 
-  const main = document.querySelector(".main-category");
-  
-  // headercategory
-  data.category.forEach((mainCategory) => {
-    const mainA = document.createElement("a");
-    const mainLi = document.createElement("li");
-    const subUl = document.createElement("ul");
-  
-    mainA.innerText = mainCategory.main;
-    mainLi.appendChild(mainA);
-    subUl.className = "sub-category1";
-  
-    mainCategory.sub.forEach((subCategory) => {
-      const subA = document.createElement("a");
-      const subLi = document.createElement("li");
-      const lastUl = document.createElement("ul");
-  
-      subA.innerText = subCategory.title;
-      subLi.appendChild(subA);
-      lastUl.className = "sub-category2";
-  
-      if (subCategory.list) {
-        subCategory.list.forEach((list) => {
-          const listA = document.createElement("a");
-          const listLi = document.createElement("li");
-  
-          listA.innerText = list;
-          listLi.appendChild(listA);
-          lastUl.appendChild(listLi);
-        });
-      }
-      subLi.appendChild(lastUl);
-      subUl.appendChild(subLi);
+    // headercategory
+    data.category.forEach((mainCategory) => {
+      const mainA = document.createElement("a");
+      const mainLi = document.createElement("li");
+      const subUl = document.createElement("ul");
+
+      mainA.innerText = mainCategory.main;
+      mainLi.appendChild(mainA);
+      subUl.className = "sub-category1";
+
+      mainCategory.sub.forEach((subCategory) => {
+        const subA = document.createElement("a");
+        const subLi = document.createElement("li");
+        const lastUl = document.createElement("ul");
+
+        subA.innerText = subCategory.title;
+        subLi.appendChild(subA);
+        lastUl.className = "sub-category2";
+
+        if (subCategory.list) {
+          subCategory.list.forEach((list) => {
+            const listA = document.createElement("a");
+            const listLi = document.createElement("li");
+
+            listA.innerText = list;
+            listLi.appendChild(listA);
+            lastUl.appendChild(listLi);
+          });
+        }
+        subLi.appendChild(lastUl);
+        subUl.appendChild(subLi);
+      });
+      mainLi.appendChild(subUl);
+      main.appendChild(mainLi);
     });
-    mainLi.appendChild(subUl);
-    main.appendChild(mainLi);
-  });
 
     // Barmenu mouseover
-  const barMenu = document.querySelector(".barmenu");
+    const barMenu = document.querySelector(".barmenu");
 
-  barMenu.addEventListener("click", () => {
-    main.classList.add("active");
-  });
+    barMenu.addEventListener("click", () => {
+      main.classList.add("active");
+    });
 
-  main.addEventListener("mouseleave", () => {
-    main.classList.remove("active");
-  });
+    main.addEventListener("mouseleave", () => {
+      main.classList.remove("active");
+    });
 
-  // Main-category mouseover
-  const mains = document.querySelectorAll(".main-category > li");
+    // Main-category mouseover
+    const mains = document.querySelectorAll(".main-category > li");
 
-  mains.forEach((main) => {
-    main.addEventListener("mouseover", (e) => {
-      if (e.target.querySelector(".sub-category1")) {
-        e.target.querySelector(".sub-category1").classList.add("active");
+    mains.forEach((main) => {
+      main.addEventListener("mouseover", (e) => {
+        if (e.target.querySelector(".sub-category1")) {
+          e.target.querySelector(".sub-category1").classList.add("active");
+        }
+      });
+
+      main.addEventListener("mouseleave", (e) => {
+        if (e.target.querySelector(".sub-category1")) {
+          e.target.querySelector(".sub-category1").classList.remove("active");
+        }
+      });
+    });
+
+    // Sub-categroy mouseover
+    const subs = document.querySelectorAll(".sub-category1 > li");
+
+    subs.forEach((sub) => {
+      sub.addEventListener("mouseover", (e) => {
+        if (e.target.querySelector(".sub-category2 > li")) {
+          e.target.querySelector(".sub-category2").classList.add("active");
+        }
+      });
+
+      sub.addEventListener("mouseleave", (e) => {
+        e.target.querySelector(".sub-category2").classList.remove("active");
+      });
+    });
+
+    const mobileSearchMenu = document.querySelector(
+      ".menu-box button:first-child"
+    );
+    const mobileMenu = document.querySelector(".menu-box button:last-child");
+    const mobileMain = document.querySelector(".categroy-main");
+    const mobileSearch = document.querySelector("#mobile-search");
+    const mobileArea = document.querySelector("#mobile-category");
+
+    // Mobile-search 클릭 이벤트
+    mobileSearchMenu.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (mobileArea.classList.contains("active")) {
+        mobileArea.classList.remove("active");
       }
-    });
 
-    main.addEventListener("mouseleave", (e) => {
-      if (e.target.querySelector(".sub-category1")) {
-        e.target.querySelector(".sub-category1").classList.remove("active");
+      if (mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.remove("active");
       }
-    });
-  });
 
-  // Sub-categroy mouseover
-  const subs = document.querySelectorAll(".sub-category1 > li");
-
-  subs.forEach((sub) => {
-    sub.addEventListener("mouseover", (e) => {
-      if (e.target.querySelector(".sub-category2 > li")) {
-        e.target.querySelector(".sub-category2").classList.add("active");
-      }
+      mobileSearchMenu.classList.add("active");
+      mobileSearch.classList.add("active");
     });
 
-    sub.addEventListener("mouseleave", (e) => {
-      e.target.querySelector(".sub-category2").classList.remove("active");
-    });
-  });
+    const backBtn = document.querySelector("#mobile-search form button");
 
-  const mobileSearchMenu = document.querySelector(".menu-box button:first-child");
-  const mobileMenu = document.querySelector(".menu-box button:last-child");
-  const mobileMain = document.querySelector(".categroy-main");
-  const mobileSearch = document.querySelector("#mobile-search");
-  const mobileArea = document.querySelector("#mobile-category");
-
-  // Mobile-search 클릭 이벤트
-  mobileSearchMenu.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (mobileArea.classList.contains("active")) {
-      mobileArea.classList.remove("active");
-    }
-
-    if (mobileMenu.classList.contains("active")) {
-      mobileMenu.classList.remove("active");
-    }
-
-    mobileSearchMenu.classList.add("active");
-    mobileSearch.classList.add("active");
-  });
-
-  const backBtn = document.querySelector("#mobile-search form button");
-
-  backBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    mobileSearchMenu.classList.remove("active");
-    mobileSearch.classList.remove("active");
-  });
-
-  // MobileMenu 클릭 이벤트
-  mobileMenu.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (mobileSearch.classList.contains("active")) {
-      mobileSearch.classList.remove("active");
-    }
-
-    if (mobileSearchMenu.classList.contains("active")) {
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       mobileSearchMenu.classList.remove("active");
-    }
-
-    mobileArea.classList.toggle("active");
-    mobileMenu.classList.toggle("active");
-
-    const categorySubs = document.querySelectorAll(".category-sub");
-    categorySubs.forEach((categorySub) => {
-      if (categorySub.classList.contains("active")) {
-        categorySub.classList.remove("active");
-      }
+      mobileSearch.classList.remove("active");
     });
-  });
 
-  // Making MobileCategory
-  data.category.forEach((mobileCategory, index) => {
-    mobileMain.innerHTML += `
+    // MobileMenu 클릭 이벤트
+    mobileMenu.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (mobileSearch.classList.contains("active")) {
+        mobileSearch.classList.remove("active");
+      }
+
+      if (mobileSearchMenu.classList.contains("active")) {
+        mobileSearchMenu.classList.remove("active");
+      }
+
+      mobileArea.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+
+      const categorySubs = document.querySelectorAll(".category-sub");
+      categorySubs.forEach((categorySub) => {
+        if (categorySub.classList.contains("active")) {
+          categorySub.classList.remove("active");
+        }
+      });
+    });
+
+    // Making MobileCategory
+    data.category.forEach((mobileCategory, index) => {
+      mobileMain.innerHTML += `
     <li>
       <div class="category-img">
         <div class="img-box">
@@ -509,54 +507,52 @@ fetch(categoryData)
       </div>
     </li>
         `;
-  
-    const categorySubs = document.querySelectorAll(".category-sub");
-  
-    if (index % 5 !== 0) {
-      categorySubs[index].style.transform = `translateX(-${(index % 5) * 20}%)`;
-    }
-  
-    const mobileSub = document.querySelectorAll(".category-sub ul");
-  
-    mobileCategory.sub.forEach((sub) => {
-      mobileSub[index].innerHTML += `
+
+      const categorySubs = document.querySelectorAll(".category-sub");
+
+      if (index % 5 !== 0) {
+        categorySubs[index].style.transform = `translateX(-${
+          (index % 5) * 20
+        }%)`;
+      }
+
+      const mobileSub = document.querySelectorAll(".category-sub ul");
+
+      mobileCategory.sub.forEach((sub) => {
+        mobileSub[index].innerHTML += `
         <li>- ${sub.title}</li>
         `;
-    });
-  });
-  
-  // Mobile-category-img 클릭시 이벤트
-  const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
-  mobileMainImgs.forEach((img) => {
-    img.addEventListener("click", function () {
-      mobileMainImgs.forEach((item) => {
-        item.nextElementSibling.classList.remove("active");
       });
-      img.nextElementSibling.classList.add("active");
+    });
+
+    // Mobile-category-img 클릭시 이벤트
+    const mobileMainImgs = mobileMain.querySelectorAll(".category-img");
+    mobileMainImgs.forEach((img) => {
+      img.addEventListener("click", function () {
+        mobileMainImgs.forEach((item) => {
+          item.nextElementSibling.classList.remove("active");
+        });
+        img.nextElementSibling.classList.add("active");
+      });
+    });
+
+    // Footer category-list
+    const categoryUl = document.querySelector(".category-list");
+    const categoryBtn = document.querySelector(".footer-upper-ctg button");
+
+    data.category.forEach((category) => {
+      const liItem = document.createElement("li");
+      const aTag = document.createElement("a");
+      aTag.innerText = category.main;
+      liItem.appendChild(aTag);
+      categoryUl.appendChild(liItem);
+    });
+
+    categoryBtn.addEventListener("click", function () {
+      this.classList.toggle("active");
+      categoryUl.classList.toggle("active");
     });
   });
-
-  // Footer category-list
-const categoryUl = document.querySelector(".category-list");
-const categoryBtn = document.querySelector(".footer-upper-ctg button");
-
-data.category.forEach((category) => {
-  const liItem = document.createElement("li");
-  const aTag = document.createElement("a");
-  aTag.innerText = category.main;
-  liItem.appendChild(aTag);
-  categoryUl.appendChild(liItem);
-});
-
-categoryBtn.addEventListener("click", function () {
-  this.classList.toggle("active");
-  categoryUl.classList.toggle("active");
-});
-
-})
-
-
-
 
 // quickMenu
 const quickMenu = document.querySelector(".quickMenu");

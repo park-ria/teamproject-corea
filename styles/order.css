@@ -1723,6 +1723,21 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   position: sticky;
   top: 0;
 }
+.order .order-content form .delivery-right input[type=submit] {
+  width: 100%;
+  height: 70px;
+  padding: 0;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #fff;
+  background: #dcdcdc;
+  cursor: pointer;
+}
+.order .order-content form .delivery-right input[type=submit].active {
+  background: #0dcc5a;
+}
 .order .order-content form .delivery-desc {
   width: 100%;
   margin: 20px 0 30px;
@@ -1742,6 +1757,9 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   padding: 10px 0;
   display: flex;
   align-items: center;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li:last-child {
+  align-items: flex-end;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li label {
   width: 100px;
@@ -1814,11 +1832,33 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select:focus {
   outline: none;
 }
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+  width: 80%;
+  height: 100px;
+  padding: 20px 25px;
+  resize: none;
+  overflow-y: hidden;
+  border: 1px solid #dcdcdc;
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg::-moz-placeholder {
+  color: #aaa;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg::placeholder {
+  color: #aaa;
+  transition: opacity 0.3s;
+}
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
   display: flex;
   align-items: flex-end;
   margin-left: 10px;
   color: #aaa;
+  padding-bottom: 5px;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt strong {
   font-size: 1.6rem;
@@ -1835,6 +1875,9 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   width: 25px;
   height: 25px;
   background: url("../images/store.png") center/cover no-repeat;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .store-name p {
+  font-size: 1.6rem;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc {
   display: flex;
@@ -1912,7 +1955,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -55%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payType {
   width: 100%;
@@ -1962,7 +2005,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc {
   width: 100%;
-  margin: 20px 0;
+  margin: 10px 0 20px;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines {
   height: 0;
@@ -2022,7 +2065,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -46%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck input[type=checkbox]:checked + label > span {
   border: 1px solid transparent;
@@ -2083,7 +2126,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -55%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap.on {
   height: auto;
@@ -2298,11 +2341,132 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 }
 .order .order-content form .delivery-desc.approval {
   border-top: 1px dotted #dcdcdc;
-  padding: 30px 0;
+  padding: 20px 0 0;
+  margin: 0;
 }
 .order .order-content form .delivery-desc.approval .allCheckWrap {
   width: 100%;
   padding: 10px;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox] {
+  display: none;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label span::before {
+  content: "\f00c";
+  font-family: "fontawesome";
+  font-size: 11px;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -50%);
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox]:checked + label > span {
+  border: 1px solid transparent;
+  background: #0dcc5a;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox]:checked + label > span::before {
+  color: #fff;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox .fa-solid {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox .fa-solid:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li {
+  padding: 10px;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem input[type=checkbox] {
+  display: none;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem label .fa-solid {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 10px;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem input[type=checkbox]:checked + label > .fa-solid {
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton {
+  color: #ccc;
+  cursor: pointer;
+  position: relative;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton::after {
+  content: "+";
+  font-family: "fontawesome";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton.active {
+  box-shadow: 0 0 5px #dcdcdc;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton.active::after {
+  content: "+";
+  font-family: "fontawesome";
+  transform: translateY(-50%) rotate(45deg);
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li iframe {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s, height 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li iframe.active {
+  height: 150px;
+  opacity: 1;
+  margin: 20px 0;
+}
+.order .order-content form .delivery-desc.lastMent {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-top: 0;
+}
+.order .order-content form .delivery-desc.lastMent p {
+  font-size: 1.2rem;
+  line-height: normal;
+  color: #6d6d6d;
 }
 .order .order-content form .banner {
   margin: 50px 0;
@@ -2315,7 +2479,6 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 
 /* payTypeModal */
 .payTypeModal {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -2346,6 +2509,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 .payTypeModal ul li {
   margin-bottom: 12px;
   font-size: 1.6rem;
+  line-height: 1.3;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2375,7 +2539,6 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   width: 100%;
   height: 0;
   opacity: 0;
-  transition: all 0.3s;
 }
 .payTypeModal-overlay.active {
   height: 100vh;

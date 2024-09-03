@@ -25,7 +25,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-55%, -46%);
+        transform: translate(-55%, -50%);
       }
     }
   }
@@ -67,7 +67,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-55%, -55%);
+      transform: translate(-55%, -50%);
     }
   }
 }
@@ -93,6 +93,21 @@
         padding: 0 20px;
         position: sticky;
         top: 0;
+        input[type="submit"] {
+          width: 100%;
+          height: 70px;
+          padding: 0;
+          margin-bottom: 30px;
+          border-radius: 5px;
+          font-size: 2.6rem;
+          font-weight: bold;
+          color: map-get($color, bg-light-color);
+          background: map-get($color, bg-light-gray);
+          cursor: pointer;
+          &.active {
+            background: map-get($color, bg-main-color);
+          }
+        }
       }
       .delivery-desc {
         width: 100%;
@@ -112,6 +127,9 @@
               padding: 10px 0;
               display: flex;
               align-items: center;
+              &:last-child {
+                align-items: flex-end;
+              }
               label {
                 width: 100px;
               }
@@ -174,11 +192,28 @@
                   outline: none;
                 }
               }
+              #etcMsg {
+                width: 80%;
+                height: 100px;
+                padding: 20px 25px;
+                resize: none;
+                overflow-y: hidden;
+                border: 1px solid map-get($color, bg-light-gray);
+                font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+                &:focus {
+                  outline: none;
+                }
+                &::placeholder {
+                  color: #aaa;
+                  transition: opacity 0.3s;
+                }
+              }
               .etcMsgCnt {
                 display: flex;
                 align-items: flex-end;
                 margin-left: 10px;
                 color: #aaa;
+                padding-bottom: 5px;
                 strong {
                   font-size: map-get($fontSize, font-medium);
                   color: map-get($color, main-font-color);
@@ -199,6 +234,9 @@
                 width: 25px;
                 height: 25px;
                 background: url("../images/store.png") center/cover no-repeat;
+              }
+              p {
+                font-size: map-get($fontSize, font-medium);
               }
             }
             .product-desc {
@@ -278,7 +316,7 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-55%, -55%);
+                transform: translate(-55%, -50%);
               }
             }
           }
@@ -329,7 +367,7 @@
           }
           .payTypeDesc {
             width: 100%;
-            margin: 20px 0;
+            margin: 10px 0 20px;
             .payGuidelines {
               height: 0;
               padding: 0;
@@ -615,12 +653,104 @@
         }
         &.approval {
           border-top: 1px dotted map-get($color, bg-light-gray);
-          padding: 30px 0;
+          padding: 20px 0 0;
+          margin: 0;
           .allCheckWrap {
             width: 100%;
             padding: 10px;
             .allCheckbox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              @include checkbox-style;
+              .fa-solid {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                color: #ccc;
+                cursor: pointer;
+                transition: color 0.3s;
+                &:hover {
+                  color: map-get($color, main-font-color);
+                }
+              }
             }
+          }
+          .approvalCheckbox {
+            li {
+              padding: 10px;
+              .approvalCheckboxLine {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .approvalCheckboxItem {
+                  input[type="checkbox"] {
+                    display: none;
+                  }
+                  label {
+                    .fa-solid {
+                      width: 20px;
+                      height: 20px;
+                      text-align: center;
+                      line-height: 20px;
+                      margin-right: 10px;
+                      transition: color 0.3s;
+                    }
+                  }
+                  input[type="checkbox"]:checked + label > .fa-solid {
+                    color: map-get($color, bg-main-color);
+                  }
+                }
+                .descButton {
+                  color: #ccc;
+                  cursor: pointer;
+                  position: relative;
+                  &:hover {
+                    color: map-get($color, main-font-color);
+                  }
+                  &::after {
+                    content: "\2b";
+                    font-family: "fontawesome";
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    transition: all 0.3s;
+                  }
+                  &.active {
+                    box-shadow: 0 0 5px map-get($color, bg-light-gray);
+                    &::after {
+                      content: "\2b";
+                      font-family: "fontawesome";
+                      transform: translateY(-50%) rotate(45deg);
+                    }
+                  }
+                }
+              }
+              iframe {
+                width: 100%;
+                height: 0;
+                opacity: 0;
+                transition: opacity 0.3s, height 0.3s;
+                &.active {
+                  height: 150px;
+                  opacity: 1;
+                  margin: 20px 0;
+                }
+              }
+            }
+          }
+        }
+        &.lastMent {
+          background: #f9f9f9;
+          padding: 20px;
+          margin-top: 0;
+          p {
+            font-size: map-get($fontSize, font-extra-small);
+            line-height: normal;
+            color: map-get($color, bg-dark-gray);
           }
         }
       }
@@ -637,7 +767,6 @@
 
 /* payTypeModal */
 .payTypeModal {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -666,6 +795,7 @@
     li {
       margin-bottom: 12px;
       font-size: map-get($fontSize, font-medium);
+      line-height: 1.3;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -696,7 +826,6 @@
   width: 100%;
   height: 0;
   opacity: 0;
-  transition: all 0.3s;
   &.active {
     height: 100vh;
     opacity: 1;
