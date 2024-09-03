@@ -240,6 +240,7 @@ $bg-main-color: #0dcc5a;
                   padding-top: 5px;
                   padding-left: 10px;
                   padding-bottom: 0;
+
                   width: 110px;
                 }
                 .inputbox {
@@ -344,7 +345,8 @@ $bg-main-color: #0dcc5a;
               .sign-input {
                 gap: 5px;
                 padding-bottom: 0;
-                padding-left: 15px;
+
+                padding-left: 0;
                 .label {
                   font-size: 1.5rem;
                   text-align: left;

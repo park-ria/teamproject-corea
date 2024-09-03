@@ -6,11 +6,9 @@ const mainSlideUl = document.querySelector(".mainSlideWrapper");
 // add main slide item
 const addMainSlide = (slide, index) => {
   const liItem = document.createElement("li");
-  //const aTag = document.createElement("a");
   const aTag = document.createElement("span");
   const slideDesc = document.createElement("div");
 
-  //aTag.setAttribute("href", "#none");
   aTag.style.background = `url(../images/${slide.img}) center/cover no-repeat`;
   slideDesc.className = "main-slide-desc";
 
@@ -24,14 +22,14 @@ const addMainSlide = (slide, index) => {
                 </p>
   `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.appendChild(slideDesc);
   liItem.appendChild(aTag);
   mainSlideUl.appendChild(liItem);
 };
 
 // mainSlide
-let mainSlide = () => {
+const mainSlide = () => {
   const pagers = document.querySelector(".mainSlidePager");
 
   const preBtns = document.querySelectorAll(".mainSlidePrev");
@@ -269,7 +267,7 @@ const addProduct = (product, ul) => {
               </p>
         `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.append(slideImg, slideDesc);
   liItem.appendChild(aTag);
   liItem.appendChild(badge);
@@ -331,7 +329,7 @@ const productSlide = (section) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       movePager(currentIdx);
       slideUl.style.transform = `translateX(${
@@ -349,8 +347,13 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.remove("disabled");
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
@@ -398,102 +401,6 @@ const productSlide = (section) => {
     }
   });
 };
-
-// const productSlide = (section) => {
-//   const slideSection = document.querySelector(section);
-//   const slideUl = slideSection.querySelector("ul");
-//   const slide = slideUl.querySelectorAll("li");
-//   const prevBtn = slideSection.querySelector(".slidePrev");
-//   const nextBtn = slideSection.querySelector(".slideNext");
-//   const pagers = slideSection.querySelectorAll(".slidePager span");
-
-//   const slideCount = slide.length;
-//   const slideWidth = 240;
-//   const slideMargin = 20;
-
-//   let currentIdx = 0;
-//   // move pager
-//   pagers[0].classList.add("active");
-//   const movePager = (index) => {
-//     for (let pager of pagers) {
-//       pager.classList.remove("active");
-//     }
-//     pagers[index].classList.add("active");
-//   };
-
-//   // click pager
-//   pagers.forEach((pager, index) => {
-//     pager.addEventListener("click", function () {
-//       pagers.forEach((sibling) => {
-//         if (sibling !== pager) sibling.classList.remove("active");
-//       });
-
-//       this.classList.add("active");
-//       currentIdx = index;
-//       moveSlide(index);
-//     });
-//   });
-
-//   const moveSlide = (num) => {
-//     currentIdx = num;
-//     const keyIndex = slideCount - slidesPerView + 1;
-//     const showIndex = (keyIndex + num) % keyIndex;
-//     movePager(showIndex);
-
-//     slideUl.style.left = `${-num * (slideWidth + slideMargin)}px`;
-
-//     if (currentIdx === keyIndex) {
-//       slideUl.style.left = 0;
-//       currentIdx = 0;
-//     }
-//     if (currentIdx === -1) {
-//       slideUl.style.left = `-${
-//         (slideWidth + slideMargin) * (slideCount - slidesPerView)
-//       }px`;
-//       currentIdx = slideCount - slidesPerView;
-//     }
-//   };
-
-//   prevBtn.addEventListener("click", () => {
-//     moveSlide(currentIdx - 1);
-//   });
-//   nextBtn.addEventListener("click", () => {
-//     moveSlide(currentIdx + 1);
-//   });
-
-//   // drag event
-//   let startPoint = 0;
-//   let endPoint = 0;
-
-//   slideUl.addEventListener("mousedown", (e) => {
-//     slideUl.style.cursor = "grabbing";
-//     startPoint = e.pageX;
-//   });
-
-//   slideUl.addEventListener("mouseup", (e) => {
-//     slideUl.style.cursor = "grab";
-//     endPoint = e.pageX;
-
-//     if (startPoint < endPoint) {
-//       moveSlide(currentIdx - 1);
-//     } else if (startPoint > endPoint) {
-//       moveSlide(currentIdx + 1);
-//     }
-//   });
-
-//   // touch event
-//   slideUl.addEventListener("touchstart", (e) => {
-//     startPoint = e.touches[0].pageX;
-//   });
-//   slideUl.addEventListener("touchend", (e) => {
-//     endPoint = e.changedTouches[0].pageX;
-//     if (startPoint < endPoint) {
-//       moveSlide(currentIdx - 1);
-//     } else if (startPoint > endPoint) {
-//       moveSlide(currentIdx + 1);
-//     }
-//   });
-// };
 
 fetch(joonggoInfo)
   .then((response) => response.json())
@@ -784,51 +691,104 @@ closeItems.forEach((item) => {
   });
 });
 
-// quickMenu
-const quickTrigger = document.querySelector(".quickMenu .trigger");
-quickTrigger.addEventListener("click", function () {
-  this.classList.toggle("active");
-});
+// // quickMenu
+// const quickMenu = document.querySelector(".quickMenu");
+// const addQuickMenu = () => {
+//   const quickBtns = document.createElement("ul");
+//   const liTrigger = document.createElement("li");
 
-// channelTalk
-(function () {
-  var w = window;
-  if (w.ChannelIO) {
-    return w.console.error("ChannelIO script included twice.");
-  }
-  var ch = function () {
-    ch.c(arguments);
-  };
-  ch.q = [];
-  ch.c = function (args) {
-    ch.q.push(args);
-  };
-  w.ChannelIO = ch;
-  function l() {
-    if (w.ChannelIOInitialized) {
-      return;
-    }
-    w.ChannelIOInitialized = true;
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-    var x = document.getElementsByTagName("script")[0];
-    if (x.parentNode) {
-      x.parentNode.insertBefore(s, x);
-    }
-  }
-  if (document.readyState === "complete") {
-    l();
-  } else {
-    w.addEventListener("DOMContentLoaded", l);
-    w.addEventListener("load", l);
-  }
-})();
+//   quickMenu.className = "quickMenu";
+//   quickBtns.className = "quickBtns";
+//   liTrigger.className = "trigger";
 
-ChannelIO("boot", {
-  pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
-});
+//   const openMenu = `
+//             <button>
+//               <i class="fa-solid fa-plus"></i>
+//             </button>
+//             <ul class="movePages">
+//               <li>
+//                 <a
+//                 href="/pages/login.html"
+//                 class="mypage"
+//                 target="_blank"
+//                 >
+//                 마이페이지
+//                 </a>
+//               </li>
+//               <li>
+//                 <a
+//                 href="/pages/wishlist.html"
+//                 class="cart"
+//                 target="_blank"
+//                 >
+//                 찜한상품
+//                 </a>
+//               </li>
+//               <li>
+//                 <a
+//                   href="/pages/auction.html"
+//                   class="auction"
+//                   target="_blank"
+//                 >
+//                 중고경매
+//                 </a>
+//               </li>
+//               <li>
+//                 <a href="#main-slide" class="moveTop"></a>
+//               </li>
+//             </ul>
+// `;
+
+//   liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+
+//   quickBtns.appendChild(liTrigger);
+//   quickMenu.appendChild(quickBtns);
+
+//   liTrigger.addEventListener("click", function () {
+//     this.classList.toggle("active");
+//   });
+// };
+// addQuickMenu();
+
+// // channelTalk
+// (function () {
+//   var w = window;
+//   if (w.ChannelIO) {
+//     return w.console.error("ChannelIO script included twice.");
+//   }
+//   var ch = function () {
+//     ch.c(arguments);
+//   };
+//   ch.q = [];
+//   ch.c = function (args) {
+//     ch.q.push(args);
+//   };
+//   w.ChannelIO = ch;
+//   function l() {
+//     if (w.ChannelIOInitialized) {
+//       return;
+//     }
+//     w.ChannelIOInitialized = true;
+//     var s = document.createElement("script");
+//     s.type = "text/javascript";
+//     s.async = true;
+//     s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+//     var x = document.getElementsByTagName("script")[0];
+//     if (x.parentNode) {
+//       x.parentNode.insertBefore(s, x);
+//     }
+//   }
+//   if (document.readyState === "complete") {
+//     l();
+//   } else {
+//     w.addEventListener("DOMContentLoaded", l);
+//     w.addEventListener("load", l);
+//   }
+// })();
+
+// ChannelIO("boot", {
+//   pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
+// });
 
 // const goTop = document.querySelector(".moveTop");
 // goTop.addEventListener("click", () => {

@@ -36,7 +36,6 @@ const createSpan = (content, className) => {
 
 const updateUnit = (parent, unit, itemValue) => {
   const unitElement = parent.querySelector(`.${unit}`);
-  //console.log(unitElement);
 
   if (unitElement) {
     const currentValue = unitElement.querySelector(".old").innerText;
@@ -63,6 +62,7 @@ const updateUnit = (parent, unit, itemValue) => {
   }
 };
 const today = new Date();
+
 // product
 const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
@@ -106,7 +106,7 @@ const addProduct = (product, ul) => {
               </p>
         `;
 
-  slideDesc.innerHTML = desc;
+  slideDesc.insertAdjacentHTML("afterbegin", desc);
   aTag.append(slideImg, slideDesc);
   liItem.append(aTag);
 
@@ -119,7 +119,7 @@ const addProduct = (product, ul) => {
     timeItems.className = "timeEvent";
     clock.className = "clock";
 
-    //const today = new Date();
+    const today = new Date();
 
     const time = Number(product.time.replace(/[^0-9]/g, ""));
     // console.log(time);
@@ -130,29 +130,24 @@ const addProduct = (product, ul) => {
 
     if (product.time.includes("일")) {
       eventDate += time;
-      // console.log(eventDate);
     } else if (product.time.includes("시간")) {
       eventHrs += time;
-      // console.log(eventHrs);
     } else if (product.time.includes("분")) {
       eventMin += time;
-      // console.log(eventMin);
     } else if (product.time.includes("초")) {
       eventSec += time;
-      // console.log(eventSec);
     }
 
-    const eventDay = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      eventDate,
-      eventHrs,
-      eventMin,
-      eventSec
-    );
-
     const updateTime = () => {
-      console.log(eventDay);
+      const today = new Date();
+      const eventDay = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        eventDate,
+        eventHrs,
+        eventMin,
+        eventSec
+      );
       const gapDate = Math.floor((eventDay - today) / 1000);
       const { hour, min, sec } = formatting(gapDate);
 
@@ -160,8 +155,7 @@ const addProduct = (product, ul) => {
       updateUnit(timeItems, "min", min);
       updateUnit(timeItems, "sec", sec);
     };
-    updateTime();
-    //setInterval(updateTime, 1000);
+    setInterval(updateTime, 1000);
 
     timeItems.prepend(clock);
     slideImg.appendChild(timeItems);
@@ -249,8 +243,13 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.remove("disabled");
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
@@ -270,7 +269,6 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
-    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 
@@ -310,15 +308,48 @@ sortingBtns.forEach((btn) => {
     this.classList.add("active");
 
     if (this.id === "latestSorting") sortNew();
+    else if (this.id === "popularSorting") sortPopular();
+    else if (this.id === "lowPriceSorting") sortLowPrice();
+    else sorthighPrice();
   });
 });
 
-// latestSorting;
-
 const sortNew = () => {
-  // addProduct(product);
   const products = sortedLists.sort((a, b) => {
-    return new Date(b.real_time).getTime() - new Date(a.real_time).getTime();
+    return new Date(a.real_time).getTime() - new Date(b.real_time).getTime();
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sortPopular = () => {
+  const products = sortedLists.sort((a, b) => {
+    return b.detail.view - a.detail.view;
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sortLowPrice = () => {
+  const products = sortedLists.sort((a, b) => {
+    return a.price.replace(/[^0-9]/g, "") - b.price.replace(/[^0-9]/g, "");
+  });
+
+  document.querySelector(".product").innerHTML = "";
+
+  products.forEach((product) => {
+    addProduct(product, ".product");
+  });
+};
+const sorthighPrice = () => {
+  const products = sortedLists.sort((a, b) => {
+    return b.price.replace(/[^0-9]/g, "") - a.price.replace(/[^0-9]/g, "");
   });
 
   document.querySelector(".product").innerHTML = "";
@@ -333,18 +364,17 @@ fetch(joonggoInfo)
   .then((joongoData) => {
     joongoData.product.forEach((product, index) => {
       // addBestProduct
-      if (index < 7) {
+      if (index < productSlideLimit * 2 && product.time.includes("분")) {
         addProduct(product, ".bestAuction");
       }
       // addProductList
       else if (index < productSlideLimit * 2 + 2) {
         addProduct(product, ".product");
         sortedLists.push(product);
+        sortNew();
       }
     });
 
     // productList run
     productSlide("#best-auction");
-
-    // console.log(joongoData.product);
   });
