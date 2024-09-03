@@ -544,21 +544,6 @@ body {
   display: block;
 }
 
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: none;
-}
-#bottom-memu .bottom-mmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #mobile-menu {
   display: none;
   background: #fff;

@@ -4,58 +4,11 @@ fetch(joonggoInfo)
   .then((response) => response.json())
   .then((joongoData) => {
     const params = new URLSearchParams(window.location.search);
-    const title = params.get("title");
     const id = params.get("id");
 
     const product = joongoData.product.find((product) => product.id === id);
 
     if (product) {
-      // 찜한목록 click시 이벤트
-      const heartBtns = document.querySelectorAll(".heart-btn");
-
-      let idList = [];
-
-      const checkId = JSON.parse(localStorage.getItem("idList"));
-
-      // console.log(checkId);
-
-      /*  if (checkId.length > 0) {
-        heartBtns.forEach((heartBtn) => {
-          heartBtn.querySelector("i").classList.remove("fa-regular");
-          heartBtn.querySelector("i").classList.add("fa-solid");
-        });
-      } else {
-        heartBtns.forEach((heartBtn) => {
-          heartBtn.querySelector("i").classList.remove("fa-solid");
-          heartBtn.querySelector("i").classList.add("fa-regular");
-        });
-      }*/
-
-      const saveId = () => {
-        localStorage.setItem("idList", JSON.stringify(idList));
-      };
-
-      const removeId = (id) => {
-        idList = JSON.parse(localStorage.getItem("idList"));
-        idList = idList.filter((duplicatedId) => duplicatedId !== id);
-        saveId();
-      };
-
-      heartBtns.forEach((heartBtn) => {
-        heartBtn.addEventListener("click", (e) => {
-          if (e.target.classList.contains("fa-solid")) {
-            e.target.classList.remove("fa-solid");
-            e.target.classList.add("fa-regular");
-            removeId(product.id);
-          } else {
-            e.target.classList.remove("fa-regular");
-            e.target.classList.add("fa-solid");
-            idList.push(product.id);
-            saveId();
-          }
-        });
-      });
-
       // Making Img-slider
       product.detail.url_list.forEach((slide, index) => {
         const imgWrapper = document.querySelector(".img-wrapper");
@@ -215,7 +168,116 @@ fetch(joonggoInfo)
 
       // Making Heading-timeinfo
       const headingTimeinfo = document.querySelector(".heading-timeinfo");
-      headingTimeinfo.innerText = product.detail.sub_data;
+      const subDataArr = product.detail.sub_data.split("·");
+      let watchInfoArr = JSON.parse(localStorage.getItem("watchInfoArr")) || [];
+
+      // 조회수 로컬스토리지 저장
+      const saveWatch = (id, watchInfo) => {
+        watchInfoArr = watchInfoArr.filter((item) => item.id !== id);
+        watchInfoArr.push(watchInfo);
+        localStorage.setItem("watchInfoArr", JSON.stringify(watchInfoArr));
+      };
+
+      // 조회수 넘버 카운트
+      subDataArr.forEach((subData, index) => {
+        const watchArr = subData.split(" ");
+        let watchNum = Number(watchArr[2]);
+
+        if (index === 1) {
+          if (watchInfoArr) {
+            watchInfoArr.forEach((info) => {
+              if (info.id === product.id) {
+                watchNum = info.countNum;
+              }
+            });
+          }
+          const updateWatchNum = watchNum + 1;
+          const watchInfo = {
+            id: product.id,
+            countNum: updateWatchNum,
+          };
+          saveWatch(product.id, watchInfo);
+          headingTimeinfo.innerHTML += `<span>${watchArr[1]} ${watchNum}</span>`;
+        } else {
+          headingTimeinfo.innerHTML += `<span>${subData}</span>`;
+        }
+      });
+
+      // 찜한목록 click시 이벤트
+      const heartBtns = document.querySelectorAll(".heart-btn");
+      let wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
+
+      // updateHeartBtns
+      const updateHeartBtns = () => {
+        if (wishItemArr.find((wishItem) => wishItem.id === product.id)) {
+          heartBtns.forEach((heartBtn) => {
+            heartBtn.querySelector("i").classList.remove("fa-regular");
+            heartBtn.querySelector("i").classList.add("fa-solid");
+          });
+        } else {
+          heartBtns.forEach((heartBtn) => {
+            heartBtn.querySelector("i").classList.remove("fa-solid");
+            heartBtn.querySelector("i").classList.add("fa-regular");
+          });
+        }
+      };
+
+      const saveId = () => {
+        localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
+      };
+
+      const removeId = (id) => {
+        wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
+        wishItemArr = wishItemArr.filter(
+          (duplicatedId) => duplicatedId.id !== id.id
+        );
+        saveId();
+      };
+
+      updateHeartBtns();
+
+      const picked = subDataArr[3].split(" ");
+      const pickedNum = Number(picked[2]);
+
+      const pickedInfo = {
+        id: product.id,
+        countNum: pickedNum,
+      };
+
+      heartBtns.forEach((heartBtn) => {
+        heartBtn.addEventListener("click", (e) => {
+          wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
+
+          if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
+            heartBtns.forEach((btn) => {
+              console.log("클릭");
+              const heart = btn.querySelector("i");
+              heart.classList.remove("fa-solid");
+              heart.classList.add("fa-regular");
+            });
+            pickedInfo.countNum = pickedInfo.countNum - 1;
+            console.log(pickedInfo);
+            removeId(pickedInfo);
+            headingTimeinfo.querySelector(
+              "span:nth-child(4)"
+            ).innerText = `찜 ${pickedInfo.countNum}`;
+          } else {
+            heartBtns.forEach((btn) => {
+              console.log("클릭");
+              const heart = btn.querySelector("i");
+              heart.classList.remove("fa-regular");
+              heart.classList.add("fa-solid");
+            });
+            pickedInfo.countNum = pickedInfo.countNum + 1;
+            console.log(pickedInfo);
+            wishItemArr.push(pickedInfo);
+            saveId();
+            headingTimeinfo.querySelector(
+              "span:nth-child(4)"
+            ).innerText = `찜 ${pickedInfo.countNum}`;
+          }
+        });
+      });
 
       // Making User-img
       const userImg = document.querySelector(".user-img");
@@ -472,10 +534,30 @@ fetch(joonggoInfo)
         }
       }
 
-      // data
+      // randomNum 생성
+      let itemNum = 0;
+      const showItemCount = 9;
+
+      let recentArr = new Set();
+      for (let i = 0; i <= showItemCount; i++) {
+        recentArr.add(Math.floor(Math.random() * 79));
+      }
+
       joongoData.product.forEach((item, index) => {
-        if (item.detail.page_path[1] == product.detail.page_path[1]) {
-          addProduct(item, ".recommendedUl");
+        // recommended 생성
+        if (item.id !== product.id) {
+          if (
+            item.detail.page_path[1] == product.detail.page_path[1] &&
+            itemNum < showItemCount
+          ) {
+            addProduct(item, ".recommendedUl");
+            itemNum++;
+          } else {
+            // recet 생성
+            if ([...recentArr].includes(index)) {
+              addProduct(joongoData.product[index], ".recentUl");
+            }
+          }
         }
       });
       // productSlide run
@@ -485,9 +567,9 @@ fetch(joonggoInfo)
   });
 
 // add product slide item
+// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
-const productSlideLimit = 10;
 
 if (matchMedia("screen and (min-width: 1280px)").matches) {
   slidesPerView = 5;
@@ -535,13 +617,14 @@ const addProduct = (product, ul) => {
   liItem.appendChild(aTag);
   ulItem.appendChild(liItem);
 
+  // const productSlideLimit = ulItem.children.length;
   // pager
-  const slidePager =
-    ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
-  if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-    const spanTag = document.createElement("span");
-    slidePager.appendChild(spanTag);
-  }
+  // const slidePager =
+  //   ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
+  // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+  //   const spanTag = document.createElement("span");
+  //   slidePager.appendChild(spanTag);
+  // }
   slideIndex++;
 };
 
@@ -552,36 +635,41 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  const pagers = slideSection.querySelectorAll(".slidePager span");
-
-  prevBtn.classList.add("disabled");
+  // const pagers = slideSection.querySelectorAll(".slidePager span");
 
   const slideCount = slide.length;
+
+  if (slideCount < 6) {
+    prevBtn.classList.add("disabled");
+    nextBtn.classList.add("disabled");
+    // prevBtn.style.display = "none";
+    // nextBtn.style.display = "none";
+  }
 
   let currentIdx = 0;
 
   // move pager
-  pagers[0].classList.add("active");
-  const movePager = (index) => {
-    for (let pager of pagers) {
-      pager.classList.remove("active");
-    }
-    pagers[index].classList.add("active");
-    // console.log(index);
-  };
+  // pagers[0].classList.add("active");
+  // const movePager = (index) => {
+  //   for (let pager of pagers) {
+  //     pager.classList.remove("active");
+  //   }
+  //   pagers[index].classList.add("active");
+  //   // console.log(index);
+  // };
 
   // click pager
-  pagers.forEach((pager, index) => {
-    pager.addEventListener("click", function () {
-      pagers.forEach((sibling) => {
-        if (sibling !== pager) sibling.classList.remove("active");
-      });
+  // pagers.forEach((pager, index) => {
+  //   pager.addEventListener("click", function () {
+  //     pagers.forEach((sibling) => {
+  //       if (sibling !== pager) sibling.classList.remove("active");
+  //     });
 
-      this.classList.add("active");
-      currentIdx = index;
-      moveSlide(index);
-    });
-  });
+  //     this.classList.add("active");
+  //     currentIdx = index;
+  //     moveSlide(index);
+  //   });
+  // });
 
   const moveSlide = (num) => {
     if (num < 0 || num >= slideCount) return;
@@ -593,13 +681,13 @@ const productSlide = (section) => {
 
     if (currentSlideWidth >= clientWidth) {
       currentIdx = num;
-      movePager(currentIdx);
+      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
-      movePager(currentIdx);
+      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -(num - 1) * (slideWidth + slideMargin) -
         slideWidth +
@@ -609,8 +697,13 @@ const productSlide = (section) => {
 
     if (num === 0) {
       prevBtn.classList.add("disabled");
-    } else if (num === slideCount - slidesPerView) {
+      nextBtn.classList.remove("disabled");
+    } else if (
+      num === slideCount - slidesPerView ||
+      num > slideCount - slidesPerView
+    ) {
       nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     } else {
       prevBtn.classList.remove("disabled");
       nextBtn.classList.remove("disabled");
@@ -661,9 +754,16 @@ const productSlide = (section) => {
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
+const shaerboxFilter = document.querySelector(".shaerbox-filter");
 
 shareBtn.addEventListener("click", () => {
-  document.querySelector(".share-box").classList.toggle("active");
+  document.querySelector(".share-box").classList.add("active");
+  shaerboxFilter.classList.toggle("active");
+});
+
+shaerboxFilter.addEventListener("click", function () {
+  document.querySelector(".share-box").classList.remove("active");
+  this.classList.remove("active");
 });
 
 // URL click시 url주소

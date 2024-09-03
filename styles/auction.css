@@ -76,6 +76,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  width: 100%;
   background: #fff;
   z-index: 100;
 }
@@ -108,6 +109,9 @@ body {
   gap: 5px;
   position: relative;
   cursor: pointer;
+}
+#header #banner.ban .banner .banner-left > div img {
+  height: 15px;
 }
 #header #banner.ban .banner .banner-left > div span {
   color: #fff;
@@ -168,6 +172,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#header #header-item .header-item .header-top #logo img {
+  width: 180px;
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
@@ -554,21 +561,6 @@ body {
   display: block;
 }
 
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: none;
-}
-#bottom-memu .bottom-mmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #mobile-menu {
   display: none;
   background: #fff;
@@ -581,6 +573,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#mobile-menu .mobile-menu .mobile-logo img {
+  width: 120px;
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
@@ -600,6 +595,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -691,6 +687,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -719,6 +716,7 @@ body {
   transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
   transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+  cursor: pointer;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
@@ -755,6 +753,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #111;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -1065,14 +1066,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .quickMenu .quickBtns .trigger .movePages {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
-  transform: translateY(-35%);
+  transform: translateY(35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
   opacity: 0;
   z-index: -1;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 .quickMenu .quickBtns .trigger .movePages li {
@@ -1129,12 +1132,26 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+  max-height: 254px;
+  overflow: visible;
 }
 
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
     padding: 0 2%;
+  }
+  .slide-btns button.slidePrev {
+    transform: translateX(0);
+  }
+  .slide-btns button.slidePrev:hover {
+    transform: translate(0, 5%);
+  }
+  .slide-btns button.slideNext {
+    transform: translateX(0);
+  }
+  .slide-btns button.slideNext:hover {
+    transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1150,10 +1167,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-top .search-box form input[type=text] {
     width: 100%;
-    height: 40px;
-    border-radius: 50px;
-    padding-left: 20px;
-    padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
     font-size: 1.2rem;
@@ -1161,10 +1178,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
     font-size: 1.2rem;
@@ -1172,10 +1185,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=submit] {
     position: absolute;
@@ -1718,6 +1727,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
+    max-height: 194px;
   }
 }
 * {
@@ -1795,6 +1805,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  width: 100%;
   background: #fff;
   z-index: 100;
 }
@@ -1827,6 +1838,9 @@ body {
   gap: 5px;
   position: relative;
   cursor: pointer;
+}
+#header #banner.ban .banner .banner-left > div img {
+  height: 15px;
 }
 #header #banner.ban .banner .banner-left > div span {
   color: #fff;
@@ -1887,6 +1901,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#header #header-item .header-item .header-top #logo img {
+  width: 180px;
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
@@ -2273,21 +2290,6 @@ body {
   display: block;
 }
 
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: none;
-}
-#bottom-memu .bottom-mmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #mobile-menu {
   display: none;
   background: #fff;
@@ -2300,6 +2302,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#mobile-menu .mobile-menu .mobile-logo img {
+  width: 120px;
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
@@ -2319,6 +2324,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -2410,6 +2416,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -2438,6 +2445,7 @@ body {
   transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
   transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+  cursor: pointer;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
@@ -2474,6 +2482,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #111;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -2784,14 +2795,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .quickMenu .quickBtns .trigger .movePages {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
-  transform: translateY(-35%);
+  transform: translateY(35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
   opacity: 0;
   z-index: -1;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 .quickMenu .quickBtns .trigger .movePages li {
@@ -2848,12 +2861,26 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+  max-height: 254px;
+  overflow: visible;
 }
 
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
     padding: 0 2%;
+  }
+  .slide-btns button.slidePrev {
+    transform: translateX(0);
+  }
+  .slide-btns button.slidePrev:hover {
+    transform: translate(0, 5%);
+  }
+  .slide-btns button.slideNext {
+    transform: translateX(0);
+  }
+  .slide-btns button.slideNext:hover {
+    transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -2869,10 +2896,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-top .search-box form input[type=text] {
     width: 100%;
-    height: 40px;
-    border-radius: 50px;
-    padding-left: 20px;
-    padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
     font-size: 1.2rem;
@@ -2880,10 +2907,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
     font-size: 1.2rem;
@@ -2891,10 +2914,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=submit] {
     position: absolute;
@@ -3437,6 +3456,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
+    max-height: 194px;
   }
 }
 @font-face {
@@ -3786,7 +3806,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -3800,7 +3820,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -3814,7 +3834,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4045,7 +4065,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4059,7 +4079,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4073,7 +4093,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4365,7 +4385,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4379,7 +4399,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4393,7 +4413,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -4586,20 +4606,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 
 @media screen and (max-width: 1280px) {
-  .slide-btns button.slidePrev {
-    transform: translateX(0);
-  }
-  .slide-btns button.slidePrev:hover {
-    transform: translate(0, 5%);
-  }
-  .slide-btns button.slideNext {
-    transform: translateX(0);
-  }
-  .slide-btns button.slideNext:hover {
-    transform: translate(0, 5%);
-  }
-  #main-slide article {
-    width: 420px;
+  #main-slide {
+    overflow-x: hidden;
   }
   #main-slide article .main-slide-arrows button.mainSlidePrev {
     display: none;
@@ -4898,7 +4906,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     justify-content: center;
   }
   #safeserviceModal .modal-content .modal-right ul li {
-    height: 90px;
+    height: 80px;
     margin: 5px 0;
   }
   #safeserviceModal .modal-content .modal-right ul li .modal-img {
@@ -5093,7 +5101,7 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem {
   position: relative;
-  width: 32px;
+  width: 37px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -5102,13 +5110,14 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span {
   display: block;
-  font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+  font: 700 1.8rem/1 "GmarketSansBold";
   color: #fff;
   transition: transform 0.5s ease;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  padding-top: 2px;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.old {
   transform: translateY(-50%);
@@ -5188,7 +5197,7 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5202,7 +5211,7 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5216,7 +5225,7 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5430,7 +5439,7 @@ body {
 }
 #product-list .product li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5444,7 +5453,7 @@ body {
 }
 #product-list .product li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5458,7 +5467,7 @@ body {
 }
 #product-list .product li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -5469,11 +5478,32 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
-  #best-auction .best-auction-content .best-auction-slide {
-    overflow: visible;
+  #best-auction .best-auction-content .slide-btns button.slidePrev {
+    transform: translateX(0);
+  }
+  #best-auction .best-auction-content .slide-btns button.slidePrev:hover {
+    transform: translate(0, 5%);
+  }
+  #best-auction .best-auction-content .slide-btns button.slideNext {
+    transform: translateX(0);
+  }
+  #best-auction .best-auction-content .slide-btns button.slideNext:hover {
+    transform: translate(0, 5%);
   }
 }
 @media screen and (max-width: 840px) {
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent {
+    padding: 4px 10px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem {
+    width: 32px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span {
+    padding-top: 5px;
+  }
+  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
+    height: 18px;
+  }
   #product-list {
     padding: 50px 0 100px;
   }
@@ -5490,61 +5520,19 @@ body {
 }
 @media screen and (max-width: 450px) {
   #best-auction .best-auction-content .best-auction-slide {
-    width: 300px;
+    width: 350px;
     height: 330px;
     margin: 0 auto;
+    overflow-x: hidden;
   }
   #best-auction .best-auction-content .best-auction-slide .bestAuction li a {
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
   #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img {
     height: 200px;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent {
-    padding: 4px 10px;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock {
-    width: 25px;
-    height: 25px;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
-    font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
-    width: 100%;
-    height: 47px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price {
-    display: block;
-    margin: 10px 0 15px;
-    font: 700 1.9rem/1 "Noto Sans KR", sans-serif;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price .current {
-    font-size: 1.2rem;
-    letter-spacing: 0;
-    color: #0095ee;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-price .fixed {
-    font-size: 1.2rem;
-    text-decoration: line-through;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-info {
-    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color: #6d6d6d;
-  }
-  #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc .desc-title {
-    height: 18px;
   }
   #product-list .product li a .slide-desc {
     padding: 0 0 20px;

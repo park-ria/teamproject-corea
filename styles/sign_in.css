@@ -74,6 +74,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  width: 100%;
   background: #fff;
   z-index: 100;
 }
@@ -106,6 +107,9 @@ body {
   gap: 5px;
   position: relative;
   cursor: pointer;
+}
+#header #banner.ban .banner .banner-left > div img {
+  height: 15px;
 }
 #header #banner.ban .banner .banner-left > div span {
   color: #fff;
@@ -166,6 +170,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#header #header-item .header-item .header-top #logo img {
+  width: 180px;
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
@@ -552,21 +559,6 @@ body {
   display: block;
 }
 
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: none;
-}
-#bottom-memu .bottom-mmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #mobile-menu {
   display: none;
   background: #fff;
@@ -579,6 +571,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#mobile-menu .mobile-menu .mobile-logo img {
+  width: 120px;
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
@@ -598,6 +593,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -689,6 +685,7 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
 }
 #mobile-category ul li .category-img span {
   display: block;
@@ -717,6 +714,7 @@ body {
   transition: -webkit-text-decoration 0.3s;
   transition: text-decoration 0.3s;
   transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
+  cursor: pointer;
 }
 #mobile-category ul li .category-sub ul li:hover {
   text-decoration: underline;
@@ -753,6 +751,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #111;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -1063,14 +1064,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .quickMenu .quickBtns .trigger .movePages {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
-  transform: translateY(-35%);
+  transform: translateY(35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
   opacity: 0;
   z-index: -1;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 .quickMenu .quickBtns .trigger .movePages li {
@@ -1127,12 +1130,26 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+  max-height: 254px;
+  overflow: visible;
 }
 
 @media screen and (max-width: 1280px) {
   .inner {
     width: 100%;
     padding: 0 2%;
+  }
+  .slide-btns button.slidePrev {
+    transform: translateX(0);
+  }
+  .slide-btns button.slidePrev:hover {
+    transform: translate(0, 5%);
+  }
+  .slide-btns button.slideNext {
+    transform: translateX(0);
+  }
+  .slide-btns button.slideNext:hover {
+    transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1148,10 +1165,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-top .search-box form input[type=text] {
     width: 100%;
-    height: 40px;
-    border-radius: 50px;
-    padding-left: 20px;
-    padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
     font-size: 1.2rem;
@@ -1159,10 +1176,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
     font-size: 1.2rem;
@@ -1170,10 +1183,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=submit] {
     position: absolute;
@@ -1716,6 +1725,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
+    max-height: 194px;
   }
 }
 /* variable */
@@ -1925,13 +1935,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     height: 80px;
     padding: 0;
+    padding-left: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .container .sign-in form .inputs ul li .sign-input {
     gap: 5px;
-    padding-left: 15%;
+    padding-left: 15px;
     padding-bottom: 0;
   }
   .container .sign-in form .inputs ul li .sign-input .label {
@@ -1939,7 +1950,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     text-align: left;
     padding-left: 10px;
     padding-bottom: 0;
-    width: 200px;
+    width: 110px;
   }
   .container .sign-in form .inputs ul li .sign-input .inputbox {
     width: 100%;

@@ -1,6 +1,27 @@
 @import "./reset.scss";
 
 // variables
+$main-width: 1280px;
+
+$color: (
+  bg-main-color: #0dcc5a,
+  bg-sub-color: #0095ee,
+  bg-dark-color: #3a3a3a,
+  bg-light-color: #fff,
+  bg-dark-gray: #6d6d6d,
+  bg-light-gray: #dcdcdc,
+  main-font-color: #111,
+  bar-linear-gradient: linear-gradient(to right, #0dcb5b, #08b980, #02a1af),
+);
+
+$fontSize: (
+  font-extra-small: 1.2rem,
+  font-small: 1.4rem,
+  font-medium: 1.6rem,
+  font-large: 1.8rem,
+  font-extra-large: 2rem,
+);
+
 @mixin list-a {
   display: inline-block;
   margin-right: 10px;
@@ -51,6 +72,196 @@
         color: map-get($map: $color, $key: bg-main-color);
       }
     }
+  }
+}
+
+@mixin greenBtn {
+  background: map-get($map: $color, $key: bg-main-color);
+  &:hover {
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+    font-weight: bold;
+    opacity: 0.8;
+  }
+}
+@mixin blackBtn {
+  background: map-get($map: $color, $key: bg-dark-color);
+  &:hover {
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+    font-weight: bold;
+    opacity: 0.8;
+  }
+}
+// variables
+@mixin sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  .section-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    cursor: default;
+  }
+  .view-more {
+    a {
+      color: map-get($color, bg-dark-gray);
+    }
+  }
+}
+
+@mixin productSlide {
+  position: relative;
+  height: 406px;
+  overflow: hidden;
+  .slideWrapper {
+    width: fit-content;
+    position: absolute;
+    left: 0;
+    display: flex;
+    gap: 20px;
+    transition: all 0.5s;
+    li {
+      position: relative;
+      a {
+        width: 240px;
+        height: 376px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        cursor: grab;
+        &:active {
+          cursor: grabbing;
+        }
+        .slide-img {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .slide-desc {
+          @include productDesc;
+          padding: 0 14px 14px;
+        }
+      }
+      .badge {
+        @include badgeType;
+      }
+    }
+  }
+}
+
+@mixin slideBtns {
+  button {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: map-get($color, bg-light-color);
+    box-shadow: 0 5px 5px rgba($color: #000, $alpha: 0.3);
+    transition: all 0.3s;
+    i {
+      font-size: 2rem;
+      color: map-get($color, bg-dark-gray);
+      line-height: 35px;
+    }
+    &.slidePrev {
+      left: 0;
+      transform: translateX(-50%);
+      &:hover {
+        transform: translate(-50%, 5%);
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.slideNext {
+      right: 0;
+      transform: translateX(50%);
+      &:hover {
+        transform: translate(50%, 5%);
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+    &.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+      &.slidePrev {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(-50%, 0);
+        }
+      }
+      &.slideNext {
+        box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.3);
+        &:hover {
+          transform: translate(50%, 0);
+        }
+      }
+    }
+  }
+}
+
+@mixin slidePager {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.3s;
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: map-get($color, bg-light-gray);
+    cursor: pointer;
+    transition: all 0.6s;
+    &:hover {
+      background: map-get($color, bg-main-color);
+    }
+    &.active {
+      width: 30px;
+      background: $home-gradient;
+    }
+  }
+}
+
+@mixin productDesc {
+  .desc-title {
+    font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
+    width: 100%;
+    height: 47px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  .desc-price {
+    display: block;
+    margin: 10px 0 15px;
+    font: 700 1.9rem/1 "Noto Sans KR", sans-serif;
+    .current {
+      font-size: 1.2rem;
+      letter-spacing: 0;
+      color: map-get($color, bg-sub-color);
+    }
+    .fixed {
+      font-size: 1.2rem;
+      text-decoration: line-through;
+    }
+  }
+  .desc-info {
+    font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: map-get($color, bg-dark-gray);
   }
 }
 
@@ -227,27 +438,6 @@
   }
 }
 
-$main-width: 1280px;
-
-$color: (
-  bg-main-color: #0dcc5a,
-  bg-sub-color: #0095ee,
-  bg-dark-color: #3a3a3a,
-  bg-light-color: #fff,
-  bg-dark-gray: #6d6d6d,
-  bg-light-gray: #dcdcdc,
-  main-font-color: #111,
-  bar-linear-gradient: linear-gradient(to right, #0dcb5b, #08b980, #02a1af),
-);
-
-$fontSize: (
-  font-extra-small: 1.2rem,
-  font-small: 1.4rem,
-  font-medium: 1.6rem,
-  font-large: 1.8rem,
-  font-extra-large: 2rem,
-);
-
 html {
   font-size: 10px;
   scroll-behavior: smooth;
@@ -281,6 +471,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   width: 100%;
   background: map-get($color, bg-light-color);
   z-index: 100;
@@ -316,6 +507,10 @@ body {
           gap: 5px;
           position: relative;
           cursor: pointer;
+
+          img {
+            height: 15px;
+          }
 
           span {
             color: map-get($color, bg-light-color);
@@ -390,6 +585,12 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        #logo {
+          img {
+            width: 180px;
+          }
+        }
 
         .search-box {
           form {
@@ -810,23 +1011,6 @@ body {
   }
 }
 
-// bottom-mmenu
-#bottom-memu {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: map-get($map: $color, $key: bg-light-color);
-  z-index: 9999;
-  display: none;
-
-  .bottom-mmenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 // mobile-menu
 #mobile-menu {
   display: none;
@@ -840,6 +1024,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .mobile-logo {
+      img {
+        width: 120px;
+      }
+    }
 
     .menu-box {
       display: flex;
@@ -857,6 +1047,7 @@ body {
           transition: all 0.3s;
           i {
             font-size: 22px;
+            color: map-get($map: $color, $key: bg-dark-color);
             opacity: 1;
             transition: all 0.3s;
           }
@@ -957,6 +1148,7 @@ body {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            cursor: pointer;
           }
         }
         span {
@@ -986,6 +1178,7 @@ body {
             padding: 15px 10px;
             font-size: map-get($map: $fontSize, $key: font-large);
             transition: text-decoration 0.3s;
+            cursor: pointer;
 
             &:hover {
               text-decoration: underline;
@@ -1030,6 +1223,9 @@ body {
       button {
         font-size: 22px;
         padding: 0 15px;
+        i {
+          color: map-get($color, main-font-color);
+        }
       }
       input[type="text"] {
         width: 100%;
@@ -1340,14 +1536,16 @@ footer {
       }
       .movePages {
         position: absolute;
-        top: 0px;
+        top: 0;
         left: 0;
-        transform: translateY(-35%);
+        transform: translateY(35%);
         display: flex;
         flex-direction: column;
         gap: 10px;
         opacity: 0;
         z-index: -1;
+        max-height: 0;
+        overflow: hidden;
         transition: all 0.4s;
         li {
           position: relative;
@@ -1405,14 +1603,13 @@ footer {
           top: -10px;
           transform: translateY(-100%);
           opacity: 1;
+          max-height: 254px;
+          // max-height: 194px;
+          overflow: visible;
         }
       }
     }
   }
-  // &.active {
-  //   opacity: 1;
-  //   transform: translateY(0);
-  // }
 }
 
 // responsive
@@ -1421,6 +1618,22 @@ footer {
   .inner {
     width: 100%;
     padding: 0 2%;
+  }
+  .slide-btns {
+    button {
+      &.slidePrev {
+        transform: translateX(0);
+        &:hover {
+          transform: translate(0, 5%);
+        }
+      }
+      &.slideNext {
+        transform: translateX(0);
+        &:hover {
+          transform: translate(0, 5%);
+        }
+      }
+    }
   }
 
   // Header
@@ -1436,325 +1649,34 @@ footer {
         width: 100%;
         .header-top {
           gap: 20px;
-
           .search-box {
             width: 50%;
             form {
               input[type="text"] {
-                // width: 550px;
                 width: 100%;
-                // max-width: 380px;
-                height: 40px;
-                border-radius: 50px;
-                padding-left: 20px;
-                padding-right: 10px;
-
-                &::placeholder {
-                  font-size: map-get($map: $fontSize, $key: font-extra-small);
-                  font-weight: 500;
-                  color: #bbb;
-                  width: 100%;
-                  padding-right: 10px;
-                  text-overflow: ellipsis;
-                  overflow: hidden;
-                  white-space: nowrap;
-                  word-wrap: normal;
-                }
-              }
-
-              input[type="submit"] {
-                position: absolute;
-                top: 50%;
-                right: 6px;
-                transform: translateY(-50%);
-                width: 30px;
-                height: 30px;
-                background: url("../images/detail/search.png") center/cover
-                  no-repeat;
-                border-radius: 50px;
-                border: none;
-                background-color: map-get(
-                  $map: $color,
-                  $key: bar-linear-gradient
-                );
-                color: map-get($map: $color, $key: bg-light-color);
-                cursor: pointer;
-                transition: box-shadow 0.3s;
-
-                &:hover {
-                  box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.4);
-                }
-              }
-
-              .searchedword-list {
-                position: absolute;
-                top: 120%;
-                left: 0;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
-                padding: 15px;
-                background: map-get($map: $color, $key: bg-light-color);
-                box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-                border-radius: 8px;
-                display: none;
-
-                .recent-words {
-                  h3 {
-                    font-size: 14px;
-                  }
-                  .recent-list {
-                    width: 100%;
-
-                    .no-words {
-                      font-size: map-get($map: $fontSize, $key: font-small);
-                      color: #bbb;
-                    }
-
-                    li {
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      padding: 15px 0;
-                      cursor: pointer;
-
-                      .recent-word {
-                        color: #bbb;
-                        font-weight: 500;
-                        transition: all 0.3s;
-                      }
-                      .recent-box {
-                        display: flex;
-                        align-items: center;
-                        gap: 15px;
-
-                        button {
-                          font-size: map-get($map: $fontSize, $key: font-large);
-                          color: #bbb;
-                          transition: color 0.3s;
-
-                          &:hover {
-                            color: map-get($map: $color, $key: bg-dark-color);
-                          }
-                        }
-                      }
-
-                      &:hover .recent-word {
-                        color: map-get($map: $color, $key: bg-dark-color);
-                        font-weight: 600;
-                      }
-                    }
-                  }
-                }
-
-                .live-ranking {
-                  h3 {
-                    display: flex;
-                    align-items: center;
-                    font-size: 14px;
-                    margin-bottom: 15px;
-
-                    .current-time {
-                      font-size: 13px;
-                      margin-left: 30px;
-                      color: #aaa;
-                      font-weight: 400;
-                    }
-                  }
-
-                  .ranking-list {
-                    @include rankig-list;
-                  }
-                }
-                &.active {
-                  display: block;
-                }
               }
             }
           }
 
           .wrapper {
-            position: relative;
-
             .popular-searchedWord {
-              position: relative;
               width: 200px;
-              height: 24px;
-              overflow: hidden;
-              ul {
-                width: 100%;
-                height: 24px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                li {
-                  position: absolute;
-                  top: -24px;
-                  left: 0;
-                  width: 100%;
-                  height: 24px;
-                  padding-left: 20px;
-                  line-height: 24px;
-                  cursor: pointer;
-
-                  &.prev {
-                    top: -24px;
-                    transition: top 0.5s;
-                  }
-                  &.current {
-                    top: 0;
-                    transition: top 0.5s;
-                  }
-                  &.next {
-                    top: 24px;
-                  }
-
-                  a {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    span {
-                      @include list-a;
-                    }
-                  }
-                }
-              }
-            }
-
-            .list-btn {
-              position: absolute;
-              top: 50%;
-              right: 0;
-              transform: translateY(-50%) rotate(0);
-              color: map-get($map: $color, $key: font-dark-gray);
-              transition: all 0.3s;
-
-              &.active {
-                transform: translateY(-50%) rotate(180deg);
-              }
-            }
-
-            .list {
-              position: absolute;
-              top: 20px;
-              left: 0;
-              width: 100%;
-              height: 0;
-              margin-top: 15px;
-              padding: 0 20px;
-              border: 1px solid transparent;
-              display: flex;
-              flex-direction: column;
-              text-align: left;
-              transition: all 0.5s;
-              overflow: hidden;
-
-              &.active {
-                height: 468px;
-                background: map-get($map: $color, $key: bg-light-color);
-                border-left: 1px solid #eee;
-                border-right: 1px solid #eee;
-                border-bottom: 1px solid #eee;
-              }
-
-              li {
-                padding: 15px 0;
-                border-bottom: 1px solid #eee;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                transition: transform 0.3s;
-
-                &:hover {
-                  transform: scale(1.02);
-                }
-
-                a {
-                  display: flex;
-                  justify-content: flex-start;
-                  align-items: center;
-                  span {
-                    @include list-a;
-                  }
-                }
-                & > span {
-                  .fa-sort-down {
-                    color: map-get($map: $color, $key: bg-light-gray);
-                  }
-                  .fa-caret-up {
-                    color: map-get($map: $color, $key: bg-main-color);
-                  }
-                }
-              }
             }
           }
         }
 
         .header-bottom {
-          gap: 20px;
-
           .header-bottom-left {
-            display: flex;
             gap: 12px;
-
-            .barmenu {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              gap: 8px;
-              padding: 8px 10px;
-              background: map-get($map: $color, $key: bg-main-color);
-              color: map-get($map: $color, $key: bg-light-color);
-              border-radius: 5px;
-              cursor: pointer;
-              transition: box-shadow 0.3s;
-
-              &:hover {
-                box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.3);
-              }
-
-              i {
-                font-size: 24px;
-              }
-            }
 
             .gnb {
               gap: 12px;
-              a {
-                font-size: 1.6rem;
-                font-weight: 500;
-                transition: color 0.3s;
-
-                &:hover {
-                  color: map-get($map: $color, $key: bg-main-color);
-                }
-              }
             }
           }
 
           .header-bottom-right {
-            display: flex;
-            align-items: center;
             .lnb {
               gap: 8px;
-
-              li a {
-                display: flex;
-                align-items: center;
-                transition: color 0.3s;
-
-                img {
-                  margin-right: 2px;
-                }
-
-                &:hover {
-                  color: map-get($map: $color, $key: bg-main-color);
-                  font-weight: bold;
-                }
-              }
             }
           }
         }
@@ -2093,6 +2015,7 @@ footer {
         &.active {
           .movePages {
             top: -6px;
+            max-height: 194px;
           }
         }
       }
