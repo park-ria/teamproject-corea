@@ -108,9 +108,11 @@ body {
   position: relative;
   cursor: pointer;
 }
+
 #header #banner.ban .banner .banner-left > div img {
   height: 15px;
 }
+
 #header #banner.ban .banner .banner-left > div span {
   color: #fff;
   transition: color 0.3s;
@@ -136,7 +138,9 @@ body {
   border-radius: 3px;
 }
 #header #banner.ban .banner .banner-left > div .download-box a:hover {
-  background: #eee;
+
+  background: #e1e1e1;
+
 }
 #header #banner.ban .banner .banner-left > div .download-box a span {
   color: #000;
@@ -171,9 +175,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 #header #header-item .header-item .header-top #logo img {
   width: 180px;
 }
+
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
   box-shadow: 0 0 2px #6d6d6d;
@@ -503,8 +509,11 @@ body {
   display: block;
 }
 #header-category .inner .header-category .main-category li {
-  padding: 10px 20px;
+
+  padding: 12px 20px;
+
   color: #3a3a3a;
+  font-size: 1.4rem;
   font-weight: 400;
   cursor: pointer;
 }
@@ -517,7 +526,7 @@ body {
   top: 50%;
   left: -20px;
   transform: translateY(-50%);
-  width: 3px;
+  width: 4px;
   height: 120%;
   background: #0dcc5a;
   border-radius: 5px;
@@ -572,9 +581,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 #mobile-menu .mobile-menu .mobile-logo img {
   width: 120px;
 }
+
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
   align-items: center;
@@ -752,9 +763,11 @@ body {
   font-size: 22px;
   padding: 0 15px;
 }
+
 #mobile-search .search-box form button i {
   color: #111;
 }
+
 #mobile-search .search-box form input[type=text] {
   width: 100%;
   height: 35px;
@@ -1139,6 +1152,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
+
   .slide-btns button.slidePrev {
     transform: translateX(0);
   }
@@ -1149,6 +1163,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(0);
   }
   .slide-btns button.slideNext:hover {
+
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -2194,8 +2209,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-store .store-heading .bar {
   border: none;
-  border-bottom: 2px solid #dcdcdc;
-  border-radius: 2px;
+  border-bottom: 1px solid #dcdcdc;
+  border-radius: 1px;
 }
 #main .inner .main .main-desc .desc-store .store-info {
   display: flex;
@@ -2808,7 +2823,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding-bottom: 25px;
     background: #fff;
     z-index: 9999;
   }
