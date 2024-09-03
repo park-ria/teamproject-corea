@@ -712,9 +712,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             }
             .bar {
               border: none;
-              border-bottom: 2px solid
+              border-bottom: 1px solid
                 map-get($map: $color, $key: bg-light-gray);
-              border-radius: 2px;
+              border-radius: 1px;
             }
           }
 
@@ -1236,7 +1236,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     left: 0;
     bottom: 0;
     width: 100%;
-    padding-bottom: 25px;
     background: map-get($map: $color, $key: bg-light-color);
     z-index: 9999;
 
