@@ -347,7 +347,7 @@ fetch(joonggoInfo)
       </div>
       <div class="conditions-box">
       <span>배송비</span>
-      <span class="condition">${product.detail.delivery_charged}</span>
+      <span class="condition">${product.detail.delivery_charge}</span>
         </div>
         <div class="conditions-box">
         <span>안전거래</span>
@@ -411,32 +411,26 @@ fetch(joonggoInfo)
 
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-    var imageSrc = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt4FvOAHbeZEguySzawWHdM_4XZ9HZ9HxtBA&s', // 마커이미지의 주소입니다    
-        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-        imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-    // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-        markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); // 마커가 표시될 위치입니다
+    var markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); // 마커가 표시될 위치입니다
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
       position: markerPosition,
-      image: markerImage // 마커이미지 설정 
     });
 
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);  
 
     // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    var content = '<div class="customoverlay">' +
-        '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
-        '    <span class="title">구의야구공원</span>' +
-        '  </a>' +
-        '</div>';
+    var content = `
+    <div class="customoverlay">
+      <a href="https://map.kakao.com/link/map/" target="_blank">
+        <span class="title">${product.point}</span>
+      </a>
+    </div>`;
 
     // 커스텀 오버레이가 표시될 위치입니다 
-    var position = new kakao.maps.LatLng(37.54699, 127.09598);  
+    var position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
 
     // 커스텀 오버레이를 생성합니다
     var customOverlay = new kakao.maps.CustomOverlay({
@@ -487,6 +481,20 @@ fetch(joonggoInfo)
       // Making Store-name
       const storeName = document.querySelector(".name");
       storeName.innerText = product.detail.store_name;
+
+      // Making Info-desc
+      const infoDesc = document.querySelector(".info-desc");
+      console.log(infoDesc)
+      infoDesc.innerHTML = `
+      <div class="desc-box">
+        <span>판매중</span>
+        <span>${store.info.product_img_etc.length}</span>
+      </div>
+      <div class="desc-box">
+        <span>거래후기</span>
+        <span>${store.review.review_title.length}</span>
+      </div>
+      `;
 
       // Making Item-info
       const productItemInfos = store.info.product_img_etc;
@@ -623,7 +631,6 @@ fetch(joonggoInfo)
   });
 
 // add product slide item
-// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 
@@ -673,14 +680,6 @@ const addProduct = (product, ul) => {
   liItem.appendChild(aTag);
   ulItem.appendChild(liItem);
 
-  // const productSlideLimit = ulItem.children.length;
-  // pager
-  // const slidePager =
-  //   ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
-  // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-  //   const spanTag = document.createElement("span");
-  //   slidePager.appendChild(spanTag);
-  // }
   slideIndex++;
 };
 
@@ -691,41 +690,15 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  // const pagers = slideSection.querySelectorAll(".slidePager span");
 
   const slideCount = slide.length;
 
   if (slideCount < 6) {
     prevBtn.classList.add("disabled");
     nextBtn.classList.add("disabled");
-    // prevBtn.style.display = "none";
-    // nextBtn.style.display = "none";
   }
 
   let currentIdx = 0;
-
-  // move pager
-  // pagers[0].classList.add("active");
-  // const movePager = (index) => {
-  //   for (let pager of pagers) {
-  //     pager.classList.remove("active");
-  //   }
-  //   pagers[index].classList.add("active");
-  //   // console.log(index);
-  // };
-
-  // click pager
-  // pagers.forEach((pager, index) => {
-  //   pager.addEventListener("click", function () {
-  //     pagers.forEach((sibling) => {
-  //       if (sibling !== pager) sibling.classList.remove("active");
-  //     });
-
-  //     this.classList.add("active");
-  //     currentIdx = index;
-  //     moveSlide(index);
-  //   });
-  // });
 
   const moveSlide = (num) => {
     if (num < 0 || num >= slideCount) return;
@@ -737,13 +710,11 @@ const productSlide = (section) => {
 
     if (currentSlideWidth >= clientWidth) {
       currentIdx = num;
-      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
-      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -(num - 1) * (slideWidth + slideMargin) -
         slideWidth +
@@ -779,7 +750,6 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
-    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 
