@@ -814,13 +814,13 @@
                         <li>
                           <span class="paymentAmountWrapTitle">상품금액</span>
                           <span class="paymentAmountWrapPrice"
-                            ><b>4,450,000</b>원</span
+                            ><b id="productPrice"></b>원</span
                           >
                         </li>
                         <li>
                           <span class="paymentAmountWrapTitle">배송비</span>
                           <span class="paymentAmountWrapPrice"
-                            ><b>4,000</b>원</span
+                            ><b id="deliveryCharge"></b>원</span
                           >
                         </li>
                         <li>
@@ -829,7 +829,7 @@
                             <p class="feeTitle">(3.5% 적용)</p>
                           </span>
                           <span class="paymentAmountWrapPrice">
-                            <span class="freeFee"> 490원</span>
+                            <span id="payFee" class="freeFee"></span>
                             <b>0</b>원
                           </span>
                         </li>
@@ -847,7 +847,7 @@
                         <li>
                           <span class="finalPaymentAmountTitle">합계</span>
                           <span class="finalPaymentAmountPrice">
-                            <b>4,450,000</b>원
+                            <b id="sumPrice"></b>원
                           </span>
                         </li>
                       </ul>
@@ -939,11 +939,7 @@
                       관여하지 않고 어떠한 의무와 책임도 부담하지 않습니다.
                     </p>
                   </div>
-                  <input
-                    type="submit"
-                    class="active"
-                    value="4,450,000원 결제"
-                  />
+                  <input type="submit" value="" />
                 </div>
               </form>
             </div>

@@ -104,6 +104,7 @@
           color: map-get($color, bg-light-color);
           background: map-get($color, bg-light-gray);
           cursor: pointer;
+          transition: background 0.3s;
           &.active {
             background: map-get($color, bg-main-color);
           }
@@ -168,6 +169,7 @@
                 width: 80%;
                 padding: 10px 30px;
                 border: 1px solid map-get($color, bg-light-gray);
+                transition: none;
                 &::placeholder {
                   color: #aaa;
                   transition: opacity 0.3s;
@@ -284,7 +286,7 @@
                     color: map-get($color, bg-light-color);
                     letter-spacing: normal;
                     text-align: center;
-                    line-height: 16px;
+                    line-height: 18px;
                   }
                 }
                 .productPrice {
@@ -465,9 +467,10 @@
                 }
               }
               &.accountTransferGuide {
+                padding: 8px;
                 #bank {
                   width: 100%;
-                  height: 40px;
+                  height: 48px;
                   border: 1px solid map-get($color, bg-light-gray);
                   border-radius: 5px;
                   text-align: center;
@@ -564,7 +567,7 @@
           }
           .payAdvertising {
             padding: 30px 20px 40px;
-            background: #f9f9f9;
+            background: map-get($color, bg-blue-gray);
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -618,7 +621,6 @@
                   .freeFee {
                     text-decoration: line-through;
                     margin-right: 10px;
-                    //color: map-get($color, bg-light-gray);
                     color: #ccc;
                   }
                 }
@@ -627,7 +629,7 @@
                   display: flex;
                   flex-direction: column;
                   gap: 10px;
-                  background: #f9f9f9;
+                  background: map-get($color, bg-blue-gray);
                   padding: 20px;
                   span {
                     font-size: map-get($fontSize, font-extra-small);
@@ -635,7 +637,7 @@
                   }
                 }
                 .finalPaymentAmountTitle {
-                  font-size: map-get($fontSize, font-extra-large);
+                  font-size: map-get($fontSize, font-large);
                   color: map-get($color, bg-main-color);
                 }
                 .finalPaymentAmountPrice {
@@ -643,7 +645,7 @@
                   color: map-get($color, bg-main-color);
                   letter-spacing: normal;
                   b {
-                    font-size: 2.6rem;
+                    font-size: 3rem;
                     margin-right: 5px;
                   }
                 }
@@ -678,6 +680,14 @@
             }
           }
           .approvalCheckbox {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.3s, height 0.3s;
+            &.on {
+              height: auto;
+              opacity: 1;
+            }
             li {
               padding: 10px;
               .approvalCheckboxLine {
@@ -696,6 +706,7 @@
                       text-align: center;
                       line-height: 20px;
                       margin-right: 10px;
+                      color: #ccc;
                       transition: color 0.3s;
                     }
                   }
@@ -704,6 +715,8 @@
                   }
                 }
                 .descButton {
+                  width: 30px;
+                  height: 30px;
                   color: #ccc;
                   cursor: pointer;
                   position: relative;
@@ -715,21 +728,21 @@
                     font-family: "fontawesome";
                     position: absolute;
                     top: 50%;
-                    right: 10px;
-                    transform: translateY(-50%);
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                     transition: all 0.3s;
                   }
                   &.active {
-                    box-shadow: 0 0 5px map-get($color, bg-light-gray);
                     &::after {
                       content: "\2b";
                       font-family: "fontawesome";
-                      transform: translateY(-50%) rotate(45deg);
+                      transform: translate(-50%, -50%) rotate(45deg);
                     }
                   }
                 }
               }
               iframe {
+                background: map-get($color, bg-blue-gray);
                 width: 100%;
                 height: 0;
                 opacity: 0;
@@ -744,7 +757,7 @@
           }
         }
         &.lastMent {
-          background: #f9f9f9;
+          background: map-get($color, bg-blue-gray);
           padding: 20px;
           margin-top: 0;
           p {
@@ -790,7 +803,6 @@
     font-size: map-get($fontSize, font-extra-large);
   }
   ul {
-    margin-top: 30px;
     margin: 30px 0 0 20px;
     li {
       margin-bottom: 12px;
@@ -830,5 +842,117 @@
     height: 100vh;
     opacity: 1;
     background: rgba($color: #000000, $alpha: 0.4);
+  }
+}
+
+@media screen and (max-width: 840px) {
+  /* order */
+  .order {
+    width: 100%;
+    .order-content {
+      form {
+        flex-direction: column;
+        .delivery-left {
+          width: 100%;
+          padding: 0;
+          border-right: none;
+        }
+        .delivery-right {
+          width: 100%;
+          padding: 0;
+          position: static;
+        }
+        .delivery-desc {
+          margin: 20px 0;
+          .sub-title {
+            padding: 20px 0;
+          }
+          &.deliveryInfo {
+            .deliveryInfoDesc {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 0;
+              li {
+                width: 90%;
+                &:last-child {
+                  position: relative;
+                }
+                input[type="text"] {
+                  width: 100%;
+                  &#recipient {
+                    flex: 1;
+                  }
+                }
+                .inputWrap {
+                  flex: 1;
+                }
+                select,
+                #etcMsg {
+                  width: 100%;
+                }
+                .etcMsgCnt {
+                  margin: 0;
+                  padding: 0;
+                  position: absolute;
+                  bottom: 13px;
+                  right: 10px;
+                }
+              }
+            }
+          }
+          &.paymentMethod {
+            .payAdvertising {
+              padding: 20px;
+            }
+            .payTypeDesc {
+              .payGuidelines {
+                &.cardGuide {
+                  .monthlyInstallmentPlan {
+                    span {
+                      padding: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .banner {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  /* payTypeModal */
+  .payTypeModal {
+    &.active {
+      width: 450px;
+      padding: 30px 10px 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 30px 10px 0;
+      li {
+        font-size: map-get($fontSize, font-small);
+      }
+    }
+
+    .payTypeModalClose {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: map-get($fontSize, font-medium);
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* payTypeModal */
+  .payTypeModal {
+    &.active {
+      width: 90%;
+    }
   }
 }

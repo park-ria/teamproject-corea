@@ -9,6 +9,7 @@ const modalOverlay = document.querySelector(".payTypeModal-overlay");
 const allCheck = document.querySelector("#allCheck");
 const approvalYn = document.querySelectorAll("input[name='approvalYn']");
 const descButton = document.querySelectorAll(".descButton");
+const submitButton = orderInfo.querySelector("input[type='submit']");
 
 const changePhone1 = () => {
   const phone1 = document.querySelector("#phone1");
@@ -76,13 +77,24 @@ const changeEtcMsg = function (msg) {
   document.querySelector(".etcMsgCnt > strong").innerText = msg.value.length;
 };
 
+const krwFormat = (money) => {
+  return new Intl.NumberFormat("ko-kr", {
+    currency: "KRW",
+  }).format(money);
+};
+
 const createproductInfo = (product) => {
+  console.log(product.detail.delivery_charge);
   const deliveryCharge = product.detail.delivery_charge.includes("별도")
     ? 4000
     : 0;
-  const sumPrice = new Intl.NumberFormat("ko-kr", {
-    currency: "KRW",
-  }).format(Number(product.price.replace(/[^0-9]/g, "")) + deliveryCharge);
+  const productPrice = Number(product.price.replace(/[^0-9]/g, ""));
+  const payFee =
+    (productPrice * 3.5) / 100 > 2000
+      ? 2000
+      : ((productPrice * 3.5) / 100).toFixed(0);
+  const sumPrice = productPrice + deliveryCharge;
+
   let li = `
     <div class="store-name">
       <span class="shop-icon"></span>
@@ -104,19 +116,25 @@ const createproductInfo = (product) => {
           <p>${product.price}</p>
         </span>
         <span class="product-desc-box">
-          <p class="productDeliveryCharge">${product.detail.delivery_charge}</p>
-          <p class="productDeliveryPrice">${new Intl.NumberFormat("ko-kr", {
-            currency: "KRW",
-          }).format(deliveryCharge)}원</p>
+          <p class="productDeliveryCharge">배송비 ${
+            product.detail.delivery_charge
+          }</p>
+          <p class="productDeliveryPrice">${krwFormat(deliveryCharge)}원</p>
         </span>
         <span class="product-desc-box">
           <p>합계</p>
-          <p class="productPrice">${sumPrice}원</p>
+          <p class="productPrice">${krwFormat(sumPrice)}원</p>
         </span>
       </div>
     </a>
   `;
   document.querySelector(".productInfo").insertAdjacentHTML("beforeend", li);
+  document.querySelector("#productPrice").innerText = krwFormat(productPrice);
+  document.querySelector("#deliveryCharge").innerText =
+    krwFormat(deliveryCharge);
+  document.querySelector("#payFee").innerText = `${krwFormat(payFee)}원 `;
+  document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
+  submitButton.value = `${krwFormat(sumPrice)}원 결제`;
 };
 
 const changeCashBillPlaceholder = () => {
@@ -279,6 +297,11 @@ allCheck.addEventListener("click", function () {
   approvalYn.forEach((chck) => {
     chck.checked = this.checked;
   });
+  if (this.checked) {
+    submitButton.classList.add("active");
+  } else {
+    submitButton.classList.remove("active");
+  }
 });
 
 approvalYn.forEach((chck) => {
@@ -286,8 +309,13 @@ approvalYn.forEach((chck) => {
     const checkCount = document.querySelectorAll(
       "input[name='approvalYn']:checked"
     ).length;
-    if (approvalYn.length === checkCount) allCheck.checked = true;
-    else allCheck.checked = false;
+    if (approvalYn.length === checkCount) {
+      allCheck.checked = true;
+      submitButton.classList.add("active");
+    } else {
+      allCheck.checked = false;
+      submitButton.classList.remove("active");
+    }
   });
 });
 
@@ -297,6 +325,19 @@ descButton.forEach((btn) => {
     this.closest("li").querySelector("iframe").classList.toggle("active");
   });
 });
+
+document
+  .querySelector(".allCheckbox .fa-solid")
+  .addEventListener("click", function () {
+    const approvalCheckbox = document.querySelector(".approvalCheckbox");
+    if (this.classList[1] === "fa-chevron-down") {
+      this.classList.replace("fa-chevron-down", "fa-chevron-up");
+      approvalCheckbox.classList.add("on");
+    } else if (this.classList[1] === "fa-chevron-up") {
+      this.classList.replace("fa-chevron-up", "fa-chevron-down");
+      approvalCheckbox.classList.remove("on");
+    }
+  });
 
 fetch("../db.json")
   .then((response) => response.json())

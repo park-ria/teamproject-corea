@@ -1734,6 +1734,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #fff;
   background: #dcdcdc;
   cursor: pointer;
+  transition: background 0.3s;
 }
 .order .order-content form .delivery-right input[type=submit].active {
   background: #0dcc5a;
@@ -1802,6 +1803,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   width: 80%;
   padding: 10px 30px;
   border: 1px solid #dcdcdc;
+  transition: none;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]::-moz-placeholder {
   color: #aaa;
@@ -1927,7 +1929,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #fff;
   letter-spacing: normal;
   text-align: center;
-  line-height: 16px;
+  line-height: 18px;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productPrice {
   font-size: 1.8rem;
@@ -2165,9 +2167,12 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   border: 1px solid #dcdcdc;
   border-radius: 5px;
 }
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide {
+  padding: 8px;
+}
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide #bank {
   width: 100%;
-  height: 40px;
+  height: 48px;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
   text-align: center;
@@ -2257,7 +2262,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 }
 .order .order-content form .delivery-desc.paymentMethod .payAdvertising {
   padding: 30px 20px 40px;
-  background: #f9f9f9;
+  background: #f7f9fa;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -2319,7 +2324,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #f9f9f9;
+  background: #f7f9fa;
   padding: 20px;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc span {
@@ -2327,7 +2332,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #6d6d6d;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountTitle {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #0dcc5a;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
@@ -2336,7 +2341,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   letter-spacing: normal;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice b {
-  font-size: 2.6rem;
+  font-size: 3rem;
   margin-right: 5px;
 }
 .order .order-content form .delivery-desc.approval {
@@ -2399,6 +2404,16 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 .order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox .fa-solid:hover {
   color: #111;
 }
+.order .order-content form .delivery-desc.approval .approvalCheckbox {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, height 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox.on {
+  height: auto;
+  opacity: 1;
+}
 .order .order-content form .delivery-desc.approval .approvalCheckbox li {
   padding: 10px;
 }
@@ -2417,12 +2432,15 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   text-align: center;
   line-height: 20px;
   margin-right: 10px;
+  color: #ccc;
   transition: color 0.3s;
 }
 .order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem input[type=checkbox]:checked + label > .fa-solid {
   color: #0dcc5a;
 }
 .order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton {
+  width: 30px;
+  height: 30px;
   color: #ccc;
   cursor: pointer;
   position: relative;
@@ -2435,19 +2453,17 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   font-family: "fontawesome";
   position: absolute;
   top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: all 0.3s;
-}
-.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton.active {
-  box-shadow: 0 0 5px #dcdcdc;
 }
 .order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton.active::after {
   content: "+";
   font-family: "fontawesome";
-  transform: translateY(-50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 .order .order-content form .delivery-desc.approval .approvalCheckbox li iframe {
+  background: #f7f9fa;
   width: 100%;
   height: 0;
   opacity: 0;
@@ -2459,7 +2475,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   margin: 20px 0;
 }
 .order .order-content form .delivery-desc.lastMent {
-  background: #f9f9f9;
+  background: #f7f9fa;
   padding: 20px;
   margin-top: 0;
 }
@@ -2503,7 +2519,6 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   font-size: 2rem;
 }
 .payTypeModal ul {
-  margin-top: 30px;
   margin: 30px 0 0 20px;
 }
 .payTypeModal ul li {
@@ -2544,4 +2559,94 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   height: 100vh;
   opacity: 1;
   background: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 840px) {
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form {
+    flex-direction: column;
+  }
+  .order .order-content form .delivery-left {
+    width: 100%;
+    padding: 0;
+    border-right: none;
+  }
+  .order .order-content form .delivery-right {
+    width: 100%;
+    padding: 0;
+    position: static;
+  }
+  .order .order-content form .delivery-desc {
+    margin: 20px 0;
+  }
+  .order .order-content form .delivery-desc .sub-title {
+    padding: 20px 0;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li {
+    width: 90%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li:last-child {
+    position: relative;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text] {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]#recipient {
+    flex: 1;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap {
+    flex: 1;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payAdvertising {
+    padding: 20px;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan span {
+    padding: 0;
+  }
+  .order .order-content form .banner {
+    margin: 10px 0;
+  }
+  /* payTypeModal */
+  .payTypeModal.active {
+    width: 450px;
+    padding: 30px 10px 10px;
+  }
+  .payTypeModal ul {
+    margin: 0;
+    padding: 30px 10px 0;
+  }
+  .payTypeModal ul li {
+    font-size: 1.4rem;
+  }
+  .payTypeModal .payTypeModalClose {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  /* payTypeModal */
+  .payTypeModal.active {
+    width: 90%;
+  }
 }
