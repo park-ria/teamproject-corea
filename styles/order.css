@@ -1867,10 +1867,24 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   height: 150px;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productName {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: calc(100% - 200px);
   font-size: 1.6rem;
   word-wrap: break-word;
   line-height: 30px;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productName .pay {
+  width: 35px;
+  height: 20px;
+  background: #0dcc5a;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: normal;
+  text-align: center;
+  line-height: 16px;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productPrice {
   font-size: 1.8rem;
@@ -2255,6 +2269,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapPrice .freeFee {
   text-decoration: line-through;
   margin-right: 10px;
+  color: #ccc;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc {
   width: 100%;
@@ -2269,7 +2284,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #6d6d6d;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountTitle {
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #0dcc5a;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
@@ -2287,6 +2302,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
 }
 .order .order-content form .delivery-desc.approval .allCheckWrap {
   width: 100%;
+  padding: 10px;
 }
 .order .order-content form .banner {
   margin: 50px 0;
