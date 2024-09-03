@@ -209,11 +209,16 @@ fetch(joonggoInfo)
 
       // updateHeartBtns
       const updateHeartBtns = () => {
-        if (wishItemArr.find((wishItem) => wishItem.id === product.id)) {
+        const updateWishItem = wishItemArr.find((wishItem) => wishItem.id === product.id);
+
+        if (updateWishItem) {
           heartBtns.forEach((heartBtn) => {
             heartBtn.querySelector("i").classList.remove("fa-regular");
             heartBtn.querySelector("i").classList.add("fa-solid");
           });
+          headingTimeinfo.querySelector(
+            "span:nth-child(4)"
+          ).innerText = `찜 ${updateWishItem.countNum}`;
         } else {
           heartBtns.forEach((heartBtn) => {
             heartBtn.querySelector("i").classList.remove("fa-solid");
@@ -255,8 +260,8 @@ fetch(joonggoInfo)
               heart.classList.add("fa-regular");
             });
             pickedInfo.countNum = pickedInfo.countNum - 1;
-            console.log(pickedInfo);
             removeId(pickedInfo);
+            console.log(pickedInfo);
             headingTimeinfo.querySelector(
               "span:nth-child(4)"
             ).innerText = `찜 ${pickedInfo.countNum}`;
@@ -267,9 +272,9 @@ fetch(joonggoInfo)
               heart.classList.add("fa-solid");
             });
             pickedInfo.countNum = pickedInfo.countNum + 1;
-            console.log(pickedInfo);
             wishItemArr.push(pickedInfo);
             saveId();
+            console.log(pickedInfo);
             headingTimeinfo.querySelector(
               "span:nth-child(4)"
             ).innerText = `찜 ${pickedInfo.countNum}`;
