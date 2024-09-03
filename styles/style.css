@@ -109,6 +109,9 @@ body {
   position: relative;
   cursor: pointer;
 }
+#header #banner.ban .banner .banner-left > div img {
+  height: 15px;
+}
 #header #banner.ban .banner .banner-left > div span {
   color: #fff;
   transition: color 0.3s;
@@ -168,6 +171,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#header #header-item .header-item .header-top #logo img {
+  width: 180px;
 }
 #header #header-item .header-item .header-top .search-box form {
   position: relative;
@@ -568,6 +574,9 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+#mobile-menu .mobile-menu .mobile-logo img {
+  width: 120px;
+}
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
   align-items: center;
@@ -586,6 +595,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -743,6 +753,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #111;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -1053,14 +1066,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .quickMenu .quickBtns .trigger .movePages {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
-  transform: translateY(-35%);
+  transform: translateY(35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
   opacity: 0;
   z-index: -1;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 .quickMenu .quickBtns .trigger .movePages li {
@@ -1117,6 +1132,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+  max-height: 254px;
+  overflow: visible;
 }
 
 @media screen and (max-width: 1280px) {
@@ -1124,16 +1141,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
-  slide-btns button.slidePrev {
+
+  .slide-btns button.slidePrev {
     transform: translateX(0);
   }
-  slide-btns button.slidePrev:hover {
+  .slide-btns button.slidePrev:hover {
     transform: translate(0, 5%);
   }
-  slide-btns button.slideNext {
+  .slide-btns button.slideNext {
     transform: translateX(0);
   }
-  slide-btns button.slideNext:hover {
+  .slide-btns button.slideNext:hover {
+
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -1150,10 +1169,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-top .search-box form input[type=text] {
     width: 100%;
-    height: 40px;
-    border-radius: 50px;
-    padding-left: 20px;
-    padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
     font-size: 1.2rem;
@@ -1161,10 +1180,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
     font-size: 1.2rem;
@@ -1172,10 +1187,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     color: #bbb;
     width: 100%;
     padding-right: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    word-wrap: normal;
   }
   #header #header-item .header-item .header-top .search-box form input[type=submit] {
     position: absolute;
@@ -1718,6 +1729,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
+    max-height: 194px;
   }
 }
 @font-face {
@@ -2067,7 +2079,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2081,7 +2093,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2095,7 +2107,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2326,7 +2338,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2340,7 +2352,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2354,7 +2366,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2646,7 +2658,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2660,7 +2672,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2674,7 +2686,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
   position: absolute;
-  top: 55%;
+  top: 50%;
   right: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
@@ -2867,20 +2879,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 
 @media screen and (max-width: 1280px) {
-  .slide-btns button.slidePrev {
-    transform: translateX(0);
-  }
-  .slide-btns button.slidePrev:hover {
-    transform: translate(0, 5%);
-  }
-  .slide-btns button.slideNext {
-    transform: translateX(0);
-  }
-  .slide-btns button.slideNext:hover {
-    transform: translate(0, 5%);
-  }
-  #main-slide article {
-    width: 420px;
+  #main-slide {
+    overflow-x: hidden;
   }
   #main-slide article .main-slide-arrows button.mainSlidePrev {
     display: none;
@@ -3179,7 +3179,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     justify-content: center;
   }
   #safeserviceModal .modal-content .modal-right ul li {
-    height: 90px;
+    height: 80px;
     margin: 5px 0;
   }
   #safeserviceModal .modal-content .modal-right ul li .modal-img {

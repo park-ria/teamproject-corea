@@ -128,9 +128,8 @@ body {
                   }
                 }
                 .timeItem {
-                  // border: 1px solid #f00;
                   position: relative;
-                  width: 32px;
+                  width: 37px;
                   height: 30px;
                   display: flex;
                   justify-content: center;
@@ -138,13 +137,14 @@ body {
                   overflow: hidden;
                   span {
                     display: block;
-                    font: 700 1.8rem/1 "Noto Sans KR", sans-serif;
+                    font: 700 1.8rem/1 "GmarketSansBold";
                     color: map-get($color, bg-light-color);
                     transition: transform 0.5s ease;
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
                     text-align: center;
+                    padding-top: 2px;
                     &.old {
                       transform: translateY(-50%);
                     }
@@ -293,14 +293,55 @@ body {
 @media screen and (max-width: 1280px) {
   #best-auction {
     .best-auction-content {
-      .best-auction-slide {
-        overflow: visible;
+      .slide-btns {
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
       }
     }
   }
 }
 
 @media screen and (max-width: 840px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        .bestAuction {
+          li {
+            a {
+              .slide-img {
+                .timeEvent {
+                  padding: 4px 10px;
+                  .timeItem {
+                    width: 32px;
+                    span {
+                      padding-top: 5px;
+                    }
+                  }
+                }
+              }
+              .slide-desc {
+                .desc-title {
+                  height: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   #product-list {
     padding: 50px 0 100px;
     .sorting-group {
@@ -328,31 +369,19 @@ body {
   #best-auction {
     .best-auction-content {
       .best-auction-slide {
-        width: 300px;
+        width: 350px;
         height: 330px;
         margin: 0 auto;
+        overflow-x: hidden;
         .bestAuction {
           li {
             a {
-              width: 300px;
+              width: 350px;
               display: flex;
               flex-direction: column;
               gap: 15px;
               .slide-img {
                 height: 200px;
-                .timeEvent {
-                  padding: 4px 10px;
-                  .clock {
-                    width: 25px;
-                    height: 25px;
-                  }
-                }
-              }
-              .slide-desc {
-                @include productDesc;
-                .desc-title {
-                  height: 18px;
-                }
               }
             }
           }
