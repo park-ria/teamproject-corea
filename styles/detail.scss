@@ -547,7 +547,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               right: 0;
               transform: translateY(-50%);
               width: 1px;
-              height: 17px;
+              height: 20px;
               background: map-get($map: $color, $key: bg-light-gray);
             }
 
@@ -579,7 +579,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             display: inline-block;
             font-size: map-get($map: $fontSize, $key: font-extra-small);
             color: map-get($map: $color, $key: bg-dark-gray);
-            background: #f1f1f1;
+            background: map-get($map: $color, $key: bg-blue-gray);
             border-radius: 3px;
             padding: 10px;
             margin-bottom: 42px;
@@ -673,7 +673,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
               span {
                 padding: 10px 15px;
-                background: #f1f1f1;
+                background: map-get($map: $color, $key: bg-blue-gray);
                 font-size: map-get($map: $fontSize, $key: font-small);
                 font-weight: 500;
                 border-radius: 5px;
@@ -709,76 +709,123 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
           .store-info {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            gap: 10px;
+            height: 75px;
             margin-bottom: 40px;
-
-            .info-img {
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              overflow: hidden;
-              cursor: pointer;
-
-              img {
-                width: 100%;
-                height: 100%;
-              }
-            }
-
-            .info-box {
-              height: 60px;
+            .info-user {
+              width: 50%;
               display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-
-              .box-name {
-                display: flex;
-                align-items: center;
-                gap: 25px;
+              align-items: center;
+              gap: 15px;
+              .info-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                overflow: hidden;
                 cursor: pointer;
-
-                .name {
-                  font-size: map-get($map: $fontSize, $key: font-large);
-                  font-weight: 600;
+  
+                img {
+                  width: 100%;
+                  height: 100%;
                 }
-
-                .certi {
+              }
+  
+              .info-box {
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-end;
+  
+                .box-name {
                   display: flex;
                   align-items: center;
-                  gap: 3px;
-
-                  span {
-                    font-size: 10px;
-                    margin-right: 3px;
+                  gap: 25px;
+                  cursor: pointer;
+  
+                  .name {
+                    font-size: map-get($map: $fontSize, $key: font-large);
+                    font-weight: 600;
                   }
-
-                  .certi-check {
+  
+                  .certi {
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    width: 14px;
-                    height: 14px;
-                    background: map-get($map: $color, $key: bg-main-color);
-                    border-radius: 3px;
-
-                    i {
-                      font-size: 13px;
-                      color: map-get($map: $color, $key: bg-light-color);
+                    gap: 3px;
+  
+                    span {
+                      font-size: 10px;
+                      margin-right: 3px;
+                    }
+  
+                    .certi-check {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      width: 14px;
+                      height: 14px;
+                      background: map-get($map: $color, $key: bg-main-color);
+                      border-radius: 3px;
+  
+                      i {
+                        font-size: 13px;
+                        color: map-get($map: $color, $key: bg-light-color);
+                      }
                     }
                   }
                 }
+  
+                a {
+                  width: 55px;
+                  font-size: 10px;
+                  font-weight: 500;
+                  padding: 8px 10px;
+                  color: map-get($map: $color, $key: bg-light-color);
+                  background: map-get($map: $color, $key: bg-main-color);
+                  border-radius: 5px;
+                  box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+                }
               }
+            }
+            .info-desc {
+              width: 50%;
+              display: flex;
+              align-items: center;
+              border: 1px solid map-get($map: $color, $key: bg-light-gray);
+              border-radius: 4px;
 
-              a {
-                width: 55px;
-                font-size: 10px;
-                font-weight: 500;
-                padding: 8px 10px;
-                color: map-get($map: $color, $key: bg-light-color);
-                background: map-get($map: $color, $key: bg-main-color);
-                border-radius: 5px;
-                box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+              .desc-box {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
+                position: relative;
+    
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  right: 0;
+                  transform: translateY(-50%);
+                  width: 1px;
+                  height: 17px;
+                  background: map-get($map: $color, $key: bg-light-gray);
+                }
+    
+                &:last-child::before {
+                  display: none;
+                }
+    
+                span:nth-child(1) {
+                  font-size: 13px;
+                  color: map-get($map: $color, $key: bg-dark-gray);
+                }
+                span:nth-child(2) {
+                  // font-size: map-get($map: $fontSize, $key: font-samll);
+                  font-size: 15px;
+                  font-weight: 600;
+                }
               }
             }
           }
@@ -794,6 +841,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               border-radius: 5px;
               transition: all 0.3s;
               color: map-get($map: $color, $key: bg-dark-gray);
+              background: map-get($map: $color, $key: bg-blue-gray);
 
               &.active {
                 background: map-get($map: $color, $key: bg-main-color);
@@ -851,9 +899,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 li {
                   display: flex;
                   justify-content: space-between;
-                  padding: 10px;
+                  padding: 12px;
                   font-size: map-get($map: $fontSize, $key: font-small);
-                  background: map-get($map: $color, $key: bg-light-gray);
+                  background: map-get($map: $color, $key: bg-blue-gray);
                   border-radius: 7px;
                   span {
                     color: map-get($map: $color, $key: bg-dark-gray);
