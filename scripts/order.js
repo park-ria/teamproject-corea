@@ -89,6 +89,7 @@ const createproductInfo = (product) => {
             product.image_path
           }') center/cover no-repeat;"></span>
           <p class="productName">
+            <span class='pay'>pay</span>
             ${product.title}
           </p>
         </span>
