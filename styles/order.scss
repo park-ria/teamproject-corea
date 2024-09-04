@@ -25,7 +25,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-55%, -46%);
+        transform: translate(-55%, -50%);
       }
     }
   }
@@ -67,7 +67,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-55%, -55%);
+      transform: translate(-55%, -50%);
     }
   }
 }
@@ -93,6 +93,22 @@
         padding: 0 20px;
         position: sticky;
         top: 0;
+        input[type="submit"] {
+          width: 100%;
+          height: 70px;
+          padding: 0;
+          margin-bottom: 30px;
+          border-radius: 5px;
+          font-size: 2.6rem;
+          font-weight: bold;
+          color: map-get($color, bg-light-color);
+          background: map-get($color, bg-light-gray);
+          cursor: pointer;
+          transition: background 0.3s;
+          &.active {
+            background: map-get($color, bg-main-color);
+          }
+        }
       }
       .delivery-desc {
         width: 100%;
@@ -112,6 +128,9 @@
               padding: 10px 0;
               display: flex;
               align-items: center;
+              &:last-child {
+                align-items: flex-end;
+              }
               label {
                 width: 100px;
               }
@@ -150,6 +169,7 @@
                 width: 80%;
                 padding: 10px 30px;
                 border: 1px solid map-get($color, bg-light-gray);
+                transition: none;
                 &::placeholder {
                   color: #aaa;
                   transition: opacity 0.3s;
@@ -174,11 +194,28 @@
                   outline: none;
                 }
               }
+              #etcMsg {
+                width: 80%;
+                height: 100px;
+                padding: 20px 25px;
+                resize: none;
+                overflow-y: hidden;
+                border: 1px solid map-get($color, bg-light-gray);
+                font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+                &:focus {
+                  outline: none;
+                }
+                &::placeholder {
+                  color: #aaa;
+                  transition: opacity 0.3s;
+                }
+              }
               .etcMsgCnt {
                 display: flex;
                 align-items: flex-end;
                 margin-left: 10px;
                 color: #aaa;
+                padding-bottom: 5px;
                 strong {
                   font-size: map-get($fontSize, font-medium);
                   color: map-get($color, main-font-color);
@@ -199,6 +236,9 @@
                 width: 25px;
                 height: 25px;
                 background: url("../images/store.png") center/cover no-repeat;
+              }
+              p {
+                font-size: map-get($fontSize, font-medium);
               }
             }
             .product-desc {
@@ -246,7 +286,7 @@
                     color: map-get($color, bg-light-color);
                     letter-spacing: normal;
                     text-align: center;
-                    line-height: 16px;
+                    line-height: 18px;
                   }
                 }
                 .productPrice {
@@ -278,7 +318,7 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-55%, -55%);
+                transform: translate(-55%, -50%);
               }
             }
           }
@@ -329,7 +369,7 @@
           }
           .payTypeDesc {
             width: 100%;
-            margin: 20px 0;
+            margin: 10px 0 20px;
             .payGuidelines {
               height: 0;
               padding: 0;
@@ -345,11 +385,36 @@
                 font-size: map-get($fontSize, font-extra-small);
                 color: map-get($color, bg-dark-gray);
                 &.modalLink {
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
                   text-decoration: underline;
                   cursor: pointer;
                   transition: color 0.3s;
                   &:hover {
                     color: map-get($color, main-font-color);
+                  }
+                  &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    background: url("../images/question.png") center/cover
+                      no-repeat;
+                  }
+                }
+                &.notice {
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  cursor: pointer;
+                  &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    background: url("../images/exclamation.png") center/cover
+                      no-repeat;
                   }
                 }
               }
@@ -427,9 +492,10 @@
                 }
               }
               &.accountTransferGuide {
+                padding: 8px;
                 #bank {
                   width: 100%;
-                  height: 40px;
+                  height: 48px;
                   border: 1px solid map-get($color, bg-light-gray);
                   border-radius: 5px;
                   text-align: center;
@@ -526,7 +592,7 @@
           }
           .payAdvertising {
             padding: 30px 20px 40px;
-            background: #f9f9f9;
+            background: map-get($color, bg-blue-gray);
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -580,7 +646,6 @@
                   .freeFee {
                     text-decoration: line-through;
                     margin-right: 10px;
-                    //color: map-get($color, bg-light-gray);
                     color: #ccc;
                   }
                 }
@@ -589,7 +654,7 @@
                   display: flex;
                   flex-direction: column;
                   gap: 10px;
-                  background: #f9f9f9;
+                  background: map-get($color, bg-blue-gray);
                   padding: 20px;
                   span {
                     font-size: map-get($fontSize, font-extra-small);
@@ -597,7 +662,7 @@
                   }
                 }
                 .finalPaymentAmountTitle {
-                  font-size: map-get($fontSize, font-extra-large);
+                  font-size: map-get($fontSize, font-large);
                   color: map-get($color, bg-main-color);
                 }
                 .finalPaymentAmountPrice {
@@ -605,7 +670,7 @@
                   color: map-get($color, bg-main-color);
                   letter-spacing: normal;
                   b {
-                    font-size: 2.6rem;
+                    font-size: 3rem;
                     margin-right: 5px;
                   }
                 }
@@ -615,12 +680,115 @@
         }
         &.approval {
           border-top: 1px dotted map-get($color, bg-light-gray);
-          padding: 30px 0;
+          padding: 20px 0 0;
+          margin: 0;
           .allCheckWrap {
             width: 100%;
             padding: 10px;
             .allCheckbox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              @include checkbox-style;
+              .fa-solid {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                color: #ccc;
+                cursor: pointer;
+                transition: color 0.3s;
+                &:hover {
+                  color: map-get($color, main-font-color);
+                }
+              }
             }
+          }
+          .approvalCheckbox {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 0.3s, height 0.3s;
+            &.on {
+              height: auto;
+              opacity: 1;
+            }
+            li {
+              padding: 10px;
+              .approvalCheckboxLine {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .approvalCheckboxItem {
+                  input[type="checkbox"] {
+                    display: none;
+                  }
+                  label {
+                    .fa-solid {
+                      width: 20px;
+                      height: 20px;
+                      text-align: center;
+                      line-height: 20px;
+                      margin-right: 10px;
+                      color: #ccc;
+                      transition: color 0.3s;
+                    }
+                  }
+                  input[type="checkbox"]:checked + label > .fa-solid {
+                    color: map-get($color, bg-main-color);
+                  }
+                }
+                .descButton {
+                  width: 30px;
+                  height: 30px;
+                  color: #ccc;
+                  cursor: pointer;
+                  position: relative;
+                  &:hover {
+                    color: map-get($color, main-font-color);
+                  }
+                  &::after {
+                    content: "\2b";
+                    font-family: "fontawesome";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: all 0.3s;
+                  }
+                  &.active {
+                    &::after {
+                      content: "\2b";
+                      font-family: "fontawesome";
+                      transform: translate(-50%, -50%) rotate(45deg);
+                    }
+                  }
+                }
+              }
+              iframe {
+                background: map-get($color, bg-blue-gray);
+                width: 100%;
+                height: 0;
+                opacity: 0;
+                transition: opacity 0.3s, height 0.3s;
+                &.active {
+                  height: 150px;
+                  opacity: 1;
+                  margin: 20px 0;
+                }
+              }
+            }
+          }
+        }
+        &.lastMent {
+          background: map-get($color, bg-blue-gray);
+          padding: 20px;
+          margin-top: 0;
+          p {
+            font-size: map-get($fontSize, font-extra-small);
+            line-height: normal;
+            color: map-get($color, bg-dark-gray);
           }
         }
       }
@@ -637,7 +805,6 @@
 
 /* payTypeModal */
 .payTypeModal {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -661,17 +828,17 @@
     font-size: map-get($fontSize, font-extra-large);
   }
   ul {
-    margin-top: 30px;
     margin: 30px 0 0 20px;
     li {
       margin-bottom: 12px;
       font-size: map-get($fontSize, font-medium);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      line-height: 1.3;
+      position: relative;
       &::before {
         content: "";
-        display: inline-block;
+        position: absolute;
+        top: 8px;
+        left: -8px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
@@ -696,10 +863,162 @@
   width: 100%;
   height: 0;
   opacity: 0;
-  transition: all 0.3s;
   &.active {
     height: 100vh;
     opacity: 1;
     background: rgba($color: #000000, $alpha: 0.4);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  /* order */
+  .order {
+    width: 100%;
+    .order-content {
+      form {
+        .delivery-desc {
+          &.productContent {
+            .productInfo {
+              .product-desc {
+                flex-wrap: wrap;
+                height: auto;
+                .product-desc-box {
+                  height: 90px;
+                  &.productImgNm {
+                    width: 100%;
+                    justify-content: space-between;
+                    gap: 10px;
+                    height: 150px;
+                    .productName {
+                      width: calc(100% - 160px);
+                      padding: 0 10px;
+                    }
+                  }
+                  &:nth-child(2) {
+                    border-left: 1px solid map-get($color, bg-light-gray);
+                  }
+                  &:last-child {
+                    border-right: 1px solid map-get($color, bg-light-gray);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  /* order */
+  .order {
+    width: 100%;
+    .order-content {
+      form {
+        flex-direction: column;
+        .delivery-left {
+          width: 100%;
+          padding: 0;
+          border-right: none;
+        }
+        .delivery-right {
+          width: 100%;
+          padding: 0;
+          position: static;
+        }
+        .delivery-desc {
+          margin: 20px 0;
+          .sub-title {
+            padding: 20px 0;
+          }
+
+          &.deliveryInfo {
+            .deliveryInfoDesc {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 0;
+              li {
+                width: 90%;
+                &:last-child {
+                  position: relative;
+                }
+                input[type="text"] {
+                  width: 100%;
+                  &#recipient {
+                    flex: 1;
+                  }
+                }
+                .inputWrap {
+                  flex: 1;
+                }
+                select,
+                #etcMsg {
+                  width: 100%;
+                }
+                .etcMsgCnt {
+                  margin: 0;
+                  padding: 0;
+                  position: absolute;
+                  bottom: 13px;
+                  right: 10px;
+                }
+              }
+            }
+          }
+          &.paymentMethod {
+            .payAdvertising {
+              padding: 20px;
+            }
+            .payTypeDesc {
+              .payGuidelines {
+                &.cardGuide {
+                  .monthlyInstallmentPlan {
+                    span {
+                      padding: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .banner {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  /* payTypeModal */
+  .payTypeModal {
+    &.active {
+      width: 450px;
+      padding: 30px 10px 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 30px 10px 0;
+      li {
+        font-size: map-get($fontSize, font-small);
+      }
+    }
+
+    .payTypeModalClose {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: map-get($fontSize, font-medium);
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* payTypeModal */
+  .payTypeModal {
+    &.active {
+      width: 90%;
+    }
   }
 }
