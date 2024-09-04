@@ -5,6 +5,7 @@ fetch(joonggoInfo)
   .then((joongoData) => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
+    const auctionPrice = params.get("price");
 
     const product = joongoData.product.find((product) => product.id === id);
 
@@ -103,21 +104,19 @@ fetch(joonggoInfo)
       // PC 드래그 이벤트
       imgWrapper.addEventListener("mousedown", (e) => {
         imgWrapper.style.cursor = "grabbing";
-        startPoint = e.pageX; 
+        startPoint = e.pageX;
       });
 
       imgWrapper.addEventListener("mouseup", (e) => {
         imgWrapper.style.cursor = "grab";
-        endPoint = e.pageX; 
+        endPoint = e.pageX;
 
         if (startPoint < endPoint) {
-
           // 마우스가 오른쪽으로 드래그 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
         } else if (startPoint > endPoint) {
-
           // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
@@ -130,7 +129,7 @@ fetch(joonggoInfo)
         startPoint = e.touches[0].pageX;
       });
       imgWrapper.addEventListener("touchend", (e) => {
-        endPoint = e.changedTouches[0].pageX; 
+        endPoint = e.changedTouches[0].pageX;
         if (startPoint < endPoint) {
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
@@ -161,7 +160,16 @@ fetch(joonggoInfo)
 
       // Making Heading-price
       const headingPrice = document.querySelector(".heading-price");
-      headingPrice.innerText = product.price;
+      if (auctionPrice) {
+        headingPrice.innerHTML = `
+        <span class="current-price">${auctionPrice}원</span>
+        <span class="original-price">${product.price}</span>
+        `;
+      } else {
+        headingPrice.innerHTML = `
+        <span class="original-price">${product.price}</span>
+        `;
+      }
 
       // Making Heading-timeinfo
       const headingTimeinfo = document.querySelector(".heading-timeinfo");
@@ -179,6 +187,10 @@ fetch(joonggoInfo)
       subDataArr.forEach((subData, index) => {
         const watchArr = subData.split(" ");
         let watchNum = Number(watchArr[2]);
+
+        if (index === 0 && auctionPrice) {
+          subData = subData.replace(" 전 ", " 후 ");
+        }
 
         if (index === 1) {
           if (watchInfoArr) {
@@ -206,7 +218,9 @@ fetch(joonggoInfo)
 
       // updateHeartBtns
       const updateHeartBtns = () => {
-        const updateWishItem = wishItemArr.find((wishItem) => wishItem.id === product.id);
+        const updateWishItem = wishItemArr.find(
+          (wishItem) => wishItem.id === product.id
+        );
 
         if (updateWishItem) {
           heartBtns.forEach((heartBtn) => {
@@ -280,6 +294,116 @@ fetch(joonggoInfo)
         });
       });
 
+      if (auctionPrice) {
+
+        headingTimeinfo.classList.add("active")
+        // time event
+        const formatting = (time) => {
+          let sec = Math.floor(time % 60);
+          let min = Math.floor((time / 60) % 60);
+          let hour = Math.floor(time / 3600);
+
+          sec = sec < 10 ? `0${sec}` : `${sec}`;
+          min = min < 10 ? `0${min}` : `${min}`;
+          hour = hour < 10 ? `0${hour}` : `${hour}`;
+
+          return { hour, min, sec };
+        };
+
+        const createSpan = (content, className) => {
+          const span = document.createElement("span");
+          span.innerText = content;
+          span.classList.add(className);
+          return span;
+        };
+
+        const updateUnit = (parent, unit, itemValue) => {
+          const unitElement = parent.querySelector(`.${unit}`);
+
+          if (unitElement) {
+            const currentValue = unitElement.querySelector(".old").innerText;
+            if (currentValue != itemValue) {
+              const oldSpan = unitElement.querySelector(".old");
+              console.log(oldSpan);
+              const newSpan = createSpan(itemValue, "new");
+              unitElement.appendChild(newSpan);
+
+              if (unit === "sec") {
+                unitElement.classList.add("updating");
+              }
+
+              setTimeout(() => {
+                if (oldSpan) unitElement.removeChild(oldSpan);
+                newSpan.classList.replace("new", "old");
+                unitElement.classList.remove("updating");
+              }, 100);
+            }
+          } else {
+            const unitContainer = document.createElement("div");
+            unitContainer.classList.add("timeItem", unit);
+            unitContainer.appendChild(createSpan(itemValue, "old"));
+            parent.appendChild(unitContainer);
+          }
+        };
+
+        // time event
+        const timeItems = document.createElement("div");
+        const clock = document.createElement("div");
+        timeItems.className = "timeEvent";
+        clock.className = "clock";
+
+        const today = new Date();
+
+        const time = Number(product.time.replace(/[^0-9]/g, ""));
+        // console.log(time);
+        let eventDate = today.getDate();
+        let eventHrs = today.getHours();
+        let eventMin = today.getMinutes();
+        let eventSec = today.getSeconds();
+
+        if (product.time.includes("일")) {
+          eventDate += time;
+        } else if (product.time.includes("시간")) {
+          eventHrs += time;
+        } else if (product.time.includes("분")) {
+          eventMin += time;
+        } else if (product.time.includes("초")) {
+          eventSec += time;
+        }
+
+        const updateTime = () => {
+          const today = new Date();
+          const eventDay = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            eventDate,
+            eventHrs,
+            eventMin,
+            eventSec
+          );
+          const gapDate = Math.floor((eventDay - today) / 1000);
+          const { hour, min, sec } = formatting(gapDate);
+
+          updateUnit(timeItems, "hour", hour);
+          updateUnit(timeItems, "min", min);
+          updateUnit(timeItems, "sec", sec);
+        };
+        setInterval(updateTime, 1000);
+
+        timeItems.prepend(clock);
+
+        document.querySelector(".desc-heading").appendChild(timeItems);
+
+        // slide pager
+        // const slidePager =
+        //   ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
+        // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
+        //   const spanTag = document.createElement("span");
+        //   slidePager.appendChild(spanTag);
+        // }
+        // slideIndex++;
+      } 
+
       // Making User-img
       const userImg = document.querySelector(".user-img");
       const userImgTag = document.createElement("img");
@@ -334,6 +458,9 @@ fetch(joonggoInfo)
       // Making Desc-conditions
       const descConditions = document.querySelector(".desc-conditions");
 
+      if(auctionPrice) {
+        descConditions.classList.add("active");
+      }
       descConditions.innerHTML = `
       <div class="conditions-box">
       <span>제품상태</span>
@@ -360,6 +487,13 @@ fetch(joonggoInfo)
         }
       });
 
+      // desc-map (경매용)
+      const descMap = document.querySelector(".desc-map");
+
+      if (auctionPrice) {
+        descMap.style.display = "none";
+      }
+
       // Making Map-area
       const mapArea = document.querySelector(".map-area");
       mapArea.innerHTML = `${
@@ -369,21 +503,27 @@ fetch(joonggoInfo)
       }`;
 
       // Kakao map
-      const mapContainer = document.getElementById('map'), 
-        mapOption = { 
-              center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), 
-              level: 4 
-          };
+      const mapContainer = document.getElementById("map"),
+        mapOption = {
+          center: new kakao.maps.LatLng(
+            product.detail.latitude,
+            product.detail.longitude
+          ),
+          level: 4,
+        };
 
       const map = new kakao.maps.Map(mapContainer, mapOption);
 
-      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); 
+      const markerPosition = new kakao.maps.LatLng(
+        product.detail.latitude,
+        product.detail.longitude
+      );
 
       const marker = new kakao.maps.Marker({
         position: markerPosition,
       });
 
-      marker.setMap(map);  
+      marker.setMap(map);
 
       const content = `
       <div class="customoverlay">
@@ -392,23 +532,44 @@ fetch(joonggoInfo)
         </a>
       </div>`;
 
-      const position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
+      const position = new kakao.maps.LatLng(
+        product.detail.latitude,
+        product.detail.longitude
+      );
 
       const customOverlay = new kakao.maps.CustomOverlay({
-          map: map,
-          position: position,
-          content: content,
-          yAnchor: 1 
+        map: map,
+        position: position,
+        content: content,
+        yAnchor: 1,
       });
+
+      // desc-btns 버튼 생성
+      const descBtns = document.querySelector(".desc-btns");
+
+      if (auctionPrice) {
+        descBtns.classList.add("active");
+        descBtns.innerHTML = `
+        <a href="/pages/login.html" class="auction">입찰하기</a>
+        <a href="#none" class="trade">채팅하기</a>
+        `;
+      } else {
+        descBtns.innerHTML = `
+        <a href="/pages/login.html" class="chat">채팅하기</a>
+        <a href="#none" class="trade">구매하기</a>
+        `;
+      }
 
       // trade버튼 클릭시 이벤트
       const tradeBtn = document.querySelector(".trade");
 
       tradeBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        const url = `/pages/order.html?id=${product.id}`;
-        window.location.href = url;
-      })
+        if(!auctionPrice){
+          const url = `/pages/order.html?id=${product.id}`;
+          window.location.href = url;
+        }
+      });
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -758,9 +919,9 @@ urlBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const urlAddress = window.location.href;
-  navigator.clipboard.writeText(urlAddress).then(res=>{
-	  alert("주소가 복사되었습니다!");
-	})
+  navigator.clipboard.writeText(urlAddress).then((res) => {
+    alert("주소가 복사되었습니다!");
+  });
 });
 
 // Store-btns active
@@ -898,5 +1059,3 @@ const eventSlide = () => {
   });
 };
 eventSlide();
-
-

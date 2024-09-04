@@ -592,6 +592,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -749,6 +750,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #3a3a3a;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -1146,16 +1150,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
-  slide-btns button.slidePrev {
+  .slide-btns button.slidePrev {
     transform: translateX(0);
   }
-  slide-btns button.slidePrev:hover {
+  .slide-btns button.slidePrev:hover {
     transform: translate(0, 5%);
   }
-  slide-btns button.slideNext {
+  .slide-btns button.slideNext {
     transform: translateX(0);
   }
-  slide-btns button.slideNext:hover {
+  .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -1178,6 +1182,25 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-bottom .header-bottom-left {
     gap: 12px;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0dcc5a;
+    transition: all 0.3s;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
+    font-size: 24px;
   }
   #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
     gap: 12px;
@@ -1232,6 +1255,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     left: 0;
     width: 100%;
     z-index: 3;
+  }
+  #mobile-menu .mobile-logo img {
+    width: 120px;
   }
   #mobile-category {
     display: block;
