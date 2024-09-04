@@ -6,11 +6,9 @@ let favoriteBrandsArr;
 
 // checkEmptyData
 const checkEmptyData = (arr) => {
-  const emptyMsg = document.querySelector(
-    ".wishlistContent.active > .emptyMsg"
-  );
+  const emptyMsg = document.querySelector(".wishlistContent.active .emptyMsg");
   const siblings = document.querySelectorAll(
-    ".wishlistContent.active > .emptyMsg ~ div"
+    ".wishlistContent.active .emptyMsg ~ div"
   );
 
   if (arr.length === 0) {
@@ -172,6 +170,14 @@ highPriceSorting.addEventListener("click", sortHighPrice);
 
 // putting items in the wishItemList
 const addItemsInTheWishItemList = (product, index) => {
+  const findedWishItem = wishItemArr.find((arr) => arr.id === product.id);
+  const watchInfoArr = JSON.parse(localStorage.getItem("watchInfoArr")) || [];
+
+  let viewCount;
+  if (watchInfoArr.length > 0) {
+    viewCount = watchInfoArr.find((arr) => arr.id === product.id);
+  }
+
   const li = `
       <li>
         <input type="checkbox" name="checkWishItem" id="wishItem${
@@ -236,15 +242,15 @@ const addItemsInTheWishItemList = (product, index) => {
                 </span>
               </a>
               <span class="wishItemButtons">
-                <button class="wishItemChatButton">채팅하기</button>
+                <a class="wishItemChatButton" href="#none">채팅하기</a>
                 ${
                   product.pay_flag > 0
-                    ? '<button class="wishItemPurchaseButton">구매하기</button>'
-                    : '<button class="wishItemProposalButton">가격제안</button>'
+                    ? `<a class="wishItemPurchaseButton" href="/pages/order.html?id=${product.id}">구매하기</a>`
+                    : '<a class="wishItemProposalButton">가격제안</a>'
                 }
-                <button class="wishItemXButton">
+                <a class="wishItemXButton" href="#none">
                   <i class="fa-solid fa-xmark"></i>
-                </button>
+                </a>
               </span>
             </div>
             <div class="wishItemLower">
@@ -252,7 +258,7 @@ const addItemsInTheWishItemList = (product, index) => {
               <span class="wishItemCount">
                 <span class="wishItemViewCount">
                   <i class="fa-regular fa-eye"></i>
-                  ${product.detail.view}
+                  ${viewCount ? viewCount.countNum : product.detail.view}
                 </span>
                 <span class="wishItemChattingCount">
                   <i class="fa-regular fa-comment-dots"></i>
@@ -260,7 +266,7 @@ const addItemsInTheWishItemList = (product, index) => {
                 </span>
                 <span class="wishItemLikeCount">
                   <i class="fa-regular fa-heart"></i>
-                  ${product.detail.wish}
+                  ${findedWishItem.countNum}
                 </span>
               </span>
             </div>
@@ -285,13 +291,29 @@ const wishItemChkEvnt = () => {
   });
 };
 
+const wishItemHover = () => {
+  let wishItemViewMore = document.querySelectorAll(".wishItemViewMore");
+  wishItemViewMore.forEach((info) => {
+    info.addEventListener("mouseenter", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.add("hover");
+    });
+    info.addEventListener("mouseleave", function () {
+      this.closest("li")
+        .querySelector(".wishItemImgWrapper img")
+        .classList.remove("hover");
+    });
+  });
+};
+
 const saveWishItem = () => {
   localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
 };
 
 const delWishItem = (target) => {
   const productId = target.querySelector("input[type='checkbox']").value;
-  wishItemArr = wishItemArr.filter((item) => item !== productId);
+  wishItemArr = wishItemArr.filter((item) => item.id !== productId);
   wishItemArrDetail = wishItemArrDetail.filter((item) => item.id !== productId);
   saveWishItem();
   target.remove();
@@ -302,6 +324,7 @@ const delWishItem = (target) => {
 const wishItemButtonEvent = () => {
   // all select event
   wishItemChkEvnt();
+  wishItemHover();
 
   // button event
   document.querySelectorAll(".wishHeart").forEach((item) => {
@@ -319,7 +342,7 @@ const wishItemButtonEvent = () => {
 };
 
 // putting items in the favoriteStores
-const addItemsInTheFavoriteStores = (store) => {
+const addItemsInTheFavoriteStores = (store, index) => {
   let li = `
     <li>
       <div class="favorite-store-info">
@@ -386,12 +409,31 @@ const addItemsInTheFavoriteStores = (store) => {
             )
             .join("")}
         </ul>
+        <div class="img-prev btn disabled">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="img-next btn">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
       </div>
     </li>
   `;
-  document
-    .querySelector(".favoriteStoresWrap")
-    .insertAdjacentHTML("beforeend", li);
+
+  const ul = document.querySelector(".favoriteStoresWrap");
+  ul.insertAdjacentHTML("beforeend", li);
+
+  const slideUl = ul.querySelectorAll(".favorite-store-products")[index];
+  const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+  const slideMargin = matchMedia("screen and (max-width: 840px)").matches
+    ? 10
+    : 20;
+  const clientWidth = slideUl.parentElement.clientWidth;
+  if (
+    (slideWidth + slideMargin) * store.info.product_img_etc.length <
+    clientWidth
+  ) {
+    slideUl.nextElementSibling.nextElementSibling.classList.add("disabled");
+  }
 };
 
 const saveFavoriteStores = () => {
@@ -437,11 +479,25 @@ const favorStoreSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
+
+      if (num === 0) {
+        prevBtn.classList.add("disabled");
+        nextBtn.classList.remove("disabled");
+      } else if (
+        currentSlideWidth - clientWidth >= 0 &&
+        currentSlideWidth - clientWidth <= slideMargin
+      ) {
+        nextBtn.classList.add("disabled");
+        prevBtn.classList.remove("disabled");
+      } else {
+        prevBtn.classList.remove("disabled");
+        nextBtn.classList.remove("disabled");
+      }
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
@@ -449,8 +505,21 @@ const favorStoreSlide = (slideUl) => {
         slideWidth +
         (clientWidth - currentSlideWidth)
       }px)`;
+
+      nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
@@ -488,8 +557,8 @@ const favorStoreSlide = (slideUl) => {
 
 const createFavorStores = () => {
   document.querySelector(".favoriteStoresWrap").innerHTML = "";
-  favorStoreArrDetail.forEach((store) => {
-    addItemsInTheFavoriteStores(store);
+  favorStoreArrDetail.forEach((store, index) => {
+    addItemsInTheFavoriteStores(store, index);
   });
 
   favorStoresButtonEvent();
@@ -499,7 +568,7 @@ const createFavorStores = () => {
 };
 
 // putting items in the favoriteBrands
-const addItemsInTheFavoriteBrands = (brand) => {
+const addItemsInTheFavoriteBrands = (brand, index) => {
   // making favoriteBrands li
   let li = `
         <li>
@@ -547,13 +616,28 @@ const addItemsInTheFavoriteBrands = (brand) => {
               )
               .join("")}
             </ul>
+            <div class="img-prev btn disabled">
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="img-next btn">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
           </div>
         </li>
       `;
 
-  document
-    .querySelector(".favoriteBrandsWrap")
-    .insertAdjacentHTML("beforeend", li);
+  const ul = document.querySelector(".favoriteBrandsWrap");
+  ul.insertAdjacentHTML("beforeend", li);
+
+  const slideUl = ul.querySelectorAll(".favorite-brand-products")[index];
+  const slideWidth = slideUl.querySelectorAll("li>a")[0].offsetWidth;
+  const slideMargin = matchMedia("screen and (max-width: 840px)").matches
+    ? 10
+    : 20;
+  const clientWidth = slideUl.parentElement.clientWidth;
+  if ((slideWidth + slideMargin) * brand.products.length < clientWidth) {
+    slideUl.nextElementSibling.nextElementSibling.classList.add("disabled");
+  }
 };
 
 const saveBrandStores = () => {
@@ -598,11 +682,25 @@ const favorBrandSlide = (slideUl) => {
     const currentSlideWidth = (slideCount - num) * (slideWidth + slideMargin);
     const clientWidth = slideUl.parentElement.clientWidth;
 
-    if (currentSlideWidth >= clientWidth) {
+    if (currentIdx > num || currentSlideWidth >= clientWidth) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
+
+      if (num === 0) {
+        prevBtn.classList.add("disabled");
+        nextBtn.classList.remove("disabled");
+      } else if (
+        currentSlideWidth - clientWidth >= 0 &&
+        currentSlideWidth - clientWidth <= slideMargin
+      ) {
+        nextBtn.classList.add("disabled");
+        prevBtn.classList.remove("disabled");
+      } else {
+        prevBtn.classList.remove("disabled");
+        nextBtn.classList.remove("disabled");
+      }
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
       slideUl.style.transform = `translateX(${
@@ -610,8 +708,21 @@ const favorBrandSlide = (slideUl) => {
         slideWidth +
         (clientWidth - currentSlideWidth)
       }px)`;
+
+      nextBtn.classList.add("disabled");
+      prevBtn.classList.remove("disabled");
     }
   };
+
+  // button event
+  const prevBtn = slideUl.parentElement.querySelector(".img-prev");
+  const nextBtn = slideUl.parentElement.querySelector(".img-next");
+  prevBtn.addEventListener("click", () => {
+    moveSlide(currentIdx - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    moveSlide(currentIdx + 1);
+  });
 
   // drag event
   let startPoint = 0;
@@ -649,8 +760,8 @@ const favorBrandSlide = (slideUl) => {
 
 const createFavorBrands = () => {
   document.querySelector(".favoriteBrandsWrap").innerHTML = "";
-  favoriteBrandsArr.forEach((brand) => {
-    addItemsInTheFavoriteBrands(brand);
+  favoriteBrandsArr.forEach((brand, index) => {
+    addItemsInTheFavoriteBrands(brand, index);
   });
 
   favorBrandsButtonEvent();
@@ -664,11 +775,12 @@ fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
     // array init
-    wishItemArr = localStorage.getItem("wishItemArr")
+    /*wishItemArr = localStorage.getItem("wishItemArr")
       ? JSON.parse(localStorage.getItem("wishItemArr"))
       : jsonData.wishlist.wishItemArr
       ? jsonData.wishlist.wishItemArr
-      : [];
+      : [];*/
+    wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
     saveWishItem();
     checkEmptyData(wishItemArr);
 
@@ -692,7 +804,7 @@ fetch("../db.json")
     // putting items in the wishItemList
     wishItemArr.forEach((arr) => {
       const product = jsonData.product.filter((item) => {
-        return item.id.includes(arr);
+        return item.id.includes(arr.id);
       })[0];
       wishItemArrDetail.push(product);
     });

@@ -102,22 +102,22 @@ fetch(joonggoInfo)
 
       // PC 드래그 이벤트
       imgWrapper.addEventListener("mousedown", (e) => {
-        //console.log(e);
         imgWrapper.style.cursor = "grabbing";
-        startPoint = e.pageX; // 마우스 드래그 시작 위치 저장
+        startPoint = e.pageX; 
       });
 
       imgWrapper.addEventListener("mouseup", (e) => {
         imgWrapper.style.cursor = "grab";
-        //console.log("mouseup", e.pageX);
-        endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
+        endPoint = e.pageX; 
 
         if (startPoint < endPoint) {
+
           // 마우스가 오른쪽으로 드래그 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
         } else if (startPoint > endPoint) {
+
           // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
@@ -127,14 +127,11 @@ fetch(joonggoInfo)
 
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
-        //console.log("touchstart", e.touches[0].pageX);
-        startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
+        startPoint = e.touches[0].pageX;
       });
       imgWrapper.addEventListener("touchend", (e) => {
-        //console.log("touchend", e.changedTouches[0].pageX);
-        endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
+        endPoint = e.changedTouches[0].pageX; 
         if (startPoint < endPoint) {
-          // 오른쪽으로 스와이프 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
@@ -197,7 +194,7 @@ fetch(joonggoInfo)
             countNum: updateWatchNum,
           };
           saveWatch(product.id, watchInfo);
-          headingTimeinfo.innerHTML += `<span>${watchArr[1]} ${watchNum}</span>`;
+          headingTimeinfo.innerHTML += `<span>${watchArr[1]} ${updateWatchNum}</span>`;
         } else {
           headingTimeinfo.innerHTML += `<span>${subData}</span>`;
         }
@@ -209,11 +206,16 @@ fetch(joonggoInfo)
 
       // updateHeartBtns
       const updateHeartBtns = () => {
-        if (wishItemArr.find((wishItem) => wishItem.id === product.id)) {
+        const updateWishItem = wishItemArr.find((wishItem) => wishItem.id === product.id);
+
+        if (updateWishItem) {
           heartBtns.forEach((heartBtn) => {
             heartBtn.querySelector("i").classList.remove("fa-regular");
             heartBtn.querySelector("i").classList.add("fa-solid");
           });
+          headingTimeinfo.querySelector(
+            "span:nth-child(4)"
+          ).innerText = `찜 ${updateWishItem.countNum}`;
         } else {
           heartBtns.forEach((heartBtn) => {
             heartBtn.querySelector("i").classList.remove("fa-solid");
@@ -222,10 +224,12 @@ fetch(joonggoInfo)
         }
       };
 
+      // 찜한 상품 저장
       const saveId = () => {
         localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
       };
 
+      // 찜한 상품 삭제
       const removeId = (id) => {
         wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
         wishItemArr = wishItemArr.filter(
@@ -244,32 +248,29 @@ fetch(joonggoInfo)
         countNum: pickedNum,
       };
 
+      // heart-btn 클릭시 이벤트
       heartBtns.forEach((heartBtn) => {
         heartBtn.addEventListener("click", (e) => {
           wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
 
           if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
             heartBtns.forEach((btn) => {
-              console.log("클릭");
               const heart = btn.querySelector("i");
               heart.classList.remove("fa-solid");
               heart.classList.add("fa-regular");
             });
             pickedInfo.countNum = pickedInfo.countNum - 1;
-            console.log(pickedInfo);
             removeId(pickedInfo);
             headingTimeinfo.querySelector(
               "span:nth-child(4)"
             ).innerText = `찜 ${pickedInfo.countNum}`;
           } else {
             heartBtns.forEach((btn) => {
-              console.log("클릭");
               const heart = btn.querySelector("i");
               heart.classList.remove("fa-regular");
               heart.classList.add("fa-solid");
             });
             pickedInfo.countNum = pickedInfo.countNum + 1;
-            console.log(pickedInfo);
             wishItemArr.push(pickedInfo);
             saveId();
             headingTimeinfo.querySelector(
@@ -344,7 +345,7 @@ fetch(joonggoInfo)
       </div>
       <div class="conditions-box">
       <span>배송비</span>
-      <span class="condition">${product.detail.delivery_charged}</span>
+      <span class="condition">${product.detail.delivery_charge}</span>
         </div>
         <div class="conditions-box">
         <span>안전거래</span>
@@ -367,38 +368,47 @@ fetch(joonggoInfo)
           : `<i class="fa-solid fa-location-dot"></i> ${product.point}`
       }`;
 
-      // Map API
-      const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(
-            product.detail.latitude,
-            product.detail.longitude
-          ), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
+      // Kakao map
+      const mapContainer = document.getElementById('map'), 
+        mapOption = { 
+              center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), 
+              level: 4 
+          };
 
-      const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+      const map = new kakao.maps.Map(mapContainer, mapOption);
 
-      // 마커가 표시될 위치입니다
-      const markerPosition = new kakao.maps.LatLng(
-        product.detail.latitude,
-        product.detail.longitude
-      );
+      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); 
 
-      // 마커를 생성합니다
       const marker = new kakao.maps.Marker({
         position: markerPosition,
       });
 
-      // 마커가 지도 위에 표시되도록 설정합니다
-      marker.setMap(map);
+      marker.setMap(map);  
 
-      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-      const mapTypeControl = new kakao.maps.MapTypeControl();
+      const content = `
+      <div class="customoverlay">
+        <a href="https://map.kakao.com/link/map/" target="_blank">
+          <span class="title">${product.point}</span>
+        </a>
+      </div>`;
 
-      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-      // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+      const position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
+
+      const customOverlay = new kakao.maps.CustomOverlay({
+          map: map,
+          position: position,
+          content: content,
+          yAnchor: 1 
+      });
+
+      // trade버튼 클릭시 이벤트
+      const tradeBtn = document.querySelector(".trade");
+
+      tradeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const url = `/pages/order.html?id=${product.id}`;
+        window.location.href = url;
+      })
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -431,6 +441,19 @@ fetch(joonggoInfo)
       // Making Store-name
       const storeName = document.querySelector(".name");
       storeName.innerText = product.detail.store_name;
+
+      // Making Info-desc
+      const infoDesc = document.querySelector(".info-desc");
+      infoDesc.innerHTML = `
+      <div class="desc-box">
+        <span>판매중</span>
+        <span>${store.info.product_img_etc.length}</span>
+      </div>
+      <div class="desc-box">
+        <span>거래후기</span>
+        <span>${store.review.review_title.length}</span>
+      </div>
+      `;
 
       // Making Item-info
       const productItemInfos = store.info.product_img_etc;
@@ -567,7 +590,6 @@ fetch(joonggoInfo)
   });
 
 // add product slide item
-// add product slide item
 let slideIndex = 0;
 let slidesPerView = 5;
 
@@ -617,14 +639,6 @@ const addProduct = (product, ul) => {
   liItem.appendChild(aTag);
   ulItem.appendChild(liItem);
 
-  // const productSlideLimit = ulItem.children.length;
-  // pager
-  // const slidePager =
-  //   ulItem.parentElement.nextElementSibling.querySelector(".slidePager");
-  // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-  //   const spanTag = document.createElement("span");
-  //   slidePager.appendChild(spanTag);
-  // }
   slideIndex++;
 };
 
@@ -635,41 +649,15 @@ const productSlide = (section) => {
   const slide = slideUl.querySelectorAll("li");
   const prevBtn = slideSection.querySelector(".slidePrev");
   const nextBtn = slideSection.querySelector(".slideNext");
-  // const pagers = slideSection.querySelectorAll(".slidePager span");
 
   const slideCount = slide.length;
 
   if (slideCount < 6) {
     prevBtn.classList.add("disabled");
     nextBtn.classList.add("disabled");
-    // prevBtn.style.display = "none";
-    // nextBtn.style.display = "none";
   }
 
   let currentIdx = 0;
-
-  // move pager
-  // pagers[0].classList.add("active");
-  // const movePager = (index) => {
-  //   for (let pager of pagers) {
-  //     pager.classList.remove("active");
-  //   }
-  //   pagers[index].classList.add("active");
-  //   // console.log(index);
-  // };
-
-  // click pager
-  // pagers.forEach((pager, index) => {
-  //   pager.addEventListener("click", function () {
-  //     pagers.forEach((sibling) => {
-  //       if (sibling !== pager) sibling.classList.remove("active");
-  //     });
-
-  //     this.classList.add("active");
-  //     currentIdx = index;
-  //     moveSlide(index);
-  //   });
-  // });
 
   const moveSlide = (num) => {
     if (num < 0 || num >= slideCount) return;
@@ -681,13 +669,11 @@ const productSlide = (section) => {
 
     if (currentSlideWidth >= clientWidth) {
       currentIdx = num;
-      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -num * (slideWidth + slideMargin)
       }px)`;
     } else if (clientWidth - currentSlideWidth < slideWidth - slideMargin) {
       currentIdx = num;
-      // movePager(currentIdx);
       slideUl.style.transform = `translateX(${
         -(num - 1) * (slideWidth + slideMargin) -
         slideWidth +
@@ -723,7 +709,6 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
-    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 
@@ -754,7 +739,7 @@ const productSlide = (section) => {
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
-const shaerboxFilter = document.querySelector(".shaerbox-filter");
+const shaerboxFilter = document.querySelector(".sharebox-filter");
 
 shareBtn.addEventListener("click", () => {
   document.querySelector(".share-box").classList.add("active");
@@ -769,9 +754,13 @@ shaerboxFilter.addEventListener("click", function () {
 // URL click시 url주소
 const urlBtn = document.querySelector(".url");
 
-urlBtn.addEventListener("click", () => {
+urlBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const urlAddress = window.location.href;
-  prompt("Ctrl+C를 눌러 클립보드로 복사하세요", `${urlAddress}`);
+  navigator.clipboard.writeText(urlAddress).then(res=>{
+	  alert("주소가 복사되었습니다!");
+	})
 });
 
 // Store-btns active
@@ -909,3 +898,5 @@ const eventSlide = () => {
   });
 };
 eventSlide();
+
+

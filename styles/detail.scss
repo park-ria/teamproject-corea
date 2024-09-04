@@ -286,7 +286,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         top: 185px;
         left: 0;
         width: 600px;
-        height: 725px;
+        height: 695px;
 
         .img-slider {
           width: 100%;
@@ -547,7 +547,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               right: 0;
               transform: translateY(-50%);
               width: 1px;
-              height: 17px;
+              height: 20px;
               background: map-get($map: $color, $key: bg-light-gray);
             }
 
@@ -556,12 +556,12 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             }
 
             span:nth-child(1) {
-              font-size: 13px;
+              font-size: 12px;
               color: map-get($map: $color, $key: bg-dark-gray);
             }
             span:nth-child(2) {
               // font-size: map-get($map: $fontSize, $key: font-samll);
-              font-size: 15px;
+              font-size: 14px;
               font-weight: 600;
             }
           }
@@ -579,7 +579,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             display: inline-block;
             font-size: map-get($map: $fontSize, $key: font-extra-small);
             color: map-get($map: $color, $key: bg-dark-gray);
-            background: #f1f1f1;
+            background: map-get($map: $color, $key: bg-blue-gray);
             border-radius: 3px;
             padding: 10px;
             margin-bottom: 42px;
@@ -592,6 +592,49 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             width: 100%;
             height: 155px;
             border: 1px solid map-get($map: $color, $key: bg-light-gray);
+
+            .customoverlay {
+              position:relative;
+              // bottom:55px;
+              top: 55px;
+              border-radius:6px;
+              border: 1px solid #ccc;
+            }
+            .customoverlay:nth-of-type(n) {
+              border:0; 
+              box-shadow:0px 1px 2px #888;
+            }
+            .customoverlay a {
+              display:block;
+              color:#111;
+              text-align:center;
+              border-radius:6px;
+              font-size:14px;
+              font-weight:bold;
+              overflow:hidden;
+              background: map-get($map: $color, $key: bg-sub-color);
+              background: map-get($map: $color, $key: bg-sub-color) url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 13px center;
+            }
+            .customoverlay .title {
+              display:block;
+              text-align:center;
+              background:#fff;
+              margin-right:35px;
+              padding:10px 15px;
+              font-size:14px;
+              font-weight:bold;
+            }
+            .customoverlay:after {
+              content:'';
+              position:absolute;
+              margin-left:-12px;
+              left:50%;
+              top:-12px;
+              width:22px;
+              height:12px;
+              transform: rotate(180deg);
+              background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+            }
           }
         }
 
@@ -615,18 +658,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             position: relative;
             z-index: 2;
             overflow: hidden;
-            color: #fff;
-            // &::before {
-            //   content: "";
-            //   position: absolute;
-            //   top: 0;
-            //   left: 0;
-            //   width: 0;
-            //   height: 100%;
-            //   background: #0dcc5a;
-
-            //   transition: all 0.3s;
-            // }
+            color: #fff;  
 
             &.chat {
               @include greenBtn;
@@ -634,8 +666,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             &.trade {
               @include blackBtn;
             }
-
-          
           }
         }
 
@@ -643,7 +673,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           margin-bottom: 85px;
 
           .itemIfo-heading {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
 
             h3 {
               font-size: map-get($map: $fontSize, $key: font-extra-large);
@@ -666,6 +696,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             p {
               width: 100%;
               font-size: map-get($map: $fontSize, $key: font-samll);
+              border-radius: 8px;
               text-align: justify;
               line-height: 30px;
               margin-bottom: 70px;
@@ -684,7 +715,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
               span {
                 padding: 10px 15px;
-                background: #f1f1f1;
+                background: map-get($map: $color, $key: bg-blue-gray);
                 font-size: map-get($map: $fontSize, $key: font-small);
                 font-weight: 500;
                 border-radius: 5px;
@@ -696,10 +727,8 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         }
 
         .desc-store {
-          margin-bottom: 20px;
-
           .store-heading {
-            margin-bottom: 30px;
+            margin-bottom: 45px;
 
             h3 {
               font-size: map-get($map: $fontSize, $key: font-extra-large);
@@ -712,55 +741,62 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             }
             .bar {
               border: none;
-              border-bottom: 2px solid
+              border-bottom: 1px solid
                 map-get($map: $color, $key: bg-light-gray);
-              border-radius: 2px;
+              border-radius: 1px;
             }
           }
 
           .store-info {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 40px;
-
-            .info-img {
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              overflow: hidden;
-              cursor: pointer;
-
-              img {
-                width: 100%;
-                height: 100%;
-              }
-            }
-
-            .info-box {
-              height: 60px;
+            gap: 10px;
+            height: 75px;
+            margin-bottom: 45px;
+            .info-user {
+              width: 50%;
               display: flex;
-              flex-direction: column;
-              justify-content: space-between;
+              align-items: center;
+              gap: 20px;
 
-              .box-name {
-                display: flex;
-                align-items: center;
-                gap: 25px;
+              .info-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                overflow: hidden;
                 cursor: pointer;
-
-                .name {
-                  font-size: map-get($map: $fontSize, $key: font-large);
-                  font-weight: 600;
+  
+                img {
+                  width: 100%;
+                  height: 100%;
                 }
-
-                .certi {
+              }
+  
+              .info-box {
+                width: calc(100% - 80px);
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+  
+                .box-name {
+                  display: flex;
+                  align-items: center;
+                  gap: 25px;
+                  cursor: pointer;
+  
+                  .name {
+                    font-size: map-get($map: $fontSize, $key: font-large);
+                    font-weight: 600;
+                  }
+                }
+                .certi{
                   display: flex;
                   align-items: center;
                   gap: 3px;
 
                   span {
-                    font-size: 10px;
+                    font-size: 12px;
                     margin-right: 3px;
                   }
 
@@ -772,24 +808,53 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                     height: 14px;
                     background: map-get($map: $color, $key: bg-main-color);
                     border-radius: 3px;
-
+  
                     i {
-                      font-size: 13px;
+                      font-size: 12px;
                       color: map-get($map: $color, $key: bg-light-color);
                     }
                   }
                 }
               }
+            }
+            .info-desc {
+              width: 50%;
+              display: flex;
+              align-items: center;
+              border: 1px solid map-get($map: $color, $key: bg-light-gray);
+              border-radius: 4px;
 
-              a {
-                width: 55px;
-                font-size: 10px;
-                font-weight: 500;
-                padding: 8px 10px;
-                color: map-get($map: $color, $key: bg-light-color);
-                background: map-get($map: $color, $key: bg-main-color);
-                border-radius: 5px;
-                box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
+              .desc-box {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
+                position: relative;
+    
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  right: 0;
+                  transform: translateY(-50%);
+                  width: 1px;
+                  height: 17px;
+                  background: map-get($map: $color, $key: bg-light-gray);
+                }
+    
+                &:last-child::before {
+                  display: none;
+                }
+    
+                span:nth-child(1) {
+                  font-size: 13px;
+                  color: map-get($map: $color, $key: bg-dark-gray);
+                }
+                span:nth-child(2) {
+                  font-size: 15px;
+                  font-weight: 600;
+                }
               }
             }
           }
@@ -804,6 +869,8 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               padding: 12px;
               border-radius: 5px;
               transition: all 0.3s;
+              color: map-get($map: $color, $key: bg-dark-gray);
+              background: map-get($map: $color, $key: bg-blue-gray);
 
               &.active {
                 background: map-get($map: $color, $key: bg-main-color);
@@ -822,6 +889,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               top: 0;
               left: 0;
               width: 100%;
+              padding-top: 15px;
               opacity: 0;
               transition: opacity 0.1s;
 
@@ -861,9 +929,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 li {
                   display: flex;
                   justify-content: space-between;
-                  padding: 10px;
+                  padding: 12px;
                   font-size: map-get($map: $fontSize, $key: font-small);
-                  background: map-get($map: $color, $key: bg-light-gray);
+                  background: map-get($map: $color, $key: bg-blue-gray);
                   border-radius: 7px;
                   span {
                     color: map-get($map: $color, $key: bg-dark-gray);
@@ -938,16 +1006,16 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 }
 
-.shaerbox-filter {
-  position: absolute;
+.sharebox-filter {
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 4;
   width: 100%;
   height: 100vh;
   background: rgba($color: #000000, $alpha: 0.4);
-  z-index: 4;
   display: none;
-
+  
   &.active {
     display: block;
   }
@@ -1027,7 +1095,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
   // // main
   #main {
-    margin-top: 60px;
+    margin-top: 63px;
     margin-bottom: 150px;
     .inner {
       .main {
@@ -1120,18 +1188,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               button {
                 font-size: map-get($map: $fontSize, $key: font-medium);
                 padding: 17px;
-              }
-            }
-
-            .store-info {
-              .info-box {
-                width: calc(100% - 75px);
-                flex-direction: row;
-                align-items: center;
-
-                a {
-                  height: 25px;
-                }
               }
             }
 
@@ -1229,6 +1285,10 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     font-size: 8px;
   }
 
+  .wrapper {
+    margin-bottom: 65px;
+  }
+
   //bottom-menu
   #bottom-memu {
     display: block;
@@ -1236,14 +1296,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     left: 0;
     bottom: 0;
     width: 100%;
-    padding-bottom: 25px;
     background: map-get($map: $color, $key: bg-light-color);
     z-index: 9999;
 
     .bottom-mmenu {
       display: flex;
       gap: 2%;
-      height: 60px;
+      height: 65px;
       font-size: map-get($map: $fontSize, $key: font-large);
 
       .heart-btn {
@@ -1369,10 +1428,10 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               gap: 8px;
 
               span:nth-child(1) {
-                font-size: 9px;
+                font-size: 10px;
               }
               span:nth-child(2) {
-                font-size: 10px;
+                font-size: 11px;
               }
             }
           }
@@ -1394,6 +1453,34 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           }
 
           .desc-store {
+          
+            .store-info {
+              height: 65px;
+              .info-user {
+                .info-box {
+                  .certi{
+                    span {
+                      font-size: 11px;
+                    }
+                    .certi-check {
+                      width: 13px;
+                    }
+                  }
+                }
+              }
+              .info-desc {
+                .desc-box {
+                  gap: 8px;
+                  span:nth-child(1) {
+                    font-size: 10px;
+                  }
+                  span:nth-child(2) {
+                    font-size: 11px;
+                  }
+                }
+              }
+            }
+
             .store-btns {
               button {
                 padding: 13px;

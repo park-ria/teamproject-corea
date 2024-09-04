@@ -173,24 +173,52 @@ html #header #header-item .header-item .header-top .search-box form {
   box-shadow: 0 0 2px #6d6d6d;
   border-radius: 50px;
 }
-html #header #header-item .header-item .header-top .search-box form input[type=text] {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  input[type="text"] {
   width: 550px;
   height: 40px;
   border-radius: 50px;
   padding-left: 20px;
   padding-right: 10px;
 }
-html #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  input[type="text"]::-moz-placeholder {
   font-size: 1.2rem;
   font-weight: 500;
   color: #bbb;
 }
-html #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  input[type="text"]::placeholder {
   font-size: 1.2rem;
   font-weight: 500;
   color: #bbb;
 }
-html #header #header-item .header-item .header-top .search-box form input[type=submit] {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  input[type="submit"] {
   position: absolute;
   top: 50%;
   right: 6px;
@@ -205,10 +233,24 @@ html #header #header-item .header-item .header-top .search-box form input[type=s
   cursor: pointer;
   transition: box-shadow 0.3s;
 }
-html #header #header-item .header-item .header-top .search-box form input[type=submit]:hover {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  input[type="submit"]:hover {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list {
   position: absolute;
   top: 120%;
   left: 0;
@@ -222,65 +264,197 @@ html #header #header-item .header-item .header-top .search-box form .searchedwor
   border-radius: 8px;
   display: none;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words h3 {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  h3 {
   font-size: 14px;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list {
   width: 100%;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list .no-words {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  .no-words {
   font-size: 1.4rem;
   color: #bbb;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
   cursor: pointer;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-word {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-word {
   color: #bbb;
   font-weight: 500;
   transition: all 0.3s;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box
+  button {
   font-size: 1.8rem;
   color: #bbb;
   transition: color 0.3s;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box
+  button:hover {
   color: #3a3a3a;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li:hover .recent-word {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li:hover
+  .recent-word {
   color: #3a3a3a;
   font-weight: 600;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  h3 {
   display: flex;
   align-items: center;
   font-size: 14px;
   margin-bottom: 15px;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 .current-time {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  h3
+  .current-time {
   font-size: 13px;
   margin-left: 30px;
   color: #aaa;
   font-weight: 400;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "rank1 rank6" "rank2 rank7" "rank3 rank8" "rank4 rank9" "rank5 rank10";
   position: relative;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list::before {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list::before {
   content: "";
   position: absolute;
   top: 0;
@@ -290,7 +464,17 @@ html #header #header-item .header-item .header-top .search-box form .searchedwor
   height: 100%;
   background: #dcdcdc;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list
+  li {
   padding: 10px 20px;
   border-bottom: none;
   display: flex;
@@ -299,38 +483,101 @@ html #header #header-item .header-item .header-top .search-box form .searchedwor
   cursor: pointer;
   transition: transform 0.3s;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li a {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list
+  li
+  a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li a span {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list
+  li
+  a
+  span {
   display: inline-block;
   margin-right: 10px;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li > span .fa-caret-up {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list
+  .live-ranking
+  .ranking-list
+  li
+  > span
+  .fa-caret-up {
   color: #0dcc5a;
 }
-html #header #header-item .header-item .header-top .search-box form .searchedword-list.active {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .search-box
+  form
+  .searchedword-list.active {
   display: block;
 }
 html #header #header-item .header-item .header-top .wrapper {
   position: relative;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord {
   position: relative;
   width: 250px;
   height: 24px;
   overflow: hidden;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul {
   width: 100%;
   height: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li {
   position: absolute;
   top: -24px;
   left: 0;
@@ -340,23 +587,66 @@ html #header #header-item .header-item .header-top .wrapper .popular-searchedWor
   line-height: 24px;
   cursor: pointer;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.prev {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li.prev {
   top: -24px;
   transition: top 0.5s;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.current {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li.current {
   top: 0;
   transition: top 0.5s;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.next {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li.next {
   top: 24px;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li
+  a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a span {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .popular-searchedWord
+  ul
+  li
+  a
+  span {
   display: inline-block;
   margin-right: 10px;
 }
@@ -413,10 +703,28 @@ html #header #header-item .header-item .header-top .wrapper .list li a span {
   display: inline-block;
   margin-right: 10px;
 }
-html #header #header-item .header-item .header-top .wrapper .list li > span .fa-sort-down {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .list
+  li
+  > span
+  .fa-sort-down {
   color: #dcdcdc;
 }
-html #header #header-item .header-item .header-top .wrapper .list li > span .fa-caret-up {
+html
+  #header
+  #header-item
+  .header-item
+  .header-top
+  .wrapper
+  .list
+  li
+  > span
+  .fa-caret-up {
   color: #0dcc5a;
 }
 html #header #header-item .header-item .header-bottom {
@@ -427,22 +735,41 @@ html #header #header-item .header-item .header-bottom .header-bottom-left {
   display: flex;
   gap: 40px;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-left
+  .barmenu {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: #0dcc5a;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  background: #0dcc5a;
+  transition: all 0.3s;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-left
+  .barmenu:hover {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }
-html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-left
+  .barmenu
+  i {
   font-size: 24px;
 }
 html #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
@@ -450,31 +777,76 @@ html #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
   align-items: center;
   gap: 30px;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-left
+  .gnb
+  a {
   font-size: 1.6rem;
   font-weight: 500;
   transition: color 0.3s;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-left .gnb a:hover {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-left
+  .gnb
+  a:hover {
   color: #0dcc5a;
 }
 html #header #header-item .header-item .header-bottom .header-bottom-right {
   display: flex;
   align-items: center;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-right .lnb {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-right
+  .lnb {
   display: flex;
   gap: 12px;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-right
+  .lnb
+  li
+  a {
   display: flex;
   align-items: center;
   transition: color 0.3s;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-right
+  .lnb
+  li
+  a
+  img {
   margin-right: 4px;
 }
-html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover {
+html
+  #header
+  #header-item
+  .header-item
+  .header-bottom
+  .header-bottom-right
+  .lnb
+  li
+  a:hover {
   color: #0dcc5a;
   font-weight: bold;
 }
@@ -498,6 +870,7 @@ html #header-category .inner .header-category .main-category.active {
 html #header-category .inner .header-category .main-category li {
   padding: 10px 20px;
   color: #3a3a3a;
+  font-size: 1.4rem;
   font-weight: 400;
   cursor: pointer;
 }
@@ -510,7 +883,7 @@ html #header-category .inner .header-category .main-category li a::before {
   top: 50%;
   left: -20px;
   transform: translateY(-50%);
-  width: 3px;
+  width: 4px;
   height: 120%;
   background: #0dcc5a;
   border-radius: 5px;
@@ -520,7 +893,13 @@ html #header-category .inner .header-category .main-category li:hover {
   background: #f5f5f5;
   font-weight: 600;
 }
-html #header-category .inner .header-category .main-category li:hover > a::before {
+html
+  #header-category
+  .inner
+  .header-category
+  .main-category
+  li:hover
+  > a::before {
   display: block;
 }
 html #header-category .inner .header-category .main-category li .sub-category1 {
@@ -532,14 +911,35 @@ html #header-category .inner .header-category .main-category li .sub-category1 {
   background: #f5f5f5;
   display: none;
 }
-html #header-category .inner .header-category .main-category li .sub-category1.active {
+html
+  #header-category
+  .inner
+  .header-category
+  .main-category
+  li
+  .sub-category1.active {
   display: block;
 }
-html #header-category .inner .header-category .main-category li .sub-category1 li:hover {
+html
+  #header-category
+  .inner
+  .header-category
+  .main-category
+  li
+  .sub-category1
+  li:hover {
   text-decoration: underline;
   background: #fff;
 }
-html #header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
+html
+  #header-category
+  .inner
+  .header-category
+  .main-category
+  li
+  .sub-category1
+  li
+  .sub-category2 {
   position: absolute;
   top: 0;
   right: -100%;
@@ -548,7 +948,15 @@ html #header-category .inner .header-category .main-category li .sub-category1 l
   background: #f5f5f5;
   display: none;
 }
-html #header-category .inner .header-category .main-category li .sub-category1 li .sub-category2.active {
+html
+  #header-category
+  .inner
+  .header-category
+  .main-category
+  li
+  .sub-category1
+  li
+  .sub-category2.active {
   display: block;
 }
 html #mobile-menu {
@@ -619,14 +1027,29 @@ html #mobile-menu .mobile-menu .menu-box button:last-child span:nth-child(2) {
 html #mobile-menu .mobile-menu .menu-box button:last-child span:nth-child(3) {
   top: 100%;
 }
-html #mobile-menu .mobile-menu .menu-box button:last-child.active span:nth-child(1) {
+html
+  #mobile-menu
+  .mobile-menu
+  .menu-box
+  button:last-child.active
+  span:nth-child(1) {
   top: 50%;
   transform: rotate(45deg);
 }
-html #mobile-menu .mobile-menu .menu-box button:last-child.active span:nth-child(2) {
+html
+  #mobile-menu
+  .mobile-menu
+  .menu-box
+  button:last-child.active
+  span:nth-child(2) {
   display: none;
 }
-html #mobile-menu .mobile-menu .menu-box button:last-child.active span:nth-child(3) {
+html
+  #mobile-menu
+  .mobile-menu
+  .menu-box
+  button:last-child.active
+  span:nth-child(3) {
   top: 50%;
   transform: rotate(-45deg);
 }
@@ -671,7 +1094,7 @@ html #mobile-category ul li .category-img .img-box img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   cursor: pointer;
 }
 html #mobile-category ul li .category-img span {
@@ -738,14 +1161,14 @@ html #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
 }
-html #mobile-search .search-box form input[type=text] {
+html #mobile-search .search-box form input[type="text"] {
   width: 100%;
   height: 35px;
   background: #eee;
   border-radius: 20px;
   padding-left: 20px;
 }
-html #mobile-search .search-box form input[type=submit] {
+html #mobile-search .search-box form input[type="submit"] {
   position: absolute;
   top: 3px;
   right: 5px;
@@ -759,7 +1182,7 @@ html #mobile-search .search-box form input[type=submit] {
   cursor: pointer;
   transition: box-shadow 0.3s;
 }
-html #mobile-search .search-box form input[type=submit]:hover {
+html #mobile-search .search-box form input[type="submit"]:hover {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }
 html #mobile-search .searchedword-list .recent-words h3 {
@@ -776,25 +1199,57 @@ html #mobile-search .searchedword-list .recent-words .recent-list li {
   padding: 10px 0;
   cursor: pointer;
 }
-html #mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
+html
+  #mobile-search
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-word {
   color: #bbb;
   font-weight: 500;
   transition: all 0.3s;
 }
-html #mobile-search .searchedword-list .recent-words .recent-list li .recent-box {
+html
+  #mobile-search
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-html #mobile-search .searchedword-list .recent-words .recent-list li .recent-box button {
+html
+  #mobile-search
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box
+  button {
   font-size: 1.8rem;
   color: #bbb;
   transition: color 0.3s;
 }
-html #mobile-search .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+html
+  #mobile-search
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li
+  .recent-box
+  button:hover {
   color: #3a3a3a;
 }
-html #mobile-search .searchedword-list .recent-words .recent-list li:hover .recent-word {
+html
+  #mobile-search
+  .searchedword-list
+  .recent-words
+  .recent-list
+  li:hover
+  .recent-word {
   color: #3a3a3a;
   font-weight: 600;
 }
@@ -865,7 +1320,14 @@ html #mobile-search .searchedword-list .live-ranking .ranking-list li a span {
   display: inline-block;
   margin-right: 10px;
 }
-html #mobile-search .searchedword-list .live-ranking .ranking-list li > span .fa-caret-up {
+html
+  #mobile-search
+  .searchedword-list
+  .live-ranking
+  .ranking-list
+  li
+  > span
+  .fa-caret-up {
   color: #0dcc5a;
 }
 html #mobile-search.active {
@@ -916,7 +1378,14 @@ html footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a {
   opacity: 0.6;
   transition: all 0.3s;
 }
-html footer .inner .footer-upper .footer-upper-info .footer-company-guide ul a:hover {
+html
+  footer
+  .inner
+  .footer-upper
+  .footer-upper-info
+  .footer-company-guide
+  ul
+  a:hover {
   opacity: 1;
 }
 html footer .inner .footer-upper .footer-upper-info .footer-company-info ul {
@@ -1009,7 +1478,8 @@ html .quickMenu .quickBtns li {
   height: 56px;
   border-radius: 24px;
   background: #fff;
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px;
   transition: all 0.4s;
 }
 html .quickMenu .quickBtns li button,
@@ -1026,7 +1496,9 @@ html .quickMenu .quickBtns li a i {
   color: #6d6d6d;
 }
 html .quickMenu .quickBtns li:hover {
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px, rgba(0, 0, 0, 0.1) 0px 0px 50px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.15) 0px 8px 30px,
+    rgba(0, 0, 0, 0.1) 0px 0px 50px;
 }
 html .quickMenu .quickBtns .trigger {
   position: relative;
@@ -1043,7 +1515,7 @@ html .quickMenu .quickBtns .trigger button i {
 }
 html .quickMenu .quickBtns .trigger .movePages {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   transform: translateY(-35%);
   display: flex;
@@ -1051,6 +1523,8 @@ html .quickMenu .quickBtns .trigger .movePages {
   gap: 10px;
   opacity: 0;
   z-index: -1;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.4s;
 }
 html .quickMenu .quickBtns .trigger .movePages li {
@@ -1107,6 +1581,8 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
+  max-height: 254px;
+  overflow: visible;
 }
 @media screen and (max-width: 1280px) {
   html .inner {
@@ -1125,14 +1601,28 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   html #header #header-item .header-item .header-top .search-box {
     width: 50%;
   }
-  html #header #header-item .header-item .header-top .search-box form input[type=text] {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    input[type="text"] {
     width: 100%;
     height: 40px;
     border-radius: 50px;
     padding-left: 20px;
     padding-right: 10px;
   }
-  html #header #header-item .header-item .header-top .search-box form input[type=text]::-moz-placeholder {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    input[type="text"]::-moz-placeholder {
     font-size: 1.2rem;
     font-weight: 500;
     color: #bbb;
@@ -1143,7 +1633,14 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     white-space: nowrap;
     word-wrap: normal;
   }
-  html #header #header-item .header-item .header-top .search-box form input[type=text]::placeholder {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    input[type="text"]::placeholder {
     font-size: 1.2rem;
     font-weight: 500;
     color: #bbb;
@@ -1154,7 +1651,14 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     white-space: nowrap;
     word-wrap: normal;
   }
-  html #header #header-item .header-item .header-top .search-box form input[type=submit] {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    input[type="submit"] {
     position: absolute;
     top: 50%;
     right: 6px;
@@ -1169,10 +1673,24 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     cursor: pointer;
     transition: box-shadow 0.3s;
   }
-  html #header #header-item .header-item .header-top .search-box form input[type=submit]:hover {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    input[type="submit"]:hover {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list {
     position: absolute;
     top: 120%;
     left: 0;
@@ -1186,65 +1704,197 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     border-radius: 8px;
     display: none;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words h3 {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    h3 {
     font-size: 14px;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list {
     width: 100%;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list .no-words {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    .no-words {
     font-size: 1.4rem;
     color: #bbb;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
     cursor: pointer;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-word {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li
+    .recent-word {
     color: #bbb;
     font-weight: 500;
     transition: all 0.3s;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li
+    .recent-box {
     display: flex;
     align-items: center;
     gap: 15px;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li
+    .recent-box
+    button {
     font-size: 1.8rem;
     color: #bbb;
     transition: color 0.3s;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li .recent-box button:hover {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li
+    .recent-box
+    button:hover {
     color: #3a3a3a;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .recent-words .recent-list li:hover .recent-word {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .recent-words
+    .recent-list
+    li:hover
+    .recent-word {
     color: #3a3a3a;
     font-weight: 600;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    h3 {
     display: flex;
     align-items: center;
     font-size: 14px;
     margin-bottom: 15px;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking h3 .current-time {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    h3
+    .current-time {
     font-size: 13px;
     margin-left: 30px;
     color: #aaa;
     font-weight: 400;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "rank1 rank6" "rank2 rank7" "rank3 rank8" "rank4 rank9" "rank5 rank10";
     position: relative;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list::before {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1254,7 +1904,17 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     height: 100%;
     background: #dcdcdc;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list
+    li {
     padding: 10px 20px;
     border-bottom: none;
     display: flex;
@@ -1263,38 +1923,101 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     cursor: pointer;
     transition: transform 0.3s;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li a {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list
+    li
+    a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li a span {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list
+    li
+    a
+    span {
     display: inline-block;
     margin-right: 10px;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list .live-ranking .ranking-list li > span .fa-caret-up {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list
+    .live-ranking
+    .ranking-list
+    li
+    > span
+    .fa-caret-up {
     color: #0dcc5a;
   }
-  html #header #header-item .header-item .header-top .search-box form .searchedword-list.active {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .search-box
+    form
+    .searchedword-list.active {
     display: block;
   }
   html #header #header-item .header-item .header-top .wrapper {
     position: relative;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord {
     position: relative;
     width: 200px;
     height: 24px;
     overflow: hidden;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul {
     width: 100%;
     height: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li {
     position: absolute;
     top: -24px;
     left: 0;
@@ -1304,23 +2027,66 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     line-height: 24px;
     cursor: pointer;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.prev {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li.prev {
     top: -24px;
     transition: top 0.5s;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.current {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li.current {
     top: 0;
     transition: top 0.5s;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li.next {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li.next {
     top: 24px;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li
+    a {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  html #header #header-item .header-item .header-top .wrapper .popular-searchedWord ul li a span {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .popular-searchedWord
+    ul
+    li
+    a
+    span {
     display: inline-block;
     margin-right: 10px;
   }
@@ -1377,10 +2143,28 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     display: inline-block;
     margin-right: 10px;
   }
-  html #header #header-item .header-item .header-top .wrapper .list li > span .fa-sort-down {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .list
+    li
+    > span
+    .fa-sort-down {
     color: #dcdcdc;
   }
-  html #header #header-item .header-item .header-top .wrapper .list li > span .fa-caret-up {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-top
+    .wrapper
+    .list
+    li
+    > span
+    .fa-caret-up {
     color: #0dcc5a;
   }
   html #header #header-item .header-item .header-bottom {
@@ -1390,7 +2174,13 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     display: flex;
     gap: 12px;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .barmenu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1402,39 +2192,103 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     cursor: pointer;
     transition: box-shadow 0.3s;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .barmenu:hover {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .barmenu
+    i {
     font-size: 24px;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .gnb {
     gap: 12px;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .gnb a {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .gnb
+    a {
     font-size: 1.6rem;
     font-weight: 500;
     transition: color 0.3s;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-left .gnb a:hover {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-left
+    .gnb
+    a:hover {
     color: #0dcc5a;
   }
   html #header #header-item .header-item .header-bottom .header-bottom-right {
     display: flex;
     align-items: center;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-right .lnb {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-right
+    .lnb {
     gap: 8px;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-right
+    .lnb
+    li
+    a {
     display: flex;
     align-items: center;
     transition: color 0.3s;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a img {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-right
+    .lnb
+    li
+    a
+    img {
     margin-right: 2px;
   }
-  html #header #header-item .header-item .header-bottom .header-bottom-right .lnb li a:hover {
+  html
+    #header
+    #header-item
+    .header-item
+    .header-bottom
+    .header-bottom-right
+    .lnb
+    li
+    a:hover {
     color: #0dcc5a;
     font-weight: bold;
   }
@@ -1593,14 +2447,14 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     font-size: 22px;
     padding: 0 15px;
   }
-  html #mobile-search .mb-searchbox form input[type=text] {
+  html #mobile-search .mb-searchbox form input[type="text"] {
     width: 100%;
     height: 35px;
     background: #eee;
     border-radius: 20px;
     padding-left: 20px;
   }
-  html #mobile-search .mb-searchbox form input[type=submit] {
+  html #mobile-search .mb-searchbox form input[type="submit"] {
     position: absolute;
     top: 3px;
     right: 5px;
@@ -1614,7 +2468,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     cursor: pointer;
     transition: box-shadow 0.3s;
   }
-  html #mobile-search .mb-searchbox form input[type=submit]:hover {
+  html #mobile-search .mb-searchbox form input[type="submit"]:hover {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
   }
   html #mobile-search .searchedword-list .recommendedwords ul {
@@ -1695,6 +2549,7 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   }
   html .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
+    max-height: 194px;
   }
 }
 
