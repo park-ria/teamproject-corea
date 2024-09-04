@@ -294,16 +294,16 @@
                         <label for="">우편번호</label>
                         <span class="inputWrap">
                           <input
+                            type="button"
+                            id="searchAddr"
+                            value="주소찾기"
+                          />
+                          <input
                             type="text"
                             name="zonecode"
                             id="zonecode"
                             placeholder="우편번호"
                             readonly
-                          />
-                          <input
-                            type="button"
-                            id="searchAddr"
-                            value="주소찾기"
                           />
                         </span>
                       </li>
@@ -342,15 +342,14 @@
                         </select>
                       </li>
                       <li>
-                        <input
-                          type="text"
+                        <textarea
                           name="etcMsg"
                           id="etcMsg"
                           placeholder="수령방법을 입력해주세요 (최대 50자)"
                           onkeyup="onchange()"
                           onchange="changeEtcMsg(this)"
                           maxlength="50"
-                        />
+                        ></textarea>
                         <span class="etcMsgCnt"> <strong>0</strong>/50</span>
                       </li>
                     </ul>
@@ -444,7 +443,7 @@
                         </p>
                       </div>
                       <div class="payGuidelines tossGuide">
-                        <p>
+                        <p class="notice">
                           토스머니 1일 결제한도는 200만원입니다. (안전거래
                           수수료 포함)
                         </p>
@@ -455,7 +454,7 @@
                         </p>
                       </div>
                       <div class="payGuidelines kakaoGuide">
-                        <p>
+                        <p class="notice">
                           카카오페이 1일 결제 한도는 300만원입니다. (안전거래
                           수수료 포함)
                         </p>
@@ -815,13 +814,13 @@
                         <li>
                           <span class="paymentAmountWrapTitle">상품금액</span>
                           <span class="paymentAmountWrapPrice"
-                            ><b>4,450,000</b>원</span
+                            ><b id="productPrice"></b>원</span
                           >
                         </li>
                         <li>
                           <span class="paymentAmountWrapTitle">배송비</span>
                           <span class="paymentAmountWrapPrice"
-                            ><b>4,000</b>원</span
+                            ><b id="deliveryCharge"></b>원</span
                           >
                         </li>
                         <li>
@@ -830,7 +829,7 @@
                             <p class="feeTitle">(3.5% 적용)</p>
                           </span>
                           <span class="paymentAmountWrapPrice">
-                            <span class="freeFee"> 490원</span>
+                            <span id="payFee" class="freeFee"></span>
                             <b>0</b>원
                           </span>
                         </li>
@@ -848,7 +847,7 @@
                         <li>
                           <span class="finalPaymentAmountTitle">합계</span>
                           <span class="finalPaymentAmountPrice">
-                            <b>4,450,000</b>원
+                            <b id="sumPrice"></b>원
                           </span>
                         </li>
                       </ul>
@@ -857,13 +856,11 @@
                   <div class="delivery-desc approval">
                     <div class="allCheckWrap">
                       <span class="allCheckbox">
+                        <input type="checkbox" name="allCheck" id="allCheck" />
                         <label for="allCheck">
                           <span class="checkIcon"></span>
                           상품정보 및 결제 대행 서비스 이용약관 동의
                         </label>
-                        <input type="checkbox" name="allCheck" id="allCheck" />
-                      </span>
-                      <span class="downButton">
                         <i class="fa-solid fa-chevron-down"></i>
                       </span>
                     </div>
@@ -871,39 +868,40 @@
                       <li>
                         <div class="approvalCheckboxLine">
                           <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval01"
+                              value="true"
+                            />
                             <label for="approval01">
                               <i class="fa-solid fa-check"></i>
                               중고나라 페이 서비스 이용약관
                             </label>
-                            <input
-                              type="checkbox"
-                              name="approval01"
-                              id="approval01"
-                              value="true"
-                            />
                           </span>
-                          <span class="descButton">보기</span>
+                          <span class="descButton"></span>
                         </div>
                         <iframe
                           src="https://common.joongna.com/static/terms/Order/settleTerms.html?timestamp=1725124799764"
                           frameborder="0"
+                          scrolling="yes"
                         ></iframe>
                       </li>
                       <li>
                         <div class="approvalCheckboxLine">
                           <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval02"
+                              value="true"
+                            />
                             <label for="approval02">
                               <i class="fa-solid fa-check"></i>
                               개인정보 수집 및 이용 동의
                             </label>
-                            <input
-                              type="checkbox"
-                              name="approval02"
-                              id="approval02"
-                              value="true"
-                            />
                           </span>
-                          <span class="descButton">보기</span>
+                          <span class="descButton"></span>
                         </div>
                         <iframe
                           src="https://common.joongna.com/static/terms/Order/privacyTerms.html?timestamp=1725124799764"
@@ -913,18 +911,18 @@
                       <li>
                         <div class="approvalCheckboxLine">
                           <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval03"
+                              value="true"
+                            />
                             <label for="approval03">
                               <i class="fa-solid fa-check"></i>
                               개인정보 제3자 제공 동의
                             </label>
-                            <input
-                              type="checkbox"
-                              name="approval03"
-                              id="approval03"
-                              value="true"
-                            />
                           </span>
-                          <span class="descButton">보기</span>
+                          <span class="descButton"></span>
                         </div>
                         <iframe
                           src="https://common.joongna.com/static/terms/Order/sellerTerms.html?timestamp=1725124799764"
@@ -941,7 +939,7 @@
                       관여하지 않고 어떠한 의무와 책임도 부담하지 않습니다.
                     </p>
                   </div>
-                  <input type="submit" value="4,450,000원 결제" />
+                  <input type="submit" value="" />
                 </div>
               </form>
             </div>
@@ -951,39 +949,10 @@
 
       <div class="payTypeModal-overlay"></div>
       <div class="payTypeModal">
-        <h3>페이코 안내사항</h3>
-        <ul>
-          <li>PAYCO는 NHN에서 제공하는 안전한 간편결제 서비스입니다.</li>
-          <li>
-            카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수
-            있습니다.
-          </li>
-          <li>
-            지원 가능 결제수단 : 페이코 결제창 내 노출되는 모든 카드/포인트/쿠폰
-          </li>
-          <li>
-            페이코포인트 1일 결제한도는 200만원입니다. (안전거래 수수료 포함)
-          </li>
-        </ul>
+        <h3></h3>
+        <ul></ul>
         <button class="payTypeModalClose">확인</button>
       </div>
-      <!-- <div class="payTypeModal1">
-        <h3>네이버페이 안내사항</h3>
-        <ul>
-          <li>
-            네이버페이는 네이버ID로 신용카드 또는 은행계좌 정보를 등록하여
-            결제할 수 있는 간편결제 서비스입니다.
-          </li>
-          <li>
-            주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라
-            변경될 수 있습니다.
-          </li>
-          <li>
-            지원 가능 결제수단 : 네이버페이 결제창 내 노출되는 모든 카드/계좌
-          </li>
-        </ul>
-        <button class="payTypeModalClose">확인</button>
-      </div> -->
 
       <footer>
         <div class="inner">

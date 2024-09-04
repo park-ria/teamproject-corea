@@ -399,21 +399,15 @@
                   width: 50%;
                   min-width: 110px;
                   padding: 15px 0;
-                  background: map-get($color, main-font-color);
                   border-radius: 5px;
                   color: map-get($color, bg-light-color);
                   font-size: map-get($fontSize, font-medium);
                   text-align: center;
                   transition: background 0.3s;
-                  &:hover {
-                    background: #444;
-                  }
+                  @include blackBtn;
                   &.wishItemChatButton {
-                    background: map-get($color, bg-main-color);
                     transition: background 0.3s;
-                    &:hover {
-                      background: #0ca64a;
-                    }
+                    @include greenBtn;
                   }
                   &.wishItemXButton {
                     width: 24px;

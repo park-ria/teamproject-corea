@@ -1469,6 +1469,22 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: sticky;
   top: 0;
 }
+.order .order-content form .delivery-right input[type=submit] {
+  width: 100%;
+  height: 70px;
+  padding: 0;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #fff;
+  background: #dcdcdc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.order .order-content form .delivery-right input[type=submit].active {
+  background: #0dcc5a;
+}
 .order .order-content form .delivery-desc {
   width: 100%;
   margin: 20px 0 30px;
@@ -1488,6 +1504,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   padding: 10px 0;
   display: flex;
   align-items: center;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li:last-child {
+  align-items: flex-end;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li label {
   width: 100px;
@@ -1530,6 +1549,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 80%;
   padding: 10px 30px;
   border: 1px solid #dcdcdc;
+  transition: none;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]::-moz-placeholder {
   color: #aaa;
@@ -1560,11 +1580,33 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select:focus {
   outline: none;
 }
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+  width: 80%;
+  height: 100px;
+  padding: 20px 25px;
+  resize: none;
+  overflow-y: hidden;
+  border: 1px solid #dcdcdc;
+  font: 400 1.4rem/1 "Noto Sans KR", sans-serif;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg:focus {
+  outline: none;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg::-moz-placeholder {
+  color: #aaa;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg::placeholder {
+  color: #aaa;
+  transition: opacity 0.3s;
+}
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
   display: flex;
   align-items: flex-end;
   margin-left: 10px;
   color: #aaa;
+  padding-bottom: 5px;
 }
 .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt strong {
   font-size: 1.6rem;
@@ -1581,6 +1623,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 25px;
   height: 25px;
   background: url("../images/store.png") center/cover no-repeat;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .store-name p {
+  font-size: 1.6rem;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc {
   display: flex;
@@ -1630,7 +1675,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   color: #fff;
   letter-spacing: normal;
   text-align: center;
-  line-height: 16px;
+  line-height: 18px;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productPrice {
   font-size: 1.8rem;
@@ -1658,7 +1703,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -55%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payType {
   width: 100%;
@@ -1708,7 +1753,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc {
   width: 100%;
-  margin: 20px 0;
+  margin: 10px 0 20px;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines {
   height: 0;
@@ -1727,12 +1772,35 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   color: #6d6d6d;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink:hover {
   color: #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../images/question.png") center/cover no-repeat;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.notice {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.notice::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../images/exclamation.png") center/cover no-repeat;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap {
   padding: 10px 0;
@@ -1768,7 +1836,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -46%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillCheck input[type=checkbox]:checked + label > span {
   border: 1px solid transparent;
@@ -1829,7 +1897,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-55%, -55%);
+  transform: translate(-55%, -50%);
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillTypeWrap.on {
   height: auto;
@@ -1868,9 +1936,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   border: 1px solid #dcdcdc;
   border-radius: 5px;
 }
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide {
+  padding: 8px;
+}
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.accountTransferGuide #bank {
   width: 100%;
-  height: 40px;
+  height: 48px;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
   text-align: center;
@@ -1960,7 +2031,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .order .order-content form .delivery-desc.paymentMethod .payAdvertising {
   padding: 30px 20px 40px;
-  background: #f9f9f9;
+  background: #f7f9fa;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -2022,7 +2093,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #f9f9f9;
+  background: #f7f9fa;
   padding: 20px;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc span {
@@ -2030,7 +2101,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   color: #6d6d6d;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountTitle {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #0dcc5a;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
@@ -2039,16 +2110,148 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   letter-spacing: normal;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice b {
-  font-size: 2.6rem;
+  font-size: 3rem;
   margin-right: 5px;
 }
 .order .order-content form .delivery-desc.approval {
   border-top: 1px dotted #dcdcdc;
-  padding: 30px 0;
+  padding: 20px 0 0;
+  margin: 0;
 }
 .order .order-content form .delivery-desc.approval .allCheckWrap {
   width: 100%;
   padding: 10px;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox] {
+  display: none;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox label span::before {
+  content: "\f00c";
+  font-family: "fontawesome";
+  font-size: 11px;
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -50%);
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox]:checked + label > span {
+  border: 1px solid transparent;
+  background: #0dcc5a;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox input[type=checkbox]:checked + label > span::before {
+  color: #fff;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox .fa-solid {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.approval .allCheckWrap .allCheckbox .fa-solid:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, height 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox.on {
+  height: auto;
+  opacity: 1;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li {
+  padding: 10px;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem input[type=checkbox] {
+  display: none;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem label .fa-solid {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 10px;
+  color: #ccc;
+  transition: color 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .approvalCheckboxItem input[type=checkbox]:checked + label > .fa-solid {
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton {
+  width: 30px;
+  height: 30px;
+  color: #ccc;
+  cursor: pointer;
+  position: relative;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton:hover {
+  color: #111;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton::after {
+  content: "+";
+  font-family: "fontawesome";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li .approvalCheckboxLine .descButton.active::after {
+  content: "+";
+  font-family: "fontawesome";
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li iframe {
+  background: #f7f9fa;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s, height 0.3s;
+}
+.order .order-content form .delivery-desc.approval .approvalCheckbox li iframe.active {
+  height: 150px;
+  opacity: 1;
+  margin: 20px 0;
+}
+.order .order-content form .delivery-desc.lastMent {
+  background: #f7f9fa;
+  padding: 20px;
+  margin-top: 0;
+}
+.order .order-content form .delivery-desc.lastMent p {
+  font-size: 1.2rem;
+  line-height: normal;
+  color: #6d6d6d;
 }
 .order .order-content form .banner {
   margin: 50px 0;
@@ -2061,7 +2264,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 
 /* payTypeModal */
 .payTypeModal {
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -2086,19 +2288,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 2rem;
 }
 .payTypeModal ul {
-  margin-top: 30px;
   margin: 30px 0 0 20px;
 }
 .payTypeModal ul li {
   margin-bottom: 12px;
   font-size: 1.6rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  line-height: 1.3;
+  position: relative;
 }
 .payTypeModal ul li::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: -8px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -2121,10 +2323,128 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 100%;
   height: 0;
   opacity: 0;
-  transition: all 0.3s;
 }
 .payTypeModal-overlay.active {
   height: 100vh;
   opacity: 1;
   background: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 1280px) {
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box {
+    height: 90px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    height: 150px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm .productName {
+    width: calc(100% - 160px);
+    padding: 0 10px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:nth-child(2) {
+    border-left: 1px solid #dcdcdc;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:last-child {
+    border-right: 1px solid #dcdcdc;
+  }
+}
+@media screen and (max-width: 840px) {
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form {
+    flex-direction: column;
+  }
+  .order .order-content form .delivery-left {
+    width: 100%;
+    padding: 0;
+    border-right: none;
+  }
+  .order .order-content form .delivery-right {
+    width: 100%;
+    padding: 0;
+    position: static;
+  }
+  .order .order-content form .delivery-desc {
+    margin: 20px 0;
+  }
+  .order .order-content form .delivery-desc .sub-title {
+    padding: 20px 0;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li {
+    width: 90%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li:last-child {
+    position: relative;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text] {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text]#recipient {
+    flex: 1;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap {
+    flex: 1;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payAdvertising {
+    padding: 20px;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.cardGuide .monthlyInstallmentPlan span {
+    padding: 0;
+  }
+  .order .order-content form .banner {
+    margin: 10px 0;
+  }
+  /* payTypeModal */
+  .payTypeModal.active {
+    width: 450px;
+    padding: 30px 10px 10px;
+  }
+  .payTypeModal ul {
+    margin: 0;
+    padding: 30px 10px 0;
+  }
+  .payTypeModal ul li {
+    font-size: 1.4rem;
+  }
+  .payTypeModal .payTypeModalClose {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  /* payTypeModal */
+  .payTypeModal.active {
+    width: 90%;
+  }
 }

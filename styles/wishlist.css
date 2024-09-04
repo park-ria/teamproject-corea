@@ -1770,22 +1770,26 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 50%;
   min-width: 110px;
   padding: 15px 0;
-  background: #111;
   border-radius: 5px;
   color: #fff;
   font-size: 1.6rem;
   text-align: center;
   transition: background 0.3s;
+  background: #3a3a3a;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
-  background: #444;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0.8;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
-  background: #0dcc5a;
   transition: background 0.3s;
+  background: #0dcc5a;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
-  background: #0ca64a;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0.8;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
   width: 24px;
