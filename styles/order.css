@@ -2026,12 +2026,35 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   color: #6d6d6d;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink:hover {
   color: #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.modalLink::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../images/question.png") center/cover no-repeat;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.notice {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines p.notice::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../images/exclamation.png") center/cover no-repeat;
 }
 .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap {
   padding: 10px 0;
@@ -2525,13 +2548,13 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   margin-bottom: 12px;
   font-size: 1.6rem;
   line-height: 1.3;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  position: relative;
 }
 .payTypeModal ul li::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: -8px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -2561,6 +2584,35 @@ html .quickMenu .quickBtns .trigger.active .movePages {
   background: rgba(0, 0, 0, 0.4);
 }
 
+@media screen and (max-width: 1280px) {
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box {
+    height: 90px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    height: 150px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm .productName {
+    width: calc(100% - 160px);
+    padding: 0 10px;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:nth-child(2) {
+    border-left: 1px solid #dcdcdc;
+  }
+  .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:last-child {
+    border-right: 1px solid #dcdcdc;
+  }
+}
 @media screen and (max-width: 840px) {
   /* order */
   .order {
