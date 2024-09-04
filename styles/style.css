@@ -1028,8 +1028,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu {
   position: fixed;
   right: 24px;
-  bottom: 90px;
-  z-index: 5;
+  bottom: 24px;
+  opacity: 0;
+  z-index: -1;
+  transform: translateY(150%);
+  transition: all 0.7s;
 }
 .quickMenu .quickBtns {
   display: flex;
@@ -1120,16 +1123,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger .movePages li a.auction::before {
   content: "\f2b5";
 }
-.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-  content: "\f062";
-}
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-  width: 56px;
-  transform: translateX(0);
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
@@ -1142,8 +1138,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
-  max-height: 254px;
+  max-height: 188px;
   overflow: visible;
+}
+.quickMenu.active {
+  opacity: 1;
+  z-index: 5;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 1280px) {
@@ -1162,6 +1163,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(0, 0);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(0, 0);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1403,7 +1410,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu {
     right: 14px;
-    bottom: 68px;
+    bottom: 30px;
   }
   .quickMenu .quickBtns {
     gap: 6px;
@@ -1456,20 +1463,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .quickMenu .quickBtns .trigger .movePages li a.auction::before {
     content: "\f2b5";
   }
-  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-    content: "\f062";
-  }
   .quickMenu .quickBtns .trigger .movePages li:hover {
     width: 100px;
     transform: translateX(-56px);
   }
-  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-    width: 44px;
-    transform: translateX(0);
-  }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
-    max-height: 194px;
+    max-height: 144px;
   }
 }
 @font-face {
@@ -1856,6 +1856,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
+#best-ranking .ranking-content .ranking-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#best-ranking .ranking-content .ranking-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#best-ranking .ranking-content .ranking-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
+}
 
 #auction .auction-banner {
   width: 100%;
@@ -2115,6 +2127,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
+#auction .auction-content .auction-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#auction .auction-content .auction-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#auction .auction-content .auction-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
+}
 #auction .auction-content .slide-btns button {
   top: 44%;
 }
@@ -2187,10 +2211,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: flex;
   align-items: center;
 }
-#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
   width: 150px;
   height: 100%;
   border-radius: 10px;
+  overflow: hidden;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img {
+  height: 100%;
+  transition: all 0.3s;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img:hover {
+  transform: scale(1.04);
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
   width: calc(100% - 150px);
@@ -2435,8 +2467,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
-#recommended .recommended-content .recommended-slide .slide-img {
-  background: url("../images/best-ranking01.png") center/cover no-repeat;
+#recommended .recommended-content .recommended-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#recommended .recommended-content .recommended-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#recommended .recommended-content .recommended-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
 }
 
 #safe-service {
@@ -2834,7 +2875,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
     height: 100px;
   }
-  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
     width: 100px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {

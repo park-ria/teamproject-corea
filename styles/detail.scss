@@ -1,5 +1,14 @@
 @import "./common.scss";
 
+// font
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* mixin */
 // variables
 $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
@@ -145,11 +154,19 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         &:active {
           cursor: grabbing;
         }
-        .slide-img {
+        .slideImgWrap {
           width: 100%;
           height: 240px;
           border-radius: 10px;
           overflow: hidden;
+          .slide-img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.04);
+            }
+          }
         }
         .slide-desc {
           @include productDesc;
@@ -331,10 +348,10 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             width: 35px;
             height: 35px;
             color: map-get($map: $color, $key: bg-light-color);
-  
+
             i {
               font-size: 30px;
-  
+
               &.fa-solid {
                 color: crimson;
               }
@@ -370,8 +387,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 font-size: map-get($map: $fontSize, $key: font-extra-large);
                 transition: color 0.3s;
               }
-
-            
             }
 
             &:hover a i {
@@ -448,7 +463,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
           .timeEvent {
             display: flex;
-            width: 150px;
+            width: 170px;
             align-items: center;
             padding: 6px 3px 6px 12px;
             border-radius: 8px;
@@ -457,8 +472,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               position: relative;
               width: 30px;
               height: 30px;
-              background: url("../images/clock.svg") center/contain
-                no-repeat;
+              background: url("../images/clock.svg") center/contain no-repeat;
               margin-right: 5px;
               animation: vibration 0.2s linear infinite;
               &::before {
@@ -696,46 +710,48 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             border: 1px solid map-get($map: $color, $key: bg-light-gray);
 
             .customoverlay {
-              position:relative;
+              position: relative;
               // bottom:55px;
               top: 55px;
-              border-radius:6px;
+              border-radius: 6px;
               border: 1px solid #ccc;
             }
             .customoverlay:nth-of-type(n) {
-              border:0; 
-              box-shadow:0px 1px 2px #888;
+              border: 0;
+              box-shadow: 0px 1px 2px #888;
             }
             .customoverlay a {
-              display:block;
-              color:#111;
-              text-align:center;
-              border-radius:6px;
-              font-size:14px;
-              font-weight:bold;
-              overflow:hidden;
+              display: block;
+              color: #111;
+              text-align: center;
+              border-radius: 6px;
+              font-size: 14px;
+              font-weight: bold;
+              overflow: hidden;
               background: map-get($map: $color, $key: bg-sub-color);
-              background: map-get($map: $color, $key: bg-sub-color) url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 13px center;
+              background: map-get($map: $color, $key: bg-sub-color)
+                url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
+                no-repeat right 13px center;
             }
             .customoverlay .title {
-              display:block;
-              text-align:center;
-              background:#fff;
-              margin-right:35px;
-              padding:10px 15px;
-              font-size:14px;
-              font-weight:bold;
+              display: block;
+              text-align: center;
+              background: #fff;
+              margin-right: 35px;
+              padding: 10px 15px;
+              font-size: 14px;
+              font-weight: bold;
             }
             .customoverlay:after {
-              content:'';
-              position:absolute;
-              margin-left:-12px;
-              left:50%;
-              top:-12px;
-              width:22px;
-              height:12px;
+              content: "";
+              position: absolute;
+              margin-left: -12px;
+              left: 50%;
+              top: -12px;
+              width: 22px;
+              height: 12px;
               transform: rotate(180deg);
-              background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+              background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
             }
           }
         }
@@ -759,7 +775,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             position: relative;
             z-index: 2;
             overflow: hidden;
-            color: #fff;  
+            color: #fff;
 
             &.chat {
               @include greenBtn;
@@ -873,13 +889,13 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 border-radius: 50%;
                 overflow: hidden;
                 cursor: pointer;
-  
+
                 img {
                   width: 100%;
                   height: 100%;
                 }
               }
-  
+
               .info-box {
                 width: calc(100% - 80px);
                 height: 60px;
@@ -887,19 +903,19 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: flex-start;
-  
+
                 .box-name {
                   display: flex;
                   align-items: center;
                   gap: 25px;
                   cursor: pointer;
-  
+
                   .name {
                     font-size: map-get($map: $fontSize, $key: font-large);
                     font-weight: 600;
                   }
                 }
-                .certi{
+                .certi {
                   display: flex;
                   align-items: center;
                   gap: 3px;
@@ -917,7 +933,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                     height: 14px;
                     background: map-get($map: $color, $key: bg-main-color);
                     border-radius: 3px;
-  
+
                     i {
                       font-size: 12px;
                       color: map-get($map: $color, $key: bg-light-color);
@@ -940,7 +956,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                 gap: 4px;
                 text-align: center;
                 position: relative;
-    
+
                 &::before {
                   content: "";
                   position: absolute;
@@ -951,11 +967,11 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
                   height: 17px;
                   background: map-get($map: $color, $key: bg-light-gray);
                 }
-    
+
                 &:last-child::before {
                   display: none;
                 }
-    
+
                 span:nth-child(1) {
                   font-size: 13px;
                   color: map-get($map: $color, $key: bg-dark-gray);
@@ -1065,6 +1081,22 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
   }
 }
+@keyframes clock {
+  0% {
+    transform: translate(-50%, -70%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+@keyframes vibration {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
 
 .share-box {
   position: fixed;
@@ -1124,7 +1156,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   height: 100vh;
   background: rgba($color: #000000, $alpha: 0.4);
   display: none;
-  
+
   &.active {
     display: block;
   }
@@ -1235,7 +1267,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               right: 30px;
               width: 45px;
               height: 45px;
-  
+
               i {
                 font-size: 45px;
               }
@@ -1341,19 +1373,19 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 
   // event
-    // event
-    #event {
-      .event-content {
-        .event-slide {
-          ul {
-            a {
-              width: 310px;
-              height: 100px;
-            }
+  // event
+  #event {
+    .event-content {
+      .event-slide {
+        ul {
+          a {
+            width: 310px;
+            height: 100px;
           }
         }
       }
     }
+  }
 
   // recommendation
   #recommended {
@@ -1396,7 +1428,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       }
     }
   }
-
 }
 
 @media screen and (max-width: 450px) {
@@ -1428,7 +1459,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
         width: 10%;
         text-align: center;
         font-size: 26px;
-        
+
         i {
           color: map-get($map: $color, $key: bg-light-gray);
 
@@ -1436,7 +1467,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             color: crimson;
           }
         }
-
       }
 
       .btns {
@@ -1494,7 +1524,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               right: 20px;
               width: 35px;
               height: 35px;
-  
+
               i {
                 font-size: 35px;
               }
@@ -1578,12 +1608,11 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           }
 
           .desc-store {
-          
             .store-info {
               height: 65px;
               .info-user {
                 .info-box {
-                  .certi{
+                  .certi {
                     span {
                       font-size: 11px;
                     }
@@ -1665,4 +1694,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     margin-bottom: 150px;
   }
 
+  // quickMenu
+  #wrapper .quickMenu {
+    right: 14px;
+    bottom: 80px;
+  }
 }

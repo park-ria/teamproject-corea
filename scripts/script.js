@@ -228,6 +228,7 @@ const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
+  const slideImgWrap = document.createElement("div");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
   const badge = document.createElement("span");
@@ -245,30 +246,67 @@ const addProduct = (product, ul) => {
   }
   badge.className = badgeClassName;
 
+  slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
-  // aTag.style.webkitUserDrag = "none";
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
-  const desc = `
-              <h4 class="desc-title">
-                ${product.title}
-              </h4>
-              <strong class="desc-price">
-                ${product.price}
-              </strong>
-              <p class="desc-info">
-                <span class="desc-time">${product.time}</span>
-                <span class="desc-place">
-                ${product.point ? " | " + product.point : ""}
-                </span>
-              </p>
-        `;
+  if (ul === ".auctionUl") {
+    // currentPrice
+    const originPrice = Number(
+      product.price.replace(/,/g, "").replace("원", "")
+    );
+    const saleNum = Math.floor(Math.random() * 31);
+    const salePrice = Math.floor(originPrice * (saleNum / 100));
+    const resultPrice = originPrice - salePrice;
+    const currentPrice = new Intl.NumberFormat("ko-kr", {
+      currency: "KRW",
+    }).format(resultPrice);
 
-  slideDesc.insertAdjacentHTML("afterbegin", desc);
-  aTag.append(slideImg, slideDesc);
+    const desc = `
+  <h4 class="desc-title">
+    ${product.title}
+  </h4>
+  <strong class="desc-price">
+    <span class="current">현재가</span> ${currentPrice}원
+    <span class="fixed">${product.price}</span>
+  </strong>
+  <p class="desc-info">
+    <span class="desc-time">${product.time.replace("전", "후 종료")}</span>
+    <span class="desc-place">
+    ${product.point ? " | " + product.point : ""}
+    </span>
+  </p>
+`;
+    slideDesc.insertAdjacentHTML("afterbegin", desc);
+
+    aTag.setAttribute(
+      "href",
+      `/pages/detail.html?id=${product.id}&price=${currentPrice}`
+    );
+  } else {
+    const desc = `
+    <h4 class="desc-title">
+      ${product.title}
+    </h4>
+    <strong class="desc-price">
+      ${product.price}
+    </strong>
+    <p class="desc-info">
+      <span class="desc-time">${product.time}</span>
+      <span class="desc-place">
+      ${product.point ? " | " + product.point : ""}
+      </span>
+    </p>
+`;
+    slideDesc.insertAdjacentHTML("afterbegin", desc);
+
+    aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
+  }
+
+  slideImgWrap.appendChild(slideImg);
+  aTag.append(slideImgWrap, slideDesc);
   liItem.appendChild(aTag);
   liItem.appendChild(badge);
   ulItem.appendChild(liItem);
@@ -373,7 +411,6 @@ const productSlide = (section) => {
 
   slideUl.addEventListener("mousedown", (e) => {
     slideUl.style.cursor = "grabbing";
-    // slide.querySelectorAll("a").style.cursor = "grabbing";
     startPoint = e.pageX;
   });
 
@@ -435,10 +472,12 @@ fetch(joonggoInfo)
           let li = `
             <li>
               <a href="/pages/detail.html?id=${product.id}">
-                <div class="tab-content-img" style="background:url('../${
-                  product.image_path
-                }') center/cover
-                no-repeat"></div>
+               <div class="tab-content-img-wrap">
+                  <div class="tab-content-img" style="background:url('../${
+                    product.image_path
+                  }') center/cover
+                  no-repeat"></div>
+               </div>
                 <div class="tab-content-desc">
                   <h4 class="desc-title">
                     ${product.title}
@@ -489,7 +528,6 @@ const createSpan = (content, className) => {
 
 const updateUnit = (parent, unit, itemValue) => {
   const unitElement = parent.querySelector(`.${unit}`);
-  //console.log(unitElement);
 
   if (unitElement) {
     const currentValue = unitElement.querySelector(".old").innerText;
@@ -519,18 +557,11 @@ const updateUnit = (parent, unit, itemValue) => {
 
 const updateTime = () => {
   const today = new Date();
-  // console.log(product.timer.split(" ")[0]);
-  // let second = 0;
-  /*if(product.timer.split(" ")[0] === "초"){
-  second = today.getseconds() + product.timer.split(" ")[0] 숫자
-}*/
 
   const eventDay = new Date(
     today.getFullYear(),
     today.getMonth(),
     today.getDate() + 1
-
-    //sencond
   );
 
   const gapDate = Math.floor((eventDay - today) / 1000);
@@ -540,7 +571,6 @@ const updateTime = () => {
   updateUnit(timeItems, "min", min);
   updateUnit(timeItems, "sec", sec);
 };
-// updateTime();
 setInterval(updateTime, 1000);
 
 // tab-menu click event
@@ -690,107 +720,3 @@ closeItems.forEach((item) => {
     closeItems[1].classList.remove("active");
   });
 });
-
-// // quickMenu
-// const quickMenu = document.querySelector(".quickMenu");
-// const addQuickMenu = () => {
-//   const quickBtns = document.createElement("ul");
-//   const liTrigger = document.createElement("li");
-
-//   quickMenu.className = "quickMenu";
-//   quickBtns.className = "quickBtns";
-//   liTrigger.className = "trigger";
-
-//   const openMenu = `
-//             <button>
-//               <i class="fa-solid fa-plus"></i>
-//             </button>
-//             <ul class="movePages">
-//               <li>
-//                 <a
-//                 href="/pages/login.html"
-//                 class="mypage"
-//                 target="_blank"
-//                 >
-//                 마이페이지
-//                 </a>
-//               </li>
-//               <li>
-//                 <a
-//                 href="/pages/wishlist.html"
-//                 class="cart"
-//                 target="_blank"
-//                 >
-//                 찜한상품
-//                 </a>
-//               </li>
-//               <li>
-//                 <a
-//                   href="/pages/auction.html"
-//                   class="auction"
-//                   target="_blank"
-//                 >
-//                 중고경매
-//                 </a>
-//               </li>
-//               <li>
-//                 <a href="#main-slide" class="moveTop"></a>
-//               </li>
-//             </ul>
-// `;
-
-//   liTrigger.insertAdjacentHTML("afterbegin", openMenu);
-
-//   quickBtns.appendChild(liTrigger);
-//   quickMenu.appendChild(quickBtns);
-
-//   liTrigger.addEventListener("click", function () {
-//     this.classList.toggle("active");
-//   });
-// };
-// addQuickMenu();
-
-// // channelTalk
-// (function () {
-//   var w = window;
-//   if (w.ChannelIO) {
-//     return w.console.error("ChannelIO script included twice.");
-//   }
-//   var ch = function () {
-//     ch.c(arguments);
-//   };
-//   ch.q = [];
-//   ch.c = function (args) {
-//     ch.q.push(args);
-//   };
-//   w.ChannelIO = ch;
-//   function l() {
-//     if (w.ChannelIOInitialized) {
-//       return;
-//     }
-//     w.ChannelIOInitialized = true;
-//     var s = document.createElement("script");
-//     s.type = "text/javascript";
-//     s.async = true;
-//     s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-//     var x = document.getElementsByTagName("script")[0];
-//     if (x.parentNode) {
-//       x.parentNode.insertBefore(s, x);
-//     }
-//   }
-//   if (document.readyState === "complete") {
-//     l();
-//   } else {
-//     w.addEventListener("DOMContentLoaded", l);
-//     w.addEventListener("load", l);
-//   }
-// })();
-
-// ChannelIO("boot", {
-//   pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
-// });
-
-// const goTop = document.querySelector(".moveTop");
-// goTop.addEventListener("click", () => {
-//   window.scrollTo({ top: 0, behavior: "smooth" });
-// });

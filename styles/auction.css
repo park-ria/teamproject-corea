@@ -1029,8 +1029,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu {
   position: fixed;
   right: 24px;
-  bottom: 90px;
-  z-index: 5;
+  bottom: 24px;
+  opacity: 0;
+  z-index: -1;
+  transform: translateY(150%);
+  transition: all 0.7s;
 }
 .quickMenu .quickBtns {
   display: flex;
@@ -1121,16 +1124,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger .movePages li a.auction::before {
   content: "\f2b5";
 }
-.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-  content: "\f062";
-}
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-  width: 56px;
-  transform: translateX(0);
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
@@ -1143,8 +1139,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
-  max-height: 254px;
+  max-height: 188px;
   overflow: visible;
+}
+.quickMenu.active {
+  opacity: 1;
+  z-index: 5;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 1280px) {
@@ -1163,6 +1164,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(0, 0);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(0, 0);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1404,7 +1411,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu {
     right: 14px;
-    bottom: 68px;
+    bottom: 30px;
   }
   .quickMenu .quickBtns {
     gap: 6px;
@@ -1457,20 +1464,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .quickMenu .quickBtns .trigger .movePages li a.auction::before {
     content: "\f2b5";
   }
-  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-    content: "\f062";
-  }
   .quickMenu .quickBtns .trigger .movePages li:hover {
     width: 100px;
     transform: translateX(-56px);
   }
-  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-    width: 44px;
-    transform: translateX(0);
-  }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
-    max-height: 194px;
+    max-height: 144px;
   }
 }
 * {
@@ -2501,8 +2501,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu {
   position: fixed;
   right: 24px;
-  bottom: 90px;
-  z-index: 5;
+  bottom: 24px;
+  opacity: 0;
+  z-index: -1;
+  transform: translateY(150%);
+  transition: all 0.7s;
 }
 .quickMenu .quickBtns {
   display: flex;
@@ -2593,16 +2596,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger .movePages li a.auction::before {
   content: "\f2b5";
 }
-.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-  content: "\f062";
-}
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-  width: 56px;
-  transform: translateX(0);
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
@@ -2615,8 +2611,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
-  max-height: 254px;
+  max-height: 188px;
   overflow: visible;
+}
+.quickMenu.active {
+  opacity: 1;
+  z-index: 5;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 1280px) {
@@ -2635,6 +2636,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(0, 0);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(0, 0);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -2876,7 +2883,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu {
     right: 14px;
-    bottom: 68px;
+    bottom: 30px;
   }
   .quickMenu .quickBtns {
     gap: 6px;
@@ -2929,20 +2936,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .quickMenu .quickBtns .trigger .movePages li a.auction::before {
     content: "\f2b5";
   }
-  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-    content: "\f062";
-  }
   .quickMenu .quickBtns .trigger .movePages li:hover {
     width: 100px;
     transform: translateX(-56px);
   }
-  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-    width: 44px;
-    transform: translateX(0);
-  }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
-    max-height: 194px;
+    max-height: 144px;
   }
 }
 @font-face {
@@ -3329,6 +3329,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
+#best-ranking .ranking-content .ranking-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#best-ranking .ranking-content .ranking-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#best-ranking .ranking-content .ranking-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
+}
 
 #auction .auction-banner {
   width: 100%;
@@ -3588,6 +3600,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
+#auction .auction-content .auction-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#auction .auction-content .auction-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#auction .auction-content .auction-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
+}
 #auction .auction-content .slide-btns button {
   top: 44%;
 }
@@ -3660,10 +3684,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: flex;
   align-items: center;
 }
-#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
   width: 150px;
   height: 100%;
   border-radius: 10px;
+  overflow: hidden;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img {
+  height: 100%;
+  transition: all 0.3s;
+}
+#weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img:hover {
+  transform: scale(1.04);
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
   width: calc(100% - 150px);
@@ -3908,8 +3940,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-shadow: 0 0 1px #111;
   content: "경매";
 }
-#recommended .recommended-content .recommended-slide .slide-img {
-  background: url("../images/best-ranking01.png") center/cover no-repeat;
+#recommended .recommended-content .recommended-slide .slideImgWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#recommended .recommended-content .recommended-slide .slideImgWrap .slide-img {
+  transition: all 0.3s;
+}
+#recommended .recommended-content .recommended-slide .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
 }
 
 #safe-service {
@@ -4307,7 +4348,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li {
     height: 100px;
   }
-  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img {
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
     width: 100px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
@@ -4539,12 +4580,21 @@ body {
   overflow: hidden;
   -webkit-user-drag: none;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap {
   width: 100%;
   height: 236px;
-  position: relative;
+  overflow: hidden;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s;
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
+}
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent {
   position: absolute;
   bottom: 15px;
   left: 15px;
@@ -4554,7 +4604,7 @@ body {
   border-radius: 8px;
   background: #0095ee;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .clock {
   position: relative;
   width: 30px;
   height: 30px;
@@ -4562,7 +4612,7 @@ body {
   margin-right: 5px;
   animation: vibration 0.2s linear infinite;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock::before {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .clock::before {
   content: "";
   position: absolute;
   top: 47%;
@@ -4574,7 +4624,7 @@ body {
   background: #fff;
   animation: clock 3s linear infinite;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock::after {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .clock::after {
   content: "";
   position: absolute;
   top: 52%;
@@ -4585,7 +4635,7 @@ body {
   background: #fff;
   border-radius: 50%;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem {
   position: relative;
   width: 37px;
   height: 30px;
@@ -4594,7 +4644,7 @@ body {
   align-items: center;
   overflow: hidden;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem span {
   display: block;
   font: 700 1.8rem/1 "GmarketSansBold";
   color: #fff;
@@ -4605,25 +4655,25 @@ body {
   text-align: center;
   padding-top: 2px;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.old {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem span.old {
   transform: translateY(-50%);
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span.new {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem span.new {
   transform: translateY(-200%);
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem span::after {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem span::after {
   content: " : ";
   display: inline-block;
   width: 10px;
   margin-left: 2px;
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.old {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem.updating span.old {
   transform: translateY(100%);
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.updating span.new {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem.updating span.new {
   transform: translateY(-200%);
 }
-#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .timeItem.sec span::after {
+#best-auction .best-auction-content .best-auction-slide .bestAuction li a .slideImgWrap .slide-img .timeEvent .timeItem.sec span::after {
   content: "";
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-desc {
@@ -4864,12 +4914,19 @@ body {
   flex-direction: column;
   gap: 15px;
 }
-#product-list .product li a .slide-img {
+#product-list .product li a .slideImgWrap {
   width: 100%;
   height: 240px;
   border-radius: 10px;
   overflow: hidden;
-  background: url("../images/auction01.png") center/cover no-repeat;
+}
+#product-list .product li a .slideImgWrap .slide-img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s;
+}
+#product-list .product li a .slideImgWrap .slide-img:hover {
+  transform: scale(1.04);
 }
 #product-list .product li a .slide-desc {
   padding: 0 14px 20px;

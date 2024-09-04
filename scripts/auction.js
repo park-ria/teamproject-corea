@@ -68,9 +68,11 @@ const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
+  const slideImgWrap = document.createElement("div");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
 
+  slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
   //aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
@@ -111,7 +113,8 @@ const addProduct = (product, ul) => {
         `;
 
   slideDesc.insertAdjacentHTML("afterbegin", desc);
-  aTag.append(slideImg, slideDesc);
+  slideImgWrap.appendChild(slideImg);
+  aTag.append(slideImgWrap, slideDesc);
   liItem.append(aTag);
 
   ulItem.appendChild(liItem);

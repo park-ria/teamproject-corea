@@ -94,6 +94,7 @@
     position: relative;
     border: 1px solid map-get($color, bg-dark-color);
     border-radius: 50%;
+    cursor: pointer;
     &::before {
       content: "\f00c";
       font-family: "fontawesome";
@@ -272,7 +273,7 @@
                 object-fit: cover;
                 transition: transform 0.3s;
                 &.hover {
-                  transform: scale(1.1);
+                  transform: scale(1.04);
                 }
               }
             }
@@ -645,7 +646,7 @@
                   height: inherit;
                   transition: transform 0.3s;
                   &:hover {
-                    transform: scale(1.1);
+                    transform: scale(1.04);
                   }
                 }
               }
@@ -775,7 +776,7 @@
                   height: inherit;
                   transition: transform 0.3s;
                   &:hover {
-                    transform: scale(1.1);
+                    transform: scale(1.04);
                   }
                 }
               }
@@ -790,6 +791,56 @@
   }
   .favoriteBrandsPagination {
     @include pagination-style;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
+
+  /* wish-items-content */
+  .wish-items-content {
+    .wish-items-content-detail {
+      .wishItemList {
+        li {
+          .wishItem {
+            .wishItemDescGroup {
+              .wishItemDesc {
+                .wishItemViewMore {
+                  .wishItemInfo {
+                    .wishItemPriceBox {
+                      flex: 1;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 15px;
+                      .wishItemPriceInfo {
+                        justify-content: center;
+                        .wishItemPrice {
+                          b {
+                            font-size: map-get($fontSize, font-medium);
+                          }
+                        }
+                        .pay {
+                          height: 16px;
+                          font-size: map-get($fontSize, font-extra-small);
+                        }
+                      }
+                      .wishItemShippingInfo {
+                        flex-direction: row-reverse;
+                        gap: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -831,11 +882,13 @@
           width: 100%;
           gap: 10px;
           .wishItem {
-            width: 100%;
+            width: 90%;
             height: 150px;
+            // gap: 10px;
             .wishItemDescGroup {
               flex: 1;
               gap: 5px;
+              width: calc(100% - 202px);
               .wishItemDesc {
                 width: 100%;
                 flex-wrap: wrap;
@@ -861,13 +914,15 @@
                     }
                     .wishItemPriceBox {
                       flex: 1;
-                      min-width: 200px;
-                      justify-content: flex-start;
+                      min-width: 180px;
+                      justify-content: center;
                       flex-wrap: wrap;
-                      gap: 5px;
+                      align-items: flex-start;
+                      gap: 8px;
                       .wishItemPriceInfo {
                         width: auto;
                         justify-content: flex-start;
+                        flex-direction: row-reverse;
                         .wishItemPrice {
                           b {
                             font-size: map-get($fontSize, font-medium);
@@ -879,7 +934,7 @@
                         }
                       }
                       .wishItemShippingInfo {
-                        flex-direction: row;
+                        flex-direction: row-reverse;
                         justify-content: center;
                         align-items: center;
                         gap: 10px;
@@ -1120,7 +1175,7 @@
                   .wishItemInfo {
                     min-height: 0;
                     gap: 10px;
-                    align-items: center;
+                    // align-items: center;
                     .wishItemTitleBox {
                       width: fit-content;
                       .wishItemSellerName {

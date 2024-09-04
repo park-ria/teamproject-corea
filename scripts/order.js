@@ -103,9 +103,9 @@ const createproductInfo = (product) => {
     <a href="/pages/detail.html?id=${product.id}">
       <div class="product-desc">
         <span class="product-desc-box productImgNm">
-          <span class="productImg" style="background: url('../${
-            product.image_path
-          }') center/cover no-repeat;"></span>
+          <span class="productImg">
+            <image src="../${product.image_path}" />
+          </span>
           <p class="productName">
             <span class='pay'>pay</span>
             ${product.title}

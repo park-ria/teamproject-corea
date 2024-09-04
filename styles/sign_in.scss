@@ -15,6 +15,7 @@ $bg-main-color: #0dcc5a;
 
   .sign-in {
     width: 80%;
+    padding: 50px 0 120px;
 
     form {
       width: 100%;
@@ -25,7 +26,7 @@ $bg-main-color: #0dcc5a;
       .sign-in-ttl {
         width: 90%;
         height: 10vh;
-        font-size: 1.5rem;
+        font-size: 2.6rem;
         font-weight: 600;
         display: flex;
         justify-content: center;
@@ -60,13 +61,13 @@ $bg-main-color: #0dcc5a;
             .sign-input {
               width: 100%;
               display: flex;
-              gap: 50px;
+              gap: 40px;
               padding-bottom: 17px;
               .label {
                 width: 50%;
                 padding-top: 5px;
                 padding-left: 20px;
-                font-size: 1.3rem;
+                font-size: 1.6rem;
                 span {
                   color: crimson;
                 }
@@ -74,12 +75,13 @@ $bg-main-color: #0dcc5a;
               .inputbox {
                 width: 80%;
                 height: 30px;
-                font-size: 1.3rem;
+                font-size: 1.4rem;
               }
               #phonelabel {
                 width: 20%;
                 display: flex;
                 align-items: center;
+                padding-bottom: 10px;
               }
               .phonewrapper {
                 width: 50%;
@@ -88,9 +90,10 @@ $bg-main-color: #0dcc5a;
                 gap: 20px;
                 input {
                   width: 100px;
-                  height: 35px;
+                  height: 30px;
                   border: 1px solid $font-light;
                   border-radius: 10px;
+                  font-size: 1.4rem;
                 }
               }
             }
@@ -98,7 +101,7 @@ $bg-main-color: #0dcc5a;
             .error {
               width: 50%;
               color: crimson;
-              font-size: 10px;
+              font-size: 1.3rem;
               padding-bottom: 20px;
             }
 
@@ -116,11 +119,11 @@ $bg-main-color: #0dcc5a;
                 justify-content: center;
                 align-items: center;
                 gap: 20px;
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 #token-button {
-                  width: 80px;
-                  height: 40px;
-                  font-size: 1.2rem;
+                  width: 100px;
+                  height: 30px;
+                  font-size: 1.4rem;
                   border: 1px solid $color-border;
                   border-radius: 10px;
                 }
@@ -133,9 +136,9 @@ $bg-main-color: #0dcc5a;
                 gap: 20px;
                 font-size: 1.3rem;
                 #token-timer-confirmBtn {
-                  width: 80px;
-                  height: 40px;
-                  font-size: 1.2rem;
+                  width: 100px;
+                  height: 30px;
+                  font-size: 1.4rem;
                   border: 1px solid $color-border;
                   border-radius: 10px;
                 }
@@ -143,8 +146,6 @@ $bg-main-color: #0dcc5a;
             }
             .location-wrapper {
               width: 100%;
-              // display: flex;
-              // align-items: center;
               position: relative;
               #location {
                 width: 40%;
@@ -154,12 +155,13 @@ $bg-main-color: #0dcc5a;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 border-radius: 10px;
-                font-size: 1rem;
+                font-size: 1.4rem;
+                padding-left: 10px;
                 &:focus {
                   outline: none;
                 }
                 option {
-                  font-size: 1rem;
+                  font-size: 1.4rem;
                 }
               }
             }
@@ -177,14 +179,17 @@ $bg-main-color: #0dcc5a;
                 text-align: center;
                 .gender {
                   width: 100%;
-                  #gender-woman {
-                    width: 13px;
-                    height: 13px;
-                  }
+                  label {
+                    font-size: 1.5rem;
+                    #gender-woman {
+                      width: 13px;
+                      height: 13px;
+                    }
 
-                  #gender-man {
-                    width: 13px;
-                    height: 13px;
+                    #gender-man {
+                      width: 13px;
+                      height: 13px;
+                    }
                   }
                 }
               }
@@ -202,12 +207,15 @@ $bg-main-color: #0dcc5a;
 
         #signup-button {
           width: 60%;
-          height: 40px;
+          height: 45px;
           display: flex;
           justify-content: center;
           align-items: center;
           border: 1px solid $color-border;
           border-radius: 10px;
+          padding-left: 0;
+          font-size: 1.8rem;
+          font-weight: bold;
         }
       }
     }
@@ -215,18 +223,18 @@ $bg-main-color: #0dcc5a;
 }
 
 @media screen and (max-width: 850px) {
+  html {
+    font-size: 9px;
+  }
   .container {
     width: 100%;
     justify-content: center;
-    margin-top: 50px;
     .sign-in {
       width: 100%;
-      padding: 10px;
       form {
         .sign-in-ttl {
           width: 100%;
           padding-top: 5px;
-          font-size: 1.5rem;
         }
         .inputs {
           padding-top: 10px;
@@ -235,9 +243,9 @@ $bg-main-color: #0dcc5a;
             gap: 5px;
             li {
               width: 100%;
-              height: 60px;
+              height: 45px;
               padding: 0;
-              padding-left: 80px;
+              padding-left: 40px;
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -245,7 +253,6 @@ $bg-main-color: #0dcc5a;
                 gap: 5px;
                 padding-bottom: 0;
                 .label {
-                  font-size: 1.3rem;
                   text-align: left;
                   padding-top: 5px;
                   padding-left: 10px;
@@ -255,7 +262,6 @@ $bg-main-color: #0dcc5a;
                 }
                 .inputbox {
                   width: 100%;
-                  font-size: 1.3rem;
                   flex: 1;
                 }
                 .phonewrapper {
@@ -267,6 +273,7 @@ $bg-main-color: #0dcc5a;
                   input {
                     display: flex;
                     width: 25%;
+                    padding-left: 10px;
                   }
                 }
               }
@@ -281,17 +288,15 @@ $bg-main-color: #0dcc5a;
                 gap: 20px;
                 padding-bottom: 0;
                 .token-upperwrapper {
-                  font-size: 1.5rem;
                   #token-button {
-                    width: 70px;
-                    font-size: 1rem;
+                    width: 90px;
+                    height: 30px;
                   }
                 }
                 .token-bottomwrapper {
-                  font-size: 1.5rem;
                   #token-timer-confirmBtn {
-                    width: 70px;
-                    font-size: 1rem;
+                    width: 90px;
+                    height: 30px;
                   }
                 }
               }
@@ -301,7 +306,6 @@ $bg-main-color: #0dcc5a;
                 #location {
                   width: 50%;
                   padding-left: 5px;
-                  font-size: 1rem;
                 }
               }
               .gender-wrapper {
@@ -326,6 +330,9 @@ $bg-main-color: #0dcc5a;
         }
         .sign-in-footer {
           padding-top: 15px;
+          #signup-button {
+            width: 100%;
+          }
         }
       }
     }
@@ -337,12 +344,11 @@ $bg-main-color: #0dcc5a;
     justify-content: center;
     .sign-in {
       width: 100%;
-      padding: 10px;
+      padding: 30px 0 80px;
       form {
         .sign-in-ttl {
           width: 100%;
           padding-top: 5px;
-          font-size: 1.5rem;
         }
         .inputs {
           padding-top: 10px;
@@ -353,6 +359,7 @@ $bg-main-color: #0dcc5a;
               width: 100%;
               height: 50px;
               padding: 0;
+              padding-left: 10px;
               display: flex;
               flex-direction: column;
               justify-content: center;
@@ -362,16 +369,14 @@ $bg-main-color: #0dcc5a;
                 padding-bottom: 0;
                 padding-left: 0;
                 .label {
-                  font-size: 1.3rem;
                   text-align: left;
                   padding-left: 0;
                   padding-bottom: 0;
                   padding-top: 7px;
-                  width: 80px;
+                  width: 100px;
                 }
                 .inputbox {
                   width: 100%;
-                  font-size: 1.3rem;
                   flex: 1;
                 }
                 .phonewrapper {
@@ -394,23 +399,18 @@ $bg-main-color: #0dcc5a;
                 padding-left: 20%;
                 padding-bottom: 0;
                 display: none;
-                font-size: 1rem;
               }
               .token-wrapper {
                 gap: 20px;
                 padding-bottom: 0;
                 .token-upperwrapper {
-                  font-size: 1.3rem;
                   #token-button {
                     width: 80px;
-                    font-size: 1rem;
                   }
                 }
                 .token-bottomwrapper {
-                  font-size: 1.3rem;
                   #token-timer-confirmBtn {
                     width: 70px;
-                    font-size: 1rem;
                   }
                 }
               }
@@ -420,7 +420,6 @@ $bg-main-color: #0dcc5a;
                 #location {
                   width: 50%;
                   padding-left: 5px;
-                  font-size: 1rem;
                 }
               }
               .gender-wrapper {
@@ -444,6 +443,7 @@ $bg-main-color: #0dcc5a;
           }
         }
         .sign-in-footer {
+          padding: 0;
           padding-top: 15px;
         }
       }

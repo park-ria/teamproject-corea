@@ -295,8 +295,7 @@ fetch(joonggoInfo)
       });
 
       if (auctionPrice) {
-
-        headingTimeinfo.classList.add("active")
+        headingTimeinfo.classList.add("active");
         // time event
         const formatting = (time) => {
           let sec = Math.floor(time % 60);
@@ -402,7 +401,7 @@ fetch(joonggoInfo)
         //   slidePager.appendChild(spanTag);
         // }
         // slideIndex++;
-      } 
+      }
 
       // Making User-img
       const userImg = document.querySelector(".user-img");
@@ -458,7 +457,7 @@ fetch(joonggoInfo)
       // Making Desc-conditions
       const descConditions = document.querySelector(".desc-conditions");
 
-      if(auctionPrice) {
+      if (auctionPrice) {
         descConditions.classList.add("active");
       }
       descConditions.innerHTML = `
@@ -565,7 +564,7 @@ fetch(joonggoInfo)
 
       tradeBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        if(!auctionPrice){
+        if (!auctionPrice) {
           const url = `/pages/order.html?id=${product.id}`;
           window.location.href = url;
         }
@@ -770,9 +769,11 @@ const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
+  const slideImgWrap = document.createElement("div");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
 
+  slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
   aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
@@ -796,7 +797,8 @@ const addProduct = (product, ul) => {
         `;
 
   slideDesc.innerHTML = desc;
-  aTag.append(slideImg, slideDesc);
+  slideImgWrap.appendChild(slideImg);
+  aTag.append(slideImgWrap, slideDesc);
   liItem.appendChild(aTag);
   ulItem.appendChild(liItem);
 
@@ -813,10 +815,7 @@ const productSlide = (section) => {
 
   const slideCount = slide.length;
 
-  if (slideCount < 6) {
-    prevBtn.classList.add("disabled");
-    nextBtn.classList.add("disabled");
-  }
+  prevBtn.classList.add("disabled");
 
   let currentIdx = 0;
 

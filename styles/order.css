@@ -1027,8 +1027,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu {
   position: fixed;
   right: 24px;
-  bottom: 90px;
-  z-index: 5;
+  bottom: 24px;
+  opacity: 0;
+  z-index: -1;
+  transform: translateY(150%);
+  transition: all 0.7s;
 }
 .quickMenu .quickBtns {
   display: flex;
@@ -1119,16 +1122,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger .movePages li a.auction::before {
   content: "\f2b5";
 }
-.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-  content: "\f062";
-}
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-  width: 56px;
-  transform: translateX(0);
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
@@ -1141,8 +1137,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
-  max-height: 254px;
+  max-height: 188px;
   overflow: visible;
+}
+.quickMenu.active {
+  opacity: 1;
+  z-index: 5;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 1280px) {
@@ -1161,6 +1162,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(0, 0);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(0, 0);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1402,7 +1409,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu {
     right: 14px;
-    bottom: 68px;
+    bottom: 30px;
   }
   .quickMenu .quickBtns {
     gap: 6px;
@@ -1455,20 +1462,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .quickMenu .quickBtns .trigger .movePages li a.auction::before {
     content: "\f2b5";
   }
-  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-    content: "\f062";
-  }
   .quickMenu .quickBtns .trigger .movePages li:hover {
     width: 100px;
     transform: translateX(-56px);
   }
-  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-    width: 44px;
-    transform: translateX(0);
-  }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
-    max-height: 194px;
+    max-height: 144px;
   }
 }
 /* variable */
@@ -1639,6 +1639,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 1.6rem;
   color: #111;
 }
+.order .order-content form .delivery-desc.productContent .productInfo > a:hover .productImg > img {
+  transform: scale(1.04);
+}
 .order .order-content form .delivery-desc.productContent .productInfo .store-name {
   padding: 20px;
   border-bottom: 1px solid #dcdcdc;
@@ -1683,6 +1686,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productImg {
   width: 150px;
   height: 150px;
+  overflow: hidden;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productImg img {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.3s;
+}
+.order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productImg img:hover {
+  transform: scale(1.04);
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productName {
   display: flex;
@@ -1692,6 +1706,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 1.6rem;
   word-wrap: break-word;
   line-height: 30px;
+  padding-bottom: 20px;
 }
 .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box .productName .pay {
   width: 35px;
@@ -1749,6 +1764,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   border: 1px solid #ccc;
   border-radius: 8px;
   position: relative;
+  cursor: pointer;
 }
 .order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.active {
   border: 1px solid #111;
@@ -2058,7 +2074,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .order .order-content form .delivery-desc.paymentMethod .payAdvertising {
   padding: 30px 20px 40px;
-  background: #F7F9FA;
+  background: #f7f9fa;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -2120,7 +2136,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #F7F9FA;
+  background: #f7f9fa;
   padding: 20px;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .feeDesc span {
@@ -2259,7 +2275,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 .order .order-content form .delivery-desc.approval .approvalCheckbox li iframe {
-  background: #F7F9FA;
+  background: #f7f9fa;
   width: 100%;
   height: 0;
   opacity: 0;
@@ -2271,7 +2287,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   margin: 20px 0;
 }
 .order .order-content form .delivery-desc.lastMent {
-  background: #F7F9FA;
+  background: #f7f9fa;
   padding: 20px;
   margin-top: 0;
 }
@@ -2378,6 +2394,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box.productImgNm .productName {
     width: calc(100% - 160px);
     padding: 0 10px;
+    padding-bottom: 20px;
   }
   .order .order-content form .delivery-desc.productContent .productInfo .product-desc .product-desc-box:nth-child(2) {
     border-left: 1px solid #dcdcdc;

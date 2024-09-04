@@ -1027,8 +1027,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu {
   position: fixed;
   right: 24px;
-  bottom: 90px;
-  z-index: 5;
+  bottom: 24px;
+  opacity: 0;
+  z-index: -1;
+  transform: translateY(150%);
+  transition: all 0.7s;
 }
 .quickMenu .quickBtns {
   display: flex;
@@ -1119,16 +1122,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger .movePages li a.auction::before {
   content: "\f2b5";
 }
-.quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-  content: "\f062";
-}
 .quickMenu .quickBtns .trigger .movePages li:hover {
   width: 130px;
   transform: translateX(-74px);
-}
-.quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-  width: 56px;
-  transform: translateX(0);
 }
 .quickMenu .quickBtns .trigger.active button {
   background: #dcdcdc;
@@ -1141,8 +1137,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: -10px;
   transform: translateY(-100%);
   opacity: 1;
-  max-height: 254px;
+  max-height: 188px;
   overflow: visible;
+}
+.quickMenu.active {
+  opacity: 1;
+  z-index: 5;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 1280px) {
@@ -1161,6 +1162,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(0, 0);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(0, 0);
   }
   #header #banner.ban .banner {
     width: 100%;
@@ -1402,7 +1409,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .quickMenu {
     right: 14px;
-    bottom: 68px;
+    bottom: 30px;
   }
   .quickMenu .quickBtns {
     gap: 6px;
@@ -1455,19 +1462,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .quickMenu .quickBtns .trigger .movePages li a.auction::before {
     content: "\f2b5";
   }
-  .quickMenu .quickBtns .trigger .movePages li a.moveTop::before {
-    content: "\f062";
-  }
   .quickMenu .quickBtns .trigger .movePages li:hover {
     width: 100px;
     transform: translateX(-56px);
   }
-  .quickMenu .quickBtns .trigger .movePages li:last-child:hover {
-    width: 44px;
-    transform: translateX(0);
-  }
   .quickMenu .quickBtns .trigger.active .movePages {
     top: -6px;
-    max-height: 194px;
+    max-height: 144px;
   }
 }
