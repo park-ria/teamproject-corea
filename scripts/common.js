@@ -90,7 +90,6 @@ const delItem = (e) => {
       recentWord !=
       e.target.closest("li").querySelector(".recent-word").innerText
   );
-  // console.log(e.target.closest("li").querySelector(".recent-word").innerText);
   noWords(recentWords.length);
   save();
 
@@ -649,6 +648,24 @@ addQuickMenu();
   }
 })();
 
+
+
+
 ChannelIO("boot", {
   pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
 });
+
+// let settings = {
+//   pluginKey: ChannelIO.pluginKey,
+//   channelButtonOption: {
+//     xMargin: 16,
+//     yMargin: 80,
+//     position: "left", // 'left', 'right'
+//   },
+// };
+
+// console.log(ChannelIO);
+
+// ChannelIO.boot(settings)
+//   .then((result) => {})
+//   .catch((err) => console.log(err));
