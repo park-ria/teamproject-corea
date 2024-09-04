@@ -441,14 +441,15 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: #0dcc5a;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  background: #0dcc5a;
+  transition: all 0.3s;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0.8;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
   font-size: 24px;
@@ -1893,14 +1894,15 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: #0dcc5a;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  background: #0dcc5a;
+  transition: all 0.3s;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0.8;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
   font-size: 24px;

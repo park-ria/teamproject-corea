@@ -8,7 +8,7 @@ $color: (
   bg-sub-color: #0095ee,
   bg-dark-color: #3a3a3a,
   bg-light-color: #fff,
-  bg-blue-gray: #f7f9fa,
+  bg-blue-gray: #F7F9FA,
   bg-dark-gray: #6d6d6d,
   bg-light-gray: #dcdcdc,
   main-font-color: #111,
@@ -78,8 +78,8 @@ $fontSize: (
 
 @mixin greenBtn {
   background: map-get($map: $color, $key: bg-main-color);
+  transition: all 0.3s;
   &:hover {
-    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
     font-weight: bold;
     opacity: 0.8;
   }
@@ -87,7 +87,6 @@ $fontSize: (
 @mixin blackBtn {
   background: map-get($map: $color, $key: bg-dark-color);
   &:hover {
-    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
     font-weight: bold;
     opacity: 0.8;
   }
@@ -860,15 +859,11 @@ body {
             align-items: center;
             gap: 8px;
             padding: 8px 10px;
-            background: map-get($map: $color, $key: bg-main-color);
+            // background: map-get($map: $color, $key: bg-main-color);
             color: map-get($map: $color, $key: bg-light-color);
             border-radius: 5px;
             cursor: pointer;
-            transition: box-shadow 0.3s;
-
-            &:hover {
-              box-shadow: 1px 2px 5px rgba($color: #000000, $alpha: 0.3);
-            }
+            @include greenBtn;
 
             i {
               font-size: 24px;
@@ -1680,6 +1675,23 @@ footer {
         .header-bottom {
           .header-bottom-left {
             gap: 12px;
+
+            .barmenu {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 8px;
+              padding: 8px 10px;
+              color: map-get($map: $color, $key: bg-light-color);
+              border-radius: 5px;
+              cursor: pointer;
+              @include greenBtn;
+            
+
+              i {
+                font-size: 24px;
+              }
+            }
 
             .gnb {
               gap: 12px;

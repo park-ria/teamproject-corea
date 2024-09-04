@@ -439,14 +439,15 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: #0dcc5a;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  background: #0dcc5a;
+  transition: all 0.3s;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0.8;
 }
 #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
   font-size: 24px;
@@ -1516,7 +1517,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: 185px;
   left: 0;
   width: 600px;
-  height: 725px;
+  height: 695px;
 }
 #main .inner .main .main-img .img-slider {
   width: 100%;
@@ -1771,18 +1772,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   right: 0;
   transform: translateY(-50%);
   width: 1px;
-  height: 17px;
+  height: 20px;
   background: #dcdcdc;
 }
 #main .inner .main .main-desc .desc-conditions .conditions-box:last-child::before {
   display: none;
 }
 #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(1) {
-  font-size: 13px;
+  font-size: 12px;
   color: #6d6d6d;
 }
 #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(2) {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
 }
 #main .inner .main .main-desc .desc-map {
@@ -1798,7 +1799,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   font-size: 1.2rem;
   color: #6d6d6d;
-  background: #f1f1f1;
+  background: #F7F9FA;
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 42px;
@@ -1810,6 +1811,47 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 100%;
   height: 155px;
   border: 1px solid #dcdcdc;
+}
+#main .inner .main .main-desc .desc-map #map .customoverlay {
+  position: relative;
+  top: 55px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#main .inner .main .main-desc .desc-map #map .customoverlay:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+#main .inner .main .main-desc .desc-map #map .customoverlay a {
+  display: block;
+  color: #111;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  background: #0095ee;
+  background: #0095ee url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 13px center;
+}
+#main .inner .main .main-desc .desc-map #map .customoverlay .title {
+  display: block;
+  text-align: center;
+  background: #fff;
+  margin-right: 35px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+#main .inner .main .main-desc .desc-map #map .customoverlay:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  top: -12px;
+  width: 22px;
+  height: 12px;
+  transform: rotate(180deg);
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
 }
 #main .inner .main .main-desc .desc-btns {
   display: flex;
@@ -1834,9 +1876,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-btns a.chat {
   background: #0dcc5a;
+  transition: all 0.3s;
 }
 #main .inner .main .main-desc .desc-btns a.chat:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-weight: bold;
   opacity: 0.8;
 }
@@ -1844,7 +1886,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   background: #3a3a3a;
 }
 #main .inner .main .main-desc .desc-btns a.trade:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-weight: bold;
   opacity: 0.8;
 }
@@ -1852,7 +1893,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   margin-bottom: 85px;
 }
 #main .inner .main .main-desc .desc-itemInfo .itemIfo-heading {
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 #main .inner .main .main-desc .desc-itemInfo .itemIfo-heading h3 {
   font-size: 2rem;
@@ -1868,6 +1909,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-itemInfo .itemIfo-detail p {
   width: 100%;
+  border-radius: 8px;
   text-align: justify;
   line-height: 30px;
   margin-bottom: 70px;
@@ -1885,7 +1927,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-itemInfo .itemIfo-detail .relatedWords span {
   padding: 10px 15px;
-  background: #f1f1f1;
+  background: #F7F9FA;
   font-size: 1.4rem;
   font-weight: 500;
   border-radius: 5px;
@@ -1894,11 +1936,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   transition: text-decoration 0.2s, -webkit-text-decoration 0.2s;
   cursor: pointer;
 }
-#main .inner .main .main-desc .desc-store {
-  margin-bottom: 20px;
-}
 #main .inner .main .main-desc .desc-store .store-heading {
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }
 #main .inner .main .main-desc .desc-store .store-heading h3 {
   font-size: 2rem;
@@ -1915,47 +1954,55 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-store .store-info {
   display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 40px;
+  gap: 10px;
+  height: 75px;
+  margin-bottom: 45px;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-img {
+#main .inner .main .main-desc .desc-store .store-info .info-user {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-img img {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-img img {
   width: 100%;
   height: 100%;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box {
+  width: calc(100% - 80px);
   height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .box-name {
   display: flex;
   align-items: center;
   gap: 25px;
   cursor: pointer;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .name {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .box-name .name {
   font-size: 1.8rem;
   font-weight: 600;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi {
   display: flex;
   align-items: center;
   gap: 3px;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi span {
-  font-size: 10px;
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi span {
+  font-size: 12px;
   margin-right: 3px;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi .certi-check {
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi .certi-check {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1964,19 +2011,45 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   background: #0dcc5a;
   border-radius: 3px;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box .box-name .certi .certi-check i {
-  font-size: 13px;
+#main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi .certi-check i {
+  font-size: 12px;
   color: #fff;
 }
-#main .inner .main .main-desc .desc-store .store-info .info-box a {
-  width: 55px;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 8px 10px;
-  color: #fff;
-  background: #0dcc5a;
-  border-radius: 5px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+#main .inner .main .main-desc .desc-store .store-info .info-desc {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  position: relative;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 17px;
+  background: #dcdcdc;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box:last-child::before {
+  display: none;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box span:nth-child(1) {
+  font-size: 13px;
+  color: #6d6d6d;
+}
+#main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box span:nth-child(2) {
+  font-size: 15px;
+  font-weight: 600;
 }
 #main .inner .main .main-desc .desc-store .store-btns {
   margin-bottom: 35px;
@@ -1988,6 +2061,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   padding: 12px;
   border-radius: 5px;
   transition: all 0.3s;
+  color: #6d6d6d;
+  background: #F7F9FA;
 }
 #main .inner .main .main-desc .desc-store .store-btns button.active {
   background: #0dcc5a;
@@ -2003,6 +2078,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: 0;
   left: 0;
   width: 100%;
+  padding-top: 15px;
   opacity: 0;
   transition: opacity 0.1s;
 }
@@ -2074,9 +2150,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 12px;
   font-size: 1.4rem;
-  background: #dcdcdc;
+  background: #F7F9FA;
   border-radius: 7px;
 }
 #main .inner .main .main-desc .desc-store .store-contents .reviews .reviews-box li span {
@@ -2138,17 +2214,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: flex;
 }
 
-.shaerbox-filter {
-  position: absolute;
+.sharebox-filter {
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 4;
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 4;
   display: none;
 }
-.shaerbox-filter.active {
+.sharebox-filter.active {
   display: block;
 }
 
@@ -2397,7 +2473,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     display: none;
   }
   #main {
-    margin-top: 60px;
+    margin-top: 63px;
     margin-bottom: 150px;
   }
   #main .inner .main {
@@ -2470,14 +2546,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     font-size: 1.6rem;
     padding: 17px;
   }
-  #main .inner .main .main-desc .desc-store .store-info .info-box {
-    width: calc(100% - 75px);
-    flex-direction: row;
-    align-items: center;
-  }
-  #main .inner .main .main-desc .desc-store .store-info .info-box a {
-    height: 25px;
-  }
   #main .inner .main .main-desc .desc-store .store-contents > div {
     top: 15px;
   }
@@ -2518,6 +2586,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   :root {
     font-size: 8px;
   }
+  .wrapper {
+    margin-bottom: 65px;
+  }
   #bottom-memu {
     display: block;
     position: fixed;
@@ -2530,7 +2601,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #bottom-memu .bottom-mmenu {
     display: flex;
     gap: 2%;
-    height: 60px;
+    height: 65px;
     font-size: 1.8rem;
   }
   #bottom-memu .bottom-mmenu .heart-btn {
@@ -2627,10 +2698,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     gap: 8px;
   }
   #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(1) {
-    font-size: 9px;
+    font-size: 10px;
   }
   #main .inner .main .main-desc .desc-conditions .conditions-box span:nth-child(2) {
-    font-size: 10px;
+    font-size: 11px;
   }
   #main .inner .main .main-desc .desc-btns {
     display: none;
@@ -2640,6 +2711,24 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #main .inner .main .main-desc .desc-itemInfo .itemIfo-detail .relatedWords {
     gap: 15px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info {
+    height: 65px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi span {
+    font-size: 11px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info .info-user .info-box .certi .certi-check {
+    width: 13px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box {
+    gap: 8px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box span:nth-child(1) {
+    font-size: 10px;
+  }
+  #main .inner .main .main-desc .desc-store .store-info .info-desc .desc-box span:nth-child(2) {
+    font-size: 11px;
   }
   #main .inner .main .main-desc .desc-store .store-btns button {
     padding: 13px;
