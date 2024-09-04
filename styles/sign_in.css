@@ -990,6 +990,7 @@ html #mobile-menu .mobile-menu .menu-box button:first-child {
 }
 html #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }

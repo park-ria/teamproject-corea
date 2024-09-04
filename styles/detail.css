@@ -592,6 +592,7 @@ body {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -749,6 +750,9 @@ body {
 #mobile-search .search-box form button {
   font-size: 22px;
   padding: 0 15px;
+}
+#mobile-search .search-box form button i {
+  color: #3a3a3a;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -1146,16 +1150,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
-  slide-btns button.slidePrev {
+  .slide-btns button.slidePrev {
     transform: translateX(0);
   }
-  slide-btns button.slidePrev:hover {
+  .slide-btns button.slidePrev:hover {
     transform: translate(0, 5%);
   }
-  slide-btns button.slideNext {
+  .slide-btns button.slideNext {
     transform: translateX(0);
   }
-  slide-btns button.slideNext:hover {
+  .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -1178,6 +1182,25 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #header #header-item .header-item .header-bottom .header-bottom-left {
     gap: 12px;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0dcc5a;
+    transition: all 0.3s;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu:hover {
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  #header #header-item .header-item .header-bottom .header-bottom-left .barmenu i {
+    font-size: 24px;
   }
   #header #header-item .header-item .header-bottom .header-bottom-left .gnb {
     gap: 12px;
@@ -1232,6 +1255,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     left: 0;
     width: 100%;
     z-index: 3;
+  }
+  #mobile-menu .mobile-logo img {
+    width: 120px;
   }
   #mobile-category {
     display: block;
@@ -1664,15 +1690,107 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   margin-bottom: 15px;
 }
 #main .inner .main .main-desc .desc-heading .heading-price {
-  font-size: 26px;
-  line-height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
   margin-bottom: 15px;
+  font-weight: 500;
+}
+#main .inner .main .main-desc .desc-heading .heading-price span:first-child {
+  font-size: 26px;
+}
+#main .inner .main .main-desc .desc-heading .heading-price span:last-child {
+  font-size: 16px;
+  text-decoration: line-through;
 }
 #main .inner .main .main-desc .desc-heading .heading-timeinfo {
   font-size: 1.6rem;
   color: #aaa;
   display: flex;
   gap: 5px;
+}
+#main .inner .main .main-desc .desc-heading .heading-timeinfo.active {
+  margin-bottom: 20px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent {
+  display: flex;
+  width: 150px;
+  align-items: center;
+  padding: 6px 3px 6px 12px;
+  border-radius: 8px;
+  background: #0095ee;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url("../images/clock.svg") center/contain no-repeat;
+  margin-right: 5px;
+  animation: vibration 0.2s linear infinite;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock::before {
+  content: "";
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center bottom;
+  width: 2px;
+  height: 7px;
+  background: #fff;
+  animation: clock 3s linear infinite;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock::after {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
+  position: relative;
+  width: 37px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span {
+  display: block;
+  font: 700 1.8rem/1 "GmarketSansBold";
+  color: #fff;
+  transition: transform 0.5s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding-top: 2px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span.old {
+  transform: translateY(-50%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span.new {
+  transform: translateY(-200%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span::after {
+  content: " : ";
+  display: inline-block;
+  width: 10px;
+  margin-left: 2px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.updating span.old {
+  transform: translateY(100%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.updating span.new {
+  transform: translateY(-200%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.sec span::after {
+  content: "";
 }
 #main .inner .main .main-desc .desc-user {
   display: flex;
@@ -1786,6 +1904,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 14px;
   font-weight: 600;
 }
+#main .inner .main .main-desc .desc-conditions.active {
+  margin-bottom: 45px;
+}
 #main .inner .main .main-desc .desc-map {
   margin-bottom: 40px;
 }
@@ -1888,6 +2009,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #main .inner .main .main-desc .desc-btns a.trade:hover {
   font-weight: bold;
   opacity: 0.8;
+}
+#main .inner .main .main-desc .desc-btns a.auction {
+  background: #0095ee;
+}
+#main .inner .main .main-desc .desc-btns.active {
+  margin-bottom: 70px;
 }
 #main .inner .main .main-desc .desc-itemInfo {
   margin-bottom: 85px;
@@ -2516,6 +2643,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #main .inner .main .main-desc .desc-heading .heading-price {
     margin-bottom: 20px;
   }
+  #main .inner .main .main-desc .desc-heading .timeEvent {
+    padding: 4px 10px;
+  }
+  #main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
+    width: 35px;
+  }
+  #main .inner .main .main-desc .desc-heading .timeEvent .timeItem span {
+    padding-top: 5px;
+  }
   #main .inner .main .main-desc .desc-user {
     margin-bottom: 50px;
   }
@@ -2681,8 +2817,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #main .inner .main .main-desc .desc-heading .heading-name {
     font-size: 22px;
   }
-  #main .inner .main .main-desc .desc-heading .heading-price {
-    font-size: 24px;
+  #main .inner .main .main-desc .desc-heading .heading-price span:first-child {
+    font-size: 22px;
+  }
+  #main .inner .main .main-desc .desc-heading .heading-price span:last-child {
+    font-size: 14px;
+    text-decoration: line-through;
   }
   #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox {
     gap: 20px;

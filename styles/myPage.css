@@ -920,7 +920,6 @@ html #header-category .inner .header-category .main-category.active {
 }
 #header-category .inner .header-category .main-category li {
   padding: 12px 20px;
-  padding: 12px 20px;
   color: #3a3a3a;
   font-size: 1.4rem;
   font-weight: 400;
@@ -935,7 +934,6 @@ html #header-category .inner .header-category .main-category li a::before {
   top: 50%;
   left: -20px;
   transform: translateY(-50%);
-  width: 4px;
   width: 4px;
   height: 120%;
   background: #0dcc5a;
@@ -1027,6 +1025,7 @@ html #mobile-menu .mobile-menu .menu-box button {
 }
 #mobile-menu .mobile-menu .menu-box button:first-child i {
   font-size: 22px;
+  color: #3a3a3a;
   opacity: 1;
   transition: all 0.3s;
 }
@@ -1753,16 +1752,16 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     width: 100%;
     padding: 0 2%;
   }
-  slide-btns button.slidePrev {
+  .slide-btns button.slidePrev {
     transform: translateX(0);
   }
-  slide-btns button.slidePrev:hover {
+  .slide-btns button.slidePrev:hover {
     transform: translate(0, 5%);
   }
-  slide-btns button.slideNext {
+  .slide-btns button.slideNext {
     transform: translateX(0);
   }
-  slide-btns button.slideNext:hover {
+  .slide-btns button.slideNext:hover {
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -2468,6 +2467,9 @@ html .quickMenu .quickBtns .trigger.active .movePages {
     left: 0;
     width: 100%;
     z-index: 3;
+  }
+  #mobile-menu .mobile-logo img {
+    width: 120px;
   }
   #mobile-category {
     display: block;
