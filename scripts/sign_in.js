@@ -84,6 +84,9 @@ const changePhone3 = () => {
   const phone2 = document.querySelector("#phone2").value;
   const phone3 = document.querySelector("#phone3").value;
 
+  const phone3Str = document.querySelector("#phone3");
+  phone3Str.value = phone3Str.value.replace(/[^0-9.]/g, "");
+
   if (phone1.length === 3 && phone2.length === 4 && phone3.length === 4) {
     tokenButton.style =
       "background-color: #0dcc5a; color: #fff; border:1px solid #0dcc5a; cursor: pointer";

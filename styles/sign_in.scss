@@ -25,7 +25,7 @@ $bg-main-color: #0dcc5a;
       .sign-in-ttl {
         width: 90%;
         height: 10vh;
-        font-size: 30px;
+        font-size: 1.5rem;
         font-weight: 600;
         display: flex;
         justify-content: center;
@@ -38,21 +38,21 @@ $bg-main-color: #0dcc5a;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        padding-top: 50px;
+        padding-top: 10px;
 
         ul {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 20px;
+          gap: 10px;
 
           li {
             width: 90%;
-            height: 60px;
-            border-bottom: 2.5px solid $font-light;
-            padding-top: 5px;
-            padding-left: 20px;
+            height: 45px;
+            border-bottom: 1.5px solid $font-light;
+            padding-top: 15px;
+            padding-left: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,22 +61,23 @@ $bg-main-color: #0dcc5a;
               width: 100%;
               display: flex;
               gap: 50px;
-              font-size: 1.8rem;
               padding-bottom: 17px;
               .label {
                 width: 50%;
+                padding-top: 5px;
                 padding-left: 20px;
+                font-size: 1.3rem;
                 span {
                   color: crimson;
                 }
               }
               .inputbox {
-                width: 70%;
+                width: 80%;
                 height: 30px;
-                font-size: 1.8rem;
+                font-size: 1.3rem;
               }
               #phonelabel {
-                width: 25%;
+                width: 20%;
                 display: flex;
                 align-items: center;
               }
@@ -97,6 +98,7 @@ $bg-main-color: #0dcc5a;
             .error {
               width: 50%;
               color: crimson;
+              font-size: 10px;
               padding-bottom: 20px;
             }
 
@@ -114,10 +116,11 @@ $bg-main-color: #0dcc5a;
                 justify-content: center;
                 align-items: center;
                 gap: 20px;
-                font-size: 1.8rem;
+                font-size: 1.3rem;
                 #token-button {
-                  width: 100px;
+                  width: 80px;
                   height: 40px;
+                  font-size: 1.2rem;
                   border: 1px solid $color-border;
                   border-radius: 10px;
                 }
@@ -128,10 +131,11 @@ $bg-main-color: #0dcc5a;
                 justify-content: center;
                 align-items: center;
                 gap: 20px;
-                font-size: 1.8rem;
+                font-size: 1.3rem;
                 #token-timer-confirmBtn {
-                  width: 100px;
+                  width: 80px;
                   height: 40px;
+                  font-size: 1.2rem;
                   border: 1px solid $color-border;
                   border-radius: 10px;
                 }
@@ -143,14 +147,20 @@ $bg-main-color: #0dcc5a;
               // align-items: center;
               position: relative;
               #location {
-                width: 50%;
-                height: 40px;
+                width: 40%;
+                height: 30px;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 border-radius: 10px;
-                font-size: 1.5rem;
+                font-size: 1rem;
+                &:focus {
+                  outline: none;
+                }
+                option {
+                  font-size: 1rem;
+                }
               }
             }
             .gender-wrapper {
@@ -208,6 +218,7 @@ $bg-main-color: #0dcc5a;
   .container {
     width: 100%;
     justify-content: center;
+    margin-top: 50px;
     .sign-in {
       width: 100%;
       padding: 10px;
@@ -215,6 +226,7 @@ $bg-main-color: #0dcc5a;
         .sign-in-ttl {
           width: 100%;
           padding-top: 5px;
+          font-size: 1.5rem;
         }
         .inputs {
           padding-top: 10px;
@@ -223,38 +235,33 @@ $bg-main-color: #0dcc5a;
             gap: 5px;
             li {
               width: 100%;
-              height: 80px;
+              height: 60px;
               padding: 0;
-              padding-left: 10px;
-
+              padding-left: 80px;
               display: flex;
               justify-content: space-between;
               align-items: center;
               .sign-input {
                 gap: 5px;
-
-                padding-left: 15px;
-
                 padding-bottom: 0;
                 .label {
-                  font-size: 2rem;
+                  font-size: 1.3rem;
                   text-align: left;
+                  padding-top: 5px;
                   padding-left: 10px;
                   padding-bottom: 0;
 
                   width: 110px;
-
                 }
                 .inputbox {
                   width: 100%;
-                  font-size: 2rem;
+                  font-size: 1.3rem;
                   flex: 1;
                 }
                 .phonewrapper {
-                  width: 80%;
+                  width: 100%;
                   display: flex;
                   flex-wrap: wrap;
-                  justify-content: center;
                   align-items: center;
                   gap: 10px;
                   input {
@@ -274,13 +281,17 @@ $bg-main-color: #0dcc5a;
                 gap: 20px;
                 padding-bottom: 0;
                 .token-upperwrapper {
+                  font-size: 1.5rem;
                   #token-button {
                     width: 70px;
+                    font-size: 1rem;
                   }
                 }
                 .token-bottomwrapper {
+                  font-size: 1.5rem;
                   #token-timer-confirmBtn {
                     width: 70px;
+                    font-size: 1rem;
                   }
                 }
               }
@@ -290,7 +301,7 @@ $bg-main-color: #0dcc5a;
                 #location {
                   width: 50%;
                   padding-left: 5px;
-                  font-size: 1.5rem;
+                  font-size: 1rem;
                 }
               }
               .gender-wrapper {
@@ -331,6 +342,7 @@ $bg-main-color: #0dcc5a;
         .sign-in-ttl {
           width: 100%;
           padding-top: 5px;
+          font-size: 1.5rem;
         }
         .inputs {
           padding-top: 10px;
@@ -339,7 +351,7 @@ $bg-main-color: #0dcc5a;
             gap: 5px;
             li {
               width: 100%;
-              height: 80px;
+              height: 50px;
               padding: 0;
               display: flex;
               flex-direction: column;
@@ -348,18 +360,18 @@ $bg-main-color: #0dcc5a;
               .sign-input {
                 gap: 5px;
                 padding-bottom: 0;
-
                 padding-left: 0;
                 .label {
-                  font-size: 2rem;
+                  font-size: 1.3rem;
                   text-align: left;
                   padding-left: 0;
                   padding-bottom: 0;
-                  width: 130px;
+                  padding-top: 7px;
+                  width: 80px;
                 }
                 .inputbox {
                   width: 100%;
-                  font-size: 1.8rem;
+                  font-size: 1.3rem;
                   flex: 1;
                 }
                 .phonewrapper {
@@ -377,24 +389,28 @@ $bg-main-color: #0dcc5a;
               }
               .error {
                 width: 80%;
-                padding-top: 5px;
-
-                padding-left: 40%;
-
+                height: 10px;
+                padding-top: 0;
+                padding-left: 20%;
                 padding-bottom: 0;
                 display: none;
+                font-size: 1rem;
               }
               .token-wrapper {
                 gap: 20px;
                 padding-bottom: 0;
                 .token-upperwrapper {
+                  font-size: 1.3rem;
                   #token-button {
-                    width: 70px;
+                    width: 80px;
+                    font-size: 1rem;
                   }
                 }
                 .token-bottomwrapper {
+                  font-size: 1.3rem;
                   #token-timer-confirmBtn {
                     width: 70px;
+                    font-size: 1rem;
                   }
                 }
               }
@@ -404,7 +420,7 @@ $bg-main-color: #0dcc5a;
                 #location {
                   width: 50%;
                   padding-left: 5px;
-                  font-size: 1.5rem;
+                  font-size: 1rem;
                 }
               }
               .gender-wrapper {
