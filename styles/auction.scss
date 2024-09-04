@@ -82,94 +82,103 @@ body {
             background: map-get($color, bg-light-color);
             overflow: hidden;
             -webkit-user-drag: none;
-            .slide-img {
+            .slideImgWrap {
               width: 100%;
               height: 236px;
-              position: relative;
-              .timeEvent {
-                position: absolute;
-                bottom: 15px;
-                left: 15px;
-                display: flex;
-                align-items: center;
-                padding: 6px 3px 6px 12px;
-                border-radius: 8px;
-                background: map-get($color, bg-sub-color);
-                .clock {
-                  position: relative;
-                  width: 30px;
-                  height: 30px;
-                  background: url("../images/clock.svg") center/contain
-                    no-repeat;
-                  margin-right: 5px;
-                  animation: vibration 0.2s linear infinite;
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    top: 47%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    transform-origin: center bottom;
-                    width: 2px;
-                    height: 7px;
-                    background: map-get($color, bg-light-color);
-                    animation: clock 3s linear infinite;
-                  }
-                  &::after {
-                    content: "";
-                    position: absolute;
-                    top: 52%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 4px;
-                    height: 4px;
-                    background: map-get($color, bg-light-color);
-                    border-radius: 50%;
-                  }
+              overflow: hidden;
+              .slide-img {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transition: all 0.3s;
+                &:hover {
+                  transform: scale(1.04);
                 }
-                .timeItem {
-                  position: relative;
-                  width: 37px;
-                  height: 30px;
+                .timeEvent {
+                  position: absolute;
+                  bottom: 15px;
+                  left: 15px;
                   display: flex;
-                  justify-content: center;
                   align-items: center;
-                  overflow: hidden;
-                  span {
-                    display: block;
-                    font: 700 1.8rem/1 "GmarketSansBold";
-                    color: map-get($color, bg-light-color);
-                    transition: transform 0.5s ease;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    text-align: center;
-                    padding-top: 2px;
-                    &.old {
-                      transform: translateY(-50%);
-                    }
-                    &.new {
-                      transform: translateY(-200%);
+                  padding: 6px 3px 6px 12px;
+                  border-radius: 8px;
+                  background: map-get($color, bg-sub-color);
+                  .clock {
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    background: url("../images/clock.svg") center/contain
+                      no-repeat;
+                    margin-right: 5px;
+                    animation: vibration 0.2s linear infinite;
+                    &::before {
+                      content: "";
+                      position: absolute;
+                      top: 47%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      transform-origin: center bottom;
+                      width: 2px;
+                      height: 7px;
+                      background: map-get($color, bg-light-color);
+                      animation: clock 3s linear infinite;
                     }
                     &::after {
-                      content: " : ";
-                      display: inline-block;
-                      width: 10px;
-                      margin-left: 2px;
+                      content: "";
+                      position: absolute;
+                      top: 52%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 4px;
+                      height: 4px;
+                      background: map-get($color, bg-light-color);
+                      border-radius: 50%;
                     }
                   }
-                  &.updating {
+                  .timeItem {
+                    position: relative;
+                    width: 37px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
                     span {
+                      display: block;
+                      font: 700 1.8rem/1 "GmarketSansBold";
+                      color: map-get($color, bg-light-color);
+                      transition: transform 0.5s ease;
+                      position: absolute;
+                      top: 50%;
+                      transform: translateY(-50%);
+                      text-align: center;
+                      padding-top: 2px;
                       &.old {
-                        transform: translateY(100%);
+                        transform: translateY(-50%);
                       }
                       &.new {
                         transform: translateY(-200%);
                       }
+                      &::after {
+                        content: " : ";
+                        display: inline-block;
+                        width: 10px;
+                        margin-left: 2px;
+                      }
                     }
-                  }
-                  &.sec span::after {
-                    content: "";
+                    &.updating {
+                      span {
+                        &.old {
+                          transform: translateY(100%);
+                        }
+                        &.new {
+                          transform: translateY(-200%);
+                        }
+                      }
+                    }
+                    &.sec span::after {
+                      content: "";
+                    }
                   }
                 }
               }
@@ -266,13 +275,21 @@ body {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        .slide-img {
+        .slideImgWrap {
           width: 100%;
           height: 240px;
           border-radius: 10px;
           overflow: hidden;
-          background: url("../images/auction01.png") center/cover no-repeat;
+          .slide-img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.04);
+            }
+          }
         }
+
         .slide-desc {
           padding: 0 14px 20px;
           @include productDesc;

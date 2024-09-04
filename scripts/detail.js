@@ -103,21 +103,19 @@ fetch(joonggoInfo)
       // PC 드래그 이벤트
       imgWrapper.addEventListener("mousedown", (e) => {
         imgWrapper.style.cursor = "grabbing";
-        startPoint = e.pageX; 
+        startPoint = e.pageX;
       });
 
       imgWrapper.addEventListener("mouseup", (e) => {
         imgWrapper.style.cursor = "grab";
-        endPoint = e.pageX; 
+        endPoint = e.pageX;
 
         if (startPoint < endPoint) {
-
           // 마우스가 오른쪽으로 드래그 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
         } else if (startPoint > endPoint) {
-
           // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
@@ -130,7 +128,7 @@ fetch(joonggoInfo)
         startPoint = e.touches[0].pageX;
       });
       imgWrapper.addEventListener("touchend", (e) => {
-        endPoint = e.changedTouches[0].pageX; 
+        endPoint = e.changedTouches[0].pageX;
         if (startPoint < endPoint) {
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
@@ -206,7 +204,9 @@ fetch(joonggoInfo)
 
       // updateHeartBtns
       const updateHeartBtns = () => {
-        const updateWishItem = wishItemArr.find((wishItem) => wishItem.id === product.id);
+        const updateWishItem = wishItemArr.find(
+          (wishItem) => wishItem.id === product.id
+        );
 
         if (updateWishItem) {
           heartBtns.forEach((heartBtn) => {
@@ -369,21 +369,27 @@ fetch(joonggoInfo)
       }`;
 
       // Kakao map
-      const mapContainer = document.getElementById('map'), 
-        mapOption = { 
-              center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), 
-              level: 4 
-          };
+      const mapContainer = document.getElementById("map"),
+        mapOption = {
+          center: new kakao.maps.LatLng(
+            product.detail.latitude,
+            product.detail.longitude
+          ),
+          level: 4,
+        };
 
       const map = new kakao.maps.Map(mapContainer, mapOption);
 
-      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); 
+      const markerPosition = new kakao.maps.LatLng(
+        product.detail.latitude,
+        product.detail.longitude
+      );
 
       const marker = new kakao.maps.Marker({
         position: markerPosition,
       });
 
-      marker.setMap(map);  
+      marker.setMap(map);
 
       const content = `
       <div class="customoverlay">
@@ -392,13 +398,16 @@ fetch(joonggoInfo)
         </a>
       </div>`;
 
-      const position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
+      const position = new kakao.maps.LatLng(
+        product.detail.latitude,
+        product.detail.longitude
+      );
 
       const customOverlay = new kakao.maps.CustomOverlay({
-          map: map,
-          position: position,
-          content: content,
-          yAnchor: 1 
+        map: map,
+        position: position,
+        content: content,
+        yAnchor: 1,
       });
 
       // trade버튼 클릭시 이벤트
@@ -408,7 +417,7 @@ fetch(joonggoInfo)
         e.preventDefault();
         const url = `/pages/order.html?id=${product.id}`;
         window.location.href = url;
-      })
+      });
 
       // Making ItemIfo-detail
       const itemIfoDetail = document.querySelector(".itemIfo-detail");
@@ -609,9 +618,11 @@ const addProduct = (product, ul) => {
   const ulItem = document.querySelector(ul);
   const liItem = document.createElement("li");
   const aTag = document.createElement("a");
+  const slideImgWrap = document.createElement("div");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
 
+  slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
   aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
@@ -635,7 +646,8 @@ const addProduct = (product, ul) => {
         `;
 
   slideDesc.innerHTML = desc;
-  aTag.append(slideImg, slideDesc);
+  slideImgWrap.appendChild(slideImg);
+  aTag.append(slideImgWrap, slideDesc);
   liItem.appendChild(aTag);
   ulItem.appendChild(liItem);
 
@@ -652,10 +664,7 @@ const productSlide = (section) => {
 
   const slideCount = slide.length;
 
-  if (slideCount < 6) {
-    prevBtn.classList.add("disabled");
-    nextBtn.classList.add("disabled");
-  }
+  prevBtn.classList.add("disabled");
 
   let currentIdx = 0;
 
@@ -758,9 +767,9 @@ urlBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const urlAddress = window.location.href;
-  navigator.clipboard.writeText(urlAddress).then(res=>{
-	  alert("주소가 복사되었습니다!");
-	})
+  navigator.clipboard.writeText(urlAddress).then((res) => {
+    alert("주소가 복사되었습니다!");
+  });
 });
 
 // Store-btns active
@@ -898,5 +907,3 @@ const eventSlide = () => {
   });
 };
 eventSlide();
-
-

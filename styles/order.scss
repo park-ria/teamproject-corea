@@ -226,6 +226,9 @@
         }
         &.productContent {
           .productInfo {
+            & > a:hover .productImg > img {
+              transform: scale(1.04);
+            }
             .store-name {
               padding: 20px;
               border-bottom: 1px solid map-get($color, bg-light-gray);
@@ -268,6 +271,16 @@
                 .productImg {
                   width: 150px;
                   height: 150px;
+                  overflow: hidden;
+                  img {
+                    width: inherit;
+                    height: inherit;
+                    object-fit: cover;
+                    transition: transform 0.3s;
+                    &:hover {
+                      transform: scale(1.04);
+                    }
+                  }
                 }
                 .productName {
                   display: flex;
@@ -277,6 +290,7 @@
                   font-size: map-get($fontSize, font-medium);
                   word-wrap: break-word;
                   line-height: 30px;
+                  padding-bottom: 20px;
                   .pay {
                     width: 35px;
                     height: 20px;
@@ -337,6 +351,7 @@
                 border: 1px solid #ccc;
                 border-radius: 8px;
                 position: relative;
+                cursor: pointer;
                 &.active {
                   border: 1px solid map-get($color, main-font-color);
                 }
@@ -892,6 +907,7 @@
                     .productName {
                       width: calc(100% - 160px);
                       padding: 0 10px;
+                      padding-bottom: 20px;
                     }
                   }
                   &:nth-child(2) {

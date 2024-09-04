@@ -11,7 +11,7 @@
       property="og:description"
       content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
     />
-    <link rel="icon" href="/images/appicon.jpg" />
+    <link rel="icon" href="/images/favicon.ico" />
     <!-- fontawesome -->
     <script
       src="https://kit.fontawesome.com/09d57ad258.js"
@@ -31,7 +31,7 @@
             <div class="banner">
               <div class="banner-left">
                 <div class="appDownload">
-                  <img src="../images/appicon.jpg" alt="appicon" />
+                  <img src="../images/appicon.png" alt="appicon" />
                   <span>앱 다운로드</span>
                   <div class="download-box">
                     <a
@@ -231,195 +231,199 @@
         </div>
       </div>
 
-      <div class="inner">
-        <div class="container">
-          <div class="sign-in">
-            <form name="frm" action="http://localhost:5502">
-              <section class="sign-in-ttl">회원가입</section>
-              <section class="inputs">
-                <ul>
-                  <li>
-                    <div class="sign-input">
-                      <label for="email" class="label"
-                        ><span>*</span> 이메일</label
-                      >
-                      <input
-                        id="email"
-                        class="inputbox"
-                        type="email"
-                        name="email"
-                        placeholder="이메일을 입력해주세요."
-                      />
-                    </div>
-                    <div id="error_email" class="error"></div>
-                  </li>
-
-                  <li>
-                    <div class="sign-input">
-                      <label for="password1" class="label"
-                        ><span>*</span> 비밀번호</label
-                      >
-                      <input
-                        type="password"
-                        name="password1"
-                        id="password1"
-                        class="inputbox"
-                        placeholder="8-12자 내로 입력해주세요."
-                      />
-                    </div>
-                    <div id="error_password1" class="error"></div>
-                  </li>
-
-                  <li>
-                    <div class="sign-input">
-                      <label for="password2" class="label"
-                        ><span>*</span> 비밀번호 확인</label
-                      >
-                      <input
-                        type="password"
-                        name="password2"
-                        id="password2"
-                        class="inputbox"
-                        placeholder="비밀번호를 다시 입력해주세요."
-                      />
-                    </div>
-                    <div id="error_password2" class="error"></div>
-                  </li>
-
-                  <li>
-                    <div class="sign-input">
-                      <label for="name" class="label"
-                        ><span>*</span> 이름</label
-                      >
-                      <input
-                        id="name"
-                        class="inputbox"
-                        type="text"
-                        name="name"
-                        placeholder="이름을 입력해주세요."
-                      />
-                    </div>
-                    <div id="error_writer" class="error"></div>
-                  </li>
-
-                  <li>
-                    <div class="sign-input">
-                      <label for="phone" class="label" id="phonelabel"
-                        ><span>*</span> 휴대폰</label
-                      >
-                      <div class="phonewrapper">
-                        <input
-                          type="text"
-                          name="firstNum"
-                          id="phone1"
-                          class="phoneNum"
-                          onkeyup="onchange()"
-                          onchange="changePhone1()"
-                        />
-                        -
-                        <input
-                          type="text"
-                          name="secondNum"
-                          id="phone2"
-                          class="phoneNum"
-                          onkeyup="onchange()"
-                          onchange="changePhone2()"
-                        />
-                        -
-                        <input
-                          type="text"
-                          name="lastNum"
-                          id="phone3"
-                          class="phoneNum"
-                          onkeyup="onchange()"
-                          onchange="changePhone3()"
-                        />
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="token-wrapper">
-                      <div class="token-upperwrapper">
-                        <div id="token">000000</div>
-                        <button id="token-button" disabled>
-                          인증번호 전송
-                        </button>
-                      </div>
-                      <div class="token-bottomwrapper">
-                        <div id="token-timer">3:00</div>
-                        <button id="token-timer-confirmBtn" disabled>
-                          인증완료
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="sign-input">
-                      <div class="location-wrapper">
-                        <label for="location" class="label" id="locationlabel"
-                          >지역</label
+      <main>
+        <div class="inner">
+          <div class="container">
+            <div class="sign-in">
+              <form name="frm" action="http://localhost:5502">
+                <section class="sign-in-ttl">회원가입</section>
+                <section class="inputs">
+                  <ul>
+                    <li>
+                      <div class="sign-input">
+                        <label for="email" class="label"
+                          ><span>*</span> 이메일</label
                         >
-                        <select name="location" id="location">
-                          <option selected disabled>지역을 선택하세요.</option>
-                          <option>서울</option>
-                          <option>경기</option>
-                          <option>경상도</option>
-                          <option>충청도</option>
-                          <option>전라도</option>
-                          <option>강원도</option>
-                          <option>제주도</option>
-                        </select>
+                        <input
+                          id="email"
+                          class="inputbox"
+                          type="email"
+                          name="email"
+                          placeholder="이메일을 입력해주세요."
+                        />
                       </div>
-                    </div>
-                  </li>
+                      <div id="error_email" class="error"></div>
+                    </li>
 
-                  <li>
-                    <div class="sign-input">
-                      <div class="gender-wrapper">
-                        <label for="gender" class="label">성별</label>
-                        <div class="gender-box">
-                          <div class="gender">
-                            <label for="gender-woman"
-                              ><input
-                                type="radio"
-                                name="gender"
-                                id="gender-woman"
-                                class="gender-radio"
-                              />
-                              여성</label
-                            >
-                          </div>
-                          <div class="gender">
-                            <label for="gender-man">
-                              <input
-                                type="radio"
-                                name="gender"
-                                id="gender-man"
-                                class="gender-radio"
-                              />
-                              남성
-                            </label>
+                    <li>
+                      <div class="sign-input">
+                        <label for="password1" class="label"
+                          ><span>*</span> 비밀번호</label
+                        >
+                        <input
+                          type="password"
+                          name="password1"
+                          id="password1"
+                          class="inputbox"
+                          placeholder="8-12자 내로 입력해주세요."
+                        />
+                      </div>
+                      <div id="error_password1" class="error"></div>
+                    </li>
+
+                    <li>
+                      <div class="sign-input">
+                        <label for="password2" class="label"
+                          ><span>*</span> 비밀번호 확인</label
+                        >
+                        <input
+                          type="password"
+                          name="password2"
+                          id="password2"
+                          class="inputbox"
+                          placeholder="비밀번호를 다시 입력해주세요."
+                        />
+                      </div>
+                      <div id="error_password2" class="error"></div>
+                    </li>
+
+                    <li>
+                      <div class="sign-input">
+                        <label for="name" class="label"
+                          ><span>*</span> 이름</label
+                        >
+                        <input
+                          id="name"
+                          class="inputbox"
+                          type="text"
+                          name="name"
+                          placeholder="이름을 입력해주세요."
+                        />
+                      </div>
+                      <div id="error_writer" class="error"></div>
+                    </li>
+
+                    <li>
+                      <div class="sign-input">
+                        <label for="phone" class="label" id="phonelabel"
+                          ><span>*</span> 휴대폰</label
+                        >
+                        <div class="phonewrapper">
+                          <input
+                            type="text"
+                            name="firstNum"
+                            id="phone1"
+                            class="phoneNum"
+                            onkeyup="onchange()"
+                            onchange="changePhone1()"
+                          />
+                          -
+                          <input
+                            type="text"
+                            name="secondNum"
+                            id="phone2"
+                            class="phoneNum"
+                            onkeyup="onchange()"
+                            onchange="changePhone2()"
+                          />
+                          -
+                          <input
+                            type="text"
+                            name="lastNum"
+                            id="phone3"
+                            class="phoneNum"
+                            onkeyup="onchange()"
+                            onchange="changePhone3()"
+                          />
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="token-wrapper">
+                        <div class="token-upperwrapper">
+                          <div id="token">000000</div>
+                          <button id="token-button" disabled>
+                            인증번호 전송
+                          </button>
+                        </div>
+                        <div class="token-bottomwrapper">
+                          <div id="token-timer">3:00</div>
+                          <button id="token-timer-confirmBtn" disabled>
+                            인증완료
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="sign-input">
+                        <div class="location-wrapper">
+                          <label for="location" class="label" id="locationlabel"
+                            >지역</label
+                          >
+                          <select name="location" id="location">
+                            <option selected disabled>
+                              지역을 선택하세요.
+                            </option>
+                            <option>서울</option>
+                            <option>경기</option>
+                            <option>경상도</option>
+                            <option>충청도</option>
+                            <option>전라도</option>
+                            <option>강원도</option>
+                            <option>제주도</option>
+                          </select>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="sign-input">
+                        <div class="gender-wrapper">
+                          <label for="gender" class="label">성별</label>
+                          <div class="gender-box">
+                            <div class="gender">
+                              <label for="gender-woman"
+                                ><input
+                                  type="radio"
+                                  name="gender"
+                                  id="gender-woman"
+                                  class="gender-radio"
+                                />
+                                여성</label
+                              >
+                            </div>
+                            <div class="gender">
+                              <label for="gender-man">
+                                <input
+                                  type="radio"
+                                  name="gender"
+                                  id="gender-man"
+                                  class="gender-radio"
+                                />
+                                남성
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-              </section>
-              <section class="sign-in-footer">
-                <input
-                  type="submit"
-                  id="signup-button"
-                  value="가입하기"
-                  disabled
-                />
-              </section>
-            </form>
+                    </li>
+                  </ul>
+                </section>
+                <section class="sign-in-footer">
+                  <input
+                    type="submit"
+                    id="signup-button"
+                    value="가입하기"
+                    disabled
+                  />
+                </section>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
 
       <footer>
         <div class="inner">
@@ -427,12 +431,24 @@
             <div class="footer-upper-info">
               <div class="footer-company-guide">
                 <ul>
-                  <li>이용약관</li>
-                  <li>개인정보처리방침</li>
-                  <li>분쟁처리절차</li>
-                  <li>청소년보호정책</li>
-                  <li>사업자정보확인</li>
-                  <li><a target="_blank" href="../pages/faq.html">FAQ</a></li>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
                 </ul>
               </div>
               <address class="footer-company-info">
@@ -448,7 +464,8 @@
             </div>
             <div class="footer-upper-ctg">
               <button>
-                카테고리 전체보기 <i class="fa-solid fa-angle-down"></i>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
               </button>
               <ul class="category-list"></ul>
             </div>

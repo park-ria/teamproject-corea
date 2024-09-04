@@ -558,10 +558,12 @@ const quickMenu = document.querySelector(".quickMenu");
 const addQuickMenu = () => {
   const quickBtns = document.createElement("ul");
   const liTrigger = document.createElement("li");
+  const moveTop = document.createElement("li");
 
   quickMenu.className = "quickMenu";
   quickBtns.className = "quickBtns";
   liTrigger.className = "trigger";
+  moveTop.className = "moveTop";
 
   const openMenu = `
             <button>
@@ -595,15 +597,19 @@ const addQuickMenu = () => {
                 중고경매
                 </a>
               </li>
-              <li>
-                <a href="#" class="moveTop"></a>
-              </li>
             </ul>
 `;
 
-  liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+  const moveTopBtn = `
+            <a href="#">
+              <i class="fa-solid fa-arrow-up"></i>
+            </a>
+`;
 
-  quickBtns.appendChild(liTrigger);
+  liTrigger.insertAdjacentHTML("afterbegin", openMenu);
+  moveTop.insertAdjacentHTML("afterbegin", moveTopBtn);
+
+  quickBtns.append(liTrigger, moveTop);
   quickMenu.appendChild(quickBtns);
 
   liTrigger.addEventListener("click", function () {
@@ -612,60 +618,7 @@ const addQuickMenu = () => {
 };
 addQuickMenu();
 
-// channelTalk
-(function () {
-  var w = window;
-  if (w.ChannelIO) {
-    return w.console.error("ChannelIO script included twice.");
-  }
-  var ch = function () {
-    ch.c(arguments);
-  };
-  ch.q = [];
-  ch.c = function (args) {
-    ch.q.push(args);
-  };
-  w.ChannelIO = ch;
-  function l() {
-    if (w.ChannelIOInitialized) {
-      return;
-    }
-    w.ChannelIOInitialized = true;
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
-    var x = document.getElementsByTagName("script")[0];
-    if (x.parentNode) {
-      x.parentNode.insertBefore(s, x);
-    }
-  }
-  if (document.readyState === "complete") {
-    l();
-  } else {
-    w.addEventListener("DOMContentLoaded", l);
-    w.addEventListener("load", l);
-  }
-})();
-
-
-
-
-ChannelIO("boot", {
-  pluginKey: "10c54ea6-57da-40bb-817b-c9dff9d27048",
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) quickMenu.classList.add("active");
+  else quickMenu.classList.remove("active");
 });
-
-// let settings = {
-//   pluginKey: ChannelIO.pluginKey,
-//   channelButtonOption: {
-//     xMargin: 16,
-//     yMargin: 80,
-//     position: "left", // 'left', 'right'
-//   },
-// };
-
-// console.log(ChannelIO);
-
-// ChannelIO.boot(settings)
-//   .then((result) => {})
-//   .catch((err) => console.log(err));

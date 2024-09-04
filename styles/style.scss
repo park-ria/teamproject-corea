@@ -305,7 +305,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 // best-ranking
 #best-ranking {
-  // display: none;
   padding: 150px 0;
   .ranking-content {
     position: relative;
@@ -314,13 +313,24 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
     .ranking-slide {
       @include productSlide;
+      .slideImgWrap {
+        width: 100%;
+        height: 240px;
+        border-radius: 10px;
+        overflow: hidden;
+        .slide-img {
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(1.04);
+          }
+        }
+      }
     }
   }
 }
 
 // auction
 #auction {
-  // display: none;
   .auction-banner {
     width: 100%;
     height: 400px;
@@ -398,6 +408,18 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
     .auction-slide {
       @include productSlide;
+      .slideImgWrap {
+        width: 100%;
+        height: 240px;
+        border-radius: 10px;
+        overflow: hidden;
+        .slide-img {
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(1.04);
+          }
+        }
+      }
     }
     .slide-btns {
       button {
@@ -409,7 +431,6 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 // weekly-item
 #weekly-item {
-  // display: none;
   .weekly-item-content {
     padding: 150px 0;
     .weekly-item-heading {
@@ -463,11 +484,20 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             height: 100%;
             display: flex;
             align-items: center;
-            .tab-content-img {
+            .tab-content-img-wrap {
               width: 150px;
               height: 100%;
               border-radius: 10px;
+              overflow: hidden;
+              .tab-content-img {
+                height: 100%;
+                transition: all 0.3s;
+                &:hover {
+                  transform: scale(1.04);
+                }
+              }
             }
+
             .tab-content-desc {
               width: calc(100% - 150px);
               padding: 10px 10px 10px 20px;
@@ -523,8 +553,17 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
     .recommended-slide {
       @include productSlide;
-      .slide-img {
-        background: url("../images/best-ranking01.png") center/cover no-repeat;
+      .slideImgWrap {
+        width: 100%;
+        height: 240px;
+        border-radius: 10px;
+        overflow: hidden;
+        .slide-img {
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(1.04);
+          }
+        }
       }
     }
   }
@@ -956,7 +995,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           li {
             height: 100px;
             a {
-              .tab-content-img {
+              .tab-content-img-wrap {
                 width: 100px;
               }
               .tab-content-desc {
