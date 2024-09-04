@@ -505,7 +505,7 @@ body {
   display: block;
 }
 #header-category .inner .header-category .main-category li {
-  padding: 10px 20px;
+  padding: 12px 20px;
   color: #3a3a3a;
   font-size: 1.4rem;
   font-weight: 400;
@@ -520,7 +520,7 @@ body {
   top: 50%;
   left: -20px;
   transform: translateY(-50%);
-  width: 3px;
+  width: 4px;
   height: 120%;
   background: #0dcc5a;
   border-radius: 5px;
@@ -545,11 +545,11 @@ body {
 #header-category .inner .header-category .main-category li .sub-category1.active {
   display: block;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li:hover {
+#header-category .inner .header-category .main-category li li:hover {
   text-decoration: underline;
   background: #fff;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
+#header-category .inner .header-category .main-category li li .sub-category2 {
   position: absolute;
   top: 0;
   right: -100%;
@@ -558,7 +558,7 @@ body {
   background: #f5f5f5;
   display: none;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li .sub-category2.active {
+#header-category .inner .header-category .main-category li li .sub-category2.active {
   display: block;
 }
 
@@ -574,9 +574,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-#mobile-menu .mobile-menu .mobile-logo img {
-  width: 120px;
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
@@ -756,7 +753,7 @@ body {
   padding: 0 15px;
 }
 #mobile-search .search-box form button i {
-  color: #111;
+  color: #3a3a3a;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -818,6 +815,13 @@ body {
   color: #3a3a3a;
   font-weight: 600;
 }
+#mobile-search .searchedword-list .recent-words .recent-list span {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
 #mobile-search .searchedword-list .recommendedwords {
   margin: 40px 0;
 }
@@ -837,6 +841,11 @@ body {
   font-size: 1.8rem;
   font-weight: 500;
   cursor: pointer;
+}
+#mobile-search .searchedword-list .recommendedwords ul.active {
+  opacity: 1;
+  height: 200px;
+  overflow-y: scroll;
 }
 #mobile-search .searchedword-list .live-ranking h3 {
   font-size: 2rem;
@@ -1152,7 +1161,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(0);
   }
   .slide-btns button.slideNext:hover {
-
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -1229,6 +1237,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     left: 0;
     width: 100%;
     z-index: 3;
+  }
+  #mobile-menu .mobile-logo img {
+    width: 120px;
   }
   #mobile-category {
     display: block;
@@ -1946,7 +1957,7 @@ body {
   display: block;
 }
 #header-category .inner .header-category .main-category li {
-  padding: 10px 20px;
+  padding: 12px 20px;
   color: #3a3a3a;
   font-size: 1.4rem;
   font-weight: 400;
@@ -1961,7 +1972,7 @@ body {
   top: 50%;
   left: -20px;
   transform: translateY(-50%);
-  width: 3px;
+  width: 4px;
   height: 120%;
   background: #0dcc5a;
   border-radius: 5px;
@@ -1986,11 +1997,11 @@ body {
 #header-category .inner .header-category .main-category li .sub-category1.active {
   display: block;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li:hover {
+#header-category .inner .header-category .main-category li li:hover {
   text-decoration: underline;
   background: #fff;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li .sub-category2 {
+#header-category .inner .header-category .main-category li li .sub-category2 {
   position: absolute;
   top: 0;
   right: -100%;
@@ -1999,7 +2010,7 @@ body {
   background: #f5f5f5;
   display: none;
 }
-#header-category .inner .header-category .main-category li .sub-category1 li .sub-category2.active {
+#header-category .inner .header-category .main-category li li .sub-category2.active {
   display: block;
 }
 
@@ -2015,9 +2026,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-#mobile-menu .mobile-menu .mobile-logo img {
-  width: 120px;
 }
 #mobile-menu .mobile-menu .menu-box {
   display: flex;
@@ -2197,7 +2205,7 @@ body {
   padding: 0 15px;
 }
 #mobile-search .search-box form button i {
-  color: #111;
+  color: #3a3a3a;
 }
 #mobile-search .search-box form input[type=text] {
   width: 100%;
@@ -2259,6 +2267,13 @@ body {
   color: #3a3a3a;
   font-weight: 600;
 }
+#mobile-search .searchedword-list .recent-words .recent-list span {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
 #mobile-search .searchedword-list .recommendedwords {
   margin: 40px 0;
 }
@@ -2278,6 +2293,11 @@ body {
   font-size: 1.8rem;
   font-weight: 500;
   cursor: pointer;
+}
+#mobile-search .searchedword-list .recommendedwords ul.active {
+  opacity: 1;
+  height: 200px;
+  overflow-y: scroll;
 }
 #mobile-search .searchedword-list .live-ranking h3 {
   font-size: 2rem;
@@ -2583,7 +2603,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
     padding: 0 2%;
   }
-
   .slide-btns button.slidePrev {
     transform: translateX(0);
   }
@@ -2594,7 +2613,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(0);
   }
   .slide-btns button.slideNext:hover {
-
     transform: translate(0, 5%);
   }
   #header #banner.ban .banner {
@@ -2671,6 +2689,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     left: 0;
     width: 100%;
     z-index: 3;
+  }
+  #mobile-menu .mobile-logo img {
+    width: 120px;
   }
   #mobile-category {
     display: block;
@@ -4504,7 +4525,7 @@ body {
 #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img .timeEvent .clock::before {
   content: "";
   position: absolute;
-  top: 48%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center bottom;
@@ -4959,7 +4980,6 @@ body {
   #best-auction .best-auction-content .best-auction-slide .bestAuction li a .slide-img {
     height: 200px;
   }
-
   #product-list .product li a .slide-desc {
     padding: 0 0 20px;
   }
