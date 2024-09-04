@@ -70,7 +70,6 @@ const addProduct = (product, ul) => {
   const aTag = document.createElement("a");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
-  const badge = document.createElement("span");
 
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
@@ -160,10 +159,6 @@ const addProduct = (product, ul) => {
     timeItems.prepend(clock);
     slideImg.appendChild(timeItems);
 
-    // badge
-    badge.className = "badge badge-best";
-    liItem.append(badge);
-
     // slide pager
     const slidePager =
       ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
@@ -173,6 +168,7 @@ const addProduct = (product, ul) => {
     }
     slideIndex++;
   } else {
+    const badge = document.createElement("span");
     badge.className = "badge badge-auction";
     liItem.append(badge);
   }
