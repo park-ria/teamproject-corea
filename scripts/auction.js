@@ -75,7 +75,7 @@ const addProduct = (product, ul) => {
   slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
   slideDesc.className = "slide-desc";
-  aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
+  //aTag.setAttribute("href", `/pages/detail.html?id=${product.id}`);
 
   slideImg.style.background = `url(../${product.image_path}) center/cover no-repeat`;
 
@@ -87,6 +87,11 @@ const addProduct = (product, ul) => {
   const currentPrice = new Intl.NumberFormat("ko-kr", {
     currency: "KRW",
   }).format(resultPrice);
+
+  aTag.setAttribute(
+    "href",
+    `/pages/detail.html?id=${product.id}&price=${currentPrice}`
+  );
 
   const desc = `
               <h4 class="desc-title">

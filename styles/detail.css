@@ -1471,6 +1471,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     max-height: 144px;
   }
 }
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /* mixin */
 .slide-btns button {
   position: absolute;
@@ -1690,15 +1696,107 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   margin-bottom: 15px;
 }
 #main .inner .main .main-desc .desc-heading .heading-price {
-  font-size: 26px;
-  line-height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
   margin-bottom: 15px;
+  font-weight: 500;
+}
+#main .inner .main .main-desc .desc-heading .heading-price span:first-child {
+  font-size: 26px;
+}
+#main .inner .main .main-desc .desc-heading .heading-price span:last-child {
+  font-size: 16px;
+  text-decoration: line-through;
 }
 #main .inner .main .main-desc .desc-heading .heading-timeinfo {
   font-size: 1.6rem;
   color: #aaa;
   display: flex;
   gap: 5px;
+}
+#main .inner .main .main-desc .desc-heading .heading-timeinfo.active {
+  margin-bottom: 20px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent {
+  display: flex;
+  width: 170px;
+  align-items: center;
+  padding: 6px 3px 6px 12px;
+  border-radius: 8px;
+  background: #0095ee;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url("../images/clock.svg") center/contain no-repeat;
+  margin-right: 5px;
+  animation: vibration 0.2s linear infinite;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock::before {
+  content: "";
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center bottom;
+  width: 2px;
+  height: 7px;
+  background: #fff;
+  animation: clock 3s linear infinite;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .clock::after {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
+  position: relative;
+  width: 37px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span {
+  display: block;
+  font: 700 1.8rem/1 "GmarketSansBold";
+  color: #fff;
+  transition: transform 0.5s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding-top: 2px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span.old {
+  transform: translateY(-50%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span.new {
+  transform: translateY(-200%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem span::after {
+  content: " : ";
+  display: inline-block;
+  width: 10px;
+  margin-left: 2px;
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.updating span.old {
+  transform: translateY(100%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.updating span.new {
+  transform: translateY(-200%);
+}
+#main .inner .main .main-desc .desc-heading .timeEvent .timeItem.sec span::after {
+  content: "";
 }
 #main .inner .main .main-desc .desc-user {
   display: flex;
@@ -1812,6 +1910,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 14px;
   font-weight: 600;
 }
+#main .inner .main .main-desc .desc-conditions.active {
+  margin-bottom: 45px;
+}
 #main .inner .main .main-desc .desc-map {
   margin-bottom: 40px;
 }
@@ -1910,10 +2011,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-btns a.trade {
   background: #3a3a3a;
+  transition: all 0.3s;
 }
 #main .inner .main .main-desc .desc-btns a.trade:hover {
   font-weight: bold;
   opacity: 0.8;
+}
+#main .inner .main .main-desc .desc-btns a.auction {
+  background: #0095ee;
+}
+#main .inner .main .main-desc .desc-btns.active {
+  margin-bottom: 70px;
 }
 #main .inner .main .main-desc .desc-itemInfo {
   margin-bottom: 85px;
@@ -2195,6 +2303,22 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 1.4rem;
 }
 
+@keyframes clock {
+  0% {
+    transform: translate(-50%, -70%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+@keyframes vibration {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
 .share-box {
   position: fixed;
   top: 50%;
@@ -2558,6 +2682,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #main .inner .main .main-desc .desc-heading .heading-price {
     margin-bottom: 20px;
   }
+  #main .inner .main .main-desc .desc-heading .timeEvent {
+    padding: 4px 10px;
+  }
+  #main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
+    width: 35px;
+  }
+  #main .inner .main .main-desc .desc-heading .timeEvent .timeItem span {
+    padding-top: 5px;
+  }
   #main .inner .main .main-desc .desc-user {
     margin-bottom: 50px;
   }
@@ -2723,8 +2856,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #main .inner .main .main-desc .desc-heading .heading-name {
     font-size: 22px;
   }
-  #main .inner .main .main-desc .desc-heading .heading-price {
-    font-size: 24px;
+  #main .inner .main .main-desc .desc-heading .heading-price span:first-child {
+    font-size: 22px;
+  }
+  #main .inner .main .main-desc .desc-heading .heading-price span:last-child {
+    font-size: 14px;
+    text-decoration: line-through;
   }
   #main .inner .main .main-desc .desc-user .user-info .user-detail .detail-barBox {
     gap: 20px;

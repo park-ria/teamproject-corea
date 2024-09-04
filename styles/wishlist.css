@@ -1804,6 +1804,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-align: center;
   transition: background 0.3s;
   background: #3a3a3a;
+  transition: all 0.3s;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
   font-weight: bold;
