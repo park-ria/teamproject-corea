@@ -102,22 +102,22 @@ fetch(joonggoInfo)
 
       // PC 드래그 이벤트
       imgWrapper.addEventListener("mousedown", (e) => {
-        //console.log(e);
         imgWrapper.style.cursor = "grabbing";
-        startPoint = e.pageX; // 마우스 드래그 시작 위치 저장
+        startPoint = e.pageX; 
       });
 
       imgWrapper.addEventListener("mouseup", (e) => {
         imgWrapper.style.cursor = "grab";
-        //console.log("mouseup", e.pageX);
-        endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
+        endPoint = e.pageX; 
 
         if (startPoint < endPoint) {
+
           // 마우스가 오른쪽으로 드래그 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
         } else if (startPoint > endPoint) {
+
           // 마우스가 왼쪽으로 드래그 된 경우
           let nextIndex = (currentIndex + 1) % slideCount;
           if (currentIndex === slideCount - 1) currentIndex = 0;
@@ -127,14 +127,11 @@ fetch(joonggoInfo)
 
       // 모바일 터치 이벤트 (스와이프)
       imgWrapper.addEventListener("touchstart", (e) => {
-        //console.log("touchstart", e.touches[0].pageX);
-        startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
+        startPoint = e.touches[0].pageX;
       });
       imgWrapper.addEventListener("touchend", (e) => {
-        //console.log("touchend", e.changedTouches[0].pageX);
-        endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
+        endPoint = e.changedTouches[0].pageX; 
         if (startPoint < endPoint) {
-          // 오른쪽으로 스와이프 된 경우
           let prevIndex = (currentIndex - 1) % slideCount;
           if (currentIndex === 0) prevIndex = slideCount - 1;
           moveSlide(prevIndex);
@@ -227,10 +224,12 @@ fetch(joonggoInfo)
         }
       };
 
+      // 찜한 상품 저장
       const saveId = () => {
         localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
       };
 
+      // 찜한 상품 삭제
       const removeId = (id) => {
         wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
         wishItemArr = wishItemArr.filter(
@@ -249,6 +248,7 @@ fetch(joonggoInfo)
         countNum: pickedNum,
       };
 
+      // heart-btn 클릭시 이벤트
       heartBtns.forEach((heartBtn) => {
         heartBtn.addEventListener("click", (e) => {
           wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
@@ -261,7 +261,6 @@ fetch(joonggoInfo)
             });
             pickedInfo.countNum = pickedInfo.countNum - 1;
             removeId(pickedInfo);
-            console.log(pickedInfo);
             headingTimeinfo.querySelector(
               "span:nth-child(4)"
             ).innerText = `찜 ${pickedInfo.countNum}`;
@@ -274,7 +273,6 @@ fetch(joonggoInfo)
             pickedInfo.countNum = pickedInfo.countNum + 1;
             wishItemArr.push(pickedInfo);
             saveId();
-            console.log(pickedInfo);
             headingTimeinfo.querySelector(
               "span:nth-child(4)"
             ).innerText = `찜 ${pickedInfo.countNum}`;
@@ -370,79 +368,41 @@ fetch(joonggoInfo)
           : `<i class="fa-solid fa-location-dot"></i> ${product.point}`
       }`;
 
-      // // Map API
-      // const mapContainer = document.getElementById("map"), // 지도를 표시할 div
-      //   mapOption = {
-      //     center: new kakao.maps.LatLng(
-      //       product.detail.latitude,
-      //       product.detail.longitude
-      //     ), // 지도의 중심좌표
-      //     level: 3, // 지도의 확대 레벨
-      //   };
+      // Kakao map
+      const mapContainer = document.getElementById('map'), 
+        mapOption = { 
+              center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), 
+              level: 4 
+          };
 
-      // const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+      const map = new kakao.maps.Map(mapContainer, mapOption);
 
-      // // 마커가 표시될 위치입니다
-      // const markerPosition = new kakao.maps.LatLng(
-      //   product.detail.latitude,
-      //   product.detail.longitude
-      // );
+      const markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); 
 
-      // // 마커를 생성합니다
-      // const marker = new kakao.maps.Marker({
-      //   position: markerPosition,
-      // });
+      const marker = new kakao.maps.Marker({
+        position: markerPosition,
+      });
 
-      // // 마커가 지도 위에 표시되도록 설정합니다
-      // marker.setMap(map);
+      marker.setMap(map);  
 
-      // // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-      // const mapTypeControl = new kakao.maps.MapTypeControl();
+      const content = `
+      <div class="customoverlay">
+        <a href="https://map.kakao.com/link/map/" target="_blank">
+          <span class="title">${product.point}</span>
+        </a>
+      </div>`;
 
-      // // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-      // // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-      // map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+      const position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
 
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-      mapOption = { 
-            center: new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude), // 지도의 중심좌표
-            level: 4 // 지도의 확대 레벨
-        };
-
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-
-    var markerPosition = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude); // 마커가 표시될 위치입니다
-
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-    });
-
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);  
-
-    // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    var content = `
-    <div class="customoverlay">
-      <a href="https://map.kakao.com/link/map/" target="_blank">
-        <span class="title">${product.point}</span>
-      </a>
-    </div>`;
-
-    // 커스텀 오버레이가 표시될 위치입니다 
-    var position = new kakao.maps.LatLng(product.detail.latitude, product.detail.longitude);
-
-    // 커스텀 오버레이를 생성합니다
-    var customOverlay = new kakao.maps.CustomOverlay({
-        map: map,
-        position: position,
-        content: content,
-        yAnchor: 1 
-    });
+      const customOverlay = new kakao.maps.CustomOverlay({
+          map: map,
+          position: position,
+          content: content,
+          yAnchor: 1 
+      });
 
       // trade버튼 클릭시 이벤트
       const tradeBtn = document.querySelector(".trade");
-
 
       tradeBtn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -484,7 +444,6 @@ fetch(joonggoInfo)
 
       // Making Info-desc
       const infoDesc = document.querySelector(".info-desc");
-      console.log(infoDesc)
       infoDesc.innerHTML = `
       <div class="desc-box">
         <span>판매중</span>
@@ -780,7 +739,7 @@ const productSlide = (section) => {
 
 // Share Click시 팝업창
 const shareBtn = document.querySelector(".share");
-const shaerboxFilter = document.querySelector(".shaerbox-filter");
+const shaerboxFilter = document.querySelector(".sharebox-filter");
 
 shareBtn.addEventListener("click", () => {
   document.querySelector(".share-box").classList.add("active");
@@ -795,9 +754,13 @@ shaerboxFilter.addEventListener("click", function () {
 // URL click시 url주소
 const urlBtn = document.querySelector(".url");
 
-urlBtn.addEventListener("click", () => {
+urlBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const urlAddress = window.location.href;
-  prompt("Ctrl+C를 눌러 클립보드로 복사하세요", `${urlAddress}`);
+  navigator.clipboard.writeText(urlAddress).then(res=>{
+	  alert("주소가 복사되었습니다!");
+	})
 });
 
 // Store-btns active
