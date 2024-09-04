@@ -508,11 +508,9 @@ body {
           position: relative;
           cursor: pointer;
 
-
           img {
             height: 15px;
           }
-
 
           span {
             color: map-get($color, bg-light-color);
@@ -540,9 +538,7 @@ body {
               border-radius: 3px;
 
               &:hover {
-
                 background: #e1e1e1;
-
               }
 
               span {
@@ -590,7 +586,6 @@ body {
         justify-content: space-between;
         align-items: center;
 
-
         #logo {
           img {
             width: 180px;
@@ -610,7 +605,6 @@ body {
               border-radius: 50px;
               padding-left: 20px;
               padding-right: 10px;
-
 
               &::placeholder {
                 font-size: map-get($map: $fontSize, $key: font-extra-small);
@@ -657,14 +651,12 @@ body {
               border-radius: 8px;
               display: none;
 
-
               .recent-words {
                 h3 {
                   font-size: 14px;
                 }
                 .recent-list {
                   width: 100%;
-
 
                   .no-words {
                     font-size: map-get($map: $fontSize, $key: font-small);
@@ -704,7 +696,6 @@ body {
                       font-weight: 600;
                     }
                   }
-
                 }
               }
 
@@ -838,7 +829,6 @@ body {
                 align-items: center;
                 span {
                   @include list-a;
-
                 }
               }
               & > span {
@@ -992,29 +982,27 @@ body {
             display: none;
             &.active {
               display: block;
-
             }
           }
-            li {
-              &:hover {
-                text-decoration: underline;
-                // background: map-get($map: $color, $key: bg-light-color);
-                background: map-get($map: $color, $key: bg-light-color);
-              }
+          li {
+            &:hover {
+              text-decoration: underline;
+              // background: map-get($map: $color, $key: bg-light-color);
+              background: map-get($map: $color, $key: bg-light-color);
+            }
 
-              .sub-category2 {
-                position: absolute;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100%;
-                // background: #e2f5ea;
-                // background: map-get($map: $color, $key: bg-light-gray);
-                background: #f5f5f5;
-                display: none;
-                &.active {
-                  display: block;
-                }
+            .sub-category2 {
+              position: absolute;
+              top: 0;
+              right: -100%;
+              width: 100%;
+              height: 100%;
+              // background: #e2f5ea;
+              // background: map-get($map: $color, $key: bg-light-gray);
+              background: #f5f5f5;
+              display: none;
+              &.active {
+                display: block;
               }
             }
           }
@@ -1054,6 +1042,7 @@ body {
           transition: all 0.3s;
           i {
             font-size: 22px;
+            color: map-get($map: $color, $key: bg-dark-color);
             opacity: 1;
             transition: all 0.3s;
           }
@@ -1229,6 +1218,9 @@ body {
       button {
         font-size: 22px;
         padding: 0 15px;
+        i {
+          color: map-get($color, bg-dark-color);
+        }
       }
       input[type="text"] {
         width: 100%;
@@ -1339,7 +1331,6 @@ body {
       }
     }
 
-
     .live-ranking {
       h3 {
         font-size: map-get($map: $fontSize, $key: font-extra-large);
@@ -1352,10 +1343,8 @@ body {
           color: #aaa;
           font-weight: 400;
           font-size: map-get($map: $fontSize, $key: font-medium);
-
         }
       }
-
 
       .ranking-list {
         @include rankig-list;
@@ -1434,7 +1423,6 @@ footer {
           span {
             font: normal 1.6rem/1 "Noto Sans KR";
             color: map-get($color, bg-light-color);
-
           }
           i {
             color: map-get($color, bg-light-color);
@@ -1445,7 +1433,6 @@ footer {
               transform: translateY(-15%) rotate(180deg);
             }
           }
-
         }
         .category-list {
           width: 580px;
@@ -1508,10 +1495,7 @@ footer {
   position: fixed;
   right: 24px;
   bottom: 90px;
-  // transform: translateY(100%);
   z-index: 5;
-  // opacity: 0;
-  // transition: all 0.5s;
   .quickBtns {
     display: flex;
     flex-direction: column;
@@ -1560,8 +1544,7 @@ footer {
 
         top: 0;
         left: 0;
-        transform: translateY(35%);
-
+        transform: translateY(-35%);
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -1636,7 +1619,6 @@ footer {
       }
     }
   }
-
 }
 
 // responsive
@@ -1647,9 +1629,7 @@ footer {
     padding: 0 2%;
   }
 
-
-  slide-btns {
-
+  .slide-btns {
     button {
       &.slidePrev {
         transform: translateX(0);
@@ -1680,21 +1660,16 @@ footer {
         .header-top {
           gap: 20px;
 
-
-
           .search-box {
             width: 50%;
             form {
               input[type="text"] {
-
                 width: 100%;
-
               }
             }
           }
 
           .wrapper {
-
             .popular-searchedWord {
               width: 200px;
             }
@@ -1713,7 +1688,6 @@ footer {
           .header-bottom-right {
             .lnb {
               gap: 8px;
-
             }
           }
         }
@@ -1785,6 +1759,11 @@ footer {
     left: 0;
     width: 100%;
     z-index: 3;
+    .mobile-logo {
+      img {
+        width: 120px;
+      }
+    }
   }
 
   // mobile-category
@@ -2054,7 +2033,6 @@ footer {
             top: -6px;
 
             max-height: 194px;
-
           }
         }
       }
