@@ -4,6 +4,13 @@ let favoriteStoresArr;
 let favorStoreArrDetail = [];
 let favoriteBrandsArr;
 
+window.addEventListener("load", () => {
+  const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
+  if (loginCheck.length === 0) {
+    location.href = "/pages/login.html";
+  }
+});
+
 // checkEmptyData
 const checkEmptyData = (arr) => {
   const emptyMsg = document.querySelector(".wishlistContent.active .emptyMsg");

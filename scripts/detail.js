@@ -141,6 +141,16 @@ fetch(joonggoInfo)
         }
       });
 
+      // picked-list 클릭 이벤트 
+      const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
+      const movePage = (e) => {
+        e.preventDefault();
+
+        if (loginCheck.length === 0) {
+          location.href = "/pages/login.html";
+        }
+      };
+
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
         const headingCategory = document.querySelector(".heading-category");
@@ -265,31 +275,39 @@ fetch(joonggoInfo)
       // heart-btn 클릭시 이벤트
       heartBtns.forEach((heartBtn) => {
         heartBtn.addEventListener("click", (e) => {
-          wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
+          e.preventDefault();
 
-          if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
-            heartBtns.forEach((btn) => {
-              const heart = btn.querySelector("i");
-              heart.classList.remove("fa-solid");
-              heart.classList.add("fa-regular");
-            });
-            pickedInfo.countNum = pickedInfo.countNum - 1;
-            removeId(pickedInfo);
-            headingTimeinfo.querySelector(
-              "span:nth-child(4)"
-            ).innerText = `찜 ${pickedInfo.countNum}`;
+          if (loginCheck.length === 0) {
+            location.href = "/pages/login.html";
           } else {
-            heartBtns.forEach((btn) => {
-              const heart = btn.querySelector("i");
-              heart.classList.remove("fa-regular");
-              heart.classList.add("fa-solid");
-            });
-            pickedInfo.countNum = pickedInfo.countNum + 1;
-            wishItemArr.push(pickedInfo);
-            saveId();
-            headingTimeinfo.querySelector(
-              "span:nth-child(4)"
-            ).innerText = `찜 ${pickedInfo.countNum}`;
+
+            wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
+  
+            if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
+              heartBtns.forEach((btn) => {
+                const heart = btn.querySelector("i");
+                heart.classList.remove("fa-solid");
+                heart.classList.add("fa-regular");
+              });
+              pickedInfo.countNum = pickedInfo.countNum - 1;
+              removeId(pickedInfo);
+              headingTimeinfo.querySelector(
+                "span:nth-child(4)"
+              ).innerText = `찜 ${pickedInfo.countNum}`;
+            } else {
+              heartBtns.forEach((btn) => {
+                const heart = btn.querySelector("i");
+                heart.classList.remove("fa-regular");
+                heart.classList.add("fa-solid");
+              });
+              pickedInfo.countNum = pickedInfo.countNum + 1;
+              wishItemArr.push(pickedInfo);
+              saveId();
+              headingTimeinfo.querySelector(
+                "span:nth-child(4)"
+              ).innerText = `찜 ${pickedInfo.countNum}`;
+            }
+            
           }
         });
       });
@@ -390,15 +408,6 @@ fetch(joonggoInfo)
         timeItems.prepend(clock);
 
         document.querySelector(".desc-heading").appendChild(timeItems);
-
-        // slide pager
-        // const slidePager =
-        //   ulItem.parentNode.nextElementSibling.querySelector(".slidePager");
-        // if (slideIndex % productSlideLimit >= slidesPerView - 1) {
-        //   const spanTag = document.createElement("span");
-        //   slidePager.appendChild(spanTag);
-        // }
-        // slideIndex++;
       }
 
       // Making User-img
@@ -550,25 +559,25 @@ fetch(joonggoInfo)
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="auction">입찰하기</a>
         <a href="/pages/login.html" class="trade">채팅하기</a>
+        <a href="#none" class="auction">입찰하기</a>
+        <a href="#none" class="trade">채팅하기</a>
         `;
+
+        document.querySelectorAll(".auction").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
+        document.querySelectorAll(".trade").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       } else {
         descBtns.innerHTML = `
-        <a href="/pages/login.html" class="chat">채팅하기</a>
+        <a href="#none" class="chat">채팅하기</a>
         <a href="#none" class="trade">구매하기</a>
         `;
-      }
 
-      if (auctionPrice) {
-        bottomBtns.classList.add("active");
-        bottomBtns.innerHTML = `
-        <a href="/pages/login.html" class="auction-btn">입찰하기</a>
-        <a href="/pages/login.html" class="trade-btn">채팅하기</a>
-        `;
-      } else {
-        bottomBtns.innerHTML = `
-        <a href="/pages/login.html" class="chat-btn">채팅하기</a>
-        <a href="/pages/order.html?id=${product.id}" class="trade-btn">구매하기</a>
-        `;
+        document.querySelectorAll(".chat").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       }
 
       // trade버튼 클릭시 이벤트
