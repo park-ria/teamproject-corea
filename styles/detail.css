@@ -2683,19 +2683,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     margin-bottom: 20px;
   }
   #main .inner .main .main-desc .desc-heading .timeEvent {
-    width: 165px;
+    width: 175px;
     padding: 4px 10px;
   }
+  #main .inner .main .main-desc .desc-heading .timeEvent .clock {
+    margin-right: 10px;
+  }
   #main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
-    width: -moz-fit-content;
-    width: fit-content;
-    padding: 0 20px;
+    width: 40px;
   }
   #main .inner .main .main-desc .desc-heading .timeEvent .timeItem span {
     padding-top: 5px;
-  }
-  #main .inner .main .main-desc .desc-heading .timeEvent .timeItem:last-child {
-    padding: 0 15px;
   }
   #main .inner .main .main-desc .desc-user {
     margin-bottom: 50px;

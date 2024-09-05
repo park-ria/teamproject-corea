@@ -549,7 +549,7 @@ fetch(joonggoInfo)
         descBtns.classList.add("active");
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="auction">입찰하기</a>
-        <a href="#none" class="trade">채팅하기</a>
+        <a href="/pages/login.html" class="trade">채팅하기</a>
         `;
       } else {
         descBtns.innerHTML = `
@@ -562,7 +562,7 @@ fetch(joonggoInfo)
         bottomBtns.classList.add("active");
         bottomBtns.innerHTML = `
         <a href="/pages/login.html" class="auction-btn">입찰하기</a>
-        <a href="#none" class="trade-btn">채팅하기</a>
+        <a href="/pages/login.html" class="trade-btn">채팅하기</a>
         `;
       } else {
         bottomBtns.innerHTML = `
