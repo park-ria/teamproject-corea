@@ -167,7 +167,7 @@ fetch(joonggoInfo)
         `;
       } else {
         headingPrice.innerHTML = `
-        <span class="original-price">${product.price}</span>
+        <span>${product.price}</span>
         `;
       }
 
@@ -323,7 +323,6 @@ fetch(joonggoInfo)
             const currentValue = unitElement.querySelector(".old").innerText;
             if (currentValue != itemValue) {
               const oldSpan = unitElement.querySelector(".old");
-              console.log(oldSpan);
               const newSpan = createSpan(itemValue, "new");
               unitElement.appendChild(newSpan);
 
@@ -354,7 +353,6 @@ fetch(joonggoInfo)
         const today = new Date();
 
         const time = Number(product.time.replace(/[^0-9]/g, ""));
-        // console.log(time);
         let eventDate = today.getDate();
         let eventHrs = today.getHours();
         let eventMin = today.getMinutes();

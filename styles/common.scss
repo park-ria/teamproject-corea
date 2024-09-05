@@ -564,6 +564,10 @@ body {
           &:hover {
             color: map-get($map: $color, $key: bg-main-color);
           }
+
+          &.logout {
+            display: none;
+          }
         }
       }
     }

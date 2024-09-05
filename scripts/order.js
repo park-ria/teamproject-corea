@@ -3,6 +3,7 @@ const cashBillType = document.querySelectorAll("input[name='cashBillType']");
 const cashBillSubType = document.querySelector("#cashBillSubType");
 const card = document.querySelectorAll("input[name='card']");
 const payTypeButton = document.querySelectorAll(".payTypeButton");
+const payType = document.querySelector("#payType");
 const modalLink = document.querySelectorAll(".modalLink");
 const payTypeModal = document.querySelector(".payTypeModal");
 const modalOverlay = document.querySelector(".payTypeModal-overlay");
@@ -83,17 +84,63 @@ const krwFormat = (money) => {
   }).format(money);
 };
 
+let deliveryCharge = 0;
+let productPrice = 0;
+let payFee = 0;
+let sumPrice = 0;
+
+const filterPayTypeBtn = () => {
+  const paycoTypeTab = document.querySelector(".paycoTypeTab");
+  const tossTypeTab = document.querySelector(".tossTypeTab");
+  const kakaoTypeTab = document.querySelector(".kakaoTypeTab");
+
+  if (sumPrice > 2000000) {
+    paycoTypeTab.classList.add("disabled");
+    tossTypeTab.classList.add("disabled");
+  } else {
+    paycoTypeTab.classList.remove("disabled");
+    tossTypeTab.classList.remove("disabled");
+  }
+
+  if (sumPrice > 3000000) {
+    kakaoTypeTab.classList.add("disabled");
+  } else {
+    kakaoTypeTab.classList.remove("disabled");
+  }
+};
+
+const setDiscountPrice = (flag) => {
+  const discountPrice = document.querySelector("#discountPrice");
+  const discountPriceVal = document.querySelector("#discountPriceVal");
+  const discountWrap = document.querySelector(".discountWrap");
+  let dscntPrc = 0;
+
+  if (flag && sumPrice >= 10000 && sumPrice <= 2000000) {
+    dscntPrc = sumPrice * 0.02 > 40000 ? 40000 : -(sumPrice * 0.02).toFixed(0);
+    discountWrap.classList.add("active");
+  } else if (!flag) {
+    dscntPrc = 0;
+    discountWrap.classList.remove("active");
+  }
+
+  discountPrice.innerText = krwFormat(dscntPrc);
+  discountPriceVal.value = dscntPrc;
+
+  sumPrice = productPrice + deliveryCharge + payFee + dscntPrc;
+  document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
+  submitButton.value = `${krwFormat(sumPrice)}원 결제`;
+  document.querySelector("#sumPriceVal").value = sumPrice;
+  filterPayTypeBtn();
+};
+
 const createproductInfo = (product) => {
-  console.log(product.detail.delivery_charge);
-  const deliveryCharge = product.detail.delivery_charge.includes("별도")
-    ? 4000
-    : 0;
-  const productPrice = Number(product.price.replace(/[^0-9]/g, ""));
-  const payFee =
+  deliveryCharge = product.detail.delivery_charge.includes("별도") ? 4000 : 0;
+  productPrice = Number(product.price.replace(/[^0-9]/g, ""));
+  payFee =
     (productPrice * 3.5) / 100 > 2000
       ? 2000
       : ((productPrice * 3.5) / 100).toFixed(0);
-  const sumPrice = productPrice + deliveryCharge;
+  sumPrice = productPrice + deliveryCharge;
 
   let li = `
     <div class="store-name">
@@ -135,6 +182,12 @@ const createproductInfo = (product) => {
   document.querySelector("#payFee").innerText = `${krwFormat(payFee)}원 `;
   document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
   submitButton.value = `${krwFormat(sumPrice)}원 결제`;
+
+  document.querySelector("#productPriceVal").value = productPrice;
+  document.querySelector("#deliveryChargeVal").value = deliveryCharge;
+  document.querySelector("#payFeeVal").value = payFee;
+  document.querySelector("#sumPriceVal").value = sumPrice;
+  setDiscountPrice(true);
 };
 
 const changeCashBillPlaceholder = () => {
@@ -238,6 +291,47 @@ payTypeButton.forEach((btn) => {
         guide.classList.remove("active");
       }
     });
+
+    let discountFlag = false;
+    let payTypeVal = target;
+    switch (target) {
+      case "paycoGuide":
+        if (sumPrice > 2000000) {
+          payTypeVal = "";
+        }
+        discountFlag = true;
+        break;
+      case "tossGuide":
+        if (sumPrice > 2000000) {
+          payTypeVal = "";
+        }
+        break;
+      case "kakaoGuide":
+        if (sumPrice > 3000000) {
+          payTypeVal = "";
+          document.querySelector("#cashBill").setAttribute("disabled", "true");
+          document.querySelector("#personal").setAttribute("disabled", "true");
+          document.querySelector("#business").setAttribute("disabled", "true");
+          document
+            .querySelector("#cashBillSubType")
+            .setAttribute("disabled", "true");
+          document
+            .querySelector("#cashBillInfo")
+            .setAttribute("disabled", "true");
+        } else {
+          document.querySelector("#cashBill").removeAttribute("disabled");
+          document.querySelector("#personal").removeAttribute("disabled");
+          document.querySelector("#business").removeAttribute("disabled");
+          document
+            .querySelector("#cashBillSubType")
+            .removeAttribute("disabled");
+          document.querySelector("#cashBillInfo").removeAttribute("disabled");
+        }
+        break;
+    }
+
+    payType.value = payTypeVal;
+    setDiscountPrice(discountFlag);
   });
 });
 
