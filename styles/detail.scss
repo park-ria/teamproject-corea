@@ -440,11 +440,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             gap: 25px;
             margin-bottom: 15px;
             font-weight: 500;
+            font-size: 26px;
 
-            span:first-child {
-              font-size: 26px;
-            }
-            span:last-child {
+            .original-price {
               font-size: 16px;
               text-decoration: line-through;
             }
