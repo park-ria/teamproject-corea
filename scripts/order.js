@@ -538,41 +538,42 @@ document.orderInfo.addEventListener("submit", (e) => {
     return;
   }
 
-  const formData = {};
-  formData.recipient = recipient.value;
-  formData.phone1 = phone1.value;
-  formData.phone2 = phone2.value;
-  formData.phone3 = phone3.value;
-  formData.zonecode = zonecode.value;
-  formData.address = address.value;
-  formData.detailAddress = detailAddress.value;
-  formData.deilveryMsg = orderInfo.deilveryMsg.value;
-  formData.etcMsg = orderInfo.etcMsg.value;
-  formData.payType = orderInfo.payType.value;
+  const orderData = {};
+  orderData.recipient = recipient.value;
+  orderData.phone1 = phone1.value;
+  orderData.phone2 = phone2.value;
+  orderData.phone3 = phone3.value;
+  orderData.zonecode = zonecode.value;
+  orderData.address = address.value;
+  orderData.detailAddress = detailAddress.value;
+  orderData.deilveryMsg = orderInfo.deilveryMsg.value;
+  orderData.etcMsg = orderInfo.etcMsg.value;
+  orderData.payType = orderInfo.payType.value;
 
   switch (orderInfo.payType.value) {
     case "kakao":
-      formData.cashBill = orderInfo.cashBill.checked;
-      formData.cashBillType = orderInfo.cashBillType.value;
-      formData.cashBillSubType = orderInfo.cashBillSubType.value;
-      formData.cashBillInfo = orderInfo.cashBillInfo.value;
+      orderData.cashBill = orderInfo.cashBill.checked;
+      orderData.cashBillType = orderInfo.cashBillType.value;
+      orderData.cashBillSubType = orderInfo.cashBillSubType.value;
+      orderData.cashBillInfo = orderInfo.cashBillInfo.value;
       break;
     case "accountTransfer":
-      formData.bank = orderInfo.bank.value;
+      orderData.bank = orderInfo.bank.value;
       break;
     case "card":
-      formData.card = orderInfo.card.value;
-      formData.mipMonth = orderInfo.mipMonth.value;
+      orderData.card = orderInfo.card.value;
+      orderData.mipMonth = orderInfo.mipMonth.value;
       break;
   }
-  formData.productPriceVal = orderInfo.productPriceVal.value;
-  formData.deliveryChargeVal = orderInfo.deliveryChargeVal.value;
-  formData.payFeeVal = orderInfo.payFeeVal.value;
-  formData.discountPriceVal = orderInfo.discountPriceVal.value;
-  formData.sumPriceVal = orderInfo.sumPriceVal.value;
-  formData.approvalYn = orderInfo.allCheck.checked;
+  orderData.productPriceVal = orderInfo.productPriceVal.value;
+  orderData.deliveryChargeVal = orderInfo.deliveryChargeVal.value;
+  orderData.payFeeVal = orderInfo.payFeeVal.value;
+  orderData.discountPriceVal = orderInfo.discountPriceVal.value;
+  orderData.sumPriceVal = orderInfo.sumPriceVal.value;
+  orderData.approvalYn = orderInfo.allCheck.checked;
 
-  console.log(JSON.stringify(formData));
+  localStorage.setItem("orderData", JSON.stringify(orderData));
+  location.href = "/pages/payment.html";
 });
 
 fetch("../db.json")
