@@ -1,3 +1,39 @@
+// login 유무
+let loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
+
+const bannerRight = document.querySelector(".banner-right");
+bannerRight.innerHTML = `
+<a href="/pages/login.html" class="login">로그인</a>
+<a href="#none" class="logout">로그아웃</a>
+<a href="/pages/sign_in.html">회원가입</a>
+<a href="/pages/faq.html">F&Q</a>
+`;
+
+const loginBtn = document.querySelector(".banner-right .login");
+const logoutBtn = document.querySelector(".banner-right .logout");
+
+if (loginCheck.length > 0) {
+  loginBtn.style.display = "none";
+  logoutBtn.style.display = "block";
+}
+
+logoutBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  loginCheck = [];
+  localStorage.setItem("loginCheck", JSON.stringify(loginCheck));
+  loginBtn.style.display = "block";
+  logoutBtn.style.display = "none";
+
+  const moveURL = `${window.location.pathname}${
+    new URLSearchParams(window.location.search).toString() === ""
+      ? ""
+      : "?" + new URLSearchParams(window.location.search).toString()
+  }`;
+  console.log(decodeURIComponent(moveURL));
+
+  window.location.href = decodeURIComponent(moveURL);
+});
+
 // AppDowload 클릭시 이벤트
 const apppDownload = document.querySelector(".appDownload");
 apppDownload.addEventListener("click", function () {
@@ -572,7 +608,7 @@ const addQuickMenu = () => {
             <ul class="movePages">
               <li>
                 <a 
-                href="/pages/login.html" 
+                href="#none"
                 class="mypage"
                 target="_blank"
                 >
@@ -614,6 +650,13 @@ const addQuickMenu = () => {
 
   liTrigger.addEventListener("click", function () {
     this.classList.toggle("active");
+  });
+
+  document.querySelector(".mypage").addEventListener("click", (e) => {
+    e.preventDefault();
+    if (loginCheck.length === 0) {
+      location.href = "/pages/login.html";
+    }
   });
 };
 addQuickMenu();

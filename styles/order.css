@@ -159,6 +159,9 @@ body {
 #header #banner.ban .banner .banner-right a:hover {
   color: #0dcc5a;
 }
+#header #banner.ban .banner .banner-right a.logout {
+  display: none;
+}
 #header #header-item .header-item {
   width: 1280px;
   padding: 25px 0;
@@ -732,7 +735,7 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 40px 20px;
   background: #fff;
   border-top: 1px solid #dcdcdc;
@@ -789,7 +792,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
   cursor: pointer;
 }
 #mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
@@ -1080,7 +1082,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(-35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1095,6 +1096,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   overflow: hidden;
 }
 .quickMenu .quickBtns .trigger .movePages li a {
+  font-size: 14px;
   font-weight: 700;
   color: #6d6d6d;
   text-align: center;
@@ -1134,15 +1136,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   transform: rotate(45deg);
 }
 .quickMenu .quickBtns .trigger.active .movePages {
-  top: -10px;
-  transform: translateY(-100%);
+  top: -198px;
   opacity: 1;
   max-height: 188px;
   overflow: visible;
 }
 .quickMenu.active {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
   transform: translateY(0);
 }
 
@@ -1435,6 +1436,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     gap: 6px;
   }
   .quickMenu .quickBtns .trigger .movePages li a {
+    font-size: 11px;
     font-weight: 700;
     color: #6d6d6d;
     text-align: center;
@@ -1467,7 +1469,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(-56px);
   }
   .quickMenu .quickBtns .trigger.active .movePages {
-    top: -6px;
+    top: -150px;
     max-height: 144px;
   }
 }
@@ -1494,7 +1496,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   height: fit-content;
   padding: 0 20px;
   position: sticky;
-  top: 0;
+  top: 183px;
 }
 .order .order-content form .delivery-right input[type=submit] {
   width: 100%;
@@ -1715,7 +1717,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   border-radius: 3px;
   font-size: 1.4rem;
   color: #fff;
-  letter-spacing: normal;
+  letter-spacing: 0;
   text-align: center;
   line-height: 18px;
 }
@@ -1768,6 +1770,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.active {
   border: 1px solid #111;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.disabled {
+  background: #dcdcdc;
+  border: 1px solid #dcdcdc;
+  cursor: not-allowed;
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.disabled img {
+  filter: grayscale(1);
+}
+.order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton.disabled .sale-banner {
+  filter: grayscale(1);
 }
 .order .order-content form .delivery-desc.paymentMethod .payType li .payTypeButton img {
   height: 12px;
@@ -2109,6 +2122,22 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li:last-child {
   align-items: flex-end;
 }
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li.discountWrap {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li.discountWrap.active {
+  opacity: 1;
+  height: auto;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li.discountWrap .paymentAmountWrapPrice {
+  color: #0dcc5a;
+}
+.order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li.discountWrap .paymentAmountWrapPrice #discountPrice {
+  letter-spacing: 0;
+}
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .paymentAmountWrapTitle {
   font-size: 1.6rem;
   display: flex;
@@ -2150,7 +2179,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice {
   font-size: 1.6rem;
   color: #0dcc5a;
-  letter-spacing: normal;
+  letter-spacing: 0;
 }
 .order .order-content form .delivery-desc.finalPaymentAmount .paymentAmountWrap ul li .finalPaymentAmountPrice b {
   font-size: 3rem;
@@ -2404,6 +2433,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 840px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
   /* order */
   .order {
     width: 100%;
@@ -2487,6 +2520,43 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 450px) {
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text] {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone1,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone2,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone3 {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #searchAddr {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 40%;
+    height: 34px;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #zonecode {
+    width: 55%;
+    height: 34px;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc input[type=text] {
+    padding-left: 15px;
+  }
   /* payTypeModal */
   .payTypeModal.active {
     width: 90%;

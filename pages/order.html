@@ -256,6 +256,7 @@
                           name="recipient"
                           id="recipient"
                           placeholder="받는 사람 이름"
+                          maxlength="20"
                         />
                       </li>
                       <li>
@@ -303,6 +304,7 @@
                             name="zonecode"
                             id="zonecode"
                             placeholder="우편번호"
+                            maxlength="6"
                             readonly
                           />
                         </span>
@@ -313,6 +315,7 @@
                           name="address"
                           id="address"
                           placeholder="기본주소"
+                          maxlength="50"
                           readonly
                         />
                       </li>
@@ -322,23 +325,24 @@
                           name="detailAddress"
                           id="detailAddress"
                           placeholder="상세주소"
+                          maxlength="50"
                         />
                       </li>
                       <li>
                         <select name="deilveryMsg" id="deilveryMsg">
-                          <option selected disabled>
+                          <option value="" selected disabled>
                             배송시 요청사항 선택하기
                           </option>
-                          <option vlaue="dm01">직접 수령하겠습니다</option>
-                          <option vlaue="dm02">문 앞에 놓아주세요</option>
-                          <option vlaue="dm03">경비실에 맡겨주세요</option>
-                          <option vlaue="dm04">
+                          <option value="dm01">직접 수령하겠습니다</option>
+                          <option value="dm02">문 앞에 놓아주세요</option>
+                          <option value="dm03">경비실에 맡겨주세요</option>
+                          <option value="dm04">
                             배송 전 휴대폰으로 연락주세요
                           </option>
-                          <option vlaue="dm05">
+                          <option value="dm05">
                             파손위험이 있는 상품이니 조심히 다뤄주세요
                           </option>
-                          <option vlaue="etc">직접 입력</option>
+                          <option value="etc">직접 입력</option>
                         </select>
                       </li>
                       <li>
@@ -371,10 +375,11 @@
                       <span></span>
                       중고나라 페이
                     </div>
+                    <input type="hidden" name="payType" id="payType" />
                     <ul class="payType">
                       <li>
                         <span
-                          class="payTypeButton active"
+                          class="payTypeButton paycoTypeTab active"
                           data-guide="paycoGuide"
                         >
                           <img
@@ -383,7 +388,10 @@
                           />
                           <p class="sale-banner">즉시할인</p>
                         </span>
-                        <span class="payTypeButton" data-guide="tossGuide">
+                        <span
+                          class="payTypeButton tossTypeTab"
+                          data-guide="tossGuide"
+                        >
                           <img
                             id="tosspay"
                             src="../images/logo-toss-pay.png"
@@ -417,7 +425,10 @@
                             </defs>
                           </svg>
                         </span>
-                        <span class="payTypeButton" data-guide="kakaoGuide">
+                        <span
+                          class="payTypeButton kakaoTypeTab"
+                          data-guide="kakaoGuide"
+                        >
                           <img
                             id="kakaopay"
                             src="../images/logo_kakaopay.png"
@@ -514,6 +525,7 @@
                               placeholder="휴대폰번호를 입력해주세요"
                               onkeyup="onchange()"
                               onchange="changeCashBillInfo(this)"
+                              maxlength="20"
                             />
                           </div>
                           <p>
@@ -812,18 +824,33 @@
                     <div class="paymentAmountWrap">
                       <ul>
                         <li>
+                          <input
+                            type="hidden"
+                            id="productPriceVal"
+                            name="productPriceVal"
+                          />
                           <span class="paymentAmountWrapTitle">상품금액</span>
                           <span class="paymentAmountWrapPrice"
                             ><b id="productPrice"></b>원</span
                           >
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="deliveryChargeVal"
+                            name="deliveryChargeVal"
+                          />
                           <span class="paymentAmountWrapTitle">배송비</span>
                           <span class="paymentAmountWrapPrice"
                             ><b id="deliveryCharge"></b>원</span
                           >
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="payFeeVal"
+                            name="payFeeVal"
+                          />
                           <span class="paymentAmountWrapTitle">
                             안전거래 수수료
                             <p class="feeTitle">(3.5% 적용)</p>
@@ -832,6 +859,19 @@
                             <span id="payFee" class="freeFee"></span>
                             <b>0</b>원
                           </span>
+                        </li>
+                        <li class="discountWrap">
+                          <input
+                            type="hidden"
+                            id="discountPriceVal"
+                            name="discountPriceVal"
+                          />
+                          <span class="paymentAmountWrapTitle"
+                            >페이코 즉시할인</span
+                          >
+                          <span class="paymentAmountWrapPrice"
+                            ><b id="discountPrice"></b>원</span
+                          >
                         </li>
                         <li>
                           <div class="feeDesc">
@@ -845,6 +885,11 @@
                           </div>
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="sumPriceVal"
+                            name="sumPriceVal"
+                          />
                           <span class="finalPaymentAmountTitle">합계</span>
                           <span class="finalPaymentAmountPrice">
                             <b id="sumPrice"></b>원
@@ -939,7 +984,7 @@
                       관여하지 않고 어떠한 의무와 책임도 부담하지 않습니다.
                     </p>
                   </div>
-                  <input type="submit" value="" />
+                  <input type="submit" value="" disabled />
                 </div>
               </form>
             </div>
