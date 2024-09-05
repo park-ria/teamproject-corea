@@ -606,8 +606,8 @@ fetch(joonggoInfo)
       const tradeBtn = document.querySelector(".trade");
 
       tradeBtn.addEventListener("click", (e) => {
-        e.preventDefault();
         if (!auctionPrice) {
+          e.preventDefault();
           const url = `/pages/order.html?id=${product.id}`;
           window.location.href = url;
         }
