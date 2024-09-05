@@ -733,7 +733,7 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 40px 20px;
   background: #fff;
   border-top: 1px solid #dcdcdc;
@@ -790,7 +790,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
   cursor: pointer;
 }
 #mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
@@ -1082,6 +1081,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   top: 0;
   left: 0;
   transform: translateY(-35%);
+  -webkit-transform: translateY(-35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1137,13 +1137,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .quickMenu .quickBtns .trigger.active .movePages {
   top: -10px;
   transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
   opacity: 1;
   max-height: 188px;
   overflow: visible;
 }
 .quickMenu.active {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
   transform: translateY(0);
 }
 
@@ -2958,16 +2959,20 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   #safeserviceModal .modal-content .modal-right {
     justify-content: center;
+    padding: 10px;
   }
   #safeserviceModal .modal-content .modal-right ul li {
-    height: 70px;
-    margin: 5px 0;
+    height: 75px;
+    margin: 10px 0;
   }
   #safeserviceModal .modal-content .modal-right ul li .modal-img {
-    width: 120px;
+    width: 103px;
   }
   #safeserviceModal .modal-content .modal-right ul li .modal-desc {
     width: 100%;
+  }
+  #safeserviceModal .modal-content .modal-right ul li .modal-desc h5 {
+    margin-bottom: 5px;
   }
   #safeserviceModal .modal-content .modal-right ul li:nth-child(2) .modal-img img {
     width: 70%;

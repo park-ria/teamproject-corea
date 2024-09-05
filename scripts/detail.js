@@ -545,6 +545,7 @@ fetch(joonggoInfo)
 
       // desc-btns 버튼 생성
       const descBtns = document.querySelector(".desc-btns");
+      const bottomBtns = document.querySelector(".btns");
 
       if (auctionPrice) {
         descBtns.classList.add("active");
@@ -556,6 +557,19 @@ fetch(joonggoInfo)
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="chat">채팅하기</a>
         <a href="#none" class="trade">구매하기</a>
+        `;
+      }
+
+      if (auctionPrice) {
+        bottomBtns.classList.add("active");
+        bottomBtns.innerHTML = `
+        <a href="/pages/login.html" class="auction-btn">입찰하기</a>
+        <a href="#none" class="trade-btn">채팅하기</a>
+        `;
+      } else {
+        bottomBtns.innerHTML = `
+        <a href="/pages/login.html" class="chat-btn">채팅하기</a>
+        <a href="#none" class="trade-btn">구매하기</a>
         `;
       }
 

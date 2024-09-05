@@ -733,7 +733,7 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 40px 20px;
   background: #fff;
   border-top: 1px solid #dcdcdc;
@@ -790,7 +790,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
   cursor: pointer;
 }
 #mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
