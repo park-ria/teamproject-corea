@@ -34,6 +34,12 @@ logoutBtn.addEventListener("click", (e) => {
   window.location.href = decodeURIComponent(moveURL);
 });
 
+document.querySelectorAll(".lnb li").forEach((item) => {
+  item.addEventListener("click", () => {
+    if (loginCheck.length === 0) location.href = "/pages/login.html";
+  });
+});
+
 // AppDowload 클릭시 이벤트
 const apppDownload = document.querySelector(".appDownload");
 apppDownload.addEventListener("click", function () {
