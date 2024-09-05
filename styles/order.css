@@ -2434,6 +2434,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 840px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
   /* order */
   .order {
     width: 100%;
@@ -2517,6 +2521,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 450px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
   /* payTypeModal */
   .payTypeModal.active {
     width: 90%;

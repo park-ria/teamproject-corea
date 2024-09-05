@@ -256,6 +256,7 @@
                           name="recipient"
                           id="recipient"
                           placeholder="받는 사람 이름"
+                          maxlength="20"
                         />
                       </li>
                       <li>
@@ -303,6 +304,7 @@
                             name="zonecode"
                             id="zonecode"
                             placeholder="우편번호"
+                            maxlength="6"
                             readonly
                           />
                         </span>
@@ -313,6 +315,7 @@
                           name="address"
                           id="address"
                           placeholder="기본주소"
+                          maxlength="50"
                           readonly
                         />
                       </li>
@@ -322,23 +325,24 @@
                           name="detailAddress"
                           id="detailAddress"
                           placeholder="상세주소"
+                          maxlength="50"
                         />
                       </li>
                       <li>
                         <select name="deilveryMsg" id="deilveryMsg">
-                          <option selected disabled>
+                          <option value="" selected disabled>
                             배송시 요청사항 선택하기
                           </option>
-                          <option vlaue="dm01">직접 수령하겠습니다</option>
-                          <option vlaue="dm02">문 앞에 놓아주세요</option>
-                          <option vlaue="dm03">경비실에 맡겨주세요</option>
-                          <option vlaue="dm04">
+                          <option value="dm01">직접 수령하겠습니다</option>
+                          <option value="dm02">문 앞에 놓아주세요</option>
+                          <option value="dm03">경비실에 맡겨주세요</option>
+                          <option value="dm04">
                             배송 전 휴대폰으로 연락주세요
                           </option>
-                          <option vlaue="dm05">
+                          <option value="dm05">
                             파손위험이 있는 상품이니 조심히 다뤄주세요
                           </option>
-                          <option vlaue="etc">직접 입력</option>
+                          <option value="etc">직접 입력</option>
                         </select>
                       </li>
                       <li>
@@ -521,6 +525,7 @@
                               placeholder="휴대폰번호를 입력해주세요"
                               onkeyup="onchange()"
                               onchange="changeCashBillInfo(this)"
+                              maxlength="20"
                             />
                           </div>
                           <p>
@@ -979,7 +984,7 @@
                       관여하지 않고 어떠한 의무와 책임도 부담하지 않습니다.
                     </p>
                   </div>
-                  <input type="submit" value="" />
+                  <input type="submit" value="" disabled />
                 </div>
               </form>
             </div>
