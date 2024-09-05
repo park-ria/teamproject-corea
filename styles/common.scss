@@ -1531,8 +1531,6 @@ footer {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translateY(-35%);
-        -webkit-transform: translateY(-35%);
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -1545,6 +1543,7 @@ footer {
           position: relative;
           overflow: hidden;
           a {
+            font-size: 14px;
             font-weight: 700;
             color: map-get($color, bg-dark-gray);
             text-align: center;
@@ -1587,9 +1586,7 @@ footer {
           }
         }
         .movePages {
-          top: -10px;
-          transform: translateY(-100%);
-          -webkit-transform: translateY(-100%);
+          top: -198px;
           opacity: 1;
           max-height: 188px;
           overflow: visible;
@@ -1999,6 +1996,7 @@ footer {
           gap: 6px;
           li {
             a {
+              font-size: 11px;
               font-weight: 700;
               color: map-get($color, bg-dark-gray);
               text-align: center;
@@ -2034,7 +2032,7 @@ footer {
         }
         &.active {
           .movePages {
-            top: -6px;
+            top: -150px;
             max-height: 144px;
           }
         }
