@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/images/opengraph.jpg" />
+    <meta property="og:image:width" content="390" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:title" content="중고나라 Junggonara" />
+    <meta
+      property="og:description"
+      content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/dfc51b96a5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- postcode js -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- custom css & js -->
+    <link rel="stylesheet" href="../styles/order.css" />
+    <script defer src="../scripts/common.js"></script>
+    <script defer src="../scripts/order.js"></script>
+    <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <div class="appDownload">
+                  <img src="../images/appicon.png" alt="appicon" />
+                  <span>앱 다운로드</span>
+                  <div class="download-box">
+                    <a
+                      class="apple"
+                      href="https://apps.apple.com/kr/app/%EC%A4%91%EA%B3%A0%EB%82%98%EB%9D%BC-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-%EC%A4%91%EA%B3%A0%EB%A7%88%EC%BC%93/id896515652"
+                    >
+                      <i class="fa-brands fa-apple"></i>
+                      <span>앱스토어</span>
+                    </a>
+                    <a
+                      class="googleplay"
+                      href="https://play.google.com/store/apps/details?id=com.elz.secondhandstore&hl=ko"
+                    >
+                      <i class="fa-brands fa-google-play"></i>
+                      <span>구글플레이</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="favorites">
+                  <img src="../images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </div>
+              </div>
+              <div class="banner-right">
+                <a href="/pages/login.html">로그인</a>
+                <a href="/pages/sign_in.html">회원가입</a>
+                <a href="/pages/faq.html">F&Q</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="/index.html">
+                    <img src="../images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form
+                    name="hdForm"
+                    action="https://localhost:3000"
+                    method="get"
+                  >
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                      autocomplete="off"
+                    />
+                    <input type="submit" value="" />
+                    <div class="searchedword-list">
+                      <div class="recent-words">
+                        <h3>최근 검색어</h3>
+                        <ul class="recent-list">
+                          <li class="no-words">
+                            <span>최근 검색어가 없습니다</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="live-ranking">
+                        <h3>
+                          급상승 검색어
+                          <p class="current-time"></p>
+                        </h3>
+                        <ul class="ranking-list"></ul>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="/pages/auction.html">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="/pages/login.html">
+                        <img src="../images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/login.html">
+                        <img src="../images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/wishlist.html">
+                        <img src="../images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-category">
+          <div class="inner">
+            <div class="header-category">
+              <ul class="main-category"></ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- mobile-menu -->
+      <div id="mobile-menu">
+        <div class="inner">
+          <div class="mobile-menu">
+            <a href="/index.html" class="mobile-logo">
+              <img src="../images/logo.png" alt="logo" />
+            </a>
+            <div class="menu-box">
+              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- mobile-category -->
+      <div id="mobile-category">
+        <h3>전체카테고리</h3>
+        <ul class="categroy-main"></ul>
+      </div>
+
+      <!-- mobile-search -->
+      <div id="mobile-search">
+        <div class="search-box">
+          <form name="mbForm" action="http://127.0.0.1:5502" method="get">
+            <button><i class="fa-solid fa-chevron-left"></i></button>
+            <input
+              type="text"
+              name="mb-search"
+              id="search"
+              placeholder="어떤 상품을 찾으시나요?"
+              autocomplete="off"
+            />
+            <input type="submit" value="" />
+          </form>
+        </div>
+        <div class="searchedword-list">
+          <div class="recent-words">
+            <h3>최근 검색어</h3>
+            <ul class="recent-list">
+              <li class="no-words">
+                <span>최근 검색어가 없습니다</span>
+              </li>
+            </ul>
+          </div>
+          <div class="recommendedwords">
+            <h3>추천 검색어</h3>
+            <ul>
+              <li>핸드폰</li>
+              <li>가전제품</li>
+              <li>캠핑텐트</li>
+              <li>다이슨</li>
+              <li>지갑</li>
+              <li>스니커즈</li>
+            </ul>
+          </div>
+          <div class="live-ranking">
+            <h3>
+              급상승 검색어
+              <p class="current-time"></p>
+            </h3>
+            <ul class="ranking-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <main class="container">
+        <section class="order">
+          <div class="inner">
+            <h1 class="order-title">안전결제</h1>
+            <div class="order-content">
+              <form
+                name="orderInfo"
+                action="http://127.0.0.1:5500"
+                method="get"
+              >
+                <div class="delivery-left">
+                  <div class="delivery-desc deliveryInfo">
+                    <div class="sub-title">
+                      <h3>배송정보</h3>
+                    </div>
+                    <ul class="deliveryInfoDesc">
+                      <li>
+                        <label for="recipient">받는 사람</label>
+                        <input
+                          type="text"
+                          name="recipient"
+                          id="recipient"
+                          placeholder="받는 사람 이름"
+                          maxlength="20"
+                        />
+                      </li>
+                      <li>
+                        <label for="phone3">휴대폰 번호</label>
+                        <span class="inputWrap">
+                          <input
+                            type="text"
+                            name="phone1"
+                            id="phone1"
+                            placeholder="앞자리"
+                            onkeyup="onchange()"
+                            onchange="changePhone1()"
+                            maxlength="3"
+                          />
+                          <input
+                            type="text"
+                            name="phone2"
+                            id="phone2"
+                            placeholder="중간자리"
+                            onkeyup="onchange()"
+                            onchange="changePhone2()"
+                            maxlength="4"
+                          />
+                          <input
+                            type="text"
+                            name="phone3"
+                            id="phone3"
+                            placeholder="뒷자리"
+                            onkeyup="onchange()"
+                            onchange="changePhone3()"
+                            maxlength="4"
+                          />
+                        </span>
+                      </li>
+                      <li>
+                        <label for="">우편번호</label>
+                        <span class="inputWrap">
+                          <input
+                            type="button"
+                            id="searchAddr"
+                            value="주소찾기"
+                          />
+                          <input
+                            type="text"
+                            name="zonecode"
+                            id="zonecode"
+                            placeholder="우편번호"
+                            maxlength="6"
+                            readonly
+                          />
+                        </span>
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          name="address"
+                          id="address"
+                          placeholder="기본주소"
+                          maxlength="50"
+                          readonly
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          name="detailAddress"
+                          id="detailAddress"
+                          placeholder="상세주소"
+                          maxlength="50"
+                        />
+                      </li>
+                      <li>
+                        <select name="deilveryMsg" id="deilveryMsg">
+                          <option value="" selected disabled>
+                            배송시 요청사항 선택하기
+                          </option>
+                          <option value="dm01">직접 수령하겠습니다</option>
+                          <option value="dm02">문 앞에 놓아주세요</option>
+                          <option value="dm03">경비실에 맡겨주세요</option>
+                          <option value="dm04">
+                            배송 전 휴대폰으로 연락주세요
+                          </option>
+                          <option value="dm05">
+                            파손위험이 있는 상품이니 조심히 다뤄주세요
+                          </option>
+                          <option value="etc">직접 입력</option>
+                        </select>
+                      </li>
+                      <li>
+                        <textarea
+                          name="etcMsg"
+                          id="etcMsg"
+                          placeholder="수령방법을 입력해주세요 (최대 50자)"
+                          onkeyup="onchange()"
+                          onchange="changeEtcMsg(this)"
+                          maxlength="50"
+                        ></textarea>
+                        <span class="etcMsgCnt"> <strong>0</strong>/50</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="delivery-desc productContent">
+                    <div class="sub-title">
+                      <h3>주문상품</h3>
+                    </div>
+                    <div class="productInfo"></div>
+                  </div>
+                  <div class="banner">
+                    <img src="../images/order_banner.png" alt="banner" />
+                  </div>
+                  <div class="delivery-desc paymentMethod">
+                    <div class="sub-title">
+                      <h3>결제방법</h3>
+                    </div>
+                    <div class="joongna-pay">
+                      <span></span>
+                      중고나라 페이
+                    </div>
+                    <input type="hidden" name="payType" id="payType" />
+                    <ul class="payType">
+                      <li>
+                        <span
+                          class="payTypeButton paycoTypeTab active"
+                          data-guide="paycoGuide"
+                        >
+                          <img
+                            src="../images/payco_logo.png"
+                            alt="payco_logo"
+                          />
+                          <p class="sale-banner">즉시할인</p>
+                        </span>
+                        <span
+                          class="payTypeButton tossTypeTab"
+                          data-guide="tossGuide"
+                        >
+                          <img
+                            id="tosspay"
+                            src="../images/logo-toss-pay.png"
+                            alt="tosspay_logo"
+                          />
+                        </span>
+                      </li>
+                      <li>
+                        <span class="payTypeButton" data-guide="naverGuide">
+                          <svg
+                            width="55"
+                            height="23"
+                            viewBox="0 0 168 52"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g clip-path="url(#clip0_3699_5886)">
+                              <path
+                                d="M164.581 10.3415L147.863 47.9115H140.121L145.471 36.0035L132.62 10.3415H140.596L149.137 27.8915L156.859 10.3415H164.581ZM128.831 39.2015H121.421V37.128C119.035 38.9369 116.114 39.8957 113.12 39.8515C104.95 39.8515 98.5407 33.2215 98.5407 24.7715C98.5407 16.3215 104.95 9.69152 113.12 9.69152C116.114 9.64738 119.035 10.6061 121.421 12.415V10.3415H128.831V39.2015ZM114.147 15.9315C109.48 15.9315 105.957 19.734 105.957 24.7715C105.957 29.809 109.48 33.6115 114.147 33.6115C118.814 33.6115 122.337 29.809 122.337 24.7715C122.337 19.734 118.814 15.9315 114.147 15.9315ZM64.2207 10.3415H71.6307V12.415C74.0189 10.607 76.9426 9.64843 79.9377 9.69152C88.1082 9.69152 94.5108 16.315 94.5108 24.7715C94.5108 33.228 88.1082 39.8515 79.9377 39.8515C77.0525 39.8948 74.2302 39.0057 71.8907 37.3165V47.9115H64.2207V10.3415ZM70.7207 24.7715C70.7207 29.809 74.2438 33.6115 78.9108 33.6115C83.5778 33.6115 87.1007 29.809 87.1007 24.7715C87.1007 19.734 83.5778 15.9315 78.9108 15.9315C74.2438 15.9315 70.7207 19.734 70.7207 24.7715Z"
+                                fill="#03C75A"
+                              />
+                              <path
+                                d="M52 26C52 31.1423 50.4752 36.1692 47.6182 40.4448C44.7613 44.7205 40.7007 48.053 35.9498 50.0209C31.1989 51.9888 25.9712 52.5037 20.9277 51.5004C15.8842 50.4972 11.2514 48.021 7.61524 44.3848C3.97907 40.7486 1.50281 36.1159 0.499592 31.0724C-0.503624 26.0289 0.0112727 20.8011 1.97915 16.0502C3.94703 11.2994 7.27955 7.23871 11.5552 4.38179C15.8309 1.52487 20.8577 0 26 0C32.8957 0 39.5089 2.73928 44.3848 7.61523C49.2608 12.4912 52 19.1044 52 26ZM31.434 12.61V27.729L20.8195 12.61H12.61V39.39H20.5725V24.2645L31.187 39.39H39.39V12.61H31.434Z"
+                                fill="#03C75A"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_3699_5886">
+                                <rect width="168" height="52" fill="white" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </span>
+                        <span
+                          class="payTypeButton kakaoTypeTab"
+                          data-guide="kakaoGuide"
+                        >
+                          <img
+                            id="kakaopay"
+                            src="../images/logo_kakaopay.png"
+                            alt="kakaopay_logo"
+                          />
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          class="payTypeButton"
+                          data-guide="accountTransferGuide"
+                          >무통장입금</span
+                        >
+                        <span class="payTypeButton" data-guide="cardGuide"
+                          >카드결제</span
+                        >
+                      </li>
+                    </ul>
+                    <div class="payTypeDesc">
+                      <div class="payGuidelines paycoGuide active">
+                        <p class="modalLink" data-modal-key="payco">
+                          페이코 안내사항
+                        </p>
+                      </div>
+                      <div class="payGuidelines tossGuide">
+                        <p class="notice">
+                          토스머니 1일 결제한도는 200만원입니다. (안전거래
+                          수수료 포함)
+                        </p>
+                      </div>
+                      <div class="payGuidelines naverGuide">
+                        <p class="modalLink" data-modal-key="naver">
+                          네이버페이 안내사항
+                        </p>
+                      </div>
+                      <div class="payGuidelines kakaoGuide">
+                        <p class="notice">
+                          카카오페이 1일 결제 한도는 300만원입니다. (안전거래
+                          수수료 포함)
+                        </p>
+                        <div class="cashBillWrap">
+                          <div class="cashBillCheck">
+                            <input
+                              type="checkbox"
+                              name="cashBill"
+                              id="cashBill"
+                            />
+                            <label for="cashBill">
+                              <span></span>
+                              현금영수증 발급신청
+                            </label>
+                            <i class="fa-solid fa-chevron-down"></i>
+                          </div>
+                          <div class="cashBillTypeWrap">
+                            <span class="radioWrap">
+                              <input
+                                type="radio"
+                                name="cashBillType"
+                                id="personal"
+                                value="personal"
+                              />
+                              <label for="personal">
+                                <span></span>
+                                개인소득 공제용
+                              </label>
+                            </span>
+                            <span class="radioWrap">
+                              <input
+                                type="radio"
+                                name="cashBillType"
+                                id="business"
+                                value="business"
+                              />
+                              <label for="business">
+                                <span></span>
+                                사업자 지출증빙용
+                              </label>
+                            </span>
+                          </div>
+                          <div class="cashBillDesc">
+                            <select name="cashBillSubType" id="cashBillSubType">
+                              <option value="cbPhoneNumber">휴대폰번호</option>
+                              <option value="cbBusinessNumber">
+                                사업자번호
+                              </option>
+                              <option value="cbCardNumber">
+                                현금영수증 카드번호
+                              </option>
+                            </select>
+                            <input
+                              type="text"
+                              name="cashBillInfo"
+                              id="cashBillInfo"
+                              placeholder="휴대폰번호를 입력해주세요"
+                              onkeyup="onchange()"
+                              onchange="changeCashBillInfo(this)"
+                              maxlength="20"
+                            />
+                          </div>
+                          <p>
+                            카카오페이머니로 결제 시 안전거래 수수료에 대하여
+                            현금영숭증이 발급됩니다. (포인트, 할인 제외)
+                          </p>
+                        </div>
+                      </div>
+                      <div class="payGuidelines accountTransferGuide">
+                        <select name="bank" id="bank">
+                          <option value="nonghyup">농협은행</option>
+                          <option value="kookmin">국민은행</option>
+                          <option value="shinhan">신한은행</option>
+                          <option value="woori">우리은행</option>
+                          <option value="ibk">기업은행</option>
+                          <option value="hana">하나은행</option>
+                          <option value="busan">부산은행</option>
+                          <option value="postoffice">우체국</option>
+                        </select>
+                      </div>
+                      <div class="payGuidelines cardGuide">
+                        <ul>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="nonghyup"
+                              id="nonghyupCard"
+                            />
+                            <label for="nonghyupCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_nonghyup.png"
+                                  alt="logo_nonghyup"
+                                />
+                              </span>
+                              <p>농협</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="kookmin"
+                              id="kookminCard"
+                            />
+                            <label for="kookminCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_kookmin.png"
+                                  alt="logo_kookmin"
+                                />
+                              </span>
+                              <p>KB국민</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="samsung"
+                              id="samsungCard"
+                            />
+                            <label for="samsungCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_samsung.png"
+                                  alt="logo_samsung"
+                                />
+                              </span>
+                              <p>삼성</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="hyundai"
+                              id="hyundaiCard"
+                            />
+                            <label for="hyundaiCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_hyundai.png"
+                                  alt="logo_hyundai"
+                                />
+                              </span>
+                              <p>현대</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="lotte"
+                              id="lotteCard"
+                            />
+                            <label for="lotteCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_lotte.png"
+                                  alt="logo_lotte"
+                                />
+                              </span>
+                              <p>롯데</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="shinhan"
+                              id="shinhanCard"
+                            />
+                            <label for="shinhanCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_shinhan.png"
+                                  alt="logo_shinhan"
+                                />
+                              </span>
+                              <p>신한</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="ibk"
+                              id="ibkCard"
+                            />
+                            <label for="ibkCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_ibk.png"
+                                  alt="logo_ibk"
+                                />
+                              </span>
+                              <p>기업은행</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="hana"
+                              id="hanaCard"
+                            />
+                            <label for="hanaCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_hana.png"
+                                  alt="logo_hana"
+                                />
+                              </span>
+                              <p>하나</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="woori"
+                              id="wooriCard"
+                            />
+                            <label for="wooriCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_woori.png"
+                                  alt="logo_woori"
+                                />
+                              </span>
+                              <p>우리</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="bc"
+                              id="bcCard"
+                            />
+                            <label for="bcCard">
+                              <span class="cardImg"
+                                ><img src="../images/logo_bc.png" alt="logo_bc"
+                              /></span>
+                              <p>비씨</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="citi"
+                              id="citiCard"
+                            />
+                            <label for="citiCard">
+                              <span class="cardImg">
+                                <img
+                                  src="../images/logo_citi.png"
+                                  alt="logo_citi"
+                                />
+                              </span>
+                              <p>씨티</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="sc"
+                              id="scCard"
+                            />
+                            <label for="scCard">
+                              <span class="cardImg"
+                                ><img src="../images/logo_sc.png" alt="logo_sc"
+                              /></span>
+                              <p>SC리워드</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="kakao"
+                              id="kakaoCard"
+                            />
+                            <label for="kakaoCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_kakao.png"
+                                  alt="logo_kakao"
+                              /></span>
+                              <p>카카오뱅크</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="busan"
+                              id="busanCard"
+                            />
+                            <label for="busanCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_busan.png"
+                                  alt="logo_busan"
+                              /></span>
+                              <p>부산은행</p>
+                            </label>
+                          </li>
+                          <li>
+                            <input
+                              type="radio"
+                              name="card"
+                              value="gwangju"
+                              id="gwangjuCard"
+                            />
+                            <label for="gwangjuCard">
+                              <span class="cardImg"
+                                ><img
+                                  src="../images/logo_gwangju.png"
+                                  alt="logo_gwangju"
+                              /></span>
+                              <p>SC리워드</p>
+                            </label>
+                          </li>
+                        </ul>
+                        <div class="monthlyInstallmentPlan">
+                          <span>할부 방식</span>
+                          <select name="mipMonth" id="mipMonth">
+                            <option value="0">일시불</option>
+                            <option value="1">1개월</option>
+                            <option value="2">2개월</option>
+                            <option value="3">3개월</option>
+                            <option value="5">6개월</option>
+                            <option value="12">12개월</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="payAdvertising">
+                      <img
+                        src="../images/payco_black_logo.png"
+                        alt="payco_logo"
+                      />
+                      <b>페이코 최대 4만원 즉시할인</b>
+                      <p>1만원 이상 페이코 포인트로 결제 시 2% 즉시할인</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="delivery-right">
+                  <div class="delivery-desc finalPaymentAmount">
+                    <h3>결제 예정 금액</h3>
+                    <div class="paymentAmountWrap">
+                      <ul>
+                        <li>
+                          <input
+                            type="hidden"
+                            id="productPriceVal"
+                            name="productPriceVal"
+                          />
+                          <span class="paymentAmountWrapTitle">상품금액</span>
+                          <span class="paymentAmountWrapPrice"
+                            ><b id="productPrice"></b>원</span
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="hidden"
+                            id="deliveryChargeVal"
+                            name="deliveryChargeVal"
+                          />
+                          <span class="paymentAmountWrapTitle">배송비</span>
+                          <span class="paymentAmountWrapPrice"
+                            ><b id="deliveryCharge"></b>원</span
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="hidden"
+                            id="payFeeVal"
+                            name="payFeeVal"
+                          />
+                          <span class="paymentAmountWrapTitle">
+                            안전거래 수수료
+                            <p class="feeTitle">(3.5% 적용)</p>
+                          </span>
+                          <span class="paymentAmountWrapPrice">
+                            <span id="payFee" class="freeFee"></span>
+                            <b>0</b>원
+                          </span>
+                        </li>
+                        <li class="discountWrap">
+                          <input
+                            type="hidden"
+                            id="discountPriceVal"
+                            name="discountPriceVal"
+                          />
+                          <span class="paymentAmountWrapTitle"
+                            >페이코 즉시할인</span
+                          >
+                          <span class="paymentAmountWrapPrice"
+                            ><b id="discountPrice"></b>원</span
+                          >
+                        </li>
+                        <li>
+                          <div class="feeDesc">
+                            <span>
+                              중고나라 페이 첫 결제 시 안전거래 수수료 무료
+                              (최대 2천원)
+                            </span>
+                            <span>
+                              안전거래 시 발생하는 수수료는 구매자가 부담합니다.
+                            </span>
+                          </div>
+                        </li>
+                        <li>
+                          <input
+                            type="hidden"
+                            id="sumPriceVal"
+                            name="sumPriceVal"
+                          />
+                          <span class="finalPaymentAmountTitle">합계</span>
+                          <span class="finalPaymentAmountPrice">
+                            <b id="sumPrice"></b>원
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="delivery-desc approval">
+                    <div class="allCheckWrap">
+                      <span class="allCheckbox">
+                        <input type="checkbox" name="allCheck" id="allCheck" />
+                        <label for="allCheck">
+                          <span class="checkIcon"></span>
+                          상품정보 및 결제 대행 서비스 이용약관 동의
+                        </label>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </span>
+                    </div>
+                    <ul class="approvalCheckbox">
+                      <li>
+                        <div class="approvalCheckboxLine">
+                          <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval01"
+                              value="true"
+                            />
+                            <label for="approval01">
+                              <i class="fa-solid fa-check"></i>
+                              중고나라 페이 서비스 이용약관
+                            </label>
+                          </span>
+                          <span class="descButton"></span>
+                        </div>
+                        <iframe
+                          src="https://common.joongna.com/static/terms/Order/settleTerms.html?timestamp=1725124799764"
+                          frameborder="0"
+                          scrolling="yes"
+                        ></iframe>
+                      </li>
+                      <li>
+                        <div class="approvalCheckboxLine">
+                          <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval02"
+                              value="true"
+                            />
+                            <label for="approval02">
+                              <i class="fa-solid fa-check"></i>
+                              개인정보 수집 및 이용 동의
+                            </label>
+                          </span>
+                          <span class="descButton"></span>
+                        </div>
+                        <iframe
+                          src="https://common.joongna.com/static/terms/Order/privacyTerms.html?timestamp=1725124799764"
+                          frameborder="0"
+                        ></iframe>
+                      </li>
+                      <li>
+                        <div class="approvalCheckboxLine">
+                          <span class="approvalCheckboxItem">
+                            <input
+                              type="checkbox"
+                              name="approvalYn"
+                              id="approval03"
+                              value="true"
+                            />
+                            <label for="approval03">
+                              <i class="fa-solid fa-check"></i>
+                              개인정보 제3자 제공 동의
+                            </label>
+                          </span>
+                          <span class="descButton"></span>
+                        </div>
+                        <iframe
+                          src="https://common.joongna.com/static/terms/Order/sellerTerms.html?timestamp=1725124799764"
+                          frameborder="0"
+                        ></iframe>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="delivery-desc lastMent">
+                    <p>
+                      “중고나라” 상점의 판매상품을 제외한 모든 상품들에 대하여
+                      (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+                      판매 회원과 구매 회원 간의 상품거래 정보 및 거래에
+                      관여하지 않고 어떠한 의무와 책임도 부담하지 않습니다.
+                    </p>
+                  </div>
+                  <input type="submit" value="" disabled />
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="payTypeModal-overlay"></div>
+      <div class="payTypeModal">
+        <h3></h3>
+        <ul></ul>
+        <button class="payTypeModalClose">확인</button>
+      </div>
+
+      <footer>
+        <div class="inner">
+          <section class="footer-upper">
+            <div class="footer-upper-info">
+              <div class="footer-company-guide">
+                <ul>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+              <address class="footer-company-info">
+                <ul>
+                  <li><b>(주)중고나라 사업자 정보</b></li>
+                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                  <li>사업자 등록번호: 215-87-87482</li>
+                  <li>메일: joongna@joonggonara.co.kr</li>
+                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+                </ul>
+              </address>
+            </div>
+            <div class="footer-upper-ctg">
+              <button>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul class="category-list"></ul>
+            </div>
+          </section>
+          <section class="footer-lower">
+            <div class="footer-lower-desc">
+              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+              판매회원과<br />
+              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+              책임도 부담하지 않습니다.
+            </div>
+            <div class="footer-lower-logo">
+              <a href="https://www.facebook.com/joonggonara.m/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCTUQdtrWF8BekcHX-X1SMPw"
+                target="_blank"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://cafe.naver.com/joonggonara" target="_blank">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a
+                href="https://m.blog.naver.com/jnofficial/223313152022"
+                target="_blank"
+              >
+                <i class="fa-brands fa-neos"></i>
+              </a>
+              <a href="https://joonggonara.co.kr/" target="_blank">
+                <i class="fa-solid fa-blog"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </footer>
+
+      <div class="quickMenu"></div>
+    </div>
+  </body>
+</html>
