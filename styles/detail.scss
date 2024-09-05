@@ -1288,16 +1288,15 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             }
 
             .timeEvent {
-              width: 165px;
+              width: 175px;
               padding: 4px 10px;
+              .clock {
+                margin-right: 10px;
+              }
               .timeItem {
-                width: fit-content;
-                padding: 0 20px;
+                width: 40px;
                 span {
                   padding-top: 5px;
-                }
-                &:last-child {
-                  padding: 0 15px;
                 }
               }
             }
