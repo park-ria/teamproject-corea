@@ -1720,7 +1720,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-heading .timeEvent {
   display: flex;
-  width: 180px;
+  width: 200px;
   align-items: center;
   padding: 6px 3px 6px 12px;
   border-radius: 8px;
@@ -1759,7 +1759,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
   position: relative;
-  width: 45px;
+  width: 50px;
   height: 30px;
   display: flex;
   justify-content: center;

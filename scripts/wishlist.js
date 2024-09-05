@@ -402,7 +402,11 @@ const addItemsInTheFavoriteStores = (store, index) => {
               (img) => `
             <li>
               <a href="#none">
-                <span class="favoriteStoreProductImg" style="background:url('../${img.image_url}') center/cover no-repeat"></span>
+                <span class="favoriteStoreProductImg" style="background:url('../${img.image_url}') center/cover no-repeat">
+                  <span class="favorStoreProductInfo">
+                    <p class="favorStoreProductPrice">${img.price}</p>
+                  </span>
+                </span>
               </a>
             </li>
           `
@@ -609,7 +613,11 @@ const addItemsInTheFavoriteBrands = (brand, index) => {
                 (product) => `
               <li>
                 <a href="/pages/detail.html?id=${product.id}">
-                  <span class="favoriteBrandProductImg" style="background:url('../${product.image_path}') center/cover no-repeat"></span>
+                  <span class="favoriteBrandProductImg" style="background:url('../${product.image_path}') center/cover no-repeat">
+                    <span class="favorBrandProductInfo">
+                      <p class="favorBrandProductPrice">${product.price}</p>
+                    </span>
+                  </span>
                 </a>
               </li>
             `
