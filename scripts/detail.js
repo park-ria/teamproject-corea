@@ -541,6 +541,15 @@ fetch(joonggoInfo)
         yAnchor: 1,
       });
 
+      const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
+      const movePage = (e) => {
+        e.preventDefault();
+
+        if (loginCheck.length === 0) {
+          location.href = "/pages/login.html";
+        }
+      };
+
       // desc-btns 버튼 생성
       const descBtns = document.querySelector(".desc-btns");
       const bottomBtns = document.querySelector(".btns");
@@ -548,27 +557,47 @@ fetch(joonggoInfo)
       if (auctionPrice) {
         descBtns.classList.add("active");
         descBtns.innerHTML = `
-        <a href="/pages/login.html" class="auction">입찰하기</a>
+        <a href="#none" class="auction">입찰하기</a>
         <a href="#none" class="trade">채팅하기</a>
         `;
+
+        document.querySelectorAll(".auction").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
+        document.querySelectorAll(".trade").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       } else {
         descBtns.innerHTML = `
-        <a href="/pages/login.html" class="chat">채팅하기</a>
+        <a href="#none" class="chat">채팅하기</a>
         <a href="#none" class="trade">구매하기</a>
         `;
+
+        document.querySelectorAll(".chat").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       }
 
       if (auctionPrice) {
         bottomBtns.classList.add("active");
         bottomBtns.innerHTML = `
-        <a href="/pages/login.html" class="auction-btn">입찰하기</a>
+        <a href="#none" class="auction-btn">입찰하기</a>
         <a href="#none" class="trade-btn">채팅하기</a>
         `;
+        document.querySelectorAll(".auction-btn").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
+        document.querySelectorAll(".trade-btn").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       } else {
         bottomBtns.innerHTML = `
-        <a href="/pages/login.html" class="chat-btn">채팅하기</a>
+        <a href="#none" class="chat-btn">채팅하기</a>
         <a href="/pages/order.html?id=${product.id}" class="trade-btn">구매하기</a>
         `;
+        document.querySelectorAll(".chat-btn").forEach((btn) => {
+          btn.addEventListener("click", movePage);
+        });
       }
 
       // trade버튼 클릭시 이벤트
