@@ -371,10 +371,11 @@
                       <span></span>
                       중고나라 페이
                     </div>
+                    <input type="hidden" name="payType" id="payType" />
                     <ul class="payType">
                       <li>
                         <span
-                          class="payTypeButton active"
+                          class="payTypeButton paycoTypeTab active"
                           data-guide="paycoGuide"
                         >
                           <img
@@ -383,7 +384,10 @@
                           />
                           <p class="sale-banner">즉시할인</p>
                         </span>
-                        <span class="payTypeButton" data-guide="tossGuide">
+                        <span
+                          class="payTypeButton tossTypeTab"
+                          data-guide="tossGuide"
+                        >
                           <img
                             id="tosspay"
                             src="../images/logo-toss-pay.png"
@@ -417,7 +421,10 @@
                             </defs>
                           </svg>
                         </span>
-                        <span class="payTypeButton" data-guide="kakaoGuide">
+                        <span
+                          class="payTypeButton kakaoTypeTab"
+                          data-guide="kakaoGuide"
+                        >
                           <img
                             id="kakaopay"
                             src="../images/logo_kakaopay.png"
@@ -812,18 +819,33 @@
                     <div class="paymentAmountWrap">
                       <ul>
                         <li>
+                          <input
+                            type="hidden"
+                            id="productPriceVal"
+                            name="productPriceVal"
+                          />
                           <span class="paymentAmountWrapTitle">상품금액</span>
                           <span class="paymentAmountWrapPrice"
                             ><b id="productPrice"></b>원</span
                           >
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="deliveryChargeVal"
+                            name="deliveryChargeVal"
+                          />
                           <span class="paymentAmountWrapTitle">배송비</span>
                           <span class="paymentAmountWrapPrice"
                             ><b id="deliveryCharge"></b>원</span
                           >
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="payFeeVal"
+                            name="payFeeVal"
+                          />
                           <span class="paymentAmountWrapTitle">
                             안전거래 수수료
                             <p class="feeTitle">(3.5% 적용)</p>
@@ -832,6 +854,19 @@
                             <span id="payFee" class="freeFee"></span>
                             <b>0</b>원
                           </span>
+                        </li>
+                        <li class="discountWrap">
+                          <input
+                            type="hidden"
+                            id="discountPriceVal"
+                            name="discountPriceVal"
+                          />
+                          <span class="paymentAmountWrapTitle"
+                            >페이코 즉시할인</span
+                          >
+                          <span class="paymentAmountWrapPrice"
+                            ><b id="discountPrice"></b>원</span
+                          >
                         </li>
                         <li>
                           <div class="feeDesc">
@@ -845,6 +880,11 @@
                           </div>
                         </li>
                         <li>
+                          <input
+                            type="hidden"
+                            id="sumPriceVal"
+                            name="sumPriceVal"
+                          />
                           <span class="finalPaymentAmountTitle">합계</span>
                           <span class="finalPaymentAmountPrice">
                             <b id="sumPrice"></b>원
