@@ -954,6 +954,10 @@
 }
 
 @media screen and (max-width: 840px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
   /* order */
   .order {
     width: 100%;
@@ -1058,6 +1062,10 @@
 }
 
 @media screen and (max-width: 450px) {
+  /* common */
+  html {
+    font-size: 10px;
+  }
   /* payTypeModal */
   .payTypeModal {
     &.active {
