@@ -24,8 +24,6 @@ logoutBtn.addEventListener("click", (e) => {
   loginBtn.style.display = "block";
   logoutBtn.style.display = "none";
 
-  console.log(new URLSearchParams(window.location.search).toString());
-  console.log(window.location.pathname);
   const moveURL = `${window.location.pathname}${
     new URLSearchParams(window.location.search).toString() === ""
       ? ""
@@ -610,7 +608,7 @@ const addQuickMenu = () => {
             <ul class="movePages">
               <li>
                 <a 
-                href="/pages/login.html" 
+                href="#none"
                 class="mypage"
                 target="_blank"
                 >
@@ -652,6 +650,13 @@ const addQuickMenu = () => {
 
   liTrigger.addEventListener("click", function () {
     this.classList.toggle("active");
+  });
+
+  document.querySelector(".mypage").addEventListener("click", (e) => {
+    e.preventDefault();
+    if (loginCheck.length === 0) {
+      location.href = "/pages/login.html";
+    }
   });
 };
 addQuickMenu();

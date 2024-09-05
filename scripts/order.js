@@ -1,3 +1,4 @@
+const id = new URLSearchParams(window.location.search).get("id");
 const searchAddr = document.querySelector("#searchAddr");
 const cashBillType = document.querySelectorAll("input[name='cashBillType']");
 const cashBillSubType = document.querySelector("#cashBillSubType");
@@ -11,6 +12,34 @@ const allCheck = document.querySelector("#allCheck");
 const approvalYn = document.querySelectorAll("input[name='approvalYn']");
 const descButton = document.querySelectorAll(".descButton");
 const submitButton = orderInfo.querySelector("input[type='submit']");
+
+const setUserInfo = (userInfo) => {
+  orderInfo.recipient.value = userInfo.name;
+  orderInfo.phone1.value = userInfo.phone1;
+  orderInfo.phone2.value = userInfo.phone2;
+  orderInfo.phone3.value = userInfo.phone3;
+  orderInfo.cashBillInfo.value = `${userInfo.phone1}${userInfo.phone2}${userInfo.phone3}`;
+};
+
+window.addEventListener("load", () => {
+  if (!id) {
+    location.href = "/index.html";
+  }
+
+  const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
+  if (loginCheck.length > 0) {
+    const accountArr = JSON.parse(localStorage.getItem("userAccount")) || [];
+    const userInfo = accountArr.find(
+      (account) => account.email === loginCheck[0]
+    );
+
+    if (userInfo) {
+      setUserInfo(userInfo);
+    }
+  } else {
+    location.href = "/pages/login.html";
+  }
+});
 
 const changePhone1 = () => {
   const phone1 = document.querySelector("#phone1");
@@ -549,8 +578,6 @@ document.orderInfo.addEventListener("submit", (e) => {
 fetch("../db.json")
   .then((response) => response.json())
   .then((jsonData) => {
-    const id = new URLSearchParams(window.location.search).get("id");
-
     const product = jsonData.product.find((product) => product.id === id);
     createproductInfo(product);
   });
