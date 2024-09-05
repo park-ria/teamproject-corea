@@ -126,7 +126,8 @@ const setDiscountPrice = (flag) => {
   discountPrice.innerText = krwFormat(dscntPrc);
   discountPriceVal.value = dscntPrc;
 
-  sumPrice = productPrice + deliveryCharge + payFee + dscntPrc;
+  sumPrice = productPrice + deliveryCharge + Number(payFee) + dscntPrc;
+
   document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
   submitButton.value = `${krwFormat(sumPrice)}원 결제`;
   document.querySelector("#sumPriceVal").value = sumPrice;

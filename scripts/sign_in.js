@@ -250,5 +250,5 @@ document.frm.addEventListener("submit", (e) => {
   userAccount.push(userInfo);
   saveAccount();
   alert("회원가입이 완료되었습니다:)");
-  location.href = "/index.html";
+  location.href = "/pages/login.html";
 });

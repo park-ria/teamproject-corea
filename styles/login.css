@@ -1096,6 +1096,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   overflow: hidden;
 }
 .quickMenu .quickBtns .trigger .movePages li a {
+  font-size: 14px;
   font-weight: 700;
   color: #6d6d6d;
   text-align: center;
@@ -1435,6 +1436,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     gap: 6px;
   }
   .quickMenu .quickBtns .trigger .movePages li a {
+    font-size: 11px;
     font-weight: 700;
     color: #6d6d6d;
     text-align: center;

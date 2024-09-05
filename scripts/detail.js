@@ -567,7 +567,7 @@ fetch(joonggoInfo)
       } else {
         bottomBtns.innerHTML = `
         <a href="/pages/login.html" class="chat-btn">채팅하기</a>
-        <a href="#none" class="trade-btn">구매하기</a>
+        <a href="/pages/order.html?id=${product.id}" class="trade-btn">구매하기</a>
         `;
       }
 
