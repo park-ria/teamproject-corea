@@ -3,6 +3,7 @@ const cashBillType = document.querySelectorAll("input[name='cashBillType']");
 const cashBillSubType = document.querySelector("#cashBillSubType");
 const card = document.querySelectorAll("input[name='card']");
 const payTypeButton = document.querySelectorAll(".payTypeButton");
+const payType = document.querySelector("#payType");
 const modalLink = document.querySelectorAll(".modalLink");
 const payTypeModal = document.querySelector(".payTypeModal");
 const modalOverlay = document.querySelector(".payTypeModal-overlay");
@@ -83,17 +84,63 @@ const krwFormat = (money) => {
   }).format(money);
 };
 
+let deliveryCharge = 0;
+let productPrice = 0;
+let payFee = 0;
+let sumPrice = 0;
+
+const filterPayTypeBtn = () => {
+  const paycoTypeTab = document.querySelector(".paycoTypeTab");
+  const tossTypeTab = document.querySelector(".tossTypeTab");
+  const kakaoTypeTab = document.querySelector(".kakaoTypeTab");
+
+  if (sumPrice > 2000000) {
+    paycoTypeTab.classList.add("disabled");
+    tossTypeTab.classList.add("disabled");
+  } else {
+    paycoTypeTab.classList.remove("disabled");
+    tossTypeTab.classList.remove("disabled");
+  }
+
+  if (sumPrice > 3000000) {
+    kakaoTypeTab.classList.add("disabled");
+  } else {
+    kakaoTypeTab.classList.remove("disabled");
+  }
+};
+
+const setDiscountPrice = (flag) => {
+  const discountPrice = document.querySelector("#discountPrice");
+  const discountPriceVal = document.querySelector("#discountPriceVal");
+  const discountWrap = document.querySelector(".discountWrap");
+  let dscntPrc = 0;
+
+  if (flag && sumPrice >= 10000 && sumPrice <= 2000000) {
+    dscntPrc = sumPrice * 0.02 > 40000 ? 40000 : -(sumPrice * 0.02).toFixed(0);
+    discountWrap.classList.add("active");
+  } else if (!flag) {
+    dscntPrc = 0;
+    discountWrap.classList.remove("active");
+  }
+
+  discountPrice.innerText = krwFormat(dscntPrc);
+  discountPriceVal.value = dscntPrc;
+
+  sumPrice = productPrice + deliveryCharge + payFee + dscntPrc;
+  document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
+  submitButton.value = `${krwFormat(sumPrice)}원 결제`;
+  document.querySelector("#sumPriceVal").value = sumPrice;
+  filterPayTypeBtn();
+};
+
 const createproductInfo = (product) => {
-  console.log(product.detail.delivery_charge);
-  const deliveryCharge = product.detail.delivery_charge.includes("별도")
-    ? 4000
-    : 0;
-  const productPrice = Number(product.price.replace(/[^0-9]/g, ""));
-  const payFee =
+  deliveryCharge = product.detail.delivery_charge.includes("별도") ? 4000 : 0;
+  productPrice = Number(product.price.replace(/[^0-9]/g, ""));
+  payFee =
     (productPrice * 3.5) / 100 > 2000
       ? 2000
       : ((productPrice * 3.5) / 100).toFixed(0);
-  const sumPrice = productPrice + deliveryCharge;
+  sumPrice = productPrice + deliveryCharge;
 
   let li = `
     <div class="store-name">
@@ -135,6 +182,13 @@ const createproductInfo = (product) => {
   document.querySelector("#payFee").innerText = `${krwFormat(payFee)}원 `;
   document.querySelector("#sumPrice").innerText = krwFormat(sumPrice);
   submitButton.value = `${krwFormat(sumPrice)}원 결제`;
+
+  document.querySelector("#productPriceVal").value = productPrice;
+  document.querySelector("#deliveryChargeVal").value = deliveryCharge;
+  document.querySelector("#payFeeVal").value = payFee;
+  document.querySelector("#sumPriceVal").value = sumPrice;
+  payType.value = "payco";
+  setDiscountPrice(true);
 };
 
 const changeCashBillPlaceholder = () => {
@@ -238,6 +292,47 @@ payTypeButton.forEach((btn) => {
         guide.classList.remove("active");
       }
     });
+
+    let discountFlag = false;
+    let payTypeVal = target.replace("Guide", "");
+    switch (target) {
+      case "paycoGuide":
+        if (sumPrice > 2000000) {
+          payTypeVal = "";
+        }
+        discountFlag = true;
+        break;
+      case "tossGuide":
+        if (sumPrice > 2000000) {
+          payTypeVal = "";
+        }
+        break;
+      case "kakaoGuide":
+        if (sumPrice > 3000000) {
+          payTypeVal = "";
+          document.querySelector("#cashBill").setAttribute("disabled", "true");
+          document.querySelector("#personal").setAttribute("disabled", "true");
+          document.querySelector("#business").setAttribute("disabled", "true");
+          document
+            .querySelector("#cashBillSubType")
+            .setAttribute("disabled", "true");
+          document
+            .querySelector("#cashBillInfo")
+            .setAttribute("disabled", "true");
+        } else {
+          document.querySelector("#cashBill").removeAttribute("disabled");
+          document.querySelector("#personal").removeAttribute("disabled");
+          document.querySelector("#business").removeAttribute("disabled");
+          document
+            .querySelector("#cashBillSubType")
+            .removeAttribute("disabled");
+          document.querySelector("#cashBillInfo").removeAttribute("disabled");
+        }
+        break;
+    }
+
+    payType.value = payTypeVal;
+    setDiscountPrice(discountFlag);
   });
 });
 
@@ -299,8 +394,10 @@ allCheck.addEventListener("click", function () {
   });
   if (this.checked) {
     submitButton.classList.add("active");
+    submitButton.removeAttribute("disabled");
   } else {
     submitButton.classList.remove("active");
+    submitButton.setAttribute("disabled", true);
   }
 });
 
@@ -338,6 +435,115 @@ document
       approvalCheckbox.classList.remove("on");
     }
   });
+
+document.orderInfo.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const regExp = /^[0-9]+$/;
+  const recipient = orderInfo.recipient;
+  const phone1 = orderInfo.phone1;
+  const phone2 = orderInfo.phone2;
+  const phone3 = orderInfo.phone3;
+  const zonecode = orderInfo.zonecode;
+  const address = orderInfo.address;
+  const detailAddress = orderInfo.detailAddress;
+
+  if (recipient.value === "") {
+    alert("받는사람 이름을 입력해주세요.");
+    recipient.focus();
+    return;
+  }
+  if (recipient.value.length < 2) {
+    alert("받는사람 이름을 2자 이상 입력해주세요.");
+    recipient.focus();
+    return;
+  }
+  if (phone1.value === "") {
+    alert("휴대폰 번호 앞자리를 입력해주세요.");
+    phone1.focus();
+    return;
+  }
+  if (!regExp.test(phone1.value) || phone1.value.length !== 3) {
+    alert("휴대폰 번호 앞자리에 3자리 숫자만 입력해주세요.");
+    phone1.focus();
+    return;
+  }
+  if (phone2.value === "") {
+    alert("휴대폰 번호 중간자리를 입력해주세요.");
+    phone2.focus();
+    return;
+  }
+  if (!regExp.test(phone2.value) || phone2.value.length !== 4) {
+    alert("휴대폰 번호 중간자리에 4자리 숫자만 입력해주세요.");
+    phone2.focus();
+    return;
+  }
+  if (phone3.value === "") {
+    alert("휴대폰 번호 뒷자리를 입력해주세요.");
+    phone3.focus();
+    return;
+  }
+  if (!regExp.test(phone3.value) || phone3.value.length !== 4) {
+    alert("휴대폰 번호 뒷자리에 4자리 숫자만 입력해주세요.");
+    phone3.focus();
+    return;
+  }
+  if (zonecode.value === "") {
+    alert("우편번호를 입력해주세요.");
+    searchAddr.focus();
+    return;
+  }
+  if (!regExp.test(zonecode.value) || zonecode.value.length !== 5) {
+    alert("우편번호에 5자리 숫자만 입력해주세요.");
+    searchAddr.focus();
+    return;
+  }
+  if (address.value === "") {
+    alert("기본주소를 입력해주세요.");
+    searchAddr.focus();
+    return;
+  }
+  if (detailAddress.value === "") {
+    alert("상세주소를 입력해주세요.");
+    detailAddress.focus();
+    return;
+  }
+
+  const formData = {};
+  formData.recipient = recipient.value;
+  formData.phone1 = phone1.value;
+  formData.phone2 = phone2.value;
+  formData.phone3 = phone3.value;
+  formData.zonecode = zonecode.value;
+  formData.address = address.value;
+  formData.detailAddress = detailAddress.value;
+  formData.deilveryMsg = orderInfo.deilveryMsg.value;
+  formData.etcMsg = orderInfo.etcMsg.value;
+  formData.payType = orderInfo.payType.value;
+
+  switch (orderInfo.payType.value) {
+    case "kakao":
+      formData.cashBill = orderInfo.cashBill.checked;
+      formData.cashBillType = orderInfo.cashBillType.value;
+      formData.cashBillSubType = orderInfo.cashBillSubType.value;
+      formData.cashBillInfo = orderInfo.cashBillInfo.value;
+      break;
+    case "accountTransfer":
+      formData.bank = orderInfo.bank.value;
+      break;
+    case "card":
+      formData.card = orderInfo.card.value;
+      formData.mipMonth = orderInfo.mipMonth.value;
+      break;
+  }
+  formData.productPriceVal = orderInfo.productPriceVal.value;
+  formData.deliveryChargeVal = orderInfo.deliveryChargeVal.value;
+  formData.payFeeVal = orderInfo.payFeeVal.value;
+  formData.discountPriceVal = orderInfo.discountPriceVal.value;
+  formData.sumPriceVal = orderInfo.sumPriceVal.value;
+  formData.approvalYn = orderInfo.allCheck.checked;
+
+  console.log(JSON.stringify(formData));
+});
 
 fetch("../db.json")
   .then((response) => response.json())

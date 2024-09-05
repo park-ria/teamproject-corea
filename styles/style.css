@@ -160,6 +160,9 @@ body {
 #header #banner.ban .banner .banner-right a:hover {
   color: #0dcc5a;
 }
+#header #banner.ban .banner .banner-right a.logout {
+  display: none;
+}
 #header #header-item .header-item {
   width: 1280px;
   padding: 25px 0;

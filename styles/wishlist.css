@@ -160,6 +160,9 @@ body {
 #header #banner.ban .banner .banner-right a:hover {
   color: #0dcc5a;
 }
+#header #banner.ban .banner .banner-right a.logout {
+  display: none;
+}
 #header #header-item .header-item {
   width: 1280px;
   padding: 25px 0;
@@ -2063,10 +2066,24 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: inherit;
   height: inherit;
+  position: relative;
   transition: transform 0.3s;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg:hover {
   transform: scale(1.04);
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg .favorStoreProductInfo {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg .favorStoreProductInfo .favorStoreProductPrice {
+  font-size: 1.6rem;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: #fff;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn {
   position: absolute;
@@ -2249,10 +2266,24 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: inherit;
   height: inherit;
+  position: relative;
   transition: transform 0.3s;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg:hover {
   transform: scale(1.04);
+}
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg .favorBrandProductInfo {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+}
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg .favorBrandProductInfo .favorBrandProductPrice {
+  font-size: 1.6rem;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: #fff;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn {
   position: absolute;

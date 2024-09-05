@@ -3,9 +3,13 @@ const userPw1 = document.querySelector("#password1");
 const userPw2 = document.querySelector("#password2");
 const name = document.querySelector("#name");
 const phone = document.querySelector("#phone");
-const userArr = [];
+let userAccount = JSON.parse(localStorage.getItem("account")) || [];
 
-// console.log(email, userPw1, userPw2, name, phone);
+const saveAccount = () => {
+  localStorage.setItem("userAccount", JSON.stringify(userAccount));
+};
+
+saveAccount();
 let isValid = true;
 
 email.addEventListener("change", () => {
@@ -151,22 +155,49 @@ document.frm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (email.value === "") {
-    alert("이메일을 입력해주세요");
+    alert("이메일을 입력해주세요.");
     email.focus();
     return;
   }
+
+  if (!email.value.includes("@")) {
+    alert("이메일을 형식이 맞지 않습니다.\n다시 입력해주세요.");
+    email.focus();
+    return;
+  }
+
   if (password1.value === "") {
     alert("비밀번호를 입력해주세요");
     password1.focus();
     return;
   }
+
+  if (userPw1.value.length < 8 || userPw1.value.length > 12) {
+    alert("비밀번호를 8~12자 이내로 입력해주세요");
+    password1.focus();
+    return;
+  }
+
   if (password2.value === "") {
     alert("비밀번호를 확인해주세요");
     password2.focus();
     return;
   }
+
+  if (password1.value !== password2.value) {
+    alert("비밀번호와 비밀번호확인 값이 다릅니다.\n다시 입력해주세요.");
+    password2.focus();
+    return;
+  }
+
   if (name.value === "") {
-    alert("이름을 입력해주세요");
+    alert("이름을 입력해주세요.");
+    name.focus();
+    return;
+  }
+
+  if (name.value.length <= 1) {
+    alert("이름을 2자 이상 입력해주세요.");
     name.focus();
     return;
   }
@@ -174,6 +205,39 @@ document.frm.addEventListener("submit", (e) => {
   const phone1 = document.querySelector("#phone1");
   const phone2 = document.querySelector("#phone2");
   const phone3 = document.querySelector("#phone3");
+
+  if (phone1.value === "") {
+    alert("휴대폰 앞자리를 입력해주세요.");
+    phone1.focus();
+    return;
+  }
+  if (phone1.value.length !== 3) {
+    alert("휴대폰 앞자리 숫자만 3자 입력해주세요.");
+    phone1.focus();
+    return;
+  }
+
+  if (phone2.value === "") {
+    alert("휴대폰 중간자리를 입력해주세요.");
+    phone2.focus();
+    return;
+  }
+  if (phone2.value.length !== 4) {
+    alert("휴대폰 앞자리 숫자만 4자 입력해주세요.");
+    phone2.focus();
+    return;
+  }
+
+  if (phone3.value === "") {
+    alert("휴대폰 뒷자리를 입력해주세요.");
+    phone3.focus();
+    return;
+  }
+  if (phone3.value.length !== 4) {
+    alert("휴대폰 앞자리 숫자만 4자 입력해주세요.");
+    phone3.focus();
+    return;
+  }
 
   const userInfo = {
     email: email.value,
@@ -183,7 +247,8 @@ document.frm.addEventListener("submit", (e) => {
     phone2: phone2.value,
     phone3: phone3.value,
   };
-  userArr.push(userInfo);
+  userAccount.push(userInfo);
+  saveAccount();
   alert("회원가입이 완료되었습니다:)");
   location.href = "/index.html";
 });

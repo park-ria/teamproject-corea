@@ -159,6 +159,9 @@ body {
 #header #banner.ban .banner .banner-right a:hover {
   color: #0dcc5a;
 }
+#header #banner.ban .banner .banner-right a.logout {
+  display: none;
+}
 #header #header-item .header-item {
   width: 1280px;
   padding: 25px 0;
@@ -1698,11 +1701,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   gap: 25px;
   margin-bottom: 15px;
   font-weight: 500;
-}
-#main .inner .main .main-desc .desc-heading .heading-price span:first-child {
   font-size: 26px;
 }
-#main .inner .main .main-desc .desc-heading .heading-price span:last-child {
+#main .inner .main .main-desc .desc-heading .heading-price .original-price {
   font-size: 16px;
   text-decoration: line-through;
 }
@@ -1717,7 +1718,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-heading .timeEvent {
   display: flex;
-  width: 170px;
+  width: 200px;
   align-items: center;
   padding: 6px 3px 6px 12px;
   border-radius: 8px;
@@ -1756,7 +1757,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #main .inner .main .main-desc .desc-heading .timeEvent .timeItem {
   position: relative;
-  width: 37px;
+  width: 50px;
   height: 30px;
   display: flex;
   justify-content: center;
