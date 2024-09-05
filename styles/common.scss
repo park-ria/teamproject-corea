@@ -1109,7 +1109,6 @@ body {
   z-index: 3;
   border-top: 1px solid map-get($color, bg-light-gray);
   transition: transform 0.3s;
-  // display: none;
 
   h3 {
     padding: 10px;
@@ -1152,7 +1151,6 @@ body {
       }
       .category-sub {
         width: 500%;
-        // display: none;
         height: 0;
         opacity: 0;
         overflow: hidden;
@@ -1177,7 +1175,6 @@ body {
           }
         }
         &.active {
-          // display: block;
           opacity: 1;
           height: 200px;
           overflow-y: scroll;
@@ -1186,7 +1183,6 @@ body {
     }
   }
   &.active {
-    // display: block;
     transform: translateX(0);
   }
 }
@@ -1197,11 +1193,10 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 40px 20px;
   background: map-get($map: $color, $key: bg-light-color);
   border-top: 1px solid map-get($color, bg-light-gray);
-  // display: none;
   transform: translateX(100%);
   transition: transform 0.5s;
   z-index: 3;
@@ -1260,7 +1255,6 @@ body {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 10px 0;
           cursor: pointer;
 
           .recent-word {
@@ -1319,7 +1313,6 @@ body {
           cursor: pointer;
         }
         &.active {
-          // display: block;
           opacity: 1;
           height: 200px;
           overflow-y: scroll;
@@ -1542,7 +1535,6 @@ footer {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translateY(-35%);
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -1555,6 +1547,7 @@ footer {
           position: relative;
           overflow: hidden;
           a {
+            font-size: 14px;
             font-weight: 700;
             color: map-get($color, bg-dark-gray);
             text-align: center;
@@ -1597,8 +1590,7 @@ footer {
           }
         }
         .movePages {
-          top: -10px;
-          transform: translateY(-100%);
+          top: -198px;
           opacity: 1;
           max-height: 188px;
           overflow: visible;
@@ -1608,7 +1600,7 @@ footer {
   }
   &.active {
     opacity: 1;
-    z-index: 5;
+    z-index: 2;
     transform: translateY(0);
   }
 }
@@ -2008,6 +2000,7 @@ footer {
           gap: 6px;
           li {
             a {
+              font-size: 11px;
               font-weight: 700;
               color: map-get($color, bg-dark-gray);
               text-align: center;
@@ -2043,7 +2036,7 @@ footer {
         }
         &.active {
           .movePages {
-            top: -6px;
+            top: -150px;
             max-height: 144px;
           }
         }

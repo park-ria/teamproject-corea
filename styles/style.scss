@@ -1108,15 +1108,19 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       }
       .modal-right {
         justify-content: center;
+        padding: 10px;
         ul {
           li {
-            height: 70px;
-            margin: 5px 0;
+            height: 75px;
+            margin: 10px 0;
             .modal-img {
-              width: 120px;
+              width: 103px;
             }
             .modal-desc {
               width: 100%;
+              h5 {
+                margin-bottom: 5px;
+              }
             }
             &:nth-child(2) {
               .modal-img img {

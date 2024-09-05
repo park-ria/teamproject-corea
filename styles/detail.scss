@@ -1487,6 +1487,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
           &.trade-btn {
             background: map-get($map: $color, $key: bg-dark-color);
           }
+          &.auction-btn {
+            background: map-get($map: $color, $key: bg-sub-color);
+          }
         }
       }
     }

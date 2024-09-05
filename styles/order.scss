@@ -1062,10 +1062,70 @@
 }
 
 @media screen and (max-width: 450px) {
-  /* common */
-  html {
-    font-size: 10px;
+  /* order */
+  .order {
+    width: 100%;
+    .order-content {
+      form {
+        .delivery-desc {
+          &.deliveryInfo {
+            .deliveryInfoDesc {
+              li {
+                input[type="text"] {
+                  font-size: 1.1rem;
+                }
+                .inputWrap {
+                  #phone1,
+                  #phone2,
+                  #phone3 {
+                    font-size: 1.1rem;
+                  }
+                  #searchAddr {
+                    font-size: 1.1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 8px;
+                    width: 40%;
+                    height: 34px;
+                  }
+                  #zonecode {
+                    width: 55%;
+                    height: 34px;
+                  }
+                }
+                select {
+                  font-size: 1.1rem;
+                }
+                #etcMsg {
+                  font-size: 1.1rem;
+                }
+                .etcMsgCnt {
+                  font-size: 1.1rem;
+                }
+              }
+            }
+          }
+          &.paymentMethod {
+            .payTypeDesc {
+              .payGuidelines {
+                &.kakaoGuide {
+                  .cashBillWrap {
+                    .cashBillDesc {
+                      input[type="text"] {
+                        padding-left: 15px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
+
   /* payTypeModal */
   .payTypeModal {
     &.active {

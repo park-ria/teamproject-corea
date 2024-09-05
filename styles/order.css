@@ -735,7 +735,7 @@ body {
   top: 60px;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 40px 20px;
   background: #fff;
   border-top: 1px solid #dcdcdc;
@@ -792,7 +792,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
   cursor: pointer;
 }
 #mobile-search .searchedword-list .recent-words .recent-list li .recent-word {
@@ -1083,7 +1082,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(-35%);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1098,6 +1096,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   overflow: hidden;
 }
 .quickMenu .quickBtns .trigger .movePages li a {
+  font-size: 14px;
   font-weight: 700;
   color: #6d6d6d;
   text-align: center;
@@ -1137,15 +1136,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   transform: rotate(45deg);
 }
 .quickMenu .quickBtns .trigger.active .movePages {
-  top: -10px;
-  transform: translateY(-100%);
+  top: -198px;
   opacity: 1;
   max-height: 188px;
   overflow: visible;
 }
 .quickMenu.active {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
   transform: translateY(0);
 }
 
@@ -1438,6 +1436,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     gap: 6px;
   }
   .quickMenu .quickBtns .trigger .movePages li a {
+    font-size: 11px;
     font-weight: 700;
     color: #6d6d6d;
     text-align: center;
@@ -1470,7 +1469,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translateX(-56px);
   }
   .quickMenu .quickBtns .trigger.active .movePages {
-    top: -6px;
+    top: -150px;
     max-height: 144px;
   }
 }
@@ -2521,9 +2520,42 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 450px) {
-  /* common */
-  html {
-    font-size: 10px;
+  /* order */
+  .order {
+    width: 100%;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li input[type=text] {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone1,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone2,
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #phone3 {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #searchAddr {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 40%;
+    height: 34px;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .inputWrap #zonecode {
+    width: 55%;
+    height: 34px;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li select {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li #etcMsg {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.deliveryInfo .deliveryInfoDesc li .etcMsgCnt {
+    font-size: 1.1rem;
+  }
+  .order .order-content form .delivery-desc.paymentMethod .payTypeDesc .payGuidelines.kakaoGuide .cashBillWrap .cashBillDesc input[type=text] {
+    padding-left: 15px;
   }
   /* payTypeModal */
   .payTypeModal.active {
