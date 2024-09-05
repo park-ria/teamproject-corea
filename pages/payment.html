@@ -12,26 +12,20 @@
       content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
     />
     <link rel="icon" href="/images/favicon.ico" />
-
-    <!-- kakao map -->
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed955883bdeb93c8aa0f484b6ecbd506"
-    ></script>
+  
     <!-- fontawesome -->
     <script
       src="https://kit.fontawesome.com/09d57ad258.js"
       crossorigin="anonymous"
     ></script>
     <!-- custom css & js -->
-    <link rel="stylesheet" href="../styles/detail.css" />
-    <link rel="stylesheet" href="../styles/common.css">
-    <script defer src="../scripts/common.js"></script>
-    <script defer src="../scripts/detail.js"></script>
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/payment.css">
+    <script defer src="/scripts/common.js"></script>
     <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
   </head>
   <body>
-    <div id="wrapper">
+    <div class="wrapper" id="wrapper">
       <header id="header">
         <div id="banner" class="ban">
           <div class="inner">
@@ -57,10 +51,9 @@
                 </div>
               </div>
               <div class="banner-right">
-                <!-- <a href="/pages/login.html" class="login">로그인</a>
-                <a href="#none" class="logout">로그아웃</a>
+                <a href="/pages/login.html">로그인</a>
                 <a href="/pages/sign_in.html">회원가입</a>
-                <a href="/pages/faq.html">F&Q</a> -->
+                <a href="/pages/faq.html">F&Q</a>
               </div>
             </div>
           </div>
@@ -216,222 +209,41 @@
           </div>
         </div>
       </div>
-  
-      <!-- main -->
-      <main>
-        <section id="main">
-          <div class="inner">
-            <div class="main">
-              <div class="main-img">
-                <div class="img-slider">
-                  <ul class="img-wrapper"></ul>
-                  <div class="img-pagers"></div>
-                  <div class="img-prev btn">
-                    <i class="fa-solid fa-chevron-left"></i>
-                  </div>
-                  <div class="img-next btn">
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </div>
-                  <button class="heart-btn"><i class="fa-regular fa-heart"></i></button>
-                </div>
-                <div class="img-icons">
-                  <div class="pickedlist icon-box">
-                    <a href="/pages/wishlist.html">
-                      <span>찜한 목록</span><i class="fa-regular fa-heart"></i>
-                    </a>
-                  </div>
-                  <div class="follow icon-box">
-                    <a href="/pages/login.html">
-                      <span>팔로우</span><i class="fa-solid fa-plus"></i>
-                    </a>
-                  </div>
-                  <div class="share icon-box">
-                    <a href="#none">
-                      <span>공유</span><i class="fa-regular fa-share-from-square"></i>
-                    </a>
-                  </div>
-                  <div class="report icon-box">
-                    <a href="/pages/login.html">
-                      <span>신고</span><i class="fa-regular fa-bell"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="main-desc">
-                <div class="desc-heading">
-                  <div class="heading-category"></div>
-                  <span class="heading-name"> </span>
-                  <div class="heading-price"></div>
-                  <div class="heading-timeinfo"></div>
-                </div>
-                <div class="desc-user">
-                  <div class="user-img"></div>
-                  <div class="user-info">
-                    <h3 class="user-id"></h3>
-                    <div class="user-detail">
-                      <div class="detail-barBox">
-                        <span>거래순환률</span>
-                        <div class="detail-bar">
-                          <div class="filling-bar"></div>
-                        </div>
-                      </div>
-                      <div class="detail-value">
-                        <span class="percentage">27</span>
-                        /100
-                        <img
-                          src="../images/detail/circulater.png"
-                          alt="circulater"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="desc-conditions"></div>
-                <div class="desc-map">
-                  <h3 class="map-title">거래희망지역</h3>
-                  <span class="map-area"></span>
-                  <div id="map"></div>
-                </div>
-                <div class="desc-btns">
-                </div>
-                <div class="desc-itemInfo">
-                  <div class="itemIfo-heading">
-                    <h3>상품 정보<i class="fa-solid fa-chevron-right"></i></h3>
-                    <hr class="bar" />
-                  </div>
-                  <div class="itemIfo-detail"></div>
-                </div>
-                <div class="desc-store">
-                  <div class="store-heading">
-                    <h3>가게 정보<i class="fa-solid fa-chevron-right"></i></h3>
-                    <hr class="bar" />
-                  </div>
-                  <div class="store-info">
-                    <div class="info-user">
-                      <div class="info-img"></div>
-                      <div class="info-box">
-                        <div class="box-name">
-                          <span class="name"></span>
-                        </div>
-                        <div class="certi">
-                          <span>본인인증 완료 </span>
-                          <div class="certi-check">
-                            <i class="fa-regular fa-square-check"></i>
-                          </div>
-                        </div>
-                        <!-- <a href="/pages/login.html">팔로우 +</a> -->
-                      </div>
-                    </div>
-                    <div class="info-desc">
-                    </div>
-                  </div>
-                  <div class="store-btns">
-                    <button class="selling-btn active">판매중</button>
-                    <button class="review-btn">거래 후기</button>
-                  </div>
-                  <div class="store-contents">
-                    <div class="selling-items active">
-                      <ul class="items-wrapper"></ul>
-                    </div>
-                    <div class="reviews">
-                      <h3>이런점이 좋았어요</h3>
-                      <ul class="reviews-box"></ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    
-        <section id="event">
-          <div class="inner">
-            <article class="event-content">
-              <div class="event-heading">
-                <h3 class="section-title">이벤트 / 제휴할인 안내</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="event-slide">
-                <ul>
-                </ul>
-                <div class="slidePager">
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-  
-        <section id="recommended">
-          <div class="inner">
-            <article class="recommended-content">
-              <div class="recommended-heading">
-                <h3 class="section-title">연관 상품</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="recommended-slide">
-                <ul class="slideWrapper recommendedUl"></ul>
-              </div>
-              <div class="slide-btns">
-                <button class="slidePrev" type="button">
-                  <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <button class="slideNext" type="button">
-                  <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <!-- <div class="slidePager"></div> -->
-              </div>
-            </article>
-          </div>
-        </section>
-  
-        <section id="recent">
-          <div class="inner">
-            <article class="recent-content">
-              <div class="recent-heading">
-                <h3 class="section-title">인기 상품</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="recent-slide">
-                <ul class="slideWrapper recentUl"></ul>
-              </div>
-              <div class="slide-btns">
-                <button class="slidePrev" type="button">
-                  <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <button class="slideNext" type="button">
-                  <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <!-- <div class="slidePager"></div> -->
-              </div>
-            </article>
-          </div>
-        </section>
-      </main>
 
-      <div class="share-box">
-        <div class="facebook">
-          <a href="https://www.facebook.com/?locale=ko_KR"><img src="../images/detail/facebook.png" alt="facebook"></i></a>
-          <span>페이스북</span>
+      <main class="container">
+        <div class="inner">
+          <section class="payment">
+            <h3>결제완료</h3>
+            <div class="paymentHeading">
+              고객님의 결제가 완료되었습니다.
+            </div>
+            <div class="paymentDesc">
+              <ul>
+                <li>
+                  <span>주문번호</span>
+                  <p class="oderNum"></p>
+                </li>
+                <li>
+                  <span>결제방법</span>
+                  <p class="payMethod"></p>
+                </li>
+                <li>
+                  <span>결제금액</span>
+                  <p class="payNum"></p>
+                </li>
+                <li>
+                  <span>NAVER FINANCIAL</span>
+                  <p>네이버파이낸셜은 전자결제서비스제공자 및 통신판매자의 당사자가 아닙니다. 상품, 상품정보 및 거래에 관한 의무와 책임은 판매자에게 있습니다.</p>
+                </li>
+              </ul>
+            </div>
+            <div class="payBtns">
+              <a href="#none" class="shopping">쇼핑 계속하기</a>
+              <a href="#none" class="checking">구매내역 확인</a>
+            </div>
+          </section>
         </div>
-        <div class="kakao">
-          <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fcs.kakao.com%2Fhelps%3Fcategory%3D25%26locale%3Dko%26service%3D8#login"><img src="../images/detail/kakao.png" alt="kakao"></a>
-          <span>카카오톡</span>
-        </div>
-        <div class="url">
-          <a href="#"><img src="../images/detail/link.png" alt="link"></a>
-          <span>URL주소</span>
-        </div>
-      </div>
-      <div class="sharebox-filter"></div>
+      </main>
 
       <footer>
         <div class="inner">
@@ -515,21 +327,5 @@
 
       <!-- quickMenu -->
       <div class="quickMenu"></div>
-
-      <!-- bottom-menu -->
-      <div id="bottom-memu">
-        <div class="inner">
-          <div class="bottom-mmenu">
-            <button href="#none" class="heart-btn"
-              ><i class="fa-regular fa-heart"></i
-            ></button>
-            <div class="btns">
-              <!-- <a href="#none" class="chat-btn">채팅하기</a>
-              <a href="#none" class="trade-btn">안전거래</a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
