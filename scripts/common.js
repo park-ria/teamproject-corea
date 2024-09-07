@@ -34,37 +34,11 @@ logoutBtn.addEventListener("click", (e) => {
   window.location.href = decodeURIComponent(moveURL);
 });
 
-// 채팅하기 판매하기
-const chatting  = document.querySelector(".lnb li:nth-child(1)");
-const selling  = document.querySelector(".lnb li:nth-child(2)");
-
-chatting.addEventListener("click", (e) => {
-  
-  if(loginCheck.length > 0) {
-    e.preventDefault();
-    chatting.innerHTML = 
-    `
-    <a href="#none">
-      <img src="../images/chat.png" alt="chat" />채팅하기
-    </a>
-    `;
-  }
-})
-
-
-selling.addEventListener("click", (e) => {
-  
-  if(loginCheck.length > 0) {
-    e.preventDefault();
-    selling.innerHTML = 
-    `
-    <a href="#none">
-      <img src="../images/sell.png" alt="sell" />채팅하기
-    </a>
-    `;
-  }
-})
-
+document.querySelectorAll(".lnb li").forEach((item) => {
+  item.addEventListener("click", () => {
+    if (loginCheck.length === 0) location.href = "/pages/login.html";
+  });
+});
 
 // AppDowload 클릭시 이벤트
 const apppDownload = document.querySelector(".appDownload");
