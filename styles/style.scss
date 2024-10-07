@@ -55,46 +55,44 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   }
 }
 
-@mixin badgeText {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: map-get($color, bg-light-color);
-  text-shadow: 0 0 1px map-get($color, main-font-color);
-}
+// @mixin badgeText {
+//   font: 400 1.3rem/1 "JalnanGothic";
+//   letter-spacing: 0;
+//   color: map-get($color, bg-light-color);
+//   text-shadow: 0 0 1px map-get($color, main-font-color);
+// }
 
-@mixin badgeType {
-  position: absolute;
-  top: 5%;
-  right: -2%;
-  width: 46px;
-  height: 26px;
-  cursor: pointer;
-  &.badge-best {
-    background: url("../images/badge-best.png") center/contain no-repeat;
-    &::before {
-      @include badgeText;
-      content: "인기";
-    }
-  }
-  &.badge-new {
-    background: url("../images/badge-new.png") center/contain no-repeat;
-    &::before {
-      @include badgeText;
-      content: "신규";
-    }
-  }
-  &.badge-auction {
-    background: url("../images/badge-auction.png") center/contain no-repeat;
-    &::before {
-      @include badgeText;
-      content: "경매";
-    }
-  }
-}
+// @mixin badgeType {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   padding: 6px 10px;
+//   border-radius: 5px;
+//   box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.1);
+//   cursor: pointer;
+//   &.badge-best {
+//     // background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
+//     background: map-get($color, bg-main-color);
+//     &::before {
+//       @include badgeText;
+//       content: "인기";
+//     }
+//   }
+//   &.badge-new {
+//     background: url("../images/badge-new.svg") center/contain no-repeat;
+//     &::before {
+//       @include badgeText;
+//       content: "신규";
+//     }
+//   }
+//   // &.badge-auction {
+//   //   background: url("../images/badge-auction.png") center/contain no-repeat;
+//   //   &::before {
+//   //     @include badgeText;
+//   //     content: "경매";
+//   //   }
+//   // }
+// }
 
 @mixin timeEvent {
   display: flex;
@@ -316,8 +314,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       .slideImgWrap {
         width: 100%;
         height: 240px;
-        border-radius: 10px;
+        border-radius: 6px;
         overflow: hidden;
+        border: 1px solid map-get($color, bg-light-gray);
         .slide-img {
           transition: all 0.3s;
           &:hover {
@@ -411,8 +410,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       .slideImgWrap {
         width: 100%;
         height: 240px;
-        border-radius: 10px;
+        border-radius: 6px;
         overflow: hidden;
+        border: 1px solid map-get($color, bg-light-gray);
         .slide-img {
           transition: all 0.3s;
           &:hover {
@@ -487,7 +487,8 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             .tab-content-img-wrap {
               width: 150px;
               height: 100%;
-              border-radius: 10px;
+              border-radius: 6px;
+              border: 1px solid map-get($color, bg-light-gray);
               overflow: hidden;
               .tab-content-img {
                 height: 100%;
@@ -502,6 +503,12 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               width: calc(100% - 150px);
               padding: 10px 10px 10px 20px;
               @include productDesc;
+              .desc-title {
+                // height: 47px;
+              }
+              .desc-price {
+                // margin: 30px 0 15px;
+              }
             }
           }
         }
@@ -556,8 +563,9 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
       .slideImgWrap {
         width: 100%;
         height: 240px;
-        border-radius: 10px;
+        border-radius: 6px;
         overflow: hidden;
+        border: 1px solid map-get($color, bg-light-gray);
         .slide-img {
           transition: all 0.3s;
           &:hover {
@@ -892,25 +900,44 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
 @media screen and (max-width: 840px) {
+  .slide-btns {
+    @include slideBtns;
+    .slidePager {
+      @include slidePager;
+      span {
+        &:hover {
+          background: map-get($color, bg-light-gray);
+        }
+      }
+    }
+  }
+
   // best-ranking
   #best-ranking {
     .ranking-content {
       .ranking-slide {
-        height: 390px;
+        height: 370px;
         .slideWrapper {
           li {
             a {
-              height: 366px;
+              height: 340px;
               .slide-desc {
                 .desc-title {
-                  height: 36px;
+                  height: 20px;
+                }
+              }
+              .slideImgWrap {
+                .slide-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
                 }
               }
             }
-            .badge {
-              width: 40px;
-              height: 20px;
-            }
+            // .badge {
+            //   width: 40px;
+            //   height: 20px;
+            // }
           }
         }
       }
@@ -962,21 +989,28 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
     }
     .auction-content {
       .auction-slide {
-        height: 390px;
+        height: 370px;
         .slideWrapper {
           li {
             a {
-              height: 366px;
+              height: 340px;
               .slide-desc {
                 .desc-title {
-                  height: 36px;
+                  height: 20px;
+                }
+              }
+              .slideImgWrap {
+                .slide-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
                 }
               }
             }
-            .badge {
-              width: 40px;
-              height: 20px;
-            }
+            // .badge {
+            //   width: 40px;
+            //   height: 20px;
+            // }
           }
         }
       }
@@ -997,12 +1031,17 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
             a {
               .tab-content-img-wrap {
                 width: 100px;
+                .tab-content-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
+                }
               }
               .tab-content-desc {
                 width: calc(100% - 100px);
                 padding: 5px 10px;
                 .desc-title {
-                  height: 36px;
+                  height: 20px;
                 }
                 .desc-price {
                   margin: 5px 0 10px;
@@ -1033,21 +1072,28 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
   #recommended {
     .recommended-content {
       .recommended-slide {
-        height: 390px;
+        height: 370px;
         .slideWrapper {
           li {
             a {
-              height: 366px;
+              height: 340px;
               .slide-desc {
                 .desc-title {
-                  height: 36px;
+                  height: 20px;
+                }
+              }
+              .slideImgWrap {
+                .slide-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
                 }
               }
             }
-            .badge {
-              width: 40px;
-              height: 20px;
-            }
+            // .badge {
+            //   width: 40px;
+            //   height: 20px;
+            // }
           }
         }
       }

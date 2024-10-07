@@ -3285,19 +3285,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
   position: absolute;
-  top: 5%;
-  right: -2%;
+  top: 10px;
+  left: 0;
   width: 46px;
   height: 26px;
   cursor: pointer;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
+  background: url("../images/badge-best.svg") center/contain no-repeat;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -3306,32 +3306,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   content: "인기";
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
+  background: url("../images/badge-new.svg") center/contain no-repeat;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "신규";
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
 }
 #best-ranking .ranking-content .ranking-slide .slideImgWrap {
   width: 100%;
@@ -3556,19 +3542,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge {
   position: absolute;
-  top: 5%;
-  right: -2%;
+  top: 10px;
+  left: 0;
   width: 46px;
   height: 26px;
   cursor: pointer;
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
+  background: url("../images/badge-best.svg") center/contain no-repeat;
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -3577,32 +3563,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   content: "인기";
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
+  background: url("../images/badge-new.svg") center/contain no-repeat;
 }
 #auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "신규";
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
 }
 #auction .auction-content .auction-slide .slideImgWrap {
   width: 100%;
@@ -3896,19 +3868,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge {
   position: absolute;
-  top: 5%;
-  right: -2%;
+  top: 10px;
+  left: 0;
   width: 46px;
   height: 26px;
   cursor: pointer;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
+  background: url("../images/badge-best.svg") center/contain no-repeat;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -3917,32 +3889,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   content: "인기";
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
+  background: url("../images/badge-new.svg") center/contain no-repeat;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "신규";
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
 }
 #recommended .recommended-content .recommended-slide .slideImgWrap {
   width: 100%;
@@ -4730,19 +4688,19 @@ body {
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge {
   position: absolute;
-  top: 5%;
-  right: -2%;
+  top: 10px;
+  left: 0;
   width: 46px;
   height: 26px;
   cursor: pointer;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
+  background: url("../images/badge-best.svg") center/contain no-repeat;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-best::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -4751,32 +4709,18 @@ body {
   content: "인기";
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
+  background: url("../images/badge-new.svg") center/contain no-repeat;
 }
 #best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-new::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "신규";
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#best-auction .best-auction-content .best-auction-slide .bestAuction li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
 }
 #best-auction .best-auction-content .slide-btns button {
   position: absolute;
@@ -4979,19 +4923,19 @@ body {
 }
 #product-list .product li .badge {
   position: absolute;
-  top: 5%;
-  right: -2%;
+  top: 10px;
+  left: 0;
   width: 46px;
   height: 26px;
   cursor: pointer;
 }
 #product-list .product li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
+  background: url("../images/badge-best.svg") center/contain no-repeat;
 }
 #product-list .product li .badge.badge-best::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
@@ -5000,32 +4944,18 @@ body {
   content: "인기";
 }
 #product-list .product li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
+  background: url("../images/badge-new.svg") center/contain no-repeat;
 }
 #product-list .product li .badge.badge-new::before {
   position: absolute;
   top: 55%;
-  right: 12%;
+  left: 12%;
   transform: translateY(-50%);
   font: 400 1.3rem/1 "JalnanGothic";
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 0 1px #111;
   content: "신규";
-}
-#product-list .product li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#product-list .product li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
 }
 
 @media screen and (max-width: 1280px) {

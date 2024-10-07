@@ -231,20 +231,20 @@ const addProduct = (product, ul) => {
   const slideImgWrap = document.createElement("div");
   const slideImg = document.createElement("div");
   const slideDesc = document.createElement("div");
-  const badge = document.createElement("span");
-  let badgeClassName = "";
-  switch (ul) {
-    case ".bestRankingUl":
-      badgeClassName = "badge badge-best";
-      break;
-    case ".auctionUl":
-      badgeClassName = "badge badge-auction";
-      break;
-    case ".recommendedUl":
-      badgeClassName = "badge badge-new";
-      break;
-  }
-  badge.className = badgeClassName;
+  // const badge = document.createElement("span");
+  // let badgeClassName = "";
+  // switch (ul) {
+  //   case ".bestRankingUl":
+  //     badgeClassName = "badge badge-best";
+  //     break;
+  //   // case ".auctionUl":
+  //   //   badgeClassName = "badge badge-auction";
+  //   //   break;
+  //   case ".recommendedUl":
+  //     badgeClassName = "badge badge-new";
+  //     break;
+  // }
+  // badge.className = badgeClassName;
 
   slideImgWrap.className = "slideImgWrap";
   slideImg.className = "slide-img";
@@ -308,7 +308,7 @@ const addProduct = (product, ul) => {
   slideImgWrap.appendChild(slideImg);
   aTag.append(slideImgWrap, slideDesc);
   liItem.appendChild(aTag);
-  liItem.appendChild(badge);
+  // liItem.appendChild(badge);
   ulItem.appendChild(liItem);
 
   // pager
