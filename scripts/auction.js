@@ -175,11 +175,12 @@ const addProduct = (product, ul) => {
       slidePager.appendChild(spanTag);
     }
     slideIndex++;
-  } else {
-    const badge = document.createElement("span");
-    badge.className = "badge badge-auction";
-    liItem.append(badge);
   }
+  // else {
+  //   const badge = document.createElement("span");
+  //   badge.className = "badge badge-auction";
+  //   liItem.append(badge);
+  // }
 };
 
 // productSlide
