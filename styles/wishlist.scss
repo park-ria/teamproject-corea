@@ -210,7 +210,7 @@
       gap: 20px;
       #deleteSeletionButton {
         border: 1px solid map-get($color, main-font-color);
-        border-radius: 5px;
+        border-radius: 6px;
         padding: 10px 20px;
         cursor: pointer;
         transition: all 0.3s;
@@ -270,6 +270,7 @@
               img {
                 width: inherit;
                 height: inherit;
+                border-radius: 6px;
                 object-fit: cover;
                 transition: transform 0.3s;
                 &.hover {
@@ -400,7 +401,7 @@
                   width: 50%;
                   min-width: 110px;
                   padding: 15px 0;
-                  border-radius: 5px;
+                  border-radius: 6px;
                   color: map-get($color, bg-light-color);
                   font-size: map-get($fontSize, font-medium);
                   text-align: center;
@@ -504,8 +505,9 @@
           width: 240px;
           height: 240px;
           padding: 15px;
-          background: map-get($color, main-font-color);
-          border-radius: 10px;
+          background: map-get($color, bg-light-color);
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 6px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -525,7 +527,7 @@
                 width: 100%;
                 margin-top: 10px;
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: map-get($color, main-font-color);
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -534,7 +536,7 @@
           }
           .favorite-store-score {
             width: 100%;
-            color: map-get($color, bg-light-color);
+            color: map-get($color, main-font-color);
             .store-score-desc {
               width: 100%;
               display: flex;
@@ -590,7 +592,7 @@
               align-items: center;
               gap: 5px;
               li {
-                color: map-get($color, bg-light-color);
+                color: map-get($color, main-font-color);
                 font-size: 1rem;
                 span {
                   &:not(.follower-box-title) {
@@ -629,7 +631,7 @@
                 display: inline-block;
                 width: 240px;
                 height: 240px;
-                border-radius: 8px;
+                border-radius: 6px;
                 overflow: hidden;
                 -webkit-user-drag: none;
                 -khtml-user-drag: none;
@@ -656,8 +658,7 @@
                     background: linear-gradient(
                       to bottom,
                       transparent,
-                      rgba(0, 0, 0, 0.3),
-                      rgba(0, 0, 0, 0.8)
+                      rgba(0, 0, 0, 0.3)
                     );
                     .favorStoreProductPrice {
                       font-size: map-get($fontSize, font-medium);
@@ -701,8 +702,9 @@
           width: 240px;
           height: 240px;
           padding: 15px;
-          background: map-get($color, main-font-color);
-          border-radius: 8px;
+          background: map-get($color, bg-light-color);
+          border: 1px solid map-get($color, bg-light-gray);
+          border-radius: 6px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -718,13 +720,14 @@
                 width: 100px;
                 height: 100px;
                 object-fit: cover;
+                border: 1px solid map-get($color, bg-light-gray);
                 border-radius: 50%;
               }
               & > p {
                 width: 100%;
                 margin-top: 10px;
                 font-size: map-get($fontSize, font-medium);
-                color: map-get($color, bg-light-color);
+                color: map-get($color, main-font-color);
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -737,7 +740,7 @@
               align-items: center;
               gap: 5px;
               li {
-                color: map-get($color, bg-light-color);
+                color: map-get($color, main-font-color);
                 font-size: 1.2rem;
                 span {
                   &:not(.follower-box-title) {
@@ -778,7 +781,7 @@
                 display: inline-block;
                 width: 240px;
                 height: 240px;
-                border-radius: 8px;
+                border-radius: 6px;
                 overflow: hidden;
                 -webkit-user-drag: none;
                 -khtml-user-drag: none;
@@ -805,8 +808,7 @@
                     background: linear-gradient(
                       to bottom,
                       transparent,
-                      rgba(0, 0, 0, 0.3),
-                      rgba(0, 0, 0, 0.8)
+                      rgba(0, 0, 0, 0.3)
                     );
                     .favorBrandProductPrice {
                       font-size: map-get($fontSize, font-medium);
@@ -912,6 +914,15 @@
 
   /* wish-items-content */
   .wish-items-content {
+    .wish-items-content-upper {
+      .wish-items-delete-selection {
+        #deleteSeletionButton:hover {
+          border: 1px solid map-get($color, main-font-color);
+          background: map-get($color, bg-light-color);
+          color: map-get($color, main-font-color);
+        }
+      }
+    }
     .wish-items-content-detail {
       width: 100%;
       .wishItemList {
@@ -922,7 +933,23 @@
           .wishItem {
             width: 90%;
             height: 150px;
-            // gap: 10px;
+            .wishItemImgWrapper {
+              .wishItemViewMore {
+                img {
+                  &.hover {
+                    transform: scale(1);
+                  }
+                  &:hover {
+                    transform: scale(1);
+                  }
+                }
+              }
+              .wishHeart {
+                .fa-heart:hover {
+                  transform: scale(1);
+                }
+              }
+            }
             .wishItemDescGroup {
               flex: 1;
               gap: 5px;
@@ -990,8 +1017,19 @@
                     width: 110px;
                     padding: 10px 0;
                     font-size: map-get($fontSize, font-small);
+                    &:hover {
+                      font-weight: normal;
+                      opacity: 1;
+                    }
+                    &.wishItemChatButton:hover {
+                      font-weight: normal;
+                      opacity: 1;
+                    }
                     &.wishItemXButton {
                       display: none;
+                    }
+                    &:hover .fa-xmark {
+                      color: map-get($color, bg-light-gray);
                     }
                   }
                 }
@@ -1043,6 +1081,12 @@
             .favorite-store-follower {
               width: auto;
               gap: 10px;
+              .followButton {
+                .fa-solid:hover {
+                  color: #06b38b;
+                  transform: scale(1);
+                }
+              }
             }
           }
           .favorite-store-products-box {
@@ -1052,8 +1096,15 @@
               & > li {
                 & > a {
                   border-radius: 0;
+                  .favoriteStoreProductImg:hover {
+                    transform: scale(1);
+                  }
                 }
               }
+            }
+            .btn:hover {
+              background: rgba($color: #000000, $alpha: 0.2);
+              color: map-get($map: $color, $key: bg-light-color);
             }
           }
         }
@@ -1108,6 +1159,12 @@
             }
             .favorite-brand-follow-button {
               align-self: center;
+              .followButton {
+                .fa-solid:hover {
+                  color: #06b38b;
+                  transform: scale(1);
+                }
+              }
             }
           }
           .favorite-brand-products-box {
@@ -1117,8 +1174,15 @@
               & > li {
                 & > a {
                   border-radius: 0;
+                  .favoriteBrandProductImg:hover {
+                    transform: scale(1);
+                  }
                 }
               }
+            }
+            .btn:hover {
+              background: rgba($color: #000000, $alpha: 0.2);
+              color: map-get($map: $color, $key: bg-light-color);
             }
           }
         }

@@ -141,7 +141,7 @@ fetch(joonggoInfo)
         }
       });
 
-      // picked-list 클릭 이벤트 
+      // picked-list 클릭 이벤트
       const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
 
       // Making Heading-category
@@ -273,9 +273,8 @@ fetch(joonggoInfo)
           if (loginCheck.length === 0) {
             location.href = "/pages/login.html";
           } else {
-            
             wishItemArr = JSON.parse(localStorage.getItem("wishItemArr")) || [];
-  
+
             if (wishItemArr.find((wishItem) => wishItem.id === pickedInfo.id)) {
               heartBtns.forEach((btn) => {
                 const heart = btn.querySelector("i");
@@ -300,7 +299,6 @@ fetch(joonggoInfo)
                 "span:nth-child(4)"
               ).innerText = `찜 ${pickedInfo.countNum}`;
             }
-
           }
         });
       });
@@ -546,7 +544,7 @@ fetch(joonggoInfo)
       const movePage = (e) => {
         e.preventDefault();
 
-        console.log(loginCheck)
+        console.log(loginCheck);
         if (loginCheck.length === 0) {
           location.href = "/pages/login.html";
         }
@@ -570,9 +568,12 @@ fetch(joonggoInfo)
           btn.addEventListener("click", movePage);
         });
       } else {
+        console.log();
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="chat">채팅하기</a>
-        <a href="#none" class="trade">구매하기</a>
+        <a href="#none" class="trade">${
+          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+        }</a>
         `;
 
         document.querySelectorAll(".chat").forEach((btn) => {
@@ -595,7 +596,9 @@ fetch(joonggoInfo)
       } else {
         bottomBtns.innerHTML = `
         <a href="/pages/login.html" class="chat-btn">채팅하기</a>
-        <a href="/pages/order.html?id=${product.id}" class="trade-btn">구매하기</a>
+        <a href="/pages/order.html?id=${product.id}" class="trade-btn">${
+          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+        }</a>
         `;
         document.querySelectorAll(".chat-btn").forEach((btn) => {
           btn.addEventListener("click", movePage);

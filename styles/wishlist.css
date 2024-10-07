@@ -1608,7 +1608,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .wish-items-content .wish-items-content-upper .wish-items-delete-selection #deleteSeletionButton {
   border: 1px solid #111;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 10px 20px;
   cursor: pointer;
   transition: all 0.3s;
@@ -1668,6 +1668,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
   width: inherit;
   height: inherit;
+  border-radius: 6px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 0.3s;
@@ -1800,7 +1801,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 50%;
   min-width: 110px;
   padding: 15px 0;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #fff;
   font-size: 1.6rem;
   text-align: center;
@@ -1929,8 +1930,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 240px;
   height: 240px;
   padding: 15px;
-  background: #111;
-  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1952,14 +1954,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 100%;
   margin-top: 10px;
   font-size: 1.6rem;
-  color: #fff;
+  color: #111;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
   width: 100%;
-  color: #fff;
+  color: #111;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score .store-score-desc {
   width: 100%;
@@ -2018,7 +2020,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   gap: 5px;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li {
-  color: #fff;
+  color: #111;
   font-size: 1rem;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li span:not(.follower-box-title) {
@@ -2052,7 +2054,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: 240px;
   height: 240px;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -2078,7 +2080,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg .favorStoreProductInfo .favorStoreProductPrice {
   font-size: 1.6rem;
@@ -2176,8 +2178,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   width: 240px;
   height: 240px;
   padding: 15px;
-  background: #111;
-  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2198,13 +2201,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #dcdcdc;
   border-radius: 50%;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle > p {
   width: 100%;
   margin-top: 10px;
   font-size: 1.6rem;
-  color: #fff;
+  color: #111;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2217,7 +2221,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   gap: 5px;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li {
-  color: #fff;
+  color: #111;
   font-size: 1.2rem;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li span:not(.follower-box-title) {
@@ -2252,7 +2256,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: 240px;
   height: 240px;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -2278,7 +2282,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg .favorBrandProductInfo .favorBrandProductPrice {
   font-size: 1.6rem;
@@ -2413,6 +2417,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: 100%;
   }
   /* wish-items-content */
+  .wish-items-content .wish-items-content-upper .wish-items-delete-selection #deleteSeletionButton:hover {
+    border: 1px solid #111;
+    background: #fff;
+    color: #111;
+  }
   .wish-items-content .wish-items-content-detail {
     width: 100%;
   }
@@ -2426,6 +2435,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem {
     width: 90%;
     height: 150px;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img.hover {
+    transform: scale(1);
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img:hover {
+    transform: scale(1);
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishHeart .fa-heart:hover {
+    transform: scale(1);
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup {
     flex: 1;
@@ -2496,8 +2514,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     padding: 10px 0;
     font-size: 1.4rem;
   }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
+    font-weight: normal;
+    opacity: 1;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
+    font-weight: normal;
+    opacity: 1;
+  }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
     display: none;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover .fa-xmark {
+    color: #dcdcdc;
   }
   /* favorite stores content */
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li {
@@ -2540,6 +2569,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     width: auto;
     gap: 10px;
   }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid:hover {
+    color: #06b38b;
+    transform: scale(1);
+  }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
     width: 100%;
   }
@@ -2548,6 +2581,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a {
     border-radius: 0;
+  }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .favorite-store-products > li > a .favoriteStoreProductImg:hover {
+    transform: scale(1);
+  }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box .btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
   }
   /* favorite brands content */
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li {
@@ -2597,6 +2637,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button {
     align-self: center;
   }
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid:hover {
+    color: #06b38b;
+    transform: scale(1);
+  }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
     width: 100%;
   }
@@ -2605,6 +2649,13 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a {
     border-radius: 0;
+  }
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .favorite-brand-products > li > a .favoriteBrandProductImg:hover {
+    transform: scale(1);
+  }
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box .btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
   }
 }
 @media screen and (max-width: 450px) {
