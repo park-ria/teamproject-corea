@@ -1657,6 +1657,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
   width: 150px;
   height: 150px;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
 }
@@ -1668,7 +1669,6 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper .wishItemViewMore img {
   width: inherit;
   height: inherit;
-  border-radius: 6px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 0.3s;
@@ -1736,6 +1736,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
   flex: 1;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge {
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #f00;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
   font-size: 1.4rem;
@@ -1813,14 +1819,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-weight: bold;
   opacity: 0.8;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemPurchaseButton {
   transition: background 0.3s;
   background: #0dcc5a;
   transition: all 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemPurchaseButton:hover {
   font-weight: bold;
   opacity: 0.8;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemAcutionButton {
+  background: #0095ee;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemXButton {
   width: 24px;
@@ -1948,6 +1957,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #dcdcdc;
   border-radius: 50%;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-shopkeeper .favoriteStoresTitle > p {
@@ -1960,6 +1970,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-overflow: ellipsis;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-score {
+  display: none;
   width: 100%;
   color: #111;
 }
@@ -2009,15 +2020,17 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   transition: all 0.5s;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li {
   color: #111;
@@ -2026,14 +2039,25 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box li span:not(.follower-box-title) {
   letter-spacing: normal;
 }
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid {
-  font-size: 1.6rem;
-  color: #06b38b;
-  transition: transform 0.3s, color 0.3s;
-}
-.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid:hover {
+.favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton {
+  width: 100%;
+  height: 35px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0dcc5a;
   color: #fff;
-  transform: scale(1.2);
+  font-size: 1.2rem;
+  /*.fa-solid {
+    font-size: map-get($fontSize, font-medium);
+    color: #06b38b;
+    transition: transform 0.3s, color 0.3s;
+    &:hover {
+      color: map-get($color, bg-light-color);
+      transform: scale(1.2);
+    }
+  }*/
 }
 .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
   flex: 1;
@@ -2185,6 +2209,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px;
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper {
   width: 100%;
@@ -2227,17 +2252,25 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favorite-brand-follower-box li span:not(.follower-box-title) {
   letter-spacing: normal;
 }
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button {
-  align-self: flex-end;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid {
-  font-size: 1.6rem;
-  color: #06b38b;
-  transition: transform 0.3s, color 0.3s;
-}
-.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid:hover {
+.favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton {
+  width: 170px;
+  height: 35px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0dcc5a;
   color: #fff;
-  transform: scale(1.2);
+  font-size: 1.2rem;
+  /*.fa-solid {
+    font-size: map-get($fontSize, font-medium);
+    color: #06b38b;
+    transition: transform 0.3s, color 0.3s;
+    &:hover {
+      color: map-get($color, bg-light-color);
+      transform: scale(1.2);
+    }
+  }*/
 }
 .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
   flex: 1;
@@ -2411,6 +2444,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .wishlist-tabs .wishlist-tab .wishlistTabButton {
     flex: 1;
+    font-size: 1.4rem;
+    height: 40px;
+    line-height: 40px;
+  }
+  .wishlist-tabs .wishlist-tab > span {
+    height: 40px;
   }
   /* wishlistContent */
   .wishlistContent {
@@ -2567,11 +2606,20 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
     width: auto;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
     gap: 10px;
   }
-  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton .fa-solid:hover {
-    color: #06b38b;
-    transform: scale(1);
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box {
+    width: 170px;
+  }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton {
+    width: 95px;
+    /*.fa-solid:hover {
+      color: #06b38b;
+      transform: scale(1);
+    }*/
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
     width: 100%;
@@ -2605,11 +2653,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     border-radius: 0;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper {
-    width: 90%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    flex: 1;
     flex-wrap: wrap;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-shopkeeper .favoriteBrandsTitle {
@@ -2637,9 +2685,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button {
     align-self: center;
   }
-  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton .fa-solid:hover {
-    color: #06b38b;
-    transform: scale(1);
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton {
+    width: 95px;
+    /*.fa-solid:hover {
+      color: #06b38b;
+      transform: scale(1);
+    }*/
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
     width: 100%;
@@ -2800,6 +2851,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower {
     width: auto;
+    justify-content: flex-end;
+  }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .favorite-store-follower-box {
+    display: none;
+  }
+  .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-info .favorite-store-follower .followButton {
+    width: 80px;
+    height: 35px;
+    font-size: 1.2rem;
   }
   .favorite-stores-content .favoriteStoresGroup .favoriteStoresWrap > li .favorite-store-products-box {
     width: 100%;
@@ -2815,6 +2875,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   /* favorite brands content */
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follower {
     width: 90px;
+  }
+  .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-info .favorite-brand-follow-button .followButton {
+    width: 80px;
+    height: 35px;
+    font-size: 1.2rem;
   }
   .favorite-brands-content .favoriteBrandsGroup .favoriteBrandsWrap > li .favorite-brand-products-box {
     width: 100%;

@@ -243,6 +243,13 @@ fetch(joonggoInfo)
 
       // 찜한 상품 저장
       const saveId = () => {
+        // 241008 박리아 auctionPrice 기능 추가
+        if (auctionPrice) {
+          wishItemArr.forEach((arr) => {
+            if (arr.id === id) arr.auctionPrice = auctionPrice;
+          });
+        }
+
         localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
       };
 
