@@ -339,7 +339,10 @@
                       display: inline-block;
                       padding: 5px;
                       margin-bottom: 10px;
-                      border: 1px solid #f00;
+                      border: 1px solid map-get($color, bg-sub-color);
+                      border-radius: 6px;
+                      font-size: map-get($fontSize, font-extra-small);
+                      color: map-get($color, bg-sub-color);
                     }
                     .wishItemSellerName {
                       font-size: map-get($fontSize, font-small);
@@ -412,10 +415,10 @@
                   font-size: map-get($fontSize, font-medium);
                   text-align: center;
                   transition: background 0.3s;
-                  @include blackBtn;
-                  &.wishItemPurchaseButton {
+                  @include greenBtn;
+                  &.wishItemChatButton {
                     transition: background 0.3s;
-                    @include greenBtn;
+                    @include blackBtn;
                   }
                   &.wishItemAcutionButton {
                     background: map-get($map: $color, $key: bg-sub-color);
@@ -1005,6 +1008,12 @@
                     flex-direction: column;
                     .wishItemTitleBox {
                       flex: 0;
+                      .auction-badge {
+                        margin-bottom: 5px;
+                        .fa-gavel {
+                          margin-right: 3px;
+                        }
+                      }
                       .wishItemSellerName {
                         font-size: map-get($fontSize, font-extra-small);
                       }

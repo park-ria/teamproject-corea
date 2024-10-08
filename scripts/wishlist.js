@@ -219,7 +219,7 @@ const addItemsInTheWishItemList = (product, index) => {
                   <span class="wishItemTitleBox">
                     ${
                       findLsArr.auctionPrice
-                        ? "<span class='auction-badge'>중고경매</span>"
+                        ? "<span class='auction-badge'><i class='fa-solid fa-gavel'></i>중고경매</span>"
                         : ""
                     }
                     <p class="wishItemSellerName">${

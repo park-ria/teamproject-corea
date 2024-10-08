@@ -1741,7 +1741,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   display: inline-block;
   padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid #f00;
+  border: 1px solid #0095ee;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  color: #0095ee;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
   font-size: 1.4rem;
@@ -1812,19 +1815,19 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 1.6rem;
   text-align: center;
   transition: background 0.3s;
-  background: #3a3a3a;
+  background: #0dcc5a;
   transition: all 0.3s;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a:hover {
   font-weight: bold;
   opacity: 0.8;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemPurchaseButton {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
   transition: background 0.3s;
-  background: #0dcc5a;
+  background: #3a3a3a;
   transition: all 0.3s;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemPurchaseButton:hover {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
   font-weight: bold;
   opacity: 0.8;
 }
@@ -2505,6 +2508,12 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
     flex: 0;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge {
+    margin-bottom: 5px;
+  }
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge .fa-gavel {
+    margin-right: 3px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
     font-size: 1.2rem;
