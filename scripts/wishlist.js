@@ -217,14 +217,16 @@ const addItemsInTheWishItemList = (product, index) => {
               }" class="wishItemViewMore">
                 <span class="wishItemInfo">
                   <span class="wishItemTitleBox">
-                    ${
-                      findLsArr.auctionPrice
-                        ? "<span class='auction-badge'><i class='fa-solid fa-gavel'></i>중고경매</span>"
-                        : ""
-                    }
-                    <p class="wishItemSellerName">${
-                      product.detail.store_name
-                    }</p>
+                    <span class="wishItemTitleGroup">
+                      ${
+                        findLsArr.auctionPrice
+                          ? "<span class='badge auction'><i class='fa-solid fa-gavel'></i>중고경매</span>"
+                          : "<span class='badge deal'><i class='fa-solid fa-box'></i>중고거래</span>"
+                      }
+                      <p class="wishItemSellerName">${
+                        product.detail.store_name
+                      }</p>
+                    </span>
                     <p class="wishItemName">
                       ${product.title}
                     </p>
@@ -245,6 +247,11 @@ const addItemsInTheWishItemList = (product, index) => {
                       }
                     </span>
                     <span class="wishItemShippingInfo">
+                      ${
+                        product.point === ""
+                          ? ""
+                          : `<span class="wishItemPlace"><i class="fa-solid fa-location-dot"></i> ${product.point}</span>`
+                      }
                       <p class="wishItemShippingCharge">
                         ${
                           product.detail.delivery_charge === "-"
@@ -252,12 +259,6 @@ const addItemsInTheWishItemList = (product, index) => {
                             : `배송비 ${product.detail.delivery_charge}`
                         }
                       </p>
-                      ${
-                        product.point === ""
-                          ? ""
-                          : `<span class="wishItemPlace"><i class="fa-solid fa-location-dot"></i> ${product.point}</span>`
-                      }
-                      
                     </span>
                   </span>
                 </span>

@@ -335,18 +335,33 @@
                   justify-content: space-between;
                   .wishItemTitleBox {
                     flex: 1;
-                    .auction-badge {
-                      display: inline-block;
-                      padding: 5px;
-                      margin-bottom: 10px;
-                      border: 1px solid map-get($color, bg-sub-color);
-                      border-radius: 6px;
-                      font-size: map-get($fontSize, font-extra-small);
-                      color: map-get($color, bg-sub-color);
-                    }
-                    .wishItemSellerName {
-                      font-size: map-get($fontSize, font-small);
-                      color: map-get($color, bg-dark-gray);
+                    .wishItemTitleGroup {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
+                      gap: 10px;
+                      .badge {
+                        display: inline-block;
+                        padding: 5px;
+                        margin: 0px;
+                        border-radius: 4px;
+                        font-size: 1rem;
+                        &.auction {
+                          border: 1px solid map-get($color, bg-sub-color);
+                          color: map-get($color, bg-sub-color);
+                        }
+                        &.deal {
+                          border: 1px solid map-get($color, bg-main-color);
+                          color: map-get($color, bg-main-color);
+                        }
+                        .fa-solid {
+                          margin-right: 3px;
+                        }
+                      }
+                      .wishItemSellerName {
+                        font-size: map-get($fontSize, font-small);
+                        color: map-get($color, bg-dark-gray);
+                      }
                     }
                     .wishItemName {
                       width: 100%;
@@ -416,12 +431,22 @@
                   text-align: center;
                   transition: background 0.3s;
                   @include greenBtn;
+                  // background: map-get($color, bg-light-color);
+                  // border: 1px solid map-get($color, bg-main-color);
+                  // color: map-get($color, bg-main-color);
                   &.wishItemChatButton {
                     transition: background 0.3s;
-                    @include blackBtn;
+                    //@include blackBtn;
+                    // background: map-get($color, bg-light-color);
+                    // border: 1px solid map-get($color, bg-dark-color);
+                    // color: map-get($color, bg-dark-color);
+                    background: #555;
                   }
                   &.wishItemAcutionButton {
-                    background: map-get($map: $color, $key: bg-sub-color);
+                    background: map-get($color, bg-sub-color);
+                    // background: map-get($color, bg-light-color);
+                    // border: 1px solid map-get($color, bg-sub-color);
+                    // color: map-get($color, bg-sub-color);
                   }
                   &.wishItemXButton {
                     width: 24px;
@@ -887,7 +912,8 @@
                   .wishItemInfo {
                     .wishItemPriceBox {
                       flex: 1;
-                      flex-direction: column;
+                      //flex-direction: column;
+                      flex-direction: column-reverse;
                       align-items: center;
                       justify-content: center;
                       gap: 15px;
@@ -904,7 +930,7 @@
                         }
                       }
                       .wishItemShippingInfo {
-                        flex-direction: row-reverse;
+                        flex-direction: row;
                         gap: 10px;
                       }
                     }
@@ -1008,33 +1034,36 @@
                     flex-direction: column;
                     .wishItemTitleBox {
                       flex: 0;
-                      .auction-badge {
-                        margin-bottom: 5px;
-                        .fa-gavel {
-                          margin-right: 3px;
+                      .wishItemTitleGroup {
+                        flex-direction: row;
+                        align-items: center;
+                        .wishItemSellerName {
+                          font-size: map-get($fontSize, font-extra-small);
                         }
-                      }
-                      .wishItemSellerName {
-                        font-size: map-get($fontSize, font-extra-small);
                       }
                       .wishItemName {
                         width: 90%;
                         margin-top: 5px;
                         font-size: map-get($fontSize, font-small);
                         line-height: 18px;
+                        -webkit-line-clamp: 1;
                       }
                     }
                     .wishItemPriceBox {
-                      flex: 1;
                       min-width: 180px;
-                      justify-content: center;
-                      flex-wrap: wrap;
-                      align-items: flex-start;
+                      flex-direction: row-reverse;
+                      //justify-content: center;
+                      justify-content: flex-end;
+                      align-content: center;
+                      //flex-wrap: wrap;
+                      flex-wrap: wrap-reverse;
+                      //align-items: flex-start;
                       gap: 8px;
                       .wishItemPriceInfo {
                         width: auto;
                         justify-content: flex-start;
                         flex-direction: row-reverse;
+                        gap: 5px;
                         .wishItemPrice {
                           b {
                             font-size: map-get($fontSize, font-medium);
@@ -1046,10 +1075,10 @@
                         }
                       }
                       .wishItemShippingInfo {
-                        flex-direction: row-reverse;
+                        //flex-direction: row-reverse;
                         justify-content: center;
                         align-items: center;
-                        gap: 10px;
+                        gap: 5px;
                         font-size: map-get($fontSize, font-small);
                       }
                     }

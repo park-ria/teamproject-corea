@@ -1737,16 +1737,31 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
   flex: 1;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .badge {
   display: inline-block;
   padding: 5px;
-  margin-bottom: 10px;
+  margin: 0px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .badge.auction {
   border: 1px solid #0095ee;
-  border-radius: 6px;
-  font-size: 1.2rem;
   color: #0095ee;
 }
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .badge.deal {
+  border: 1px solid #0dcc5a;
+  color: #0dcc5a;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .badge .fa-solid {
+  margin-right: 3px;
+}
+.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .wishItemSellerName {
   font-size: 1.4rem;
   color: #6d6d6d;
 }
@@ -1824,12 +1839,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton {
   transition: background 0.3s;
-  background: #3a3a3a;
-  transition: all 0.3s;
-}
-.wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemChatButton:hover {
-  font-weight: bold;
-  opacity: 0.8;
+  background: #555;
 }
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons a.wishItemAcutionButton {
   background: #0095ee;
@@ -2408,7 +2418,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   /* wish-items-content */
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
     flex: 1;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     gap: 15px;
@@ -2424,7 +2434,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     font-size: 1.2rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 10px;
   }
 }
@@ -2509,13 +2519,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox {
     flex: 0;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge {
-    margin-bottom: 5px;
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup {
+    flex-direction: row;
+    align-items: center;
   }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .auction-badge .fa-gavel {
-    margin-right: 3px;
-  }
-  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemSellerName {
+  .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemTitleGroup .wishItemSellerName {
     font-size: 1.2rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemTitleBox .wishItemName {
@@ -2523,19 +2531,21 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     margin-top: 5px;
     font-size: 1.4rem;
     line-height: 18px;
+    -webkit-line-clamp: 1;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox {
-    flex: 1;
     min-width: 180px;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-content: center;
+    flex-wrap: wrap-reverse;
     gap: 8px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo {
     width: auto;
     justify-content: flex-start;
     flex-direction: row-reverse;
+    gap: 5px;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemPriceInfo .wishItemPrice b {
     font-size: 1.6rem;
@@ -2545,10 +2555,9 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     font-size: 1.2rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemViewMore .wishItemInfo .wishItemPriceBox .wishItemShippingInfo {
-    flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-size: 1.4rem;
   }
   .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemDescGroup .wishItemDesc .wishItemButtons {
