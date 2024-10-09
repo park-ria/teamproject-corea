@@ -258,6 +258,13 @@ fetch(joonggoInfo)
 
       // 찜한 상품 저장
       const saveId = () => {
+        // 241008 박리아 auctionPrice 기능 추가
+        if (auctionPrice) {
+          wishItemArr.forEach((arr) => {
+            if (arr.id === id) arr.auctionPrice = auctionPrice;
+          });
+        }
+
         localStorage.setItem("wishItemArr", JSON.stringify(wishItemArr));
       };
 
@@ -583,9 +590,12 @@ fetch(joonggoInfo)
           btn.addEventListener("click", movePage);
         });
       } else {
+        console.log();
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="chat">채팅하기</a>
-        <a href="#none" class="trade">구매하기</a>
+        <a href="#none" class="trade">${
+          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+        }</a>
         `;
 
         document.querySelectorAll(".chat").forEach((btn) => {
@@ -608,7 +618,9 @@ fetch(joonggoInfo)
       } else {
         bottomBtns.innerHTML = `
         <a href="/pages/login.html" class="chat-btn">채팅하기</a>
-        <a href="/pages/order.html?id=${product.id}" class="trade-btn">구매하기</a>
+        <a href="/pages/order.html?id=${product.id}" class="trade-btn">${
+          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+        }</a>
         `;
         document.querySelectorAll(".chat-btn").forEach((btn) => {
           btn.addEventListener("click", movePage);
