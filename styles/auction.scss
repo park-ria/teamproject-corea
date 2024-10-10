@@ -196,9 +196,9 @@ body {
               }
             }
           }
-          .badge {
-            @include badgeType;
-          }
+          // .badge {
+          //   @include badgeType;
+          // }
         }
       }
     }
@@ -300,9 +300,9 @@ body {
           }
         }
       }
-      .badge {
-        @include badgeType;
-      }
+      // .badge {
+      //   @include badgeType;
+      // }
     }
   }
 }
@@ -337,13 +337,18 @@ body {
         .bestAuction {
           li {
             a {
-              .slide-img {
-                .timeEvent {
-                  padding: 4px 10px;
-                  .timeItem {
-                    width: 35px;
-                    span {
-                      padding-top: 5px;
+              .slideImgWrap {
+                .slide-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
+                  .timeEvent {
+                    padding: 4px 0 4px 10px;
+                    .timeItem {
+                      width: 34px;
+                      span {
+                        padding-top: 5px;
+                      }
                     }
                   }
                 }
@@ -367,16 +372,23 @@ body {
     .product {
       li {
         a {
+          .slideImgWrap {
+            .slide-img {
+              &:hover {
+                transform: scale(1);
+              }
+            }
+          }
           .slide-desc {
             .desc-title {
               height: 18px;
             }
           }
         }
-        .badge {
-          width: 40px;
-          height: 20px;
-        }
+        // .badge {
+        //   width: 40px;
+        //   height: 20px;
+        // }
       }
     }
   }
