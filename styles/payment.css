@@ -1473,38 +1473,18 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     max-height: 144px;
   }
 }
-.payment-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 80px;
+.payment {
   padding: 100px 0 150px;
-}
-.payment-wrap .section-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.payment-wrap .section-wrap .payment-img {
-  width: 40%;
-  height: 550px;
-  border-radius: 30px;
-  background: url("/images/opengraph.jpg") 80% 50%/cover no-repeat;
-}
-.payment-wrap .section-wrap .payment {
-  width: 52%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 30px;
 }
-.payment-wrap .section-wrap .payment h3 {
+.payment h3 {
   font-size: 2.6rem;
   position: relative;
 }
-.payment-wrap .section-wrap .payment h3::before {
+.payment h3::before {
   content: "";
   position: absolute;
   left: 0;
@@ -1514,37 +1494,55 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   background: url("/images/delivery.svg") center/contain no-repeat;
   animation: truck 1s ease-in-out both;
 }
-.payment-wrap .section-wrap .payment .paymentHeading {
+.payment .paymentHeading {
   font-size: 2rem;
 }
-.payment-wrap .section-wrap .payment .paymentDesc {
-  width: 100%;
-  padding: 50px 0;
+.payment .paymentDesc {
+  width: 800px;
+  padding-top: 50px;
   border-top: 1px dashed #3a3a3a;
 }
-.payment-wrap .section-wrap .payment .paymentDesc ul li {
+.payment .paymentDesc ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
   padding: 15px 0;
 }
-.payment-wrap .section-wrap .payment .paymentDesc ul li span {
+.payment .paymentDesc ul li span {
   width: 150px;
   font-size: 1.8rem;
   text-align: center;
 }
-.payment-wrap .section-wrap .payment .paymentDesc ul li p {
+.payment .paymentDesc ul li p {
   width: 150px;
   font-size: 1.6rem;
 }
-.payment-wrap .section-wrap .payment .payBtns {
+.payment .paymentDesc ul li:last-child {
+  flex-direction: column-reverse;
+  gap: 10px;
+  padding: 40px 0;
+}
+.payment .paymentDesc ul li:last-child span {
   width: 100%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #dcdcdc;
+}
+.payment .paymentDesc ul li:last-child p {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: #6d6d6d;
+}
+.payment .payBtns {
+  width: 500px;
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.payment-wrap .section-wrap .payment .payBtns a {
+.payment .payBtns a {
   width: 50%;
   padding: 20px 0;
   text-align: center;
@@ -1552,36 +1550,21 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 1.8rem;
   color: #fff;
 }
-.payment-wrap .section-wrap .payment .payBtns a:first-child {
+.payment .payBtns a:first-child {
   background: #3a3a3a;
   transition: all 0.3s;
 }
-.payment-wrap .section-wrap .payment .payBtns a:first-child:hover {
+.payment .payBtns a:first-child:hover {
   font-weight: bold;
   opacity: 0.8;
 }
-.payment-wrap .section-wrap .payment .payBtns a:last-child {
+.payment .payBtns a:last-child {
   background: #0dcc5a;
   transition: all 0.3s;
 }
-.payment-wrap .section-wrap .payment .payBtns a:last-child:hover {
+.payment .payBtns a:last-child:hover {
   font-weight: bold;
   opacity: 0.8;
-}
-.payment-wrap .copyright {
-  text-align: center;
-}
-.payment-wrap .copyright p {
-  font-size: 1.4rem;
-  line-height: 1.3;
-  color: #6d6d6d;
-  margin-bottom: 15px;
-}
-.payment-wrap .copyright span {
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #dcdcdc;
 }
 
 @keyframes truck {
@@ -1605,20 +1588,11 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 840px) {
-  .payment-wrap {
+  .payment {
     padding: 80px 0 110px;
-  }
-  .payment-wrap .section-wrap {
-    justify-content: center;
-  }
-  .payment-wrap .section-wrap .payment-img {
-    display: none;
-  }
-  .payment-wrap .section-wrap .payment {
-    width: 100%;
     gap: 20px;
   }
-  .payment-wrap .section-wrap .payment h3::before {
+  .payment h3::before {
     content: "";
     position: absolute;
     left: 0;
@@ -1628,27 +1602,30 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     height: 60px;
     background: url("/images/delivery.svg") center/contain no-repeat;
   }
-  .payment-wrap .section-wrap .payment .paymentDesc {
-    width: 80%;
+  .payment .paymentDesc {
+    width: 100%;
     padding-top: 30px;
   }
-  .payment-wrap .section-wrap .payment .paymentDesc ul li {
+  .payment .paymentDesc ul li {
     gap: 20px;
     padding: 12px 0;
   }
-  .payment-wrap .section-wrap .payment .paymentDesc ul li span {
+  .payment .paymentDesc ul li span {
     width: 120px;
     font-size: 1.9rem;
   }
-  .payment-wrap .section-wrap .payment .paymentDesc ul li p {
+  .payment .paymentDesc ul li p {
     width: 120px;
     font-size: 1.7rem;
   }
-  .payment-wrap .section-wrap .payment .payBtns {
-    width: 80%;
+  .payment .paymentDesc ul li:last-child {
+    padding: 20px 0;
+  }
+  .payment .payBtns {
+    width: 100%;
     gap: 10px;
   }
-  .payment-wrap .section-wrap .payment .payBtns a {
+  .payment .payBtns a {
     padding: 16px 0;
   }
 }
