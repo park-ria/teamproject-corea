@@ -1657,6 +1657,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 .wish-items-content .wish-items-content-detail .wishItemList li .wishItem .wishItemImgWrapper {
   width: 150px;
   height: 150px;
+  border: 1px solid #dcdcdc;
   border-radius: 6px;
   position: relative;
   overflow: hidden;

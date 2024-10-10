@@ -261,6 +261,7 @@
           .wishItemImgWrapper {
             width: 150px;
             height: 150px;
+            border: 1px solid map-get($color, bg-light-gray);
             border-radius: 6px;
             position: relative;
             overflow: hidden;
