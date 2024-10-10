@@ -1571,6 +1571,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 }
 
+#mobile-bottom-menu {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 9999;
+}
+
 #main-slide {
   scroll-margin: 500px;
   display: flex;

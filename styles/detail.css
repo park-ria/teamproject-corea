@@ -1540,7 +1540,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 
 #main {
   margin-top: 285px;
-  margin-bottom: 185px;
+  margin-bottom: 150px;
 }
 #main .inner .main {
   display: flex;
@@ -1662,8 +1662,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   font-size: 2rem;
   transition: color 0.3s;
 }
-#main .inner .main .main-img .img-icons .icon-box:hover a i {
-  color: #6d6d6d;
+#main .inner .main .main-img .img-icons .icon-box:first-child a i.fa-solid {
+  color: crimson;
 }
 #main .inner .main .main-img .img-icons .icon-box:first-child:hover a i {
   color: crimson;
@@ -2379,7 +2379,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 
 #event {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
 }
 #event .event-content .event-heading {
   display: flex;
@@ -2417,7 +2417,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 
 #recommended {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
 }
 #recommended .recommended-content {
   position: relative;
@@ -2526,7 +2526,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 
 #recent {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
 }
 #recent .recent-content {
   position: relative;

@@ -1,0 +1,96 @@
+.container {
+  padding: 100px 0 150px;
+  gap: 200px;
+}
+.container .signinContent {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.container .signinContent .signinIcon {
+  padding-bottom: 35px;
+}
+.container .signinContent .signinIcon #firstLogo {
+  width: 190px;
+}
+.container .signinContent .signinIcon #secondLogo {
+  width: 50px;
+  margin-bottom: 13px;
+  animation: recycle 1s ease-out both;
+}
+.container .signinContent .signinIcon #thirdLogo {
+  width: 120px;
+  padding-bottom: 13px;
+}
+.container .signinContent .signinDesc {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+.container .signinContent .signinDesc h1 {
+  font-size: 26px;
+}
+.container .signinContent .signinDesc .signinDescBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background: #eee;
+  text-align: center;
+  padding: 30px;
+  line-height: 2;
+  font-size: 18px;
+  letter-spacing: 0.7px;
+}
+.container .signinContent .signinDesc .buttons {
+  display: flex;
+  gap: 20px;
+}
+.container .signinContent .signinDesc .buttons button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+}
+.container .signinContent .signinDesc .buttons #buttonLogin {
+  border: none;
+  background: #0dcc5a;
+  color: #fff;
+}
+.container .signinContent .signinDesc .buttons #buttonMain {
+  border: 1px solid #0dcc5a;
+  background: none;
+  color: #0dcc5a;
+}
+
+@keyframes recycle {
+  100% {
+    transform: rotate(-360deg);
+    transform-origin: center;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .container .signinContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container .signinContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container .signinContent .signinIcon #firstLogo {
+    width: 160px;
+  }
+  .container .signinContent .signinIcon #secondLogo {
+    width: 45px;
+    margin-bottom: 8px;
+  }
+  .container .signinContent .signinIcon #thirdLogo {
+    width: 100px;
+  }
+}
