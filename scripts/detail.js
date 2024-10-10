@@ -594,7 +594,7 @@ fetch(joonggoInfo)
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="chat">채팅하기</a>
         <a href="#none" class="trade">${
-          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+          product.pay_flag > 0 ? "구매하기" : "가격제안"
         }</a>
         `;
 
@@ -619,7 +619,7 @@ fetch(joonggoInfo)
         bottomBtns.innerHTML = `
         <a href="/pages/login.html" class="chat-btn">채팅하기</a>
         <a href="/pages/order.html?id=${product.id}" class="trade-btn">${
-          product.detail.pay_flag > 0 ? "구매하기" : "가격제안"
+          product.pay_flag > 0 ? "구매하기" : "가격제안"
         }</a>
         `;
         document.querySelectorAll(".chat-btn").forEach((btn) => {
