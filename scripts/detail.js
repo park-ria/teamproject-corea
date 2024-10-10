@@ -144,6 +144,21 @@ fetch(joonggoInfo)
       // picked-list 클릭 이벤트
       const loginCheck = JSON.parse(localStorage.getItem("loginCheck")) || [];
 
+      const iconBoxs = document.querySelectorAll(".icon-box");
+
+      iconBoxs.forEach((box) => {
+        box.addEventListener("click", () => {
+          if (loginCheck.length > 0) {
+            if (
+              box.classList.contains("follow") ||
+              box.classList.contains("report")
+            ) {
+              box.querySelector("a").href = "#none";
+            }
+          }
+        });
+      });
+
       // Making Heading-category
       product.detail.page_path.forEach((path, index) => {
         const headingCategory = document.querySelector(".heading-category");
