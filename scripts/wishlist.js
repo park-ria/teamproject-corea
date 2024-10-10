@@ -180,9 +180,14 @@ const addItemsInTheWishItemList = (product, index) => {
   const findedWishItem = wishItemArr.find((arr) => arr.id === product.id);
   const watchInfoArr = JSON.parse(localStorage.getItem("watchInfoArr")) || [];
 
-  let viewCount;
+  let viewCount = null;
   if (watchInfoArr.length > 0) {
     viewCount = watchInfoArr.find((arr) => arr.id === product.id);
+  }
+
+  let findLsArr = null;
+  if (wishItemArr.length > 0) {
+    findLsArr = wishItemArr.find((arr) => arr.id === product.id);
   }
 
   const li = `
@@ -212,9 +217,16 @@ const addItemsInTheWishItemList = (product, index) => {
               }" class="wishItemViewMore">
                 <span class="wishItemInfo">
                   <span class="wishItemTitleBox">
-                    <p class="wishItemSellerName">${
-                      product.detail.store_name
-                    }</p>
+                    <span class="wishItemTitleGroup">
+                      ${
+                        findLsArr.auctionPrice
+                          ? "<span class='badge auction'><i class='fa-solid fa-gavel'></i>중고경매</span>"
+                          : "<span class='badge deal'><i class='fa-solid fa-box'></i>중고거래</span>"
+                      }
+                      <p class="wishItemSellerName">${
+                        product.detail.store_name
+                      }</p>
+                    </span>
                     <p class="wishItemName">
                       ${product.title}
                     </p>
@@ -222,7 +234,11 @@ const addItemsInTheWishItemList = (product, index) => {
                   <span class="wishItemPriceBox">
                     <span class="wishItemPriceInfo">
                       <p class="wishItemPrice">
-                        <b>${product.price.slice(0, -1)}</b>원
+                        <b>${
+                          findLsArr.auctionPrice
+                            ? findLsArr.auctionPrice
+                            : product.price.slice(0, -1)
+                        }</b>원
                       </p>
                       ${
                         product.pay_flag > 0
@@ -231,6 +247,11 @@ const addItemsInTheWishItemList = (product, index) => {
                       }
                     </span>
                     <span class="wishItemShippingInfo">
+                      ${
+                        product.point === ""
+                          ? ""
+                          : `<span class="wishItemPlace"><i class="fa-solid fa-location-dot"></i> ${product.point}</span>`
+                      }
                       <p class="wishItemShippingCharge">
                         ${
                           product.detail.delivery_charge === "-"
@@ -238,23 +259,19 @@ const addItemsInTheWishItemList = (product, index) => {
                             : `배송비 ${product.detail.delivery_charge}`
                         }
                       </p>
-                      ${
-                        product.point === ""
-                          ? ""
-                          : `<span class="wishItemPlace"><i class="fa-solid fa-location-dot"></i> ${product.point}</span>`
-                      }
-                      
                     </span>
                   </span>
                 </span>
               </a>
               <span class="wishItemButtons">
-                <a class="wishItemChatButton" href="#none">채팅하기</a>
                 ${
-                  product.pay_flag > 0
+                  findLsArr.auctionPrice
+                    ? '<a class="wishItemAcutionButton">입찰하기</a>'
+                    : product.pay_flag > 0
                     ? `<a class="wishItemPurchaseButton" href="/pages/order.html?id=${product.id}">구매하기</a>`
                     : '<a class="wishItemProposalButton">가격제안</a>'
                 }
+                <a class="wishItemChatButton" href="#none">채팅하기</a>
                 <a class="wishItemXButton" href="#none">
                   <i class="fa-solid fa-xmark"></i>
                 </a>
@@ -390,6 +407,10 @@ const addItemsInTheFavoriteStores = (store, index) => {
               }</span>
             </li>
             <li>|</li>
+            <li>거래순환률 ${Math.ceil(
+              store.info.product_store_confidence_index / 10
+            )}</li>
+            <li>|</li>
             <li>
               <span class="follower-box-title">팔로워</span>
               <span class="numberOfFollowers">${
@@ -397,9 +418,7 @@ const addItemsInTheFavoriteStores = (store, index) => {
               }</span>
             </li>
           </ul>
-          <a href="#none" class="followButton">
-            <i class="fa-solid fa-bookmark"></i>
-          </a>
+          <a href="#none" class="followButton">팔로우 취소</a>
         </div>
       </div>
       <div class="favorite-store-products-box">
@@ -609,7 +628,7 @@ const addItemsInTheFavoriteBrands = (brand, index) => {
             </div>
             <div class="favorite-brand-follow-button">
               <a href="#none" class="followButton">
-                <i class="fa-solid fa-bookmark"></i>
+                팔로우 취소
               </a>
             </div>
           </div>

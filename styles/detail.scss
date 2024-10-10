@@ -291,7 +291,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 // main
 #main {
   margin-top: 285px;
-  margin-bottom: 185px;
+  margin-bottom: 150px;
 
   .inner {
     .main {
@@ -389,8 +389,8 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
               }
             }
 
-            &:hover a i {
-              color: map-get($map: $color, $key: bg-dark-gray);
+            &:first-child a i.fa-solid {
+              color: crimson;
             }
 
             &:first-child:hover a i {
@@ -1162,7 +1162,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 // event
 #event {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
   .event-content {
     .event-heading {
       @include sectionHeading;
@@ -1190,7 +1190,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 // recommended
 #recommended {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
   .recommended-content {
     position: relative;
     .recommended-heading {
@@ -1207,7 +1207,7 @@ $home-gradient: linear-gradient(to bottom, #89f6b5, #0dcc5a);
 
 // recent
 #recent {
-  margin-bottom: 185px;
+  margin-bottom: 150px;
   .recent-content {
     position: relative;
     .recent-heading {

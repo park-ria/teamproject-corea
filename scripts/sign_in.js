@@ -3,13 +3,12 @@ const userPw1 = document.querySelector("#password1");
 const userPw2 = document.querySelector("#password2");
 const name = document.querySelector("#name");
 const phone = document.querySelector("#phone");
-let userAccount = JSON.parse(localStorage.getItem("account")) || [];
+let userAccount = JSON.parse(localStorage.getItem("userAccount")) || [];
 
 const saveAccount = () => {
   localStorage.setItem("userAccount", JSON.stringify(userAccount));
 };
 
-saveAccount();
 let isValid = true;
 
 email.addEventListener("change", () => {
@@ -249,6 +248,5 @@ document.frm.addEventListener("submit", (e) => {
   };
   userAccount.push(userInfo);
   saveAccount();
-  alert("회원가입이 완료되었습니다:)");
-  location.href = "/pages/login.html";
+  location.href = "/pages/signinComplete.html";
 });
