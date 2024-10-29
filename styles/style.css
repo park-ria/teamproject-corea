@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 * {
   margin: 0;
@@ -1752,7 +1751,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a {
   width: 240px;
-  height: 376px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1769,7 +1768,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-img {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc {
@@ -1778,13 +1777,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
   width: 100%;
-  height: 47px;
-  text-overflow: ellipsis;
+  height: 27px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -1806,63 +1802,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #6d6d6d;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
-  position: absolute;
-  top: 5%;
-  right: -2%;
-  width: 46px;
-  height: 26px;
-  cursor: pointer;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-best::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "인기";
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-new::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "신규";
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#best-ranking .ranking-content .ranking-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
+  color: #999;
 }
 #best-ranking .ranking-content .ranking-slide .slideImgWrap {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #dcdcdc;
 }
 #best-ranking .ranking-content .ranking-slide .slideImgWrap .slide-img {
   transition: all 0.3s;
@@ -2023,7 +1970,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #auction .auction-content .auction-slide .slideWrapper li a {
   width: 240px;
-  height: 376px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2040,7 +1987,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #auction .auction-content .auction-slide .slideWrapper li a .slide-img {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc {
@@ -2049,13 +1996,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
   width: 100%;
-  height: 47px;
-  text-overflow: ellipsis;
+  height: 27px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -2077,63 +2021,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #6d6d6d;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge {
-  position: absolute;
-  top: 5%;
-  right: -2%;
-  width: 46px;
-  height: 26px;
-  cursor: pointer;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-best::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "인기";
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-new::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "신규";
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#auction .auction-content .auction-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
+  color: #999;
 }
 #auction .auction-content .auction-slide .slideImgWrap {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #dcdcdc;
 }
 #auction .auction-content .auction-slide .slideImgWrap .slide-img {
   transition: all 0.3s;
@@ -2216,7 +2111,8 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
   width: 150px;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
   overflow: hidden;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img {
@@ -2233,13 +2129,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
   font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
   width: 100%;
-  height: 47px;
-  text-overflow: ellipsis;
+  height: 27px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
   display: block;
@@ -2261,7 +2154,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #6d6d6d;
+  color: #999;
 }
 #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content.active {
   display: flex;
@@ -2363,7 +2256,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a {
   width: 240px;
-  height: 376px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2380,7 +2273,7 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-img {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc {
@@ -2389,13 +2282,10 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
   font: 400 1.7rem/1.4 "Noto Sans KR", sans-serif;
   width: 100%;
-  height: 47px;
-  text-overflow: ellipsis;
+  height: 27px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-price {
   display: block;
@@ -2417,63 +2307,14 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: #6d6d6d;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge {
-  position: absolute;
-  top: 5%;
-  right: -2%;
-  width: 46px;
-  height: 26px;
-  cursor: pointer;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best {
-  background: url("../images/badge-best.png") center/contain no-repeat;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-best::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "인기";
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new {
-  background: url("../images/badge-new.png") center/contain no-repeat;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-new::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "신규";
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction {
-  background: url("../images/badge-auction.png") center/contain no-repeat;
-}
-#recommended .recommended-content .recommended-slide .slideWrapper li .badge.badge-auction::before {
-  position: absolute;
-  top: 55%;
-  right: 12%;
-  transform: translateY(-50%);
-  font: 400 1.3rem/1 "JalnanGothic";
-  letter-spacing: 0;
-  color: #fff;
-  text-shadow: 0 0 1px #111;
-  content: "경매";
+  color: #999;
 }
 #recommended .recommended-content .recommended-slide .slideImgWrap {
   width: 100%;
   height: 240px;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #dcdcdc;
 }
 #recommended .recommended-content .recommended-slide .slideImgWrap .slide-img {
   transition: all 0.3s;
@@ -2757,18 +2598,89 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   }
 }
 @media screen and (max-width: 840px) {
+  .slide-btns button {
+    position: absolute;
+    top: 35%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+  }
+  .slide-btns button i {
+    font-size: 2rem;
+    color: #6d6d6d;
+    line-height: 35px;
+  }
+  .slide-btns button.slidePrev {
+    left: 0;
+    transform: translateX(-50%);
+  }
+  .slide-btns button.slidePrev:hover {
+    transform: translate(-50%, 5%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .slide-btns button.slideNext {
+    right: 0;
+    transform: translateX(50%);
+  }
+  .slide-btns button.slideNext:hover {
+    transform: translate(50%, 5%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .slide-btns button.disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+  .slide-btns button.disabled.slidePrev {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .slide-btns button.disabled.slidePrev:hover {
+    transform: translate(-50%, 0);
+  }
+  .slide-btns button.disabled.slideNext {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .slide-btns button.disabled.slideNext:hover {
+    transform: translate(50%, 0);
+  }
+  .slide-btns .slidePager {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.3s;
+  }
+  .slide-btns .slidePager span {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #dcdcdc;
+    cursor: pointer;
+    transition: all 0.6s;
+  }
+  .slide-btns .slidePager span:hover {
+    background: #0dcc5a;
+  }
+  .slide-btns .slidePager span.active {
+    width: 30px;
+    background: linear-gradient(to bottom, #89f6b5, #0dcc5a);
+  }
+  .slide-btns .slidePager span:hover {
+    background: #dcdcdc;
+  }
   #best-ranking .ranking-content .ranking-slide {
-    height: 390px;
+    height: 370px;
   }
   #best-ranking .ranking-content .ranking-slide .slideWrapper li a {
-    height: 366px;
+    height: 340px;
   }
   #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slide-desc .desc-title {
-    height: 36px;
-  }
-  #best-ranking .ranking-content .ranking-slide .slideWrapper li .badge {
-    width: 40px;
     height: 20px;
+  }
+  #best-ranking .ranking-content .ranking-slide .slideWrapper li a .slideImgWrap .slide-img:hover {
+    transform: scale(1);
   }
   #auction .auction-banner {
     height: auto;
@@ -2856,17 +2768,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     transform: translate(-50%, -50%) skew(-25deg);
   }
   #auction .auction-content .auction-slide {
-    height: 390px;
+    height: 370px;
   }
   #auction .auction-content .auction-slide .slideWrapper li a {
-    height: 366px;
+    height: 340px;
   }
   #auction .auction-content .auction-slide .slideWrapper li a .slide-desc .desc-title {
-    height: 36px;
-  }
-  #auction .auction-content .auction-slide .slideWrapper li .badge {
-    width: 40px;
     height: 20px;
+  }
+  #auction .auction-content .auction-slide .slideWrapper li a .slideImgWrap .slide-img:hover {
+    transform: scale(1);
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-menu {
     flex-wrap: wrap;
@@ -2880,12 +2791,15 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap {
     width: 100px;
   }
+  #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-img-wrap .tab-content-img:hover {
+    transform: scale(1);
+  }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc {
     width: calc(100% - 100px);
     padding: 5px 10px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-title {
-    height: 36px;
+    height: 20px;
   }
   #weekly-item .weekly-item-content .weekly-item-tabmenu .tab-content li a .tab-content-desc .desc-price {
     margin: 5px 0 10px;
@@ -2895,17 +2809,16 @@ footer .inner .footer-lower .footer-lower-logo a:hover i {
     height: 100px;
   }
   #recommended .recommended-content .recommended-slide {
-    height: 390px;
+    height: 370px;
   }
   #recommended .recommended-content .recommended-slide .slideWrapper li a {
-    height: 366px;
+    height: 340px;
   }
   #recommended .recommended-content .recommended-slide .slideWrapper li a .slide-desc .desc-title {
-    height: 36px;
-  }
-  #recommended .recommended-content .recommended-slide .slideWrapper li .badge {
-    width: 40px;
     height: 20px;
+  }
+  #recommended .recommended-content .recommended-slide .slideWrapper li a .slideImgWrap .slide-img:hover {
+    transform: scale(1);
   }
   #safe-service {
     height: auto;

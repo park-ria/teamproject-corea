@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,19 +12,18 @@
       content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
     />
     <link rel="icon" href="/images/favicon.ico" />
-
     <!-- fontawesome -->
     <script
       src="https://kit.fontawesome.com/09d57ad258.js"
       crossorigin="anonymous"
     ></script>
-    <!-- custom css & js -->
-    <link rel="stylesheet" href="/styles/style.css" />
-    <link rel="stylesheet" href="/styles/common.css" />
-    <script defer src="/scripts/common.js"></script>
-    <script defer src="/scripts/script.js"></script>
+    <link rel="stylesheet" href="../styles/signinComplete.css" />
+    <link rel="stylesheet" href="../styles/sign_in.css" />
+    <script defer src="../scripts/sign_in.js"></script>
+    <script defer src="../scripts/common.js"></script>
     <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
   </head>
+
   <body>
     <div class="wrapper" id="wrapper">
       <header id="header">
@@ -71,7 +70,7 @@
               <div class="header-top">
                 <h1 id="logo">
                   <a href="/index.html">
-                    <img src="../images/logo.svg" alt="logo" />
+                    <img src="../images/logo.png" alt="logo" />
                   </a>
                 </h1>
                 <div class="search-box">
@@ -162,12 +161,13 @@
           </div>
         </div>
       </header>
+
       <!-- mobile-menu -->
       <div id="mobile-menu">
         <div class="inner">
           <div class="mobile-menu">
             <a href="/index.html" class="mobile-logo">
-              <img src="../images/logo.svg" alt="logo" />
+              <img src="../images/logo.png" alt="logo" />
             </a>
             <div class="menu-box">
               <button><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -180,11 +180,13 @@
           </div>
         </div>
       </div>
+
       <!-- mobile-category -->
       <div id="mobile-category">
         <h3>전체카테고리</h3>
         <ul class="categroy-main"></ul>
       </div>
+
       <!-- mobile-search -->
       <div id="mobile-search">
         <div class="search-box">
@@ -230,265 +232,47 @@
         </div>
       </div>
 
-      <main class="container">
-        <section id="main-slide">
-          <article>
-            <ul class="mainSlideWrapper"></ul>
-            <div class="main-slide-arrows">
-              <button class="mainSlidePrev" type="button">
-                <i class="fa-solid fa-angle-left"></i>
-              </button>
-              <button class="mainSlideNext" type="button">
-                <i class="fa-solid fa-angle-right"></i>
-              </button>
-            </div>
-          </article>
-          <div class="inner">
-            <div class="main-slide-btns">
-              <div class="mainSlidePager">
-                <span></span>
+      <main>
+        <div class="inner">
+          <div class="container">
+            <div class="signinContent">
+              <div class="signinIcon">
+                <img
+                  src="../images/login/Joong.png"
+                  alt="logoSignin"
+                  id="firstLogo"
+                />
+                <img
+                  src="../images/login/Frame 40.png"
+                  alt="logoSignin"
+                  id="secondLogo"
+                />
+                <img
+                  src="../images/login/nara.png"
+                  alt="logoSignin"
+                  id="thirdLogo"
+                />
               </div>
-              <button class="mainSlidePrev" type="button">
-                <i class="fa-solid fa-angle-left"></i>
-              </button>
-              <button class="mainSlidePause" type="button">
-                <i class="fa-solid fa-pause"></i>
-              </button>
-              <button class="mainSlidePlay" type="button">
-                <i class="fa-solid fa-play"></i>
-              </button>
-              <button class="mainSlideNext" type="button">
-                <i class="fa-solid fa-angle-right"></i>
-              </button>
-            </div>
-          </div>
-        </section>
-        <section id="best-ranking">
-          <div class="inner">
-            <article class="ranking-content">
-              <div class="ranking-heading">
-                <h3 class="section-title">지금 제일 HOT한 상품!</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="ranking-slide">
-                <ul class="slideWrapper bestRankingUl"></ul>
-              </div>
-              <div class="slide-btns">
-                <button class="slidePrev" type="button">
-                  <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <button class="slideNext" type="button">
-                  <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <div class="slidePager"></div>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="auction">
-          <a target="_blank" href="/pages/auction.html">
-            <figure class="auction-banner">
-              <div class="inner">
-                <article class="banner-content">
-                  <div class="banner-desc">
-                    <span>지금 놓치면 경매 끝!</span>
-                    <h2>더 저렴한 <b>중고경매</b></h2>
-                    <div class="timeEvent"></div>
-                    <p>실시간 <b>최저가</b> 경매상품을 만나보세요!</p>
-                  </div>
-                  <div class="banner-img">
-                    <img
-                      src="/images/auction-banner01.png"
-                      alt="auction-banner01"
-                    />
-                  </div>
-                </article>
-              </div>
-            </figure>
-          </a>
-          <div class="inner">
-            <article class="auction-content">
-              <div class="auction-heading">
-                <h3 class="section-title">인기 경매 상품을 만나보세요!</h3>
-                <span class="view-more"
-                  ><a href="/pages/auction.html" target="_blank"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="auction-slide">
-                <ul class="slideWrapper auctionUl"></ul>
-              </div>
-              <div class="slide-btns">
-                <button class="slidePrev" type="button">
-                  <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <button class="slideNext" type="button">
-                  <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <div class="slidePager"></div>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="weekly-item">
-          <div class="inner">
-            <article class="weekly-item-content">
-              <div class="weekly-item-heading">
-                <h3 class="section-title">금주의 아이템 모아보기</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="weekly-item-tabmenu">
-                <ul class="tab-menu">
-                  <li class="active" data-tab="패션의류">패션의류</li>
-                  <li data-tab="노트북/PC">노트북/PC</li>
-                  <li data-tab="스포츠">스포츠</li>
-                  <li data-tab="티켓/쿠폰">티켓/쿠폰</li>
-                  <li data-tab="도서/음반/문구">도서/음반/문구</li>
-                </ul>
-                <ul class="tab-content fashion active" data-tab="패션의류"></ul>
-                <ul class="tab-content pc" data-tab="노트북/PC"></ul>
-                <ul class="tab-content sports" data-tab="스포츠"></ul>
-                <ul class="tab-content ticket" data-tab="티켓/쿠폰"></ul>
-                <ul class="tab-content book" data-tab="도서/음반/문구"></ul>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="event">
-          <div class="inner">
-            <article class="event-content">
-              <div class="event-heading">
-                <h3 class="section-title">제휴할인도 놓치지 마세요</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="event-slide">
-                <ul></ul>
-                <div class="slidePager"></div>
-                <ul></ul>
-                <div class="slidePager"></div>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="recommended">
-          <div class="inner">
-            <article class="recommended-content">
-              <div class="recommended-heading">
-                <h3 class="section-title">인기폭발 예감 상품</h3>
-                <span class="view-more"
-                  ><a href="#none"
-                    >전체보기 <i class="fa-solid fa-angle-right"></i></a
-                ></span>
-              </div>
-              <div class="recommended-slide">
-                <ul class="slideWrapper recommendedUl"></ul>
-              </div>
-              <div class="slide-btns">
-                <button class="slidePrev" type="button">
-                  <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <button class="slideNext" type="button">
-                  <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <div class="slidePager"></div>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="safe-service">
-          <div class="inner">
-            <article class="safe-service-content">
-              <div class="safe-service-desc">
-                <h2>안전하고 편리한 중고거래 서비스</h2>
-                <span
-                  >거래 전 사기 이력 조회부터 예상치 못한 피해 시 거래 피해
-                  보상제까지</span
-                >
-                <p>
-                  중고나라와 함께라면<br />
-                  더이상 불안한 마음으로 거래하지 않아도 돼요.
-                </p>
-                <button id="modalBtn" type="button">자세히 보기</button>
-              </div>
-              <div class="safe-service-banner">
-                <img src="/images/safe-service-banner.png" alt="" />
-              </div>
-            </article>
-          </div>
-        </section>
-        <section id="safeserviceModal">
-          <article class="modal-content">
-            <div class="modal-left">
-              <div class="modal-title">
-                <h2>
-                  중고거래 사기의 99%는 <br />
-                  선입금에서 발생합니다.
-                </h2>
-                <p>누구나 <b>안심</b>할 수 있는 <b>중고거래</b></p>
-                <p>누구나 <b>안심</b>할 수 있는 <b>안전거래</b></p>
-                <h6>중고나라 케어가 지켜드립니다!</h6>
+              <div class="signinDesc">
+                <div><h1>회원가입을 축하합니다!</h1></div>
+                <div class="signinDescBox">
+                  <h4>
+                    로그인후 마이페이지 동네인증을 진행해주세요.<br />
+                    감사합니다.
+                  </h4>
+                </div>
+                <div class="buttons">
+                  <button id="buttonLogin">
+                    <a href="../pages/login.html">로그인</a>
+                  </button>
+                  <button id="buttonMain">
+                    <a href="../index.html">메인</a>
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="modal-right">
-              <ul>
-                <li>
-                  <div class="modal-img">
-                    <img src="/images/safe-service-modal01.png" alt="modal01" />
-                  </div>
-                  <div class="modal-desc">
-                    <h5>중고나라 FDS</h5>
-                    <p>
-                      중고나라의 IT 기술력과 20년간 쌓인 9억 건의 데이터를
-                      기반으로
-                      <br />
-                      금융 거래의 부정 결제, 사기 등 이상 거래 징후를 사전에
-                      탐지하여 차단해요.
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="modal-img">
-                    <img src="/images/safe-service-modal02.png" alt="modal02" />
-                  </div>
-                  <div class="modal-desc">
-                    <h5>중고나라 페이</h5>
-                    <p>
-                      거래 물품을 안전하게 받을 때까지 중고나라에서 결제액을
-                      안전하게 보관했다가, <br />
-                      구매 확정 후 1시간 이내에 정산해 드려요.
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="modal-img">
-                    <img src="/images/safe-service-modal03.png" alt="modal03" />
-                  </div>
-                  <div class="modal-desc">
-                    <h5>중고나라 거래 피해 보상제</h5>
-                    <p>
-                      중고나라에서 예상치 못한 중고거래 피해를 입으셨나요?
-                      <br />
-                      <em>최대 100만 원</em>까지 보상해드려요.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </article>
-          <button class="closeBtn" type="button">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </section>
-        <div class="modal-back"></div>
+          </div>
+        </div>
       </main>
 
       <footer>
@@ -571,6 +355,7 @@
         </div>
       </footer>
 
+      <!-- quickMenu -->
       <div class="quickMenu"></div>
     </div>
   </body>
