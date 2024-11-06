@@ -1,0 +1,119 @@
+@import "./common.scss";
+
+.container {
+  padding: 100px 0 150px;
+  gap: 200px;
+  .signinContent {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    .signinIcon {
+      padding-bottom: 35px;
+      #firstLogo {
+        width: 190px;
+      }
+      #secondLogo {
+        width: 50px;
+        margin-bottom: 13px;
+        animation: recycle 1s ease-out both;
+      }
+      #thirdLogo {
+        width: 120px;
+        padding-bottom: 13px;
+      }
+    }
+    .signinDesc {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      h1 {
+        font-size: 26px;
+      }
+      .signinDescBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 150px;
+        background: #eee;
+        text-align: center;
+        padding: 30px;
+        line-height: 2;
+        font-size: 18px;
+        letter-spacing: 0.7px;
+        border-radius: 5px;
+      }
+      .buttons {
+        width: 500px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        button {
+          width: 50%;
+          padding: 20px 0;
+          border-radius: 5px;
+          font-size: 1.8rem;
+          color: map-get($color, bg-light-color);
+        }
+        #buttonLogin {
+          @include greenBtn;
+        }
+        #buttonMain {
+          @include blackBtn;
+        }
+      }
+    }
+  }
+}
+
+@keyframes recycle {
+  0% {
+  }
+  100% {
+    transform: rotate(-360deg);
+    transform-origin: center;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    .signinContent {
+      flex-direction: column;
+      gap: 20px;
+      .signinDesc {
+        .signinDescBox {
+          width: 100%;
+        }
+        .buttons {
+          width: 100%;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    .signinContent {
+      flex-direction: column;
+      gap: 20px;
+      .signinIcon {
+        #firstLogo {
+          width: 160px;
+        }
+        #secondLogo {
+          width: 45px;
+          margin-bottom: 8px;
+        }
+        #thirdLogo {
+          width: 100px;
+        }
+      }
+    }
+  }
+}

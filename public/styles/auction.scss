@@ -1,0 +1,429 @@
+@import "./common.scss", "./style.scss";
+
+// mix-in
+@mixin verticalBar {
+  content: "";
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  background: map-get($color, bg-light-gray);
+  transition: all 0.3s;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#best-auction {
+  background: #f9f9f9;
+  border-bottom: 1px solid map-get($color, bg-light-gray);
+  padding: 80px 0;
+  .best-auction-content {
+    position: relative;
+    .best-auction-heading {
+      @include sectionHeading;
+      .clock {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url("../images/clock.svg") center/contain no-repeat;
+        animation: vibration 0.2s ease-in-out infinite;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 46%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center bottom;
+          width: 3px;
+          height: 10px;
+          background: map-get($color, bg-sub-color);
+          animation: clock 3s linear infinite;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 6px;
+          height: 6px;
+          background: map-get($color, bg-sub-color);
+          border-radius: 50%;
+        }
+      }
+    }
+    .best-auction-slide {
+      height: 390px;
+      position: relative;
+      overflow: hidden;
+      .bestAuction {
+        display: flex;
+        gap: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s;
+        li {
+          position: relative;
+          a {
+            width: 410px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px map-get($color, bg-light-gray);
+            background: map-get($color, bg-light-color);
+            overflow: hidden;
+            -webkit-user-drag: none;
+            .slideImgWrap {
+              width: 100%;
+              height: 236px;
+              overflow: hidden;
+              .slide-img {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transition: all 0.3s;
+                &:hover {
+                  transform: scale(1.04);
+                }
+                .timeEvent {
+                  position: absolute;
+                  bottom: 15px;
+                  left: 15px;
+                  display: flex;
+                  align-items: center;
+                  padding: 6px 3px 6px 12px;
+                  border-radius: 8px;
+                  background: map-get($color, bg-sub-color);
+                  .clock {
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    background: url("../images/clock.svg") center/contain
+                      no-repeat;
+                    margin-right: 5px;
+                    animation: vibration 0.2s linear infinite;
+                    &::before {
+                      content: "";
+                      position: absolute;
+                      top: 47%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      transform-origin: center bottom;
+                      width: 2px;
+                      height: 7px;
+                      background: map-get($color, bg-light-color);
+                      animation: clock 3s linear infinite;
+                    }
+                    &::after {
+                      content: "";
+                      position: absolute;
+                      top: 52%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 4px;
+                      height: 4px;
+                      background: map-get($color, bg-light-color);
+                      border-radius: 50%;
+                    }
+                  }
+                  .timeItem {
+                    position: relative;
+                    width: 37px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    span {
+                      display: block;
+                      font: 700 1.8rem/1 "GmarketSansBold";
+                      color: map-get($color, bg-light-color);
+                      transition: transform 0.5s ease;
+                      position: absolute;
+                      top: 50%;
+                      transform: translateY(-50%);
+                      text-align: center;
+                      padding-top: 2px;
+                      &.old {
+                        transform: translateY(-50%);
+                      }
+                      &.new {
+                        transform: translateY(-200%);
+                      }
+                      &::after {
+                        content: " : ";
+                        display: inline-block;
+                        width: 10px;
+                        margin-left: 2px;
+                      }
+                    }
+                    &.updating {
+                      span {
+                        &.old {
+                          transform: translateY(100%);
+                        }
+                        &.new {
+                          transform: translateY(-200%);
+                        }
+                      }
+                    }
+                    &.sec span::after {
+                      content: "";
+                    }
+                  }
+                }
+              }
+            }
+            .slide-desc {
+              padding: 0 14px 20px;
+              @include productDesc;
+              .desc-title {
+                height: 23px;
+                line-clamp: 1;
+                -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
+            }
+          }
+          // .badge {
+          //   @include badgeType;
+          // }
+        }
+      }
+    }
+    .slide-btns {
+      @include slideBtns;
+      button {
+        top: 44%;
+        transform: translateY(-50%);
+      }
+      .slidePager {
+        @include slidePager;
+      }
+    }
+  }
+}
+@keyframes clock {
+  0% {
+    transform: translate(-50%, -70%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+@keyframes vibration {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
+#product-list {
+  padding: 100px 0 150px;
+  .sorting-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    position: sticky;
+    top: 150px;
+    border-top: 1px solid map-get($color, bg-light-gray);
+    border-bottom: 1px solid map-get($color, bg-light-gray);
+    background: map-get($color, bg-light-color);
+    z-index: 1;
+    li {
+      position: relative;
+      a {
+        font-size: 1.8rem;
+        color: map-get($color, bg-dark-gray);
+        &.active {
+          font-weight: 700;
+        }
+      }
+      &::after {
+        @include verticalBar;
+      }
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  .product {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px 0;
+    li {
+      position: relative;
+      a {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .slideImgWrap {
+          width: 100%;
+          height: 240px;
+          border-radius: 10px;
+          overflow: hidden;
+          .slide-img {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s;
+            &:hover {
+              transform: scale(1.04);
+            }
+          }
+        }
+
+        .slide-desc {
+          padding: 0 14px 20px;
+          @include productDesc;
+          .desc-title {
+            height: 23px;
+            line-clamp: 1;
+            -webkit-line-clamp: 1;
+          }
+        }
+      }
+      // .badge {
+      //   @include badgeType;
+      // }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  #best-auction {
+    .best-auction-content {
+      .slide-btns {
+        button {
+          &.slidePrev {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+          &.slideNext {
+            transform: translateX(0);
+            &:hover {
+              transform: translate(0, 5%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 840px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        .bestAuction {
+          li {
+            a {
+              .slideImgWrap {
+                .slide-img {
+                  &:hover {
+                    transform: scale(1);
+                  }
+                  .timeEvent {
+                    padding: 4px 0 4px 10px;
+                    .timeItem {
+                      width: 34px;
+                      span {
+                        padding-top: 5px;
+                      }
+                    }
+                  }
+                }
+              }
+              .slide-desc {
+                .desc-title {
+                  height: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #product-list {
+    padding: 50px 0 100px;
+    .sorting-group {
+      top: 60px;
+    }
+    .product {
+      li {
+        a {
+          .slideImgWrap {
+            .slide-img {
+              &:hover {
+                transform: scale(1);
+              }
+            }
+          }
+          .slide-desc {
+            .desc-title {
+              height: 18px;
+            }
+          }
+        }
+        // .badge {
+        //   width: 40px;
+        //   height: 20px;
+        // }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #best-auction {
+    .best-auction-content {
+      .best-auction-slide {
+        width: 350px;
+        height: 370px;
+        margin: 0 auto;
+        overflow-x: hidden;
+        .bestAuction {
+          li {
+            a {
+              width: 350px;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  #product-list {
+    .product {
+      li {
+        a {
+          .slide-desc {
+            padding: 0 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
