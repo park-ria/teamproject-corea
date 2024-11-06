@@ -1,0 +1,74 @@
+@import "./common.scss";
+
+// FAQ
+.faq {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  h1 {
+    font-size: 2.6rem;
+  }
+  .accordion {
+    width: 900px;
+    padding: 50px 0;
+    border-top: 1px solid map-get($color, bg-dark-color);
+    .title {
+      position: relative;
+      padding: 20px;
+      border-bottom: 1px solid map-get($color, bg-light-gray);
+      cursor: pointer;
+      transition: all 0.3s;
+      &::after {
+        content: "\2b";
+        font-family: "fontawesome";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        transition: all 0.3s;
+      }
+      &.active {
+        box-shadow: 0 0 5px map-get($color, bg-light-gray);
+        &::after {
+          content: "\2b";
+          font-family: "fontawesome";
+          transform: translateY(-50%) rotate(45deg);
+        }
+      }
+      p {
+        font: 400 1.6rem/1 "Noto Sans KR", sans-serif;
+      }
+    }
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0 20px;
+      background: #eee;
+      transition: all 0.3s;
+      p {
+        font: 400 1.4rem/1.5 "Noto Sans KR", sans-serif;
+        b {
+          color: map-get($color, bg-dark-gray);
+        }
+      }
+      &.active {
+        padding: 20px;
+        max-height: revert;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// responsive
+@media screen and (max-width: 1280px) {
+  // FAQ
+  .faq {
+    .accordion {
+      width: 100%;
+    }
+  }
+}

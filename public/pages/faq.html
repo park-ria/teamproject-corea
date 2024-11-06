@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/images/opengraph.jpg" />
+    <meta property="og:image:width" content="390" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:title" content="중고나라 Junggonara" />
+    <meta
+      property="og:description"
+      content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+  
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/09d57ad258.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- custom css & js -->
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/faq.css" />
+    <script defer src="/scripts/faq.js"></script>
+    <script defer src="/scripts/common.js"></script>
+    <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <div class="appDownload">
+                  <img src="../images/appicon.png" alt="appicon" />
+                  <span>앱 다운로드</span>
+                  <div class="download-box">
+                    <a class="apple" href="https://apps.apple.com/kr/app/%EC%A4%91%EA%B3%A0%EB%82%98%EB%9D%BC-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-%EC%A4%91%EA%B3%A0%EB%A7%88%EC%BC%93/id896515652">
+                      <i class="fa-brands fa-apple"></i>
+                      <span>앱스토어</span>
+                    </a>
+                    <a class="googleplay" href="https://play.google.com/store/apps/details?id=com.elz.secondhandstore&hl=ko">
+                      <i class="fa-brands fa-google-play"></i>
+                      <span>구글플레이</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="favorites">
+                  <img src="../images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </div>
+              </div>
+              <div class="banner-right">
+                <a href="/pages/login.html">로그인</a>
+                <a href="/pages/sign_in.html">회원가입</a>
+                <a href="/pages/faq.html">F&Q</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="/index.html">
+                    <img src="../images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form name="hdForm" action="https://localhost:3000" method="get">
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                      autocomplete="off">
+                    <input type="submit" value="">
+                    <div class="searchedword-list">
+                      <div class="recent-words">
+                        <h3>최근 검색어</h3>
+                        <ul class="recent-list">
+                          <li class="no-words">
+                            <span>최근 검색어가 없습니다</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="live-ranking">
+                        <h3>급상승 검색어 <p class="current-time"></p></h3>
+                        <ul class="ranking-list"></ul>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="/pages/auction.html">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="#none">
+                        <img src="../images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="../images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/wishlist.html">
+                        <img src="../images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-category">
+          <div class="inner">
+            <div class="header-category">
+              <ul class="main-category"></ul>
+            </div>
+          </div>
+        </div>
+      </header>
+  
+      <!-- mobile-menu -->
+      <div id="mobile-menu">
+        <div class="inner">
+          <div class="mobile-menu">
+            <a href="/index.html" class="mobile-logo">
+              <img src="../images/logo.png" alt="logo" />
+            </a>
+            <div class="menu-box">
+              <button><i class="fa-solid fa-magnifying-glass"></i
+                ></button>
+              <button>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- mobile-category -->
+      <div id="mobile-category">
+        <h3>전체카테고리</h3>
+        <ul class="categroy-main"></ul>
+      </div>
+  
+      <!-- mobile-search -->
+      <div id="mobile-search">
+        <div class="search-box">
+          <form name="mbForm" action="http://127.0.0.1:5502" method="get">
+            <button><i class="fa-solid fa-chevron-left"></i></button>
+            <input type="text" name="mb-search" id="search" placeholder="어떤 상품을 찾으시나요?" autocomplete="off">
+            <input type="submit" value="">
+          </form>
+        </div>
+        <div class="searchedword-list">
+          <div class="recent-words">
+            <h3>최근 검색어</h3>
+            <ul class="recent-list">
+              <li class="no-words">
+                <span>최근 검색어가 없습니다</span>
+              </li>
+            </ul>
+          </div>
+          <div class="recommendedwords">
+            <h3>추천 검색어</h3>
+            <ul>
+              <li>핸드폰</li>
+              <li>가전제품</li>
+              <li>캠핑텐트</li>
+              <li>다이슨</li>
+              <li>지갑</li>
+              <li>스니커즈</li>
+            </ul>
+          </div>
+          <div class="live-ranking">
+            <h3>급상승 검색어 <p class="current-time"></p></h3>
+            <ul class="ranking-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <main class="container">
+        <div class="inner">
+          <section class="faq">
+            <h1>자주 묻는 질문 FAQ</h1>
+            <ul class="accordion">
+              <li>
+                <div class="title active">
+                  <p>
+                    안전거래로 물건을 판매했는데 판매대금은 언제 입금되나요?
+                  </p>
+                </div>
+                <div class="content">
+                  <p>
+                    판매대금은 구매자의 구매확정 이후, 평균 1시간 내 등록된 대표
+                    계좌로 즉시 입금됩니다. <br />
+                    단, 이용 정책에 따라 1영업일 이상의 소요시간이 발생될 수
+                    있으며, 추가적으로 관리자가 실 거래 여부를 확인할 수 있는
+                    증빙 자료를 요청할 수 있습니다.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>계좌 전송 기능이 무엇인가요?</p>
+                </div>
+                <div class="content">
+                  <p>
+                    중고나라는 사기 피해 예방 및 안전하고 편리한 거래를 위해
+                    계좌 전송 기능을 제공하고 있습니다. <br />
+                    타인의 계좌번호로 이체 유도하는 사기 위험이 있으므로 계좌
+                    전송 기능을 사용해 주세요!
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>CU 알뜰택배 이용 방법은 어떻게 되나요?</p>
+                </div>
+                <div class="content">
+                  <p>
+                    CU 알뜰택배는 중고나라 앱에서 신청 후 가까운 CU 편의점에
+                    방문하여 진행할 수 있습니다. <br />
+                    <b>판매자</b><br />
+                    중고나라 앱에서 CU 알뜰택배 신청 (택배 수신 받을 분의 이름,
+                    연락처, CU 편의점 점포명)<br />
+                    가까운 CU 편의점에 방문하여 POST BOX에서 ‘예약번호’ 입력 후
+                    발/수신 정보 확인<br />
+                    ‘송장 출력’ 후 카운터에서 택배비 결제<br />
+                    <b>구매자</b><br />
+                    판매자에게 택배를 수신할 정보 전달(택배 수신 받을 분의 이름,
+                    연락처, CU 편의점 점포명)<br />
+                    CU 편의점 점포명은 구매자가 검색 후 전달해야 합니다.<br />
+                    택배가 구매자가 전달한 편의점에 도착 시 CU로부터 받은
+                    알림톡을 확인하여 CU 편의점 방문<br />
+                    알림톡 QR 코드 인증 후 편의점에서 택배 물건 수거
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>신뢰 지수에 대해 궁금해요.</p>
+                </div>
+                <div class="content">
+                  <p>
+                    신뢰 지수는 다양한 기준의 활동을 기반으로 한 종합 점수로
+                    다른 사용자를 얼마나 신뢰할 수 있는지 알 수 있도록 표현한
+                    기능입니다.<br />
+                    신뢰 지수는 최소 0점부터 최대 1,000점까지 획득할 수 있고,
+                    안전 결제를 통한 거래, 이용후기 작성 등 다양한 활동을 하면
+                    신뢰 지수를 높일 수 있습니다.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>신뢰지수는 어떻게해야 올릴 수 있나요?</p>
+                </div>
+                <div class="content">
+                  <p>
+                    신뢰 지수는 신뢰 지수 올리기 미션을 완료했을 때 즉시
+                    반영되고, 안전 결제를 통한 거래, 이용후기 작성 등 다양한
+                    행동을 통해 쌓여지는 점수는 대략 1~2일이 지나야 반영됩니다.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>활동 배지에 대해 궁금해요.</p>
+                </div>
+                <div class="content">
+                  <p>
+                    활동 배지는 상품 등록, 이용후기 작성 등 획득 조건을 충족했을
+                    때 지급되는 배지입니다.<br />
+                    활동 배지는 일반 배지, 대표 배지로 구분되고, 대표 배지는
+                    '나의 대표 배지'로 설정할 수 있습니다.<br />
+                    '나의 대표 배지'로 설정하면 프로필 옆에 배지가 노출됩니다.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="title">
+                  <p>신고한 내역을 취소하고 싶어요.</p>
+                </div>
+                <div class="content">
+                  <p>
+                    회원님들께서 신고해주신 사항에 대해서는 중고나라 운영진이
+                    모두 꼼꼼하게 확인을 한 후 조치를 진행합니다.<br />
+                    실수로 인해 신고가 접수되었다 하더라도 운영정책이나 법률
+                    위반이 아닌 경우에는 처리를 하지 않고 있으므로 걱정하지
+                    않으셔도 됩니다.<br />
+                    아래 경로로 상대 회원의 닉네임과 함께 취소 문의를
+                    남겨주세요.<br />
+                    <b
+                      >- 중고나라 앱 > 마이 > 고객센터 > 1:1 문의 > [신고접수 /
+                      사기신고] 유형 선택</b
+                    >
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <div class="inner">
+          <section class="footer-upper">
+            <div class="footer-upper-info">
+              <div class="footer-company-guide">
+                <ul>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+              <address class="footer-company-info">
+                <ul>
+                  <li><b>(주)중고나라 사업자 정보</b></li>
+                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                  <li>사업자 등록번호: 215-87-87482</li>
+                  <li>메일: joongna@joonggonara.co.kr</li>
+                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+                </ul>
+              </address>
+            </div>
+            <div class="footer-upper-ctg">
+              <button>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul class="category-list"></ul>
+            </div>
+          </section>
+          <section class="footer-lower">
+            <div class="footer-lower-desc">
+              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+              판매회원과<br />
+              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+              책임도 부담하지 않습니다.
+            </div>
+            <div class="footer-lower-logo">
+              <a href="https://www.facebook.com/joonggonara.m/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCTUQdtrWF8BekcHX-X1SMPw"
+                target="_blank"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://cafe.naver.com/joonggonara" target="_blank">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a
+                href="https://m.blog.naver.com/jnofficial/223313152022"
+                target="_blank"
+              >
+                <i class="fa-brands fa-neos"></i>
+              </a>
+              <a href="https://joonggonara.co.kr/" target="_blank">
+                <i class="fa-solid fa-blog"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </footer>
+
+      <!-- quickMenu -->
+      <div class="quickMenu"></div>
+  </body>
+</html>
