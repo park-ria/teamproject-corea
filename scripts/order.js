@@ -18,8 +18,8 @@ const setUserInfo = (userInfo) => {
   orderInfo.phone1.value = userInfo.phone1;
   orderInfo.phone2.value = userInfo.phone2;
   orderInfo.phone3.value = userInfo.phone3;
-  orderInfo.zonecode.value = userInfo.zipcode;
-  orderInfo.address.value = userInfo.address;
+  orderInfo.zonecode.value = userInfo.zipcode ? userInfo.zipcode : "";
+  orderInfo.address.value = userInfo.address ? userInfo.address : "";
   orderInfo.cashBillInfo.value = `${userInfo.phone1}${userInfo.phone2}${userInfo.phone3}`;
 };
 
