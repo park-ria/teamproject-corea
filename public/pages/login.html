@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/images/opengraph.jpg" />
+    <meta property="og:image:width" content="390" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:title" content="중고나라 Junggonara" />
+    <meta
+      property="og:description"
+      content="안전결제를 통한 사기조회와 피해 보상까지, 카드결제 가능한 중고나라에서 거래하세요."
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+    <!--fontawsome-->
+    <script
+      src="https://kit.fontawesome.com/4effeb5db1.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--custom-->
+    <link rel="stylesheet" href="../styles/login.css" />
+    <script defer src="../scripts/common.js"></script>
+    <script defer src="../scripts/login.js"></script>
+
+    <title>중고나라 - 국내 최대 중고 거래 플랫폼</title>
+  </head>
+  <body>
+    <div class="wrapper" id="wrapper">
+      <header id="header">
+        <div id="banner" class="ban">
+          <div class="inner">
+            <div class="banner">
+              <div class="banner-left">
+                <div class="appDownload">
+                  <img src="../images/appicon.png" alt="appicon" />
+                  <span>앱 다운로드</span>
+                  <div class="download-box">
+                    <a
+                      class="apple"
+                      href="https://apps.apple.com/kr/app/%EC%A4%91%EA%B3%A0%EB%82%98%EB%9D%BC-%EA%B5%AD%EB%82%B4-%EC%B5%9C%EB%8C%80-%EC%A4%91%EA%B3%A0%EB%A7%88%EC%BC%93/id896515652"
+                    >
+                      <i class="fa-brands fa-apple"></i>
+                      <span>앱스토어</span>
+                    </a>
+                    <a
+                      class="googleplay"
+                      href="https://play.google.com/store/apps/details?id=com.elz.secondhandstore&hl=ko"
+                    >
+                      <i class="fa-brands fa-google-play"></i>
+                      <span>구글플레이</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="favorites">
+                  <img src="../images/favorites.jpg" alt="favorites" />
+                  <span>즐겨찾기</span>
+                </div>
+              </div>
+              <div class="banner-right">
+                <a href="/pages/login.html">로그인</a>
+                <a href="/pages/sign_in.html">회원가입</a>
+                <a href="/pages/faq.html">F&Q</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-item">
+          <div class="inner">
+            <div class="header-item">
+              <div class="header-top">
+                <h1 id="logo">
+                  <a href="/index.html">
+                    <img src="../images/logo.png" alt="logo" />
+                  </a>
+                </h1>
+                <div class="search-box">
+                  <form
+                    name="hdForm"
+                    action="https://localhost:3000"
+                    method="get"
+                  >
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      placeholder="어떤 상품을 찾으시나요? 카페 상품, 앱 상품 모두 검색 가능!"
+                      autocomplete="off"
+                    />
+                    <input type="submit" value="" />
+                    <div class="searchedword-list">
+                      <div class="recent-words">
+                        <h3>최근 검색어</h3>
+                        <ul class="recent-list">
+                          <li class="no-words">
+                            <span>최근 검색어가 없습니다</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="live-ranking">
+                        <h3>
+                          급상승 검색어
+                          <p class="current-time"></p>
+                        </h3>
+                        <ul class="ranking-list"></ul>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="wrapper">
+                  <div class="popular-searchedWord">
+                    <ul></ul>
+                  </div>
+                  <a href="#none" class="list-btn"
+                    ><i class="fa-solid fa-chevron-down"></i
+                  ></a>
+                  <ul class="list"></ul>
+                </div>
+              </div>
+              <div class="header-bottom">
+                <nav class="header-bottom-left">
+                  <div class="barmenu">
+                    <i class="fa-solid fa-bars"></i><span>카테고리</span>
+                  </div>
+                  <ul class="gnb">
+                    <li><a href="/pages/auction.html">중고경매</a></li>
+                    <li><a href="#none">내 주변 매물</a></li>
+                    <li><a href="#none">사기조회</a></li>
+                    <li><a href="#none">시세조회</a></li>
+                    <li><a href="#none">이벤트</a></li>
+                    <li><a href="#none">제휴혜택</a></li>
+                  </ul>
+                </nav>
+                <div class="header-bottom-right">
+                  <ul class="lnb">
+                    <li>
+                      <a href="#none">
+                        <img src="../images/chat.png" alt="chat" />채팅하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#none">
+                        <img src="../images/sell.png" alt="sell" />판매하기</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/wishlist.html">
+                        <img src="../images/heart.png" alt="heart" />찜한상품</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="header-category">
+          <div class="inner">
+            <div class="header-category">
+              <ul class="main-category"></ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- mobile-menu -->
+      <div id="mobile-menu">
+        <div class="inner">
+          <div class="mobile-menu">
+            <a href="/index.html" class="mobile-logo">
+              <img src="../images/logo.png" alt="logo" />
+            </a>
+            <div class="menu-box">
+              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- mobile-category -->
+      <div id="mobile-category">
+        <h3>전체카테고리</h3>
+        <ul class="categroy-main"></ul>
+      </div>
+
+      <!-- mobile-search -->
+      <div id="mobile-search">
+        <div class="search-box">
+          <form name="mbForm" action="http://127.0.0.1:5502" method="get">
+            <button><i class="fa-solid fa-chevron-left"></i></button>
+            <input
+              type="text"
+              name="mb-search"
+              id="search"
+              placeholder="어떤 상품을 찾으시나요?"
+              autocomplete="off"
+            />
+            <input type="submit" value="" />
+          </form>
+        </div>
+        <div class="searchedword-list">
+          <div class="recent-words">
+            <h3>최근 검색어</h3>
+            <ul class="recent-list">
+              <li class="no-words">
+                <span>최근 검색어가 없습니다</span>
+              </li>
+            </ul>
+          </div>
+          <div class="recommendedwords">
+            <h3>추천 검색어</h3>
+            <ul>
+              <li>핸드폰</li>
+              <li>가전제품</li>
+              <li>캠핑텐트</li>
+              <li>다이슨</li>
+              <li>지갑</li>
+              <li>스니커즈</li>
+            </ul>
+          </div>
+          <div class="live-ranking">
+            <h3>
+              급상승 검색어
+              <p class="current-time"></p>
+            </h3>
+            <ul class="ranking-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div class="inner">
+          <div class="container">
+            <div class="login">
+              <div class="login-header">
+                <img src="../images/logo.png" alt="logo" />
+                <div class="login-header-desc">
+                  중고나라에 오신것을 환영합니다.
+                </div>
+              </div>
+
+              <div class="login-main">
+                <div class="login-main-npt">
+                  <form action="http://127.0.0.1:5502" method="get">
+                    <ul>
+                      <li>
+                        <input
+                          type="email"
+                          id="userId"
+                          placeholder="아이디를 입력하세요"
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="password"
+                          id="userPw"
+                          placeholder="비밀번호를 입력하세요"
+                        />
+                      </li>
+                      <div class="login-main-checkbox">
+                        <input type="checkbox" id="checkbox" />로그인상태
+                        유지하기
+                      </div>
+                      <input type="submit" id="login-button" value="로그인" />
+                    </ul>
+                  </form>
+                </div>
+                <div class="login-main-srt">
+                  <ul>
+                    <li><a href="">아이디 찾기</a></li>
+                    <li><a href="">비밀번호 찾기</a></li>
+                    <li>
+                      <a id="signIn" href="../pages/sign_in.html">회원가입</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="login-main-nthr">
+                  <div class="login-main-nthr-ttl">
+                    다른 방법으로 로그인하기
+                  </div>
+                  <div class="login-main-nthr-logo">
+                    <ul>
+                      <li>
+                        <a
+                          href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fscope%3D%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fweb.joongna.com%252Fapi%252Fauth%252Fcallback%252Fkakao%26state%3D0BmBfc-yg0oGSeA6_fzYfRvoXD9PzmSeVv9OF5zBuS0%26through_account%3Dtrue%26client_id%3Db8aa6613b65dde072ffee1f7f0483c17#login"
+                          ><img src="../images/login/kakao.png" alt="kakao"
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
+                          ><img src="../images/login/naver.png" alt="naver"
+                        /></a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Fwww.google.com%2F%3Fhl%3Dko&ec=GAZAmgQ&hl=ko&passive=true&ifkv=Ab5oB3qIObM4hJGsSxHaz0Q_GV7qU4TPbcC4S6uh011KWT-wGT0YhXiLEjhQ8JupGgwKVtnwz4_RZQ&ddm=0&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
+                          ><img src="../images/login/google.png" alt="google"
+                        /></a>
+                      </li>
+                      <li>
+                        <a href="https://www.facebook.com/?locale=ko_KR"
+                          ><img
+                            src="../images/login/facebook.png"
+                            alt="facebook"
+                        /></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/"
+                          ><img src="../images/login/insta.png" alt="instagram"
+                        /></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="login-footer">
+                도움이 필요하시면 고객센터로 문의부탁드립니다.<br />
+                고객센처 운영시간 09-18시(점심 12-13시)
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="inner">
+          <section class="footer-upper">
+            <div class="footer-upper-info">
+              <div class="footer-company-guide">
+                <ul>
+                  <li>
+                    <a href="#none">이용약관</a>
+                  </li>
+                  <li>
+                    <a href="#none">개인정보처리방침</a>
+                  </li>
+                  <li>
+                    <a href="#none">분쟁처리절차</a>
+                  </li>
+                  <li>
+                    <a href="#none">청소년보호정책</a>
+                  </li>
+                  <li>
+                    <a href="#none">사업자정보확인</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="/pages/faq.html">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+              <address class="footer-company-info">
+                <ul>
+                  <li><b>(주)중고나라 사업자 정보</b></li>
+                  <li>대표자: 최인욱 | 대표번호: 1533-7861</li>
+                  <li>주소: 서울특별시 서초구 서초대로 301 동익성봉빌딩 7층</li>
+                  <li>사업자 등록번호: 215-87-87482</li>
+                  <li>메일: joongna@joonggonara.co.kr</li>
+                  <li>Contact 중고나라 셀러 회원 신청 중고나라 광고 문의</li>
+                </ul>
+              </address>
+            </div>
+            <div class="footer-upper-ctg">
+              <button>
+                <span> 카테고리 전체보기 </span>
+                <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul class="category-list"></ul>
+            </div>
+          </section>
+          <section class="footer-lower">
+            <div class="footer-lower-desc">
+              "중고나라" 상점의 판매상품을 제외한 모든 상품들에 대하여,
+              (주)중고나라는 통신판매중개자로서 거래 당사자가 아니며
+              판매회원과<br />
+              구매 회원간의 상품거래 정보 및 거래에 관여하지 않고, 어떠한 의무와
+              책임도 부담하지 않습니다.
+            </div>
+            <div class="footer-lower-logo">
+              <a href="https://www.facebook.com/joonggonara.m/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCTUQdtrWF8BekcHX-X1SMPw"
+                target="_blank"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://cafe.naver.com/joonggonara" target="_blank">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a
+                href="https://m.blog.naver.com/jnofficial/223313152022"
+                target="_blank"
+              >
+                <i class="fa-brands fa-neos"></i>
+              </a>
+              <a href="https://joonggonara.co.kr/" target="_blank">
+                <i class="fa-solid fa-blog"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </footer>
+
+      <!-- quickMenu -->
+      <div class="quickMenu"></div>
+    </div>
+  </body>
+</html>
