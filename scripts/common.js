@@ -5,15 +5,17 @@ const bannerRight = document.querySelector(".banner-right");
 bannerRight.innerHTML = `
 <a href="/pages/login.html" class="login">로그인</a>
 <a href="#none" class="logout">로그아웃</a>
-<a href="/pages/sign_in.html">회원가입</a>
+<a href="/pages/sign_in.html" class="signIn">회원가입</a>
 <a href="/pages/faq.html">F&Q</a>
 `;
 
 const loginBtn = document.querySelector(".banner-right .login");
 const logoutBtn = document.querySelector(".banner-right .logout");
+const signInBtn = document.querySelector(".banner-right .signIn");
 
 if (loginCheck.length > 0) {
   loginBtn.style.display = "none";
+  signInBtn.style.display = "none";
   logoutBtn.style.display = "block";
 }
 
