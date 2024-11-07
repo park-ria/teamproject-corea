@@ -82,21 +82,6 @@ const changePhone2 = () => {
   }
 };
 
-const changePhone3 = () => {
-  const phone1 = document.querySelector("#phone1").value;
-  const phone2 = document.querySelector("#phone2").value;
-  const phone3 = document.querySelector("#phone3").value;
-
-  const phone3Str = document.querySelector("#phone3");
-  phone3Str.value = phone3Str.value.replace(/[^0-9.]/g, "");
-
-  if (phone1.length === 3 && phone2.length === 4 && phone3.length === 4) {
-    tokenButton.style =
-      "background:#0dcc5a; color: #fff; border:1px solid #0dcc5a; cursor: pointer";
-    tokenButton.removeAttribute("disabled");
-  }
-};
-
 let intersection;
 
 const getTokenTimer = () => {
@@ -121,34 +106,6 @@ const getTokenTimer = () => {
     }
   }, 1000);
 };
-
-tokenButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const randomNum = String(Math.floor(Math.random() * 1000000)).padStart(
-    6,
-    "0"
-  );
-  tokenNumber.innerText = randomNum;
-  // console.log(tokenConfirmButton);
-  tokenConfirmButton.style =
-    "background-color: #0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer";
-  tokenConfirmButton.removeAttribute("disabled", "true");
-  getTokenTimer();
-});
-
-tokenConfirmButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  clearInterval(intersection);
-  this.style =
-    "background-color: #0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer";
-  this.setAttribute("disabled", "true");
-  this.innerText = "인증완료";
-  alert("인증이 완료되었습니다 :ㅇ");
-
-  signupButton.style =
-    "background-color: #0dcc5a; color: #fff; border: 1px solid #0dcc5a; cursor:pointer";
-  signupButton.removeAttribute("disabled");
-});
 
 document.frm.addEventListener("submit", (e) => {
   e.preventDefault();
