@@ -13,13 +13,13 @@ const addMainSlide = (slide, index) => {
   slideDesc.className = "main-slide-desc";
 
   const desc = `
-    <h2>
-    ${slide.title}
-    </h2>
-    <p>
-      ${slide.sub}
-      <i class="fa-solid fa-angle-right"></i>
-    </p>
+                <h2>
+                ${slide.title}
+                </h2>
+                <p>
+                  ${slide.sub}
+                  <i class="fa-solid fa-angle-right"></i>
+                </p>
   `;
 
   slideDesc.insertAdjacentHTML("afterbegin", desc);

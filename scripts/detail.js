@@ -575,6 +575,7 @@ fetch(joonggoInfo)
       // desc-btns 버튼 생성
       const descBtns = document.querySelector(".desc-btns");
       const bottomBtns = document.querySelector(".btns");
+
       if (auctionPrice) {
         descBtns.classList.add("active");
         descBtns.innerHTML = `
@@ -589,6 +590,7 @@ fetch(joonggoInfo)
           btn.addEventListener("click", movePage);
         });
       } else {
+        console.log();
         descBtns.innerHTML = `
         <a href="/pages/login.html" class="chat">채팅하기</a>
         <a href="#none" class="trade">${
