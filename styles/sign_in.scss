@@ -58,6 +58,10 @@ $bg-main-color: #0dcc5a;
             justify-content: space-between;
             align-items: center;
 
+            &#location {
+              height: auto;
+            }
+
             .sign-input {
               width: 100%;
               display: flex;
@@ -78,7 +82,7 @@ $bg-main-color: #0dcc5a;
                 font-size: 1.5rem;
               }
               #phonelabel {
-                width: 20%;
+                width: 25%;
                 display: flex;
                 align-items: center;
                 padding-bottom: 10px;
@@ -150,30 +154,36 @@ $bg-main-color: #0dcc5a;
               position: relative;
               display: flex;
               #locationlabel {
-                width: 20%;
+                width: 30%;
                 padding-top: 20px;
               }
               .zibunTotal {
                 width: 50%;
                 display: flex;
                 flex-direction: column;
-                gap: 2px;
+                gap: 10px;
                 margin-bottom: 8px;
                 .zibun {
                   display: flex;
                   gap: 3px;
                   height: 3rem;
                   .homeaddress {
+                    flex: 1;
                     border: 1px solid $font-light;
+                    border-radius: 10px;
                   }
                   #locationbtn {
-                    width: 250px;
+                    width: 100px;
+                    border-radius: 5px;
+                    padding: 0;
+                    cursor: pointer;
                   }
                 }
                 .fullAddress {
                   width: 100%;
                   height: 3rem;
                   border: 1px solid $font-light;
+                  border-radius: 10px;
                 }
               }
             }
@@ -184,7 +194,7 @@ $bg-main-color: #0dcc5a;
               .gender-box {
                 position: absolute;
                 top: 50%;
-                left: 50%;
+                left: 55%;
                 transform: translate(-50%, -50%);
                 display: flex;
                 gap: 20px;
@@ -192,7 +202,7 @@ $bg-main-color: #0dcc5a;
                 text-align: center;
                 .gender {
                   label {
-                    padding: 5px 70px;
+                    padding: 5px 30px;
                     border: 1px solid $font-light;
                     border-radius: 10px;
                     &:hover {
@@ -276,12 +286,14 @@ $bg-main-color: #0dcc5a;
                   padding-top: 5px;
                   padding-left: 10px;
                   padding-bottom: 0;
-
-                  width: 110px;
+                  width: 160px;
                 }
                 .inputbox {
                   width: 100%;
                   flex: 1;
+                }
+                #phonelabel {
+                  width: 27%;
                 }
                 .phonewrapper {
                   width: 100%;
@@ -323,29 +335,20 @@ $bg-main-color: #0dcc5a;
                 width: 100%;
                 gap: 50px;
                 #locationlabel {
-                  width: 20%;
+                  width: 15%;
                 }
                 .locationoptions {
                   flex-direction: column;
                 }
               }
+
               .gender-wrapper {
-                width: 100%;
-                display: flex;
-                gap: 50px;
-                label {
-                  display: inline-block;
-                  width: 100%;
-                  #genderlabel {
-                    width: 10%;
-                  }
-                  #gender-woman {
-                    width: 15px;
-                    height: 15px;
-                  }
-                  #gender-man {
-                    width: 15px;
-                    height: 15px;
+                .gender-box {
+                  left: 47%;
+                  .gender {
+                    label {
+                      padding: 5px 30px;
+                    }
                   }
                 }
               }
@@ -397,17 +400,19 @@ $bg-main-color: #0dcc5a;
                   padding-left: 0;
                   padding-bottom: 0;
                   padding-top: 7px;
-                  width: 100px;
+                  width: 90px;
                 }
                 .inputbox {
                   width: 100%;
                   flex: 1;
                 }
+                #phonelabel {
+                  width: 24%;
+                }
                 .phonewrapper {
                   width: 80%;
                   display: flex;
                   flex-wrap: wrap;
-                  justify-content: center;
                   align-items: center;
                   gap: 10px;
                   input {
@@ -450,22 +455,12 @@ $bg-main-color: #0dcc5a;
                 }
               }
               .gender-wrapper {
-                width: 100%;
-                display: flex;
-                gap: 50px;
                 .gender-box {
-                  display: flex;
-                  justify-content: center;
-                  gap: 20px;
+                  width: 70%;
+                  left: 60%;
                   .gender {
-                    label {
-                      padding: 10px 20px;
-                      display: inline-block;
-                      width: 100%;
-                      #gender-woman {
-                      }
-                      #gender-man {
-                      }
+                    lable {
+                      padding: 5px 10px;
                     }
                   }
                 }
